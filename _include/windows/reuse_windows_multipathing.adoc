@@ -1,0 +1,7 @@
+= 
+:allow-uri-read: 
+
+
+Sie müssen MPIO-Software installieren und Multipathing einrichten, wenn Ihr Windows-Host über mehr als einen Pfad zum Speichersystem verfügt. Ohne MPIO-Software kann das Betriebssystem jeden Pfad als separate Festplatte sehen, was zu Datenbeschädigungen führen kann. Die MPIO-Software stellt für alle Pfade eine einzelne Festplatte zum Betriebssystem bereit, und ein gerätespezifisches Modul (DSM) managt den Pfad-Failover.
+
+Auf einem Windows-System sind die beiden Hauptkomponenten einer MPIO-Lösung ein DSM und das Windows MPIO. MPIO wird für Windows XP oder Windows Vista auf einer virtuellen Hyper-V-Maschine nicht unterstützt.

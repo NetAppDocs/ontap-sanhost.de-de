@@ -1,0 +1,39 @@
+= 
+:allow-uri-read: 
+
+
+Das NetApp Linux Unified Host Utilities-Softwarepaket ist auf der erhältlich link:https://mysupport.netapp.com/NOW/cgi-bin/software/?product=Host+Utilities+-+SAN&platform=Linux["NetApp Support Website"^] In einer 32-Bit- oder 64-Bit-.rpm-Datei.
+
+Es wird dringend empfohlen, Linux Unified Host Utilities zu installieren, jedoch nicht zwingend. Die Dienstprogramme ändern keine Einstellungen auf Ihrem Linux-Host. Die Versorgungseinrichtungen verbessern das Management und unterstützen den NetApp Kunden-Support bei der Erfassung von Informationen zu Ihrer Konfiguration.
+
+.Schritte
+. Wenn derzeit eine Version der Linux Unified Host Utilities installiert ist, entfernen Sie diese mit dem folgenden Befehl:
++
+`rpm -e netapp_linux_unified_host_utilities-7-1`
+
++
+Ältere Versionen von Linux Host Utilities finden Sie im Verzeichnis, in dem die Host Utility-Software installiert ist, und geben Sie das ein `uninstall` Befehl.
+
+. Laden Sie das Softwarepaket 32-Bit oder 64-Bit Linux Unified Host Utilities von herunter link:https://mysupport.netapp.com/NOW/cgi-bin/software/?product=Host+Utilities+-+SAN&platform=Linux["NetApp Support Website"^] Auf Ihren Host.
+. Rufen Sie das Verzeichnis auf, in dem Sie das Softwarepaket heruntergeladen haben, und installieren Sie es mit dem folgenden Befehl:
++
+`rpm -ivh netapp_linux_unified_host_utilities-7-1.x86_xx.rpm`
+
++
+[listing]
+----
+Verifying...                          ################################# [100%]
+Preparing...                          ################################# [100%]
+Updating / installing...
+   1:netapp_linux_unified_host_utiliti################################# [100%]
+----
+. Überprüfen Sie die Installation:
++
+`sanlun version`
+
++
+[listing]
+----
+sanlun version 7.1.386.1644
+----
+

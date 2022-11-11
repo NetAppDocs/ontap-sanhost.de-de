@@ -1,0 +1,46 @@
+= 
+:allow-uri-read: 
+
+
+Nach dem Ausführen `mbralign` Auf Festplatten zur Korrektur der MBR-Ausrichtung mit PowerShell Toolkit auf Linux Gast-Betriebssystemen mithilfe des GRUB-Boot-Loaders müssen Sie GRUB neu installieren, um sicherzustellen, dass das Gastbetriebssystem ordnungsgemäß gestartet wird.
+
+Das Cmdlet zum PowerShell Toolkit ist in der VHD-Datei für die virtuelle Maschine abgeschlossen. Dieses Thema gilt nur für Linux Gast-Betriebssysteme unter Verwendung des GRUB-Bootloaders und `SystemRescueCd`.
+
+. Mounten Sie das ISO-Image von Laufwerk 1 der Installations-CDs für die richtige Linux-Version für die virtuelle Maschine.
+. Öffnen Sie die Konsole für die virtuelle Maschine in Hyper-V Manager.
+. Wenn die VM läuft und auf dem GRUB-Bildschirm aufgehängt wird, klicken Sie im Anzeigebereich auf, um sicherzustellen, dass sie aktiv ist. Klicken Sie dann auf das Symbol *Strg-Alt-Löschen*, um die VM neu zu starten. Wenn die VM nicht ausgeführt wird, starten Sie sie, und klicken Sie dann sofort in den Anzeigebereich, um sicherzustellen, dass sie aktiv ist.
+. Sobald Sie den VMware BIOS Startbildschirm sehen, drücken Sie einmal die Taste *Esc*. Das Startmenü wird angezeigt.
+. Wählen Sie im Startmenü die Option *CD-ROM* aus.
+. Geben Sie auf dem Linux-Startbildschirm Folgendes ein: `linux rescue`
+. Nehmen Sie die Standardeinstellungen für Anaconda (die blauen/roten Konfigurationsbildschirme). Networking ist optional.
+. GRUB starten, indem Sie Folgendes eingeben: `grub`
+. Wenn in dieser VM nur eine virtuelle Festplatte vorhanden ist oder mehrere Festplatten vorhanden sind, die erste jedoch die Boot-Festplatte ist, führen Sie die folgenden GRUB-Befehle aus:
+
+
+[listing]
+----
+root (hd0,0)
+setup (hd0)
+quit
+----
+Wenn Sie mehrere virtuelle Laufwerke in der VM haben und die Boot-Festplatte nicht die erste Festplatte ist, oder Sie GRUB durch Booten von der falsch ausgerichteten Backup VHD beheben, geben Sie den folgenden Befehl ein, um die Boot-Festplatte zu identifizieren:
+
+[listing]
+----
+find /boot/grub/stage1
+----
+Führen Sie dann die folgenden Befehle aus:
+
+[listing]
+----
+root (boot_disk,0)
+setup (boot_disk)
+quit
+----
+
+NOTE: Beachten Sie das `boot_disk`, Oben, ist ein Platzhalter für die tatsächliche Disk-ID der Boot-Disk.
+
+. Drücken Sie *Strg-D*, um sich abzumelden.
+
+
+Die Linux-Rettung wird heruntergefahren und dann neu gestartet.

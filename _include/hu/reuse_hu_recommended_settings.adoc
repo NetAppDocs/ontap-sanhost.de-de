@@ -1,0 +1,52 @@
+= 
+:allow-uri-read: 
+
+
+Der `multipath.conf` Datei muss vorhanden sein, damit der Multipath-Daemon gestartet werden kann. Sie können jedoch mit dem Befehl eine leere Zero-Byte-Datei erstellen:
+`touch /etc/multipath.conf`
+
+Wenn Sie diese Datei zum ersten Mal erstellen, müssen Sie die Multipath-Services unter Umständen aktivieren und starten.
+
+[listing]
+----
+# systemctl enable multipathd
+# systemctl start multipathd
+----
+Es sind keine Anforderungen, direkt etwas hinzuzufügen `multipath.conf` Datei, es sei denn, Sie haben Geräte, die Sie nicht von Multipath verwalten möchten, oder Sie haben bereits vorhandene Einstellungen, die die Standardeinstellungen überschreiben.
+
+Sie können die folgende Syntax dem hinzufügen `multipath.conf` Datei zum Ausschließen unerwünschter Geräte.
+
+Ersetzen Sie den `<DevId>` Mit der WWID-Zeichenfolge des Geräts, das Sie ausschließen möchten. Verwenden Sie den folgenden Befehl, um die WWID zu bestimmen:
+
+....
+blacklist {
+        wwid <DevId>
+        devnode "^(ram|raw|loop|fd|md|dm-|sr|scd|st)[0-9]*"
+        devnode "^hd[a-z]"
+        devnode "^cciss.*"
+}
+....
+In diesem Beispiel `sda` Ist die lokale SCSI Festplatte, die wir Blacklist benötigen.
+
+.Schritte
+. Führen Sie den folgenden Befehl aus, um die WWID zu bestimmen:
++
+....
+# /lib/udev/scsi_id -gud /dev/sda
+360030057024d0730239134810c0cb833
+....
+. Fügen Sie diese WWID der schwarzen Liste Stanza im hinzu `/etc/multipath.conf`:
++
+....
+blacklist {
+     wwid   360030057024d0730239134810c0cb833
+     devnode "^(ram|raw|loop|fd|md|dm-|sr|scd|st)[0-9]*"
+     devnode "^hd[a-z]"
+     devnode "^cciss.*"
+}
+....
+
+
+Sie sollten immer Ihre überprüfen `/etc/multipath.conf` Datei für ältere Einstellungen, insbesondere im Abschnitt Standardeinstellungen, die möglicherweise die Standardeinstellungen überschreiben.
+
+Die folgende Tabelle zeigt den entscheidenden `multipathd` Parameter für ONTAP-LUNs und die erforderlichen Werte. Wenn ein Host mit LUNs anderer Anbieter verbunden ist und einer dieser Parameter außer Kraft gesetzt wird, müssen sie später in korrigiert werden `multipath.conf` Die speziell für ONTAP LUNs gelten. Wenn dies nicht erfolgt, funktionieren die ONTAP LUNs möglicherweise nicht wie erwartet. Diese Standardeinstellungen sollten nur in Absprache mit NetApp und/oder dem Anbieter des Betriebssystems außer Kraft gesetzt werden und nur dann, wenn die Auswirkungen vollständig verstanden wurden.

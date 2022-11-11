@@ -1,0 +1,9 @@
+= KVM-Einstellungen
+:allow-uri-read: 
+
+
+
+
+=== KVM-Einstellungen
+
+Sie können die empfohlenen Einstellungen verwenden, um Kernel-Based Virtual Machine (KVM) ebenfalls zu konfigurieren. Es sind keine Änderungen erforderlich, um KVM zu konfigurieren, da die LUN dem Hypervisor zugeordnet ist.

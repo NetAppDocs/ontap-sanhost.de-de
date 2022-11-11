@@ -1,0 +1,32 @@
+= 
+:allow-uri-read: 
+
+
+Auf Systemen, die FC verwenden, sind bei der Auswahl von MPIO die folgenden Zeitüberschreitungswerte für Emulex und QLogic FC HBAs erforderlich.
+
+Für Emulex Fibre Channel HBAs:
+
+[cols="2*"]
+|===
+| Eigenschaftstyp | Eigenschaftswert 
+
+
+| LinkTimeOut | 1 
+
+
+| NodeTimeOut | 10 
+|===
+Für QLogic Fibre Channel HBAs:
+
+[cols="2*"]
+|===
+| Eigenschaftstyp | Eigenschaftswert 
+
+
+| LinkDownTimeOut | 1 
+
+
+| PortDownRetryCount | 10 
+|===
+
+NOTE: Windows Unified Host Utility legt diese Werte fest. Detaillierte empfohlene Einstellungen finden Sie im link:https://library.netapp.com/ecmdocs/ECMLP2789202/html/index.html["Windows 7.1 Host Utilities – Installationshandbuch"^].

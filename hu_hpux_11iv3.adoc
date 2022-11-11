@@ -1,0 +1,181 @@
+---
+sidebar: sidebar 
+permalink: hu_hpux_11iv3.html 
+keywords: host utilities, hp_ux, 11iv3, netapp, ontap 
+summary: Beschreibt die Verwendung von IBM AIX 7.2 und/oder PowerVM VIOS 3.1 mit ONTAP 
+---
+= Mit HP-UX 11i v3 mit NetApp ONTAP
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:allow-uri-read: 
+:toc: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+:toc-position: content
+
+
+
+
+== Installieren der HP-UX Host Utilities
+
+Sie können die komprimierte Datei mit den Host Utilities Softwarepaketen von der NetApp Support-Website herunterladen. Nachdem Sie die Datei besitzen, müssen Sie sie dekomprimieren, um die Softwarepakete zu erhalten, die Sie zur Installation der Host Utilities benötigen.
+
+.Schritte
+. Laden Sie eine Kopie der komprimierten Datei mit den Host Utilities von herunter link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab["NetApp Support Website"^] Zu einem Verzeichnis auf Ihrem Host.
+. Gehen Sie zu dem Verzeichnis, in dem der Download enthalten ist.
+. Dekomprimieren Sie die Datei.
++
+`gunzip netapp_hpux_host_utilities_6.0_ia_pa.depot.gz`
+
+. Geben Sie den folgenden Befehl ein, um die Software zu installieren:
++
+`swinstall -s /netapp_hpux_host_utilities_6.0_ia_pa.depot NetApp_santoolkit`
+
+. Starten Sie den Host neu.
+
+
+
+
+== SAN Toolkit
+
+Das Toolkit wird automatisch installiert, wenn Sie das NetApp Host Utilities-Paket installieren. Dieses Kit enthält die `sanlun` Dienstprogramm: Unterstützt Sie beim Management von LUNs und HBAs. Der `sanlun` Befehl gibt Informationen über die LUNs zurück, die Ihrem Host zugeordnet sind, Multipathing und Informationen zurück, die zum Erstellen von Initiatorgruppen erforderlich sind.
+
+Im folgenden Beispiel wird der verwendet `sanlun lun show` Befehl gibt LUN-Informationen zurück.
+
+[listing]
+----
+#sanlun lun show
+
+controller(7mode)/                            device                         host     lun
+vserver(Cmode)    lun-pathname               filename                       adapter protocol  size  mode
+--------------------------------------------------------------------------------
+sanboot_unix      /vol/hpux_215_boot_en_0/goot_hpux_215_lun /dev/rdsk/c11t0d0 fcd0   FCP      150g   C
+sanboot_unix      /vol/hpux_215_boot_en_0/goot_hpux_215_lun /dev/rdsk/c24t0d0 fcd1   FCP      150g   C
+sanboot_unix      /vol/hpux_215_boot_en_0/goot_hpux_215_lun /dev/rdsk/c21t0d0 fcd1   FCP      150g   C
+sanboot_unix      /vol/hpux_215_boot_en_0/goot_hpux_215_lun /dev/rdsk/c12t0d0 fcd0   FCP      150g   C
+----
+
+
+== SAN wird gebootet
+
+Wenn Sie sich für das Booten über SAN entscheiden, muss es von Ihrer Konfiguration unterstützt werden. Sie können das verwenden link:https://mysupport.netapp.com/matrix/imt.jsp?components=71102;&solution=1&isHWU&src=IMT["NetApp Interoperabilitäts-Matrix-Tool"^] Um zu überprüfen, ob Ihr Betriebssystem, HBA, die HBA-Firmware und das HBA-Boot-BIOS sowie die ONTAP-Version unterstützt werden.
+
+BEIM Booten VON SAN wird eine SAN-Attached Disk (eine LUN) als Boot-Gerät für einen HP-UX-Host eingerichtet. Host Utilities unterstützen das SAN-Booten mit FC- und FCoE-Protokollen in HP-UX-Umgebungen.
+
+
+
+== Multipathing
+
+Multipathing ermöglicht Ihnen die Konfiguration mehrerer Netzwerkpfade zwischen dem Host und dem Storage-System. Falls ein Pfad ausfällt, wird der Verkehr auf den verbleibenden Pfaden fortgesetzt. Damit ein Host mehrere Pfade zu einer LUN besitzt, muss Multipathing aktiviert sein. Die HP-UX Host Utilities unterstützen je nach Konfiguration verschiedene Multipathing-Lösungen. Folgende Angaben gelten für die native Multipathing-Lösung.
+
+
+
+=== Nicht-ASA-Konfiguration
+
+Für eine nicht-ASA-Konfiguration sollte es zwei Gruppen von Pfaden mit unterschiedlichen Prioritäten geben. Die Pfade mit den höheren Prioritäten sind aktiv/optimiert, was bedeutet, dass sie vom Controller gewartet werden, wo sich das Aggregat befindet. Die Pfade mit den niedrigeren Prioritäten sind aktiv, werden aber nicht optimiert, da sie von einem anderen Controller bereitgestellt werden. Die nicht optimierten Pfade werden nur verwendet, wenn keine optimierten Pfade verfügbar sind.
+
+Im folgenden Beispiel wird die richtige Ausgabe für eine ONTAP-LUN mit zwei aktiv/optimierten Pfaden und zwei aktiv/nicht optimierten Pfaden angezeigt:
+
+[listing]
+----
+# sanlun lun show -p vs39:/vol/vol24_3_0/lun24_0
+                    ONTAP Path: vs39:/vol/vol24_3_0/lun24_0
+                           LUN: 37
+                      LUN Size: 15g
+                   Host Device: /dev/rdisk/disk942
+                          Mode: C
+              Multipath Policy: A/A
+            Multipath Provider: Native
+------- ---------- ------ ------- ---------- ---------- --------------
+host    vserver     /dev/dsk                            HP A/A
+path    path        filename          host    vserver   path failover
+state   type        or hardware path adapter    LIF     priority
+------- ---------- ------ ------- ---------- ---------- --------------
+up       primary    /dev/dsk/c39t4d5   fcd0    hpux_3     0
+up       primary    /dev/dsk/c41t4d5   fcd1    hpux_4     0
+up       secondary  /dev/dsk/c40t4d5   fcd0    hpux_3     1
+up       secondary  /dev/dsk/c42t4d5   fcd1    hpux_4     1
+----
+
+
+=== Konfiguration einer All-SAN-Array-Lösung
+
+In allen ASA-Konfigurationen (SAN Array) sind alle Pfade zu einer bestimmten logischen Einheit (LUN) aktiv und optimiert. Das bedeutet, dass I/O gleichzeitig über alle Pfade bedient werden kann, was zu einer besseren Performance führt.
+
+Im folgenden Beispiel wird die richtige Ausgabe für eine ONTAP LUN angezeigt:
+
+
+NOTE: Alle SAN-Array-Konfigurationen (ASA) werden ab ONTAP 9.8 für HP-UX 11iv3 unterstützt
+
+[listing]
+----
+# sanlun lun show -p vs39:/vol/hpux_vol_1_1/hpux_lun
+
+                    ONTAP Path: vs39:/vol/hpux_vol_1_1/hpux_lun
+                           LUN: 2
+                      LUN Size: 30g
+                   Host Device: /dev/rdisk/disk25
+                          Mode: C
+            Multipath Provider: None
+-------- ---------- -------------------- ------- --------------
+host     vserver    /dev/dsk
+path     path       filename             host    vserver
+state    type       or hardware path     adapter LIF
+-------- ---------- -------------------- ------- --------------
+up       primary    /dev/dsk/c4t0d2      fcd0    248_1c_hp
+up       primary    /dev/dsk/c6t0d2      fcd0    246_1c_hp
+up       primary    /dev/dsk/c10t0d2     fcd1    246_1d_hp
+up       primary    /dev/dsk/c8t0d2      fcd1    248_1d_hp
+----
+
+
+== Empfohlene Einstellungen
+
+Im Folgenden finden Sie einige empfohlene Parametereinstellungen für HPUX 11i v3 und NetApp ONTAP LUNs. NetApp verwendet die Standardeinstellungen für HP-UX.
+
+[cols="2*"]
+|===
+| Parameter | Verwendet Den Standardwert 
+
+
+| Transiente_Sek. | 120 
+
+
+| Leg_mpath_enable | RICHTIG 
+
+
+| max_q_Tiefe | 8 
+
+
+| Pfad_FAIL_s | 120 
+
+
+| Load_BAL_Policy | Round_Robin 
+
+
+| lua_Enabled | RICHTIG 
+
+
+| esd_Sek. | 30 
+|===
+
+
+== Bekannte Probleme und Einschränkungen
+
+[cols="4*"]
+|===
+| NetApp Bug ID | Titel | Beschreibung | Partner-ID 
+
+
+| 1447287 | Das AUFO-Ereignis auf dem isolierten Master-Cluster in der SM-BC-Konfiguration führt zu einer vorübergehenden Unterbrechung des HP-UX-Hosts | Dieses Problem tritt auf, wenn ein automatisches ungeplantes Failover (AUFO) auf dem isolierten Master-Cluster in der SnapMirror Business Continuity (SM-BC)-Konfiguration auftritt. Es kann mehr als 120 Sekunden dauern, bis die I/O-Vorgänge auf dem HP-UX-Host fortgesetzt werden. Dies kann jedoch zu keinen I/O-Unterbrechungen oder Fehlermeldungen führen. Dieses Problem verursacht bei doppeltem Ereignis einen Ausfall, da die Verbindung zwischen dem primären und dem sekundären Cluster verloren geht und die Verbindung zwischen dem primären Cluster und dem Mediator verloren geht. Dies gilt im Gegensatz zu anderen AUFO-Ereignissen als ein seltenes Ereignis. | NA 
+
+
+| 1344935 | HP-UX 11.31-Host meldet gelegentlich den Pfadstatus beim ASA-Setup falsch. | Probleme bei der Pfadberichterstellung bei der ASA-Konfiguration | NA 
+
+
+| 1306354 | Bei der LVM-Erstellung von HP-UX wird I/O von Blockgrößen über 1 MB gesendet | Die maximale SCSI-Übertragungslänge von 1 MB wird in ONTAP All SAN Array durchgesetzt. Um die maximale Übertragungslänge von HP-UX-Hosts einzuschränken, wenn eine Verbindung zu ONTAP All SAN Array besteht, müssen Sie die maximale E/A-Größe festlegen, die vom HP-UX SCSI-Subsystem zulässig ist, auf 1 MB. Weitere Informationen finden Sie in der Dokumentation des HP-UX-Anbieters. | NA 
+|===

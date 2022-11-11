@@ -1,0 +1,19 @@
+= 
+:allow-uri-read: 
+
+
+Wenn die Grenzen des Datenblocks einer Festplattenpartition nicht mit den Blockgrenzen der zugrunde liegenden LUN übereinstimmen, muss das Storage-System häufig zwei Blocklesevorgänge bzw. -Schreibvorgänge für jedes Betriebssystem-Block-Lese- oder -Schreibvorgang ausführen. Die zusätzlichen Lese- und Schreibzugriffe von Blöcken, die durch eine falsche Ausrichtung verursacht wurden, können zu ernsthaften Performance-Problemen führen.
+
+Falsche Ausrichtung wird durch die Position des Startsektors für jede durch den Master Boot Record definierte Partition verursacht.
+
+
+NOTE: Partitionen, die von Windows Server 2016 erstellt wurden, sollten standardmäßig ausgerichtet sein.
+
+Verwenden Sie die `Get-NaVirtualDiskAlignment` Cmdlet in ONTAP PowerShell Toolkit: Prüfen Sie, ob Partitionen mit den zugrunde liegenden LUNs abgeglichen sind. Wenn die Partitionen falsch ausgerichtet sind, verwenden Sie den `Repair-NaVirtualDiskAlignment` Cmdlet zum Erstellen einer neuen VHD-Datei mit der korrekten Ausrichtung. Dieses Cmdlet kopiert alle Partitionen in die neue Datei. Die ursprüngliche VHD-Datei wird nicht geändert oder gelöscht. Die Virtual Machine muss heruntergefahren werden, während die Daten kopiert werden.
+
+Sie können das ONTAP PowerShell Toolkit in NetApp Communities herunterladen. Sie müssen die entpacken `DataONTAP.zip` Datei in den von der Umgebungsvariable angegebenen Speicherort `%PSModulePath%` (Oder verwenden Sie den `Install.ps1` Skript, um es für Sie zu tun). Verwenden Sie nach Abschluss der Installation die `Show-NaHelp` Cmdlet erhalten Sie Hilfe zu den Cmdlets.
+
+Das PowerShell Toolkit unterstützt nur VHD-Dateien mit fester Größe mit MBR-Partitionen. VHDs, die dynamische Windows-Festplatten oder GPT-Partitionen verwenden, werden nicht unterstützt. Darüber hinaus erfordert das PowerShell Toolkit eine Mindestpartitionsgröße von 4 GB. Kleinere Partitionen können nicht korrekt ausgerichtet werden.
+
+
+NOTE: Bei virtuellen Linux-Maschinen, die den GRUB-Boot-Loader auf einer VHD verwenden, müssen Sie die Boot-Konfiguration aktualisieren, nachdem Sie das PowerShell Toolkit ausgeführt haben.

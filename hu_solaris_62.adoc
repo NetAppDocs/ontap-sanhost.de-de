@@ -1,0 +1,218 @@
+---
+sidebar: sidebar 
+permalink: hu_solaris_62.html 
+keywords: host utilities, unified, oracle, linux, 7.1, netapp, ontap 
+summary: Beschreibt die Verwendung von Linux Unified Host Utilities 7.1 mit ONTAP 
+---
+= Solaris Host Utilitys 6.2
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:allow-uri-read: 
+:toc: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+:toc-position: content
+
+
+.Was Sie und#8217;ll benötigen
+* Für einen zuverlässigen Betrieb müssen Sie sicherstellen, dass Ihre gesamte iSCSI-, FC- oder FCoE-Konfiguration unterstützt wird.
+
+
+Sie können das verwenden link:https://mysupport.netapp.com/matrix/imt.jsp?components=71102;&solution=1&isHWU&src=IMT["NetApp Interoperabilitäts-Matrix-Tool"^] Um Ihre Konfiguration zu überprüfen.
+
+
+
+== SAN Toolkit
+
+Solaris Host Utilities ist eine NetApp Host Software, die auf Ihrem Oracle Solaris Host ein Befehlszeilen-Toolkit bietet. Das Toolkit wird bei der Installation des NetApp Host Utilities-Pakets installiert. Dieses Kit enthält die `sanlun` Dienstprogramm zum Verwalten von LUNs und HBAs Der `sanlun` Befehl gibt Informationen über die LUNs zurück, die Ihrem Host zugeordnet sind, Multipathing und Informationen zurück, die zum Erstellen von Initiatorgruppen erforderlich sind.
+
+Im folgenden Beispiel wird der verwendet `sanlun lun show` Mit dem Befehl werden die LUN-Informationen zurückgegeben.
+
+[listing]
+----
+#sanlun lun show all
+controller(7mode)/ device host lun
+vserver(Cmode)                     lun-pathname       filename                                       adapter protocol size mode
+-----------------------------------------------------------------------------------------------------------------------------------
+data_vserver                     /vol/vol1/lun1     /dev/rdsk/c0t600A098038304437522B4E694E49792Dd0s2 qlc3   FCP       10g cDOT
+data_vserver                     /vol/vol0/lun2     /dev/rdsk/c0t600A098038304437522B4E694E497938d0s2 qlc3   FCP       10g cDOT
+data_vserver                     /vol/vol2/lun3     /dev/rdsk/c0t600A098038304437522B4E694E497939d0s2 qlc3   FCP       10g cDOT
+data_vserver                     /vol/vol3/lun4     /dev/rdsk/c0t600A098038304437522B4E694E497941d0s2 qlc3   FCP       10g cDOT
+
+
+----
+
+NOTE: Dieses Toolkit ist für alle Konfigurationen und Protokolle der Host Utilities üblich. Als Ergebnis gelten einige ihrer Inhalte auf eine Konfiguration, jedoch nicht auf eine andere. Ungenutzte Komponenten haben keine Auswirkungen auf die Systemleistung.
+
+
+
+== Installieren Von Solaris Host Utilities
+
+Solaris Host Utilities 6.2 unterstützt mehrere Solaris Umgebungen und Protokolle. Die primären Host Utilities-Umgebungen sind:
+
+* Natives Betriebssystem mit MPxIO mit Fibre Channel (FC) oder iSCSI-Protokoll auf einem System mit SPARC-Prozessor oder x86/64-Prozessor.
+* Veritas Dynamic Multipathing (DMP) mit FC- oder iSCSI-Protokoll auf einem System mit SPARC Prozessor und mit dem iSCSI-Protokoll auf dem System mit x86/64-Prozessor.
+
+
+
+NOTE: Das Software-Paket NetApp Solaris Host Utilities steht auf der zur Verfügung link:https://mysupport.netapp.com/site/["NetApp Support Website"^] In einem komprimierten Dateiformat für Ihren Prozessor. Sie können das Host Utilities Software-Paket für Ihre Umgebung von der Support-Website herunterladen.
+
+.Schritte
+. Melden Sie sich bei Ihrem Host als Root an.
+. Laden Sie eine Kopie der komprimierten Datei mit den Host Utilities von herunter link:https://mysupport.netapp.com/site/["NetApp Support Website"^] Zu einem Verzeichnis auf Ihrem Host.
++
+Zum Zeitpunkt der Erstellung dieser Dokumentation wurden die komprimierten Dateien aufgerufen:
+
++
+** SPARC CPU: `netapp_solaris_host_utilities_6_2_sparc.tar.gz`
+** X86/x64-CPU: `netapp_solaris_host_utilities_6_2_amd.tar.gz`
+
+
+. Gehen Sie zu dem Verzeichnis, in dem der Download enthalten ist.
+. Entpacken Sie die Datei mit dem Befehl gunzip
++
+`# gunzip netapp_solaris_host_utilities_6_2_sparc.tar.gz`
+
+. Entpacken Sie die Datei. Sie können das verwenden `tar xvf` Befehl um dies zu tun.
++
+`# tar xvf netapp_solaris_host_utilities_6_2_sparc.tar`
+
+. Fügen Sie die Pakete, die Sie aus tar-Datei extrahiert haben, zu Ihrem Host hinzu. Sie können das verwenden `pkgadd` Befehl um dies zu tun.
++
+Die Pakete werden dem hinzugefügt `/opt/NTAP/SANToolkit/bin` Verzeichnis. Im folgenden Beispiel wird das verwendet `pkgadd` Befehl zum Installieren des Solaris Installationspakets:
+
++
+`# pkgadd -d ./NTAPSANTool.pkg`
+
+. Bestätigen Sie, dass das Toolkit erfolgreich mit dem installiert wurde `pkginfo` Befehl oder das `ls - al` Befehl.
++
+[listing]
+----
+# ls -alR /opt/NTAP/SANToolkit
+/opt/NTAP/SANToolkit:
+total 1038
+drwxr-xr-x   3 root     sys            4 Jul 22  2019 .
+drwxr-xr-x   3 root     sys            3 Jul 22  2019 ..
+drwxr-xr-x   2 root     sys            6 Jul 22  2019 bin
+-r-xr-xr-x   1 root     sys       432666 Sep 13  2017 NOTICES.PDF
+
+/opt/NTAP/SANToolkit/bin:
+total 7962
+drwxr-xr-x   2 root     sys            6 Jul 22  2019 .
+drwxr-xr-x   3 root     sys            4 Jul 22  2019 ..
+-r-xr-xr-x   1 root     sys      2308252 Sep 13  2017 host_config
+-r-xr-xr-x   1 root     sys          995 Sep 13  2017 san_version
+-r-xr-xr-x   1 root     sys      1669204 Sep 13  2017 sanlun
+-r-xr-xr-x   1 root     sys          677 Sep 13  2017 vidpid.dat
+
+# (cd /usr/share/man/man1; ls -al host_config.1 sanlun.1)
+-r-xr-xr-x   1 root     sys        12266 Sep 13  2017 host_config.1
+-r-xr-xr-x   1 root     sys         9044 Sep 13  2017 sanlun.1
+----
+. Nach Abschluss dieses Service müssen Sie die Host-Parameter für Ihre Umgebung mithilfe von konfigurieren `/opt/NTAP/SANToolkit/bin/host_config` Befehl:
++
+** Mpxio
+** Veritas DMP
+
+
+. Überprüfen Sie die Installation:
++
+`sanlun version`
+
+
+
+
+
+== Beispielbefehlsverweis
+
+
+
+=== Führen Sie alle Host-Initiatoren auf, die dem Host zugeordnet sind
+
+[listing]
+----
+# sanlun fcp show adapter -v
+adapter name:      qlc3
+WWPN:              21000024ff17a301
+WWNN:              20000024ff17a301
+driver name:       qlc
+model:             7335902
+model description: 7115462, Oracle Storage Dual-Port 32 Gb Fibre Channel PCIe HBA
+serial number:     463916R+1720333838
+hardware version:  Not Available
+driver version:    210226-5.10
+firmware version:  8.08.04
+Number of ports:   1 of 2
+port type:         Fabric
+port state:        Operational
+supported speed:   8 GBit/sec, 16 GBit/sec, 32 GBit/sec
+negotiated speed:  32 GBit/sec
+OS device name:    /dev/cfg/c7
+
+adapter name:      qlc2
+WWPN:              21000024ff17a300
+WWNN:              20000024ff17a300
+driver name:       qlc
+model:             7335902
+model description: 7115462, Oracle Storage Dual-Port 32 Gb Fibre Channel PCIe HBA
+serial number:     463916R+1720333838
+hardware version:  Not Available
+driver version:    210226-5.10
+firmware version:  8.08.04
+Number of ports:   2 of 2
+port type:         Fabric
+port state:        Operational
+supported speed:   8 GBit/sec, 16 GBit/sec, 32 GBit/sec
+negotiated speed:  16 GBit/sec
+OS device name:    /dev/cfg/c6
+----
+
+
+=== Listen Sie alle LUNs auf, die dem Host zugeordnet sind
+
+[listing]
+----
+# sanlun lun show -p -v all
+
+                    ONTAP Path: data_vserver:/vol1/lun1
+                           LUN: 1
+                      LUN Size: 10g
+                   Host Device: /dev/rdsk/c0t600A0980383044485A3F4E694E4F775Ad0s2
+                          Mode: C
+            Multipath Provider: Sun Microsystems
+              Multipath Policy: Native
+
+----
+
+
+=== Listen Sie alle LUNs auf, die dem Host von einer bestimmten SVM zugeordnet sind/Listen Sie alle Attribute einer bestimmten LUN auf, die dem Host zugeordnet sind
+
+[listing]
+----
+# sanlun lun show -p -v sanboot_unix`
+ONTAP Path: sanboot_unix:/vol/sol_boot/sanboot_lun
+                           LUN: 0
+                      LUN Size: 180.0g
+
+----
+
+
+=== Listen Sie die ONTAP-LUN-Attribute nach Host-Gerätedateiname auf
+
+[listing]
+----
+# sanlun lun show all
+
+controller(7mode/E-Series)/                                         device
+vserver(cDOT/FlashRay)       lun-pathname                           filename
+---------------------------------------------------------------------------------------------------------------
+sanboot_unix                 /vol/sol_193_boot/chatsol_193_sanboot /dev/rdsk/c0t600A098038304437522B4E694E4A3043d0s2
+
+host adapter    protocol lun size   product
+---------------------------------------------
+qlc3            FCP      180.0g     cDOT
+----

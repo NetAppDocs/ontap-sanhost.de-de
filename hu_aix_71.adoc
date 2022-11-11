@@ -1,0 +1,225 @@
+---
+sidebar: sidebar 
+permalink: hu_aix_71.html 
+keywords: host utilities, aix, 7.1 netapp, ontap 
+summary: Beschreibt die Verwendung von IBM AIX 7.1 mit ONTAP 
+---
+= Verwenden von IBM AIX 7.1 mit NetApp ONTAP
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:allow-uri-read: 
+:toc: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+:toc-position: content
+
+
+
+
+== Installieren der AIX Host Utilities
+
+Sie müssen das AIX ONTAP Utilities Kit bei der Verwendung von AIX MPIO mit NetApp Storage installieren.
+
+Sie können die komprimierte Datei mit den Host Utilities Softwarepaketen von der NetApp Support-Website herunterladen. Nachdem Sie die Datei haben, müssen Sie sie extrahieren, um die beiden Softwarepakete zu erhalten, die Sie zur Installation der Host Utilities benötigen.
+
+.Schritte
+. Melden Sie sich bei Ihrem Host an.
++
+** Melden Sie sich auf einem AIX-Host als *root* an.
+
+
+. Laden Sie eine Kopie der komprimierten Datei mit den Host Utilities von der NetApp Support Site in ein Verzeichnis auf Ihrem Host herunter.
+. Gehen Sie zu dem Verzeichnis, in dem der Download enthalten ist.
+. Dekomprimieren Sie die Datei und extrahieren Sie das SAN Toolkit Softwarepaket.
++
+`tar -xvf ntap_aix_host_utilities_6.1.tar.tgz`
+
++
+Das folgende Verzeichnis wird beim Dekomprimieren der Datei erstellt: `ntap_aix_host_utilities_6.1`. Dieses Verzeichnis verfügt über eines der folgenden Unterverzeichnisse: MPIO, NON_MPIO oder SAN_Tool_Kit.
+
+. Installieren Sie AIX MPIO:
++
+`installp -aXYd /var/tmp/ntap_aix_host_utilities_6.1/MPIO NetApp.MPIO_Host_Utilities_Kit`
+
+. Installieren Sie das SAN Toolkit:
+`installp -aXYd /var/tmp/ntap_aix_host_utilities_6.1/SAN_Tool_Kit NetApp.SAN_toolkit`
+. Starten Sie den Host neu.
+
+
+
+
+== SAN Toolkit
+
+Das Toolkit wird automatisch installiert, wenn Sie das NetApp Host Utilities-Paket installieren. Dieses Kit enthält die `sanlun` Dienstprogramm: Unterstützt Sie beim Management von LUNs und HBAs. Der `sanlun` Befehl gibt Informationen über die LUNs zurück, die Ihrem Host zugeordnet sind, Multipathing und Informationen zurück, die zum Erstellen von Initiatorgruppen erforderlich sind.
+
+Im folgenden Beispiel wird der verwendet `sanlun lun show` Befehl gibt LUN-Informationen zurück.
+
+[listing]
+----
+#sanlun lun show
+
+controller(7mode)/                  device      host       lun
+vserver(Cmode)    lun-pathname     filename    adapter   protocol   size   mode
+--------------------------------------------------------------------------------
+data_vserver      /vol/vol1/lun1    hdisk0      fcs0       FCP       60g    C
+data_vserver      /vol/vol2/lun2    hdisk0      fcs0       FCP       20g    C
+data_vserver      /vol/vol3/lun3    hdisk11     fcs0       FCP       20g    C
+data_vserver      /vol/vol4/lun4    hdisk14     fcs0       FCP       20g    C
+
+----
+
+
+== SAN wird gebootet
+
+Wenn Sie sich für das Booten über SAN entscheiden, muss es von Ihrer Konfiguration unterstützt werden. Sie können das verwenden link:https://mysupport.netapp.com/matrix/imt.jsp?components=71102;&solution=1&isHWU&src=IMT["NetApp Interoperabilitäts-Matrix-Tool"^] Um zu überprüfen, ob Ihr Betriebssystem, HBA, die HBA-Firmware und das HBA-Boot-BIOS sowie die ONTAP-Version unterstützt werden.
+
+BEIM Booten VON SAN wird eine SAN-Attached Disk (eine LUN) als Boot-Gerät für einen AIX-Host eingerichtet. Sie können eine SAN-Boot-LUN einrichten, um in einer AIX MPIO-Umgebung zu arbeiten, in der AIX Host Utilities entweder mit dem FC- oder FCoE-Protokoll ausgeführt werden. Die Methode, die Sie zum Erstellen einer SAN-Boot-LUN und zur Installation eines neuen OS-Images darauf in einer AIX MPIO-Umgebung verwenden, kann je nach verwendetem Protokoll variieren.
+
+
+
+== Multipathing
+
+Multipathing ermöglicht Ihnen die Konfiguration mehrerer Netzwerkpfade zwischen dem Host und dem Storage-System. Falls ein Pfad ausfällt, wird der Verkehr auf den verbleibenden Pfaden fortgesetzt. Die AIX-Umgebung der Host Utilities verwenden die native AIX-Multipathing-Lösung MPIO.
+
+Für AIX ist Path Control Module (PCM) die Steuerung mehrerer Pfade verantwortlich. PCM ist ein Code, der vom Anbieter bereitgestellt wird und das Pfadmanagement unterstützt. Dies wird im Rahmen der Installation der Host Utilities installiert und aktiviert.
+
+
+
+=== Nicht-ASA-Konfiguration
+
+Für eine nicht-ASA-Konfiguration sollte es zwei Gruppen von Pfaden mit unterschiedlichen Prioritäten geben. Die Pfade mit den höheren Prioritäten sind aktiv/optimiert, was bedeutet, dass sie vom Controller gewartet werden, wo sich das Aggregat befindet. Die Pfade mit den niedrigeren Prioritäten sind aktiv, werden aber nicht optimiert, da sie von einem anderen Controller bereitgestellt werden. Die nicht optimierten Pfade werden nur verwendet, wenn keine optimierten Pfade verfügbar sind.
+
+Im folgenden Beispiel wird die richtige Ausgabe für eine ONTAP-LUN mit zwei aktiv/optimierten Pfaden und zwei aktiv/nicht optimierten Pfaden angezeigt:
+
+[listing]
+----
+# sanlun lun show -p |grep -p hdisk78
+                    ONTAP Path: vs_aix_clus:/vol/chataix_205p2_vol_en_1_7/jfs_205p2_lun_en
+                           LUN: 37
+                      LUN Size: 15g
+                   Host Device: hdisk78
+                          Mode: C
+            Multipath Provider: AIX Native
+        Multipathing Algorithm: round_robin
+------- ---------- ------ ------- ---------- ----------
+host    vserver    AIX                        AIX MPIO
+path    path       MPIO   host    vserver         path
+state   type       path   adapter LIF         priority
+------- ---------- ------ ------- ---------- ----------
+up      secondary  path0  fcs0    fc_aix_1        1
+up      primary    path1  fcs0    fc_aix_2        1
+up      primary    path2  fcs1    fc_aix_3        1
+up      secondary  path3  fcs1    fc_aix_4        1
+
+----
+
+
+=== Konfiguration einer All-SAN-Array-Lösung
+
+In allen ASA-Konfigurationen (SAN Array) sind alle Pfade zu einer bestimmten logischen Einheit (LUN) aktiv und optimiert. Das bedeutet, dass I/O gleichzeitig über alle Pfade bedient werden kann, was zu einer besseren Performance führt.
+
+Im folgenden Beispiel wird die richtige Ausgabe für eine ONTAP LUN angezeigt:
+
+
+NOTE: Alle SAN Arrays (ASA) Konfigurationen werden ab ONTAP 9.8 für AIX Hosts unterstützt.
+
+[listing]
+----
+# sanlun lun show -p |grep -p hdisk78
+                    ONTAP Path: vs_aix_clus:/vol/chataix_205p2_vol_en_1_7/jfs_205p2_lun_en
+                           LUN: 37
+                      LUN Size: 15g
+                   Host Device: hdisk78
+                          Mode: C
+            Multipath Provider: AIX Native
+        Multipathing Algorithm: round_robin
+------ ------- ------ ------- --------- ----------
+host   vserver  AIX                      AIX MPIO
+path   path     MPIO   host    vserver     path
+state  type     path   adapter LIF       priority
+------ ------- ------ ------- --------- ----------
+up     primary  path0  fcs0    fc_aix_1     1
+up     primary  path1  fcs0    fc_aix_2     1
+up     primary  path2  fcs1    fc_aix_3     1
+up     primary  path3  fcs1    fc_aix_4     1
+----
+
+
+== Empfohlene Einstellungen
+
+Im Folgenden finden Sie einige empfohlene Parametereinstellungen für NetApp ONTAP LUNs. Die wichtigen Parameter für ONTAP LUNs werden nach der Installation des NetApp Host Utilities Kit automatisch festgelegt.
+
+[cols="4*"]
+|===
+| Parameter | Umgebung | Wert für AIX | Hinweis 
+
+
+| Algorithmus | MPIO | Round_Robin | Festgelegt nach Host Utilities 
+
+
+| hcheck_cmd | MPIO | Anfrage | Festgelegt nach Host Utilities 
+
+
+| hcheck_interval | MPIO | 30 | Festgelegt nach Host Utilities 
+
+
+| hcheck_Mode | MPIO | Nicht aktiv | Festgelegt nach Host Utilities 
+
+
+| lun_Reset_spt | MPIO / Non-MPIO | ja | Festgelegt nach Host Utilities 
+
+
+| max_Transfer | MPIO / Non-MPIO | FC LUNs: 0x10000 Bytes | Festgelegt nach Host Utilities 
+
+
+| Qfull_dly | MPIO / Non-MPIO | 2 Sekunden Verzögerung | Festgelegt nach Host Utilities 
+
+
+| Queue_depth | MPIO / Non-MPIO | 64 | Festgelegt nach Host Utilities 
+
+
+| Reserve_Richtlinie | MPIO / Non-MPIO | Keine_Reserve | Festgelegt nach Host Utilities 
+
+
+| Re_Timeout (Festplatte) | MPIO / Non-MPIO | 30 Sekunden | Verwendet BS-Standardwerte 
+
+
+| Dyntrk | MPIO / Non-MPIO | Ja. | Verwendet BS-Standardwerte 
+
+
+| fc_err_recov | MPIO / Non-MPIO | Fast_FAIL | Verwendet BS-Standardwerte 
+
+
+| q_TYPE | MPIO / Non-MPIO | Einfach | Verwendet BS-Standardwerte 
+
+
+| num_cmd_elems | MPIO / Non-MPIO | 1024 für AIX | FC EN1B, FC EN1C 
+
+
+| num_cmd_elems | MPIO / Non-MPIO | 500 für AIX (Standalone/Physical) 200 für VIOC | FC EN0G 
+|===
+
+
+== Empfohlene Einstellungen für MetroCluster
+
+Das AIX-Betriebssystem erzwingt standardmäßig eine kürzere I/O-Zeitüberschreitung, wenn keine Pfade zu einer LUN verfügbar sind. Dies kann bei Konfigurationen wie Single-Switch-SAN-Fabric- und MetroCluster-Konfigurationen mit nicht geplanten Failover auftreten. Weitere Informationen und empfohlene Änderungen an den Standardeinstellungen finden Sie unter link:https://kb.netapp.com/app/answers/answer_view/a_id/1001318["NetApp KB1001318"^]
+
+
+
+== AIX Unterstützung mit SM-BC
+
+Ab ONTAP 9.11.1 wird AIX mit SM-BC unterstützt. Mit einer AIX-Konfiguration ist der primäre Cluster der „aktive“ Cluster.
+
+In einer AIX-Konfiguration ist ein Failover mit Unterbrechungen verbunden. Bei jedem Failover müssen Sie einen Re-Scan am Host durchführen, um I/O-Vorgänge wiederaufzunehmen.
+
+Informationen zum Konfigurieren von AIX für SM-BC finden Sie im Knowledge Base-Artikel link:https://kb.netapp.com/Advice_and_Troubleshooting/Data_Protection_and_Security/SnapMirror/How_to_configure_an_AIX_host_for_SnapMirror_Business_Continuity_(SM-BC)["So konfigurieren Sie einen AIX Host für SnapMirror Business Continuity (SM-BC)"^].
+
+
+
+== Bekannte Probleme und Einschränkungen
+
+Es gibt keine bekannten Probleme und Einschränkungen.

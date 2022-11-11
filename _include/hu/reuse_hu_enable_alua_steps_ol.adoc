@@ -1,0 +1,18 @@
+= 
+:allow-uri-read: 
+
+
+So aktivieren Sie ALUA Handler:
+
+.Schritte
+. Erstellen Sie ein Backup des initrd-Images.
+. Hängen Sie den folgenden Parameterwert an den Kernel an, damit ALUA und Non-ALUA funktionieren:
+`rdloaddriver=scsi_dh_alua`
++
+....
+kernel /vmlinuz-3.8.13-68.1.2.el6uek.x86_64 ro root=/dev/mapper/vg_ibmx3550m421096-lv_root rd_NO_LUKSrd_LVM_LV=vg_ibmx3550m421096/lv_root LANG=en_US.UTF-8 rd_NO_MDSYSFONT=latarcyrheb-sun16 crashkernel=256M KEYBOARDTYPE=pc KEYTABLE=us rd_LVM_LV=vg_ibmx3550m421096/lv_swap rd_NO_DM rhgb quiet rdloaddriver=scsi_dh_alua
+....
+. Verwenden Sie die `mkinitrd` Befehl zum Neuerstellen des initrd-Image. Oracle 6x und neuere Versionen verwenden entweder: Den Befehl: `mkinitrd -f /boot/ initrd-"uname -r".img uname -r`Oder den Befehl: `dracut -f`
+. Starten Sie den Host neu.
+. Überprüfen Sie die Ausgabe des `cat /proc/cmdline` Befehl, um sicherzustellen, dass die Einstellung abgeschlossen ist.
+

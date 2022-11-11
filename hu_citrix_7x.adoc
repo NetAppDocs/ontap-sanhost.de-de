@@ -1,0 +1,249 @@
+---
+sidebar: sidebar 
+permalink: hu_citrix_7x.html 
+keywords: host utilities, citrix, XenServer, 7 series, netapp, ontap, san, boot 
+summary: Beschreibung der Verwendung von Citrix XenServer 7.x mit ONTAP 
+---
+= Einsatz von Citrix XenServer mit NetApp ONTAP
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:allow-uri-read: 
+:toc: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+:toc-position: content
+
+
+
+
+== Einführung
+
+Dieses Dokument enthält Hinweise zur Konfiguration des ONTAP SAN Hosts für die Betriebssystemversionen der Citrix XenServer 7 Serie mit FC-, FCoE- und iSCSI-Protokollen.
+
+
+
+== SAN wird gebootet
+
+Wenn Sie sich für das Booten über SAN entscheiden, muss es von Ihrer Konfiguration unterstützt werden. Sie können das verwenden link:https://mysupport.netapp.com/matrix/imt.jsp?components=91241;&solution=236&isHWU&src=IMT["NetApp Interoperabilitäts-Matrix-Tool"^] Um zu überprüfen, ob Ihr Betriebssystem, HBA, die HBA-Firmware und das HBA-Boot-BIOS sowie die ONTAP-Version unterstützt werden.
+
+.Schritte
+. Ordnen Sie die SAN-Boot-LUN dem Host zu.
+. Vergewissern Sie sich, dass mehrere Pfade verfügbar sind.
++
+Denken Sie daran, dass mehrere Pfade nur verfügbar sind, wenn das Host-Betriebssystem betriebsbereit ist und auf den Pfaden ausgeführt wird.
+
+. Aktivieren Sie das SAN-Booten im Server-BIOS für die Ports, denen die SAN-Boot-LUN zugeordnet ist.
++
+Informationen zum Aktivieren des HBA-BIOS finden Sie in der anbieterspezifischen Dokumentation.
+
+. Starten Sie den Host neu, um sicherzustellen, dass der Startvorgang erfolgreich ist.
+
+
+
+
+== Multipathing
+
+Die Multipath-Unterstützung in Citrix XenServer basiert auf den Komponenten Device Mapper Multipathd. Device Mapper Nodes werden nicht automatisch für alle LUNs erstellt, die dem XenServer zur Verfügung stehen und werden nur bereitgestellt, wenn LUNs von der Storage Management Layer (API) aktiv genutzt werden. Das Citrix XenServer Storage Manager API-Plug-in steuert die automatische Aktivierung und Deaktivierung von Multipath-Knoten.
+
+Aufgrund von Inkompatibilitäten mit der integrierten Multipath Management-Architektur empfiehlt Citrix, die Citrix XenCenter-Applikation für das Management der Storage-Konfiguration zu verwenden. Wenn Sie den Status von Device Mapper-Tabellen manuell abfragen oder aktive Device Mapper Multipath-Knoten auf dem System auflisten müssen, können Sie den verwenden `/sbin/mpathutil status` Überprüfen Sie mit dem Befehl die Einstellungen für Ihre ONTAP LUNs. Weitere Informationen finden Sie in der Dokumentation zum Standardanbieter für Citrix XenServer.
+
+
+
+=== Nicht-ASA-Konfiguration
+
+Für eine nicht-ASA-Konfiguration sollte es zwei Gruppen von Pfaden mit unterschiedlichen Prioritäten geben. Die Pfade mit den höheren Prioritäten sind aktiv/optimiert, was bedeutet, dass sie vom Controller gewartet werden, wo sich das Aggregat befindet. Die Pfade mit den niedrigeren Prioritäten sind aktiv, werden aber nicht optimiert, da sie von einem anderen Controller bereitgestellt werden. Die nicht optimierten Pfade werden nur verwendet, wenn keine optimierten Pfade verfügbar sind.
+
+Im folgenden Beispiel wird die richtige Ausgabe für eine ONTAP-LUN mit zwei aktiv/optimierten Pfaden und zwei aktiv/nicht optimierten Pfaden angezeigt:
+
+[listing]
+----
+# mpathutil status
+show topology
+3600a098038303458772450714535317a dm-0 NETAPP  , LUN C-Mode
+size=80G features='4 queue_if_no_path pg_init_retries 50 retain_attached_hw_handle' hwhandler='1 alua' wp=rw
+|-+- policy='service-time 0' prio=50 status=active
+| |- 2:0:2:0   sdc   8:32    active ready running
+| |- 12:0:5:0  sdn   8:208   active ready running
+| |- 2:0:6:0   sdg   8:96    active ready running
+| `- 12:0:0:0  sdi   8:128   active ready running
+|-+- policy='service-time 0' prio=10 status=enabled
+  |- 2:0:0:0   sda   8:0     active ready running
+  |- 2:0:1:0   sdb   8:16    active ready running
+  |- 12:0:3:0  sd1   8:176   active ready running
+  `-12:0:6:0   sdo   8:224   active ready running
+[root@sanhost ~]#
+----
+
+NOTE: Verwenden Sie keine unverhältnismäßig hohe Anzahl von Pfaden zu einer einzelnen LUN. Es sollten nicht mehr als 4 Pfade erforderlich sein. Mehr als 8 Pfade können bei Storage-Ausfällen zu Pfadproblemen führen.
+
+
+
+=== Konfiguration einer All-SAN-Array-Lösung
+
+In allen ASA-Konfigurationen (SAN Array) sind alle Pfade zu einer bestimmten logischen Einheit (LUN) aktiv und optimiert. Das bedeutet, dass I/O gleichzeitig über alle Pfade bedient werden kann, was zu einer besseren Performance führt.
+
+Im folgenden Beispiel wird die richtige Ausgabe für eine ONTAP-LUN mit allen vier aktiv/optimierten Pfaden angezeigt:
+
+[listing]
+----
+# mpathutil status
+show topology
+3600a098038303458772450714535317a dm-0 NETAPP  , LUN C-Mode
+size=80G features='4 queue_if_no_path pg_init_retries 50 retain_attached_hw_handle' hwhandler='1 alua' wp=rw
+|-+- policy='service-time 0' prio=50 status=active
+| |- 2:0:2:0   sdc   8:32    active ready running
+| |- 12:0:5:0  sdn   8:208   active ready running
+| |- 2:0:6:0   sdg   8:96    active ready running
+| `- 12:0:0:0  sdi   8:128   active ready running
+[root@sanhost ~]#
+----
+
+NOTE: Verwenden Sie keine unverhältnismäßig hohe Anzahl von Pfaden zu einer einzelnen LUN. Es sollten nicht mehr als 4 Pfade erforderlich sein. Mehr als 8 Pfade können bei Storage-Ausfällen zu Pfadproblemen führen.
+
+
+
+=== Empfohlene Einstellungen
+
+Das Betriebssystem Citrix XenServer 7.x wird mit allen Einstellungen kompiliert, die zum Erkennen und korrekten Managen von ONTAP LUNs erforderlich sind. Für Citrix XenServer 7.x, eine leere Nullen `/etc/multipath.conf` Die Datei muss vorhanden sein, Sie müssen jedoch keine spezifischen Änderungen an der Datei vornehmen.
+
+Aktivieren Sie den Host Multipath Service über das *XenCenter Management Portal* und überprüfen Sie, ob der Multipath-Dienst aktiviert ist und ausgeführt wird.
+
+[listing]
+----
+# systemct1 status multipathd
+multipathd.service - Device-Mapper Multipath Device Controller
+  Loaded:  load (/usr/lib/systemd/system/multipathd.service; enabled; vendor preset: enabled)
+ Drop-In:  /etc/systemd/system/multipathd.service.d
+             slice.config
+  Active:  active (running) since Fri YYYY-MM-DD 00:00:26 IST; 1 month 9 days ago
+Main PID:  3789 (multipathd)
+  CGroup:  /control.slice/multipathd.service
+            3789  /sbin/multipathd
+----
+Es besteht keine Anforderung, dem Inhalt hinzuzufügen `/etc/multipath.conf` Datei, es sei denn, Sie haben Geräte, die Sie nicht von Multipath verwalten möchten, oder Sie haben bereits vorhandene Einstellungen, die die Standardeinstellungen überschreiben. Sie können die folgende Syntax dem hinzufügen `multipath.conf` Datei zum Ausschließen unerwünschter Geräte.
+
+[listing]
+----
+# cat /etc/multipath.conf
+blacklist {
+     wwid    <DevId>
+     devnode "^(ram|raw|loop|fd|md|dm-|sr|scd|st)[0-9]*"
+     devnode "^hd[a-z]"
+     devnode "^cciss.*"
+}
+----
+
+NOTE: Ersetzen Sie *<Devid>* durch die WWID-Zeichenfolge des Geräts, das Sie ausschließen möchten.
+
+In diesem Beispiel für Citrix XenServer 7.x, `sda` Ist die lokale SCSI Festplatte, die wir zur Blacklist brauchen.
+
+. Führen Sie den folgenden Befehl aus, um die WWID zu bestimmen:
++
+[listing]
+----
+# lib/udev/scsi_id -gud /dev/sda
+3600a098038303458772450714535317a
+----
+. Fügen Sie diese WWID der schwarzen Liste Stanza im hinzu `/etc/multipath.conf`:
++
+[listing]
+----
+#cat /etc/multipath.conf
+blacklist {
+  wwid    3600a098038303458772450714535317a
+  devnode "^(ram|raw|loop|fd|md|dm-|sr|scd|st)[0-9*]"
+  devnode "^hd[a-z]"
+  devnode "^cciss.*"
+}
+----
+
+
+Beachten Sie die Laufzeitkonfiguration des Multipath-Parameters mithilfe des `$multipathd show config` Befehl. Sie sollten die ausgeführte Konfiguration immer auf ältere Einstellungen überprüfen, die möglicherweise die Standardeinstellungen überschreiben, insbesondere im Abschnitt „Standardeinstellungen“.
+
+Die folgende Tabelle zeigt die kritischen *multipathd* Parameter für ONTAP LUNs und die erforderlichen Werte. Wenn ein Host mit LUNs von anderen Anbietern verbunden ist und einer dieser Parameter außer Kraft gesetzt wird, müssen sie später in *Multipath.conf* korrigiert werden, die sich speziell auf ONTAP LUNs beziehen. Wenn dies nicht ausgeführt wird, funktionieren die ONTAP LUNs möglicherweise nicht wie erwartet. Die folgenden Standardeinstellungen sollten nur in Absprache mit NetApp und/oder dem OS-Anbieter außer Kraft gesetzt werden und nur dann, wenn die Auswirkungen vollständig verstanden wurden.
+
+[cols="2*"]
+|===
+| Parameter | Einstellung 
+
+
+| `detect_prio` | ja 
+
+
+| `dev_loss_tmo` | „Unendlich“ 
+
+
+| `failback` | Sofort 
+
+
+| `fast_io_fail_tmo` | 5 
+
+
+| `features` | „3 queue_if_no_Pg_init_retries 50“ 
+
+
+| `flush_on_last_del` | „ja“ 
+
+
+| `hardware_handler` | „0“ 
+
+
+| `path_checker` | „nur“ 
+
+
+| `path_grouping_policy` | „Group_by_prio“ 
+
+
+| `path_selector` | „Servicezeit 0“ 
+
+
+| `polling_interval` | 5 
+
+
+| `prio` | ONTAP 
+
+
+| `product` | LUN.* 
+
+
+| `retain_attached_hw_handler` | ja 
+
+
+| `rr_weight` | „Einheitlich“ 
+
+
+| `user_friendly_names` | Nein 
+
+
+| `vendor` | NETAPP 
+|===
+Das folgende Beispiel zeigt, wie eine überhielte Standardeinstellung korrigiert wird. In diesem Fall definiert die Datei *Multipath.conf* Werte für *path_Checker* und *detect_prio*, die nicht mit ONTAP LUNs kompatibel sind. Wenn sie nicht entfernt werden können, weil andere SAN-Arrays an den Host angeschlossen sind, können diese Parameter speziell für ONTAP-LUNs mit einem Gerätstanza korrigiert werden.
+
+[listing]
+----
+# cat /etc/multipath.conf
+defaults {
+  path_checker readsector0
+  detect_prio no
+}
+devices{
+        device{
+                vendor "NETAPP "
+                product "LUN.*"
+                path_checker tur
+                detect_prio yes
+        }
+}
+----
+
+NOTE: Citrix XenServer empfiehlt für alle Gast-VMs auf Linux- und Windows-Basis den Einsatz von Citrix VM Tools, um eine unterstützte Konfiguration zu erhalten.
+
+
+
+== Bekannte Probleme und Einschränkungen
+
+Es gibt keine bekannten Probleme und Einschränkungen.

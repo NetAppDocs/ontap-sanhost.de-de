@@ -1,0 +1,15 @@
+= 
+:allow-uri-read: 
+
+
+. Laden Sie Hotfixes von der Microsoft Support-Website herunter.
+
+
+
+NOTE: Einige Hotfixes stehen nicht zum direkten Download zur Verfügung. In diesen Fällen müssen Sie einen bestimmten Hotfix von Microsoft Support-Mitarbeitern anfordern.
+
+. Befolgen Sie die Anweisungen von Microsoft zur Installation der Hotfixes.
+
+
+
+TIP: Viele Hotfixes benötigen einen Neustart Ihres Windows-Hosts, aber Sie können abwarten, den Host neu zu starten, bis _nach_ Sie die Host Utilities installieren oder aktualisieren.
