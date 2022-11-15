@@ -2977,7 +2977,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-11-15 09:29:22 +0000">11/15/2022</time>
+    <time datetime="2022-11-15 15:53:30 +0000">11/15/2022</time>
     
   
 
@@ -3342,7 +3342,7 @@ QLE2742 FW:v9.08.02 DVR:v10.02.07.800-k</pre>
 </ul>
 </div>
 <div class="paragraph">
-<p>Um bequem über ONTAP-Failover-Ereignisse wie Storage Failover (SFOs) zu tide, wird empfohlen, eine längere Wiederholungsdauer wie etwa 30 Minuten durch Optimierung des einzustellen <code>ctrl_loss_tmo</code> Timer. Im Folgenden sind die Details aufgeführt:</p>
+<p>Sie sollten den Wiederholungszeitraum für Failover-Ereignisse auf mindestens 30 Minuten einstellen, um Zeitüberschreitungen zu vermeiden. Sie können den Wiederholungszeitraum erhöhen, indem Sie den Wert des Ctrl_Loss_tmo-Timers erhöhen. Im Folgenden sind die Details aufgeführt:</p>
 </div>
 <div class="olist arabic">
 <div class="title">Schritte</div>
@@ -3398,7 +3398,7 @@ sectype: none
 </div>
 </li>
 <li>
-<p>Laufen <code>nvme connect-all</code> Befehl über alle unterstützten NVMe/TCP-Initiator-Ziel-LIFs über die Nodes hinweg Stellen Sie sicher, dass Sie länger bestehen <code>ctrl_loss_tmo</code> Zeitraum (z. B. 30 Minuten, die über -l 1800 eingestellt werden können) während des <code>connect-all</code> Damit es im Falle eines Pfadverlusts für einen längeren Zeitraum versuchen würde. Beispiel:</p>
+<p>Laufen <code>nvme connect-all</code> Befehl über alle unterstützten NVMe/TCP-Initiator-Ziel-LIFs über die Nodes hinweg Stellen Sie einen längeren Zeitraum ein <code>ctrl_loss_tmo</code> Zeitschaltuhr-Wiederholungszeitraum (z. B. 30 Minuten, die bis -l 1800 eingestellt werden kann) während des s <code>connect-all</code> Damit es im Falle eines Pfadausfalls für einen längeren Zeitraum wiederholen würde. Beispiel:</p>
 <div class="listingblock">
 <div class="content">
 <pre># nvme connect-all -t tcp -w 192.168.1.8 -a 192.168.1.51 -l 1800
