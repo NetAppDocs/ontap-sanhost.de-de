@@ -250,8 +250,9 @@ Im Gegensatz zu NVMe/FC verfügt NVMe/TCP über keine automatische Verbindungsfu
 * *Beim Host-Bootup kann keine automatische Verbindung hergestellt werden* NVMe/TCP kann auch beim Host-Bootup nicht automatisch eine Verbindung herstellen.
 
 
-Um bequem über ONTAP-Failover-Ereignisse wie SFOs zu tide, wird empfohlen, eine längere Wiederholungsdauer wie etwa 30 Minuten zu setzen, indem Sie den voreingestellt haben `ctrl_loss_tmo` Timer. Im Folgenden sind die Details aufgeführt:
+Sie sollten den Wiederholungszeitraum für Failover-Ereignisse auf mindestens 30 Minuten einstellen, um Zeitüberschreitungen zu vermeiden. Sie können den Wiederholungszeitraum erhöhen, indem Sie den Wert des Ctrl_Loss_tmo-Timers erhöhen. Im Folgenden sind die Details aufgeführt:
 
+.Schritte
 . Überprüfen Sie, ob der Initiator-Port die Daten der Erkennungsprotokollseiten in den unterstützten NVMe/TCP LIFs abrufen kann:
 +
 [listing]
@@ -299,7 +300,7 @@ sectype: none
 # nvme discover -t tcp -w 192.168.2.9 -a 192.168.2.56
 # nvme discover -t tcp -w 192.168.2.9 -a 192.168.2.57
 ----
-. Führen Sie die aus `nvme connect-all` Befehl über alle unterstützten NVMe/TCP-Initiator-Ziel-LIFs über die Nodes hinweg Stellen Sie sicher, dass Sie länger bestehen `ctrl_loss_tmo` Zeitraum (z. B. 30 Minuten, die durch eingestellt werden können `-l 1800`) Während des connect-all so, dass es für einen längeren Zeitraum im Falle eines Pfadverlusts wiederholt. Beispiel:
+. Führen Sie die aus `nvme connect-all` Befehl über alle unterstützten NVMe/TCP-Initiator-Ziel-LIFs über die Nodes hinweg Stellen Sie einen längeren Zeitraum ein `ctrl_loss_tmo` Zeitschaltuhr-Wiederholungszeitraum (z. B. 30 Minuten, die über eingestellt werden kann `-l 1800`) Während des connect-all so, dass es für einen längeren Zeitraum im Falle eines Pfadverlusts wiederholt. Beispiel:
 +
 [listing]
 ----

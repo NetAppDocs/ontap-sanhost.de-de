@@ -127,7 +127,7 @@ blacklist {
 
 NOTE: Ersetzen Sie *<Devid>* durch die WWID-Zeichenfolge des Geräts, das Sie ausschließen möchten.
 
-In diesem Beispiel für Citrix Hypervisor 8.x, `sda` Ist die lokale SCSI Festplatte, die wir zur Blacklist brauchen.
+In diesem Beispiel für Citrix Hypervisor 8.x, `sda` Ist die lokale SCSI Festplatte, die wir zur Blacklist hinzufügen müssen.
 
 . Führen Sie den folgenden Befehl aus, um die WWID zu bestimmen:
 +

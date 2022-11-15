@@ -146,7 +146,7 @@ Sie können die folgende Syntax dem hinzufügen `multipath.conf` Datei zum Aussc
 
 Ersetzen Sie den `<DevId>` Mit dem `WWID` Zeichenfolge des Geräts, das Sie ausschließen möchten. Verwenden Sie den folgenden Befehl, um das zu bestimmen `WWID`:
 
-In diesem Beispiel `sda` Ist die lokale SCSI Festplatte, die wir Blacklist benötigen.
+In diesem Beispiel `sda` Ist die lokale SCSI Festplatte, die wir zur Blacklist hinzufügen müssen.
 
 .Schritte
 . Führen Sie den folgenden Befehl aus, um den zu bestimmen `WWID`:
