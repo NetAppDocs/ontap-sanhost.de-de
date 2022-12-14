@@ -8,4 +8,5 @@
 
 In allen ASA-Konfigurationen (SAN Array) sind alle Pfade zu einer bestimmten logischen Einheit (LUN) aktiv und optimiert. Das bedeutet, dass I/O gleichzeitig über alle Pfade bedient werden kann, was zu einer besseren Performance führt.
 
+.Beispiel
 Im folgenden Beispiel wird die richtige Ausgabe für eine ONTAP LUN angezeigt:

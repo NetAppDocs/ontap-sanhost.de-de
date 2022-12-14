@@ -61,6 +61,7 @@ Die Dokumentation für SAN Host Utilities ist im enthalten link:https://docs.net
 
 Sie können auf die Dokumentation für alle NetApp Produkte zugreifen und weitere Ressourcen zu Produktinformationen, wie z. B. technische Berichte und Whitepaper, auf der Seite mit der Produktdokumentation auf der NetApp Website zugreifen.
 
+.Verwandte Informationen
 *Konfigurieren und Verwalten Ihres ONTAP Storage-Systems*
 
 * Der link:https://docs.netapp.com/us-en/ontap/setup-upgrade/index.html["ONTAP Software Setup Guide für Ihre Version von ONTAP"^]

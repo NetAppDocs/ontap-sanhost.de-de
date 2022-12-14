@@ -26,6 +26,7 @@ blacklist {
         devnode "^cciss.*"
 }
 ....
+.Beispiel
 In diesem Beispiel `sda` Ist die lokale SCSI Festplatte, die wir zur Blacklist hinzufügen müssen.
 
 .Schritte

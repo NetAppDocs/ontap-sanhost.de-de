@@ -108,6 +108,7 @@ ww_name         0x500a0984994ae0e0               FC World Wide Name             
 Wenn Sie das eingeben `oem_setup_env` Im Modus ändert sich die Eingabeaufforderung der Befehlszeile von einem Dollar-Zeichen zu einem Pfund-Zeichen, und Sie bleiben in `oem_setup_env` Modus bis zum Anhalten des Befehls geben Sie einen Befehl wie exit ein.
 
 +
+.Beispiel
 ``# vioserver$ oem_setup_env`
 
 . Falls Ihre Konfiguration ALUA unterstützt, können Sie damit die Pfadpriorität festlegen. Vergewissern Sie sich, dass ALUA aktiviert ist:
@@ -156,6 +157,7 @@ vioserver#
 `# sanlun lun show -p`
 
 +
+.Beispiel
 Dieses Beispiel zeigt die typische Ausgabe des `sanlun lun show -p` Befehl für eine Direct-Attached-Konfiguration. Es schließt auch die ein `sanlun lun show -d hdisk9 -v` Befehl zum Anzeigen von Informationen über hdisk9. Die Ausgabe dieses Befehls wurde abgeschnitten.
 
 +

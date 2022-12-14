@@ -46,7 +46,7 @@ Anweisungen zur Installation und Einrichtung finden Sie im link:https://docs.net
 
 
 
-== Was ist neu in der Version 7.1
+== Neue Funktionen von Version 7.1
 
 Linux Host Utilities heißen jetzt _Linux Unified Host Utilities_, da es NetApp E-Series Storage-Systeme mit SANtricity sowie AFF und FAS Systeme mit ONTAP unterstützt.
 
@@ -143,6 +143,7 @@ Wenn Sie eine FC-Umgebung einrichten, die die nativen Inbox-Treiber verwendet, d
 
 Sie können auf die Dokumentation für alle NetApp Produkte zugreifen und weitere Ressourcen zu Produktinformationen, wie z. B. technische Berichte und Whitepaper, auf der Seite mit der Produktdokumentation auf der NetApp Website zugreifen.
 
+.Verwandte Informationen
 *Konfigurieren und Verwalten Ihres ONTAP Storage-Systems*
 
 * Der link:https://docs.netapp.com/us-en/ontap/setup-upgrade/index.html["ONTAP Software-Setup-Leitfaden"^] Für Ihre Version von ONTAP

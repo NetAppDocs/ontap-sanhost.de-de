@@ -28,6 +28,7 @@ Dieses Dokument enthält eine Anleitung zu den Host-Konfigurationseinstellungen 
 
 == Booten des Hypervisor-SAN
 
+.Was Sie benötigen
 Wenn Sie sich für das Booten über SAN entscheiden, muss es von Ihrer Konfiguration unterstützt werden. Sie können das verwenden https://mysupport.netapp.com/matrix/imt.jsp?components=65623;64703;&solution=1&isHWU&src=IMT["NetApp Interoperabilitäts-Matrix-Tool"^] Um zu überprüfen, ob Ihr Betriebssystem, HBA, die HBA-Firmware und das HBA-Boot-BIOS sowie die ONTAP-Version unterstützt werden.
 
 .Schritte
@@ -72,6 +73,7 @@ system        tpgs_on          MW_PSP_RR 	      NetApp arrays with ALUA support
 
 In allen ASA-Konfigurationen (SAN Array) sind alle Pfade zu einer bestimmten logischen Einheit (LUN) aktiv und optimiert. Das bedeutet, dass I/O gleichzeitig über alle Pfade bedient werden kann, was zu einer besseren Performance führt.
 
+.Beispiel
 Im folgenden Beispiel wird die richtige Ausgabe für eine ONTAP LUN angezeigt:
 
 *`esxcli storage nmp device list -d naa.600a098038304759563f4e7837574453`*
@@ -122,6 +124,7 @@ In dem obigen Beispiel wurde die LUN aus NetApp Storage mit 4 Pfaden zugeordnet 
 
 Für eine nicht-ASA-Konfiguration sollte es zwei Gruppen von Pfaden mit unterschiedlichen Prioritäten geben. Die Pfade mit den höheren Prioritäten sind aktiv/optimiert, was bedeutet, dass sie vom Controller gewartet werden, wo sich das Aggregat befindet. Die Pfade mit den niedrigeren Prioritäten sind aktiv, werden aber nicht optimiert, da sie von einem anderen Controller bereitgestellt werden. Die nicht optimierten Pfade werden nur verwendet, wenn keine optimierten Pfade verfügbar sind.
 
+.Beispiel
 Im folgenden Beispiel wird die richtige Ausgabe für eine ONTAP-LUN mit zwei aktiv/optimierten Pfaden und zwei aktiv/nicht optimierten Pfaden angezeigt:
 
 *`esxcli storage nmp path list -d naa.600a098038313530772b4d673979372f`*

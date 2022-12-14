@@ -23,6 +23,7 @@ blacklist {
         devnode "^cciss.*"
 }
 ....
+.Beispiel
 In diesem Beispiel ist sda die lokale SCSI-Festplatte, die wir zur Blacklist hinzufügen müssen.
 
 . Führen Sie den folgenden Befehl aus, um die WWID zu bestimmen:

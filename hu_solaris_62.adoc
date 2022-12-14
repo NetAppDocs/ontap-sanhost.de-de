@@ -18,7 +18,7 @@ summary: Beschreibt die Verwendung von Linux Unified Host Utilities 7.1 mit ONTA
 :toc-position: content
 
 
-.Was Sie und#8217;ll benötigen
+.Was Sie benötigen
 * Für einen zuverlässigen Betrieb müssen Sie sicherstellen, dass Ihre gesamte iSCSI-, FC- oder FCoE-Konfiguration unterstützt wird.
 
 
@@ -30,6 +30,7 @@ Sie können das verwenden link:https://mysupport.netapp.com/matrix/imt.jsp?compo
 
 Solaris Host Utilities ist eine NetApp Host Software, die auf Ihrem Oracle Solaris Host ein Befehlszeilen-Toolkit bietet. Das Toolkit wird bei der Installation des NetApp Host Utilities-Pakets installiert. Dieses Kit enthält die `sanlun` Dienstprogramm zum Verwalten von LUNs und HBAs Der `sanlun` Befehl gibt Informationen über die LUNs zurück, die Ihrem Host zugeordnet sind, Multipathing und Informationen zurück, die zum Erstellen von Initiatorgruppen erforderlich sind.
 
+.Beispiel
 Im folgenden Beispiel wird der verwendet `sanlun lun show` Mit dem Befehl werden die LUN-Informationen zurückgegeben.
 
 [listing]

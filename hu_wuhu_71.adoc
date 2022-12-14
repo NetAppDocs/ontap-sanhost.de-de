@@ -360,6 +360,7 @@ Der Windows Unified Host Utilities Installer legt automatisch Registrierungswert
 
 | HKLM\SYSTEM\CurrentControlSet\Services\mpio \Parameters\UseCustomRecoveryIntervall | 1 | Wenn sich Ihr Server nur mit Windows Server 2008, Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2 oder Windows Server 2016 befindet 
 |===
+.Verwandte Informationen
 Siehe https://docs.microsoft.com/en-us/troubleshoot/windows-server/performance/windows-registry-advanced-users["Microsoft-Dokumente"^] Für die Details des Registrierungsparameters.
 
 
@@ -413,6 +414,7 @@ Bei QLogic Fibre Channel HBAs legt das Installationsprogramm die folgenden Param
 
 NOTE: Die Namen der Parameter können je nach Programm leicht variieren. Im QLogic QConvergeConsole-Programm wird beispielsweise der Parameter als angezeigt `Link Down Timeout`. Die Host Utilities `fcconfig.ini` Datei zeigt diesen Parameter als entweder an `LinkDownTimeOut` Oder `MpioLinkDownTimeOut`, Abhängig davon, ob MPIO spezifiziert wird. Alle diese Namen beziehen sich jedoch auf denselben HBA-Parameter.
 
+.Verwandte Informationen
 Siehe https://www.broadcom.com/support/download-search["Emulex"^] Oder https://driverdownloads.qlogic.com/QLogicDriverDownloads_UI/Netapp_search.aspx["QLogic"^] Standort, um mehr über die Timeout-Parameter zu erfahren.
 
 
@@ -439,6 +441,7 @@ In diesem Abschnitt werden die allgemeinen Fehlerbehebungstechniken für Windows
 * Wenn das Problem nicht behoben werden kann, wenden Sie sich an den technischen Support von NetApp.
 
 
+.Verwandte Informationen
 http://mysupport.netapp.com/matrix["NetApp Interoperabilitäts-Matrix-Tool"^]
 https://mysupport.netapp.com/portal/documentation["NetApp Dokumentation"^]
 https://mysupport.netapp.com/NOW/cgi-bin/bol["NetApp Bugs Online"^]

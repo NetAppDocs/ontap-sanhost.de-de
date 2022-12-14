@@ -91,6 +91,7 @@ Die Pfade mit den niedrigeren Prioritäten sind aktiv, werden aber nicht optimie
 
 NOTE: Die nicht optimierten Pfade werden nur verwendet, wenn keine optimierten Pfade verfügbar sind.
 
+.Beispiel
 Das folgende Beispiel zeigt die richtige Ausgabe für eine ONTAP-LUN mit zwei aktiv/optimierten Pfaden und zwei aktiv/nicht optimierten Pfaden.
 
 image::nonasa.png[Nonasa]

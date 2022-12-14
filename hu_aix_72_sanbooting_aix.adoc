@@ -131,6 +131,7 @@ Verwenden Sie die `-v` Option zum Aktivieren des ausführlichen Modus und zur An
 `# sanlun lun show`
 
 +
+.Beispiel
 Dieses Beispiel zeigt die typische Ausgabe des `sanlun lun show` Befehl in einer MPIO Multipathing-Umgebung.
 
 +

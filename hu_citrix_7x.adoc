@@ -28,6 +28,7 @@ Dieses Dokument enthält Hinweise zur Konfiguration des ONTAP SAN Hosts für die
 
 == SAN wird gebootet
 
+.Was Sie benötigen
 Wenn Sie sich für das Booten über SAN entscheiden, muss es von Ihrer Konfiguration unterstützt werden. Sie können das verwenden link:https://mysupport.netapp.com/matrix/imt.jsp?components=91241;&solution=236&isHWU&src=IMT["NetApp Interoperabilitäts-Matrix-Tool"^] Um zu überprüfen, ob Ihr Betriebssystem, HBA, die HBA-Firmware und das HBA-Boot-BIOS sowie die ONTAP-Version unterstützt werden.
 
 .Schritte
@@ -57,6 +58,7 @@ Aufgrund von Inkompatibilitäten mit der integrierten Multipath Management-Archi
 
 Für eine nicht-ASA-Konfiguration sollte es zwei Gruppen von Pfaden mit unterschiedlichen Prioritäten geben. Die Pfade mit den höheren Prioritäten sind aktiv/optimiert, was bedeutet, dass sie vom Controller gewartet werden, wo sich das Aggregat befindet. Die Pfade mit den niedrigeren Prioritäten sind aktiv, werden aber nicht optimiert, da sie von einem anderen Controller bereitgestellt werden. Die nicht optimierten Pfade werden nur verwendet, wenn keine optimierten Pfade verfügbar sind.
 
+.Beispiel
 Im folgenden Beispiel wird die richtige Ausgabe für eine ONTAP-LUN mit zwei aktiv/optimierten Pfaden und zwei aktiv/nicht optimierten Pfaden angezeigt:
 
 [listing]
@@ -86,6 +88,7 @@ NOTE: Verwenden Sie keine unverhältnismäßig hohe Anzahl von Pfaden zu einer e
 
 In allen ASA-Konfigurationen (SAN Array) sind alle Pfade zu einer bestimmten logischen Einheit (LUN) aktiv und optimiert. Das bedeutet, dass I/O gleichzeitig über alle Pfade bedient werden kann, was zu einer besseren Performance führt.
 
+.Beispiel
 Im folgenden Beispiel wird die richtige Ausgabe für eine ONTAP-LUN mit allen vier aktiv/optimierten Pfaden angezeigt:
 
 [listing]
@@ -139,6 +142,7 @@ blacklist {
 
 NOTE: Ersetzen Sie *<Devid>* durch die WWID-Zeichenfolge des Geräts, das Sie ausschließen möchten.
 
+.Beispiel
 In diesem Beispiel für Citrix XenServer 7.x, `sda` Ist die lokale SCSI Festplatte, die wir zur Blacklist hinzufügen müssen.
 
 . Führen Sie den folgenden Befehl aus, um die WWID zu bestimmen:
@@ -221,6 +225,7 @@ Die folgende Tabelle zeigt die kritischen *multipathd* Parameter für ONTAP LUNs
 
 | `vendor` | NETAPP 
 |===
+.Beispiel
 Das folgende Beispiel zeigt, wie eine überhielte Standardeinstellung korrigiert wird. In diesem Fall definiert die Datei *Multipath.conf* Werte für *path_Checker* und *detect_prio*, die nicht mit ONTAP LUNs kompatibel sind. Wenn sie nicht entfernt werden können, weil andere SAN-Arrays an den Host angeschlossen sind, können diese Parameter speziell für ONTAP-LUNs mit einem Gerätstanza korrigiert werden.
 
 [listing]

@@ -32,6 +32,7 @@ Das NetApp Linux Unified Host Utilities-Softwarepaket ist auf der erhältlich li
 
 Es wird dringend empfohlen, Linux Unified Host Utilities zu installieren, jedoch nicht zwingend. Die Dienstprogramme ändern keine Einstellungen auf Ihrem Linux-Host. Die Versorgungseinrichtungen verbessern das Management und unterstützen den NetApp Kunden-Support bei der Erfassung von Informationen zu Ihrer Konfiguration.
 
+.Was Sie benötigen
 Wenn Sie derzeit eine Version von Linux Unified Host Utilities installiert haben, sollten Sie sie aktualisieren oder Sie sollten sie entfernen und die folgenden Schritte verwenden, um die neueste Version zu installieren.
 
 .Schritte
@@ -48,6 +49,7 @@ Wenn Sie derzeit eine Version von Linux Unified Host Utilities installiert haben
 
 Das Toolkit wird automatisch installiert, wenn Sie das NetApp Host Utilities-Paket installieren. Dieses Kit enthält die `sanlun` Dienstprogramm: Unterstützt Sie beim Management von LUNs und HBAs. Der `sanlun` Befehl gibt Informationen über die LUNs zurück, die Ihrem Host zugeordnet sind, Multipathing und Informationen zurück, die zum Erstellen von Initiatorgruppen erforderlich sind.
 
+.Beispiel
 In der folgenden Abbildung, die `sanlun show` Befehl gibt LUN-Informationen zurück.
 
 [listing]
@@ -74,6 +76,7 @@ enabled     up      active/non-optimized sdas   13:0:1:0   lif_9      66:192
 
 == SAN wird gebootet
 
+.Was Sie benötigen
 Wenn Sie sich für das Booten über SAN entscheiden, muss es von Ihrer Konfiguration unterstützt werden. Sie können das verwenden https://mysupport.netapp.com/matrix/imt.jsp?components=65623;64703;&solution=1&isHWU&src=IMT["NetApp Interoperabilitäts-Matrix-Tool"^] Um zu überprüfen, ob Ihr Betriebssystem, HBA, die HBA-Firmware und das HBA-Boot-BIOS sowie die ONTAP-Version unterstützt werden.
 
 Überprüfen Sie unter Veritas Support Portal (Produktmatrix, Platform Lookup, HCL Matrix) die Kompatibilität der SAN-Boot-Konfiguration und bekannte Einschränkungen.
@@ -97,6 +100,7 @@ Informationen zum Aktivieren des HBA-BIOS finden Sie in der anbieterspezifischen
 
 Sie müssen überprüfen, ob Ihre Konfiguration den Systemanforderungen entspricht. Weitere Informationen finden Sie im NetApp Interoperabilitäts-Matrix-Tool und der Veritas HCL Matrix.
 
+.Beispiel
 In diesem Beispiel ist der `vxdmpadm` Der Befehl wird verwendet, um zu überprüfen, ob VxDMP Multipath das ONTAP-Ziel-Array angeschlossen hat.
 
 [listing]
@@ -112,6 +116,7 @@ sfrac0_47  ENABLED  SFRAC       4      4     0    sfrac0
 ----
 Mit Veritas Dynamic Multipathing (VxDMP) müssen Sie Konfigurationsaufgaben durchführen, um NetApp LUNs als Veritas Multipath-Geräte beanspruchen zu können. Sie müssen über die Array Support Library (ASL) und die Array Policy Module (APM)-Pakete verfügen, die Veritas für NetApp Storage-Systeme bietet. Während die Veritas Software Installation die Standard-ASL APM-Pakete zusammen mit dem Produkt lädt, wird empfohlen, die neuesten unterstützten Pakete zu verwenden, die im Veritas Support-Portal aufgelistet sind.
 
+.Beispiel
 Das folgende Beispiel zeigt die Konfiguration der Veritas Support Library (ASL) und des Array Policy Module (APM).
 
 [listing]
@@ -137,6 +142,7 @@ ARRAY_TYPE  ALUA, A/A
 
 In allen ASA-Konfigurationen (SAN Array) sind alle Pfade zu einer bestimmten logischen Einheit (LUN) aktiv und optimiert. Das bedeutet, dass I/O gleichzeitig über alle Pfade bedient werden kann, was zu einer besseren Performance führt.
 
+.Beispiel
 Im folgenden Beispiel wird die richtige Ausgabe für eine ONTAP LUN angezeigt:
 
 [listing]
@@ -158,6 +164,7 @@ NOTE: Verwenden Sie keine unverhältnismäßig hohe Anzahl von Pfaden zu einer e
 
 Für eine nicht-ASA-Konfiguration sollte es zwei Gruppen von Pfaden mit unterschiedlichen Prioritäten geben. Die Pfade mit den höheren Prioritäten sind aktiv/optimiert, was bedeutet, dass sie vom Controller gewartet werden, wo sich das Aggregat befindet. Die Pfade mit den niedrigeren Prioritäten sind aktiv, werden aber nicht optimiert, da sie von einem anderen Controller bereitgestellt werden. Die nicht optimierten Pfade werden nur verwendet, wenn keine optimierten Pfade verfügbar sind.
 
+.Beispiel
 Im folgenden Beispiel wird die richtige Ausgabe für eine ONTAP-LUN mit zwei aktiv/optimierten Pfaden und zwei aktiv/nicht optimierten Pfaden angezeigt:
 
 [listing]
@@ -202,6 +209,7 @@ DMP-Tunables werden online mithilfe des gesetzt `vxdmpadm` Befehl wie folgt:
 
 Die Werte dieser abstimmbaren Werte können mit Hilfe dynamisch überprüft werden `#vxdmpadm gettune`.
 
+.Beispiel
 Das folgende Beispiel zeigt die effektiven VxDMP-Tunables auf dem SAN-Host.
 
 [listing]
