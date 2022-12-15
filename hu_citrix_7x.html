@@ -2959,7 +2959,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-11-15 15:53:30 +0000">11/15/2022</time>
+    <time datetime="2022-12-14 18:16:17 +0000">12/14/2022</time>
     
   
 
@@ -2990,6 +2990,7 @@
 <h2 id="san-wird-gebootet">SAN wird gebootet</h2>
 <div class="sectionbody">
 <div class="paragraph">
+<div class="title">Was Sie benötigen</div>
 <p>Wenn Sie sich für das Booten über SAN entscheiden, muss es von Ihrer Konfiguration unterstützt werden. Sie können das verwenden <a href="https://mysupport.netapp.com/matrix/imt.jsp?components=91241;&amp;solution=236&amp;isHWU&amp;src=IMT" target="_blank" rel="noopener">"NetApp Interoperabilitäts-Matrix-Tool"</a> Um zu überprüfen, ob Ihr Betriebssystem, HBA, die HBA-Firmware und das HBA-Boot-BIOS sowie die ONTAP-Version unterstützt werden.</p>
 </div>
 <div class="olist arabic">
@@ -3032,6 +3033,7 @@
 <p>Für eine nicht-ASA-Konfiguration sollte es zwei Gruppen von Pfaden mit unterschiedlichen Prioritäten geben. Die Pfade mit den höheren Prioritäten sind aktiv/optimiert, was bedeutet, dass sie vom Controller gewartet werden, wo sich das Aggregat befindet. Die Pfade mit den niedrigeren Prioritäten sind aktiv, werden aber nicht optimiert, da sie von einem anderen Controller bereitgestellt werden. Die nicht optimierten Pfade werden nur verwendet, wenn keine optimierten Pfade verfügbar sind.</p>
 </div>
 <div class="paragraph">
+<div class="title">Beispiel</div>
 <p>Im folgenden Beispiel wird die richtige Ausgabe für eine ONTAP-LUN mit zwei aktiv/optimierten Pfaden und zwei aktiv/nicht optimierten Pfaden angezeigt:</p>
 </div>
 <div class="listingblock">
@@ -3072,6 +3074,7 @@ Verwenden Sie keine unverhältnismäßig hohe Anzahl von Pfaden zu einer einzeln
 <p>In allen ASA-Konfigurationen (SAN Array) sind alle Pfade zu einer bestimmten logischen Einheit (LUN) aktiv und optimiert. Das bedeutet, dass I/O gleichzeitig über alle Pfade bedient werden kann, was zu einer besseren Performance führt.</p>
 </div>
 <div class="paragraph">
+<div class="title">Beispiel</div>
 <p>Im folgenden Beispiel wird die richtige Ausgabe für eine ONTAP-LUN mit allen vier aktiv/optimierten Pfaden angezeigt:</p>
 </div>
 <div class="listingblock">
@@ -3149,6 +3152,7 @@ Ersetzen Sie <strong>&lt;Devid&gt;</strong> durch die WWID-Zeichenfolge des Ger�
 </table>
 </div>
 <div class="paragraph">
+<div class="title">Beispiel</div>
 <p>In diesem Beispiel für Citrix XenServer 7.x, <code>sda</code> Ist die lokale SCSI Festplatte, die wir zur Blacklist hinzufügen müssen.</p>
 </div>
 <div class="olist arabic">
@@ -3267,6 +3271,7 @@ blacklist {
 </tbody>
 </table>
 <div class="paragraph">
+<div class="title">Beispiel</div>
 <p>Das folgende Beispiel zeigt, wie eine überhielte Standardeinstellung korrigiert wird. In diesem Fall definiert die Datei <strong>Multipath.conf</strong> Werte für <strong>path_Checker</strong> und <strong>detect_prio</strong>, die nicht mit ONTAP LUNs kompatibel sind. Wenn sie nicht entfernt werden können, weil andere SAN-Arrays an den Host angeschlossen sind, können diese Parameter speziell für ONTAP-LUNs mit einem Gerätstanza korrigiert werden.</p>
 </div>
 <div class="listingblock">

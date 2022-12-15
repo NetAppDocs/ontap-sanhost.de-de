@@ -2959,7 +2959,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-11-15 15:53:30 +0000">11/15/2022</time>
+    <time datetime="2022-12-14 18:16:17 +0000">12/14/2022</time>
     
   
 
@@ -2991,6 +2991,7 @@
 <p>Es wird dringend empfohlen, Linux Unified Host Utilities zu installieren, jedoch nicht zwingend. Die Dienstprogramme ändern keine Einstellungen auf Ihrem Linux-Host. Die Versorgungseinrichtungen verbessern das Management und unterstützen den NetApp Kunden-Support bei der Erfassung von Informationen zu Ihrer Konfiguration.</p>
 </div>
 <div class="paragraph">
+<div class="title">Was Sie benötigen</div>
 <p>Wenn Sie derzeit eine Version von Linux Unified Host Utilities installiert haben, sollten Sie sie aktualisieren oder Sie sollten sie entfernen und die folgenden Schritte verwenden, um die neueste Version zu installieren.</p>
 </div>
 <div class="olist arabic">
@@ -3028,6 +3029,7 @@ Sie können die in diesem Inhalt angegebenen Konfigurationseinstellungen verwend
 <p>Das Toolkit wird automatisch installiert, wenn Sie das NetApp Host Utilities-Paket installieren. Dieses Kit enthält die <code>sanlun</code> Dienstprogramm: Unterstützt Sie beim Management von LUNs und HBAs. Der <code>sanlun</code> Befehl gibt Informationen über die LUNs zurück, die Ihrem Host zugeordnet sind, Multipathing und Informationen zurück, die zum Erstellen von Initiatorgruppen erforderlich sind.</p>
 </div>
 <div class="paragraph">
+<div class="title">Beispiel</div>
 <p>Im folgenden Beispiel wird der verwendet <code>sanlun lun show</code> Befehl gibt LUN-Informationen zurück.</p>
 </div>
 <div class="listingblock">
@@ -3048,6 +3050,7 @@ data_vserver          /vol/vol2/lun2   /dev/sde   host15   FCP       120.0g  cDO
 <h2 id="san-wird-gebootet">SAN wird gebootet</h2>
 <div class="sectionbody">
 <div class="paragraph">
+<div class="title">Was Sie benötigen</div>
 <p>Wenn Sie sich für das Booten über SAN entscheiden, muss es von Ihrer Konfiguration unterstützt werden. Sie können das verwenden <a href="https://mysupport.netapp.com/matrix/imt.jsp?components=91863;&amp;solution=1&amp;isHWU&amp;src=IMT" target="_blank" rel="noopener">"NetApp Interoperabilitäts-Matrix-Tool"</a> Um zu überprüfen, ob Ihr Betriebssystem, HBA, die HBA-Firmware und das HBA-Boot-BIOS sowie die ONTAP-Version unterstützt werden.</p>
 </div>
 <div class="olist arabic">
@@ -3093,6 +3096,7 @@ data_vserver          /vol/vol2/lun2   /dev/sde   host15   FCP       120.0g  cDO
 <p>Für eine nicht-ASA-Konfiguration sollte es zwei Gruppen von Pfaden mit unterschiedlichen Prioritäten geben. Die Pfade mit den höheren Prioritäten sind aktiv/optimiert, was bedeutet, dass sie vom Controller gewartet werden, wo sich das Aggregat befindet. Die Pfade mit den niedrigeren Prioritäten sind aktiv, werden aber nicht optimiert, da sie von einem anderen Controller bereitgestellt werden. Die nicht optimierten Pfade werden nur verwendet, wenn keine optimierten Pfade verfügbar sind.</p>
 </div>
 <div class="paragraph">
+<div class="title">Beispiel</div>
 <p>Im folgenden Beispiel wird die richtige Ausgabe für eine ONTAP-LUN mit zwei aktiv/optimierten Pfaden und zwei aktiv/nicht optimierten Pfaden angezeigt:</p>
 </div>
 <div class="listingblock">
@@ -3127,6 +3131,7 @@ Verwenden Sie keine unverhältnismäßig hohe Anzahl von Pfaden zu einer einzeln
 <p>In allen ASA-Konfigurationen (SAN Array) sind alle Pfade zu einer bestimmten logischen Einheit (LUN) aktiv und optimiert. Das bedeutet, dass I/O gleichzeitig über alle Pfade bedient werden kann, was zu einer besseren Performance führt.</p>
 </div>
 <div class="paragraph">
+<div class="title">Beispiel</div>
 <p>Im folgenden Beispiel wird die richtige Ausgabe für eine ONTAP LUN angezeigt:</p>
 </div>
 <div class="listingblock">
@@ -3195,6 +3200,7 @@ Verwenden Sie keine unverhältnismäßig hohe Anzahl von Pfaden zu einer einzeln
 </div>
 </div>
 <div class="paragraph">
+<div class="title">Beispiel</div>
 <p>In diesem Beispiel <code>sda</code> Ist die lokale SCSI Festplatte, die wir zur Blacklist hinzufügen müssen.</p>
 </div>
 <div class="olist arabic">
@@ -3317,6 +3323,7 @@ Verwenden Sie keine unverhältnismäßig hohe Anzahl von Pfaden zu einer einzeln
 </tbody>
 </table>
 <div class="paragraph">
+<div class="title">Beispiel</div>
 <p>Das folgende Beispiel zeigt, wie eine überhielte Standardeinstellung korrigiert wird. In diesem Fall die <code>multipath.conf</code> Datei definiert Werte für <code>path_checker</code> Und <code>no_path_retry</code> Die nicht mit ONTAP LUNs kompatibel sind. Wenn sie nicht entfernt werden können, weil andere SAN-Arrays noch an den Host angeschlossen sind, können diese Parameter speziell für ONTAP-LUNs mit einem Device stanza korrigiert werden.</p>
 </div>
 <div class="listingblock">

@@ -2959,7 +2959,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-11-15 09:29:22 +0000">11/15/2022</time>
+    <time datetime="2022-12-14 18:16:17 +0000">12/14/2022</time>
     
   
 
@@ -2999,6 +2999,7 @@
 <p>Es wird dringend empfohlen, Linux Unified Host Utilities zu installieren, jedoch nicht zwingend. Die Dienstprogramme ändern keine Einstellungen auf Ihrem Linux-Host. Die Versorgungseinrichtungen verbessern das Management und unterstützen den NetApp Kunden-Support bei der Erfassung von Informationen zu Ihrer Konfiguration.</p>
 </div>
 <div class="paragraph">
+<div class="title">Was Sie benötigen</div>
 <p>Wenn Sie derzeit eine Version von Linux Unified Host Utilities installiert haben, sollten Sie sie aktualisieren oder Sie sollten sie entfernen und die folgenden Schritte verwenden, um die neueste Version zu installieren.</p>
 </div>
 <div class="olist arabic">
@@ -3024,6 +3025,7 @@
 <p>Das Toolkit wird automatisch installiert, wenn Sie das NetApp Host Utilities-Paket installieren. Dieses Kit enthält die <code>sanlun</code> Dienstprogramm: Unterstützt Sie beim Management von LUNs und HBAs. Der <code>sanlun</code> Befehl gibt Informationen über die LUNs zurück, die Ihrem Host zugeordnet sind, Multipathing und Informationen zurück, die zum Erstellen von Initiatorgruppen erforderlich sind.</p>
 </div>
 <div class="paragraph">
+<div class="title">Beispiel</div>
 <p>In der folgenden Abbildung, die <code>sanlun show</code> Befehl gibt LUN-Informationen zurück.</p>
 </div>
 <div class="listingblock">
@@ -3053,6 +3055,7 @@ enabled     up      active/non-optimized sdas   13:0:1:0   lif_9      66:192</pr
 <h2 id="san-wird-gebootet">SAN wird gebootet</h2>
 <div class="sectionbody">
 <div class="paragraph">
+<div class="title">Was Sie benötigen</div>
 <p>Wenn Sie sich für das Booten über SAN entscheiden, muss es von Ihrer Konfiguration unterstützt werden. Sie können das verwenden <a href="https://mysupport.netapp.com/matrix/imt.jsp?components=65623;64703;&amp;solution=1&amp;isHWU&amp;src=IMT" target="_blank" rel="noopener">"NetApp Interoperabilitäts-Matrix-Tool"</a> Um zu überprüfen, ob Ihr Betriebssystem, HBA, die HBA-Firmware und das HBA-Boot-BIOS sowie die ONTAP-Version unterstützt werden.</p>
 </div>
 <div class="paragraph">
@@ -3090,6 +3093,7 @@ enabled     up      active/non-optimized sdas   13:0:1:0   lif_9      66:192</pr
 <p>Sie müssen überprüfen, ob Ihre Konfiguration den Systemanforderungen entspricht. Weitere Informationen finden Sie im <a href="https://mysupport.netapp.com/matrix/imt.jsp?components=65623;64703;&amp;solution=1&amp;isHWU&amp;src=IMT" target="_blank" rel="noopener">"NetApp Interoperabilitäts-Matrix-Tool"</a> Und die Veritas HCL Matrix.</p>
 </div>
 <div class="paragraph">
+<div class="title">Beispiel</div>
 <p>In diesem Beispiel ist der <code>vxdmpadm</code> Der Befehl wird verwendet, um zu überprüfen, ob VxDMP Multipath das ONTAP-Ziel-Array angeschlossen hat.</p>
 </div>
 <div class="listingblock">
@@ -3112,6 +3116,7 @@ sfrac0_47  ENABLED  SFRAC       4      4     0    sfrac0</pre>
 <p>Mit Veritas Dynamic Multipathing (VxDMP) müssen Sie Konfigurationsaufgaben durchführen, um NetApp LUNs als Veritas Multipath-Geräte beanspruchen zu können. Sie müssen über die Array Support Library (ASL) und die Array Policy Module (APM)-Pakete verfügen, die Veritas für NetApp Storage-Systeme bietet. Während die Veritas Software Installation die Standard-ASL APM-Pakete zusammen mit dem Produkt lädt, wird empfohlen, die neuesten unterstützten Pakete zu verwenden, die im Veritas Support-Portal aufgelistet sind.</p>
 </div>
 <div class="paragraph">
+<div class="title">Beispiel</div>
 <p>Das folgende Beispiel zeigt die Konfiguration der Veritas Support Library (ASL) und des Array Policy Module (APM).</p>
 </div>
 <div class="listingblock">
@@ -3146,6 +3151,7 @@ ARRAY_TYPE  ALUA, A/A</pre>
 <p>Für eine nicht-ASA-Konfiguration sollte es zwei Gruppen von Pfaden mit unterschiedlichen Prioritäten geben. Die Pfade mit den höheren Prioritäten sind aktiv/optimiert, was bedeutet, dass sie vom Controller gewartet werden, wo sich das Aggregat befindet. Die Pfade mit den niedrigeren Prioritäten sind aktiv, werden aber nicht optimiert, da sie von einem anderen Controller bereitgestellt werden. Die nicht optimierten Pfade werden nur verwendet, wenn keine optimierten Pfade verfügbar sind.</p>
 </div>
 <div class="paragraph">
+<div class="title">Beispiel</div>
 <p>Im folgenden Beispiel wird die richtige Ausgabe für eine ONTAP-LUN mit zwei aktiv/optimierten Pfaden und zwei aktiv/nicht optimierten Pfaden angezeigt:</p>
 </div>
 <div class="listingblock">
@@ -3215,6 +3221,7 @@ Verwenden Sie keine unverhältnismäßig hohe Anzahl von Pfaden zu einer einzeln
 <p>Die Werte dieser abstimmbaren Werte können mit Hilfe dynamisch überprüft werden <code>#vxdmpadm gettune</code>.</p>
 </div>
 <div class="paragraph">
+<div class="title">Beispiel</div>
 <p>Das folgende Beispiel zeigt die effektiven VxDMP-Tunables auf dem SAN-Host.</p>
 </div>
 <div class="listingblock">
