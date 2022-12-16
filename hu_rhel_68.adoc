@@ -37,7 +37,7 @@ Wenn Sie derzeit eine Version von Linux Unified Host Utilities installiert haben
 
 
 
-NOTE: Sie können die in diesem Inhalt angegebenen Konfigurationseinstellungen verwenden, um die mit verbundenen Cloud-Clients zu konfigurieren link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^] Und link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["Amazon FSX für ONTAP"^].
+NOTE: Sie können die in diesem Dokument angegebenen Konfigurationseinstellungen verwenden, um die mit verbundenen Cloud-Clients zu konfigurieren link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^] Und link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["Amazon FSX für ONTAP"^].
 
 
 
@@ -163,7 +163,7 @@ Wenn Sie diese Datei zum ersten Mal erstellen, müssen Sie die Multipath-Service
 # systemctl enable multipathd
 # systemctl start multipathd
 ----
-Es sind keine Anforderungen, direkt etwas hinzuzufügen `multipath.conf` Datei, es sei denn, Sie haben Geräte, die Sie nicht von Multipath verwalten möchten, oder Sie haben bereits vorhandene Einstellungen, die die Standardeinstellungen überschreiben.
+Es ist nicht erforderlich, dem direkt etwas hinzuzufügen `multipath.conf` Datei, es sei denn, Sie haben Geräte, die Sie nicht von Multipath verwalten möchten, oder Sie haben bereits vorhandene Einstellungen, die die Standardeinstellungen überschreiben.
 
 Sie können die folgende Syntax dem hinzufügen `multipath.conf` Datei zum Ausschließen unerwünschter Geräte.
 
@@ -199,9 +199,9 @@ blacklist {
 ....
 
 
-Sie sollten immer Ihre überprüfen `/etc/multipath.conf` Datei für ältere Einstellungen, insbesondere im Abschnitt Standardeinstellungen, die möglicherweise die Standardeinstellungen überschreiben.
+Sie sollten immer Ihre überprüfen `/etc/multipath.conf` Datei für ältere Einstellungen, insbesondere im Abschnitt Standardeinstellungen, die die Standardeinstellungen überschreiben können.
 
-Die folgende Tabelle zeigt den entscheidenden `multipathd` Parameter für ONTAP-LUNs und die erforderlichen Werte. Wenn ein Host mit LUNs anderer Anbieter verbunden ist und einer dieser Parameter außer Kraft gesetzt wird, müssen sie später in korrigiert werden `multipath.conf` Die speziell für ONTAP LUNs gelten. Wenn dies nicht erfolgt, funktionieren die ONTAP LUNs möglicherweise nicht wie erwartet. Diese Standardeinstellungen sollten nur in Absprache mit NetApp und/oder dem Anbieter des Betriebssystems außer Kraft gesetzt werden und nur dann, wenn die Auswirkungen vollständig verstanden wurden.
+Die folgende Tabelle zeigt die kritisch `multipathd` Parameter für ONTAP-LUNs und die erforderlichen Werte. Wenn ein Host mit LUNs anderer Anbieter verbunden ist und einer dieser Parameter außer Kraft gesetzt wird, müssen sie später in Abschnitt korrigiert werden `multipath.conf` Datei, die speziell für ONTAP LUNs gilt. Wenn dies nicht erfolgt, funktionieren die ONTAP LUNs möglicherweise nicht wie erwartet. Diese Standardeinstellungen sollten nur in Absprache mit NetApp und/oder dem Anbieter des Betriebssystems außer Kraft gesetzt werden und nur dann, wenn die Auswirkungen vollständig verstanden wurden.
 
 [cols="2*"]
 |===
