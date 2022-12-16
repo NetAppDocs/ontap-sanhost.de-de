@@ -668,6 +668,8 @@
           
 
 
+
+
         </li>
       </ul>
     
@@ -691,6 +693,8 @@
             RHEL 8
           </a>
           
+
+
 
 
 
@@ -1241,6 +1245,8 @@
             RHEL 9
           </a>
           
+
+
     <ul class="subfolders" id="pdf-remove" style="display:none;"><li class="active"></li></ul>
   
 
@@ -1268,6 +1274,8 @@
             RHEL 8
           </a>
           
+
+
 
 
 
@@ -1844,6 +1852,13 @@
       <ul style="display: none;">
         <li 
       data-pdf-exists="true" 
+      data-pdf-filename="9.1"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/de-de/ontap-sanhost/nvme_rhel_91.html">
+        9.1
+      </a></li><li 
+      data-pdf-exists="true" 
       data-pdf-filename="9.0"
       data-li-level="4#" 
       class=" "
@@ -1859,6 +1874,13 @@
       </a>
       <ul style="display: none;">
         <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="8.7"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/de-de/ontap-sanhost/nvme_rhel_87.html">
+        8.7
+      </a></li><li 
       data-pdf-exists="true" 
       data-pdf-filename="8.6"
       data-li-level="4#" 
@@ -2498,6 +2520,13 @@
       <ul style="display: none;">
         <li 
       data-pdf-exists="true" 
+      data-pdf-filename="9.1"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/de-de/ontap-sanhost/hu_rhel_91.html">
+        9.1
+      </a></li><li 
+      data-pdf-exists="true" 
       data-pdf-filename="9.0"
       data-li-level="4#" 
       class="  active "
@@ -2513,6 +2542,13 @@
       </a>
       <ul style="display: none;">
         <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="8.7"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/de-de/ontap-sanhost/hu_rhel_87.html">
+        8.7
+      </a></li><li 
       data-pdf-exists="true" 
       data-pdf-filename="8.6"
       data-li-level="4#" 
@@ -2959,7 +2995,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-12-14 18:16:17 +0000">12/14/2022</time>
+    <time datetime="2022-12-16 19:09:06 +0000">12/16/2022</time>
     
   
 
@@ -3015,7 +3051,7 @@
 <img src="/us-en/ontap-sanhost/images/note.svg" alt="Anmerkung">
 </td>
 <td class="content">
-Sie können die in diesem Inhalt angegebenen Konfigurationseinstellungen verwenden, um die mit verbundenen Cloud-Clients zu konfigurieren <a href="https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html" target="_blank" rel="noopener">"Cloud Volumes ONTAP"</a> Und <a href="https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html" target="_blank" rel="noopener">"Amazon FSX für ONTAP"</a>.
+Sie können die in diesem Dokument angegebenen Konfigurationseinstellungen verwenden, um die mit verbundenen Cloud-Clients zu konfigurieren <a href="https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html" target="_blank" rel="noopener">"Cloud Volumes ONTAP"</a> Und <a href="https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html" target="_blank" rel="noopener">"Amazon FSX für ONTAP"</a>.
 </td>
 </tr>
 </table>
@@ -3178,7 +3214,7 @@ Verwenden Sie keine unverhältnismäßig hohe Anzahl von Pfaden zu einer einzeln
 </div>
 </div>
 <div class="paragraph">
-<p>Es sind keine Anforderungen, direkt etwas hinzuzufügen <code>multipath.conf</code> Datei, es sei denn, Sie haben Geräte, die Sie nicht von Multipath verwalten möchten, oder Sie haben bereits vorhandene Einstellungen, die die Standardeinstellungen überschreiben.</p>
+<p>Es ist nicht erforderlich, dem direkt etwas hinzuzufügen <code>multipath.conf</code> Datei, es sei denn, Sie haben Geräte, die Sie nicht von Multipath verwalten möchten, oder Sie haben bereits vorhandene Einstellungen, die die Standardeinstellungen überschreiben.</p>
 </div>
 <div class="paragraph">
 <p>Sie können die folgende Syntax dem hinzufügen <code>multipath.conf</code> Datei zum Ausschließen unerwünschter Geräte.</p>
@@ -3228,10 +3264,10 @@ Verwenden Sie keine unverhältnismäßig hohe Anzahl von Pfaden zu einer einzeln
 </ol>
 </div>
 <div class="paragraph">
-<p>Sie sollten immer Ihre überprüfen <code>/etc/multipath.conf</code> Datei für ältere Einstellungen, insbesondere im Abschnitt Standardeinstellungen, die möglicherweise die Standardeinstellungen überschreiben.</p>
+<p>Sie sollten immer Ihre überprüfen <code>/etc/multipath.conf</code> Datei für ältere Einstellungen, insbesondere im Abschnitt Standardeinstellungen, die die Standardeinstellungen überschreiben können.</p>
 </div>
 <div class="paragraph">
-<p>Die folgende Tabelle zeigt den entscheidenden <code>multipathd</code> Parameter für ONTAP-LUNs und die erforderlichen Werte. Wenn ein Host mit LUNs anderer Anbieter verbunden ist und einer dieser Parameter außer Kraft gesetzt wird, müssen sie später in korrigiert werden <code>multipath.conf</code> Die speziell für ONTAP LUNs gelten. Wenn dies nicht erfolgt, funktionieren die ONTAP LUNs möglicherweise nicht wie erwartet. Diese Standardeinstellungen sollten nur in Absprache mit NetApp und/oder dem Anbieter des Betriebssystems außer Kraft gesetzt werden und nur dann, wenn die Auswirkungen vollständig verstanden wurden.</p>
+<p>Die folgende Tabelle zeigt die kritisch <code>multipathd</code> Parameter für ONTAP-LUNs und die erforderlichen Werte. Wenn ein Host mit LUNs anderer Anbieter verbunden ist und einer dieser Parameter außer Kraft gesetzt wird, müssen sie später in Abschnitt korrigiert werden <code>multipath.conf</code> Datei, die speziell für ONTAP LUNs gilt. Wenn dies nicht erfolgt, funktionieren die ONTAP LUNs möglicherweise nicht wie erwartet. Diese Standardeinstellungen sollten nur in Absprache mit NetApp und/oder dem Anbieter des Betriebssystems außer Kraft gesetzt werden und nur dann, wenn die Auswirkungen vollständig verstanden wurden.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
