@@ -3,4 +3,4 @@
 
 
 
-NOTE: Sie können die in diesem Dokument angegebenen Konfigurationseinstellungen verwenden, um die mit verbundenen Cloud-Clients zu konfigurieren link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^] Und link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["Amazon FSX für ONTAP"^].
+NOTE: Sie können die in diesem Thema angegebenen Konfigurationseinstellungen verwenden, um Cloud-Clients zu konfigurieren, mit denen eine Verbindung hergestellt wird link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^] Und link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["Amazon FSX für ONTAP"^].

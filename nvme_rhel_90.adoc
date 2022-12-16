@@ -26,7 +26,7 @@ summary: Konfigurieren von NVMe-of Host für RHEL 9.0 mit ONTAP
 NVMe-of (einschließlich NVMe/FC und NVMe/TCP) wird mit RHEL 9.0 mit Asymmetric Namespace Access (ANA) unterstützt, die für die verbleibenden Storage-Failover (SFOs) auf dem ONTAP Array erforderlich sind. ANA ist das ALUA-Äquivalent in der NVM-of-Umgebung und ist derzeit mit NVMe Multipath im Kernel implementiert. Dieses Dokument enthält die Details zur Aktivierung von NVMe-of mit in-Kernel NVMe Multipath unter Verwendung von ANA auf RHEL 9.0 und ONTAP als Ziel.
 
 
-NOTE: Sie können die in diesem Dokument angegebenen Konfigurationseinstellungen verwenden, um die mit verbundenen Cloud-Clients zu konfigurieren link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^] Und link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["Amazon FSX für ONTAP"^].
+NOTE: Sie können die in diesem Thema angegebenen Konfigurationseinstellungen verwenden, um Cloud-Clients zu konfigurieren, mit denen eine Verbindung hergestellt wird link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^] Und link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["Amazon FSX für ONTAP"^].
 
 
 

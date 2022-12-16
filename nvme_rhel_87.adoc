@@ -23,10 +23,10 @@ summary: Konfigurieren von NVMe-of Host für RHEL 8.7 mit ONTAP
 
 == Instandhaltung
 
-NVMe over Fabrics oder NVMe-of (einschließlich NVMe/FC und andere Transportstoffe) werden mit RHEL 8.7 mit ANA (Asymmetric Namespace Access) unterstützt. ANA ist das ALUA-Äquivalent in der NVMe-of Umgebung und ist derzeit mit NVMe Multipath im Kernel implementiert. Die Details zur Aktivierung von NVMe-of mit in-Kernel NVMe Multipath unter Verwendung von ANA auf RHEL 8.7 und ONTAP als Ziel wurden hier dokumentiert.
+NVMe over Fabrics oder NVMe-of (einschließlich NVMe/FC und andere Transportstoffe) werden mit RHEL 8.7 mit ANA (Asymmetric Namespace Access) unterstützt. ANA ist das ALUA-Äquivalent in der NVMe-of Umgebung und ist derzeit mit NVMe Multipath im Kernel implementiert. Dieses Thema enthält Details zur Unterstützung von NVMe-of mit in-Kernel NVMe Multipath unter Verwendung von ANA auf RHEL 8.7 und ONTAP als Ziel.
 
 
-NOTE: Sie können die in diesem Dokument angegebenen Konfigurationseinstellungen verwenden, um die mit verbundenen Cloud-Clients zu konfigurieren link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^] Und link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["Amazon FSX für ONTAP"^].
+NOTE: Sie können die in diesem Thema angegebenen Konfigurationseinstellungen verwenden, um Cloud-Clients zu konfigurieren, mit denen eine Verbindung hergestellt wird link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^] Und link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["Amazon FSX für ONTAP"^].
 
 
 
@@ -53,7 +53,7 @@ Siehe link:https://mysupport.netapp.com/matrix/["NetApp Interoperabilitätsmatri
 == Aktivieren Sie NVMe Multipath im Kernel
 
 .Schritte
-. Installieren Sie RHEL 8.7 auf dem Server. Stellen Sie nach Abschluss der Installation sicher, dass Sie den angegebenen RHEL 8.7-Kernel ausführen. Siehe link:https://mysupport.netapp.com/matrix/["NetApp Interoperabilitätsmatrix"^] Erhalten Sie auf der aktuellen Liste der unterstützten Versionen.
+. Installieren Sie RHEL 8.7 auf dem Server.
 . Stellen Sie nach Abschluss der Installation sicher, dass Sie den angegebenen RHEL 8.7-Kernel ausführen. Siehe link:https://mysupport.netapp.com/matrix/["NetApp Interoperabilitätsmatrix"^] Erhalten Sie auf der aktuellen Liste der unterstützten Versionen.
 +
 Beispiel:
@@ -215,7 +215,7 @@ options lpfc lpfc_sg_seg_cnt=256
 256
 ----
 +
-Jetzt sollte der Broadcom FC-NVMe-Host bis zu 1 MB I/O-Anfragen an den ONTAP Namespace-Geräten senden können.
+Der Broadcom FC-NVMe-Host sollte nun bis zu 1 MB I/O-Anfragen an den ONTAP Namespace-Geräten senden können.
 
 
 
@@ -469,7 +469,7 @@ Bevor Sie mit der Fehlerbehebung bei NVMe/FC-Fehlern beginnen, stellen Sie siche
 
 
 
-=== LPFC Verbose Logging
+=== LPFC ausführliche Protokollierung
 
 .Schritte
 . Sie können die einstellen `lpfc_log_verbose` Treibereinstellung auf einen der folgenden Werte, um NVMe/FC-Ereignisse zu protokollieren:
@@ -499,7 +499,7 @@ options lpfc lpfc_log_verbose=0xf00083
 
 
 
-=== Qla2xxx Verbose Logging
+=== Qla2xxx ausführliche Protokollierung
 
 Es gibt keinen ähnlichen spezifischen qla2xxx Logging für NVMe/FC wie für lpfc Treiber. Daher können Sie den allgemeinen Qla2xxx-Protokollierungslevel mit den folgenden Schritten einstellen:
 
