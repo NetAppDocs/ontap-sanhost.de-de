@@ -26,7 +26,7 @@ summary: Konfigurieren von NVMe-of Host für RHEL 8.7 mit ONTAP
 NVMe over Fabrics oder NVMe-of (einschließlich NVMe/FC und andere Transportstoffe) werden mit RHEL 8.7 mit ANA (Asymmetric Namespace Access) unterstützt. ANA ist das ALUA-Äquivalent in der NVMe-of Umgebung und ist derzeit mit NVMe Multipath im Kernel implementiert. Dieses Thema enthält Details zur Unterstützung von NVMe-of mit in-Kernel NVMe Multipath unter Verwendung von ANA auf RHEL 8.7 und ONTAP als Ziel.
 
 
-NOTE: Sie können die in diesem Thema angegebenen Konfigurationseinstellungen verwenden, um Cloud-Clients zu konfigurieren, mit denen eine Verbindung hergestellt wird link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^] Und link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["Amazon FSX für ONTAP"^].
+NOTE: Sie können die in diesem Dokument angegebenen Konfigurationseinstellungen verwenden, um die mit verbundenen Cloud-Clients zu konfigurieren link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^] Und link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["Amazon FSX für ONTAP"^].
 
 
 
@@ -526,7 +526,7 @@ options qla2xxx ql2xnvmeenable=1 ql2xextended_error_logging=0x1e400000
 | NetApp Bug ID | Titel | Beschreibung | Bugzilla-ID 
 
 
-| 1479047 | RHEL 8.x NVMe-of Hosts erstellen duplizierte persistente Discovery Controller | Bei NVMe-of-Hosts (NVMe over Fabrics) können Sie persistente Discovery Controller (PDCs) erstellen, indem Sie die bereitstellen `-p` Option für die `nvme discover` Befehl. Bei einer bestimmten Initiator-Zielkombination wird die Erstellung eines PDC bei jedem Aufruf des erwartet `nvme discover` Befehl. Seit ONTAP 9.10.1 erstellt Red hat Enterprise Linux (RHEL) 8.x NVMe-of Hosts jedoch bei jedem Aufruf von den doppelte PDCs `nvme discover` Befehl mit dem `-p` Option. Dies führt dazu, dass Ressourcen auf dem Host und dem Ziel verschwendet werden. | 2087000 
+| 1479047 | RHEL 8.7 NVMe-of-Hosts erstellen duplizierte persistente Discovery-Controller | Auf NVMe over Fabrics-Hosts (NVMe-of) können Sie den Befehl „nvme discover -p“ verwenden, um persistente Discovery Controller (PDCs) zu erstellen. Wenn dieser Befehl verwendet wird, sollte pro Initiator-Zielkombination nur ein PDC erstellt werden. Wenn Sie jedoch ONTAP 9.10.1 und Red hat Enterprise Linux (RHEL) 8.7 mit einem NVMe-of-Host ausführen, wird bei jeder Ausführung von NVMe discover -p ein doppelter PDC erstellt. Dies führt zu einer unnötigen Nutzung der Ressourcen auf dem Host und dem Ziel. | 2087000 
 |===
 
 

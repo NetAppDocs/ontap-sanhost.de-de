@@ -38,7 +38,7 @@ Wenn Sie derzeit eine Version von Linux Unified Host Utilities installiert haben
 
 
 
-NOTE: Sie können die in diesem Thema angegebenen Konfigurationseinstellungen verwenden, um Cloud-Clients zu konfigurieren, mit denen eine Verbindung hergestellt wird link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^] Und link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["Amazon FSX für ONTAP"^].
+NOTE: Sie können die in diesem Dokument angegebenen Konfigurationseinstellungen verwenden, um die mit verbundenen Cloud-Clients zu konfigurieren link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^] Und link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["Amazon FSX für ONTAP"^].
 
 
 
@@ -274,19 +274,6 @@ devices {
 
 Sie können die empfohlenen Einstellungen verwenden, um Kernel-Based Virtual Machine (KVM) ebenfalls zu konfigurieren. Es sind keine Änderungen erforderlich, um KVM zu konfigurieren, da die LUN dem Hypervisor zugeordnet ist.
 
-
-
-== Bekannte Probleme
-
-[cols="10,30,30,10"]
-|===
-| NetApp Bug ID | Titel | Beschreibung | Bugzilla-ID 
-
-
-| 1501048 | Zeitüberschreitungsparameter für die FC-Transportschicht `dev_loss_tmo` Für RemotedSCSI-Zielports wird ein negativer Wert angegeben (-1) |  `dev_loss_tmo` Der Parameter Timeout stellt die Standardanzahl von Sekunden dar, die der FC-Transport isolieren soll, um den Verlust eines Remote-Ports zu verhindern. Wenn dieser Wert überschritten wird, wird das SCSI-Ziel vom Host entfernt. Dieser Parameterwert sollte ein positiver Ganzzahlwert sein. In RHEL 8.7 jedoch `sysfs` Dateisystem gibt einen negativen Wert (-1) für das zurück `dev_loss_tmo` Zeitüberschreitungsparameter für SCSI-Geräte. Nachfolgend das Beispiel der Befehlszeile zur Überprüfung des `dev_loss_tmo` Parameter auf einem arbeitenden Host:
-`# cat /sys/devices/pci*/*/*/host*/rport*/fc_remote_ports/rport*/dev_loss_tmo
-4294967295`. Es gibt keine Behelfslösung für dieses Problem in RHEL 8.7. | link:https://bugzilla.redhat.com/show_bug.cgi?id=2124297["2124297"^] 
-|===
 
 
 == Versionshinweise
