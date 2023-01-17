@@ -22,9 +22,9 @@ summary: Beschreibt die Verwendung von IBM AIX 7.2 und/oder PowerVM VIOS 3.1 mit
 
 == Installieren der AIX/VIOS Host Utilities
 
-Sie müssen das AIX ONTAP Utilities Kit bei der Verwendung von AIX MPIO mit NetApp Storage installieren.
+Sie müssen das AIX Host Utilities Kit bei der Verwendung von AIX MPIO mit NetApp ONTAP Storage installieren.
 
-Sie können die komprimierte Datei mit den Host Utilities Softwarepaketen von der NetApp Support-Website herunterladen. Nachdem Sie die Datei installiert haben, müssen Sie sie dekomprimieren, um die beiden Softwarepakete zu erhalten, die Sie zur Installation der Host Utilities benötigen.
+Sie können die komprimierte Datei mit den Host Utilities Softwarepaketen von der NetApp Support-Website herunterladen. Nachdem Sie die Datei installiert haben, müssen Sie sie dekomprimieren, um die beiden Softwarepakete zu erhalten, die Sie zur Installation der Host-Dienstprogramme benötigen.
 
 NetApp AIX Host Utilities 6.1 ist die neueste Version. Dieser Release behebt das Problem mit Speicherlecks, das in den vorherigen Versionen gemeldet wurde. Weitere Informationen finden Sie im Abschnitt mit den Versionshinweisen.
 
@@ -55,7 +55,7 @@ Das folgende Verzeichnis wird beim Dekomprimieren der Datei erstellt: `ntap_aix_
 
 
 
-== SAN Toolkit
+== SAN-Toolkit
 
 Das Toolkit wird automatisch installiert, wenn Sie das NetApp Host Utilities-Paket installieren. Dieses Kit enthält die `sanlun` Dienstprogramm: Unterstützt Sie beim Management von LUNs und HBAs. Der `sanlun` Befehl gibt Informationen über die LUNs zurück, die Ihrem Host zugeordnet sind, Multipathing und Informationen zurück, die zum Erstellen von Initiatorgruppen erforderlich sind.
 
@@ -77,7 +77,7 @@ data_vserver      /vol/vol4/lun4    hdisk14     fcs0       FCP       20g    C
 ----
 
 
-== SAN wird gebootet
+== SAN Booting
 
 .Was Sie benötigen
 Wenn Sie sich für das Booten über SAN entscheiden, muss es von Ihrer Konfiguration unterstützt werden. Sie können das verwenden link:https://mysupport.netapp.com/matrix/imt.jsp?components=71102;&solution=1&isHWU&src=IMT["NetApp Interoperabilitäts-Matrix-Tool"^] Um zu überprüfen, ob Ihr Betriebssystem, HBA, die HBA-Firmware und das HBA-Boot-BIOS sowie die ONTAP-Version unterstützt werden.
@@ -192,7 +192,7 @@ Im Folgenden finden Sie einige empfohlene Parametereinstellungen für NetApp ONT
 | Reserve_Richtlinie | MPIO / Non-MPIO | Keine_Reserve | Festgelegt nach Host Utilities 
 
 
-| Re_Timeout (Festplatte) | MPIO / Non-MPIO | 30 Sekunden | Verwendet BS-Standardwerte 
+| rw_Timeout (Festplatte) | MPIO / Non-MPIO | 30 Sekunden | Verwendet BS-Standardwerte 
 
 
 | Dyntrk | MPIO / Non-MPIO | Ja. | Verwendet BS-Standardwerte 
