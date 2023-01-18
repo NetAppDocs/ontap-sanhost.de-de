@@ -2,7 +2,7 @@
 :allow-uri-read: 
 
 
-. Sie können die Einstellung des Treibers lpfc_log_verbose auf einen der folgenden Werte setzen, um NVMe/FC-Ereignisse zu protokollieren.
+. Stellen Sie die ein `lpfc_log_verbose` Treibereinstellung auf einen der folgenden Werte, um NVMe/FC-Ereignisse zu protokollieren.
 +
 [listing]
 ----
@@ -11,8 +11,8 @@
 #define LOG_NVME_ABTS 0x00400000 /* NVME ABTS events. */
 #define LOG_NVME_IOERR 0x00800000 /* NVME IO Error events. */
 ----
-. Nachdem Sie einen dieser Werte festgelegt haben, führen Sie aus `dracut-f` Und starten Sie den Host neu.
-. Überprüfen Sie nach dem Neubooten die Einstellungen.
+. Führen Sie nach dem Festlegen der Werte den aus `dracut-f` Führen Sie einen Befehl aus und starten Sie den Host neu.
+. Überprüfen Sie die Einstellungen.
 +
 [listing]
 ----

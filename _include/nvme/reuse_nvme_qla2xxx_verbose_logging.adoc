@@ -1,0 +1,19 @@
+= 
+:allow-uri-read: 
+
+
+Es gibt keine ähnliche qla2xxx Protokollierung für NVMe/FC wie für die `lpfc` Treiber. Daher können Sie den allgemeinen Qla2xxx-Protokollierungslevel mit den folgenden Schritten einstellen:
+
+.Schritte
+. Fügen Sie den hinzu `ql2xextended_error_logging=0x1e400000` Wert zum entsprechenden `modprobe qla2xxx conf` Datei:
+. Erstellen Sie den neu `initramfs` Durch Ausführen `dracut -f` Befehl und starten Sie dann den Host neu.
+. Vergewissern Sie sich nach dem Neubooten, dass die ausführliche Protokollierung wie folgt angewendet wurde:
++
+[listing]
+----
+# cat /etc/modprobe.d/qla2xxx.conf
+options qla2xxx ql2xnvmeenable=1 ql2xextended_error_logging=0x1e400000
+# cat /sys/module/qla2xxx/parameters/ql2xextended_error_logging
+507510784
+----
+

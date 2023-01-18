@@ -232,7 +232,7 @@ Device   Vserver  Namespace Path             NSID   UUID   Size
 
 == Aktivieren Sie 1 MB I/O-Größe für Broadcom NVMe/FC
 
-Der Parameter lpfc_sg_seg_cnt muss auf 256 gesetzt werden, damit der Host 1-MB-I/O ausgeben kann
+Der `lpfc_sg_seg_cnt` Der Parameter muss auf 256 gesetzt werden, damit der Host 1-MB-I/O-Größe ausgibt
 
 .Schritte
 . Stellen Sie die ein `lpfc_sg_seg_cnt` Parameter bis 256.
