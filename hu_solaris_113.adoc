@@ -70,7 +70,7 @@ Der `host_config` Befehl führt Folgendes aus:
 
 
 
-== SAN Toolkit
+== SAN-Toolkit
 
 Das Toolkit wird automatisch installiert, wenn Sie das NetApp Host Utilities-Paket installieren. Dieses Kit enthält die `sanlun` Dienstprogramm: Unterstützt Sie beim Management von LUNs und HBAs. Der `sanlun` Befehl gibt Informationen über die LUNs zurück, die Ihrem Host zugeordnet sind, Multipathing und Informationen zurück, die zum Erstellen von Initiatorgruppen erforderlich sind.
 
@@ -89,7 +89,7 @@ data_vserver       /vol/vol2/lun2  /dev/rdsk/c0t600A098038314362705D51465A626475
 ----
 
 
-== SAN wird gebootet
+== SAN Booting
 
 .Was Sie benötigen
 Wenn Sie sich für das Booten über SAN entscheiden, muss es von Ihrer Konfiguration unterstützt werden. Sie können das verwenden link:https://mysupport.netapp.com/matrix/imt.jsp?components=71102;&solution=1&isHWU&src=IMT["NetApp Interoperabilitäts-Matrix-Tool"^] Um zu überprüfen, ob Ihr Betriebssystem, HBA, die HBA-Firmware und das HBA-Boot-BIOS sowie die ONTAP-Version unterstützt werden.
@@ -182,7 +182,7 @@ Standardmäßig schlägt das Betriebssystem Solaris nach 20 Sekunden I/OS fehl, 
 
 
 
-== Oracle Solaris Virtualisierung
+== Oracle solaris Virtualisierung
 
 * Die Virtualisierungsoptionen von Solaris umfassen logische Solaris Domains (auch LDOMs oder Oracle VM Server für SPARC), Solaris Dynamic Domains, Solaris Zones und Solaris Container. Diese Technologien werden unter dem Begriff „Oracle Virtual Machines“ allgemein umbenannt, obwohl sie auf sehr verschiedenen Architekturen basieren.
 * In einigen Fällen können mehrere Optionen zusammen verwendet werden, z. B. ein Solaris Container in einer bestimmten logischen Solaris-Domäne.
@@ -210,6 +210,41 @@ Fahren Sie erst fort, wenn *ashift* einen Wert von 12 anzeigt.
 
 
 NOTE: Patches sind verfügbar für Oracle Bug 15824910 auf verschiedenen Versionen von Solaris. Wenden Sie sich an Oracle, wenn Sie Hilfe beim ermitteln des besten Kernel-Patches benötigen.
+
+
+
+== Empfohlene Einstellungen für SnapMirror Business Continuity
+
+Um sicherzustellen, dass die Solaris Client-Anwendungen bei einer ungeplanten Failover-Umschaltung in einer SnapMirror Business Continuity (SM-BC)-Umgebung unterbrechungsfrei laufen, muss auf dem Solaris 11.3 Host die folgende Einstellung konfiguriert werden. Diese Einstellung überschreibt das Failover-Modul – `f_tpgs` Um zu verhindern, dass der Codepfad, der den Widerspruch erkennt, ausgeführt wird.
+
+
+NOTE: Ab ONTAP 9.9 werden SM-BC-Einstellungskonfigurationen auf Solaris 11.3 Host unterstützt.
+
+Befolgen Sie die Anweisungen, um den Überschreibungsparameter zu konfigurieren:
+
+.Schritte
+. Erstellen Sie die Konfigurationsdatei `/etc/driver/drv/scsi_vhci.conf` Bei einem Eintrag, der dem folgenden ähnlich ist, für den NetApp-Speichertyp, der mit dem Host verbunden ist:
++
+[listing]
+----
+scsi-vhci-failover-override =
+"NETAPP  LUN","f_tpgs"
+----
+. Verwenden Sie die `devprop` Und `mdb` Befehle, mit denen überprüft werden soll, ob der Override-Parameter erfolgreich angewendet wurde:
++
+`root@host-A:~# devprop -v -n /scsi_vhci scsi-vhci-failover-override      scsi-vhci-failover-override=NETAPP  LUN + f_tpgs
+root@host-A:~# echo "*scsi_vhci_dip::print -x struct dev_info devi_child | ::list struct dev_info devi_sibling| ::print struct dev_info devi_mdi_client| ::print mdi_client_t ct_vprivate| ::print struct scsi_vhci_lun svl_lun_wwn svl_fops_name"| mdb -k`
+
++
+[listing]
+----
+svl_lun_wwn = 0xa002a1c8960 "600a098038313477543f524539787938"
+svl_fops_name = 0xa00298d69e0 "conf f_tpgs"
+----
+
+
+
+NOTE: `conf` Wird hinzugefügt zu `svl_fops_name` Wenn `scsi-vhci-failover-override` Wurde angewendet. Weitere Informationen und empfohlene Änderungen an den Standardeinstellungen finden Sie im NetApp KB-Artikel https://kb.netapp.com/Advice_and_Troubleshooting/Data_Protection_and_Security/SnapMirror/Solaris_Host_support_recommended_settings_in_SnapMirror_Business_Continuity_(SM-BC)_configuration["Solaris Host Support Empfohlene Einstellungen in SnapMirror Business Continuity (SM-BC)-Konfiguration"^].
 
 
 
