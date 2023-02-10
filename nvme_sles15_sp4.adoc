@@ -495,10 +495,13 @@ NSID  UUID                                   Size
 
 == Fehlerbehebung
 
+Bevor Sie mit der Fehlerbehebung bei NVMe/FC-Fehlern beginnen, stellen Sie sicher, dass Sie eine Konfiguration ausführen, die den IMT-Spezifikationen (Interoperabilitäts-Matrix-Tool) entspricht, und fahren Sie dann mit den nächsten Schritten fort, um Probleme auf der Host-Seite zu beheben.
 
 
-=== LPFC Verbose Logging
 
+=== Lpfc ausführliche Protokollierung
+
+.Schritte
 . Stellen Sie die ein `lpfc_log_verbose` Treibereinstellung auf einen der folgenden Werte, um NVMe/FC-Ereignisse zu protokollieren.
 +
 [listing]
@@ -525,8 +528,9 @@ options lpfc lpfc_log_verbose=0xf00083
 
 === Qla2xxx ausführliche Protokollierung
 
-Es gibt keinen ähnlichen spezifischen qla2xxx Logging für NVMe/FC wie für lpfc Treiber. Daher können Sie den allgemeinen Qla2xxx-Protokollierungslevel mit den folgenden Schritten einstellen:
+Es gibt keine ähnliche qla2xxx Protokollierung für NVMe/FC wie für die `lpfc` Treiber. Daher können Sie den allgemeinen Qla2xxx-Protokollierungslevel mit den folgenden Schritten einstellen:
 
+.Schritte
 . Fügen Sie den hinzu `ql2xextended_error_logging=0x1e400000` Wert zum entsprechenden `modprobe qla2xxx conf` Datei:
 . Erstellen Sie den neu `initramfs` Durch Ausführen `dracut -f` Befehl und starten Sie dann den Host neu.
 . Vergewissern Sie sich nach dem Neubooten, dass die ausführliche Protokollierung wie folgt angewendet wurde:
@@ -544,19 +548,19 @@ options qla2xxx ql2xnvmeenable=1 ql2xextended_error_logging=0x1e400000
 
 === Gängige nvme-cli-Fehler und Behelfslösungen
 
-Die von angezeigten Fehler `nvme-cli` Während der NVMe-Erkennung werden nvme Connect oder nvme-Connect-alle Vorgänge sowie die Problemumgehungen in der folgenden Tabelle aufgeführt:
+Die von angezeigten Fehler `nvme-cli` Während `nvme discover`, `nvme connect`, Oder `nvme connect-all` Die Vorgänge und die Problemumgehungen sind in der folgenden Tabelle aufgeführt:
 
 [cols="20, 20, 50"]
 |===
 | Fehleranzeige von `nvme-cli` | Wahrscheinliche Ursache | Behelfslösung 
 
 
-| `Failed to write to /dev/nvme-fabrics: Invalid argument` | Falsche Syntax | Vergewissern Sie sich, dass Sie die richtige Syntax für die nvme-Befehle verwenden. 
+| `Failed to write to /dev/nvme-fabrics: Invalid argument` | Falsche Syntax | Vergewissern Sie sich, dass Sie die richtige Syntax für das verwenden `nvme discover`, `nvme connect`, und `nvme connect-all` Befehle. 
 
 
-| `Failed to write to /dev/nvme-fabrics: No such file or directory` | Dies kann durch mehrere Probleme ausgelöst werden. Das Übergeben falscher Argumente an die nvme-Befehle ist eine der häufigsten Ursachen.  a| 
-* Stellen Sie sicher, dass Sie die richtigen Argumente (z. B. korrekte WWNN-Zeichenfolge, WWPN-Zeichenfolge und mehr) an die Befehle übergeben haben.
-* Wenn die Argumente richtig sind, aber Sie sehen immer noch diesen Fehler, überprüfen Sie, ob die `/sys/class/scsi_host/host*/nvme_info` Die Ausgabe ist richtig, der NVMe-Initiator wird als angezeigt `Enabled`, Und die NVMe/FC-Ziel-LIFs werden hier unter den Abschnitten für Remote-Ports richtig angezeigt. Beispiel:
+| `Failed to write to /dev/nvme-fabrics: No such file or directory` | Dies kann beispielsweise durch mehrere Probleme ausgelöst werden. Wenn die NVMe Befehle falsch dargestellt werden, ist dies eine der häufigsten Ursachen.  a| 
+* Überprüfen Sie, ob Sie die richtigen Argumente (z. B. richtig WWNN-Zeichenfolge, WWPN-Zeichenfolge und mehr) an die Befehle übergeben haben.
+* Wenn die Argumente richtig sind, aber Sie sehen immer noch diesen Fehler, überprüfen Sie, ob die `/sys/class/scsi_host/host*/nvme_info` Die Befehlsausgabe ist richtig. Der NVMe-Initiator wird als angezeigt `Enabled`, Und die NVMe/FC-Ziel-LIFs werden unter den Abschnitten für Remote-Ports korrekt angezeigt. Beispiel:
 +
 [listing]
 ----
@@ -575,23 +579,31 @@ NVME RPORT WWPN x200900a098c80f09 WWNN x200800a098c80f09 DID x010301 TARGET DISC
 NVME Statistics
 LS: Xmt 0000000000000006 Cmpl 0000000000000006
 FCP: Rd 0000000000000073 Wr 0000000000000005 IO 0000000000000031
-Cmpl 00000000000000a8 Outstanding 0000000000000001`
+Cmpl 00000000000000a8 Outstanding 0000000000000001
 ----
-* Wenn die Ziel-LIFs nicht wie oben im angezeigt werden `nvme_info` Ausgang, prüfen Sie die `/var/log/messages` Und `dmesg` Ausgabe bei verdächtigen NVMe/FC-Fehlern und entsprechende Meldung oder Korrektur.
+* Wenn die Ziel-LIFs nicht wie oben im angezeigt werden `nvme_info` Befehlsausgabe, überprüfen Sie das `/var/log/messages` Und `dmesg` Sie erhalten eine Ausgabe des Befehls für verdächtige NVMe/FC-Ausfälle und entsprechende Berichte oder Korrekturen.
 
 
 
 
-| `No discovery log entries to fetch` | Allgemein gesehen ob das `/etc/nvme/hostnqn` Es wurde keine Zeichenfolge zum entsprechenden Subsystem auf dem NetApp-Array hinzugefügt oder eine falsche hostnqn-Zeichenfolge wurde dem jeweiligen Subsystem hinzugefügt. | Stellen Sie genau sicher `/etc/nvme/hostnqn` String wird dem entsprechenden Subsystem im NetApp Array hinzugefügt (überprüfen Sie über die `vserver nvme subsystem host show` Befehl). 
+| `No discovery log entries to fetch`  a| 
+Im Allgemeinen beobachtet, wenn die `/etc/nvme/hostnqn` Es wurde keine Zeichenfolge in das entsprechende Subsystem auf dem NetApp Array hinzugefügt oder eine falsche Zeichenfolge `hostnqn` Der String wurde dem jeweiligen Subsystem hinzugefügt.
+ a| 
+Überprüfen Sie das genau `/etc/nvme/hostnqn` String wird dem entsprechenden Subsystem im NetApp Array hinzugefügt (überprüfen Sie mithilfe der `vserver nvme subsystem host show` Befehl).
 
 
-| `Failed to write to /dev/nvme-fabrics: Operation already in progress` | Zeigt an, ob bereits Controller-Zuordnungen oder angegebene Operation erstellt wurden oder gerade erstellt wird. Dies könnte im Rahmen der oben installierten Skripts zur automatischen Verbindung geschehen. | Keine. Versuchen Sie bei nvme discover diesen Befehl nach einer bestimmten Zeit auszuführen. Für nvme Connect und Connect-All, Ausführen `nvme list` Befehl zum Überprüfen, ob die Namespace-Geräte bereits erstellt und auf dem Host angezeigt werden. 
+
+| `Failed to write to /dev/nvme-fabrics: Operation already in progress`  a| 
+Beobachtet, wenn bereits Controller-Zuordnungen oder angegebene Operation erstellt oder gerade erstellt werden. Dies könnte im Rahmen der oben installierten Skripts zur automatischen Verbindung geschehen.
+ a| 
+Keine. Versuchen Sie, die auszuführen `nvme discover` Befehl nach einiger Zeit wieder. Für `nvme connect` Und `connect-all`, Ausführen des `nvme list` Befehl zum Überprüfen, ob die Namespace-Geräte bereits erstellt und auf dem Host angezeigt werden.
+
 |===
 
 
 === Wann wenden Sie sich an den technischen Support
 
-Wenn Sie immer noch Probleme haben, sammeln Sie die folgenden Dateien und Befehlsausgaben, und wenden Sie sich an den technischen Support, um eine weitere Bewertung zu erhalten:
+Wenn Sie immer noch vor Problemen stehen, sammeln Sie die folgenden Dateien und Befehlsausgaben, und wenden Sie sich an den technischen Support, um eine weitere Bewertung zu erhalten:
 
 [listing]
 ----

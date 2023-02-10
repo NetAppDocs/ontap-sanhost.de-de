@@ -215,7 +215,7 @@ NOTE: Patches sind verfügbar für Oracle Bug 15824910 auf verschiedenen Version
 
 == Empfohlene Einstellungen für SnapMirror Business Continuity
 
-Um sicherzustellen, dass die Solaris Client-Anwendungen bei einer ungeplanten Failover-Umschaltung in einer SnapMirror Business Continuity (SM-BC)-Umgebung unterbrechungsfrei laufen, muss auf dem Solaris 11.4 Host die folgende Einstellung konfiguriert werden. Diese Einstellung überschreibt das Failover-Modul – `f_tpgs` Um zu verhindern, dass der Codepfad, der den Widerspruch erkennt, ausgeführt wird.
+Um sicherzustellen, dass die Solaris Client-Applikationen bei einer ungeplanten Failover-Umschaltung in einer SnapMirror Business Continuity (SM-BC)-Umgebung unterbrechungsfrei laufen, müssen Sie die folgende Einstellung auf dem Solaris 11.4-Host konfigurieren. Diese Einstellung überschreibt das Failover-Modul `f_tpgs` Um die Ausführung des Codepfads zu verhindern, der den Widerspruch erkennt.
 
 
 NOTE: Ab ONTAP 9.9 werden die SM-BC-Einstellungskonfigurationen auf dem Solaris 11.4 Host unterstützt.
@@ -229,7 +229,7 @@ Befolgen Sie die Anweisungen, um den Überschreibungsparameter zu konfigurieren:
 scsi-vhci-failover-override =
 "NETAPP  LUN","f_tpgs"
 ----
-. Nutzung `devprop` Und `mdb` Befehle, mit denen überprüft werden soll, ob der Override-Parameter erfolgreich angewendet wurde:
+. Verwenden Sie die `devprop` Und `mdb` Befehle, um zu überprüfen, ob der Override-Parameter erfolgreich angewendet wurde:
 +
 `root@host-A:~# devprop -v -n /scsi_vhci scsi-vhci-failover-override      scsi-vhci-failover-override=NETAPP  LUN + f_tpgs
 root@host-A:~# echo "*scsi_vhci_dip::print -x struct dev_info devi_child | ::list struct dev_info devi_sibling| ::print struct dev_info devi_mdi_client| ::print mdi_client_t ct_vprivate| ::print struct scsi_vhci_lun svl_lun_wwn svl_fops_name"| mdb -k`
@@ -243,7 +243,7 @@ svl_fops_name = 0xa00298d69e0 "conf f_tpgs"
 
 
 
-NOTE: `conf` Wird hinzugefügt zu `svl_fops_name` Wenn `scsi-vhci-failover-override` Wurde angewendet. Weitere Informationen und empfohlene Änderungen an den Standardeinstellungen finden Sie im NetApp KB-Artikel https://kb.netapp.com/Advice_and_Troubleshooting/Data_Protection_and_Security/SnapMirror/Solaris_Host_support_recommended_settings_in_SnapMirror_Business_Continuity_(SM-BC)_configuration["Solaris Host Support Empfohlene Einstellungen in SnapMirror Business Continuity (SM-BC)-Konfiguration"^].
+NOTE: Nachher `scsi-vhci-failover-override` Wurde angewendet, `conf` Wird hinzugefügt zu `svl_fops_name` . Weitere Informationen und empfohlene Änderungen an den Standardeinstellungen finden Sie im NetApp KB-Artikel https://kb.netapp.com/Advice_and_Troubleshooting/Data_Protection_and_Security/SnapMirror/Solaris_Host_support_recommended_settings_in_SnapMirror_Business_Continuity_(SM-BC)_configuration["Solaris Host Support Empfohlene Einstellungen in SnapMirror Business Continuity (SM-BC)-Konfiguration"^].
 
 
 

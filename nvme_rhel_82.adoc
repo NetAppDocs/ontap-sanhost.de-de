@@ -371,6 +371,7 @@ Device   Vserver  Namespace Path             NSID   UUID   Size
 
 == LPFC Verbose Logging
 
+.Schritte
 . Stellen Sie die ein `lpfc_log_verbose` Treibereinstellung auf einen der folgenden Werte, um NVMe/FC-Ereignisse zu protokollieren.
 +
 [listing]
