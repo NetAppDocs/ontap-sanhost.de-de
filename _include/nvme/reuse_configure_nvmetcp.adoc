@@ -1,0 +1,11 @@
+= 
+:allow-uri-read: 
+
+
+Im Gegensatz zu NVMe/FC verfügt NVMe/TCP über keine automatische Verbindungsfunktion. Es gibt zwei wesentliche Einschränkungen für den Linux NVMe/TCP-Host:
+
+* *Keine automatische Verbindung nach der Wiederherstellung von Pfaden* - NVMe/TCP kann nicht automatisch eine Verbindung zu einem Pfad herstellen, der über die Standardeinstellung hinaus wiederhergestellt wird `ctrl-loss-tmo` Timer von 10 Minuten nach einem Pfad nach unten.
+* *Keine automatische Verbindung beim Booten des Hosts* - NVMe/TCP kann beim Booten des Hosts nicht automatisch verbunden werden.
+
+
+Sie sollten den Wiederholungszeitraum für Failover-Ereignisse auf mindestens 30 Minuten einstellen, um Zeitüberschreitungen zu vermeiden. Sie können den Wiederholungszeitraum erhöhen, indem Sie den Wert des erhöhen `ctrl_loss_tmo` Timer mit folgendem Verfahren:
