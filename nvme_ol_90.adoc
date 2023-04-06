@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
-permalink: nvme_ol_86.html 
+permalink: nvme_ol_90.html 
 keywords:  
 summary:  
 ---
-= NVMe/FC-Host-Konfiguration für Oracle Linux 8.6 mit ONTAP
+= NVMe/FC-Host-Konfiguration für Oracle Linux 9.0 mit ONTAP
 :toc: macro
 :hardbreaks:
 :toclevels: 1
@@ -18,103 +18,132 @@ summary:
 :toc-position: content
 
 
+[role="lead"]
+NVMe over Fabrics (NVMe-of), einschließlich NVMe/FC- und anderer Übertragungen, wird mit Oracle Linux 9.0 mit Asymmetric Namespace Access (ANA) unterstützt. In NVMe-of Umgebungen entspricht ANA ALUA Multipathing in iSCSI- und FC-Umgebungen und wird mit in-Kernel NVMe Multipath implementiert.
 
-
-== Instandhaltung
-
-NVMe over Fabrics oder NVMe-of (einschließlich NVMe/FC und NVMe/TCP) wird mit Oracle Linux 8.6 mit Asymmetric Namespace Access (ANA) unterstützt, der für die verbleibenden Storage-Failover (SFOs) auf dem ONTAP-Array erforderlich ist. ANA ist das ALUA-Äquivalent (Asymmetric Logical Unit Access) in der NVMe-of-Umgebung und wird derzeit mit NVMe Multipath im Kernel implementiert. Dieses Dokument enthält Details zur Aktivierung von NVMe-of mit in-Kernel-NVMe-Multipath unter Verwendung von ANA auf Oracle Linux 8.6 und ONTAP als Ziel.
-
-
-NOTE: Sie können die in diesem Dokument angegebenen Konfigurationseinstellungen verwenden, um die mit verbundenen Cloud-Clients zu konfigurieren link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^] Und link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["Amazon FSX für ONTAP"^].
+Weitere Informationen zu unterstützten Konfigurationen finden Sie im link:https://mysupport.netapp.com/matrix/["NetApp Interoperabilitäts-Matrix-Tool"^].
 
 
 
 == Funktionen
 
-* Oracle Linux 8.6 hat NVMe Multipath im Kernel standardmäßig für NVMe Namepsaces aktiviert.
-* Mit Oracle Linux 8.6 `nvme-fc auto-connect` Skripte sind im nativen enthalten `nvme-cli` Paket. Sie können sich auf diese nativen automatischen Verbindungsskripte verlassen, anstatt externe, vom Anbieter bereitgestellte automatische Verbindungsskripte zu installieren.
-* Mit Oracle Linux 8.6 ist dies ein nativer Bestandteil `udev` Regel wird als Teil des bereitgestellt `nvme-cli` Paket, das Lastverteilung für NVMe Multipath nach dem Round Robin-Verfahren ermöglicht Daher müssen Sie diese Regel nicht mehr manuell erstellen.
-* Mit Oracle Linux 8.6 kann NVMe- und SCSI-Datenverkehr auf demselben gemeinsamen Host ausgeführt werden. Es wird sogar die häufig implementierte Host-Konfiguration sein. Daher können Sie dm-Multipath wie gewohnt bei SCSI-LUNs konfigurieren, was zu mpath-Geräten führt, während NVMe Multipath zur Konfiguration von NVMe-of Multipath-Geräten verwendet werden kann (z. B. `/dev/nvmeXnY`) Auf dem Host.
-* Für Oracle Linux 8.6 gibt es das NetApp Plug-in nativ `nvme-cli` Das Paket kann ONTAP-Details sowie ONTAP-Namespaces anzeigen.
+* Oracle Linux 9.0 hat standardmäßig NVMe Multipath im Kernel für NVMe-Namespaces aktiviert, sodass keine expliziten Einstellungen erforderlich sind.
 
 
 
 
 == Bekannte Einschränkungen
 
-Keine.
+Es gibt keine bekannten Einschränkungen.
 
 
 
-== Konfigurationsanforderungen
+== Validieren der Softwareversionen
 
-Siehe link:https://mysupport.netapp.com/matrix/["NetApp Interoperabilitätsmatrix"^] Finden Sie genaue Details zu den unterstützten Konfigurationen.
-
-
-
-== Aktivieren Sie NVMe/FC mit Oracle Linux 8.6
+Sie können die mindestens unterstützten OL 9.0-Softwareversionen mithilfe des folgenden Verfahrens validieren.
 
 .Schritte
-. Installieren Sie Oracle Linux 8.6 GA auf dem Server. Überprüfen Sie nach Abschluss der Installation, ob Sie den angegebenen Oracle Linux 8.6 GA-Kernel ausführen. Siehe link:https://mysupport.netapp.com/matrix/["NetApp Interoperabilitätsmatrix"^] Erhalten Sie auf der aktuellen Liste der unterstützten Versionen.
+. Installieren Sie Oracle Linux 9.0 GA auf dem Server. Überprüfen Sie nach Abschluss der Installation, ob Sie den angegebenen Oracle Linux 9.0 GA-Kernel ausführen.
 +
 [listing]
 ----
 # uname -r
-5.4.17-2136.307.3.1.el8uek.x86_64
+----
++
+*Beispielausgabe:*
+
++
+[listing]
+----
+5.15.0-0.30.19.el9uek.x86_64
 ----
 . Installieren Sie den `nvme-cli` Paket:
 +
 [listing]
 ----
 # rpm -qa|grep nvme-cli
-nvme-cli-1.14-3.el8.x86_64
 ----
-. Überprüfen Sie auf dem Oracle Linux 8.6-Host den `hostnqn` Zeichenfolge bei `/etc/nvme/hostnqn` Und stellen Sie sicher, dass es mit der hostnqn-Zeichenfolge für das entsprechende Subsystem auf dem ONTAP-Array übereinstimmt.
++
+*Beispielausgabe:*
+
++
+[listing]
+----
+nvme-cli-1.16-3.el9.x86_64
+----
+. Überprüfen Sie auf dem Oracle Linux 9.0-Host die `hostnqn` Zeichenfolge bei `/etc/nvme/hostnqn`:
 +
 [listing]
 ----
 # cat /etc/nvme/hostnqn
-nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0032-3310-8033-b8c04f4c5132
-::> vserver nvme subsystem host show -vserver vs_ol_nvme
-Vserver     Subsystem          Host NQN
------------ --------------- ----------------------------------------------------------
-vs_ol_nvme  nvme_ss_ol_1    nqn.2014-08.org.nvmexpress:uuid:9ed5b327-b9fc-4cf5-97b3-1b5d986345d1
 ----
 +
+*Beispielausgabe:*
 
-NOTE: Wenn der `hostnqn` Zeichenfolgen stimmen nicht überein. Verwenden Sie die `vserver modify` Befehl zum Aktualisieren des `hostnqn` Zeichenfolge auf dem entsprechenden ONTAP-Array-Subsystem, die mit dem übereinstimmt `hostnqn` Zeichenfolge von `/etc/nvme/hostnqn` Auf dem Host:
-
-. Starten Sie den Host neu.
 +
-[NOTE]
-====
-Wenn Sie sowohl NVMe- als auch SCSI-Datenverkehr auf demselben vorhandenen Oracle Linux 8.6 Host ausführen möchten, empfiehlt NetApp die Verwendung des NVMe Multipath im Kernel für ONTAP-Namespaces und des dm-Multipath für ONTAP LUNs. Dies bedeutet auch, dass die ONTAP-Namespaces in dm-multipath auf die schwarze Liste gesetzt werden sollten, um zu verhindern, dass dm-multipath diese Namespace-Geräte beansprucht. Dazu müssen Sie die hinzufügen `enable_foreign` Einstellung auf `/etc/multipath.conf` Datei:
-
 [listing]
 ----
-#cat /etc/multipath.conf
-defaults {
-    enable_foreign  NONE
-}
+nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0032-3310-8033-b8c04f4c5132
 ----
-Starten Sie den multipathd-Daemon neu, indem Sie den ausführen `systemctl restart multipathd` Befehl, um die neue Einstellung wirksam zu machen.
+. Überprüfen Sie das `hostnqn` Die Zeichenfolge entspricht der `hostnqn` String für das entsprechende Subsystem auf dem ONTAP-Array:
++
+[listing]
+----
+::> vserver nvme subsystem host show -vserver vs_ol_nvme
+----
++
+*Beispielausgabe:*
 
++
+[listing]
+----
+Vserver     Subsystem          Host NQN
+----------- --------------- ----------------------------------------------------------
+vs_ol_nvme  nvme_ss_ol_1    nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0032-3310-8033-b8c04f4c5132
+----
++
+
+NOTE: Wenn der `hostnqn` Zeichenfolgen stimmen nicht überein. Verwenden Sie die `vserver modify` Befehl zum Aktualisieren des `hostnqn` Zeichenfolge auf dem entsprechenden ONTAP-Array-Subsystem, die dem entspricht `hostnqn` Zeichenfolge von `/etc/nvme/hostnqn` Auf dem Host.
+
+
+
+
+
+== Konfiguration von NVMe/FC
+
+SIE können NVME/FC für Broadcom/Emulex-Adapter oder Marvell/Qlogic-Adapter konfigurieren.
+
+[role="tabbed-block"]
 ====
-
-
-
-
-== Konfigurieren Sie den Broadcom FC-Adapter für NVMe/FC
-
+.Broadcom/Emulex
+--
 .Schritte
-. Vergewissern Sie sich, dass Sie den unterstützten Adapter verwenden. Die aktuelle Liste der unterstützten Adapter finden Sie im link:https://mysupport.netapp.com/matrix/["NetApp Interoperabilitätsmatrix"^]:
+. Stellen Sie sicher, dass Sie das unterstützte Adaptermodell verwenden.
 +
 [listing]
 ----
 # cat /sys/class/scsi_host/host*/modelname
+----
++
+*Beispielausgabe:*
+
++
+[listing]
+----
 LPe32002-M2
 LPe32002-M2
+----
++
+[listing]
+----
 # cat /sys/class/scsi_host/host*/modeldesc
+----
++
+*Beispielausgabe:*
+
++
+[listing]
+----
 Emulex LightPulse LPe32002-M2 2-Port 32Gb Fibre Channel Adapter
 Emulex LightPulse LPe32002-M2 2-Port 32Gb Fibre Channel Adapter
 ----
@@ -172,6 +201,129 @@ FCP CMPL: xb 00001f50 Err 0000d9f8
 ----
 
 
+--
+.Marvell/QLogic FC Adapter für NVMe/FC
+--
+.Schritte
+. Stellen Sie sicher, dass Sie den unterstützten Adaptertreiber und die Firmware-Versionen ausführen. Der native Inbox qla2xxx Treiber im OL 9.0 GA Kernel enthält die neuesten Upstream-Fixes, die für die ONTAP-Unterstützung notwendig sind:
++
+[listing]
+----
+# cat /sys/class/fc_host/host*/symbolic_name
+QLE2742 FW:v9.08.02 DVR:v10.02.00.106-k
+QLE2742 FW:v9.08.02 DVR:v10.02.00.106-k
+----
+. Verifizieren Sie das `ql2xnvmeenable` Ist festgelegt, wodurch der Marvell-Adapter als NVMe/FC-Initiator verwendet werden kann:
++
+[listing]
+----
+# cat /sys/module/qla2xxx/parameters/ql2xnvmeenable
+1
+----
+
+
+--
+====
+
+
+== Konfiguration von NVMe/TCP
+
+NVMe/TCP verfügt nicht über eine automatische Verbindungsfunktion. Wenn also ein Pfad ausfällt und nicht innerhalb der standardmäßigen Time-Out-Frist von 10 Minuten wieder hergestellt wird, kann NVMe/TCP die Verbindung nicht automatisch wiederherstellen. Um ein Timeout zu verhindern, sollten Sie den Wiederholungszeitraum für Failover-Ereignisse auf mindestens 30 Minuten einstellen.
+
+.Schritte
+. Vergewissern Sie sich, dass der Initiator-Port die Daten der Erkennungsprotokollseite über die unterstützten NVMe/TCP-LIFs abrufen kann:
++
+[listing]
+----
+nvme discover -t tcp -w host-traddr -a traddr
+----
++
+*Beispielausgabe:*
+
++
+[listing]
+----
+#  nvme discover -t tcp -w 192.168.6.13 -a 192.168.6.15
+Discovery Log Number of Records 6, Generation counter 8
+=====Discovery Log Entry 0======
+trtype: tcp
+adrfam: ipv4
+subtype: unrecognized
+treq: not specified
+portid: 0
+trsvcid: 8009
+subnqn: nqn.1992-08.com.netapp:sn.1c6ac66338e711eda41dd039ea3ad566:discovery
+traddr: 192.168.6.17
+sectype: none
+=====Discovery Log Entry 1======
+trtype: tcp
+adrfam: ipv4
+subtype: unrecognized
+treq: not specified
+portid: 1
+trsvcid: 8009
+subnqn: nqn.1992-08.com.netapp:sn.1c6ac66338e711eda41dd039ea3ad566:discovery
+traddr: 192.168.5.17
+sectype: none
+=====Discovery Log Entry 2======
+trtype: tcp
+adrfam: ipv4
+subtype: unrecognized
+treq: not specified
+portid: 2
+trsvcid: 8009
+subnqn: nqn.1992-08.com.netapp:sn.1c6ac66338e711eda41dd039ea3ad566:discovery
+traddr: 192.168.6.15
+sectype: none
+=====Discovery Log Entry 3======
+trtype: tcp
+adrfam: ipv4
+subtype: nvme subsystem
+treq: not specified
+portid: 0
+trsvcid: 4420
+subnqn: nqn.1992-08.com.netapp:sn.1c6ac66338e711eda41dd039ea3ad566:subsystem.host_95
+traddr: 192.168.6.17
+sectype: none
+..........
+
+----
+. Vergewissern Sie sich, dass die anderen LIF-Kombinationen des NVMe/TCP-Initiators erfolgreich beim Abrufen von Protokollseitendaten der Bestandsaufnahme abgerufen werden können.
++
+[listing]
+----
+nvme discover -t tcp -w host-traddr -a traddr
+----
++
+*Beispielausgabe:*
+
++
+[listing]
+----
+# nvme discover -t tcp -w 192.168.5.13 -a 192.168.5.15
+# nvme discover -t tcp -w 192.168.5.13 -a 192.168.5.17
+# nvme discover -t tcp -w 192.168.6.13 -a 192.168.6.15
+# nvme discover -t tcp -w 192.168.6.13 -a 192.168.6.17
+----
+. Führen Sie die aus `nvme connect-all` Sie können alle unterstützten NVMe/TCP Initiator-Ziel-LIFs über die Nodes hinweg befehligen und die Zeitüberschreitung für den Controller für mindestens 30 Minuten oder 1800 Sekunden festlegen:
++
+[listing]
+----
+nvme connect-all -t tcp -w host-traddr -a traddr -l 1800
+----
++
+*Beispielausgabe:*
+
++
+[listing]
+----
+# nvme connect-all -t tcp -w 192.168.5.13 -a 192.168.5.15 -l 1800
+# nvme connect-all -t tcp -w 192.168.5.13 -a 192.168.5.17 -l 1800
+# nvme connect-all -t tcp -w 192.168.6.13 -a 192.168.6.15 -l 1800
+# nvme connect-all -t tcp -w 192.168.6.13 -a 192.168.6.17 -l 1800
+----
+
+
 
 
 === Aktivieren Sie 1-MB-I/O-Größe
@@ -198,97 +350,10 @@ options lpfc lpfc_sg_seg_cnt=256
 
 
 
-== Konfigurieren Sie den Marvell/QLogic FC Adapter für NVMe/FC
+== NVMe-of validieren
 
 .Schritte
-. Stellen Sie sicher, dass Sie den unterstützten Adaptertreiber und die Firmware-Versionen ausführen. Der native Inbox qla2xxx Treiber im OL 8.6 GA Kernel enthält die neuesten Upstream-Fixes, die für die ONTAP-Unterstützung notwendig sind:
-+
-[listing]
-----
-# cat /sys/class/fc_host/host*/symbolic_name
-QLE2742 FW:v9.08.02 DVR:v10.02.00.106-k
-QLE2742 FW:v9.08.02 DVR:v10.02.00.106-k
-----
-. Verifizieren Sie das `ql2xnvmeenable` Ist festgelegt, wodurch der Marvell-Adapter als NVMe/FC-Initiator verwendet werden kann:
-+
-[listing]
-----
-# cat /sys/module/qla2xxx/parameters/ql2xnvmeenable
-1
-----
-
-
-
-
-== Konfiguration von NVMe/TCP
-
-NVMe/TCP verfügt nicht über eine automatische Verbindungsfunktion. Wenn also ein Pfad ausfällt und nicht innerhalb der standardmäßigen Time-Out-Frist von 10 Minuten wieder hergestellt wird, kann NVMe/TCP die Verbindung nicht automatisch wiederherstellen. Um ein Timeout zu verhindern, sollten Sie den Wiederholungszeitraum für Failover-Ereignisse auf mindestens 30 Minuten einstellen.
-
-.Schritte
-. Vergewissern Sie sich, dass der Initiator-Port die Daten der Erkennungsprotokollseite über die unterstützten NVMe/TCP-LIFs abrufen kann:
-+
-[listing]
-----
-# nvme discover -t tcp -w 192.168.1.8 -a 192.168.1.51
-Discovery Log Number of Records 10, Generation counter 119
-=====Discovery Log Entry 0======
-trtype: tcp
-adrfam: ipv4
-subtype: nvme subsystem
-treq: not specified
-portid: 0
-trsvcid: 4420
-subnqn: nqn.1992-08.com.netapp:sn.56e362e9bb4f11ebbaded039ea165abc:subsystem.nvme_118_tcp_1
-traddr: 192.168.2.56
-sectype: none
-=====Discovery Log Entry 1======
-trtype: tcp
-adrfam: ipv4
-subtype: nvme subsystem
-treq: not specified
-portid: 1
-trsvcid: 4420
-subnqn: nqn.1992-08.com.netapp:sn.56e362e9bb4f11ebbaded039ea165abc:subsystem.nvme_118_tcp_1
-traddr: 192.168.1.51
-sectype: none
-=====Discovery Log Entry 2======
-trtype: tcp
-adrfam: ipv4
-subtype: nvme subsystem
-treq: not specified
-portid: 0
-trsvcid: 4420
-subnqn: nqn.1992-08.com.netapp:sn.56e362e9bb4f11ebbaded039ea165abc:subsystem.nvme_118_tcp_2
-traddr: 192.168.2.56
-sectype: none
-...
-----
-. Gleichermaßen können Sie überprüfen, ob die anderen LIF-Kombinationen des NVMe/TCP-Initiators erfolgreich beim Abrufen der Protokollseitendaten der Bestandsaufnahme abgerufen werden können. Beispiel:
-+
-[listing]
-----
-#nvme discover -t tcp -w 192.168.1.8 -a 192.168.1.51
-# nvme discover -t tcp -w 192.168.1.8 -a 192.168.1.52
-# nvme discover -t tcp -w 192.168.2.9 -a 192.168.2.56
-# nvme discover -t tcp -w 192.168.2.9 -a 192.168.2.57
-----
-. Führen Sie jetzt die aus `nvme connect-all` Befehl über alle unterstützten NVMe/TCP-Initiator-Ziel-LIFs über die Nodes hinweg Stellen Sie sicher, dass Sie einen längeren Pass `ctrl_loss_tmo` Periode (z. B. sagen Sie 30 Minuten, die durch eingestellt werden kann `-l 1800`) Während der `connect-all` Damit es im Falle eines Pfadverlusts für einen längeren Zeitraum versuchen würde. Beispiel:
-+
-[listing]
-----
-# nvme connect-all -t tcp -w 192.168.1.8 -a 192.168.1.51 -l 1800
-# nvme connect-all -t tcp -w 192.168.1.8 -a 192.168.1.52 -l 1800
-# nvme connect-all -t tcp -w 192.168.2.9 -a 192.168.2.56 -l 1800
-# nvme connect-all -t tcp -w 192.168.2.9 -a 192.168.2.57 -l 1800
-----
-
-
-
-
-== NVMe/FC validieren
-
-.Schritte
-. Überprüfen Sie die folgenden NVMe/FC-Einstellungen auf dem Oracle Linux 8.6-Host:
+. Überprüfen Sie die folgenden NVMe/FC-Einstellungen auf dem Oracle Linux 9.0-Host:
 +
 [listing]
 ----
@@ -306,6 +371,13 @@ round-robin
 [listing]
 ----
 # nvme list
+----
++
+*Beispielausgabe:*
+
++
+[listing]
+----
 Node         SN                   Model
 ---------------------------------------------------------
 /dev/nvme0n1 814vWBNRwf9HAAAAAAAB NetApp ONTAP Controller
@@ -324,6 +396,13 @@ Namespace Usage    Format             FW             Rev
 [listing]
 ----
 # nvme list-subsys /dev/nvme0n1
+----
++
+*Beispielausgabe:*
+
++
+[listing]
+----
 nvme-subsys0 - NQN=nqn.1992-08.com.netapp:sn.5f5f2c4aa73b11e9967e00a098df41bd:subsystem.nvme_ss_ol_1
 \
 +- nvme0 fc traddr=nn-0x203700a098dfdd91:pn-0x203800a098dfdd91 host_traddr=nn-0x200000109b1c1204:pn-0x100000109b1c1204 live inaccessible
@@ -336,7 +415,13 @@ nvme-subsys0 - NQN=nqn.1992-08.com.netapp:sn.5f5f2c4aa73b11e9967e00a098df41bd:su
 [listing]
 ----
 # nvme netapp ontapdevices -o column
+----
++
+*Beispielausgabe:*
 
++
+[listing]
+----
 Device        Vserver   Namespace Path
 ----------------------- ------------------------------
 /dev/nvme0n1   vs_ol_nvme  /vol/ol_nvme_vol_1_1_0/ol_nvme_ns
@@ -350,8 +435,7 @@ NSID       UUID                                   Size
 2          04bf9f6e-9031-40ea-99c7-a1a61b2d7d08   85.90GB
 3          264823b1-8e03-4155-80dd-e904237014a4   85.90GB
 ----
-
-
++
 [listing]
 ----
 # nvme netapp ontapdevices -o json
@@ -392,6 +476,8 @@ NSID       UUID                                   Size
 ----
 
 
+
+
 == Bekannte Probleme
 
 [cols=""20"]
@@ -399,18 +485,27 @@ NSID       UUID                                   Size
 | NetApp Bug ID | Titel | Beschreibung | Bugzilla-ID 
 
 
-| 1517321 | Oracle Linux 8.6 NVMe-of Hosts erstellen doppelte Persistent Discovery Controller | Auf Oracle Linux 8.6 NVMe over Fabrics (NVMe-of)-Hosts können Sie das verwenden `nvme discover -p` Befehl zum Erstellen von Persistent Discovery Controllern (PDCs). Wenn dieser Befehl verwendet wird, sollte pro Initiator-Zielkombination nur ein PDC erstellt werden. Wenn Sie jedoch ONTAP 9.10.1 und Oracle Linux 8.6 mit einem NVMe-of-Host ausführen, wird jedes Mal ein doppelter PDC erstellt `nvme discover -p` Ausgeführt wird. Dies führt zu einer unnötigen Nutzung der Ressourcen auf dem Host und dem Ziel. | https://bugzilla.oracle.com/bugzilla/show_bug.cgi?id=18118["18118"^] 
+| 1517321 | Oracle Linux 9.0 NVMe-of Hosts erstellen doppelte Persistent Discovery Controller | Auf Oracle Linux 9.0 NVMe over Fabrics (NVMe-of)-Hosts können Sie das verwenden `nvme discover -p` Befehl zum Erstellen von Persistent Discovery Controllern (PDCs). Wenn dieser Befehl verwendet wird, sollte pro Initiator-Zielkombination nur ein PDC erstellt werden. Wenn Sie jedoch ONTAP 9.10.1 und Oracle Linux 9.0 mit einem NVMe-of-Host ausführen, wird jedes Mal ein doppelter PDC erstellt `nvme discover -p` Ausgeführt wird. Dies führt zu einer unnötigen Nutzung der Ressourcen auf dem Host und dem Ziel. | https://bugzilla.oracle.com/bugzilla/show_bug.cgi?id=18118["18118"^] 
 |===
 
 
 == Fehlerbehebung
 
-Bevor Sie mit der Fehlerbehebung bei NVMe/FC-Fehlern beginnen, stellen Sie sicher, dass Sie eine Konfiguration ausführen, die den IMT-Spezifikationen entspricht, und fahren Sie dann mit den nächsten Schritten fort, um Probleme auf der Host-Seite zu beheben.
+Überprüfen Sie vor der Fehlerbehebung bei NVMe/FC-Fehlern, ob Sie eine Konfiguration ausführen, die den IMT-Spezifikationen entspricht, und fahren Sie dann mit den nächsten Schritten fort, um Probleme auf Host-Seite zu debuggen.
 
 
 
-=== Lpfc ausführliche Protokollierung
+=== Aktivieren Sie die ausführliche Protokollierung
 
+Wenn Sie Probleme mit Ihrer Konfiguration haben, kann die ausführliche Protokollierung wertvolle Informationen liefern, die für die Fehlerbehebung erforderlich sind.
+
+.Schritte
+Das Verfahren zum Festlegen der ausführlichen Protokollierung für Qlogic (qla2xxx) unterscheidet sich von dem Verfahren zum Festlegen DER LPFC-ausführlichen Protokollierung.
+
+[role="tabbed-block"]
+====
+.LPFC
+--
 .Schritte
 . Stellen Sie die ein `lpfc_log_verbose` Treibereinstellung auf einen der folgenden Werte, um NVMe/FC-Ereignisse zu protokollieren.
 +
@@ -434,10 +529,9 @@ options lpfc lpfc_log_verbose=0xf00083
 ----
 
 
-
-
-=== Qla2xxx ausführliche Protokollierung
-
+--
+.Qla2xxx
+--
 Es gibt keine ähnliche qla2xxx Protokollierung für NVMe/FC wie für die `lpfc` Treiber. Daher können Sie den allgemeinen Qla2xxx-Protokollierungslevel mit den folgenden Schritten einstellen:
 
 .Schritte
@@ -454,6 +548,8 @@ options qla2xxx ql2xnvmeenable=1 ql2xextended_error_logging=0x1e400000
 ----
 
 
+--
+====
 
 
 === Gängige nvme-cli-Fehler und Behelfslösungen
