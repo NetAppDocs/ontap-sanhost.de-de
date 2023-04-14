@@ -19,7 +19,7 @@ summary:
 
 
 [role="lead"]
-NVMe over Fabrics (NVMe-of), einschließlich NVMe/FC- und anderer Übertragungen, wird mit Oracle Linux 9.0 mit Asymmetric Namespace Access (ANA) unterstützt. In NVMe-of Umgebungen entspricht ANA ALUA Multipathing in iSCSI- und FC-Umgebungen und wird mit in-Kernel NVMe Multipath implementiert.
+NVMe over Fabrics (NVMe-of), einschließlich NVMe/FC- und anderer Übertragungen, wird mit Oracle Linux (OL) 9.0 mit Asymmetric Namespace Access (ANA) unterstützt. In NVMe-of Umgebungen entspricht ANA ALUA Multipathing in iSCSI- und FC-Umgebungen und wird mit in-Kernel NVMe Multipath implementiert.
 
 Weitere Informationen zu unterstützten Konfigurationen finden Sie im link:https://mysupport.netapp.com/matrix/["NetApp Interoperabilitäts-Matrix-Tool"^].
 
@@ -43,7 +43,7 @@ Es gibt keine bekannten Einschränkungen.
 Sie können die mindestens unterstützten OL 9.0-Softwareversionen mithilfe des folgenden Verfahrens validieren.
 
 .Schritte
-. Installieren Sie Oracle Linux 9.0 GA auf dem Server. Überprüfen Sie nach Abschluss der Installation, ob Sie den angegebenen Oracle Linux 9.0 GA-Kernel ausführen.
+. Installieren Sie OL 9.0 GA auf dem Server. Überprüfen Sie nach Abschluss der Installation, ob Sie den angegebenen OL 9.0 GA-Kernel ausführen.
 +
 [listing]
 ----
@@ -353,7 +353,7 @@ options lpfc lpfc_sg_seg_cnt=256
 == NVMe-of validieren
 
 .Schritte
-. Überprüfen Sie die folgenden NVMe/FC-Einstellungen auf dem Oracle Linux 9.0-Host:
+. Überprüfen Sie die folgenden NVMe/FC-Einstellungen auf dem OL 9.0-Host:
 +
 [listing]
 ----
@@ -497,7 +497,7 @@ NSID       UUID                                   Size
 
 === Aktivieren Sie die ausführliche Protokollierung
 
-Wenn Sie Probleme mit Ihrer Konfiguration haben, kann die ausführliche Protokollierung wertvolle Informationen liefern, die für die Fehlerbehebung erforderlich sind.
+Wenn Sie ein Problem mit Ihrer Konfiguration haben, kann die ausführliche Protokollierung wichtige Informationen für die Fehlerbehebung liefern.
 
 .Schritte
 Das Verfahren zum Festlegen der ausführlichen Protokollierung für Qlogic (qla2xxx) unterscheidet sich von dem Verfahren zum Festlegen DER LPFC-ausführlichen Protokollierung.

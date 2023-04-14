@@ -41,9 +41,9 @@ Wenn Sie derzeit eine Version von Linux Unified Host Utilities installiert haben
 
 == SAN-Toolkit
 
-Das Toolkit wird automatisch installiert, wenn Sie das NetApp Host Utilities-Paket installieren. Dieses Kit enthält das Dienstprogramm sanlun, mit dem Sie LUNs und HBAs verwalten können. Der Befehl sanlun gibt Informationen über die LUNs zurück, die Ihrem Host zugeordnet sind, Multipathing und die zum Erstellen von Initiatorgruppen erforderlichen Informationen.
+Das Toolkit wird automatisch installiert, wenn Sie das NetApp Host Utilities-Paket installieren. Dieses Kit enthält die `sanlun` Dienstprogramm: Unterstützt Sie beim Management von LUNs und HBAs. Der `sanlun` Befehl gibt Informationen über die LUNs zurück, die Ihrem Host zugeordnet sind, Multipathing und Informationen zurück, die zum Erstellen von Initiatorgruppen erforderlich sind.
 
-Im folgenden Beispiel gibt der Befehl sanlun lun show LUN-Informationen zurück.
+Im folgenden Beispiel wird der verwendet `sanlun lun show` Befehl gibt LUN-Informationen zurück.
 
 [listing]
 ----
@@ -277,7 +277,7 @@ NOTE: Um Oracle Linux 9.0 RedHat Enterprise Kernel (RHCK) zu konfigurieren, verw
 
 == KVM-Einstellungen
 
-Sie können die empfohlenen Einstellungen verwenden, um Kernel-Based Virtual Machine (KVM) ebenfalls zu konfigurieren. Es sind keine Änderungen erforderlich, um KVM zu konfigurieren, da die LUN dem Hypervisor zugeordnet ist.
+Sie können auch die empfohlenen Einstellungen verwenden, um Kernel-Based Virtual Machine (KVM) zu konfigurieren. Es sind keine Änderungen erforderlich, um KVM zu konfigurieren, da die LUN dem Hypervisor zugeordnet ist.
 
 
 
@@ -293,4 +293,4 @@ Es gibt keine bekannten Probleme für Oracle Linux 9.0.
 
 === ASM Mirroring
 
-ASM Spiegelung erfordert möglicherweise Änderungen an den Linux Multipath-Einstellungen, damit ASM ein Problem erkennt und auf eine andere Fehlergruppe umschaltet. Die meisten ASM-Konfigurationen auf ONTAP verwenden externe Redundanz. Das bedeutet, dass Datensicherung durch das externe Array bereitgestellt wird und ASM keine Daten spiegelt. Einige Standorte verwenden ASM mit normaler Redundanz, um normalerweise zwei-Wege-Spiegelung über verschiedene Standorte hinweg bereitzustellen. Weitere Informationen finden Sie unter Oracle Databases on ONTAP.
+ASM-Spiegelung erfordert möglicherweise Änderungen an den Linux Multipath-Einstellungen, damit ASM ein Problem erkennen und zu einer alternativen Fehlergruppe wechseln kann. Die meisten ASM-Konfigurationen auf ONTAP verwenden externe Redundanz. Das bedeutet, dass Datensicherung durch das externe Array bereitgestellt wird und ASM keine Daten spiegelt. Einige Standorte verwenden ASM mit normaler Redundanz, um normalerweise zwei-Wege-Spiegelung über verschiedene Standorte hinweg bereitzustellen. Weitere Informationen finden Sie unter Oracle Databases on ONTAP.
