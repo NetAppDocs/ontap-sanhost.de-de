@@ -3,4 +3,4 @@
 
 
 
-NOTE: Für bekannte Probleme von Oracle Linux (Red hat compatible Kernel) siehe den Abschnitt Bekannte Probleme im entsprechenden Abschnitt https://mysupport.netapp.com/documentation/productlibrary/index.html?productID=63146["Red hat Enterprise Linux Version"^] Dokumentation.
+NOTE: Für bekannte Probleme von Oracle Linux (Red hat compatible Kernel) siehe den Abschnitt Bekannte Probleme im entsprechenden Abschnitt https://["Red hat Enterprise Linux Version"^] Dokumentation.

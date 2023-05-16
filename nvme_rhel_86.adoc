@@ -40,7 +40,7 @@ NOTE: Sie können die in diesem Dokument angegebenen Konfigurationseinstellungen
 == Bekannte Einschränkungen
 
 * Bei RHEL 8.6 bleibt NVMe Multipath in-Kernel standardmäßig deaktiviert. Deshalb müssen Sie sie manuell aktivieren.
-* NVMe/TCP auf RHEL 8.6 ist nach wie vor eine Technologie-Vorschau-Funktion, da offene Probleme auftreten. Siehe https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html-single/8.6_release_notes/index#technology-preview_file-systems-and-storage["RHEL 8.6 – Versionshinweise"^] Entsprechende Details.
+* NVMe/TCP auf RHEL 8.6 ist nach wie vor eine Technologie-Vorschau-Funktion, da offene Probleme auftreten. Siehe https://["RHEL 8.6 – Versionshinweise"^] Entsprechende Details.
 
 
 

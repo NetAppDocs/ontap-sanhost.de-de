@@ -36,7 +36,7 @@ Es wird dringend empfohlen, Linux Unified Host Utilities zu installieren, jedoch
 Wenn Sie derzeit eine Version von Linux Unified Host Utilities installiert haben, sollten Sie sie aktualisieren oder Sie sollten sie entfernen und die folgenden Schritte verwenden, um die neueste Version zu installieren.
 
 .Schritte
-. Laden Sie das Softwarepaket für die 64-Bit-Version von Linux Unified Host Utilities von herunter https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab["NetApp Support Website"^] Auf Ihren Host.
+. Laden Sie das Softwarepaket für die 64-Bit-Version von Linux Unified Host Utilities von herunter https://["NetApp Support Website"^] Auf Ihren Host.
 . Verwenden Sie den folgenden Befehl, um das Softwarepaket zu installieren:
 +
 `rpm -ivh netapp_linux_unified_host_utilities-7-1.x86_64`
@@ -77,7 +77,7 @@ enabled     up      active/non-optimized sdas   13:0:1:0   lif_9      66:192
 == SAN wird gebootet
 
 .Was Sie benötigen
-Wenn Sie sich für das Booten über SAN entscheiden, muss es von Ihrer Konfiguration unterstützt werden. Sie können das verwenden https://mysupport.netapp.com/matrix/imt.jsp?components=65623;64703;&solution=1&isHWU&src=IMT["NetApp Interoperabilitäts-Matrix-Tool"^] Um zu überprüfen, ob Ihr Betriebssystem, HBA, die HBA-Firmware und das HBA-Boot-BIOS sowie die ONTAP-Version unterstützt werden.
+Wenn Sie sich für das Booten über SAN entscheiden, muss es von Ihrer Konfiguration unterstützt werden. Sie können das verwenden https://["NetApp Interoperabilitäts-Matrix-Tool"^] Um zu überprüfen, ob Ihr Betriebssystem, HBA, die HBA-Firmware und das HBA-Boot-BIOS sowie die ONTAP-Version unterstützt werden.
 
 Überprüfen Sie unter Veritas Support Portal (Produktmatrix, Platform Lookup, HCL Matrix) die Kompatibilität der SAN-Boot-Konfiguration und bekannte Einschränkungen.
 

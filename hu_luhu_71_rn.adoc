@@ -160,4 +160,4 @@ Sie können auf die Dokumentation für alle NetApp Produkte zugreifen und weiter
 * Die Versionshinweise für SANtricity-Storage-Manager für Ihre Version von SANtricity.
 
 
-Wechseln Sie zum link:https://docs.netapp.com/us-en/e-series/getting-started/index.html["E-Series Dokumentation"] Um die Dokumentation zu SANtricity zu finden.
+Siehe link:https://docs.netapp.com/us-en/e-series/index.html["E-Series Dokumentation"] Um die Dokumentation zu SANtricity zu finden.
