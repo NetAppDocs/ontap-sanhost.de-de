@@ -271,9 +271,13 @@ tcp.vmnic3:34:80:Od:30:ca:el-tcp.unknown-uuid.400bf333abf74ab8b96dc18ffadc3f99
 
 == Bekanntes Problem
 
-* ESXi 7.0 U3 (und höher) NVMe/FC-Unterstützung ist ab ONTAP 9.9.1 P3 verfügbar, da wichtige NVMe-Abbruchfixes (herausgegeben von ESXi 7.0 U3 und höher) ab ONTAP 9.9.1 P3 verfügbar sind. Weitere Informationen finden Sie im entsprechenden öffentlichen bericht zu burt unter https://[] Entsprechende Details.
+[cols="10,30,30"]
+|===
+| NetApp Bug ID | Titel | Behelfslösung 
 
 
+| link:https://mysupport.netapp.com/site/bugs-online/product/ONTAP/BURT/1420654["1420654"^] | ONTAP Node ist nicht betriebsbereit, wenn das NVMe/FC-Protokoll mit ONTAP Version 9.9.1 verwendet wird | Prüfen und beheben Sie Netzwerkprobleme in der Host-Fabric. Wenn dies nicht hilft, aktualisieren Sie auf einen Patch, der dieses Problem behebt. 
+|===
 
 
 == Verwandte Links

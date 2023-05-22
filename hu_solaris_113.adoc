@@ -46,7 +46,7 @@ Im folgenden Beispiel werden Dateien für ein SPARC System dekomprimiert. Verwen
 Die Pakete werden dem hinzugefügt `/opt/NTAP/SANToolkit/bin` Verzeichnis.
 
 +
-Um die Installation abzuschließen, müssen Sie die Hostparameter für Ihre Umgebung (in diesem Fall MPxIO) mithilfe des konfigurieren `host_config` Befehl.
+Um die Installation abzuschließen, müssen Sie die Hostparameter für Ihre Umgebung (in diesem Fall MPxIO) mithilfe der konfigurieren `host_config` Befehl.
 
 +
 Der `host_config` Befehl weist das folgende Format auf:
@@ -58,7 +58,7 @@ Der `host_config` Befehl weist das folgende Format auf:
 Der `host_config` Befehl führt Folgendes aus:
 
 +
-** Ändert die Einstellungen für die Fibre-Channel- und SCSI-Treiber für X86- und SPARC-Systeme
+** Ändert die Fibre-Channel- und SCSI-Treibereinstellungen für X86- und SPARC-Systeme
 ** Stellt SCSI-Timeout-Einstellungen für die MPxIO-Konfigurationen bereit
 ** Legt die VID-/PID-Informationen fest
 ** Aktiviert oder deaktiviert ALUA
@@ -178,7 +178,7 @@ Im Folgenden finden Sie einige Parametereinstellungen, die für Solaris 11.3 SPA
 
 === Empfohlene Einstellungen für MetroCluster
 
-Standardmäßig schlägt das Betriebssystem Solaris nach 20 Sekunden I/OS fehl, wenn alle Pfade zu einer LUN verloren gehen. Dies wird von der gesteuert `fcp_offline_delay` Parameter. Der Standardwert für `fcp_offline_delay` Eignet sich für Standard-ONTAP-Cluster. In MetroCluster Konfigurationen bietet sich jedoch der Nutzen von `fcp_offline_delay` Muss auf *120 s* erhöht werden, um sicherzustellen, dass I/O nicht zu einer frühzeitigen Auszeit während des Betriebs, einschließlich nicht ungeplanter Failover, erfolgt. Weitere Informationen und empfohlene Änderungen an den Standardeinstellungen finden Sie im NetApp KB-Artikel https://["Überlegungen zum Support von Solaris Hosts in einer MetroCluster-Konfiguration"^].
+Standardmäßig schlägt das Betriebssystem Solaris nach 20 Sekunden I/OS fehl, wenn alle Pfade zu einer LUN verloren gehen. Dies wird von der gesteuert `fcp_offline_delay` Parameter. Der Standardwert für `fcp_offline_delay` Eignet sich für Standard-ONTAP-Cluster. In MetroCluster Konfigurationen bietet sich jedoch der Nutzen von `fcp_offline_delay` Muss auf *120 s* erhöht werden, um sicherzustellen, dass I/O nicht zu einer frühzeitigen Auszeit während des Betriebs, einschließlich nicht ungeplanter Failover, erfolgt. Weitere Informationen und empfohlene Änderungen an den Standardeinstellungen finden Sie im Knowledge Base-Artikel https://["Überlegungen zum Support von Solaris Hosts in einer MetroCluster-Konfiguration"^].
 
 
 
@@ -259,5 +259,5 @@ NOTE: Nachher `scsi-vhci-failover-override` Wurde angewendet, `conf` Wird hinzug
 | 1366780 | Solaris LIF-Problem während GB mit Emulex 32G HBA auf x86 Arch | Gesehen mit Emulex-Firmware-Version 12.6.x und höher auf x86_64-Plattform | SR 3-24746803021 
 
 
-| 1368957 | Solaris 11.x 'cfgadm -c configure', was zu einem E/A-Fehler mit End-to-End-Emulex-Konfiguration führt | Wird Ausgeführt `cfgadm -c configure` Bei Emulex End-to-End-Konfigurationen führt dies zu I/O-Fehler. Dies ist in 9.5P17, 9.6P14, 9.7P13 und 9.8P2 behoben | Keine Angabe 
+| 1368957 | Solaris 11.x 'cfgadm -c configure', was zu einem E/A-Fehler mit End-to-End-Emulex-Konfiguration führt | Wird Ausgeführt `cfgadm -c configure` Bei Emulex End-to-End-Konfigurationen führt dies zu I/O-Fehler. Dies ist in ONTAP 9.5P17, 9.6P14, 9.7P13 und 9.8P2 behoben | Keine Angabe 
 |===
