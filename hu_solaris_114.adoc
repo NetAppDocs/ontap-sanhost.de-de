@@ -96,7 +96,7 @@ Wenn Sie sich für das Booten über SAN entscheiden, muss es von Ihrer Konfigura
 
 BEIM BOOTEN VON SAN wird ein SAN-Attached-Laufwerk (eine LUN) als Startgerät für einen Solaris-Host eingerichtet.
 
-Sie können eine SAN-Boot-LUN einrichten, die in einer Solaris MPxIO-Umgebung mit dem FC-Protokoll und unter Verwendung der Solaris Host Utilities ausgeführt wird. Die Methode zur Einrichtung einer SAN-Boot-LUN kann je nach Volume-Manager und Dateisystem variieren. Siehe https://["Installieren Sie Solaris Host Utilities"] Für Details zum Booten von SAN-LUNs in einer Solaris MPIO-Umgebung.
+Sie können eine SAN-Boot-LUN einrichten, die in einer Solaris MPxIO-Umgebung mit dem FC-Protokoll und unter Verwendung der Solaris Host Utilities ausgeführt wird. Die Methode zur Einrichtung einer SAN-Boot-LUN kann je nach Volume-Manager und Dateisystem variieren. Siehe https://docs.netapp.com/us-en/ontap-sanhost/hu_solaris_62.html["Installieren Sie Solaris Host Utilities"] Für Details zum Booten von SAN-LUNs in einer Solaris MPIO-Umgebung.
 
 
 
@@ -178,7 +178,7 @@ Im Folgenden finden Sie einige Parametereinstellungen, die für Solaris 11.4 SPA
 
 === Empfohlene Einstellungen für MetroCluster
 
-Standardmäßig schlägt das Betriebssystem Solaris nach 20 Sekunden I/OS fehl, wenn alle Pfade zu einer LUN verloren gehen. Dies wird von der gesteuert `fcp_offline_delay` Parameter. Der Standardwert für `fcp_offline_delay` Eignet sich für Standard-ONTAP-Cluster. In MetroCluster-Konfigurationen bietet sich jedoch der Nutzen von `fcp_offline_delay` Muss auf *120 s* erhöht werden, um sicherzustellen, dass I/O nicht zu einer frühzeitigen Auszeit während des Betriebs, einschließlich nicht ungeplanter Failover, erfolgt. Weitere Informationen und empfohlene Änderungen an den Standardeinstellungen finden Sie im Knowledge Base-Artikel https://["Überlegungen zum Support von Solaris Hosts in einer MetroCluster-Konfiguration"^].
+Standardmäßig schlägt das Betriebssystem Solaris nach 20 Sekunden I/OS fehl, wenn alle Pfade zu einer LUN verloren gehen. Dies wird von der gesteuert `fcp_offline_delay` Parameter. Der Standardwert für `fcp_offline_delay` Eignet sich für Standard-ONTAP-Cluster. In MetroCluster-Konfigurationen bietet sich jedoch der Nutzen von `fcp_offline_delay` Muss auf *120 s* erhöht werden, um sicherzustellen, dass I/O nicht zu einer frühzeitigen Auszeit während des Betriebs, einschließlich nicht ungeplanter Failover, erfolgt. Weitere Informationen und empfohlene Änderungen an den Standardeinstellungen finden Sie im Knowledge Base-Artikel https://kb.netapp.com/onprem/ontap/metrocluster/Solaris_host_support_considerations_in_a_MetroCluster_configuration["Überlegungen zum Support von Solaris Hosts in einer MetroCluster-Konfiguration"^].
 
 
 
@@ -244,7 +244,7 @@ svl_fops_name = 0xa00298d69e0 "conf f_tpgs"
 
 
 
-NOTE: Nachher `scsi-vhci-failover-override` Wurde angewendet, `conf` Wird hinzugefügt zu `svl_fops_name` . Weitere Informationen und empfohlene Änderungen an den Standardeinstellungen finden Sie im NetApp KB-Artikel https://["Solaris Host Support Empfohlene Einstellungen in SnapMirror Business Continuity (SM-BC)-Konfiguration"^].
+NOTE: Nachher `scsi-vhci-failover-override` Wurde angewendet, `conf` Wird hinzugefügt zu `svl_fops_name` . Weitere Informationen und empfohlene Änderungen an den Standardeinstellungen finden Sie im NetApp KB-Artikel https://kb.netapp.com/Advice_and_Troubleshooting/Data_Protection_and_Security/SnapMirror/Solaris_Host_support_recommended_settings_in_SnapMirror_Business_Continuity_(SM-BC)_configuration["Solaris Host Support Empfohlene Einstellungen in SnapMirror Business Continuity (SM-BC)-Konfiguration"^].
 
 
 

@@ -29,7 +29,7 @@ Dieses Dokument enthält eine Anleitung zu den Host-Konfigurationseinstellungen 
 == Booten des Hypervisor-SAN
 
 .Was Sie benötigen
-Wenn Sie sich für das Booten über SAN entscheiden, muss es von Ihrer Konfiguration unterstützt werden. Sie können das verwenden https://["NetApp Interoperabilitäts-Matrix-Tool"^] Um zu überprüfen, ob Ihr Betriebssystem, HBA, die HBA-Firmware und das HBA-Boot-BIOS sowie die ONTAP-Version unterstützt werden.
+Wenn Sie sich für das Booten über SAN entscheiden, muss es von Ihrer Konfiguration unterstützt werden. Sie können das verwenden https://mysupport.netapp.com/matrix/imt.jsp?components=65623;64703;&solution=1&isHWU&src=IMT["NetApp Interoperabilitäts-Matrix-Tool"^] Um zu überprüfen, ob Ihr Betriebssystem, HBA, die HBA-Firmware und das HBA-Boot-BIOS sowie die ONTAP-Version unterstützt werden.
 
 .Schritte
 . Ordnen Sie die SAN-Boot-LUN dem Host zu.
@@ -192,9 +192,9 @@ NOTE: Um den VASA Provider zu aktivieren, müssen Sie ONTAP Tools für VMware vS
 
 NetApp empfiehlt derzeit nicht, alle VVols-Einstellungen als Standard zu ändern.
 
-Siehe https://["NetApp Interoperabilitäts-Matrix-Tool"^] Für bestimmte Versionen der ONTAP Tools oder Legacy VASA Provider für Ihre spezifischen Versionen von vSphere und ONTAP.
+Siehe https://mysupport.netapp.com/matrix/imt.jsp?components=65623;64703;&solution=1&isHWU&src=IMT["NetApp Interoperabilitäts-Matrix-Tool"^] Für bestimmte Versionen der ONTAP Tools oder Legacy VASA Provider für Ihre spezifischen Versionen von vSphere und ONTAP.
 
-Weitere Informationen zum Bereitstellen und Verwalten von VVols finden Sie auch in der Dokumentation zu ONTAP-Tools für VMware vSphere https://["TR-4597"^] Und link:https://www.netapp.com/pdf.html?item=/media/13555-tr4400pdf.pdf["TR-4400:"^]
+Weitere Informationen zum Bereitstellen und Verwalten von VVols finden Sie auch in der Dokumentation zu ONTAP-Tools für VMware vSphere https://docs.netapp.com/us-en/netapp-solutions/virtualization/vsphere_ontap_ontap_for_vsphere.html["TR-4597"^] Und link:https://www.netapp.com/pdf.html?item=/media/13555-tr4400pdf.pdf["TR-4400:"^]
 
 
 
@@ -220,7 +220,7 @@ ATS-Sperrung ist *obligatorisch* für VAAI-kompatiblen Speicher und aktualisiert
 | Disk/QFullSampleSize | 0 | 32 | Die Anzahl der „QUEUE FULL“- oder „BUSY“-Bedingungen, die es dauert, bevor ESXi beginnt, zu drosseln. 
 |===
 
-NOTE: Aktivieren Sie die Space-Alloc-Einstellung für alle LUNs, die VMware vSphere zugeordnet sind, damit UNMAP funktioniert. Weitere Informationen finden Sie unter https://["ONTAP-Dokumentation"^].
+NOTE: Aktivieren Sie die Space-Alloc-Einstellung für alle LUNs, die VMware vSphere zugeordnet sind, damit UNMAP funktioniert. Weitere Informationen finden Sie unter https://docs.netapp.com/ontap-9/index.jsp["ONTAP-Dokumentation"^].
 
 
 

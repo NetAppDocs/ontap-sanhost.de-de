@@ -24,7 +24,7 @@ summary: Beschreibt die Verwendung von Linux Unified Host Utilities 7.1 mit ONTA
 
 * Für einen zuverlässigen Betrieb müssen Sie sicherstellen, dass Ihre gesamte iSCSI-, FC- oder FCoE-Konfiguration unterstützt wird.
 +
-Sie können das verwenden https://["NetApp Interoperabilitäts-Matrix-Tool"^] Um Ihre Konfiguration zu überprüfen.
+Sie können das verwenden https://mysupport.netapp.com/matrix/imt.jsp?components=65623;64703;&solution=1&isHWU&src=IMT["NetApp Interoperabilitäts-Matrix-Tool"^] Um Ihre Konfiguration zu überprüfen.
 
 * Sie müssen die HBA-Managementpakete installieren, die von den Anbietern auf ihren Websites bereitgestellt werden.
 +

@@ -45,7 +45,7 @@ Die folgenden Programme und Dateien werden auf dem Windows-Hostcomputer installi
 
 == Von Host Utilities unterstützte Konfigurationen
 
-Die Host Utilities unterstützen verschiedene Windows Host-Konfigurationen, Protokolle und Multipathing-Optionen. Weitere Informationen finden Sie im https://["NetApp Interoperabilitäts-Matrix-Tool"^].
+Die Host Utilities unterstützen verschiedene Windows Host-Konfigurationen, Protokolle und Multipathing-Optionen. Weitere Informationen finden Sie im https://mysupport.netapp.com/matrix/["NetApp Interoperabilitäts-Matrix-Tool"^].
 
 
 
@@ -54,7 +54,7 @@ Die Host Utilities unterstützen verschiedene Windows Host-Konfigurationen, Prot
 Bevor Sie die Host-Dienstprogramme installieren, müssen Sie überprüfen, ob die Host-Dienstprogramme-Version Ihre Host- und Speichersystem-Konfiguration unterstützt, damit die Software korrekt installiert wird.
 
 .Schritte
-. Überprüfen Sie die unterstützte Konfiguration im http://["NetApp Interoperabilitäts-Matrix-Tool"^].
+. Überprüfen Sie die unterstützte Konfiguration im http://mysupport.netapp.com/matrix["NetApp Interoperabilitäts-Matrix-Tool"^].
 . Prüfen Sie die für den jeweiligen Host erforderlichen Hotfixes im link:https://docs.netapp.com/us-en/ontap-sanhost/index.html["SAN-Host, Windows-Dokumentation"].
 +
 
@@ -66,7 +66,7 @@ FC- und iSCSI-Protokolle erfordern keine Lizenzen auf E-Series Storage-Systemen 
 
 . Überprüfen Sie die Verkabelung.
 +
-Siehe https://["SAN-Konfigurationsleitfaden"^] Für Ihre ONTAP-Version oder die https://["Hardware-Verkabelungsleitfaden für die E-Series"^] Detaillierte Informationen zu Verkabelung und Konfiguration
+Siehe https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-sanconf/home.html?cp=14_7["SAN-Konfigurationsleitfaden"^] Für Ihre ONTAP-Version oder die https://mysupport.netapp.com/ecm/ecm_get_file/ECMLP2773533["Hardware-Verkabelungsleitfaden für die E-Series"^] Detaillierte Informationen zu Verkabelung und Konfiguration
 
 
 
@@ -86,7 +86,7 @@ CAUTION: Ändern Sie die HBA-Einstellungen nicht manuell.
 . Beziehen Sie die unterstützten HBA-Treiber und Verwaltungsprogrammen ein, und installieren Sie diese gemäß den Anweisungen des HBA-Anbieters.
 . Verbinden Sie die HBAs mit Ihren FC-Switches oder direkt mit dem Speichersystem.
 . Erstellen Sie auf dem FC-Switch Zonen gemäß Ihrer FC-Switch-Dokumentation.
-. Wenn ONTAP verwendet wird, Zonen Sie den Switch mit dem WWPN. Vergewissern Sie sich, dass Sie den WWPN der logischen Schnittstellen (LIFs) und nicht den WWPN der physischen Ports auf den Storage Controllern verwenden. Weitere Informationen finden Sie unter https://["SAN-Konfigurationsleitfaden"^].
+. Wenn ONTAP verwendet wird, Zonen Sie den Switch mit dem WWPN. Vergewissern Sie sich, dass Sie den WWPN der logischen Schnittstellen (LIFs) und nicht den WWPN der physischen Ports auf den Storage Controllern verwenden. Weitere Informationen finden Sie unter https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-sanconf/home.html?cp=14_7["SAN-Konfigurationsleitfaden"^].
 
 
 
@@ -111,7 +111,7 @@ Die MPIO-Auswahl ist für Windows XP und Windows Vista-Systeme nicht verfügbar.
 Um das Softwarepaket der Hostdienstprogramme interaktiv zu installieren, müssen Sie das Installationsprogramm der Hostdienstprogramme ausführen und die Anweisungen befolgen.
 
 .Schritte
-. Laden Sie die ausführbare Datei vom herunter https://["NetApp Support Website"^].
+. Laden Sie die ausführbare Datei vom herunter https://mysupport.netapp.com/site/["NetApp Support Website"^].
 . Wechseln Sie in das Verzeichnis, in dem Sie die ausführbare Datei heruntergeladen haben.
 . Führen Sie die aus `netapp_windows_host_utilities_7.2_x64` Datei und folgen Sie den Anweisungen auf dem Bildschirm.
 . Starten Sie den Windows-Host neu, wenn Sie dazu aufgefordert werden.
@@ -432,14 +432,14 @@ Sie können die allgemeinen Fehlerbehebungstechniken für Windows Host Utilities
 === Verschiedene Bereiche, um mögliche Interoperabilitätsprobleme zu identifizieren
 
 * Um potenzielle Interoperabilitätsprobleme zu ermitteln, müssen Sie sicherstellen, dass die Host Utilities Ihre Kombination aus Host-Betriebssystemsoftware, Host-Hardware, ONTAP-Software und Storage-System-Hardware unterstützen.
-* Sie müssen die überprüfen http://["NetApp Interoperabilitäts-Matrix-Tool"^].
+* Sie müssen die überprüfen http://mysupport.netapp.com/matrix["NetApp Interoperabilitäts-Matrix-Tool"^].
 * Sie müssen überprüfen, ob Sie die richtige iSCSI-Konfiguration haben.
 * Wenn iSCSI-LUNs nach einem Neustart nicht verfügbar sind, müssen Sie sicherstellen, dass das Ziel auf der Registerkarte *Persistent Targets* der Microsoft iSCSI-Initiator-GUI als persistent aufgeführt wird.
 * Wenn Applikationen, die die LUNs verwenden, beim Starten Fehler anzeigen, müssen Sie überprüfen, ob die Applikationen von dem iSCSI-Service abhängig sind.
 * Bei FC-Pfaden zu Storage-Controllern, auf denen ONTAP ausgeführt wird, müssen Sie sicherstellen, dass die FC-Switches in Zonen eingeteilt sind. Verwenden Sie dazu die WWPNs der Ziel-LIFs und nicht die WWPNs der physischen Ports auf dem Node.
 * Sie müssen die überprüfen link:hu_wuhu_71_rn.html["Versionshinweise"] Unter Windows Host Utilities können Sie nach bekannten Problemen suchen. Die Versionshinweise enthalten eine Liste bekannter Probleme und Einschränkungen.
 * Sie müssen die Fehlerbehebungsinformationen im SAN-Administrationshandbuch für Ihre Version von ONTAP überprüfen.
-* Sie müssen suchen https://["NetApp Bugs Online"^] Für kürzlich entdeckte Probleme.
+* Sie müssen suchen https://mysupport.netapp.com/site/bugs-online/product["NetApp Bugs Online"^] Für kürzlich entdeckte Probleme.
 +
 ** Wählen Sie im Feld Fehlertyp unter Erweiterte Suche *iSCSI - Windows* und dann *Go*. Sie sollten die Suche nach Bug Type *FCP -Windows* wiederholen.
 
