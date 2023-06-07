@@ -75,13 +75,14 @@ Wenn Sie sich für das Booten über SAN entscheiden, muss es von Ihrer Konfigura
 . Ordnen Sie die SAN-Boot-LUN dem Host zu.
 . Vergewissern Sie sich, dass mehrere Pfade verfügbar sind.
 +
-Denken Sie daran, dass mehrere Pfade nur verfügbar sind, wenn das Host-Betriebssystem betriebsbereit ist und auf den Pfaden ausgeführt wird.
+
+NOTE: Mehrere Pfade sind verfügbar, nachdem das Host-Betriebssystem auf den Pfaden ausgeführt wurde.
 
 . Aktivieren Sie das SAN-Booten im Server-BIOS für die Ports, denen die SAN-Boot-LUN zugeordnet ist.
 +
 Informationen zum Aktivieren des HBA-BIOS finden Sie in der anbieterspezifischen Dokumentation.
 
-. Starten Sie den Host neu, um sicherzustellen, dass der Startvorgang erfolgreich ist.
+. Starten Sie den Host neu, um zu überprüfen, ob der Startvorgang erfolgreich war.
 
 
 
@@ -124,7 +125,7 @@ size=80G features='4 queue_if_no_path pg_init_retries 50 retain_attached_hw_hand
 |- 12:0:0:0 sdz 65:144 active ready running
 ----
 
-NOTE: Verwenden Sie keine unverhältnismäßig hohe Anzahl von Pfaden zu einer einzelnen LUN. Es sollten nicht mehr als 4 Pfade erforderlich sein. Mehr als 8 Pfade können bei Storage-Ausfällen zu Pfadproblemen führen.
+NOTE: Verwenden Sie keine unverhältnismäßig hohe Anzahl von Pfaden zu einer einzelnen LUN. Es sollten nicht mehr als vier Pfade erforderlich sein. Mehr als acht Pfade können bei Storage-Ausfällen zu Pfadproblemen führen.
 
 
 
@@ -146,7 +147,7 @@ Es ist nicht erforderlich, dem direkt etwas hinzuzufügen `multipath.conf` Datei
 
 Sie können die folgende Syntax dem hinzufügen `multipath.conf` Datei zum Ausschließen unerwünschter Geräte.
 
-Ersetzen Sie den `<DevId>` Mit der WWID-Zeichenfolge des Geräts, das Sie ausschließen möchten. Verwenden Sie den folgenden Befehl, um die WWID zu bestimmen:
+Ersetzen Sie den `<DevId>` Mit der WWID-Zeichenfolge des Geräts, das Sie ausschließen möchten:
 
 ....
 blacklist {
@@ -272,4 +273,4 @@ Es gibt keine bekannten Probleme für Oracle Linux 7.1.
 
 === ASM Mirroring
 
-ASM Spiegelung erfordert möglicherweise Änderungen an den Linux Multipath-Einstellungen, damit ASM ein Problem erkennt und auf eine andere Fehlergruppe umschaltet. Die meisten ASM-Konfigurationen auf ONTAP verwenden externe Redundanz. Das bedeutet, dass Datensicherung durch das externe Array bereitgestellt wird und ASM keine Daten spiegelt. Einige Standorte verwenden ASM mit normaler Redundanz, um normalerweise zwei-Wege-Spiegelung über verschiedene Standorte hinweg bereitzustellen. Siehe link:https://www.netapp.com/us/media/tr-3633.pdf["Oracle-Datenbanken auf ONTAP"^] Für weitere Informationen.
+Bei der ASM-Spiegelung (Automatic Storage Management) sind möglicherweise Änderungen an den Linux Multipath-Einstellungen erforderlich, damit ASM ein Problem erkennen und zu einer alternativen Fehlergruppe wechseln kann. Die meisten ASM-Konfigurationen auf ONTAP verwenden externe Redundanz. Das bedeutet, dass Datensicherung durch das externe Array bereitgestellt wird und ASM keine Daten spiegelt. Einige Standorte verwenden ASM mit normaler Redundanz, um normalerweise zwei-Wege-Spiegelung über verschiedene Standorte hinweg bereitzustellen. Siehe link:https://www.netapp.com/us/media/tr-3633.pdf["Oracle-Datenbanken auf ONTAP"^] Für weitere Informationen.

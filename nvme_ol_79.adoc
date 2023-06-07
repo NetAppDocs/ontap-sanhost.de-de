@@ -232,7 +232,7 @@ Device   Vserver  Namespace Path             NSID   UUID   Size
 
 == Aktivieren Sie 1 MB I/O-Größe für Broadcom NVMe/FC
 
-Der `lpfc_sg_seg_cnt` Der Parameter muss auf 256 gesetzt werden, damit der Host 1-MB-I/O-Größe ausgibt
+ONTAP meldet eine MDTS (MAX Data-Übertragungsgröße) von 8 in den Identifizieren-Controller-Daten, was bedeutet, dass die maximale E/A-Anforderungsgröße bis zu 1 MB betragen kann. Um jedoch I/O-Anforderungen von Größe 1 MB für einen Broadcom-NVMe/FC-Host auszustellen, müssen Sie den erhöhen `lpfc` Wert des `lpfc_sg_seg_cnt` Parameter auf 256 ab dem Standardwert 64.
 
 .Schritte
 . Stellen Sie die ein `lpfc_sg_seg_cnt` Parameter bis 256.
@@ -250,7 +250,8 @@ options lpfc lpfc_sg_seg_cnt=256
 # cat /sys/module/lpfc/parameters/lpfc_sg_seg_cnt
 256
 ----
-+
+
+
+
+NOTE: Dies gilt nicht für Qlogic NVMe/FC-Hosts.
 Xxx
-
-

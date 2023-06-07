@@ -16,7 +16,7 @@ Es ist nicht erforderlich, dem direkt etwas hinzuzufügen `multipath.conf` Datei
 
 Sie können die folgende Syntax dem hinzufügen `multipath.conf` Datei zum Ausschließen unerwünschter Geräte.
 
-Ersetzen Sie den `<DevId>` Mit der WWID-Zeichenfolge des Geräts, das Sie ausschließen möchten. Verwenden Sie den folgenden Befehl, um die WWID zu bestimmen:
+Ersetzen Sie den `<DevId>` Mit der WWID-Zeichenfolge des Geräts, das Sie ausschließen möchten:
 
 ....
 blacklist {

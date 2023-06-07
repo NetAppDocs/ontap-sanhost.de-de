@@ -6,11 +6,12 @@
 . Ordnen Sie die SAN-Boot-LUN dem Host zu.
 . Vergewissern Sie sich, dass mehrere Pfade verfügbar sind.
 +
-Denken Sie daran, dass mehrere Pfade nur verfügbar sind, wenn das Host-Betriebssystem betriebsbereit ist und auf den Pfaden ausgeführt wird.
+
+NOTE: Mehrere Pfade sind verfügbar, nachdem das Host-Betriebssystem auf den Pfaden ausgeführt wurde.
 
 . Aktivieren Sie das SAN-Booten im Server-BIOS für die Ports, denen die SAN-Boot-LUN zugeordnet ist.
 +
 Informationen zum Aktivieren des HBA-BIOS finden Sie in der anbieterspezifischen Dokumentation.
 
-. Starten Sie den Host neu, um sicherzustellen, dass der Startvorgang erfolgreich ist.
+. Starten Sie den Host neu, um zu überprüfen, ob der Startvorgang erfolgreich war.
 
