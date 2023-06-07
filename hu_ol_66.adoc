@@ -128,10 +128,11 @@ NOTE: Verwenden Sie keine unverhältnismäßig hohe Anzahl von Pfaden zu einer e
 
 Das Oracle Linux 6.6 Betriebssystem wird kompiliert, um ONTAP LUNs zu erkennen und automatisch alle Konfigurationsparameter richtig einzustellen.
 
-* Der `multipath.conf` Es muss eine Datei vorhanden sein, damit der Multipath-Daemon gestartet werden kann. Sie können jedoch eine leere Zero-Byte-Datei mit dem folgenden Befehl erstellen:
-`touch /etc/multipath.conf`.
-* Wenn Sie diese Datei zum ersten Mal erstellen, müssen Sie die Multipath-Services unter Umständen aktivieren und starten.
+Der `multipath.conf` Es muss eine Datei vorhanden sein, damit der Multipath-Daemon gestartet werden kann. Sie können jedoch eine leere Zero-Byte-Datei mit dem folgenden Befehl erstellen:
 
+`touch /etc/multipath.conf`.
+
+Wenn Sie diese Datei zum ersten Mal erstellen, müssen Sie die Multipath-Services unter Umständen aktivieren und starten.
 
 [listing]
 ----
@@ -139,21 +140,27 @@ Das Oracle Linux 6.6 Betriebssystem wird kompiliert, um ONTAP LUNs zu erkennen u
 # /etc/init.d/multipathd start
 ----
 * Es ist nicht erforderlich, dem direkt etwas hinzuzufügen `multipath.conf` Datei, es sei denn, Sie haben Geräte, die nicht von Multipath verwaltet werden sollen, oder Sie haben bereits Einstellungen, die die Standardeinstellungen außer Kraft setzen.
-* Sie können die folgende Syntax dem hinzufügen `multipath.conf` Datei zum Ausschließen unerwünschter Geräte.
-* Ersetzen Sie die <DevId> durch die WWID-Zeichenfolge des Geräts, das Sie ausschließen möchten:
-
-
-....
+* Sie können die folgende Syntax dem hinzufügen `multipath.conf` Datei zum Ausschließen unerwünschter Geräte:
++
+** Ersetzen Sie die <DevId> durch die WWID-Zeichenfolge des Geräts, das Sie ausschließen möchten:
++
+[listing]
+----
 blacklist {
         wwid <DevId>
         devnode "^(ram|raw|loop|fd|md|dm-|sr|scd|st)[0-9]*"
         devnode "^hd[a-z]"
         devnode "^cciss.*"
 }
-....
+----
+
+
+
+
 .Beispiel
 In diesem Beispiel `sda` Ist die lokale SCSI Festplatte, die wir zur Blacklist hinzufügen müssen.
 
+.Schritte
 . Führen Sie den folgenden Befehl aus, um die WWID zu bestimmen:
 +
 [listing]
@@ -161,21 +168,22 @@ In diesem Beispiel `sda` Ist die lokale SCSI Festplatte, die wir zur Blacklist h
 # /lib/udev/scsi_id -gud /dev/sda
 360030057024d0730239134810c0cb833
 ----
-. Fügen Sie diese WWID in der Zeile /etc/Multipath.conf zur Blacklist hinzu:
+. Fügen Sie diese WWID der "Blacklist"-Strophe in hinzu `/etc/multipath.conf`:
 +
-....
+[listing]
+----
 blacklist {
      wwid   360030057024d0730239134810c0cb833
      devnode "^(ram|raw|loop|fd|md|dm-|sr|scd|st)[0-9]*"
      devnode "^hd[a-z]"
      devnode "^cciss.*"
 }
-....
+----
 
 
 Sie sollten immer Ihre überprüfen `/etc/multipath.conf` Datei für ältere Einstellungen, insbesondere im Abschnitt „Standardeinstellungen“, die die Standardeinstellungen überschreiben könnte.
 
-Die folgende Tabelle zeigt die kritisch `multipathd` Parameter für ONTAP-LUNs und die erforderlichen Werte. Wenn ein Host mit LUNs anderer Hersteller verbunden ist und diese Parameter überschrieben werden, müssen sie durch spätere Strophen in korrigiert werden `multipath.conf` Datei, die speziell für ONTAP LUNs gilt. Wenn dies nicht ausgeführt wird, funktionieren die ONTAP LUNs möglicherweise nicht wie erwartet. Sie sollten diese Standardeinstellungen nur in Absprache mit NetApp und/oder dem OS-Anbieter außer Kraft setzen und nur dann, wenn die Auswirkungen vollständig verstanden sind.
+Die folgende Tabelle zeigt das kritische `multipathd` Parameter für ONTAP-LUNs und die erforderlichen Werte. Wenn ein Host mit LUNs anderer Hersteller verbunden ist und diese Parameter überschrieben werden, müssen sie durch spätere Strophen in korrigiert werden `multipath.conf` Datei, die speziell für ONTAP LUNs gilt. Wenn dies nicht ausgeführt wird, funktionieren die ONTAP LUNs möglicherweise nicht wie erwartet. Sie sollten diese Standardeinstellungen nur in Absprache mit NetApp und/oder dem OS-Anbieter außer Kraft setzen und nur dann, wenn die Auswirkungen vollständig verstanden sind.
 
 [cols="2*"]
 |===
