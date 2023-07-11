@@ -290,7 +290,7 @@ Sie können auch die empfohlenen Einstellungen verwenden, um Kernel-Based Virtua
 
 == Bekannte Probleme
 
-Oracle Linux 9.1 mit NetApp ONTAP Release weist die folgenden bekannten Probleme auf:
+Die Oracle Linux 9.1 mit NetApp ONTAP-Version weist folgende bekannte Probleme auf:
 
 [cols="10,30,30,10"]
 |===

@@ -290,8 +290,23 @@ Sie können auch die empfohlenen Einstellungen verwenden, um Kernel-Based Virtua
 
 == Bekannte Probleme
 
-Es gibt keine bekannten Probleme für Oracle Linux 9.0.
+Die Oracle Linux 9.0 mit NetApp ONTAP-Version weist folgende bekannte Probleme auf:
 
+[cols="10,30,30,10"]
+|===
+| NetApp Bug ID | Titel | Beschreibung | Bugzilla-ID 
+
+
+| https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/BURT/1508554["1508554"^] | FÜR DAS SAN-LUN-Dienstprogramm mit Emulex HBA werden symbolische Links von Bibliothekspaketen benötigt  a| 
+Wenn Sie den Linux Unified Host Utilities CLI-Befehl „sanlun fcp show Adapter -V“ auf einem SAN-Host ausführen, schlägt der Befehl mit der Fehlermeldung fehl, die anzeigt, dass die für die Erkennung eines Host Bus Adapters (HBA) erforderlichen Bibliotheksabhängigkeiten nicht gefunden werden können:
+
+[listing]
+----
+[root@hostname ~]# sanlun fcp show adapter -v
+Unable to locate /usr/lib64/libHBAAPI.so library
+Make sure the package installing the library is installed & loaded
+----| Keine Angabe 
+|===
 
 
 == Versionshinweise
