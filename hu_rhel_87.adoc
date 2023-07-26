@@ -4,7 +4,7 @@ permalink: hu_rhel_87.html
 keywords: host utilities, red hat, rhel, linux, 8.7, netapp, ontap, rhel 
 summary: Beschreibt die Verwendung von Red hat Enterprise Linux 8.7 mit ONTAP 
 ---
-= Einsatz von Red hat Enterprise Linux 8.7 mit NetApp ONTAP
+= Verwenden Sie Red hat Enterprise Linux 8.7 mit ONTAP
 :toc: macro
 :hardbreaks:
 :toclevels: 1
@@ -285,13 +285,3 @@ devices {
 === KVM-Einstellungen
 
 Sie können die empfohlenen Einstellungen verwenden, um Kernel-Based Virtual Machine (KVM) ebenfalls zu konfigurieren. Es sind keine Änderungen erforderlich, um KVM zu konfigurieren, da die LUN dem Hypervisor zugeordnet ist.
-
-
-
-== Versionshinweise
-
-
-
-=== ASM Mirroring
-
-Bei der ASM-Spiegelung (Automatic Storage Management) sind möglicherweise Änderungen an den Linux Multipath-Einstellungen erforderlich, damit ASM ein Problem erkennen und zu einer alternativen Fehlergruppe wechseln kann. Die meisten ASM-Konfigurationen auf ONTAP verwenden externe Redundanz. Das bedeutet, dass Datensicherung durch das externe Array bereitgestellt wird und ASM keine Daten spiegelt. Einige Standorte verwenden ASM mit normaler Redundanz, um normalerweise zwei-Wege-Spiegelung über verschiedene Standorte hinweg bereitzustellen. Siehe link:https://www.netapp.com/us/media/tr-3633.pdf["Oracle-Datenbanken auf ONTAP"^] Für weitere Informationen.

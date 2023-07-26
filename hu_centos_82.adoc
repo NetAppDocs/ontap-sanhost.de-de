@@ -4,7 +4,7 @@ permalink: hu_centos_82.html
 keywords: host utilities, centos, linux, 8.2, netapp, ontap 
 summary: Beschreibt die Verwendung von CentOS 8.2 mit ONTAP 
 ---
-= Verwendung von CentOS 8.2 mit NetApp ONTAP
+= Verwenden Sie CentOS 8.2 mit ONTAP
 :toc: macro
 :hardbreaks:
 :toclevels: 1
@@ -20,7 +20,7 @@ summary: Beschreibt die Verwendung von CentOS 8.2 mit ONTAP
 
 
 
-== Installieren der Linux Unified Host Utilities
+== Installieren Sie die Linux Unified Host Utilities
 
 Das NetApp Linux Unified Host Utilities-Softwarepaket ist auf der erhältlich link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab["NetApp Support Website"^] In einer 64-Bit-.rpm-Datei.
 
@@ -261,13 +261,3 @@ Sie können die empfohlenen Einstellungen verwenden, um Kernel-Based Virtual Mac
 == Bekannte Probleme und Einschränkungen
 
 Für CentOS (Red hat kompatibler Kernel) bekannte Probleme siehe link:hu_rhel_82.html#known-problems-and-limitations["Bekannte Probleme"] Für Red hat Enterprise Linux (RHEL) 8.2.
-
-
-
-== Versionshinweise
-
-
-
-=== ASM Mirroring
-
-Bei der ASM-Spiegelung (Automatic Storage Management) sind möglicherweise Änderungen an den Linux Multipath-Einstellungen erforderlich, damit ASM ein Problem erkennen und zu einer alternativen Fehlergruppe wechseln kann. Die meisten ASM-Konfigurationen auf ONTAP verwenden externe Redundanz. Das bedeutet, dass Datensicherung durch das externe Array bereitgestellt wird und ASM keine Daten spiegelt. Einige Standorte verwenden ASM mit normaler Redundanz, um normalerweise zwei-Wege-Spiegelung über verschiedene Standorte hinweg bereitzustellen. Siehe link:https://www.netapp.com/us/media/tr-3633.pdf["Oracle-Datenbanken auf ONTAP"^] Für weitere Informationen.

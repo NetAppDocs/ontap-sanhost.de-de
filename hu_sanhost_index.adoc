@@ -1,0 +1,24 @@
+---
+sidebar: sidebar 
+permalink: hu_sanhost_index.html 
+keywords:  
+summary:  
+---
+= Überblick
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:allow-uri-read: 
+:toc: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+:toc-position: content
+
+
+Entdecken Sie die neuesten Informationen zu SAN Host Utility-Versionen und greifen Sie auf das Installationsverfahren für Ihre Host-Konfiguration zu.
+
+
+NOTE: Für einen zuverlässigen Betrieb nach der Installation verwenden Sie den https://mysupport.netapp.com/matrix/imt.jsp?components=65623%3B64703%3B&solution=1&isHWU&src=IMT["NetApp Interoperabilitäts-Matrix-Tool"^] Überprüfen Sie, ob Ihr Host die gesamten NVMe over Fabrics (einschließlich NVMe over TCP und NVMe over Fibre Channel)-, iSCSI-, FC- oder FCoE-Konfigurationen unterstützt.

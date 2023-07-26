@@ -4,7 +4,7 @@ permalink: hu_rhel_92.html
 keywords: host utilities, red hat, rhel, linux, 9.2, netapp, ontap, rhel 
 summary: Beschreibt die Verwendung von Red hat Enterprise Linux 9.2 mit ONTAP 
 ---
-= Verwendung von Red hat Enterprise Linux 9.2 mit NetApp ONTAP
+= Verwenden Sie Red hat Enterprise Linux 9.2 mit ONTAP
 :toc: macro
 :hardbreaks:
 :toclevels: 1
@@ -301,12 +301,3 @@ Die NVMe-of Hostkonfiguration für RHEL 9.2 mit ONTAP-Version weist folgende bek
 
 | 1537359 | Ein über Red hat Linux 9.2 SAN gestarteter Host mit Emulex HBA begegnet blockierten Aufgaben, die zu einer Kernelunterbrechung führen | Während eines Storage Failover-Giveback-Vorgangs kann ein über Red hat Linux 9.2 SAN gestarteter Host mit einem Emulex Host Bus Adapter (HBA) nicht mehr benötigte Aufgaben bewältigen, was zu einer Kernelunterbrechung führt. Die Kernelunterbrechung bewirkt, dass das Betriebssystem neu gestartet wird und wenn `kdump` Konfiguriert ist, wird der generiert `vmcore` Datei unter `/var/crash/` Verzeichnis. Das Problem wird mit dem in der Dreierstellung angezeigt `lpfc` Treiber, aber es kann nicht konsistent reproduziert werden. | link:https://bugzilla.redhat.com/show_bug.cgi?id=2173947["2173947"^] 
 |===
-
-
-== Versionshinweise
-
-
-
-=== ASM Mirroring
-
-Bei der ASM-Spiegelung (Automatic Storage Management) sind möglicherweise Änderungen an den Linux Multipath-Einstellungen erforderlich, damit ASM ein Problem erkennen und zu einer alternativen Fehlergruppe wechseln kann. Die meisten ASM-Konfigurationen auf ONTAP verwenden externe Redundanz. Das bedeutet, dass Datensicherung durch das externe Array bereitgestellt wird und ASM keine Daten spiegelt. Einige Standorte verwenden ASM mit normaler Redundanz, um normalerweise zwei-Wege-Spiegelung über verschiedene Standorte hinweg bereitzustellen. Siehe link:https://www.netapp.com/us/media/tr-3633.pdf["Oracle-Datenbanken auf ONTAP"^] Für weitere Informationen.

@@ -4,7 +4,7 @@ permalink: hu_rhel_91.html
 keywords: host utilities, red hat, rhel, linux, 9.1, netapp, ontap, rhel 
 summary: Beschreibt die Verwendung von Red hat Enterprise Linux 9.1 mit ONTAP 
 ---
-= Einsatz von Red hat Enterprise Linux 9.1 mit NetApp ONTAP
+= Verwenden Sie Red hat Enterprise Linux 9.1 mit ONTAP
 :toc: macro
 :hardbreaks:
 :toclevels: 1
@@ -24,7 +24,7 @@ summary: Beschreibt die Verwendung von Red hat Enterprise Linux 9.1 mit ONTAP
 
 Das NetApp Linux Unified Host Utilities-Softwarepaket ist auf der erhältlich link:https://mysupport.netapp.com/site/downloads["NetApp Support Website"^] In einer 64-Bit-.rpm-Datei.
 
-Es wird dringend empfohlen, Linux Unified Host Utilities zu installieren, jedoch nicht zwingend. Die Dienstprogramme ändern keine Einstellungen auf Ihrem Linux-Host. Die Versorgungseinrichtungen verbessern das Management und unterstützen den NetApp Kunden-Support bei der Erfassung von Informationen zu Ihrer Konfiguration.
+Die Installation der Linux Unified Host Utilities wird von NetApp dringend empfohlen, ist aber nicht zwingend erforderlich. Die Dienstprogramme ändern keine Einstellungen auf Ihrem Linux-Host. Die Versorgungseinrichtungen verbessern das Management und unterstützen den NetApp Kunden-Support bei der Erfassung von Informationen zu Ihrer Konfiguration.
 
 .Was Sie benötigen
 Wenn derzeit eine Version von Linux Unified Host Utilities installiert ist, sollten Sie diese aktualisieren oder entfernen und die neueste Version wie folgt installieren.
@@ -297,12 +297,3 @@ Sie können die empfohlenen Einstellungen verwenden, um Kernel-Based Virtual Mac
 
 | 1508554 | Bei der NetApp Linux Host Utilities CLI sind zusätzliche Abhängigkeiten von Bibliothekspaketen erforderlich, um die Erkennung von Emulex HBA-Adaptern zu unterstützen | In RHEL 9.1 bietet die NetApp Linux SAN Host Utilities CLI `sanlun fcp show adapter -v` Schlägt fehl, da die Paketabhängigkeiten für die Unterstützung der HBA-Erkennung nicht gefunden werden können. | K. A. 
 |===
-
-
-== Versionshinweise
-
-
-
-=== ASM Mirroring
-
-Bei der ASM-Spiegelung (Automatic Storage Management) sind möglicherweise Änderungen an den Linux Multipath-Einstellungen erforderlich, damit ASM ein Problem erkennen und zu einer alternativen Fehlergruppe wechseln kann. Die meisten ASM-Konfigurationen auf ONTAP verwenden externe Redundanz. Das bedeutet, dass Datensicherung durch das externe Array bereitgestellt wird und ASM keine Daten spiegelt. Einige Standorte verwenden ASM mit normaler Redundanz, um normalerweise zwei-Wege-Spiegelung über verschiedene Standorte hinweg bereitzustellen. Siehe link:https://www.netapp.com/us/media/tr-3633.pdf["Oracle-Datenbanken auf ONTAP"^] Für weitere Informationen.

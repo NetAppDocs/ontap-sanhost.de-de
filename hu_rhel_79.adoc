@@ -4,7 +4,7 @@ permalink: hu_rhel_79.html
 keywords: host utilities, red hat, rhel, linux, 7.9, netapp, ontap 
 summary: Beschreibt die Verwendung von Red hat Enterprise Linux 7.9 mit ONTAP 
 ---
-= Einsatz von Red hat Enterprise Linux 7.9 mit NetApp ONTAP
+= Verwenden Sie Red hat Enterprise Linux 7.9 mit ONTAP
 :toc: macro
 :hardbreaks:
 :toclevels: 1
@@ -20,11 +20,11 @@ summary: Beschreibt die Verwendung von Red hat Enterprise Linux 7.9 mit ONTAP
 
 
 
-== Installieren der Linux Unified Host Utilities
+== Installieren Sie die Linux Unified Host Utilities
 
 Das NetApp Linux Unified Host Utilities-Softwarepaket ist auf der erhältlich link:https://mysupport.netapp.com/NOW/cgi-bin/software/?product=Host+Utilities+-+SAN&platform=Linux["NetApp Support Website"^] In einer 32-Bit- und 64-Bit-.rpm-Datei. Wenn Sie nicht wissen, welche Datei für Ihre Konfiguration geeignet ist, verwenden Sie den link:https://mysupport.netapp.com/matrix/#welcome["NetApp Interoperabilitäts-Matrix-Tool"^] Um zu überprüfen, welches Sie benötigen.
 
-Es wird dringend empfohlen, Linux Unified Host Utilities zu installieren, jedoch nicht zwingend. Die Dienstprogramme ändern keine Einstellungen auf Ihrem Linux-Host. Die Versorgungseinrichtungen verbessern das Management und unterstützen den NetApp Kunden-Support bei der Erfassung von Informationen zu Ihrer Konfiguration.
+NetApp empfiehlt ausdrücklich die Installation der Linux Unified Host Utilities, dies ist jedoch nicht zwingend erforderlich. Die Dienstprogramme ändern keine Einstellungen auf Ihrem Linux-Host. Die Versorgungseinrichtungen verbessern das Management und unterstützen den NetApp Kunden-Support bei der Erfassung von Informationen zu Ihrer Konfiguration.
 
 .Was Sie benötigen
 Wenn Sie derzeit eine Version von Linux Unified Host Utilities installiert haben, sollten Sie sie aktualisieren oder Sie sollten sie entfernen und die folgenden Schritte verwenden, um die neueste Version zu installieren.
@@ -296,12 +296,3 @@ Sie können die empfohlenen Einstellungen verwenden, um Kernel-Based Virtual Mac
 
 | 1440718 | Wenn Sie eine LUN ohne SCSI-erneute Zuordnung aufheben oder zuordnen, kann dies zu Datenbeschädigungen auf dem Host führen. | Wenn Sie den Multipath-Konfigurationsparameter 'disable_changed_wwids' auf YES setzen, wird der Zugriff auf das Pfadgerät bei einer WWID-Änderung deaktiviert. Multipath deaktiviert den Zugriff auf das Pfadgerät, bis die WWID des Pfads auf die WWID des Multipath-Geräts wiederhergestellt ist. Weitere Informationen finden Sie unter link:https://kb.netapp.com/Advice_and_Troubleshooting/Flash_Storage/AFF_Series/The_filesystem_corruption_on_iSCSI_LUN_on_the_Oracle_Linux_7["NetApp Knowledge Base: Beschädigung des Dateisystems auf iSCSI LUN auf Oracle Linux 7"^]. | K. A. 
 |===
-
-
-== Versionshinweise
-
-
-
-=== ASM Mirroring
-
-Bei der ASM-Spiegelung (Automatic Storage Management) sind möglicherweise Änderungen an den Linux Multipath-Einstellungen erforderlich, damit ASM ein Problem erkennen und zu einer alternativen Fehlergruppe wechseln kann. Die meisten ASM-Konfigurationen auf ONTAP verwenden externe Redundanz. Das bedeutet, dass Datensicherung durch das externe Array bereitgestellt wird und ASM keine Daten spiegelt. Einige Standorte verwenden ASM mit normaler Redundanz, um normalerweise zwei-Wege-Spiegelung über verschiedene Standorte hinweg bereitzustellen. Siehe link:https://www.netapp.com/us/media/tr-3633.pdf["Oracle-Datenbanken auf ONTAP"^] Für weitere Informationen.

@@ -4,7 +4,7 @@ permalink: hu_aix_72.html
 keywords: host utilities, aix, powervm, vios, 3.1, 7.2 netapp, ontap 
 summary: Beschreibt die Verwendung von IBM AIX 7.2 und/oder PowerVM VIOS 3.1 mit ONTAP 
 ---
-= Verwenden von IBM AIX 7.2 und/oder PowerVM (VIOS 3.1) mit NetApp ONTAP
+= Verwenden Sie IBM AIX 7.2 und/oder PowerVM (VIOS 3.1) mit ONTAP
 :toc: macro
 :hardbreaks:
 :toclevels: 1
@@ -20,7 +20,7 @@ summary: Beschreibt die Verwendung von IBM AIX 7.2 und/oder PowerVM VIOS 3.1 mit
 
 
 
-== Installieren der AIX/VIOS Host Utilities
+== Installieren Sie die AIX/VIOS-Hostdienstprogramme
 
 Sie müssen das AIX Host Utilities Kit bei der Verwendung von AIX MPIO mit NetApp ONTAP Storage installieren.
 
@@ -158,7 +158,7 @@ up     primary  path3  fcs1    fc_aix_4     1
 
 == Empfohlene Einstellungen
 
-Im Folgenden finden Sie einige empfohlene Parametereinstellungen für NetApp ONTAP LUNs. Die wichtigen Parameter für ONTAP LUNs werden nach der Installation des NetApp Host Utilities Kit automatisch festgelegt.
+Im Folgenden finden Sie einige empfohlene Parametereinstellungen für ONTAP LUNs.  Die wichtigen Parameter für ONTAP LUNs werden nach der Installation des NetApp Host Utilities Kit automatisch festgelegt.
 
 [cols="4*"]
 |===

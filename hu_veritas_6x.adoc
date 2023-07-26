@@ -4,7 +4,7 @@ permalink: hu_veritas_6x.html
 keywords: host utilities, veritas, infoscale, 6.x, netapp, ontap, san, lun, multipathing, iscsi 
 summary: Hier finden Sie Anleitungen zur Konfiguration der ONTAP-SAN-Hosts für die Version der Veritas Infoscale 6 Serie 
 ---
-= Verwendung von Veritas Storage Foundation 6 für Linux mit NetApp ONTAP
+= Verwendung von Veritas Storage Foundation 6 für Linux mit ONTAP
 :toc: macro
 :hardbreaks:
 :toclevels: 1
@@ -26,7 +26,7 @@ Dieses Dokument enthält Hinweise zur Konfiguration der ONTAP-SAN-Hosts für die
 
 
 
-== Installieren der Linux Unified Host Utilities
+== Installieren Sie die Linux Unified Host Utilities
 
 Das NetApp Linux Unified Host Utilities-Softwarepaket ist auf der erhältlich link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab["NetApp Support Website"^] In einer 64-Bit-.rpm-Datei.
 

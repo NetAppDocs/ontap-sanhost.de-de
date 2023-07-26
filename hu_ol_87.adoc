@@ -4,7 +4,7 @@ permalink: hu_ol_87.html
 keywords: host utilities, oracle, linux, 8.7, netapp, ontap 
 summary: Beschreibt die Verwendung von Oracle Linux 8.7 mit ONTAP 
 ---
-= Verwenden von Oracle Linux 8.7 mit NetApp ONTAP
+= Verwenden Sie Oracle Linux 8.7 mit ONTAP
 :toc: macro
 :hardbreaks:
 :toclevels: 1P
