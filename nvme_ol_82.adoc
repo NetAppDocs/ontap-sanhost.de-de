@@ -31,7 +31,7 @@ NOTE: Sie können die in diesem Dokument angegebenen Konfigurationseinstellungen
 
 == Bekannte Einschränkungen
 
-Keine.
+Es gibt keine bekannten Einschränkungen.
 
 
 

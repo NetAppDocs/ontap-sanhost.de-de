@@ -254,4 +254,3 @@ options lpfc lpfc_sg_seg_cnt=256
 
 
 NOTE: Dies gilt nicht für Qlogic NVMe/FC-Hosts.
-Xxx

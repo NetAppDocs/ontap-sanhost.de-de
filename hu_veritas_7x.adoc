@@ -18,11 +18,8 @@ summary: Hier finden Sie Anleitungen zur Konfiguration der ONTAP-SAN-Hosts für 
 :toc-position: content
 
 
-
-
-== Einführung
-
-Dieses Dokument enthält Hinweise zur Konfiguration der ONTAP-SAN-Hosts für die Version der Veritas Infoscale Storage Foundation 7 Serie für Red hat Enterprise Linux & Oracle Linux (RHCK-basiert) Plattformen mit FC-, FCoE- und iSCSI-Protokollen.
+[role="lead"]
+Sie können die Konfigurationseinstellungen des ONTAP SAN-Hosts für die Version 7 der Veritas Infoscale Storage Foundation für Red hat Enterprise Linux- und Oracle Linux-Plattformen (RHCK-basiert) mit FC-, FCoE- und iSCSI-Protokollen verwenden.
 
 
 
@@ -283,6 +280,6 @@ Wenn Sie über eine heterogene Multipath-Umgebung wie Veritas Infoscale, Linux N
 
 
 
-== Bekannte Probleme und Einschränkungen
+== Bekannte Probleme
 
-Es gibt keine bekannten Probleme und Einschränkungen.
+Es sind keine Probleme bekannt.

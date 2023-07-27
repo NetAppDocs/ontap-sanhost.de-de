@@ -2,6 +2,8 @@
 :allow-uri-read: 
 
 
+Legen Sie den lpfc-Treiber für NVMe/FC fest.
+
 .Schritte
 . Stellen Sie die ein `lpfc_log_verbose` Treibereinstellung auf einen der folgenden Werte, um NVMe/FC-Ereignisse zu protokollieren.
 +

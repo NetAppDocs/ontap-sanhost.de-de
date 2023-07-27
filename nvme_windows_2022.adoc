@@ -18,9 +18,8 @@ summary: NVMe/FC-Host-Konfiguration für Windows Server 2022 mit ONTAP
 :toc-position: content
 
 
-
-
-== Instandhaltung
+[role="lead"]
+Sie können NVMe over Fibre Channel (NVMe/FC) auf Hosts konfigurieren, auf denen Windows Server 2022 und ONTAP als Ziel ausgeführt werden.
 
 NVMe/FC wird auf ONTAP 9.7 oder höher für Windows Server 2022 unterstützt.
 

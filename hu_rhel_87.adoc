@@ -285,3 +285,9 @@ devices {
 === KVM-Einstellungen
 
 Sie können die empfohlenen Einstellungen verwenden, um Kernel-Based Virtual Machine (KVM) ebenfalls zu konfigurieren. Es sind keine Änderungen erforderlich, um KVM zu konfigurieren, da die LUN dem Hypervisor zugeordnet ist.
+
+
+
+== Bekannte Probleme
+
+Es gibt keine bekannten Probleme für RHEL 8.7.
