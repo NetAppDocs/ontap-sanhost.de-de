@@ -488,7 +488,7 @@ NSID       UUID                                   Size
 
 == Bekannte Probleme
 
-Die NVMe-of Hostkonfiguration für Oracle Linux 9.0 mit ONTAP-Release weist folgende bekannte Probleme auf:
+Die NVMe-of Hostkonfiguration für Oracle Linux 9.0 mit ONTAP weist folgende bekannte Probleme auf:
 
 [cols=""20"]
 |===

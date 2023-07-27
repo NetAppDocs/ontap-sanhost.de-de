@@ -49,7 +49,7 @@ Das Toolkit wird automatisch installiert, wenn Sie das NetApp Host Utilities-Pak
 .Beispiel
 Im folgenden Beispiel wird der verwendet `sanlun lun show` Befehl gibt LUN-Informationen zurück.
 
-[listing]
+[source, cli]
 ----
 # sanlun lun show all
 ----

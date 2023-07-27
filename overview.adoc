@@ -28,3 +28,10 @@ NOTE: In einer Cloud-Umgebung werden Hosts normalerweise als Clients bezeichnet.
 So lässt sich beispielsweise lokaler ONTAP Storage konfigurieren, um eine Verbindung zu lokalen SAN-Hosts herzustellen oder eine Verbindung zu SAN-Cloud-Clients herzustellen. Sie könnten auch konfigurieren link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^] Oder link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["Amazon FSX für ONTAP"^] Herstellen einer Verbindung zu lokalen SAN-Hosts oder zur Verbindung mit SAN-Cloud-Clients:
 
 Die ordnungsgemäße Konfiguration ist für beste Performance und ein erfolgreiches Failover wichtig.
+
+.Verwandte Informationen
+* Der link:https://docs.netapp.com/us-en/ontap/san-config/index.html["ONTAP-SAN-Konfiguration"^] Für Ihre Version von ONTAP
+* Der link:https://docs.netapp.com/us-en/ontap/san-management/index.html["ONTAP-SAN-Administration-Leitfaden"^] Für Ihre Version von ONTAP
+* Der link:https://library.netapp.com/ecm/ecm_download_file/ECMLP2492508["Versionshinweise zu ONTAP"^] Für Ihre Version von ONTAP
+* Der link:https://docs.netapp.com/us-en/e-series/index.html["E-Series Dokumentation"^] Um die Dokumentation zu SANtricity zu finden.
+

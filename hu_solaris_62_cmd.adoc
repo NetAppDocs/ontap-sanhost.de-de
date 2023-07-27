@@ -1,0 +1,137 @@
+---
+sidebar: sidebar 
+permalink: hu_solaris_62_cmd.html 
+keywords: host utilities, unified, oracle, linux, 7.1, netapp, ontap 
+summary: Beschreibt die Verwendung von Linux Unified Host Utilities 7.1 mit ONTAP 
+---
+= Solaris 6.2-Befehlsreferenz
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:allow-uri-read: 
+:toc: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+:toc-position: content
+
+
+[role="lead"]
+Sie können die Beispielbefehlsreferenz für Solaris Host Utilities 6.2 für eine End-to-End-Validierung der NetApp-Speicherkonfiguration mit dem Host Utilities-Tool verwenden.
+
+
+
+== Führen Sie alle Host-Initiatoren auf, die dem Host zugeordnet sind
+
+Sie können eine Liste aller Host-Initiatoren abrufen, die einem Host zugeordnet sind.
+
+[source, cli]
+----
+# sanlun fcp show adapter -v
+----
+*Beispielausgabe*
+
+[listing]
+----
+adapter name:      qlc3
+WWPN:              21000024ff17a301
+WWNN:              20000024ff17a301
+driver name:       qlc
+model:             7335902
+model description: 7115462, Oracle Storage Dual-Port 32 Gb Fibre Channel PCIe HBA
+serial number:     463916R+1720333838
+hardware version:  Not Available
+driver version:    210226-5.10
+firmware version:  8.08.04
+Number of ports:   1 of 2
+port type:         Fabric
+port state:        Operational
+supported speed:   8 GBit/sec, 16 GBit/sec, 32 GBit/sec
+negotiated speed:  32 GBit/sec
+OS device name:    /dev/cfg/c7
+
+adapter name:      qlc2
+WWPN:              21000024ff17a300
+WWNN:              20000024ff17a300
+driver name:       qlc
+model:             7335902
+model description: 7115462, Oracle Storage Dual-Port 32 Gb Fibre Channel PCIe HBA
+serial number:     463916R+1720333838
+hardware version:  Not Available
+driver version:    210226-5.10
+firmware version:  8.08.04
+Number of ports:   2 of 2
+port type:         Fabric
+port state:        Operational
+supported speed:   8 GBit/sec, 16 GBit/sec, 32 GBit/sec
+negotiated speed:  16 GBit/sec
+OS device name:    /dev/cfg/c6
+----
+
+
+== Listen Sie alle LUNs auf, die dem Host zugeordnet sind
+
+Sie können eine Liste aller LUNs abrufen, die einem Host zugeordnet sind.
+
+[source, cli]
+----
+# sanlun lun show -p -v all
+----
+*Beispielausgabe*
+
+[listing]
+----
+
+                    ONTAP Path: data_vserver:/vol1/lun1
+                           LUN: 1
+                      LUN Size: 10g
+                   Host Device: /dev/rdsk/c0t600A0980383044485A3F4E694E4F775Ad0s2
+                          Mode: C
+            Multipath Provider: Sun Microsystems
+              Multipath Policy: Native
+
+----
+
+
+== Listen Sie alle LUNs auf, die dem Host von einer bestimmten SVM zugeordnet sind/Listen Sie alle Attribute einer bestimmten LUN auf, die dem Host zugeordnet sind
+
+Sie können eine Liste aller LUNs, die einem Host zugeordnet sind, von einer bestimmten SVM abrufen.
+
+[source, cli]
+----
+# sanlun lun show -p -v sanboot_unix`
+----
+*Beispielausgabe*
+
+[listing]
+----
+ONTAP Path: sanboot_unix:/vol/sol_boot/sanboot_lun
+                           LUN: 0
+                      LUN Size: 180.0g
+
+----
+
+
+== Liste der ONTAP-LUN-Attribute nach Dateiname des Hostgeräts
+
+Sie können eine Liste aller ONTAP-LUN-Attribute abrufen, indem Sie einen Dateinamen für das Hostgerät angeben.
+
+[source, cli]
+----
+# sanlun lun show all
+----
+*Beispielausgabe*
+
+[listing]
+----
+controller(7mode/E-Series)/                                         device
+vserver(cDOT/FlashRay)       lun-pathname                           filename
+---------------------------------------------------------------------------------------------------------------
+sanboot_unix                 /vol/sol_193_boot/chatsol_193_sanboot /dev/rdsk/c0t600A098038304437522B4E694E4A3043d0s2
+
+host adapter    protocol lun size   product
+---------------------------------------------
+qlc3            FCP      180.0g     cDOT
+----

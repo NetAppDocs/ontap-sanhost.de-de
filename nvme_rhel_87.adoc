@@ -465,7 +465,7 @@ NSID  UUID                                   Size
 
 == Bekannte Probleme
 
-Die NVMe-of Hostkonfiguration für RHEL 8.7 mit ONTAP-Version weist folgende bekannte Probleme auf:
+Die NVMe-of-Hostkonfiguration für RHEL 8.7 mit ONTAP weist folgende bekannte Probleme auf:
 
 [cols="10,30,30,10"]
 |===

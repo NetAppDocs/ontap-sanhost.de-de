@@ -397,7 +397,7 @@ NSID       UUID                                   Size
 
 == Bekannte Probleme
 
-Die NVMe-of-Hostkonfiguration für OL 8.6 mit ONTAP-Release hat die folgenden bekannten Probleme:
+Die NVMe-of Hostkonfiguration für OL 8.6 mit ONTAP weist folgende bekannte Probleme auf:
 
 [cols=""20"]
 |===
