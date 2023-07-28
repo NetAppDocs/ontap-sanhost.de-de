@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar 
 permalink: hu_luhu_71_rn.html 
-keywords: host utilities, linux, 7.1, netapp, ontap, release, notes 
+keywords: host utilities, linux, 7.1, netapp, ontap, release, notes, linux 
 summary: Versionshinweise zu Linux Unified Host Utilities 7.1 
 ---
 = Linux Unified Host Utilities 7.1 – Versionshinweise
@@ -45,8 +45,8 @@ NOTE: Jede Nennung der Host Utilities oder Linux Host Utilities in diesem Dokume
 ** Citrix XenServer
 
 
-* Auf Red hat Enterprise Linux (RHEL) 6- und RHEL 7-Hosts wird nun ein abgestimmtes Paket zur Festlegung von Serverprofilen unterstützt. Sie können das verwenden `tuned-adm` Befehl zum Festlegen verschiedener Profile, je nach Umgebung.  Sie können beispielsweise das virtuelle Gastprofil auch als virtuelle Gastmaschine verwenden und das Unternehmensspeicherprofil für Konfigurationen verwenden, bei denen LUNs aus Enterprise-Speicherarrays verwendet werden.  Mithilfe dieser optimierten Pakete können Sie den Durchsatz und die Latenz in ONTAP verbessern.
-* Unterstützt 32-GB-Fibre-Channel-Adapter von Broadcom Emulex und Marvell Qlogic.
+* Auf Red hat Enterprise Linux (RHEL) 6- und RHEL 7-Hosts wird nun ein abgestimmtes Paket zur Festlegung von Serverprofilen unterstützt. Sie können das verwenden `tuned-adm` Befehl zum Festlegen verschiedener Profile, je nach Umgebung. Sie können beispielsweise das virtuelle Gastprofil auch als virtuelle Gastmaschine verwenden und das Unternehmensspeicherprofil für Konfigurationen verwenden, bei denen LUNs aus Enterprise-Speicherarrays verwendet werden. Mithilfe dieser optimierten Pakete können Sie den Durchsatz und die Latenz in ONTAP verbessern.
+* Unterstützt 32-GB-FC-Adapter von Broadcom Emulex und Marvell Qlogic.
 
 
 

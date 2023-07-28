@@ -19,7 +19,7 @@ summary: Versionshinweise zu Solaris Host Utilities 6.2
 
 
 [role="lead"]
-Diese Versionshinweise enthalten die neuesten Informationen zu den Solaris Host Utilities 6.2, einschließlich Updates zu bekannten Problemen, Einschränkungen sowie das Konfigurieren und Verwalten Ihrer ONTAP-Speichersysteme.
+Das Release Notes-Dokument enthält die neuesten Informationen zu den Solaris Host Utilities 6.2, einschließlich Updates zu bekannten Problemen, Einschränkungen, Konfiguration und Verwaltung Ihrer ONTAP-Speichersysteme.
 
 Das Release Notes-Dokument wird aktualisiert, wenn neue Informationen zur Verwendung von Solaris Host Utilities verfügbar sind.
 
