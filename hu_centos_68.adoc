@@ -187,20 +187,23 @@ blacklist {
 +
 Ersetzen Sie den `<DevId>` Mit dem `WWID` Zeichenfolge des Geräts, das Sie ausschließen möchten.
 
-
-
++
 .Beispiel
-In diesem Beispiel `sda` Ist die lokale SCSI Festplatte, die wir zur Blacklist hinzufügen müssen.
+In diesem Beispiel werden wir die WWID eines Geräts ermitteln und dem hinzufügen `multipath.conf` Datei:
 
++
 .Schritte
-. Führen Sie den folgenden Befehl aus, um die WWID zu bestimmen:
+.. Führen Sie den folgenden Befehl aus, um die WWID zu bestimmen:
 +
 [listing]
 ----
 # /lib/udev/scsi_id -gud /dev/sda
 360030057024d0730239134810c0cb833
 ----
-. Fügen Sie die hinzu `WWID` Zur schwarzen Liste stanza in `/etc/multipath.conf`:
++
+`sda` Ist die lokale SCSI-Festplatte, die wir zur Blacklist hinzufügen müssen.
+
+.. Fügen Sie die hinzu `WWID` Zur schwarzen Liste stanza in `/etc/multipath.conf`:
 +
 [listing]
 ----
@@ -211,6 +214,8 @@ blacklist {
      devnode "^cciss.*"
 }
 ----
+
+
 
 
 Sie sollten immer Ihre überprüfen `/etc/multipath.conf` Datei für ältere Einstellungen, insbesondere im Abschnitt „Standardeinstellungen“, die die Standardeinstellungen überschreiben könnte.

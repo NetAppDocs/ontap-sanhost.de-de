@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
-permalink: hu_centos_85.html 
-keywords: host utilities, centos, linux, 8.5, netapp, ontap 
-summary: Beschreibt die Verwendung von CentOS 8.5 mit ONTAP 
+permalink: hu_sles_15SP5.html 
+keywords: host utilities, suse linux enterprise server 15 sp5, suse, linux, 15 sp5, netapp, ontap 
+summary: Beschreibt die Verwendung von SUSE Linux Enterprise Server 15 SP5 mit ONTAP 
 ---
-= Verwenden Sie CentOS 8.5 mit ONTAP
+= Verwenden Sie SUSE Linux Enterprise Server 15 SP5 mit ONTAP
 :toc: macro
 :hardbreaks:
 :toclevels: 1
@@ -22,16 +22,15 @@ summary: Beschreibt die Verwendung von CentOS 8.5 mit ONTAP
 
 == Installieren Sie die Linux Unified Host Utilities
 
-Das NetApp Linux Unified Host Utilities-Softwarepaket ist auf der erhältlich link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab["NetApp Support Website"^] In einer 64-Bit-.rpm-Datei.
+Das NetApp Linux Unified Host Utilities-Softwarepaket ist auf der erhältlich link:https://mysupport.netapp.com/NOW/cgi-bin/software/?product=Host+Utilities+-+SAN&platform=Linux["NetApp Support Website"^] In einer 32-Bit- und 64-Bit-.rpm-Datei. Wenn Sie nicht wissen, welche Datei für Ihre Konfiguration geeignet ist, verwenden Sie den link:https://mysupport.netapp.com/matrix/#welcome["NetApp Interoperabilitäts-Matrix-Tool"^] Um zu überprüfen, welches Sie benötigen.
 
 NetApp empfiehlt ausdrücklich die Installation der Linux Unified Host Utilities, dies ist jedoch nicht zwingend erforderlich. Die Dienstprogramme ändern keine Einstellungen auf Ihrem Linux-Host. Die Versorgungseinrichtungen verbessern das Management und unterstützen den NetApp Kunden-Support bei der Erfassung von Informationen zu Ihrer Konfiguration.
 
 .Was Sie benötigen
-Wenn Sie derzeit eine Version von Linux Unified Host Utilities installiert haben, sollten Sie diese aktualisieren oder entfernen und dann die folgenden Schritte ausführen, um die neueste Version zu installieren.
+Wenn Sie derzeit eine Version von Linux Unified Host Utilities installiert haben, sollten Sie sie aktualisieren oder Sie sollten sie entfernen und die folgenden Schritte verwenden, um die neueste Version zu installieren.
 
-.Schritte
-. Laden Sie das Softwarepaket für die 64-Bit-Version von Linux Unified Host Utilities von herunter https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab["NetApp Support Website"^] Auf Ihren Host.
-. Installieren des Softwarepakets:
+. Laden Sie das Softwarepaket für 32 Bit oder 64 Bit Linux Unified Host Utilities von herunter link:https://mysupport.netapp.com/NOW/cgi-bin/software/?product=Host+Utilities+-+SAN&platform=Linux["NetApp Support Website"^] Standort zu Ihrem Host.
+. Verwenden Sie den folgenden Befehl, um das Softwarepaket zu installieren:
 +
 `rpm -ivh netapp_linux_unified_host_utilities-7-1.x86_64`
 
@@ -42,7 +41,7 @@ NOTE: Sie können die in diesem Dokument angegebenen Konfigurationseinstellungen
 
 
 
-== SAN Toolkit
+== SAN-Toolkit
 
 Das Toolkit wird automatisch installiert, wenn Sie das NetApp Host Utilities-Paket installieren. Dieses Kit enthält die `sanlun` Dienstprogramm: Unterstützt Sie beim Management von LUNs und HBAs. Der `sanlun` Befehl gibt Informationen über die LUNs zurück, die Ihrem Host zugeordnet sind, Multipathing und Informationen zurück, die zum Erstellen von Initiatorgruppen erforderlich sind.
 
@@ -67,10 +66,10 @@ data_vserver          /vol/vol2/lun2   /dev/sde   host15   FCP       120.0g  cDO
 ----
 
 
-== SAN wird gebootet
+== SAN Booting
 
 .Was Sie benötigen
-Wenn Sie sich für das Booten über SAN entscheiden, muss es von Ihrer Konfiguration unterstützt werden. Sie können das verwenden link:https://mysupport.netapp.com/matrix/imt.jsp?components=91241;&solution=236&isHWU&src=IMT["NetApp Interoperabilitäts-Matrix-Tool"^] Um zu überprüfen, ob Ihr Betriebssystem, HBA, die HBA-Firmware und das HBA-Boot-BIOS sowie die ONTAP-Version unterstützt werden.
+Wenn Sie sich für das Booten über SAN entscheiden, muss es von Ihrer Konfiguration unterstützt werden. Sie können das verwenden link:https://mysupport.netapp.com/matrix/imt.jsp?components=84067;&solution=1&isHWU&src=IMT["NetApp Interoperabilitäts-Matrix-Tool"^] Um zu überprüfen, ob Ihr Betriebssystem, HBA, die HBA-Firmware und das HBA-Boot-BIOS sowie die ONTAP-Version unterstützt werden.
 
 .Schritte
 . Ordnen Sie die SAN-Boot-LUN dem Host zu.
@@ -90,7 +89,7 @@ Informationen zum Aktivieren des HBA-BIOS finden Sie in der anbieterspezifischen
 
 == Multipathing
 
-Für CentOS 8.5 die `/etc/multipath.conf` Die Datei muss vorhanden sein, Sie müssen jedoch keine spezifischen Änderungen an der Datei vornehmen. CentOS 8.5 wird mit allen Einstellungen zusammengestellt, die zum Erkennen und korrekten Managen von ONTAP LUNs erforderlich sind.
+Für SUSE Linux Enterprise Server 15 SP5 ist der `/etc/multipath.conf` Die Datei muss vorhanden sein, Sie müssen jedoch keine spezifischen Änderungen an der Datei vornehmen. Der SUSE Linux Enterprise Server 15 SP5 wird mit allen Einstellungen kompiliert, die zur Erkennung und korrekten Verwaltung von ONTAP-LUNs erforderlich sind.
 
 Sie können das verwenden `multipath -ll` Überprüfen Sie mit dem Befehl die Einstellungen für Ihre ONTAP LUNs. Die folgenden Abschnitte enthalten ein Beispiel für eine Multipath-Ausgabe für eine LUN, die ASA- und nicht-ASA-Personas zugeordnet ist.
 
@@ -106,13 +105,13 @@ Im folgenden Beispiel wird die richtige Ausgabe für eine ONTAP LUN angezeigt:
 [listing]
 ----
 # multipath -ll
-3600a098038303634722b4d59646c4436 dm-28 NETAPP,LUN C-Mode
+3600a09803831347657244e527766394e dm-5 NETAPP,LUN C-Mode
 size=80G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
 `-+- policy='service-time 0' prio=50 status=active
-  |- 11:0:7:1    sdfi   130:64   active ready running
-  |- 11:0:9:1    sdiy  8:288     active ready running
-  |- 11:0:10:1  sdml 69:464   active ready running
-  |- 11:0:11:1  sdpt  131:304  active ready running
+  |- 3:0:7:9    sdco 69:192  active ready running
+  |- 3:0:8:9    sddi 71:0    active ready running
+  |- 14:0:8:9   sdjq 65:320  active ready running
+  `- 14:0:7:9   sdiw 8:256   active ready running
 ----
 
 NOTE: Verwenden Sie keine unverhältnismäßig hohe Anzahl von Pfaden zu einer einzelnen LUN. Es sollten nicht mehr als vier Pfade erforderlich sein. Mehr als acht Pfade können bei Storage-Ausfällen zu Pfadproblemen führen.
@@ -129,14 +128,14 @@ Im folgenden Beispiel wird die richtige Ausgabe für eine ONTAP-LUN mit zwei akt
 [listing]
 ----
 # multipath -ll
-3600a098038303634722b4d59646c4436 dm-28 NETAPP,LUN C-Mode
+3600a09803831347657244e527766394e dm-5 NETAPP,LUN C-Mode
 size=80G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
 |-+- policy='service-time 0' prio=50 status=active
-| |- 16:0:6:35 sdwb  69:624  active ready running
-| |- 16:0:5:35 sdun  66:752  active ready running
+| |- 3:0:3:0    sdd  8:48    active ready running
+| |- 3:0:4:0    sdx  65:112  active ready running
 `-+- policy='service-time 0' prio=10 status=enabled
-  |- 15:0:0:35 sdaj  66:48   active ready running
-  |- 15:0:1:35 sdbx  68:176  active ready running
+  |- 14:0:2:0   sdfk 130:96  active ready running
+  `- 14:0:5:0   sdgz 132:240 active ready running
 ----
 
 NOTE: Verwenden Sie keine unverhältnismäßig hohe Anzahl von Pfaden zu einer einzelnen LUN. Es sollten nicht mehr als vier Pfade erforderlich sein. Mehr als acht Pfade können bei Storage-Ausfällen zu Pfadproblemen führen.
@@ -145,7 +144,7 @@ NOTE: Verwenden Sie keine unverhältnismäßig hohe Anzahl von Pfaden zu einer e
 
 == Empfohlene Einstellungen
 
-CentOS 8.5 OS wird kompiliert, um ONTAP-LUNs zu erkennen und automatisch alle Konfigurationsparameter sowohl für ASA als auch für nicht-ASA-Konfiguration korrekt festzulegen.
+SUSE Linux Enterprise Server 15 SP5 OS wird kompiliert, um ONTAP-LUNs zu erkennen und automatisch alle Konfigurationsparameter für ASA- und nicht-ASA-Konfigurationen korrekt einzustellen. Mithilfe der folgenden empfohlenen Einstellungen können Sie die Performance für Ihre Host-Konfiguration weiter optimieren.
 
 Der `multipath.conf` Es muss eine Datei vorhanden sein, damit der Multipath-Daemon gestartet werden kann. Sie können jedoch eine leere Zero-Byte-Datei mit dem folgenden Befehl erstellen:
 
@@ -208,7 +207,7 @@ Sie sollten immer Ihre überprüfen `/etc/multipath.conf` Datei für ältere Ein
 
 Die folgende Tabelle zeigt das kritische `multipathd` Parameter für ONTAP-LUNs und die erforderlichen Werte. Wenn ein Host mit LUNs anderer Anbieter verbunden ist und einer dieser Parameter außer Kraft gesetzt wird, müssen sie später in Abschnitt korrigiert werden `multipath.conf` Datei, die speziell für ONTAP LUNs gilt. Wenn dies nicht ausgeführt wird, funktionieren die ONTAP LUNs möglicherweise nicht wie erwartet. Diese Standardwerte sollten nur in Absprache mit NetApp und/oder einem Betriebssystemanbieter außer Kraft gesetzt werden und nur dann, wenn die Auswirkungen vollständig verstanden sind.
 
-[cols="2*"]
+[cols="2"]
 |===
 | Parameter | Einstellung 
 
@@ -275,7 +274,6 @@ defaults {
    path_checker      readsector0
    no_path_retry      fail
 }
-
 devices {
    device {
       vendor         "NETAPP  "
@@ -287,12 +285,6 @@ devices {
 ----
 
 
-=== KVM-Einstellungen
+== Bekannte Probleme
 
-Sie können die empfohlenen Einstellungen verwenden, um Kernel-Based Virtual Machine (KVM) ebenfalls zu konfigurieren. Es sind keine Änderungen erforderlich, um KVM zu konfigurieren, da die LUN dem Hypervisor zugeordnet ist.
-
-
-
-== Bekannte Probleme und Einschränkungen
-
-Es gibt keine bekannten Probleme für CentOS 8.5.
+Es sind keine Probleme bekannt.
