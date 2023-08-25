@@ -286,15 +286,14 @@ NOTE: Um Oracle Linux 7.9 RedHat Enterprise Kernel (RHCK) zu konfigurieren, verw
 
 
 
-== Bekannte Probleme und Einschränkungen
+== Bekannte Probleme
+
+Die Oracle Linux 7.9 mit ONTAP-Version weist folgende bekannte Probleme auf:
 
 [cols="4*"]
 |===
 | NetApp Bug ID | Titel | Beschreibung | Bugzilla-ID 
 
 
-| 1440718 | Wenn Sie eine LUN ohne SCSI-erneute Zuordnung aufheben oder zuordnen, kann dies zu Datenbeschädigungen auf dem Host führen. | Wenn Sie den Multipath-Konfigurationsparameter 'disable_changed_wwids' auf YES setzen, wird der Zugriff auf das Pfadgerät bei einer WWID-Änderung deaktiviert. Multipath deaktiviert den Zugriff auf das Pfadgerät, bis die WWID des Pfads auf die WWID des Multipath-Geräts wiederhergestellt ist. Weitere Informationen finden Sie unter link:https://kb.netapp.com/Advice_and_Troubleshooting/Flash_Storage/AFF_Series/The_filesystem_corruption_on_iSCSI_LUN_on_the_Oracle_Linux_7["NetApp Knowledge Base: Beschädigung des Dateisystems auf iSCSI LUN auf Oracle Linux 7"^]. | K. A. 
-
-
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1328944["1328943"^] | Bei Storage Failover wurden I/O-Verzögerungen mit Emulex LPe32002(32G) Host beobachtet | I/O-Vorgänge können bei einem Storage Failover-Vorgang auf einem Oracle Linux 7.8 Kernel (5.4.17-2011.1.2.el8uek.x86_64) mit QLogic LPe32002 32G HBA nicht fortgesetzt werden. Wenn der I/O-Status aufgrund eines Fehlers bei der Fortsetzung vorhandener aktiver Pfade während des Storage Failover unterbrochen wird, kann der I/O-Vorgang möglicherweise nicht fortgesetzt werden, was zu einer I/O-Verzögerung führt. Der I/O-Vorgang wird erst wieder fortgesetzt, nachdem der Storage Failover-Giveback abgeschlossen ist. | link:https://bugzilla.oracle.com/bugzilla/show_bug.cgi?id=17319["17319"^] 
+| 1440718 | Wenn Sie die Zuordnung einer LUN aufheben oder zuordnen, ohne einen SCSI-erneuten Scan durchzuführen, kann dies zu Datenbeschädigungen auf dem Host führen | Wenn Sie die einstellen `disable_changed_wwids` Multipath-Konfigurationsparameter auf JA wird der Zugriff auf das Pfadgerät im Falle einer Änderung der weltweiten Kennung (WWID) deaktiviert. Multipath deaktiviert den Zugriff auf das Pfadgerät, bis die WWID des Pfads auf die WWID des Multipath-Geräts wiederhergestellt ist. Siehe link:https://kb.netapp.com/Advice_and_Troubleshooting/Flash_Storage/AFF_Series/The_filesystem_corruption_on_iSCSI_LUN_on_the_Oracle_Linux_7["NetApp Knowledge Base: Beschädigung des Dateisystems auf iSCSI LUN auf Oracle Linux 7"^] Finden Sie weitere Informationen. | Keine Angabe 
 |===
