@@ -91,11 +91,35 @@ Informationen zum Aktivieren des HBA-BIOS finden Sie in der anbieterspezifischen
 
 Für Oracle Linux (OL) 7.9 muss die Datei /etc/Multipath.conf vorhanden sein, Sie müssen jedoch keine spezifischen Änderungen an der Datei vornehmen. OL 7.9 wird mit allen Einstellungen kompiliert, die zum Erkennen und korrekten Managen von ONTAP LUNs erforderlich sind.
 
-Sie können das verwenden `multipath -ll` Überprüfen Sie mit dem Befehl die Einstellungen für Ihre ONTAP LUNs. Die folgenden Abschnitte enthalten Beispielausgänge für eine LUN, die nicht-ASA- und ASA-Personas zugeordnet sind.
+Sie können das verwenden `multipath -ll` Überprüfen Sie mit dem Befehl die Einstellungen für Ihre ONTAP LUNs. Die folgenden Abschnitte enthalten ein Beispiel für eine Multipath-Ausgabe für eine LUN, die ASA- und nicht-ASA-Personas zugeordnet ist.
 
 
 
-=== Nicht-ASA-Konfiguration
+=== Alle SAN-Array-Konfigurationen
+
+In ASA Konfigurationen sind alle Pfade zu einer bestimmten LUN aktiv und optimiert. Dies verbessert die Performance, da I/O-Operationen über alle Pfade gleichzeitig ausgeführt werden können.
+
+.Beispiel
+Im folgenden Beispiel wird die richtige Ausgabe für eine ONTAP LUN angezeigt:
+
+[listing]
+----
+# multipath -ll
+3600a098038303634722b4d59646c4436 dm-28 NETAPP,LUN C-Mode
+size=80G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
+`-+- policy='service-time 0' prio=50 status=active
+  |- 11:0:7:1    sdfi   130:64   active ready running
+  |- 11:0:9:1    sdiy   8:288    active ready running
+  |- 11:0:10:1   sdml   69:464   active ready running
+  |- 11:0:11:1   sdpt   131:304  active ready running
+
+----
+
+NOTE: Verwenden Sie keine unverhältnismäßig hohe Anzahl von Pfaden zu einer einzelnen LUN. Es sollten nicht mehr als vier Pfade erforderlich sein. Mehr als acht Pfade können bei Storage-Ausfällen zu Pfadproblemen führen.
+
+
+
+=== Konfigurationen ohne ASA
 
 Für Konfigurationen ohne ASA sollten zwei Gruppen von Pfaden mit unterschiedlichen Prioritäten vorhanden sein. Die Pfade mit den höheren Prioritäten sind aktiv/optimiert, was bedeutet, dass sie vom Controller gewartet werden, wo sich das Aggregat befindet. Die Pfade mit den niedrigeren Prioritäten sind aktiv, werden aber nicht optimiert, da sie von einem anderen Controller bereitgestellt werden. Die nicht optimierten Pfade werden nur verwendet, wenn keine optimierten Pfade verfügbar sind.
 
@@ -113,30 +137,6 @@ size=40G features='4 queue_if_no_path pg_init_retries 50 retain_attached_hw_hand
 |-+- policy='service-time 0' prio=10 status=enabled
   |- 11:0:8:7   sdck 69:128  active ready running
   |- 11:0:12:7  sddy 128:0   active ready running
-
-----
-
-NOTE: Verwenden Sie keine unverhältnismäßig hohe Anzahl von Pfaden zu einer einzelnen LUN. Es sollten nicht mehr als vier Pfade erforderlich sein. Mehr als acht Pfade können bei Storage-Ausfällen zu Pfadproblemen führen.
-
-
-
-=== Alle SAN-Array-Konfigurationen
-
-In ASA Konfigurationen sind alle Pfade zu einer bestimmten LUN aktiv und optimiert. Dies verbessert die Performance, da I/O-Operationen über alle Pfade gleichzeitig ausgeführt werden können.
-
-.Beispiel
-Im folgenden Beispiel wird die richtige Ausgabe für eine ONTAP LUN angezeigt:
-
-[listing]
-----
-# multipath -ll
-3600a0980383143596f5d514b65507846 dm-7 NETAPP  ,LUN C-Mode
-size=10G features='4 queue_if_no_path pg_init_retries 50 retain_attached_hw_handle' hwhandler='1 alua' wp=rw
-|-+- policy='service-time 0' prio=50 status=active
-  |- 11:0:7:6   sdbz 68:208  active ready running
-  |- 11:0:11:6  sddn 71:80   active ready running
-  |- 11:0:15:6  sdfb 129:208 active ready running
-  |- 12:0:1:6   sdgp 132:80  active ready running
 
 ----
 

@@ -92,13 +92,34 @@ Informationen zum Aktivieren des HBA-BIOS finden Sie in der anbieterspezifischen
 
 Für Oracle Linux (OL) 8.2 muss die Datei /etc/Multipath.conf vorhanden sein, Sie müssen jedoch keine spezifischen Änderungen an der Datei vornehmen. OL 8.2 wird mit allen Einstellungen kompiliert, die zum Erkennen und korrekten Managen von ONTAP LUNs erforderlich sind.
 
-Sie können das verwenden `multipath -ll` Überprüfen Sie mit dem Befehl die Einstellungen für Ihre ONTAP LUNs.
-
-Die folgenden Abschnitte enthalten ein Beispiel für eine Multipath-Ausgabe für eine LUN zugeordnete, nicht-ASA-Personas.
+Sie können das verwenden `multipath -ll` Überprüfen Sie mit dem Befehl die Einstellungen für Ihre ONTAP LUNs. Die folgenden Abschnitte enthalten ein Beispiel für eine Multipath-Ausgabe für eine LUN, die ASA- und nicht-ASA-Personas zugeordnet ist.
 
 
 
-=== Nicht-ASA-Konfiguration
+=== Alle SAN-Array-Konfigurationen
+
+In ASA Konfigurationen sind alle Pfade zu einer bestimmten LUN aktiv und optimiert. Dies verbessert die Performance, da I/O-Operationen über alle Pfade gleichzeitig ausgeführt werden können.
+
+.Beispiel
+Im folgenden Beispiel wird die richtige Ausgabe für eine ONTAP LUN angezeigt:
+
+[listing]
+----
+# multipath -ll
+3600a098038303634722b4d59646c4436 dm-28 NETAPP,LUN C-Mode
+size=80G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
+`-+- policy='service-time 0' prio=50 status=active
+  |- 11:0:7:1    sdfi   130:64   active ready running
+  |- 11:0:9:1    sdiy   8:288    active ready running
+  |- 11:0:10:1   sdml   69:464   active ready running
+  |- 11:0:11:1   sdpt   131:304  active ready running
+----
+
+NOTE: Verwenden Sie keine unverhältnismäßig hohe Anzahl von Pfaden zu einer einzelnen LUN. Es sollten nicht mehr als vier Pfade erforderlich sein. Mehr als acht Pfade können bei Storage-Ausfällen zu Pfadproblemen führen.
+
+
+
+=== Konfigurationen ohne ASA
 
 Für Konfigurationen ohne ASA sollten zwei Gruppen von Pfaden mit unterschiedlichen Prioritäten vorhanden sein. Die Pfade mit den höheren Prioritäten sind aktiv/optimiert, was bedeutet, dass sie vom Controller gewartet werden, wo sich das Aggregat befindet. Die Pfade mit den niedrigeren Prioritäten sind aktiv, werden aber nicht optimiert, da sie von einem anderen Controller bereitgestellt werden. Die nicht optimierten Pfade werden nur verwendet, wenn keine optimierten Pfade verfügbar sind.
 
@@ -268,7 +289,7 @@ NOTE: Um Oracle Linux 8.2 RedHat Enterprise Kernel (RHCK) zu konfigurieren, verw
 
 
 
-== Bekannte Probleme und Einschränkungen
+== Bekannte Probleme
 
 Es gibt keine bekannten Probleme für Oracle Linux 8.2.
 
