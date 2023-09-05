@@ -22,10 +22,10 @@ summary: Beschreibt die Installation der solaris Host Utilities
 
 == Installieren Sie die Solaris Host Utilities
 
-Sie können die komprimierte Datei mit den Host Utilities Softwarepaketen von herunterladen link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab["NetApp Support Website"^]. Nachdem Sie die Datei haben, müssen Sie sie extrahieren, um die Softwarepakete zu erhalten, die Sie zur Installation der Host Utilities benötigen.
+Sie können die komprimierte Datei mit den Host Utilities Softwarepaketen von herunterladen https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/6.2/downloads["NetApp Support Website"^]. Nachdem Sie die Datei haben, müssen Sie sie extrahieren, um die Softwarepakete zu erhalten, die Sie zur Installation der Host Utilities benötigen.
 
 .Schritte
-. Laden Sie eine Kopie der komprimierten Datei mit den Host Utilities von herunter link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab["NetApp Support Website"^] Zu einem Verzeichnis auf Ihrem Host.
+. Laden Sie eine Kopie der komprimierten Datei mit den Host Utilities von herunter https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/6.2/downloads["NetApp Support Website"^] Zu einem Verzeichnis auf Ihrem Host.
 . Gehen Sie zu dem Verzeichnis, in dem der Download enthalten ist.
 . Extrahieren Sie die Datei.
 +

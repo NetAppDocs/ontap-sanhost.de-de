@@ -24,7 +24,7 @@ NVMe over Fabrics (NVMe-of), einschließlich NVMe over Fibre Channel (NVMe/FC) u
 Folgende Unterstützung ist für die NVMe-of Hostkonfiguration für OL 8.8 mit ONTAP verfügbar:
 
 * Unterstützung für NVMe over TCP (NVMe/TCP) neben NVMe/FC Das NetApp-Plug-in im nativen `nvme-cli` Package zeigt ONTAP-Details sowohl für NVMe/FC- als auch für NVMe/TCP-Namespaces an.
-* Sowohl NVMe- als auch SCSI-Datenverkehr können auf demselben vorhandenen Host ausgeführt werden. Daher können Sie bei SCSI-LUNs dm-Multipath für SCSI-mpath-Geräte konfigurieren, während NVMe Multipath möglicherweise verwendet wird, um NVMe-of Namespace-Geräte auf dem Host zu konfigurieren.
+* Sowohl NVMe- als auch SCSI-Datenverkehr können auf demselben vorhandenen Host ausgeführt werden. Daher können Sie bei SCSI-LUNs dm-Multipath für SCSI-mpath-Geräte konfigurieren, während Sie möglicherweise NVMe Multipath verwenden, um NVMe-of Namespace-Geräte auf dem Host zu konfigurieren.
 * Es gibt keine Unterstützung für NVMe-of für Sanlun. Daher gibt es keine Host Utility-Unterstützung für NVMe-of auf einem OL 8.8-Host. Sie können sich auf das NetApp Plug-in verlassen, das im nativen Lieferumfang enthalten ist `nvme-cli` Paket für alle NVMe-of-Transporte.
 
 
@@ -34,15 +34,13 @@ Weitere Informationen zu unterstützten Konfigurationen finden Sie im link:https
 
 == Funktionen
 
-* Oracle Linux 8.8 hat standardmäßig NVMe Multipath im Kernel für NVMe-Namespaces aktiviert, sodass keine expliziten Einstellungen erforderlich sind.
-
+Oracle Linux 8.8 hat standardmäßig NVMe Multipath im Kernel für NVMe-Namespaces aktiviert, sodass keine expliziten Einstellungen erforderlich sind.
 
 
 
 == Bekannte Einschränkungen
 
-* Das Booten von SAN über das NVMe-of-Protokoll wird derzeit nicht unterstützt.
-
+Das Booten von SAN über das NVMe-of-Protokoll wird derzeit nicht unterstützt.
 
 
 
@@ -127,7 +125,7 @@ defaults {
   enable_foreign     NONE
 }
 ----
-Starten Sie den Multipathd-Daemon neu, indem Sie ein ausführen `systemctl restart multipathd` Befehl, um die neue Einstellung wirksam zu machen.
+Starten Sie den Multipathd-Daemon neu, indem Sie ein ausführen `systemctl restart multipathd` Befehl. Dadurch kann die neue Einstellung wirksam werden.
 
 ====
 
@@ -246,7 +244,7 @@ FCP CMPL: xb 00001f50 Err 0000d9f8
 .Marvell/QLogic FC Adapter für NVMe/FC
 --
 .Schritte
-. Der native Inbox qla2xxx Treiber im OL 8.8 GA Kernel enthält die neuesten Upstream-Fixes, die für die ONTAP Unterstützung unerlässlich sind. Vergewissern Sie sich, dass der unterstützte Adaptertreiber und die unterstützten Firmware-Versionen ausgeführt werden:
+. Der native Inbox qla2xxx Treiber im OL 8.8 GA Kernel enthält die neuesten Fixes, die für die ONTAP Unterstützung unerlässlich sind. Vergewissern Sie sich, dass der unterstützte Adaptertreiber und die unterstützten Firmware-Versionen ausgeführt werden:
 +
 [listing]
 ----
@@ -400,7 +398,7 @@ nvme connect-all -t tcp -w host-traddr -a traddr -l 1800
 Zur Validierung von NVMe-of gehen Sie wie folgt vor.
 
 .Schritte
-. Vergewissern Sie sich, dass in-Kernel NVMe Multipath aktiviert ist, indem Sie Folgendes überprüfen:
+. Vergewissern Sie sich, dass in-Kernel NVMe Multipath aktiviert ist:
 +
 [listing]
 ----
@@ -589,5 +587,5 @@ Die NVMe-of-Hostkonfiguration für OL 8.8 mit ONTAP-Release hat die folgenden be
 | NetApp Bug ID | Titel | Beschreibung | Bugzilla-ID 
 
 
-| 1517321 | Oracle Linux 8.8 NVMe-of Hosts erstellen doppelte Persistent Discovery Controller | Auf OL 8.8 NVMe-of-Hosts werden Persistent Discovery Controller (PDCs) durch Übergeben des erstellt `-p` Option für die `nvme discover` Befehl. Für eine bestimmte Kombination aus Initiator und Ziel wird erwartet, dass bei jedem Aufruf des nur ein PDC erstellt wird `nvme discover` Befehl. Ab OL 8.x erstellen NVMe-of-Hosts jedoch bei jedem Aufruf der doppelte PDCs `nvme discover` Befehl mit dem `-p` Option. Dadurch werden sowohl auf dem Host als auch auf dem Ziel Ressourcen verschwendet. | https://bugzilla.oracle.com/bugzilla/show_bug.cgi?id=18118["18118"^] 
+| 1517321 | Oracle Linux 8.8 NVMe-of Hosts erstellen doppelte PDCs | Auf OL 8.8 NVMe-of-Hosts werden Persistent Discovery Controller (PDCs) durch Übergeben des erstellt `-p` Option für die `nvme discover` Befehl. Für eine bestimmte Kombination aus Initiator und Ziel wird erwartet, dass bei jedem Aufruf des nur ein PDC erstellt wird `nvme discover` Befehl. Ab OL 8.x erstellen NVMe-of-Hosts jedoch bei jedem Aufruf der doppelte PDCs `nvme discover` Befehl mit dem `-p` Option. Dadurch werden sowohl auf dem Host als auch auf dem Ziel Ressourcen verschwendet. | https://bugzilla.oracle.com/bugzilla/show_bug.cgi?id=18118["18118"^] 
 |===

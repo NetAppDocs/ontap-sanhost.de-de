@@ -22,10 +22,10 @@ summary: Beschreibt die Verwendung von IBM AIX 7.2 und/oder PowerVM VIOS 3.1 mit
 
 == Installieren Sie die HP-UX Host Utilities
 
-Sie können die komprimierte Datei mit den Host Utilities Softwarepaketen von der NetApp Support-Website herunterladen. Nachdem Sie die Datei besitzen, müssen Sie sie dekomprimieren, um die Softwarepakete zu erhalten, die Sie zur Installation der Host Utilities benötigen.
+Sie können die komprimierte Datei mit den Host Utilities Softwarepaketen von herunterladen link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/6.0/downloads["NetApp Support Website"^]. Nachdem Sie die Datei besitzen, müssen Sie sie dekomprimieren, um die Softwarepakete zu erhalten, die Sie zur Installation der Host Utilities benötigen.
 
 .Schritte
-. Laden Sie eine Kopie der komprimierten Datei mit den Host Utilities von herunter link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab["NetApp Support Website"^] Zu einem Verzeichnis auf Ihrem Host.
+. Laden Sie eine Kopie der komprimierten Datei mit den Host Utilities von herunter link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/6.0/downloads["NetApp Support Website"^] Zu einem Verzeichnis auf Ihrem Host.
 . Gehen Sie zu dem Verzeichnis, in dem der Download enthalten ist.
 . Dekomprimieren Sie die Datei.
 +
