@@ -87,7 +87,7 @@ Informationen zum Aktivieren des HBA-BIOS finden Sie in der anbieterspezifischen
 
 == Multipathing
 
-Für Red hat Enterprise Linux (RHEL) 8.2 die `/etc/multipath.conf` Die Datei muss vorhanden sein, Sie müssen jedoch keine spezifischen Änderungen an der Datei vornehmen. RHEL 8.2 wird mit allen Einstellungen kompiliert, die zur Erkennung und korrekten Verwaltung von ONTAP-LUNs erforderlich sind.
+Für Red hat Enterprise Linux (RHEL) 8.2 die `/etc/multipath.conf` Die Datei muss vorhanden sein, Sie müssen jedoch keine spezifischen Änderungen an der Datei vornehmen. RHEL 8.2 wird mit allen Einstellungen kompiliert, die für die Erkennung und korrekte Verwaltung von ONTAP-LUNs erforderlich sind.
 
 Sie können das verwenden `multipath -ll` Überprüfen Sie mit dem Befehl die Einstellungen für Ihre ONTAP LUNs. Die folgenden Abschnitte enthalten ein Beispiel für eine Multipath-Ausgabe für eine LUN, die ASA- und nicht-ASA-Personas zugeordnet ist.
 

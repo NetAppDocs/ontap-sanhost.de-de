@@ -4,7 +4,7 @@ permalink: hu_solaris_62.html
 keywords: host utilities, unified, oracle, linux, 7.1, netapp, ontap 
 summary: Beschreibt die Verwendung von Linux Unified Host Utilities 7.1 mit ONTAP 
 ---
-= Solaris Host Utilitys 6.2
+= Installieren Sie Solaris Host Utilities 6.2
 :toc: macro
 :hardbreaks:
 :toclevels: 1
@@ -21,47 +21,30 @@ summary: Beschreibt die Verwendung von Linux Unified Host Utilities 7.1 mit ONTA
 [role="lead"]
 Die Solaris Unified Host Utilities unterstützen Sie bei der Verwaltung von NetApp ONTAP-Speicher, der mit einem Solaris-Host verbunden ist.
 
-
-
-== SAN Toolkit
-
-Solaris Host Utilities ist eine NetApp Host Software, die auf Ihrem Oracle Solaris Host ein Befehlszeilen-Toolkit bietet. Das Toolkit wird bei der Installation des NetApp Host Utilities-Pakets installiert. Dieses Kit enthält die `sanlun` Dienstprogramm zum Verwalten von LUNs und HBAs Der `sanlun` Befehl gibt Informationen über die LUNs zurück, die Ihrem Host zugeordnet sind, Multipathing und Informationen zurück, die zum Erstellen von Initiatorgruppen erforderlich sind.
-
-.Beispiel
-Im folgenden Beispiel wird der verwendet `sanlun lun show` Mit dem Befehl werden die LUN-Informationen zurückgegeben.
-
-[listing]
-----
-#sanlun lun show all
-controller(7mode)/ device host lun
-vserver(Cmode)                     lun-pathname       filename                                       adapter protocol size mode
------------------------------------------------------------------------------------------------------------------------------------
-data_vserver                     /vol/vol1/lun1     /dev/rdsk/c0t600A098038304437522B4E694E49792Dd0s2 qlc3   FCP       10g cDOT
-data_vserver                     /vol/vol0/lun2     /dev/rdsk/c0t600A098038304437522B4E694E497938d0s2 qlc3   FCP       10g cDOT
-data_vserver                     /vol/vol2/lun3     /dev/rdsk/c0t600A098038304437522B4E694E497939d0s2 qlc3   FCP       10g cDOT
-data_vserver                     /vol/vol3/lun4     /dev/rdsk/c0t600A098038304437522B4E694E497941d0s2 qlc3   FCP       10g cDOT
-
-
-----
-
-NOTE: Dieses Toolkit ist für alle Konfigurationen und Protokolle der Host Utilities üblich. Als Ergebnis gelten einige ihrer Inhalte auf eine Konfiguration, jedoch nicht auf eine andere. Ungenutzte Komponenten haben keine Auswirkungen auf die Systemleistung.
-
-
-
-== Installieren Sie Solaris Host Utilities
-
-Solaris Host Utilities 6.2 unterstützt mehrere Solaris Umgebungen und Protokolle. Die primären Host Utilities-Umgebungen sind:
+Solaris Host Utilities 6.2 unterstützt mehrere Solaris Umgebungen und Protokolle. Die primären Host-Utilities-Umgebungen sind:
 
 * Natives Betriebssystem mit MPxIO mit Fibre Channel (FC) oder iSCSI-Protokoll auf einem System mit SPARC-Prozessor oder x86/64-Prozessor.
-* Veritas Dynamic Multipathing (DMP) mit FC- oder iSCSI-Protokoll auf einem System mit SPARC Prozessor und mit dem iSCSI-Protokoll auf dem System mit x86/64-Prozessor.
+* Veritas Dynamic Multipathing (DMP) mit dem FC- oder iSCSI-Protokoll auf einem System mit SPARC Prozessor oder dem iSCSI-Protokoll auf einem System mit x86/64-Prozessor.
 
 
+Solaris Unified Host Utilities 6.2 unterstützt weiterhin die folgenden Versionen von Solaris:
 
-NOTE: Das Software-Paket NetApp Solaris Host Utilities steht auf der zur Verfügung link:https://mysupport.netapp.com/site/["NetApp Support Website"^] In einem komprimierten Dateiformat für Ihren Prozessor. Sie können das Host Utilities Software-Paket für Ihre Umgebung von der Support-Website herunterladen.
+* Solaris 11.x-Serie
+* Solaris 10.x-Serie
+
+
+.Was Sie benötigen
+* Stellen Sie für einen zuverlässigen Betrieb sicher, dass Ihre gesamte iSCSI-, FC- oder FCoE-Konfiguration unterstützt wird.
+
+
+Sie können das verwenden link:https://mysupport.netapp.com/matrix/imt.jsp?components=71102;&solution=1&isHWU&src=IMT["NetApp Interoperabilitäts-Matrix-Tool"^] Um Ihre Konfiguration zu überprüfen.
+
+
+NOTE: Das Software-Paket NetApp Solaris Host Utilities steht auf der zur Verfügung link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/6.2/downloads["NetApp Support Website"^] In einem komprimierten Dateiformat für Ihren Prozessor. Sie können das Host Utilities Software-Paket für Ihre Umgebung von der Support-Website herunterladen.
 
 .Schritte
 . Melden Sie sich bei Ihrem Host als Root an.
-. Laden Sie eine Kopie der komprimierten Datei mit den Host Utilities von herunter link:https://mysupport.netapp.com/site/["NetApp Support Website"^] Zu einem Verzeichnis auf Ihrem Host.
+. Laden Sie eine Kopie der komprimierten Datei mit den Host Utilities von herunter link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/6.2/downloads["NetApp Support Website"^] Zu einem Verzeichnis auf Ihrem Host.
 +
 Zum Zeitpunkt der Erstellung dieser Dokumentation wurden die komprimierten Dateien aufgerufen:
 
@@ -71,7 +54,7 @@ Zum Zeitpunkt der Erstellung dieser Dokumentation wurden die komprimierten Datei
 
 
 . Gehen Sie zu dem Verzeichnis, in dem der Download enthalten ist.
-. Entpacken Sie die Datei mit dem Befehl gunzip
+. Entpacken Sie die Datei mithilfe des `gunzip` Befehl:
 +
 `# gunzip netapp_solaris_host_utilities_6_2_sparc.tar.gz`
 
@@ -111,7 +94,7 @@ drwxr-xr-x   3 root     sys            4 Jul 22  2019 ..
 -r-xr-xr-x   1 root     sys        12266 Sep 13  2017 host_config.1
 -r-xr-xr-x   1 root     sys         9044 Sep 13  2017 sanlun.1
 ----
-. Nach Abschluss dieses Service müssen Sie die Host-Parameter für Ihre Umgebung mithilfe von konfigurieren `/opt/NTAP/SANToolkit/bin/host_config` Befehl:
+. Konfigurieren Sie anschließend die Host-Parameter für Ihre Umgebung mithilfe der `/opt/NTAP/SANToolkit/bin/host_config` Befehl:
 +
 ** Mpxio
 ** Veritas DMP
@@ -122,3 +105,28 @@ drwxr-xr-x   3 root     sys            4 Jul 22  2019 ..
 `sanlun version`
 
 
+
+
+
+== SAN Toolkit
+
+Solaris Host Utilities ist eine NetApp Host Software, die auf Ihrem Oracle Solaris Host ein Befehlszeilen-Toolkit bietet. Das Toolkit wird bei der Installation des NetApp Host Utilities-Pakets installiert. Dieses Kit enthält die `sanlun` Dienstprogramm zum Verwalten von LUNs und Host Bus Adaptern (HBAs). Der `sanlun` Befehl gibt Informationen über die LUNs zurück, die Ihrem Host zugeordnet sind, Multipathing und Informationen zurück, die zum Erstellen von Initiatorgruppen erforderlich sind.
+
+.Beispiel
+Im folgenden Beispiel wird der verwendet `sanlun lun show` Mit dem Befehl werden die LUN-Informationen zurückgegeben.
+
+[listing]
+----
+#sanlun lun show all
+controller(7mode)/ device host lun
+vserver(Cmode)                     lun-pathname       filename                                       adapter protocol size mode
+-----------------------------------------------------------------------------------------------------------------------------------
+data_vserver                     /vol/vol1/lun1     /dev/rdsk/c0t600A098038304437522B4E694E49792Dd0s2 qlc3   FCP       10g cDOT
+data_vserver                     /vol/vol0/lun2     /dev/rdsk/c0t600A098038304437522B4E694E497938d0s2 qlc3   FCP       10g cDOT
+data_vserver                     /vol/vol2/lun3     /dev/rdsk/c0t600A098038304437522B4E694E497939d0s2 qlc3   FCP       10g cDOT
+data_vserver                     /vol/vol3/lun4     /dev/rdsk/c0t600A098038304437522B4E694E497941d0s2 qlc3   FCP       10g cDOT
+
+
+----
+
+NOTE: Dieses Toolkit ist für alle Host Utilities-Konfigurationen und -Protokolle üblich. Daher können einige Toolkit-Inhalte auf eine Konfiguration angewendet werden, aber nicht auf eine andere. Ungenutzte Komponenten haben keine Auswirkungen auf die Systemleistung.
