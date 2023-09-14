@@ -21,14 +21,14 @@ summary: Beschreibt die Verwendung von IBM AIX 7.2 und/oder PowerVM VIOS 3.1 mit
 [role="lead"]
 Die AIX Unified Host Utilities unterstützen Sie beim Management von NetApp ONTAP-Speicher mit Anbindung an einen AIX-Host.
 
-Folgende Protokolle werden unterstützt:
+AIX Host Utilities unterstützen die folgenden Protokolle:
 
 * FC
 * FCoE
 * ISCSI
 
 
-Die folgenden Umgebungen werden unterstützt:
+AIX Host Utilities unterstützen die folgenden Umgebungen:
 
 * AIX MPIO (NATIVES BETRIEBSSYSTEM)
 * PowerVM
@@ -38,7 +38,7 @@ Weitere Informationen zu PowerVM finden Sie im IBM PowerVM Live Partition Mobili
 
 
 .Was Sie benötigen
-* Für einen zuverlässigen Betrieb müssen Sie sicherstellen, dass Ihre gesamte iSCSI-, FC- oder FCoE-Konfiguration unterstützt wird.
+* Stellen Sie für einen zuverlässigen Betrieb sicher, dass Ihre gesamte iSCSI-, FC- oder FCoE-Konfiguration unterstützt wird.
 +
 Sie können das verwenden https://mysupport.netapp.com/matrix/imt.jsp?components=65623%3B64703%3B&solution=1&isHWU&src=IMT["NetApp Interoperabilitäts-Matrix-Tool"^] Um Ihre Konfiguration zu überprüfen.
 
@@ -85,7 +85,7 @@ Das folgende Verzeichnis wird beim Dekomprimieren der Datei erstellt: `ntap_aix_
 
 == SAN Toolkit
 
-AIX Host Utilities ist eine NetApp-Host-Software, die ein Kommandozeilen-Toolkit auf Ihrem IBM AIX-Host bereitstellt. Das Toolkit wird bei der Installation des NetApp Host Utilities-Pakets installiert. Dieses Kit enthält die `sanlun` Dienstprogramm: Unterstützt Sie beim Management von LUNs und HBAs. Der `sanlun` Befehl gibt Informationen über die LUNs zurück, die Ihrem Host zugeordnet sind, Multipathing und Informationen zurück, die zum Erstellen von Initiatorgruppen erforderlich sind.
+AIX Host Utilities ist eine NetApp-Host-Software, die ein Kommandozeilen-Toolkit auf Ihrem IBM AIX-Host bereitstellt. Das Toolkit wird bei der Installation des NetApp Host Utilities-Pakets installiert. Dieses Kit enthält die `sanlun` Dienstprogramm zum Managen von LUNs und Host Bus Adaptern (HBAs). Der `sanlun` Befehl gibt Informationen über die LUNs zurück, die Ihrem Host zugeordnet sind, Multipathing und Informationen zurück, die zum Erstellen von Initiatorgruppen erforderlich sind.
 
 *Beispiel*
 
@@ -109,4 +109,4 @@ data_vserver   /vol/vol3/lun3 hdisk11 fcs0   FCP      20g C
 data_vserver   /vol/vol4/lun4 hdisk14 fcs0   FCP      20g C
 ----
 
-NOTE: Dieses Toolkit ist für alle Konfigurationen und Protokolle der Host Utilities üblich. Als Ergebnis gelten einige ihrer Inhalte auf eine Konfiguration, jedoch nicht auf eine andere. Ungenutzte Komponenten haben keine Auswirkungen auf die Systemleistung. Das SAN Toolkit wird auf den Versionen AIX und PowerVM/VIOS unterstützt.
+NOTE: Dieses Toolkit ist für alle Host Utilities-Konfigurationen und -Protokolle üblich. Als Ergebnis gelten einige ihrer Inhalte auf eine Konfiguration, jedoch nicht auf eine andere. Ungenutzte Komponenten haben keine Auswirkungen auf die Systemleistung. Das SAN Toolkit wird auf den Versionen AIX und PowerVM/VIOS unterstützt.

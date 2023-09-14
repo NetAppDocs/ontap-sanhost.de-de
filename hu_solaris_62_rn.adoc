@@ -40,5 +40,5 @@ Die Bindung des FC-Treibers wird von geändert `ssd(4D)` Bis `sd(4D)`. Verschieb
 link:https://mysupport.netapp.com/site/["NetApp Bugs Online"^] Bietet vollständige Informationen für die meisten bekannten Probleme, einschließlich Lösungsvorschläge, falls möglich. Einige Schlüsselwortkombinationen und Fehlertypen, die Sie möglicherweise verwenden möchten, sind:
 
 * FCP Allgemein: Zeigt FC- und HBA-Fehler (Host Bus Adapter) an, die keinem bestimmten Host zugeordnet sind.
-* FCP Solaris
+* FCP – Solaris
 
