@@ -4,7 +4,7 @@ permalink: hu_aix_61_cmd.html
 keywords: host utilities, aix, powervm, vios, 3.1, 7.2 netapp, ontap 
 summary: Beschreibt die Verwendung von IBM AIX 7.2 und/oder PowerVM VIOS 3.1 mit ONTAP 
 ---
-= Beispielbefehlsverweis
+= Beispiel-Befehlsreferenz für AIX Host Utilities 6.1
 :toc: macro
 :hardbreaks:
 :toclevels: 1
@@ -19,7 +19,7 @@ summary: Beschreibt die Verwendung von IBM AIX 7.2 und/oder PowerVM VIOS 3.1 mit
 
 
 [role="lead"]
-Sie können die AIX Host Utilities 6.1-Befehlsreferenz für eine End-to-End-Validierung der NetApp-Speicherkonfiguration mithilfe des Host Utilities-Tools verwenden.
+Sie können die Beispielbefehlsreferenz für den AIX Host Utilities 6.1 verwenden, um die NetApp-Speicherkonfiguration mithilfe des Host Utilities-Tools vollständig zu validieren.
 
 
 
