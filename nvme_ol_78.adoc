@@ -34,6 +34,7 @@ NOTE: Sie können die in diesem Dokument angegebenen Konfigurationseinstellungen
 * Native NVMe/FC-Skripte für automatische Verbindungen sind im nvme-cli-Paket nicht verfügbar. Verwenden Sie die vom HBA-Anbieter bereitgestellten externen Skripts zur automatischen Verbindung.
 * Round Robin Load Balancing ist standardmäßig nicht in NVMe Multipath aktiviert. Sie müssen eine udev-Regel schreiben, um diese Funktion zu aktivieren. Im Abschnitt zur Aktivierung von NVMe/FC auf Oracle Linux 7.8 werden Schritte beschrieben.
 * Es gibt keine Unterstützung für NVMe/FC und infolgedessen keine Unterstützung von Linux Unified Host Utilities (LUHU) für NVMe/FC auf Oracle Linux 7.8. Verwenden Sie die ONTAP-Befehlsausgabe als Teil des NetApp Plug-ins, das in der nativen nvme-cli enthalten ist.
+* Das Booten von SAN über das NVMe-of-Protokoll wird derzeit nicht unterstützt.
 
 
 

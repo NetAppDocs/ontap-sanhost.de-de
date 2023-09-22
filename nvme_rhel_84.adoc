@@ -19,10 +19,7 @@ summary: Konfigurieren von NVMe-of Host für RHEL 8.4 mit ONTAP
 :toc-position: content
 
 
-
-
-== Instandhaltung
-
+[role="lead"]
 NVMe over Fabrics oder NVMe-of (einschließlich NVMe/FC und andere Transportstoffe) werden mit RHEL 8.4 mit ANA (Asymmetric Namespace Access) unterstützt. ANA ist das ALUA-Äquivalent in der NVMe-of Umgebung und ist derzeit mit NVMe Multipath im Kernel implementiert. Die Details zur Aktivierung von NVMe-of mit in-Kernel NVMe Multipath unter Verwendung von ANA auf RHEL 8.4 und ONTAP als Ziel wurden hier dokumentiert.
 
 
@@ -30,20 +27,11 @@ NOTE: Sie können die in diesem Dokument angegebenen Konfigurationseinstellungen
 
 
 
-== Funktionen
-
-* RHEL 8.2 starten, `nvme-fc auto-connect` Skripte sind im nativen enthalten `nvme-cli` Paket. Sie können sich auf diese nativen, automatischen Verbindungsskripte verlassen, anstatt die von einem externen Anbieter bereitgestellten External-Box Auto-Connect-Skripte installieren zu müssen.
-* Starten von RHEL 8.2, eine native `udev` Regel ist bereits als Teil des angegeben `nvme-cli` Paket, das Lastverteilung für NVMe Multipath nach dem Round Robin-Verfahren ermöglicht Sie müssen diese Regel nicht mehr manuell erstellen (wie in RHEL 8.1 ausgeführt).
-* Ab RHEL 8.2 kann sowohl NVMe- als auch SCSI-Datenverkehr auf demselben gemeinsamen Host ausgeführt werden. Es wird also von einer häufig implementierten Host-Konfiguration für Kunden ausgegangen. Daher können Sie für SCSI konfigurieren `dm-multipath` Wie üblich bei SCSI LUNs führt dies zu `mpath` Geräte, während NVMe Multipath verwendet werden kann, um NVMe-of Multipath-Geräte auf dem Host zu konfigurieren.
-* Ab RHEL 8.2 wird das NetApp-Plugin in der nativen Version verwendet `nvme-cli` Paket kann ONTAP-Details sowie ONTAP-Namespaces anzeigen.
-
-
-
-
 == Bekannte Einschränkungen
 
 * Bei RHEL 8.4 bleibt NVMe Multipath in-Kernel standardmäßig deaktiviert. Deshalb müssen Sie sie manuell aktivieren.
 * NVMe/TCP auf RHEL 8.4 ist nach wie vor eine Technologie-Vorschau-Funktion, da offene Probleme auftreten. Siehe https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html-single/8.4_release_notes/index#technology-preview_file-systems-and-storage["RHEL 8.4 – Versionshinweise"^] Entsprechende Details.
+* Das Booten von SAN über das NVMe-of-Protokoll wird derzeit nicht unterstützt.
 
 
 

@@ -42,6 +42,7 @@ NOTE: Sie können die in diesem Dokument angegebenen Konfigurationseinstellungen
 
 * Native NVMe/FC-Skripte für automatische Verbindungen sind im nvme-cli-Paket nicht verfügbar. Sie können die vom HBA-Anbieter bereitgestellten externen Skripts zur automatischen Verbindung verwenden.
 * Standardmäßig ist der Round-Robin-Lastenausgleich nicht aktiviert. Sie müssen eine udev-Regel schreiben, um diese Funktion zu aktivieren. Im Abschnitt über die Aktivierung von NVMe/FC auf OL 7.7 werden Schritte ausgeführt.
+* Das Booten von SAN über das NVMe-of-Protokoll wird derzeit nicht unterstützt.
 
 
 

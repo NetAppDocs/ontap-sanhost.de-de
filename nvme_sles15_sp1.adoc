@@ -37,7 +37,7 @@ Die aktuelle Liste der unterstützten Konfigurationen und Versionen finden Sie u
 
 == Bekannte Einschränkungen
 
-Es gibt keine bekannten Einschränkungen.
+Das Booten von SAN über das NVMe-of-Protokoll wird derzeit nicht unterstützt.
 
 
 

@@ -21,7 +21,7 @@ summary: Beschreibt die Verwendung der HP-UX Unified Host Utilities 6.0 mit ONTA
 [role="lead"]
 Mit den HP-UX Host Utilities können Sie einen HP-UX-Host mit NetApp-Speicher verbinden.
 
-Die HP-UX Host Utilities unterstützen mehrere HP-UX Umgebungen und verschiedene Protokolle. Folgende Umgebungen werden unterstützt:
+Die HP-UX Host Utilities unterstützen mehrere Protokolle und die folgenden Umgebungen:
 
 * Native MPIO
 * Veritas Dynamic Multipathing (DMP)
@@ -69,7 +69,7 @@ Der `swinstall` Mit dem Befehl wird ein Installationsskript ausgeführt, das den
 
 == SAN Toolkit
 
-HP-UX Host Utilities ist eine NetApp Host Software, die auf Ihrem HP-UX Host ein Befehlszeilen-Tool Kit enthält. Das Toolkit wird bei der Installation des NetApp Host Utilities-Pakets installiert. Dieses Kit enthält die `sanlun` Dienstprogramm, das Sie beim Management der LUNs und HBAs unterstützt. Der `sanlun` Befehl gibt Informationen über die LUNs zurück, die Ihrem Host zugeordnet sind, Multipathing und Informationen zurück, die zum Erstellen von Initiatorgruppen erforderlich sind.
+HP-UX Host Utilities ist eine NetApp Host Software, die auf Ihrem HP-UX Host ein Befehlszeilen-Tool Kit enthält. Das Toolkit wird bei der Installation des NetApp Host Utilities-Pakets installiert. Dieses Kit enthält die `sanlun` Dienstprogramm, das Sie beim Verwalten der LUNs und Hostbus-Adapter unterstützt. (HBAs). Der `sanlun` Befehl gibt Informationen über die LUNs zurück, die Ihrem Host zugeordnet sind, Multipathing und Informationen zurück, die zum Erstellen von Initiatorgruppen erforderlich sind.
 
 .Beispiel
 Im folgenden Beispiel wird der verwendet `sanlun lun show` Mit dem Befehl werden die LUN-Informationen zurückgegeben.
@@ -88,4 +88,4 @@ sanboot_unix         /vol/hpux_boot/boot_hpux_lun      /dev/rdsk/c81t0d0  fclp0 
 
 ----
 
-NOTE: Dieses Toolkit ist für alle Konfigurationen und Protokolle der Host Utilities üblich. Als Ergebnis gelten einige ihrer Inhalte auf eine Konfiguration, jedoch nicht auf eine andere. Ungenutzte Komponenten haben keine Auswirkungen auf die Systemleistung.
+NOTE: Dieses Toolkit ist für alle Host Utilities-Konfigurationen und -Protokolle üblich. Als Ergebnis gelten einige ihrer Inhalte auf eine Konfiguration, jedoch nicht auf eine andere. Ungenutzte Komponenten haben keine Auswirkungen auf die Systemleistung.
