@@ -4,7 +4,7 @@ permalink: nvme_rhel_81.html
 keywords: nvme, linux, rhel, red hat, enterprise 
 summary: Beschreibt die Konfiguration von NVMe/FC für RHEL 8.1 mit ONTAP 
 ---
-= NVMe/FC-Host-Konfiguration für RHEL 8.1 mit ONTAP
+= NVMe/FC-Hostkonfiguration für RHEL 8.1 mit ONTAP
 :toc: macro
 :hardbreaks:
 :toclevels: 1
@@ -19,60 +19,59 @@ summary: Beschreibt die Konfiguration von NVMe/FC für RHEL 8.1 mit ONTAP
 
 
 [role="lead"]
-NVMe/FC wird auf ONTAP 9.6 oder höher für die folgenden RHEL-Versionen unterstützt:
+NVMe/FC wird für Red hat Enterprise Linux (RHEL) 8.1 unter ONTAP 9.6 oder höher unterstützt. Auf einem RHEL 8.1 Host kann sowohl NVMe- als auch SCSI-Datenverkehr über dieselben FC-Initiator-Adapter-Ports ausgeführt werden. Siehe link:https://hwu.netapp.com/Home/Index["Hardware Universe"^] Für eine Liste der unterstützten FC-Adapter und Controller.
 
-* RHEL 8.1
-
-
-Auf dem RHEL 8.1-Host können NVMe- und SCSI-Datenverkehr über dieselben Fibre Channel-Initiator-Adapter-Ports ausgeführt werden. Siehe link:https://hwu.netapp.com/Home/Index["Hardware Universe"^] Für eine Liste der unterstützten FC-Adapter und Controller. Die aktuelle Liste der unterstützten Konfigurationen finden Sie im link:https://mysupport.netapp.com/matrix/["NetApp Interoperabilitätsmatrix"^].
-
-
-NOTE: Sie können die in diesem Dokument angegebenen Konfigurationseinstellungen verwenden, um die mit verbundenen Cloud-Clients zu konfigurieren link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^] Und link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["Amazon FSX für ONTAP"^].
+Siehe link:https://mysupport.netapp.com/matrix/["NetApp Interoperabilitäts-Matrix-Tool"^] Hier finden Sie die aktuelle Liste der unterstützten Konfigurationen.
 
 
 
 == Bekannte Einschränkungen
 
-* Native NVMe/FC-Skripte für automatische Verbindungen sind im nvme-cli-Paket nicht verfügbar. Sie können das vom HBA-Anbieter bereitgestellte externe Skript für die automatische Verbindung verwenden.
-* NVMe Multipath ist standardmäßig deaktiviert. Sie muss manuell aktiviert werden. Im Abschnitt zur Aktivierung von NVMe/FC auf RHEL 8.1 werden Schritte beschrieben.
-* Standardmäßig ist der Round-Robin-Lastenausgleich nicht aktiviert.
-Sie müssen eine udev-Regel schreiben, um diese Funktion zu aktivieren.
+* Im befinden sich keine nativen NVMe/FC-Skripts für die automatische Verbindung `nvme-cli` Paket. Sie können das vom Anbieter bereitgestellte externe Auto-Connect-Skript des Host Bus Adapters (HBA) verwenden.
+* NVMe Multipath ist standardmäßig deaktiviert. Deshalb müssen Sie sie manuell aktivieren.
+* Standardmäßig ist der Round-Robin-Lastenausgleich nicht aktiviert. Sie können diese Funktion aktivieren, indem Sie einen schreiben `udev` Regel.
 * Das Booten von SAN über das NVMe-of-Protokoll wird derzeit nicht unterstützt.
 
 
 
 
-== NVMe/FC bei RHEL 8.1 aktivieren
+== NVMe/FC aktivieren
 
+Wie folgt vorgehen, um NVMe/FC zu aktivieren.
+
+.Schritte
 . Installieren Sie Red hat Enterprise Linux 8.1 auf dem Server.
-. Überprüfen Sie nach Abschluss der Installation, ob Sie den angegebenen Red hat Enterprise Linux-Kernel ausführen. Siehe link:https://mysupport.netapp.com/matrix/["NetApp Interoperabilitätsmatrix"^] Erhalten Sie auf der aktuellen Liste der unterstützten Versionen.
+. Überprüfen Sie nach Abschluss der Installation, ob Sie den angegebenen RHEL-Kernel ausführen:
 +
 [listing]
 ----
 # uname -r
 4.18.0-147.el8.x86_64
 ----
-. Installieren Sie das paket nvme-cli-1.8.1-3.el8.
++
+Siehe link:https://mysupport.netapp.com/matrix/["NetApp Interoperabilitäts-Matrix-Tool"^] Erhalten Sie auf der aktuellen Liste der unterstützten Versionen.
+
+. Installieren Sie den `nvme-cli-1.8.1-3.el8` Paket:
 +
 [listing]
 ----
 # rpm -qa|grep nvme-cli
 nvme-cli-1.8.1-3.el8.x86_64
 ----
-. NVMe Multipath im Kernel aktivieren
+. Unterstützung für NVMe Multipath im Kernel:
 +
 [listing]
 ----
 # grubby –args=nvme_core.multipath=Y –update-kernel /boot/vmlinuz-4.18.0-147.el8.x86_64
 ----
-. Fügen Sie die folgende Zeichenfolge als separate udev-Regel bei /lib/udev/rules.d/71-nvme-iopolicy-netapp-ONTAP.rules hinzu. Dies ermöglicht Lastverteilung per Round Robin für NVMe Multipath.
+. Fügen Sie die folgende Zeichenfolge als separate udev-Regel bei hinzu `/lib/udev/rules.d/71-nvme-iopolicy-netapp-ONTAP.rules`. Dies ermöglicht Round-Robin-Load-Balancing für NVMe Multipath:
 +
 [listing]
 ----
 # Enable round-robin for NetApp ONTAP
 ACTION==”add”, SUBSYSTEM==”nvme-subsystem”, ATTR{model}==”NetApp ONTAP Controller”, ATTR{iopolicy}=”round-robin
 ----
-. Prüfen Sie auf dem RHEL 8.1-Host die Host-NQN-Zeichenfolge unter /etc/nvme/hostnqn und vergewissern Sie sich, dass sie mit der Host-NQN-Zeichenfolge für das entsprechende Subsystem auf dem ONTAP-Array übereinstimmt.
+. Überprüfen Sie auf dem RHEL 8.1-Host die NQN-Hostzeichenfolge unter `/etc/nvme/hostnqn` Und überprüfen Sie, ob es mit der Host-NQN-Zeichenfolge für das entsprechende Subsystem auf dem ONTAP-Array übereinstimmt:
 +
 [listing]
 ----
@@ -90,7 +89,7 @@ nqn.2014-08.org.nvmexpress:uuid:75953f3b-77fe-4e03-bf3c-09d5a156fbcd
 ----
 +
 
-NOTE: Wenn die Host-NQN-Strings nicht übereinstimmen, sollten Sie den vserver modify-Befehl verwenden, um die NQN-Zeichenfolge des Hosts auf dem entsprechenden ONTAP-Array-Subsystem zu aktualisieren, damit sie mit der Host-NQN-Zeichenfolge von /etc/nvme/hostnqn auf dem Host übereinstimmen.
+NOTE: Wenn die Host-NQN-Strings nicht übereinstimmen, verwenden Sie den `vserver modify` Befehl zum Aktualisieren der Host-NQN-Zeichenfolge auf dem entsprechenden ONTAP-Array-Subsystem, um mit der Host-NQN-Zeichenfolge von zu übereinstimmen `/etc/nvme/hostnqn` Auf dem Host.
 
 . Starten Sie den Host neu.
 
@@ -99,7 +98,10 @@ NOTE: Wenn die Host-NQN-Strings nicht übereinstimmen, sollten Sie den vserver m
 
 == Konfigurieren Sie den Broadcom FC-Adapter für NVMe/FC
 
-. Vergewissern Sie sich, dass Sie den unterstützten Adapter verwenden. Die aktuelle Liste der unterstützten Adapter finden Sie in der NetApp Interoperabilitätsmatrix.
+Sie können den Broadcom-FC-Adapter wie folgt konfigurieren.
+
+.Schritte
+. Vergewissern Sie sich, dass Sie den unterstützten Adapter verwenden. Siehe link:https://mysupport.netapp.com/matrix/["NetApp Interoperabilitäts-Matrix-Tool"^] Erhalten Sie in der aktuellen Liste der unterstützten Adapter.
 +
 [listing]
 ----
@@ -114,7 +116,7 @@ LPe32002-M2
 Emulex LightPulse LPe32002-M2 2-Port 32Gb Fibre Channel Adapter
 Emulex LightPulse LPe32002-M2 2-Port 32Gb Fibre Channel Adapter
 ----
-. Kopieren Sie den Broadcom lpfc-OuttBox-Treiber und die Skripts zur automatischen Verbindung.
+. Kopieren und installieren Sie den Broadcom lpfc-Outbox-Treiber und die Skripts für die automatische Verbindung:
 +
 [listing]
 ----
@@ -124,10 +126,10 @@ Emulex LightPulse LPe32002-M2 2-Port 32Gb Fibre Channel Adapter
 ----
 +
 
-NOTE: Die nativen Treiber, die mit dem Betriebssystem gebündelt werden, werden als Inbox-Treiber bezeichnet. Wenn Sie die outbox-Treiber herunterladen (Treiber, die nicht in der OS-Version enthalten sind), ist ein Skript zur automatischen Verbindung im Download enthalten und sollte im Rahmen der Treiberinstallation installiert werden.
+NOTE: Die nativen Treiber, die mit dem Betriebssystem gebündelt sind, werden als Inbox-Treiber bezeichnet. Wenn Sie die Outbox-Treiber herunterladen (Treiber, die nicht im Lieferumfang eines Betriebssystemrelease enthalten sind), wird ein Auto-Connect-Skript im Download enthalten und sollte im Rahmen der Treiberinstallation installiert werden.
 
 . Starten Sie den Host neu.
-. Stellen Sie sicher, dass Sie die empfohlene Broadcom lpfc-Firmware, den Outbox-Treiber und die Autoconnect-Paketversionen verwenden.
+. Überprüfen Sie, ob Sie die empfohlene Broadcom lpfc-Firmware, den Outbox-Treiber und die Auto-connect-Paketversionen verwenden:
 +
 [listing]
 ----
@@ -147,14 +149,14 @@ NOTE: Die nativen Treiber, die mit dem Betriebssystem gebündelt werden, werden 
 # rpm -qa | grep nvmefc
 nvmefc-connect-12.6.61.0-1.noarch
 ----
-. Stellen Sie sicher, dass lpfc_enable_fc4_type auf 3 gesetzt ist.
+. Verifizieren Sie das `lpfc_enable_fc4_type` Ist auf 3 eingestellt:
 +
 [listing]
 ----
 # cat /sys/module/lpfc/parameters/lpfc_enable_fc4_type
 3
 ----
-. Vergewissern Sie sich, dass die Initiator-Ports ausgeführt werden.
+. Vergewissern Sie sich, dass die Initiator-Ports ausgeführt werden:
 +
 [listing]
 ----
@@ -169,7 +171,7 @@ nvmefc-connect-12.6.61.0-1.noarch
 Online
 Online
 ----
-. Vergewissern Sie sich, dass die NVMe/FC-Initiator-Ports aktiviert sind und die Ziel-LIFs ausgeführt werden können.
+. Vergewissern Sie sich, dass die NVMe/FC-Initiator-Ports aktiviert sind und ausgeführt werden. Außerdem werden die Ziel-LIFs angezeigt:
 +
 [listing]
 ----
@@ -186,8 +188,38 @@ NVME Statistics
 
 
 
+== Aktivieren Sie 1 MB I/O-Größe für Broadcom NVMe/FC
+
+ONTAP meldet eine MDTS (MAX Data-Übertragungsgröße) von 8 in den Identifizieren-Controller-Daten, was bedeutet, dass die maximale E/A-Anforderungsgröße bis zu 1 MB betragen kann. Um jedoch I/O-Anforderungen von Größe 1 MB für einen Broadcom-NVMe/FC-Host auszustellen, müssen Sie den erhöhen `lpfc` Wert des `lpfc_sg_seg_cnt` Parameter auf 256 ab dem Standardwert 64.
+
+.Schritte
+. Stellen Sie die ein `lpfc_sg_seg_cnt` Parameter bis 256.
++
+[listing]
+----
+# cat /etc/modprobe.d/lpfc.conf
+options lpfc lpfc_sg_seg_cnt=256
+----
+. A ausführen `dracut -f` Führen Sie einen Befehl aus, und starten Sie den Host neu.
+. Verifizieren Sie das `lpfc_sg_seg_cnt` Ist 256.
++
+[listing]
+----
+# cat /sys/module/lpfc/parameters/lpfc_sg_seg_cnt
+256
+----
+
+
+
+NOTE: Dies gilt nicht für Qlogic NVMe/FC-Hosts.
+
+
+
 == NVMe/FC validieren
 
+Folgende Verfahren stehen zur Validierung von NVMe/FC zur Verfügung:
+
+.Schritte
 . Überprüfen Sie die folgenden NVMe/FC-Einstellungen.
 +
 [listing]
@@ -254,61 +286,5 @@ Device   Vserver  Namespace Path             NSID   UUID   Size
          "Namespace_Size" : 13107200
     }
 ]
-----
-
-
-
-
-== Aktivieren Sie 1 MB I/O-Größe für Broadcom NVMe/FC
-
-ONTAP meldet eine MDTS (MAX Data-Übertragungsgröße) von 8 in den Identifizieren-Controller-Daten, was bedeutet, dass die maximale E/A-Anforderungsgröße bis zu 1 MB betragen kann. Um jedoch I/O-Anforderungen von Größe 1 MB für einen Broadcom-NVMe/FC-Host auszustellen, müssen Sie den erhöhen `lpfc` Wert des `lpfc_sg_seg_cnt` Parameter auf 256 ab dem Standardwert 64.
-
-.Schritte
-. Stellen Sie die ein `lpfc_sg_seg_cnt` Parameter bis 256.
-+
-[listing]
-----
-# cat /etc/modprobe.d/lpfc.conf
-options lpfc lpfc_sg_seg_cnt=256
-----
-. A ausführen `dracut -f` Führen Sie einen Befehl aus, und starten Sie den Host neu.
-. Verifizieren Sie das `lpfc_sg_seg_cnt` Ist 256.
-+
-[listing]
-----
-# cat /sys/module/lpfc/parameters/lpfc_sg_seg_cnt
-256
-----
-
-
-
-NOTE: Dies gilt nicht für Qlogic NVMe/FC-Hosts.
-
-
-
-== LPFC Verbose Logging
-
-Legen Sie den lpfc-Treiber für NVMe/FC fest.
-
-.Schritte
-. Stellen Sie die ein `lpfc_log_verbose` Treibereinstellung auf einen der folgenden Werte, um NVMe/FC-Ereignisse zu protokollieren.
-+
-[listing]
-----
-#define LOG_NVME 0x00100000 /* NVME general events. */
-#define LOG_NVME_DISC 0x00200000 /* NVME Discovery/Connect events. */
-#define LOG_NVME_ABTS 0x00400000 /* NVME ABTS events. */
-#define LOG_NVME_IOERR 0x00800000 /* NVME IO Error events. */
-----
-. Führen Sie nach dem Festlegen der Werte den aus `dracut-f` Führen Sie einen Befehl aus und starten Sie den Host neu.
-. Überprüfen Sie die Einstellungen.
-+
-[listing]
-----
-# cat /etc/modprobe.d/lpfc.conf
-options lpfc lpfc_log_verbose=0xf00083
-
-# cat /sys/module/lpfc/parameters/lpfc_log_verbose
-15728771
 ----
 

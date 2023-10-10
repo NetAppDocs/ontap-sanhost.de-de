@@ -2,7 +2,7 @@
 :allow-uri-read: 
 
 
-Die aktuelle Liste der unterstützten Adapter finden Sie im link:https://mysupport.netapp.com/matrix/["NetApp Interoperabilitätsmatrix"^].
+Die aktuelle Liste der unterstützten Adapter finden Sie im link:https://mysupport.netapp.com/matrix/["NetApp Interoperabilitäts-Matrix-Tool"^].
 
 .Schritte
 . Vergewissern Sie sich, dass Sie den unterstützten Adapter verwenden.

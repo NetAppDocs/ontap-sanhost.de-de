@@ -4,7 +4,7 @@ permalink: nvme_rhel_88.html
 keywords: nvme, linux, rhel, red hat, enterprise 
 summary: Konfigurieren des NVMe-of-Hosts für RHEL 8.8 mit ONTAP 
 ---
-= NVMe-of Host-Konfiguration für RHEL 8.8 mit ONTAP
+= NVMe-of Hostkonfiguration für RHEL 8.8 mit ONTAP
 :toc: macro
 :hardbreaks:
 :toclevels: 1

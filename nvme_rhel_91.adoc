@@ -4,7 +4,7 @@ permalink: nvme_rhel_91.html
 keywords: nvme, linux, rhel, red hat, enterprise 
 summary: Konfigurieren von NVMe-of Host für RHEL 8.7 mit ONTAP 
 ---
-= NVMe-of-Host-Konfiguration für RHEL 9.1 mit ONTAP
+= NVMe-of Hostkonfiguration für RHEL 9.1 mit ONTAP
 :toc: macro
 :hardbreaks:
 :toclevels: 1
@@ -91,11 +91,12 @@ NOTE: Wenn die Host-NQN-Strings nicht übereinstimmen, sollten Sie den verwenden
 
 == Konfiguration von NVMe/FC
 
+[role="tabbed-block"]
+====
+.Broadcom/Emulex
+--
 
-
-=== Broadcom/Emulex
-
-.Schritte
+--
 . Vergewissern Sie sich, dass Sie den unterstützten Adapter verwenden. Die aktuelle Liste der unterstützten Adapter finden Sie im link:https://mysupport.netapp.com/matrix/["NetApp Interoperabilitätsmatrix"^].
 +
 [listing]
@@ -180,38 +181,10 @@ FCP CMPL: xb 00000000 Err 00000004
 ----
 
 
+--
 
-
-==== 1 MB I/O-Größe aktivieren (optional)
-
-ONTAP meldet in den Identify Controller-Daten ein MDTS (MAX Data Transfer Size) von 8, was bedeutet, dass die maximale E/A-Anforderungsgröße bis zu 1 MB betragen sollte. Um jedoch E/A-Anforderungen von 1 MB für den Broadcom NVMe/FC-Host zu geben, sollte der lpfc-Parameter lpfc_sg_seg_cnt auch bis zu 256 vom Standardwert 64 angestoßen werden. Befolgen Sie dazu die folgenden Anweisungen:
-
-.Schritte
-. Fügen Sie den Wert hinzu `256` In den jeweiligen Bereichen ein `modprobe lpfc.conf` Datei:
-+
-[listing]
-----
-# cat /etc/modprobe.d/lpfc.conf
-options lpfc lpfc_sg_seg_cnt=256
-----
-. A ausführen `dracut -f` Führen Sie einen Befehl aus, und starten Sie den Host neu.
-. Überprüfen Sie nach dem Neustart, ob die oben genannte Einstellung angewendet wurde, indem Sie die entsprechende Option prüfen `sysfs` Wert:
-+
-[listing]
-----
-# cat /sys/module/lpfc/parameters/lpfc_sg_seg_cnt
-256
-----
-+
-Jetzt sollte der Broadcom FC-NVMe-Host bis zu 1 MB I/O-Anfragen an den ONTAP Namespace-Geräten senden können.
-
-
-
-
-
-=== Marvell/QLogic
-
-Im nativen Posteingang `qla2xxx` Der im RHEL 9.1 Kernel enthaltene Treiber verfügt über die neuesten Upstream-Fixes, die für die ONTAP-Unterstützung von entscheidender Bedeutung sind.
+--
+Im nativen Posteingang `qla2xxx` Der im RHEL 9.1-Kernel enthaltene Treiber verfügt über die neuesten Fehlerbehebungen, die für die ONTAP-Unterstützung unerlässlich sind.
 
 .Schritte
 . Überprüfen Sie, ob Sie den unterstützten Adaptertreiber und die unterstützte Firmware-Version mit dem folgenden Befehl ausführen:
@@ -231,17 +204,42 @@ QLE2772 FW:v9.08.02 DVR:v10.02.07.400-k-debug
 ----
 
 
+--
+
+--
+====
+
+
+=== 1 MB E/A aktivieren (optional)
+
+ONTAP meldet eine MDTS (MAX Data-Übertragungsgröße) von 8 in den Identifizieren-Controller-Daten, was bedeutet, dass die maximale E/A-Anforderungsgröße bis zu 1 MB betragen kann. Um jedoch I/O-Anforderungen von Größe 1 MB für einen Broadcom-NVMe/FC-Host auszustellen, müssen Sie den erhöhen `lpfc` Wert des `lpfc_sg_seg_cnt` Parameter auf 256 ab dem Standardwert 64.
+
+.Schritte
+. Stellen Sie die ein `lpfc_sg_seg_cnt` Parameter bis 256.
++
+[listing]
+----
+# cat /etc/modprobe.d/lpfc.conf
+options lpfc lpfc_sg_seg_cnt=256
+----
+. A ausführen `dracut -f` Führen Sie einen Befehl aus, und starten Sie den Host neu.
+. Verifizieren Sie das `lpfc_sg_seg_cnt` Ist 256.
++
+[listing]
+----
+# cat /sys/module/lpfc/parameters/lpfc_sg_seg_cnt
+256
+----
+
+
+
+NOTE: Dies gilt nicht für Qlogic NVMe/FC-Hosts.
+
 
 
 == Konfiguration von NVMe/TCP
 
-Im Gegensatz zu NVMe/FC verfügt NVMe/TCP über keine automatische Verbindungsfunktion. Es gibt zwei wesentliche Einschränkungen für den Linux NVMe/TCP-Host:
-
-* *Kein automatischer erneuten Verbindungsaufbau nach der Wiederherstellung von Pfaden* NVMe/TCP kann nicht automatisch eine Verbindung zu einem Pfad herstellen, der über den Standard hinaus wiederhergestellt ist `ctrl-loss-tmo` Timer von 10 Minuten nach einem Pfad nach unten.
-* *Während des Hoststarts ist keine automatische Verbindung möglich* NVMe/TCP kann beim Hoststart keine automatische Verbindung herstellen.
-
-
-Sie sollten den Wiederholungszeitraum für Failover-Ereignisse auf mindestens 30 Minuten einstellen, um Zeitüberschreitungen zu vermeiden. Sie können den Wiederholungszeitraum erhöhen, indem Sie den Wert des erhöhen `ctrl_loss_tmo timer` Gehen Sie wie folgt vor:
+NVMe/TCP verfügt nicht über eine automatische Verbindungsfunktion. Wenn also ein Pfad ausfällt und nicht innerhalb der standardmäßigen Time-Out-Frist von 10 Minuten wieder hergestellt wird, kann NVMe/TCP die Verbindung nicht automatisch wiederherstellen. Um ein Timeout zu verhindern, sollten Sie den Wiederholungszeitraum für Failover-Ereignisse auf mindestens 30 Minuten einstellen.
 
 .Schritte
 . Überprüfen Sie, ob der Initiator-Port die Daten der Erkennungsprotokollseiten in den unterstützten NVMe/TCP LIFs abrufen kann:
@@ -306,6 +304,8 @@ sectype: none
 
 
 == NVMe-of validieren
+
+Zur Validierung von NVMe-of gehen Sie wie folgt vor.
 
 .Schritte
 . Überprüfung des NVMe Multipath im Kernel durch Prüfung:
