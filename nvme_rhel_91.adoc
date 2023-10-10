@@ -22,16 +22,19 @@ summary: Konfigurieren von NVMe-of Host für RHEL 8.7 mit ONTAP
 [role="lead"]
 NVMe over Fabrics oder NVMe-of (einschließlich NVMe/FC und NVMe/TCP) werden bei RHEL 9.1 mit Asymmetric Namespace Access (ANA) unterstützt, die für die übrig gebliebene Storage-Failover (SFOs) auf dem ONTAP Array erforderlich sind. ANA ist das ALUA-Äquivalent (Asymmetric Logical Unit Access) in der NVMe-of-Umgebung und wird derzeit mit NVMe Multipath im Kernel implementiert. Dieses Dokument enthält die Details zur Aktivierung von NVMe-of mit in-Kernel NVMe Multipath unter Verwendung von ANA auf RHEL 9.1 und ONTAP als Ziel.
 
-Siehe link:https://mysupport.netapp.com/matrix/["NetApp Interoperabilitätsmatrix"^] Finden Sie genaue Details zu unterstützten Konfigurationen.
+Folgende Unterstützung ist für die NVMe-of-Hostkonfiguration von RHEL 9.1 mit ONTAP verfügbar:
+
+* Unterstützung für NVMe over TCP (NVMe/TCP) neben NVMe/FC Über das NetApp-Plug-in im nativen nvme-cli-Paket werden ONTAP-Details für NVMe/FC- und NVMe/TCP-Namespaces angezeigt.
+* Verwendung von gleichzeitig vorhandenem NVMe und SCSI-Datenverkehr auf demselben Host in einem bestimmten Host Bus Adapter (HBA) ohne die expliziten dm-Multipath-Einstellungen, um die Inanspruchnahme von NVMe-Namespaces zu verhindern.
+
+
+Siehe link:https://mysupport.netapp.com/matrix/["NetApp Interoperabilitäts-Matrix-Tool"^] Finden Sie genaue Details zu unterstützten Konfigurationen.
 
 
 
 == Funktionen
 
-* RHEL 9.1 unterstützt zusätzlich zu NVMe/FC NVMe/TCP. Das NetApp Plug-in von original `nvme-cli` Das Paket kann ONTAP-Details sowohl für NVMe/FC als auch für NVMe/TCP-Namespaces anzeigen.
-* RHEL 9.1 unterstützt standardmäßig NVMe Multipath in Kernel für NVMe Namespaces, ohne dass explizite Einstellungen erforderlich sind.
-* RHEL 9.1 unterstützt die Nutzung von NVMe und SCSI, wobei gleichzeitig auf demselben Host auf einem bestimmten HBA-Adapter ein Verkehr besteht – ohne explizites `dm-multipath` Einstellungen um zu verhindern, dass NVMe-Namespaces beansprucht werden.
-
+RHEL 9.1 unterstützt standardmäßig NVMe Multipath in Kernel für NVMe Namespaces, ohne dass explizite Einstellungen erforderlich sind.
 
 
 
@@ -43,9 +46,11 @@ Das Booten von SAN über das NVMe-of-Protokoll wird derzeit nicht unterstützt.
 
 == NVMe Multipath im Kernel aktivieren
 
+Sie können das folgende Verfahren verwenden, um in-Kernel NVMe Multipath zu aktivieren.
+
 .Schritte
-. Installieren Sie RHEL 9.1 auf dem Server. Stellen Sie nach Abschluss der Installation sicher, dass Sie den angegebenen RHEL 9.1-Kernel ausführen. Siehe link:https://mysupport.netapp.com/matrix/["NetApp Interoperabilitätsmatrix"^] Erhalten Sie auf der aktuellen Liste der unterstützten Versionen.
-. Stellen Sie nach Abschluss der Installation sicher, dass Sie den angegebenen RHEL 9.1-Kernel ausführen. Siehe link:https://mysupport.netapp.com/matrix/["NetApp Interoperabilitätsmatrix"^] Erhalten Sie auf der aktuellen Liste der unterstützten Versionen.
+. Installieren Sie RHEL 9.1 auf dem Server.
+. Überprüfen Sie nach Abschluss der Installation, ob Sie den angegebenen RHEL 9.1-Kernel ausführen. Siehe link:https://mysupport.netapp.com/matrix/["NetApp Interoperabilitäts-Matrix-Tool"^] Erhalten Sie auf der aktuellen Liste der unterstützten Versionen.
 +
 Beispiel:
 
@@ -91,13 +96,14 @@ NOTE: Wenn die Host-NQN-Strings nicht übereinstimmen, sollten Sie den verwenden
 
 == Konfiguration von NVMe/FC
 
+Sie können NVMe/FC für Broadcom/Emulex- oder Marvell/Qlogic-Adapter konfigurieren.
+
 [role="tabbed-block"]
 ====
 .Broadcom/Emulex
 --
-
---
-. Vergewissern Sie sich, dass Sie den unterstützten Adapter verwenden. Die aktuelle Liste der unterstützten Adapter finden Sie im link:https://mysupport.netapp.com/matrix/["NetApp Interoperabilitätsmatrix"^].
+.Schritte
+. Vergewissern Sie sich, dass Sie den unterstützten Adapter verwenden. Siehe link:https://mysupport.netapp.com/matrix/["NetApp Interoperabilitäts-Matrix-Tool"^] Erhalten Sie in der aktuellen Liste der unterstützten Adapter.
 +
 [listing]
 ----
@@ -111,7 +117,7 @@ Emulex LightPulse LPe32002-M2 2-Port 32Gb Fibre Channel Adapter
 Emulex LightPulse LPe32002-M2 2-Port 32Gb Fibre Channel Adapter
 
 ----
-. Überprüfen Sie, ob Sie die empfohlene Broadcom lpfc-Firmware und den Posteingangstreiber verwenden. Siehe link:https://mysupport.netapp.com/matrix/["NetApp Interoperabilitätsmatrix"^] Aktuelle Liste der unterstützten Adaptertreiber- und Firmware-Versionen.
+. Überprüfen Sie, ob Sie die empfohlene Broadcom lpfc-Firmware und den Posteingangstreiber verwenden. Siehe link:https://mysupport.netapp.com/matrix/["NetApp Interoperabilitäts-Matrix-Tool"^] Aktuelle Liste der unterstützten Adaptertreiber- und Firmware-Versionen.
 +
 [listing]
 ----
@@ -182,7 +188,7 @@ FCP CMPL: xb 00000000 Err 00000004
 
 
 --
-
+.Marvell/QLogic FC Adapter für NVMe/FC
 --
 Im nativen Posteingang `qla2xxx` Der im RHEL 9.1-Kernel enthaltene Treiber verfügt über die neuesten Fehlerbehebungen, die für die ONTAP-Unterstützung unerlässlich sind.
 
@@ -203,8 +209,6 @@ QLE2772 FW:v9.08.02 DVR:v10.02.07.400-k-debug
 1
 ----
 
-
---
 
 --
 ====
@@ -373,7 +377,10 @@ nvme-subsys1 - NQN=nqn.1992-08.com.netapp:sn.bf0691a7c74411ec8187d039ea14107d:su
  +- nvme3 tcp traddr=192.168.167.21,trsvcid=4420,host_traddr=192.168.167.5 live non-optimized
  +- nvme4 tcp traddr=192.168.167.20,trsvcid=4420,host_traddr=192.168.167.5 live optimized
 ----
-. Überprüfen Sie, ob das NetApp Plug-in die richtigen Werte für jedes ONTAP Namespace-Gerät anzeigt. Beispiel:
+. Überprüfen Sie, ob das NetApp Plug-in die richtigen Werte für jedes ONTAP Namespace-Gerät anzeigt.
++
+Beispiel (A):
+
 +
 [listing]
 ----
@@ -408,7 +415,7 @@ NSID  UUID                                   Size
 }
 ----
 +
-Beispiel (b)
+Beispiel (b):
 
 +
 [listing]
