@@ -13,7 +13,7 @@ sidebar:
     url: "/index.html"
   - title: Überblick
     url: "/overview.html"
-  - title: Installieren Sie SAN Host Utilities
+  - title: Installieren Sie die SAN-Hostdienstprogramme
     entries:
     - title: Überblick
       url: "/hu_sanhost_index.html"
@@ -41,7 +41,7 @@ sidebar:
         url: "/hu_luhu_71.html"
       - title: Beispielbefehlsverweis
         url: "/hu_luhu_71_cmd.html"
-    - title: Solaris Host Utilities
+    - title: Solaris Host Utilitys
       entries:
       - title: Versionshinweise
         url: "/hu_solaris_62_rn.html"

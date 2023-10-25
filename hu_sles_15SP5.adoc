@@ -18,6 +18,9 @@ summary: Beschreibt die Verwendung von SUSE Linux Enterprise Server 15 SP5 mit O
 :toc-position: content
 
 
+[role="lead"]
+Sie können die Konfigurationseinstellungen des ONTAP-SAN-Hosts verwenden, um SUSE Linux Enterprise Server 15 SP5 mit ONTAP als Ziel zu konfigurieren.
+
 
 
 == Installieren Sie die Linux Unified Host Utilities
@@ -287,4 +290,4 @@ devices {
 
 == Bekannte Probleme
 
-Es sind keine Probleme bekannt.
+Es gibt keine bekannten Probleme für SUSE Linux Enterprise Server 15 SP5 mit ONTAP-Version.

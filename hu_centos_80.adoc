@@ -18,6 +18,9 @@ summary: Beschreibt die Verwendung von CentOS 8.0 mit ONTAP
 :toc-position: content
 
 
+[role="lead"]
+Sie können die Konfigurationseinstellungen des ONTAP-SAN-Hosts verwenden, um CentOS 8.0 mit ONTAP als Ziel zu konfigurieren.
+
 
 
 == Installieren Sie die Linux Unified Host Utilities
@@ -291,6 +294,6 @@ Sie können die empfohlenen Einstellungen verwenden, um Kernel-Based Virtual Mac
 
 
 
-== Bekannte Probleme und Einschränkungen
+== Bekannte Probleme
 
 Für CentOS (Red hat kompatibler Kernel) bekannte Probleme siehe link:hu_rhel_80.html#known-problems-and-limitations["Bekannte Probleme"] Für Red hat Enterprise Linux (RHEL) 8.0.

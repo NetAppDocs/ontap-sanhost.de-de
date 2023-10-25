@@ -18,6 +18,9 @@ summary: Beschreibt die Verwendung von Oracle Linux 9.0 mit ONTAP
 :toc-position: content
 
 
+[role="lead"]
+Sie können die Konfigurationseinstellungen des ONTAP-SAN-Hosts verwenden, um Oracle Linux 9.0 mit ONTAP als Ziel zu konfigurieren.
+
 
 
 == Installieren Sie die Linux Unified Host Utilities

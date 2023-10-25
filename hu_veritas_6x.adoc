@@ -267,6 +267,6 @@ Wenn Sie über eine heterogene Multipath-Umgebung wie Veritas Infoscale, Linux N
 
 
 
-== Bekannte Probleme und Einschränkungen
+== Bekannte Probleme
 
-Es gibt keine bekannten Probleme und Einschränkungen.
+Es gibt keine bekannten Probleme für Veritas Storage Foundation 6 für Linux mit ONTAP-Version.

@@ -247,6 +247,6 @@ NOTE: Citrix XenServer empfiehlt für alle Gast-VMs auf Linux- und Windows-Basis
 
 
 
-== Bekannte Probleme und Einschränkungen
+== Bekannte Probleme
 
-Es gibt keine bekannten Probleme und Einschränkungen.
+Es gibt keine bekannten Probleme für Citrix XenServer mit ONTAP-Version.

@@ -18,6 +18,9 @@ summary: Beschreibt die Verwendung von Oracle Linux 8.8 mit ONTAP
 :toc-position: content
 
 
+[role="lead"]
+Sie können die Konfigurationseinstellungen des ONTAP-SAN-Hosts verwenden, um Oracle Linux 8.8 mit ONTAP als Ziel zu konfigurieren.
+
 
 
 == Installieren Sie die Linux Unified Host Utilities
@@ -295,4 +298,4 @@ Sie können auch die empfohlenen Einstellungen verwenden, um eine Kernel-basiert
 
 == Bekannte Probleme
 
-Es sind keine Probleme bekannt.
+Es gibt keine bekannten Probleme für die Oracle Linux 8.8 mit ONTAP-Version.

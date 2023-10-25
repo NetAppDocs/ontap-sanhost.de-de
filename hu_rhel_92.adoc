@@ -18,6 +18,9 @@ summary: Beschreibt die Verwendung von Red hat Enterprise Linux 9.2 mit ONTAP
 :toc-position: content
 
 
+[role="lead"]
+Sie können die Konfigurationseinstellungen des ONTAP-SAN-Hosts verwenden, um Red hat Enterprise Linux 9.2 mit ONTAP als Ziel zu konfigurieren.
+
 
 
 == Installieren Sie die Linux Unified Host Utilities
@@ -294,7 +297,7 @@ Sie können die empfohlenen Einstellungen verwenden, um Kernel-Based Virtual Mac
 
 == Bekannte Probleme
 
-Die NVMe-of Hostkonfiguration für RHEL 9.2 mit ONTAP-Version weist folgende bekannte Probleme auf:
+Die RHEL 9.2 mit ONTAP-Version weist folgende bekannte Probleme auf:
 
 [cols="20, 20, 50,20"]
 |===

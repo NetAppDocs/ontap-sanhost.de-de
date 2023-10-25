@@ -282,4 +282,4 @@ Wenn Sie über eine heterogene Multipath-Umgebung wie Veritas Infoscale, Linux N
 
 == Bekannte Probleme
 
-Es sind keine Probleme bekannt.
+Es gibt keine bekannten Probleme für die Veritas Infoscale 8 für Linux mit ONTAP Release.

@@ -18,6 +18,9 @@ summary: Beschreibt die Installation der solaris Host Utilities
 :toc-position: content
 
 
+[role="lead"]
+Sie können die Konfigurationseinstellungen des ONTAP-SAN-Hosts verwenden, um Solaris 11.3 mit ONTAP als Ziel zu konfigurieren.
+
 
 
 == Installieren Sie die Solaris Host Utilities
@@ -249,7 +252,9 @@ NOTE: Nachher `scsi-vhci-failover-override` Wurde angewendet, `conf` Wird hinzug
 
 
 
-== Bekannte Probleme und Einschränkungen
+== Bekannte Probleme
+
+Die Solaris 11.3 mit ONTAP-Version weist folgende bekannte Probleme auf:
 
 [cols="4*"]
 |===

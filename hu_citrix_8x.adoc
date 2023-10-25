@@ -235,7 +235,9 @@ NOTE: Der Citrix Hypervisor empfiehlt die Nutzung von Citrix VM Tools für alle 
 
 
 
-== Bekannte Probleme und Einschränkungen
+== Bekannte Probleme
+
+Der Citrix Hypervisor mit ONTAP-Version weist folgende bekannte Probleme auf:
 
 [cols="4*"]
 |===

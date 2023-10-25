@@ -18,6 +18,9 @@ summary: Beschreibt die Verwendung von CentOS 7.2 mit ONTAP
 :toc-position: content
 
 
+[role="lead"]
+Sie können die Konfigurationseinstellungen des ONTAP-SAN-Hosts verwenden, um CentOS 7.2 mit ONTAP als Ziel zu konfigurieren.
+
 
 
 == Installieren Sie die Linux Unified Host Utilities
@@ -291,6 +294,6 @@ Sie können die empfohlenen Einstellungen verwenden, um Kernel-Based Virtual Mac
 
 
 
-== Bekannte Probleme und Einschränkungen
+== Bekannte Probleme
 
-Es gibt keine bekannten Probleme für CentOS 7.2.
+Es gibt keine bekannten Probleme für CentOS 7.2 mit ONTAP-Version.

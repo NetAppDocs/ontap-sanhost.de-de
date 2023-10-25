@@ -18,6 +18,9 @@ summary: Beschreibt die Verwendung von SUSE Linux Enterprise Server 15 SP3 mit O
 :toc-position: content
 
 
+[role="lead"]
+Sie können die Konfigurationseinstellungen des ONTAP-SAN-Hosts verwenden, um SUSE Linux Enterprise Server 15 SP3 mit ONTAP als Ziel zu konfigurieren.
+
 
 
 == Installieren Sie die Linux Unified Host Utilities
@@ -285,6 +288,6 @@ devices {
 ----
 
 
-== Bekannte Probleme und Einschränkungen
+== Bekannte Probleme
 
-Für SUSE Linux Enterprise Server 15 SP3 sind keine Probleme bekannt.
+Es gibt keine bekannten Probleme für SUSE Linux Enterprise Server 15 SP3 mit ONTAP-Version.

@@ -65,7 +65,7 @@ Siehe link:hu_wuhu_72.html["Dokumentation zu Windows Host Utilities"] Für Ihre 
 
 
 
-== Bekannte Probleme
+== Bekannte Probleme und Einschränkungen
 
 Einige unerwartete und möglicherweise unerwünschte Verhaltensweisen sowie in einigen Fällen Problemumgehungen zur Vermeidung dieser Verhaltensweisen wurden in Version 7.1 identifiziert.
 

@@ -18,6 +18,9 @@ summary: Beschreibt die Verwendung von Oracle Linux 8.1 mit ONTAP
 :toc-position: content
 
 
+[role="lead"]
+Sie können die Konfigurationseinstellungen des ONTAP-SAN-Hosts verwenden, um Oracle Linux 8.1 mit ONTAP als Ziel zu konfigurieren.
+
 
 
 == Installieren Sie die Linux Unified Host Utilities
@@ -260,9 +263,9 @@ NOTE: Um Oracle Linux 8.1 RedHat Enterprise Kernel (RHCK) zu konfigurieren, verw
 
 
 
-== Bekannte Probleme und Einschränkungen
+== Bekannte Probleme
 
-Es gibt keine bekannten Probleme für Oracle Linux 8.1.
+Es gibt keine bekannten Probleme für die Oracle Linux 8.1 mit ONTAP-Version.
 
 
 NOTE: Informationen zu bekannten Problemen mit Oracle Linux (Red hat kompatibler Kernel) finden Sie im link:hu_rhel_81.html#known-problems-and-limitations["Bekannte Probleme"] Für Red hat Enterprise Linux (RHEL) 8.1.

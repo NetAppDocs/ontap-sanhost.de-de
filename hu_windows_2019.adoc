@@ -18,6 +18,9 @@ summary: Verwenden von Windows Server 2019 mit ONTAP
 :toc-position: content
 
 
+[role="lead"]
+Sie können die Konfigurationseinstellungen des ONTAP-SAN-Hosts verwenden, um Windows Server 2019 mit ONTAP als Ziel zu konfigurieren.
+
 
 
 == Booten des Betriebssystems
@@ -145,6 +148,6 @@ NOTE: Windows Unified Host Utility legt diese Werte fest. Detaillierte empfohlen
 
 
 
-== Bekannte Einschränkungen
+== Bekannte Probleme
 
-Für Windows Server 2019 sind keine Probleme bekannt.
+Es gibt keine bekannten Probleme für Windows Server 2019 mit ONTAP-Version.

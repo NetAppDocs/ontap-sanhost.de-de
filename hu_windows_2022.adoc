@@ -18,9 +18,9 @@ summary: Verwenden von Windows Server 2022 mit ONTAP
 :toc-position: content
 
 
-
-
-== Booten des Betriebssystems
+[role="lead"]
+Sie können die Konfigurationseinstellungen des ONTAP-SAN-Hosts verwenden, um Windows Server 2022 mit ONTAP als Ziel zu konfigurieren.
+== das Betriebssystem wird hochfahren
 
 Es gibt zwei Optionen für das Booten des Betriebssystems: Durch die Verwendung von lokalem Booten oder SAN-Boot. Zum lokalen Booten installieren Sie das Betriebssystem auf der lokalen Festplatte (SSD, SATA, RAID usw.). Informationen zum Booten über SAN finden Sie unten.
 
@@ -142,6 +142,6 @@ NOTE: Windows Unified Host Utility legt diese Werte fest. Detaillierte empfohlen
 
 
 
-== Bekannte Einschränkungen
+== Bekannte Probleme
 
-Für Windows Server 2022 sind keine Probleme bekannt.
+Es gibt keine bekannten Probleme für Windows Server 2022 mit ONTAP-Version.

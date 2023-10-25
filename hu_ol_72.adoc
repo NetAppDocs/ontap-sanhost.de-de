@@ -18,6 +18,9 @@ summary: Beschreibt die Verwendung von Oracle Linux 7.2 mit ONTAP
 :toc-position: content
 
 
+[role="lead"]
+Sie können die Konfigurationseinstellungen des ONTAP-SAN-Hosts verwenden, um Oracle Linux 7.2 mit ONTAP als Ziel zu konfigurieren.
+
 
 
 == Installieren Sie die Linux Unified Host Utilities
@@ -273,6 +276,6 @@ NOTE: Um Oracle Linux 7.2 RedHat Enterprise Kernel (RHCK) zu konfigurieren, verw
 
 
 
-== Bekannte Probleme und Einschränkungen
+== Bekannte Probleme
 
-Es gibt keine bekannten Probleme für Oracle Linux 7.2.
+Es gibt keine bekannten Probleme für die Oracle Linux 7.2 mit ONTAP-Version.

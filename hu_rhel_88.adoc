@@ -18,6 +18,9 @@ summary: Beschreibt die Verwendung von Red hat Enterprise Linux 8.8 mit ONTAP
 :toc-position: content
 
 
+[role="lead"]
+Sie können die Konfigurationseinstellungen des ONTAP-SAN-Hosts verwenden, um Red hat Enterprise Linux 8.8 mit ONTAP als Ziel zu konfigurieren.
+
 
 
 == Installieren Sie die Linux Unified Host Utilities
@@ -293,4 +296,4 @@ Sie können die empfohlenen Einstellungen verwenden, um Kernel-Based Virtual Mac
 
 == Bekannte Probleme
 
-Es gibt keine bekannten Probleme für RHEL 8.8.
+Es gibt keine bekannten Probleme für RHEL 8.8 mit ONTAP-Version.
