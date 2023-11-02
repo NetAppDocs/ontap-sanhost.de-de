@@ -19,29 +19,13 @@ summary: Versionshinweise zu Windows Unified Host Utilities
 
 
 [role="lead"]
-Das Dokument mit den Versionshinweisen enthält die neuesten Informationen zu den Windows Unified Host Utilities 7.2 und 7.1 Versionen, einschließlich Updates zu neuen Funktionen, Verbesserungen und bekannten Problemen. Das Dokument wird aktualisiert, wenn neue Informationen zur Verwendung der Windows Host Utilities verfügbar sind.
+In den Versionshinweisen werden neue Funktionen und Verbesserungen, in der aktuellen Version behobene Probleme, bekannte Probleme und Einschränkungen sowie wichtige Vorsichtsmaßnahmen bei der Konfiguration und Verwaltung Ihres spezifischen Windows-Hosts mit Ihrem ONTAP-Speichersystem beschrieben.
+
+Informationen zu den von Host Utilities unterstützten Betriebssystemversionen und Updates finden Sie im link:https://mysupport.netapp.com/matrix/imt.jsp?components=65623;64703;&solution=1&isHWU&src=IMT["NetApp Interoperabilitäts-Matrix-Tool"^].
 
 
 
-== Allgemeines zu Windows Unified Host Utilities
-
-Mit den Windows Unified Host Utilities können Sie einen Windows Host-Computer mit NetApp Storage-Systemen verbinden. Die Windows Unified Host Utilities umfassen ein Installationsprogramm, das die erforderliche Windows-Registrierung und HBA-Werte festlegt.
-
-Die Windows Unified Host Utilities unterstützen weiterhin die folgenden Versionen von Windows:
-
-* Windows 2012
-* Windows 2012R2
-* Windows 2016
-* Windows 2019
-* Windows 2022
-
-
-
-NOTE: NetApp qualifiziert zusätzliche Komponenten zwischen Versionen der Host Utilities-Software. Aktuelle Informationen zu den Systemanforderungen finden Sie im link:https://mysupport.netapp.com/matrix/imt.jsp?components=65623;64703;&solution=1&isHWU&src=IMT["NetApp Interoperabilitäts-Matrix-Tool"^].
-
-
-
-== Funktionen
+== Was ist neu
 
 * Windows Unified Host Utilities 7.2 enthält Unterstützung für Parametereinstellungen für NVMe/FC-Treiber und Bug Fixes für neue Anbieterkarten.
 * Windows Unified Host Utilities 7.1 bietet Unterstützung für E-Series Storage-Systeme, Unterstützung für ONTAP 9 und höher sowie erweiterte iSCSI Timeouts für schnelleres Failover.
@@ -49,68 +33,21 @@ NOTE: NetApp qualifiziert zusätzliche Komponenten zwischen Versionen der Host U
 
 
 
-== Wichtige Hinweise
-
-Bevor Sie die neueste Version von Windows Host Utilities bereitstellen, müssen Sie die verfügbaren Informationen lesen, um Probleme zu identifizieren und zu lösen, die den Betrieb Ihrer Systeme beeinträchtigen könnten.
-
-Weitere Informationen zu einem einzelnen Fehler und zur Erkundung anderer Tools zur Fehlerbehebung finden Sie unter link:https://mysupport.netapp.com/site/bugs-online/product["NetApp Bugs Online"^].
-
-
-
-=== Installieren der erforderlichen Hotfixes
-
-Um eine erfolgreiche Installation oder Aktualisierung von Windows Unified Host Utilities zu gewährleisten, müssen Sie einen bestimmten Windows-Hotfix installieren. Einige Hotfixes sind Bestandteil von Windows Updates.
-
-Siehe link:hu_wuhu_72.html["Dokumentation zu Windows Host Utilities"] Für Ihre spezifischen Konfigurations-Hotfix-Anforderungen.
-
-
-
 == Bekannte Probleme und Einschränkungen
 
-Einige unerwartete und möglicherweise unerwünschte Verhaltensweisen sowie in einigen Fällen Problemumgehungen zur Vermeidung dieser Verhaltensweisen wurden in Version 7.1 identifiziert.
+Sie sollten sich der folgenden bekannten Probleme und Einschränkungen bewusst sein, die die Performance auf Ihrem spezifischen Host beeinträchtigen könnten. In Version 7.1 von Windows Unified Host Utilities wurden einige unerwartete und möglicherweise unerwünschte Verhaltensweisen sowie Problemumgehungen zur Vermeidung dieser Verhaltensweisen identifiziert.
 
 [cols="30, 30, 20"]
 |===
 | Titel | Beschreibung | Behelfslösung 
 
 
-| Ausführen des `linux_gos_timeout-install.sh` Für Hyper-V-Gäste mit Red hat Enterprise Linux oder SUSE Linux Enterprise Server ist kein Skript mehr erforderlich | Sie sind nicht mehr erforderlich, um die auszuführen `linux_gos_timeout-install.sh` Skript zum Ändern der Festplattenzeitüberschreitungen auf Red hat Enterprise Linux 5, Red hat Enterprise Linux 6 oder SUSE Linux Enterprise Server 11 Hyper-V Gastgästen, da die standardmäßigen Timeout-Einstellungen verwendet werden. Der `linux_gos_timeout-install.sh` Das Skript, das in früheren Versionen der Host Utilities enthalten war, ist nicht mehr in den Windows Unified Host Utilities enthalten. Windows Unified Host Utilities 7.1 verwendet die Standardeinstellungen für die Zeitüberschreitung der Festplatte. | Keine Angabe 
+| Ausführen des `linux_gos_timeout-install.sh` Für Hyper-V-Gäste mit Red hat Enterprise Linux oder SUSE Linux Enterprise Server ist kein Skript mehr erforderlich | Sie sind nicht mehr erforderlich, um die auszuführen `linux_gos_timeout-install.sh` Skript zum Ändern der Festplattenzeitüberschreitungen auf Red hat Enterprise Linux 5, Red hat Enterprise Linux 6 oder SUSE Linux Enterprise Server 11 Hyper-V Gastgästen, da die standardmäßigen Timeout-Einstellungen verwendet werden. Der `linux_gos_timeout-install.sh` Das Skript, das in früheren Versionen der Host Utilities enthalten war, ist nicht mehr in der Version 7.1 der Windows Unified Host Utilities enthalten. Windows Unified Host Utilities 7.1 verwendet die Standardeinstellungen für die Zeitüberschreitung der Festplatte. | Keine Angabe 
 
 
-| ISCSI-Sitzungen verbinden sich nach dem Neustart mit gemischten IPv4- und IPv6-Verbindungen nicht erneut | Bei einer Multipath-I/O-(MPIO-)Konfiguration oder bei einer MCS-Konfiguration (Multiple Connections per Session) mit IPv4- und IPv6-Endpunkten können einige iSCSI-Sitzungen nach dem Neustart des Windows-Hosts möglicherweise keine Verbindung herstellen. | Verwenden Sie entweder alle IPv4-Endpunkte oder alle IPv6, um zu überprüfen, ob alle iSCSI-Pfade nach einem Neustart zurückkehren. Mischen Sie IPv4 und IPv6 nicht zusammen. 
+| ISCSI-Sitzungen verbinden sich nach dem Neustart mit gemischten IPv4- und IPv6-Verbindungen nicht erneut | Bei einer Multipath-I/O-(MPIO-)Konfiguration oder bei einer MCS-Konfiguration (Multiple Connections per Session) mit IPv4- und IPv6-Endpunkten können einige iSCSI-Sitzungen nach dem Neustart des Windows-Hosts möglicherweise keine Verbindung herstellen. | Verwenden Sie entweder alle IPv4-Endpunkte oder IPv6-Endpunkte. Mischen Sie IPv4 und IPv6 nicht zusammen. 
 
 
-| MCS wird beim Booten der iSCSI-Software nicht unterstützt | Bei Verwendung von iSCSI-Software-Boot mit iSCSI Multiple Connections per Session (MCS) kann die iSCSI-Bootführende Verbindung nicht geschützt werden. Dies kann dazu führen, dass die Verbindung von der Boot-LUN getrennt wird, wodurch der Host abstürzt. | Microsoft unterstützt MCS für über iSCSI-Software gestartete Hosts nicht. Setzen Sie MPIO als Hochverfügbarkeitslösung ein. Beachten Sie, dass die Kombination von MPIO und MCS nicht unterstützt wird. 
+| MCS wird beim Booten der iSCSI-Software nicht unterstützt | Wenn die iSCSI-Software mit iSCSI Multiple Connections per Session (MCS) gestartet wird, kann die führende iSCSI-Boot-Verbindung nicht geschützt werden. Dies kann zur Trennung der Boot-LUN führen, was zu einer Unterbrechung des Host-Systems führt. | Microsoft unterstützt MCS für über iSCSI-Software gestartete Hosts nicht. Setzen Sie MPIO als Hochverfügbarkeitslösung ein. Beachten Sie, dass die Kombination von MPIO und MCS nicht unterstützt wird. 
 |===
 link:https://mysupport.netapp.com/site/bugs-online/product["NetApp Bugs Online"^] Bietet vollständige Informationen für die meisten bekannten Probleme, einschließlich Lösungsvorschläge, falls möglich.
-
-
-
-== Informationen zur Dokumentation der SAN-Host-Konfiguration
-
-Dokumentation für SAN-Host-Dienstprogramme ist in enthalten link:https://docs.netapp.com/us-en/ontap-sanhost/index.html["Dokumentation der SAN-Host-Konfiguration von ONTAP"]. Die Dokumentation der SAN-Host-Konfiguration von ONTAP ist kumulativ und deckt alle aktuellen SAN-Host-Versionen ab. Funktionsunterschiede zwischen Releases werden im Kontext festgehalten.
-
-
-
-== Hier finden Sie Produktdokumentation und andere Informationen
-
-Sie können auf die Dokumentation für alle NetApp Produkte zugreifen und weitere Ressourcen zu Produktinformationen, wie z. B. technische Berichte und Whitepaper, auf der Seite mit der Produktdokumentation auf der NetApp Website zugreifen.
-
-.Verwandte Informationen
-*Konfigurieren und Verwalten Ihres ONTAP Storage-Systems*
-
-* Der link:https://docs.netapp.com/us-en/ontap/setup-upgrade/index.html["ONTAP Software-Setup-Leitfaden"^] Für Ihre Version von ONTAP
-* Der link:https://docs.netapp.com/us-en/ontap/san-management/index.html["ONTAP-SAN-Administration-Leitfaden"^] Für Ihre Version von ONTAP
-* Der link:https://library.netapp.com/ecm/ecm_download_file/ECMLP2492508["Versionshinweise zu ONTAP"^] Für Ihre Version von ONTAP
-
-
-*Konfiguration und Management Ihres E-Series Storage-Systems*
-
-* Der für Ihr Protokoll geeignete Leitfaden zur Konfiguration und Bereitstellung von SANtricity Storage Manager für Windows Express
-* Der Leitfaden Konfiguration und Bereitstellung von SANtricity Storage Manager für Ihr Betriebssystem, Ihr Protokoll und Ihre Version von SANtricity.
-* Die Installationsreferenz der SANtricity-Storage-Manager-Software für Ihre SANtricity-Version.
-* Das für Ihre SANtricity-Version spezifische Handbuch für den SANtricity-Storage-Manager-Multipath-Treiber.
-* Die Versionshinweise für SANtricity-Storage-Manager für Ihre Version von SANtricity.
-
-
-Siehe link:https://docs.netapp.com/us-en/e-series-family/["E-Series Dokumentation"^] Um die Dokumentation zu SANtricity zu finden.
