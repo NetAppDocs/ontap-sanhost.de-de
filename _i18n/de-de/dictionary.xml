@@ -3578,8 +3578,6 @@ Im folgenden Beispiel wird ein zufälliger Dhchap-Schlüssel mit HMAC auf 3 (SHA
   <block id="84ea3979460de46128b29ddab7d89cd0" category="paragraph">*Beispielausgabe für bidirektionale Konfiguration:*</block>
   <block id="a6c9e3a7671c1fd9d7328c3be5d107b5" category="open-title">JSON-Datei</block>
   <block id="e8bdd625277829c32849608bfaaf1041" category="paragraph">Sie können das verwenden<block ref="2be2042afe5d55c4305aa3ff91b1ff5f" prefix=" " category="inline-code"></block> Datei mit<block ref="90eeda0f5788d7d78c0f198b124712a3" prefix=" " category="inline-code"></block> Befehl, wenn in der ONTAP Controller-Konfiguration mehrere NVMe-Subsysteme verfügbar sind.</block>
-  <block id="be0bd4d71e13a5ad44e756862b63fb17" category="inline-link-macro">ONTAP-man-Pages</block>
-  <block id="32c203213cf44e803bc3c227bd240164" category="paragraph">Sie können die JSON-Datei mit erstellen<block ref="b2ed43620b7fff2689035f1e99c24ded" prefix=" " category="inline-code"></block> Option. Siehe <block ref="4d8de0f1b018ca27a073061938808cb9" category="inline-link-macro-rx"></block> Weitere Syntaxoptionen.</block>
   <block id="7be934ce8b58f4891a1f5bec99cfea5f" category="list-text">Konfigurieren Sie die JSON-Datei:</block>
   <block id="76dfba31c261b7600a97b27a404095b4" category="list-text">Stellen Sie mithilfe der Konfigurations-JSON-Datei eine Verbindung zum ONTAP Controller her:</block>
   <block id="fbcde6a9a9bc69bb6785a0b0a3403428" category="list-text">Überprüfen Sie, ob die dhchap-Geheimnisse für die jeweiligen Controller für jedes Subsystem aktiviert wurden:</block>
@@ -3589,4 +3587,5 @@ Im folgenden Beispiel wird ein zufälliger Dhchap-Schlüssel mit HMAC auf 3 (SHA
   <block id="9688ec84efd5b1cb7c885e598b6ebf4a" category="list-text">Überprüfen Sie nach dem Neubooten, ob die ausführliche Protokollierung aktiviert wurde:</block>
   <block id="684c45496e08c180fd6b056747c6d7e6" category="cell">Mehrere Verbindungen pro Sekunde (MCS) werden beim Booten der iSCSI-Software nicht unterstützt</block>
   <block id="a22d253913fa8deba78982e6393df807" category="cell">Bei Verwendung des iSCSI-Software-Starts mit iSCSI MCS kann die führende iSCSI-Boot-Verbindung nicht geschützt werden. Dies kann zur Trennung der Boot-LUN und zur Unterbrechung des Host-Systems führen.</block>
+  <block id="86891fa05c8b78ad9621085c8abc1fb4" category="paragraph">Sie können die JSON-Datei mit erstellen<block ref="b2ed43620b7fff2689035f1e99c24ded" prefix=" " category="inline-code"></block> Option. Weitere Syntaxoptionen finden Sie auf den man-Pages für NVMe Connect-all.</block>
 </blocks>
