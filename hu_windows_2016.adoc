@@ -44,7 +44,7 @@ NOTE: Sie können die in diesem Dokument angegebenen Konfigurationseinstellungen
 
 
 
-== Windows Hotfixes werden installiert
+== Installieren Sie Windows Hotfixes
 
 Wir schlagen vor, dass auf dem Server *neuestes kumulatives Update* installiert wird.
 
@@ -65,9 +65,9 @@ TIP: Viele Hotfixes benötigen einen Neustart Ihres Windows-Hosts, aber Sie kön
 
 
 
-== Installieren der Windows Unified Host Utilities
+== Installieren Sie die Windows Unified Host Utilities
 
-Die Windows Unified Host Utilities (WUHU) sind eine Reihe von Softwareprogrammen mit einer Dokumentation, mit der Sie Host-Computer mit virtuellen Laufwerken (LUNs) auf einem NetApp SAN verbinden können. Es wird empfohlen, das neueste Utility Kit herunterzuladen und zu installieren. Informationen zur Konfiguration VON WUHU und Anweisungen finden Sie unter link:https://docs.netapp.com/us-en/ontap-sanhost/hu_wuhu_71.html["WUHU 7.1 Dokumentation"].
+Die Windows Unified Host Utilities (WUHU) sind eine Reihe von Softwareprogrammen mit einer Dokumentation, mit der Sie Host-Computer mit virtuellen Laufwerken (LUNs) auf einem NetApp SAN verbinden können. NetApp empfiehlt, das aktuelle Utility Kit herunterzuladen und zu installieren. Informationen und Anweisungen zur Konfiguration von WUHU finden Sie unter link:https://docs.netapp.com/us-en/ontap-sanhost/hu_wuhu_71_rn.html["Dokumentation zu Windows Unified Host Utilities"] Und wählen Sie das Installationsverfahren für Ihre Windows Unified Host Utilities-Version aus.
 
 
 
@@ -144,7 +144,7 @@ Für QLogic Fibre Channel HBAs:
 | PortDownRetryCount | 10 
 |===
 
-NOTE: Windows Unified Host Utility legt diese Werte fest. Detaillierte empfohlene Einstellungen finden Sie im link:https://library.netapp.com/ecmdocs/ECMLP2789202/html/index.html["Windows 7.1 Host Utilities – Installationshandbuch"^].
+NOTE: Windows Unified Host Utility legt diese Werte fest. Detaillierte empfohlene Einstellungen finden Sie im link:https://docs.netapp.com/us-en/ontap-sanhost/hu_wuhu_71_rn.html["Dokumentation zu Windows Host Utilities"] Und wählen Sie das Installationsverfahren für Ihre Windows Unified Host Utilities-Version aus.
 
 
 
