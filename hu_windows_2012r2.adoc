@@ -46,7 +46,7 @@ NOTE: Sie können die in diesem Dokument angegebenen Konfigurationseinstellungen
 
 == Installieren Sie Windows Hotfixes
 
-Wir schlagen vor, dass auf dem Server *neuestes kumulatives Update* installiert wird.
+NetApp empfiehlt, das *letzte kumulative Update* auf dem Server zu installieren.
 
 
 NOTE: Wechseln Sie zum link:https://www.catalog.update.microsoft.com/Search.aspx?q=Update+Windows+Server+2012_R2["Microsoft Update Catalog 2012 R2"^] Website, um die erforderlichen Windows Hotfixes für Ihre Windows-Version zu erhalten und zu installieren.
@@ -67,7 +67,7 @@ TIP: Viele Hotfixes benötigen einen Neustart Ihres Windows-Hosts, aber Sie kön
 
 == Installieren Sie die Windows Unified Host Utilities
 
-Die Windows Unified Host Utilities (WUHU) sind eine Reihe von Softwareprogrammen mit einer Dokumentation, mit der Sie Host-Computer mit virtuellen Laufwerken (LUNs) auf einem NetApp SAN verbinden können. NetApp empfiehlt, das aktuelle Utility Kit herunterzuladen und zu installieren. Informationen und Anweisungen zur Konfiguration von WUHU finden Sie unter link:https://docs.netapp.com/us-en/ontap-sanhost/hu_wuhu_71_rn.html["Dokumentation zu Windows Unified Host Utilities"] Und wählen Sie das Installationsverfahren für Ihre Windows Unified Host Utilities-Version aus.
+Die Windows Unified Host Utilities (WUHU) sind eine Reihe von Softwareprogrammen mit einer Dokumentation, mit der Sie Host-Computer mit virtuellen Laufwerken (LUNs) auf einem NetApp SAN verbinden können. NetApp empfiehlt, das aktuelle Utility Kit herunterzuladen und zu installieren. Informationen und Anweisungen zur Konfiguration von WUHU finden Sie im link:https://docs.netapp.com/us-en/ontap-sanhost/hu_wuhu_71_rn.html["Dokumentation zu Windows Unified Host Utilities"] Und wählen Sie das Installationsverfahren für Ihre Windows Unified Host Utilities-Version aus.
 
 
 

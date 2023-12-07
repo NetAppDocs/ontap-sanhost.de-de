@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: nvme_rhel_91.html 
 keywords: nvme, linux, rhel, red hat, enterprise 
-summary: Konfigurieren von NVMe-of Host für RHEL 8.7 mit ONTAP 
+summary: Konfigurieren des NVMe-of-Hosts für RHEL 9.1 mit ONTAP 
 ---
 = NVMe-of Hostkonfiguration für RHEL 9.1 mit ONTAP
 :toc: macro

@@ -115,7 +115,7 @@ Sie können das verwenden `multipath -ll` Überprüfen Sie mit dem Befehl die Ei
 
 === Alle SAN-Array-Konfigurationen
 
-In ASA Konfigurationen sind alle Pfade zu einer bestimmten LUN aktiv und optimiert. Dies verbessert die Performance, da I/O-Operationen über alle Pfade gleichzeitig ausgeführt werden können.
+In Konfigurationen mit allen SAN-Arrays (ASA) sind alle Pfade zu einer bestimmten LUN aktiv und optimiert. Dies verbessert die Performance, da I/O-Operationen über alle Pfade gleichzeitig ausgeführt werden können.
 
 .Beispiel
 Im folgenden Beispiel wird die richtige Ausgabe für eine ONTAP LUN angezeigt:
