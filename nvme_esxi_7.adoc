@@ -5,17 +5,14 @@ keywords: nvme, esxi, ontap, nvme/fc, hypervisor
 summary: Beschreibt die Konfiguration von NVMe-of für ESXi 7.x mit ONTAP 
 ---
 = NVMe-of Host-Konfiguration für ESXi 7.x mit ONTAP
-:toc: macro
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
-:toc: 
 :toclevels: 1
 :nofooter: 
 :icons: font
 :linkattrs: 
 :imagesdir: ./media/
-:toc-position: content
 
 
 

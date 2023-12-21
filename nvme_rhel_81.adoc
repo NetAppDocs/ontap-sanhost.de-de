@@ -5,17 +5,14 @@ keywords: nvme, linux, rhel, red hat, enterprise
 summary: Beschreibt die Konfiguration von NVMe/FC für RHEL 8.1 mit ONTAP 
 ---
 = NVMe/FC-Hostkonfiguration für RHEL 8.1 mit ONTAP
-:toc: macro
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
-:toc: 
 :toclevels: 1
 :nofooter: 
 :icons: font
 :linkattrs: 
 :imagesdir: ./media/
-:toc-position: content
 
 
 [role="lead"]

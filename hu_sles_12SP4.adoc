@@ -5,17 +5,14 @@ keywords: host utilities, suse linux enterprise server 12 SP4, suse, linux, 12 S
 summary: Beschreibt die Verwendung von SUSE Linux Enterprise Server 12 SP4 mit ONTAP 
 ---
 = Verwenden Sie SUSE Linux Enterprise Server 12 SP4 mit ONTAP
-:toc: macro
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
-:toc: 
 :toclevels: 1
 :nofooter: 
 :icons: font
 :linkattrs: 
 :imagesdir: ./media/
-:toc-position: content
 
 
 [role="lead"]

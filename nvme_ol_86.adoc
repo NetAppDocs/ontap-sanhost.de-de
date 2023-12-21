@@ -5,17 +5,14 @@ keywords:
 summary:  
 ---
 = NVMe/FC-Host-Konfiguration für Oracle Linux 8.6 mit ONTAP
-:toc: macro
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
-:toc: 
 :toclevels: 1
 :nofooter: 
 :icons: font
 :linkattrs: 
 :imagesdir: ./media/
-:toc-position: content
 
 
 

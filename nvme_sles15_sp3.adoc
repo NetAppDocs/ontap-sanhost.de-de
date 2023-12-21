@@ -5,17 +5,14 @@ keywords: nvme, linux, suse, sles, 15, sp3, server, enterprise
 summary: Beschreibt die Konfiguration von NVMe/FC für SUSE Linux Enterprise Server 15 SP3 mit ONTAP 
 ---
 = NVMe-of-Host-Konfiguration für SUSE Linux Enterprise Server 15 SP3 mit ONTAP
-:toc: macro
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
-:toc: 
 :toclevels: 1
 :nofooter: 
 :icons: font
 :linkattrs: 
 :imagesdir: ./media/
-:toc-position: content
 
 
 [role="lead"]

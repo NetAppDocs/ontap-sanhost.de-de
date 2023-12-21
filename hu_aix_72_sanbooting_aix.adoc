@@ -5,17 +5,14 @@ keywords: host utilities, aix, netapp, ontap, configure, discover, configuring, 
 summary: Beschreibt, wie LUNS mit AIX gefunden und konfiguriert werden können 
 ---
 = (AIX MPIO ohne PowerVM) ermitteln und Konfigurieren von LUNs mit AIX
-:toc: macro
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
-:toc: 
 :toclevels: 1
 :nofooter: 
 :icons: font
 :linkattrs: 
 :imagesdir: ./media/
-:toc-position: content
 
 
 [role="lead"]
