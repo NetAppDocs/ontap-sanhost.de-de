@@ -1,0 +1,57 @@
+---
+sidebar: sidebar 
+permalink: hu_wuhu_repair_remove.html 
+keywords: windows, host, utilities, 7.1, hba, fibre, channel, SANtricity, netapp, san, host, e-series, platform 
+summary: Windows Unified Host Utilities umfassen ein Installationsprogramm, das die erforderlichen Windows Registry- und HBA-Parameter festlegt, damit der Windows Host die Storage-Systemverhalten von NetApp ONTAP und E-Series Plattformen korrekt verarbeitet. 
+---
+= Reparieren und entfernen Sie die Windows Unified Host Utilities
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:allow-uri-read: 
+:toc: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+:toc-position: content
+
+
+[role="lead"]
+Sie können die Option *Repair* des Host Utilities-Installationsprogramms verwenden, um den Host Bus Adapter (HBA) und die Windows Registry-Einstellungen zu aktualisieren. Sie können die Host Utilities auch vollständig entfernen, entweder interaktiv oder über die Windows Befehlszeile.
+
+[role="tabbed-block"]
+====
+.Interaktiv reparieren oder entfernen
+--
+Die Option *Repair* aktualisiert die Windows-Registrierung und FC-HBAs mit den erforderlichen Einstellungen. Sie können die Host Utilities auch vollständig entfernen.
+
+.Schritte
+. Öffnen Sie Windows * Programme und Funktionen * (Windows Server 2012 R2, Windows Server 2016, Windows Server 2019 und Windows 2022).
+. Wählen Sie *NetApp Windows Unified Host Utilities*.
+. Wählen Sie *Ändern*.
+. Wählen Sie je nach Bedarf * Repair* oder *Remove* aus.
+. Befolgen Sie die Anweisungen auf dem Bildschirm.
+
+
+--
+.Reparieren oder entfernen von der Befehlszeile
+--
+Die Option *Repair* aktualisiert die Windows-Registrierung und FC-HBAs mit den erforderlichen Einstellungen. Sie können auch die Host Utilities vollständig von einer Windows-Kommandozeile entfernen.
+
+.Schritte
+. Geben Sie den folgenden Befehl in die Windows Befehlszeile ein, um Windows Host Utilities zu reparieren:
++
+`msiexec /f installer.msi [/quiet]`
+
++
+** `/f` Repariert die Installation.
+** `installer.msi` Ist der Name des Windows Host Utilities-Installationsprogramms auf Ihrem System.
+** `/quiet` Unterdrückt alle Rückmeldungen und startet das System automatisch neu, ohne dass beim Abschluss des Befehls eine Aufforderung erforderlich ist.
+
+
+
+
+--
+====

@@ -1,0 +1,66 @@
+---
+sidebar: sidebar 
+permalink: hu_wuhu_upgrade.html 
+keywords: windows, host, utilities, 7.1, hba, fibre, channel, SANtricity, netapp, san, host, e-series, platform 
+summary: Windows Unified Host Utilities umfassen ein Installationsprogramm, das die erforderlichen Windows Registry- und HBA-Parameter festlegt, damit der Windows Host die Storage-Systemverhalten von NetApp ONTAP und E-Series Plattformen korrekt verarbeitet. 
+---
+= Aktualisieren Sie die Windows Unified Host Utilities
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:allow-uri-read: 
+:toc: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+:toc-position: content
+
+
+[role="lead"]
+Das neue Installationspaket für Host Utilities muss sich in einem Pfad befinden, der vom Windows Host zugänglich ist. Befolgen Sie die Anweisungen zur interaktiven Installation der Host Utilities oder über die Windows-Befehlszeile, um das Installationspaket zu aktualisieren.
+
+[role="tabbed-block"]
+====
+.Interaktives Upgrade
+--
+Um das Host Utilities-Softwarepaket interaktiv zu aktualisieren, müssen Sie das Host Utilities-Installationsprogramm ausführen und den Aufforderungen folgen.
+
+.Schritte
+. Wechseln Sie in das Verzeichnis, in dem Sie die ausführbare Datei heruntergeladen haben.
+. Führen Sie die ausführbare Datei aus, und folgen Sie den Anweisungen auf dem Bildschirm.
+. Starten Sie den Windows-Host neu, wenn Sie dazu aufgefordert werden.
+. Überprüfen Sie nach dem Neustart die Version des Host-Dienstprogramms:
++
+.. Öffnen Sie *Systemsteuerung*.
+.. Gehen Sie zu *Programm und Features* und überprüfen Sie die Version des Host-Dienstprogramms.
+
+
+
+
+--
+.Upgrade von einer Befehlszeile aus
+--
+Sie können ein stille (unbeaufsichtigtes) Upgrade der neuen Host Utilities durchführen, indem Sie die entsprechenden Befehle an der Windows-Eingabeaufforderung eingeben.
+
+.Schritte
+. Geben Sie den folgenden Befehl an der Windows-Eingabeaufforderung ein:
++
+`msiexec /i installer.msi /quiet MULTIPATHING= {0 | 1} [INSTALLDIR=inst_path]`
+
++
+** `installer` Ist der Name des `.msi` Datei für Ihre CPU-Architektur.
+** MULTIPATHING gibt an, ob MPIO-Unterstützung installiert ist. Die zulässigen Werte sind „0“ für „Nein“ und „1“ für „Ja“.
+** `inst_path` Ist der Pfad, in dem die Host Utilities-Dateien installiert werden. Der Standardpfad lautet `C:\Program Files\NetApp\Windows Host Utilities\`.
+
+
+
+
+
+NOTE: Um die standardmäßigen Microsoft Installer-Optionen (MSI) für die Protokollierung und andere Funktionen anzuzeigen, geben Sie ein `msiexec /help` An der Windows-Eingabeaufforderung. Beispiel: Der `msiexec /i install.msi /quiet /l*v <install.log> LOGVERBOSE=1` Befehl zeigt Protokollinformationen an.
+
+Nach Abschluss der Installation wird das System automatisch neu gestartet.
+
+--
+====

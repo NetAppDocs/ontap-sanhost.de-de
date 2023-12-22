@@ -1,0 +1,43 @@
+---
+sidebar: sidebar 
+permalink: hu_wuhu_troubleshoot.html 
+keywords: windows, host, utilities, 7.1, hba, fibre, channel, SANtricity, netapp, san, host, e-series, platform 
+summary: Windows Unified Host Utilities umfassen ein Installationsprogramm, das die erforderlichen Windows Registry- und HBA-Parameter festlegt, damit der Windows Host die Storage-Systemverhalten von NetApp ONTAP und E-Series Plattformen korrekt verarbeitet. 
+---
+= Fehlerbehebung
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:allow-uri-read: 
+:toc: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+:toc-position: content
+
+
+[role="lead"]
+Sie können die allgemeinen Fehlerbehebungstechniken für Windows Host Utilities verwenden. Prüfen Sie in den aktuellen Versionshinweisen auf bekannte Probleme und Lösungen.
+
+Im Folgenden finden Sie eine Liste der verschiedenen Bereiche, die Sie auf mögliche Interoperabilitätsprobleme untersuchen können:
+
+* Um potenzielle Interoperabilitätsprobleme zu ermitteln, vergewissern Sie sich, dass die Host Utilities Ihre Kombination aus Host-Betriebssystemsoftware, Host-Hardware, ONTAP-Software und Storage-System-Hardware unterstützen. Siehe http://mysupport.netapp.com/matrix["NetApp Interoperabilitäts-Matrix-Tool"^] Finden Sie weitere Informationen.
+* Stellen Sie sicher, dass Sie die richtige iSCSI-Konfiguration haben.
+* Wenn iSCSI-LUNs nach einem Neustart nicht verfügbar sind, überprüfen Sie, ob das Ziel auf der Registerkarte *Persistent Targets* der Microsoft iSCSI-Initiator-GUI als persistent aufgeführt ist.
+* Wenn Anwendungen, die die LUNs verwenden, beim Start Fehler anzeigen, überprüfen Sie, ob die Anwendungen so konfiguriert sind, dass sie vom iSCSI-Dienst abhängen.
+* Bei FC-Pfaden zu Storage-Controllern, die ONTAP ausführen, müssen Sie sicherstellen, dass die FC-Switches mithilfe der WWPNs der Ziel-LIFs Zonen zugewiesen sind, nicht durch die WWPNs der physischen Ports auf dem Node.
+* Überprüfen Sie die link:hu_wuhu_71_rn.html["Versionshinweise"] Unter Windows Host Utilities können Sie nach bekannten Problemen suchen. Die Versionshinweise enthalten eine Liste bekannter Probleme und Einschränkungen.
+* Lesen Sie die Fehlerbehebungsinformationen im SAN-Administrationshandbuch für Ihre Version von ONTAP.
+* Suche https://mysupport.netapp.com/site/bugs-online/product["NetApp Bugs Online"^] Für kürzlich entdeckte Probleme.
++
+** Wählen Sie im Feld Fehlertyp unter Erweiterte Suche *iSCSI - Windows* aus und wählen Sie dann *Go* aus. Sie sollten die Suche nach Bug Type *FCP -Windows* wiederholen.
+
+
+* Sammeln Sie Informationen über Ihr System.
+* Notieren Sie alle Fehlermeldungen, die auf der Host- oder Speichersystemkonsole angezeigt werden.
+* Sammeln der Protokolldateien des Host- und Speichersystems.
+* Notieren Sie die Symptome des Problems und sämtliche Änderungen, die am Host oder Speichersystem vorgenommen wurden, kurz bevor das Problem aufgetreten ist.
+* Wenn das Problem nicht behoben werden kann, wenden Sie sich an den technischen Support von NetApp, um Unterstützung zu erhalten.
+
