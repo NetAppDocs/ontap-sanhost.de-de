@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
-permalink: hu_rhel_93.html 
-keywords: host utilities, red hat, rhel, linux, 9.3, netapp, ontap, rhel 
-summary: Beschreibt die Verwendung von Red hat Enterprise Linux 9.3 mit ONTAP 
+permalink: hu_ubuntu_2204.html 
+keywords: host utilities, red hat, rhel, linux, 20.04, netapp, ontap, ubuntu 
+summary: Beschreibt die Verwendung von Ubuntu 22.04 mit ONTAP 
 ---
-= Verwenden Sie Red hat Enterprise Linux 9.3 mit ONTAP
+= Verwenden Sie Ubuntu 22.04 mit ONTAP
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -16,57 +16,17 @@ summary: Beschreibt die Verwendung von Red hat Enterprise Linux 9.3 mit ONTAP
 
 
 [role="lead"]
-Sie können die Konfigurationseinstellungen des ONTAP-SAN-Hosts verwenden, um Red hat Enterprise Linux 9.3 mit ONTAP als Ziel zu konfigurieren.
+Sie können die Konfigurationseinstellungen des ONTAP-SAN-Hosts verwenden, um Ubuntu 22.04 mit ONTAP als Ziel zu konfigurieren.
 
 
+NOTE: Das NetApp Linux Unified Host Utilities-Softwarepaket ist für das Ubuntu 22.04 Betriebssystem nicht verfügbar.
 
-== Installieren Sie die Linux Unified Host Utilities
-
-Das NetApp Linux Unified Host Utilities-Softwarepaket ist auf der erhältlich link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp Support Website"^] In einer 64-Bit-.rpm-Datei.
-
-NetApp empfiehlt ausdrücklich die Installation der Linux Unified Host Utilities, dies ist jedoch nicht zwingend erforderlich. Die Dienstprogramme ändern keine Einstellungen auf Ihrem Linux-Host. Die Versorgungseinrichtungen verbessern das Management und unterstützen den NetApp Kunden-Support bei der Erfassung von Informationen zu Ihrer Konfiguration.
-
-.Was Sie benötigen
-Wenn Sie derzeit eine Version von Linux Unified Host Utilities installiert haben, sollten Sie diese aktualisieren oder entfernen und dann die folgenden Schritte ausführen, um die neueste Version zu installieren.
-
-.Schritte
-. Laden Sie das Softwarepaket für die 64-Bit-Version von Linux Unified Host Utilities von herunter https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp Support Website"^] Auf Ihren Host.
-. Installieren des Softwarepakets:
-+
-`rpm -ivh netapp_linux_unified_host_utilities-7-1.x86_64`
-
-
-
-
-
-== SAN-Tool-Kit
-
-Das Tool-Kit wird automatisch installiert, wenn Sie das NetApp Host Utilities-Paket installieren. Dieses Kit enthält die `sanlun` Dienstprogramm: Unterstützt Sie beim Management von LUNs und HBAs. Der `sanlun` Befehl gibt Informationen über die LUNs zurück, die Ihrem Host zugeordnet sind, Multipathing und Informationen zurück, die zum Erstellen von Initiatorgruppen erforderlich sind.
-
-Im folgenden Beispiel wird der verwendet `sanlun lun show` Befehl gibt LUN-Informationen zurück.
-
-[source, cli]
-----
-# sanlun lun show all
-----
-*Beispielausgabe:*
-
-[listing]
-----
-controller(7mode/E-Series)/            device     host               lun
-vserver(cDOT/FlashRay)   lun-pathname  filename   adapter  protocol  size    Product
-------------------------------------------------------------------------------------
-vs_147_32glpe	         /vol/vol1/lun	 /dev/sdb	Host11  FCP        10g	cDOT
-vs_147_32glpe	         /vol/vol1/lun	 /dev/sdx	Host11  FCP        10g	cDOT
-vs_147_32glpe	         /vol/vol2/lun	 /dev/sdbt  host12 FCP        10g	cDOT
-vs_147_32glpe	         /vol/vol2/lun	 /dev/sdax	host12  FCP        10g	cDOT
-----
 
 
 == SAN Booting
 
 .Was Sie benötigen
-Wenn Sie sich für das Booten über SAN entscheiden, muss es von Ihrer Konfiguration unterstützt werden. Sie können das verwenden link:https://mysupport.netapp.com/matrix/imt.jsp?components=91241;&solution=236&isHWU&src=IMT["NetApp Interoperabilitäts-Matrix-Tool"^] Um zu überprüfen, ob Betriebssystem, HBA, HBA-Firmware und HBA-Boot-BIOS sowie die ONTAP-Version unterstützt werden.
+Wenn Sie sich für das Booten über SAN entscheiden, muss es von Ihrer Konfiguration unterstützt werden. Sie können das verwenden link:https://mysupport.netapp.com/matrix/imt.jsp?components=91241;&solution=236&isHWU&src=IMT["NetApp Interoperabilitäts-Matrix-Tool"^] Um zu überprüfen, ob Ihr Betriebssystem, HBA, die HBA-Firmware und das HBA-Boot-BIOS sowie die ONTAP-Version unterstützt werden.
 
 .Schritte
 . Ordnen Sie die SAN-Boot-LUN dem Host zu.
@@ -86,7 +46,7 @@ Informationen zum Aktivieren des HBA-BIOS finden Sie in der anbieterspezifischen
 
 == Multipathing
 
-Für Red hat Enterprise Linux (RHEL) 9.3 ist der `/etc/multipath.conf` Die Datei muss vorhanden sein, Sie müssen jedoch keine spezifischen Änderungen an der Datei vornehmen. RHEL 9.3 ist mit allen Einstellungen kompiliert, die für die Erkennung und korrekte Verwaltung von ONTAP-LUNs erforderlich sind.
+Für Ubuntu 22.04, die `/etc/multipath.conf` Die Datei muss vorhanden sein, Sie müssen jedoch keine spezifischen Änderungen an der Datei vornehmen. Ubuntu 22.04 ist mit allen Einstellungen kompiliert, die erforderlich sind, um ONTAP LUNs zu erkennen und korrekt zu verwalten.
 
 Sie können das verwenden `multipath -ll` Überprüfen Sie mit dem Befehl die Einstellungen für Ihre ONTAP LUNs. Die folgenden Abschnitte enthalten ein Beispiel für eine Multipath-Ausgabe für eine LUN, die ASA- und nicht-ASA-Personas zugeordnet ist.
 
@@ -102,13 +62,14 @@ Im folgenden Beispiel wird die richtige Ausgabe für eine ONTAP LUN angezeigt:
 [listing]
 ----
 # multipath -ll
-3600a098038314359725d516c69733471 dm-22 NETAPP,LUN C-Mode
-size=160G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
+3600a098038314559533f524d6c652f62 dm-24 NETAPP,LUN C-Mode
+size=10G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
 `-+- policy='service-time 0' prio=50 status=active
-  |- 11:0:3:0  sdau 66:224 active ready running
-  |- 12:0:4:0  sdco 69:192 active ready running
-  |- 12:0:0:0  sdav 66:240 active ready running
-  `- 11:0:2:0  sdat 66:208 active ready running
+  |- 11:0:1:13 sdm  8:192  active ready running
+  |- 11:0:3:13 sdah 66:16  active ready running
+  |- 12:0:1:13 sdbc 67:96  active ready running
+  `- 12:0:3:13 sdbx 68:176 active ready running
+
 ----
 
 NOTE: Verwenden Sie keine unverhältnismäßig hohe Anzahl von Pfaden zu einer einzelnen LUN. Es sollten nicht mehr als vier Pfade erforderlich sein. Mehr als acht Pfade können bei Storage-Ausfällen zu Pfadproblemen führen.
@@ -125,14 +86,14 @@ Im folgenden Beispiel wird die richtige Ausgabe für eine ONTAP-LUN mit zwei akt
 [listing]
 ----
 # multipath -ll
-3600a0980383149783224544d334a644d dm-10 NETAPP,LUN C-Mode
+3600a098038314c4c715d5732674e6141 dm-0 NETAPP,LUN C-Mode
 size=10G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
 |-+- policy='service-time 0' prio=50 status=active
-| |- 12:0:0:18 sdbj 67:208 active ready running
-| `- 11:0:1:18 sdan 66:112 active ready running
+| |- 11:0:1:0 sda 8:0  active ready running
+| `- 12:0:2:0 sdd 8:48 active ready running
 `-+- policy='service-time 0' prio=10 status=enabled
-  |- 11:0:0:18 sdt  65:48  active ready running
-  `- 12:0:3:18 sdcf 69:48  active ready running
+  |- 11:0:2:0 sdb 8:16 active ready running
+  `- 12:0:1:0 sdc 8:32 active ready running
 
 ----
 
@@ -142,7 +103,7 @@ NOTE: Verwenden Sie keine unverhältnismäßig hohe Anzahl von Pfaden zu einer e
 
 == Empfohlene Einstellungen
 
-Das RHEL 9.3-Betriebssystem wird kompiliert, um ONTAP-LUNs zu erkennen und automatisch alle Konfigurationsparameter für ASA- und nicht-ASA-Konfigurationen korrekt einzustellen. Mithilfe der folgenden empfohlenen Einstellungen können Sie die Performance für Ihre Host-Konfiguration weiter optimieren.
+Das Ubuntu 22.04-Betriebssystem wird kompiliert, um ONTAP-LUNs zu erkennen und automatisch alle Konfigurationsparameter für ASA- und nicht-ASA-Konfigurationen korrekt einzustellen. Mithilfe der folgenden empfohlenen Einstellungen können Sie die Performance für Ihre Host-Konfiguration weiter optimieren.
 
 Der `multipath.conf` Es muss eine Datei vorhanden sein, damit der Multipath-Daemon gestartet werden kann. Sie können jedoch eine leere Zero-Byte-Datei mit dem folgenden Befehl erstellen:
 
@@ -292,15 +253,4 @@ Sie können die empfohlenen Einstellungen verwenden, um Kernel-Based Virtual Mac
 
 == Bekannte Probleme
 
-Die RHEL 9.3 mit ONTAP-Version weist folgende bekannte Probleme auf:
-
-[cols="20, 20, 50,20"]
-|===
-| NetApp Bug ID | Titel | Beschreibung | JIRA-ID 
-
-
-| 1508554 | Zur Unterstützung der Erkennung des Emulex Host Bus Adapters (HBA) ist für die NetApp Linux Host Utilities CLI eine zusätzliche Abhängigkeit vom Bibliothekspaket erforderlich | In RHEL 9.x ist die CLI der NetApp Linux SAN-Hostdienstprogramme `sanlun fcp show adapter -v` Schlägt fehl, da die Abhängigkeiten des Bibliothekspakets zur Unterstützung der Erkennung des Emulex Hostbusadapters (HBA) nicht gefunden werden können. | Keine Angabe 
-
-
-| 1593771 | Ein Red hat Enterprise Linux 9.3 QLogic SAN-Host kann bei Speichermobilitätsvorgängen den Verlust von teilweisen Multipfaden verzeichnen | Während der Übernahme des ONTAP Storage Controllers geht davon aus, dass die Hälfte der multipath-Pfade ausfällt oder zu einem Failover-Modus wechselt und dann während des Giveback-Workflows auf die volle Pfadanzahl zurückgestellt wird. Bei einem Red hat Enterprise Linux (RHEL) 9.3 QLogic Host werden jedoch nach einem Storage Failover-Giveback-Vorgang nur partielle Multipath-Pfade wiederhergestellt. | RHEL 17811 
-|===
+Es gibt keine bekannten Probleme für die Ubuntu 22.04 mit ONTAP-Release.
