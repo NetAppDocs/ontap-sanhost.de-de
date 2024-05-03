@@ -15,16 +15,21 @@ summary: Dieser Inhalt enthält eine vertriebsspezifische Anleitung zur Konfigur
 :imagesdir: ./media/
 
 
-Dieser Content bietet Host- und versionsspezifische Best Practices zur schnellen Konfiguration von SAN-Hosts, die mit ONTAP Storage verbunden sind.
+[role="lead"]
+SAN-Hosts sollten für Multipathing und bestimmte Parameter und Einstellungen konfiguriert werden, die für den ordnungsgemäßen Betrieb mit ONTAP-LUNs entscheidend sind.  Die Host-Konfiguration variiert je nach Host-Betriebssystem und Protokoll.  Die richtige Konfiguration ist für die beste Performance und ein erfolgreiches Failover von großer Bedeutung.
+
+Sie sollten Ihre SAN-Hosts so konfigurieren, dass sie die NetApp-SAN-Hostdienstprogramme verwenden. SAN Host Utilities unterstützen Sie beim Management und Monitoring Ihrer LUNs und Host Bus Adapter (HBAs). Sie können beispielsweise die SAN-Host-Dienstprogramme verwenden, um eine Liste aller LUNs abzurufen, die einem Host zugeordnet sind, oder um eine Liste aller Attribute einer bestimmten LUN anzuzeigen, die einem Host zugeordnet ist. Der NetApp Kunden-Support kann auch die SAN-Host-Dienstprogramme verwenden, um Informationen über Ihre Konfiguration zu sammeln, wenn Sie ein Problem haben, das Unterstützung erfordert.
+
+NetApp empfiehlt die Verwendung der SAN Host Utilities-Software, wenn sie für Ihren SAN-Host verfügbar ist.
+
+Wenn dies von Ihrer SAN-Konfiguration unterstützt wird, können Sie Ihren Host auch so konfigurieren, dass er SAN-Booting verwendet, um die Bereitstellung zu vereinfachen und die Skalierbarkeit zu verbessern. Mit SAN-Boot können Sie mehrere neue Server bereitstellen, indem Sie sie mit dem SAN verbinden und die entsprechenden Starteinstellungen konfigurieren. Dies spart Zeit, da das Betriebssystem nicht mehr einzeln auf jedem Server installiert werden muss.
 
 Ihre SAN-Hosts und ONTAP-Storage können sich entweder vor Ort, in der Cloud oder beides befinden.
 
 
 NOTE: In einer Cloud-Umgebung werden Hosts normalerweise als Clients bezeichnet. Alle hostspezifischen Informationen in diesem Inhalt gelten auch für Cloud Clients.
 
-So lässt sich beispielsweise lokaler ONTAP Storage konfigurieren, um eine Verbindung zu lokalen SAN-Hosts herzustellen oder eine Verbindung zu SAN-Cloud-Clients herzustellen. Sie könnten auch konfigurieren link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^] Oder link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["Amazon FSX für ONTAP"^] Herstellen einer Verbindung zu lokalen SAN-Hosts oder zur Verbindung mit SAN-Cloud-Clients:
-
-Die richtige Konfiguration ist für die beste Performance und ein erfolgreiches Failover von großer Bedeutung.
+Beispielsweise können Sie lokalen ONTAP Storage konfigurieren, um eine Verbindung zu lokalen SAN-Hosts oder SAN-Cloud-Clients herzustellen. Sie können auch Storage-Services konfigurieren, die in einer Cloud-Umgebung wie ausgeführt werden link:https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^] Oder link:https://docs.netapp.com/us-en/bluexp-fsx-ontap/index.html["Amazon FSX für NetApp ONTAP"^] Für die Verbindung mit lokalen SAN-Hosts oder SAN-Cloud-Clients.
 
 .Verwandte Informationen
 * Der link:https://docs.netapp.com/us-en/ontap/san-config/index.html["ONTAP-SAN-Konfiguration"^] Für Ihre Version von ONTAP
