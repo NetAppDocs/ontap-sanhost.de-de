@@ -217,13 +217,13 @@ Das AIX-Betriebssystem erzwingt standardmäßig eine kürzere I/O-Zeitüberschre
 
 
 
-== AIX Unterstützung mit SM-BC
+== AIX Unterstützung mit SnapMirror Active Sync
 
-Ab ONTAP 9.11.1 wird AIX mit SM-BC unterstützt. Mit einer AIX-Konfiguration ist der primäre Cluster der „aktive“ Cluster.
+Ab ONTAP 9.11.1 wird AIX mit SnapMirror Active Sync unterstützt. Mit einer AIX-Konfiguration ist der primäre Cluster der „aktive“ Cluster.
 
 In einer AIX-Konfiguration ist ein Failover mit Unterbrechungen verbunden. Bei jedem Failover müssen Sie einen Re-Scan am Host durchführen, um I/O-Vorgänge wiederaufzunehmen.
 
-Informationen zum Konfigurieren von AIX für SM-BC finden Sie im Knowledge Base-Artikel link:https://kb.netapp.com/Advice_and_Troubleshooting/Data_Protection_and_Security/SnapMirror/How_to_configure_an_AIX_host_for_SnapMirror_Business_Continuity_(SM-BC)["So konfigurieren Sie einen AIX Host für SnapMirror Business Continuity (SM-BC)"^].
+Informationen zur Konfiguration von AIX für SnapMirror Active Sync finden Sie in dem Artikel in der Knowledge Base link:https://kb.netapp.com/Advice_and_Troubleshooting/Data_Protection_and_Security/SnapMirror/How_to_configure_an_AIX_host_for_SnapMirror_Business_Continuity_(SM-BC)["Konfigurieren eines AIX-Hosts für SnapMirror Active Sync"^].
 
 
 
@@ -236,11 +236,11 @@ Die IBM AIX 7.2 und/oder PowerVM (VIOS 3.1) mit ONTAP-Version weist folgende bek
 | NetApp Bug ID | Titel | Beschreibung | Partner-ID 
 
 
-| 1416221 | BEI AIX 7200-05-01 ist bei einem Storage Failover eine I/O-Unterbrechung auf virtuellen iSCSI-Festplatten (VIOS 3.1.1.x) aufgetreten | Eine I/O-Unterbrechung kann bei Storage Failover-Vorgängen auf AIX 7.2 TL5 Hosts auf den virtuellen iSCSI-Festplatten auftreten, die über das VIOS 3.1.1.x zugeordnet sind Standardmäßig wird der verwendet `rw_timeout` Der Wert der virtuellen iSCSI-Festplatten (hdisk) auf VIOC beträgt 45 Sekunden. Wenn während des Storage Failover eine mehr als 45 Sekunden Verzögerung auftritt, kann es zu einem I/O-Ausfall kommen. Um diese Situation zu vermeiden, schlagen Sie sich bitte in der in BURT erwähnten Behelfslösung vor. Nach IBM können wir nach der Anwendung von APAR - IJ34739 (kommende Version) den rw_Timeout-Wert mit dem dynamisch ändern `chdev` Befehl. | NA 
+| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/1416221["1416221"^] | BEI AIX 7200-05-01 ist bei einem Storage Failover eine I/O-Unterbrechung auf virtuellen iSCSI-Festplatten (VIOS 3.1.1.x) aufgetreten | Eine I/O-Unterbrechung kann bei Storage Failover-Vorgängen auf AIX 7.2 TL5 Hosts auf den virtuellen iSCSI-Festplatten auftreten, die über das VIOS 3.1.1.x zugeordnet sind Standardmäßig wird der verwendet `rw_timeout` Der Wert der virtuellen iSCSI-Festplatten (hdisk) auf VIOC beträgt 45 Sekunden. Wenn während des Storage Failover eine mehr als 45 Sekunden Verzögerung auftritt, kann es zu einem I/O-Ausfall kommen. Um diese Situation zu vermeiden, schlagen Sie sich bitte in der in BURT erwähnten Behelfslösung vor. Nach IBM können wir nach der Anwendung von APAR - IJ34739 (kommende Version) den rw_Timeout-Wert mit dem dynamisch ändern `chdev` Befehl. | NA 
 
 
-| 1414700 | AIX 7.2 TL04 hat bei einem Storage Failover eine I/O-Störung auf virtuellen iSCSI-Festplatten (VIOS 3.1.1.x) festgestellt | Eine I/O-Unterbrechung kann bei Storage Failover-Vorgängen auf AIX 7.2 TL4 Hosts auf den virtuellen iSCSI-Festplatten auftreten, die über das VIOS 3.1.1.x zugeordnet sind Standardmäßig wird der verwendet `rw_timeout` Der Wert des vSCSI-Adapters auf VIOC beträgt 45 Sekunden. Wenn während eines Storage Failover eine I/O-Verzögerung von mehr als 45 Sekunden auftritt, kann es zu einem I/O-Ausfall kommen. Um diese Situation zu vermeiden, schlagen Sie sich bitte in der in BURT erwähnten Behelfslösung vor. | NA 
+| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/1414700["1414700"^] | AIX 7.2 TL04 hat bei einem Storage Failover eine I/O-Störung auf virtuellen iSCSI-Festplatten (VIOS 3.1.1.x) festgestellt | Eine I/O-Unterbrechung kann bei Storage Failover-Vorgängen auf AIX 7.2 TL4 Hosts auf den virtuellen iSCSI-Festplatten auftreten, die über das VIOS 3.1.1.x zugeordnet sind Standardmäßig wird der verwendet `rw_timeout` Der Wert des vSCSI-Adapters auf VIOC beträgt 45 Sekunden. Wenn während eines Storage Failover eine I/O-Verzögerung von mehr als 45 Sekunden auftritt, kann es zu einem I/O-Ausfall kommen. Um diese Situation zu vermeiden, schlagen Sie sich bitte in der in BURT erwähnten Behelfslösung vor. | NA 
 
 
-| 1307653 | Erkennen von I/O-Problemen auf der VIOS 3.1.1.10 bei SFO-Fehlern und geraden I/O-Operationen | Bei VIOS 3.1.1 sind IO-Ausfälle möglicherweise auf NPIV Client-Festplatte zu sehen, die durch 16/32-GB-FC-Adapter unterstützt werden. Auch ein `vfchost` Der Treiber befindet sich möglicherweise in einem Zustand, in dem er die Verarbeitung von I/O-Anfragen vom Client beendet. Das Problem wird durch den Einsatz von IBM APAR IJ22290 behoben. | NA 
+| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/1307653["1307653"^] | Erkennen von I/O-Problemen auf der VIOS 3.1.1.10 bei SFO-Fehlern und geraden I/O-Operationen | Bei VIOS 3.1.1 sind IO-Ausfälle möglicherweise auf NPIV Client-Festplatte zu sehen, die durch 16/32-GB-FC-Adapter unterstützt werden. Auch ein `vfchost` Der Treiber befindet sich möglicherweise in einem Zustand, in dem er die Verarbeitung von I/O-Anfragen vom Client beendet. Das Problem wird durch den Einsatz von IBM APAR IJ22290 behoben. | NA 
 |===

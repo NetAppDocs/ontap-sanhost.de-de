@@ -28,7 +28,7 @@ Für die NVMe/FC-Hostkonfiguration für einen AIX-Host mit ONTAP ist folgende Un
 
 .Was Sie benötigen
 * Überprüfen Sie, ob Sie über 32-GB-FC-Emulex-Adapter (EN1A, EN1B, EN1L, EN1M) oder 64-GB-FC-Adapter (EN1N, EN1P) mit Adapter-Firmware 12.4.257.30 und höher verfügen.
-* Bei einer MetroCluster-Konfiguration empfiehlt NetApp, die AIX NVMe/FC Standard-APD-Zeit (All Path Down) zu ändern, um ungeplante MetroCluster Switchover-Ereignisse zu unterstützen, um zu vermeiden, dass das AIX Betriebssystem eine kürzere I/O-Zeitüberschreitung durchsetzt. Weitere Informationen und die empfohlenen Änderungen an den Standardeinstellungen finden Sie im öffentlichen Bericht 1553249.
+* Wenn Sie über eine MetroCluster-Konfiguration verfügen, empfiehlt NetApp, die AIX NVMe/FC-Standard-APD-Zeit (All Path Down) für die Unterstützung ungeplanter MetroCluster-Switchover-Ereignisse zu ändern, um zu vermeiden, dass das AIX-Betriebssystem eine kürzere I/O-Zeitüberschreitung erzwingt. Weitere Informationen und die empfohlenen Änderungen an den Standardeinstellungen finden Sie unter NetApp Bugs Online - link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/1553249["1553249"^].
 * Standardmäßig beträgt der Asymmetric Namespace Access Transition Timeout (ANATT)-Wert für das AIX-Host-Betriebssystem 30 Sekunden. IBM bietet einen Interim Fix (ifix), der den ANATT-Wert auf 60 Sekunden kappen lässt. Sie müssen ein ifix von der IBM-Website installieren, um sicherzustellen, dass alle ONTAP-Workflows unterbrechungsfrei sind.
 +
 
@@ -323,16 +323,16 @@ Die NVMe/FC-Hostkonfiguration für AIX mit ONTAP weist folgende bekannte Problem
 | Burt-ID | Titel | Beschreibung 
 
 
-| 1553249 | AIX NVMe/FC Standard-APD-Zeit, die zur Unterstützung von MCC-Ereignissen mit ungeplanten Umschaltungen geändert werden soll | Standardmäßig verwenden AIX-Betriebssysteme einen All Path Down (APD)-Timeout-Wert von 20 Sek. für NVMe/FC.  Allerdings können die von ONTAP MetroCluster initiierten Workflows für die automatische ungeplante Umschaltung (AUSO) und Tiebreaker eine etwas längere Zeit als das APD-Timeout-Fenster benötigen, was zu I/O-Fehlern führt. 
+| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/BURT/1553249["1553249"^] | AIX NVMe/FC Standard-APD-Zeit, die zur Unterstützung von MCC-Ereignissen mit ungeplanten Umschaltungen geändert werden soll | Standardmäßig verwenden AIX-Betriebssysteme einen All Path Down (APD)-Timeout-Wert von 20 Sek. für NVMe/FC.  Allerdings können die von ONTAP MetroCluster initiierten Workflows für die automatische ungeplante Umschaltung (AUSO) und Tiebreaker eine etwas längere Zeit als das APD-Timeout-Fenster benötigen, was zu I/O-Fehlern führt. 
 
 
-| 1546017 | AIX NVMe/FC ist mit ANATT 60 GB und nicht mit 120 GB ausgestattet, wie von ONTAP angekündigt | ONTAP gibt das ANA (Asymmetric Namespace Access)-Transition Timeout bei der Controller-Identifizierung mit 120 Sek. an. Derzeit liest AIX bei ifix das ANA-Übergangszeitlimit von Controller Identify, aber spannt es effektiv auf 60 Sek., wenn es über diesem Grenzwert liegt. 
+| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/BURT/1546017["1546017"^] | AIX NVMe/FC ist mit ANATT 60 GB und nicht mit 120 GB ausgestattet, wie von ONTAP angekündigt | ONTAP gibt das ANA (Asymmetric Namespace Access)-Transition Timeout bei der Controller-Identifizierung mit 120 Sek. an. Derzeit liest AIX bei ifix das ANA-Übergangszeitlimit von Controller Identify, aber spannt es effektiv auf 60 Sek., wenn es über diesem Grenzwert liegt. 
 
 
-| 1541386 | AIX NVMe/FC schlägt nach dem Ablauf von ANATT EIO vor | Wenn der ANA(Asymmetric Namespace Access)-Übergang bei jedem Storage-Failover (SFO)-Ereignis die ANA-Transition-Timeout-Obergrenze für einen bestimmten Pfad überschreitet, fällt der AIX-NVMe/FC-Host mit einem I/O-Fehler aus, obwohl alternative fehlerfreie Pfade für den Namespace verfügbar sind. 
+| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/BURT/1541386["1541386"^] | AIX NVMe/FC schlägt nach dem Ablauf von ANATT EIO vor | Wenn der ANA(Asymmetric Namespace Access)-Übergang bei jedem Storage-Failover (SFO)-Ereignis die ANA-Transition-Timeout-Obergrenze für einen bestimmten Pfad überschreitet, fällt der AIX-NVMe/FC-Host mit einem I/O-Fehler aus, obwohl alternative fehlerfreie Pfade für den Namespace verfügbar sind. 
 
 
-| 1541380 | AIX NVMe/FC wartet, bis ANATT halb/vollständig abläuft, bevor I/O nach ANA AEN fortgesetzt wird | IBM AIX NVMe/FC unterstützt einige von ONTAP veröffentlichte AENs (Asynchronous Notifications) nicht. Diese suboptimale ANA-Handhabung führt während des SFO-Betriebs zu einer suboptimalen Leistung. 
+| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/BURT/1541380["1541380"^] | AIX NVMe/FC wartet, bis ANATT halb/vollständig abläuft, bevor I/O nach ANA AEN fortgesetzt wird | IBM AIX NVMe/FC unterstützt einige von ONTAP veröffentlichte AENs (Asynchronous Notifications) nicht. Diese suboptimale ANA-Handhabung führt während des SFO-Betriebs zu einer suboptimalen Leistung. 
 |===
 
 

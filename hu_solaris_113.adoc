@@ -214,12 +214,12 @@ NOTE: Patches sind verfügbar für Oracle Bug 15824910 auf verschiedenen Version
 
 
 
-== Empfohlene Einstellungen für SnapMirror Business Continuity
+== Empfohlene Einstellungen für SnapMirror Active Sync
 
-Um sicherzustellen, dass die Solaris Client-Applikationen bei einer ungeplanten Failover-Umschaltung in einer SnapMirror Business Continuity (SM-BC)-Umgebung unterbrechungsfrei laufen, müssen Sie die folgende Einstellung auf dem Solaris 11.3-Host konfigurieren. Diese Einstellung überschreibt das Failover-Modul `f_tpgs` Um die Ausführung des Codepfads zu verhindern, der den Widerspruch erkennt.
+Um zu überprüfen, ob die Solaris Client-Anwendungen bei einer ungeplanten Standort-Failover-Umschaltung in einer SnapMirror Active Sync-Umgebung unterbrechungsfrei ausgeführt werden, müssen Sie die folgende Einstellung auf dem Solaris 11.3-Host konfigurieren. Diese Einstellung überschreibt das Failover-Modul `f_tpgs` Um die Ausführung des Codepfads zu verhindern, der den Widerspruch erkennt.
 
 
-NOTE: Ab ONTAP 9.9 werden die SM-BC-Einstellungskonfigurationen auf dem Solaris 11.3 Host unterstützt.
+NOTE: Ab ONTAP 9.9 werden die Konfigurationen der aktiven Synchronisierungseinstellungen von SnapMirror auf dem Solaris 11.3 Host unterstützt.
 
 Befolgen Sie die Anweisungen, um den Überschreibungsparameter zu konfigurieren:
 
@@ -245,7 +245,8 @@ svl_fops_name = 0xa00298d69e0 "conf f_tpgs"
 
 
 
-NOTE: Nachher `scsi-vhci-failover-override` Wurde angewendet, `conf` Wird hinzugefügt zu `svl_fops_name`. Weitere Informationen und empfohlene Änderungen an den Standardeinstellungen finden Sie im NetApp KB-Artikel https://kb.netapp.com/Advice_and_Troubleshooting/Data_Protection_and_Security/SnapMirror/Solaris_Host_support_recommended_settings_in_SnapMirror_Business_Continuity_(SM-BC)_configuration["Solaris Host Support Empfohlene Einstellungen in SnapMirror Business Continuity (SM-BC)-Konfiguration"^].
+NOTE: Nachher `scsi-vhci-failover-override` Wurde angewendet, `conf` Wird hinzugefügt zu `svl_fops_name`.
+Weitere Informationen und empfohlene Änderungen an den Standardeinstellungen finden Sie im NetApp KB-Artikel https://kb.netapp.com/Advice_and_Troubleshooting/Data_Protection_and_Security/SnapMirror/Solaris_Host_support_recommended_settings_in_SnapMirror_Business_Continuity_(SM-BC)_configuration["Von Solaris Host unterstützte empfohlene Einstellungen in der SnapMirror Active Sync Konfiguration"^].
 
 
 
@@ -258,8 +259,8 @@ Die Solaris 11.3 mit ONTAP-Version weist folgende bekannte Probleme auf:
 | NetApp Bug ID | Titel | Beschreibung | Oracle-ID 
 
 
-| 1366780 | Solaris LIF-Problem während GB mit Emulex 32G HBA auf x86 Arch | Gesehen mit Emulex-Firmware-Version 12.6.x und höher auf x86_64-Plattform | SR 3-24746803021 
+| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/1366780["1366780"^] | Solaris LIF-Problem während GB mit Emulex 32G HBA auf x86 Arch | Gesehen mit Emulex-Firmware-Version 12.6.x und höher auf x86_64-Plattform | SR 3-24746803021 
 
 
-| 1368957 | Solaris 11.x 'cfgadm -c configure', was zu einem E/A-Fehler mit End-to-End-Emulex-Konfiguration führt | Wird Ausgeführt `cfgadm -c configure` Bei Emulex End-to-End-Konfigurationen führt dies zu I/O-Fehler. Dies ist in ONTAP 9.5P17, 9.6P14, 9.7P13 und 9.8P2 behoben | Keine Angabe 
+| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/1368957["1368957"^] | Solaris 11.x 'cfgadm -c configure', was zu einem E/A-Fehler mit End-to-End-Emulex-Konfiguration führt | Wird Ausgeführt `cfgadm -c configure` Bei Emulex End-to-End-Konfigurationen führt dies zu I/O-Fehler. Dies ist in ONTAP 9.5P17, 9.6P14, 9.7P13 und 9.8P2 behoben | Keine Angabe 
 |===

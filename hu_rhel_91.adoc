@@ -302,5 +302,5 @@ Die RHEL 9.1 mit ONTAP-Version weist folgende bekannte Probleme auf:
 | NetApp Bug ID | Titel | Beschreibung | Bugzilla-ID 
 
 
-| 1508554 | Bei der NetApp Linux Host Utilities CLI sind zusätzliche Abhängigkeiten von Bibliothekspaketen erforderlich, um die Erkennung von Emulex HBA-Adaptern zu unterstützen | In RHEL 9.1 bietet die NetApp Linux SAN Host Utilities CLI `sanlun fcp show adapter -v` Schlägt fehl, da die Paketabhängigkeiten für die Unterstützung der HBA-Erkennung nicht gefunden werden können. | K. A. 
+| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/1508554["1508554"^] | Bei der NetApp Linux Host Utilities CLI sind zusätzliche Abhängigkeiten von Bibliothekspaketen erforderlich, um die Erkennung von Emulex HBA-Adaptern zu unterstützen | In RHEL 9.1 bietet die NetApp Linux SAN Host Utilities CLI `sanlun fcp show adapter -v` Schlägt fehl, da die Paketabhängigkeiten für die Unterstützung der HBA-Erkennung nicht gefunden werden können. | K. A. 
 |===

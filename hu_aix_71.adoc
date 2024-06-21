@@ -214,13 +214,13 @@ Das AIX-Betriebssystem erzwingt standardmäßig eine kürzere I/O-Zeitüberschre
 
 
 
-== AIX Unterstützung mit SM-BC
+== AIX Unterstützung mit SnapMirror Active Sync
 
-Ab ONTAP 9.11.1 wird AIX mit SM-BC unterstützt. Mit einer AIX-Konfiguration ist der primäre Cluster der „aktive“ Cluster.
+Ab ONTAP 9.11.1 wird AIX mit SnapMirror Active Sync unterstützt. Mit einer AIX-Konfiguration ist der primäre Cluster der „aktive“ Cluster.
 
 In einer AIX-Konfiguration ist ein Failover mit Unterbrechungen verbunden. Bei jedem Failover müssen Sie einen Re-Scan am Host durchführen, um I/O-Vorgänge wiederaufzunehmen.
 
-Informationen zum Konfigurieren von AIX für SM-BC finden Sie im Knowledge Base-Artikel link:https://kb.netapp.com/Advice_and_Troubleshooting/Data_Protection_and_Security/SnapMirror/How_to_configure_an_AIX_host_for_SnapMirror_Business_Continuity_(SM-BC)["So konfigurieren Sie einen AIX Host für SnapMirror Business Continuity (SM-BC)"^].
+Informationen zum Konfigurieren von AIX für SM-BC finden Sie im Knowledge Base-Artikel link:https://kb.netapp.com/Advice_and_Troubleshooting/Data_Protection_and_Security/SnapMirror/How_to_configure_an_AIX_host_for_SnapMirror_Business_Continuity_(SM-BC)["Konfigurieren eines AIX-Hosts für SnapMirror Active Sync"^].
 
 
 

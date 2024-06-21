@@ -319,5 +319,5 @@ VMware vSphere 6.5 und 6.7 mit ONTAP Version weist folgende bekannte Probleme au
 .Verwandte Informationen
 * link:https://docs.netapp.com/us-en/netapp-solutions/virtualization/vsphere_ontap_ontap_for_vsphere.html["TR-4597-VMware vSphere with ONTAP"^]
 * link:https://kb.vmware.com/s/article/2031038["Unterstützung von VMware vSphere 5.x, 6.x und 7.x mit NetApp MetroCluster (2031038)"^]
-* link:https://kb.vmware.com/s/article/83370["NetApp ONTAP mit NetApp SnapMirror Business Continuity (SM-BC) mit VMware vSphere Metro Storage Cluster (vMSC)"^]
+* link:https://kb.vmware.com/s/article/83370["NetApp ONTAP mit NetApp SnapMirror Active Sync mit VMware vSphere Metro Storage Cluster (vMSC)"^]
 

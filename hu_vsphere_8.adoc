@@ -355,12 +355,12 @@ Die Version VMware vSphere 8.x mit ONTAP weist folgende bekannte Probleme auf:
 | NetApp Bug ID | Titel | Beschreibung 
 
 
-| 1543660 | I/O-Fehler tritt auf, wenn bei Linux VMs mit vNVMe Adaptern lange alle Pfade ausfallen (APD)  a| 
+| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/1543660["1543660"^] | I/O-Fehler tritt auf, wenn bei Linux VMs mit vNVMe Adaptern lange alle Pfade ausfallen (APD)  a| 
 Linux-VMs, die vSphere 8.x und höher ausführen und virtuelle NVMe-Adapter (vNVME) verwenden, stoßen auf einen I/O-Fehler, da der vNVMe-Wiederholungsvorgang standardmäßig deaktiviert ist. Um eine Unterbrechung bei Linux VMs zu vermeiden, auf denen ältere Kernel während einer Alle Pfade unten (APD) ausgeführt werden, oder eine hohe I/O-Last zu vermeiden, hat VMware eine abstimmbare „VSCSIDisableNvmeRetry“ eingeführt, um den vNVMe-Wiederholungsvorgang zu deaktivieren.
 
 |===
 .Verwandte Informationen
 * link:https://docs.netapp.com/us-en/netapp-solutions/virtualization/vsphere_ontap_ontap_for_vsphere.html["TR-4597-VMware vSphere with ONTAP"^]
 * link:https://kb.vmware.com/s/article/2031038["Unterstützung von VMware vSphere 5.x, 6.x und 7.x mit NetApp MetroCluster (2031038)"^]
-* link:https://kb.vmware.com/s/article/83370["NetApp ONTAP mit NetApp SnapMirror Business Continuity (SM-BC) mit VMware vSphere Metro Storage Cluster (vMSC)"^]
+* link:https://kb.vmware.com/s/article/83370["NetApp ONTAP mit NetApp SnapMirror Active Sync mit VMware vSphere Metro Storage Cluster (vMSC)"^]
 
