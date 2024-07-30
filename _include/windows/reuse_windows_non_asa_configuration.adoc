@@ -14,4 +14,4 @@ NOTE: Die nicht optimierten Pfade werden nur verwendet, wenn keine optimierten P
 .Beispiel
 Das folgende Beispiel zeigt die richtige Ausgabe für eine ONTAP-LUN mit zwei aktiv/optimierten Pfaden und zwei aktiv/nicht optimierten Pfaden.
 
-image::nonasa.png[Nonasa]
+image::nonasa.png[Screenshot einer ONTAP-LUN mit zwei aktiven/optimierten Pfaden und zwei aktiven/nicht optimierten Pfaden]

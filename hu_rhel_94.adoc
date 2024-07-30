@@ -293,6 +293,3 @@ Sie können die empfohlenen Einstellungen verwenden, um Kernel-Based Virtual Mac
 == Bekannte Probleme
 
 Es gibt keine bekannten Probleme bei der FC-Hostkonfiguration für RHEL 9.4 mit ONTAP-Version.
-
-|===
-|===

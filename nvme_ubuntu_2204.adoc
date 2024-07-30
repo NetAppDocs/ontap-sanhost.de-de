@@ -13,7 +13,6 @@ summary: Konfigurieren des NVMe-of-Hosts für Ubuntu 22.04 mit ONTAP
 :icons: font
 :linkattrs: 
 :imagesdir: ./media/
-:source-highlighter: highlighter.js
 
 
 [role="lead"]

@@ -15,6 +15,9 @@ summary: Einrichten der VME/FC-Hostkonfiguration für Oracle Linux 8.2 mit ONTAP
 :imagesdir: ./media/
 
 
+[role="lead"]
+Sie können NVMe over Fibre Channel (NVMe/FC) auf Initiator-Hosts konfigurieren, auf denen Oracle Linux 8.2 und ONTAP als Ziel ausgeführt werden.
+
 
 
 == Instandhaltung

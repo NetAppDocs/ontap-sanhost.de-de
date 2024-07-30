@@ -15,6 +15,7 @@ summary:
 :imagesdir: ./media/
 
 
+[role="lead"]
 Entdecken Sie die neuesten Informationen zu SAN Host Utility-Versionen und greifen Sie auf das Installationsverfahren für Ihre Host-Konfiguration zu.
 
 

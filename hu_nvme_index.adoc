@@ -15,4 +15,5 @@ summary: 'Sie können bestimmte SAN-Hosts für das NVMe-of-Protokoll (NVMe over 
 :imagesdir: ./media/
 
 
+[role="lead"]
 Sie können bestimmte SAN-Hosts für das NVMe-of-Protokoll (NVMe over Fabrics) konfigurieren, das NVMe/FC (NVMe over Fibre Channel) und NVMe over TCP (NVMe/TCP) mit ONTAP als Ziel umfasst. Je nach Host-Betriebssystem und ONTAP-Version konfigurieren und validieren Sie das NVMe/FC- bzw. NVMe/TCP-Protokoll oder beides auf dem Host.

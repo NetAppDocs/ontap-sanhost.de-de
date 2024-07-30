@@ -97,7 +97,7 @@ NOTE: Die nicht optimierten Pfade werden nur verwendet, wenn keine optimierten P
 .Beispiel
 Das folgende Beispiel zeigt die richtige Ausgabe für eine ONTAP-LUN mit zwei aktiv/optimierten Pfaden und zwei aktiv/nicht optimierten Pfaden.
 
-image::nonasa.png[Nonasa]
+image::nonasa.png[Screenshot einer ONTAP-LUN mit zwei aktiven/optimierten Pfaden und zwei aktiven/nicht optimierten Pfaden]
 
 
 
@@ -105,7 +105,7 @@ image::nonasa.png[Nonasa]
 
 Für die gesamte SAN Array (ASA)-Konfiguration sollte eine Gruppe von Pfaden mit einzelnen Prioritäten vorhanden sein. Alle Pfade sind aktiv/optimiert, das heißt, sie werden vom Controller verarbeitet und der I/O wird auf allen aktiven Pfaden gesendet.
 
-image::asa.png[ASA]
+image::asa.png[Screenshot der ONTAP-LUN mit aktiven/optimierten Pfaden]
 
 
 NOTE: Verwenden Sie keine unverhältnismäßig hohe Anzahl von Pfaden zu einer einzelnen LUN. Es sollten nicht mehr als vier Pfade erforderlich sein. Mehr als acht Pfade können bei Storage-Ausfällen zu Pfadproblemen führen.

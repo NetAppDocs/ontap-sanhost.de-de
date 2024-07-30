@@ -13,7 +13,6 @@ summary: Konfigurieren des NVMe-of-Hosts für RHEL 9.4 mit ONTAP
 :icons: font
 :linkattrs: 
 :imagesdir: ./media/
-:source-highlighter: highlighter.js
 
 
 [role="lead"]

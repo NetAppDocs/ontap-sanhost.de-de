@@ -15,4 +15,5 @@ summary:
 :imagesdir: ./media/
 
 
-Sie können bestimmte SAN-Hosts für FCP oder iSCSI mit ONTAP als Ziel konfigurieren. Zuerst installieren Sie das entsprechende Betriebssystem-Host-Utility-Paket, das das SAN-Tool-Kit enthält, und dann überprüfen Sie die Multipath-Einstellungen für die NetApp ONTAP-LUNs.
+[role="lead"]
+Sie können bestimmte SAN-Hosts für FCP oder iSCSI mit ONTAP als Ziel konfigurieren. Zuerst installieren Sie das entsprechende Betriebssystem-Host-Utility-Paket, das das SAN-Tool-Kit enthält. Überprüfen Sie anschließend die Multipath-Einstellungen für die NetApp ONTAP LUNs.

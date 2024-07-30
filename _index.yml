@@ -1,5 +1,12 @@
 ---
 indexpage:
+  title: SAN-Hosts und Cloud-Clients
+  summary: Dieser Inhalt enthält eine vertriebsspezifische Anleitung zur Konfiguration
+    von SAN-Clients, die mit ONTAP Storage verbunden sind.
+  keywords: ontap, san, host, rhel, red, hat, linux, sles, suse, esxi, nvme, oracle,
+    linux, windows, enterprise, fc, fcp, isci, aix, powervm, vios, centos, citrix,
+    hp-ux, solaris, veritas, cvo, cloud, volume, ontap, clients, configuration, FSx,
+    instance, netapp
   lead: Dieser Inhalt enthält eine vertriebsspezifische Anleitung zur Konfiguration
     von SAN-Clients, die mit ONTAP Storage verbunden sind. SAN-Clients und ONTAP Storage
     können sich entweder vor Ort oder in der Cloud befinden.

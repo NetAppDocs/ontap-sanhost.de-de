@@ -338,4 +338,4 @@ Die NVMe/FC-Hostkonfiguration für AIX mit ONTAP weist folgende bekannte Problem
 
 == Fehlerbehebung
 
-Vergewissern Sie sich vor der Fehlerbehebung bei NVMe/FC-Fehlern, dass Sie eine Konfiguration ausführen, die den IMT-Spezifikationen (Interoperabilitäts-Matrix-Tool) entspricht. Wenn die Probleme weiterhin bestehen, wenden Sie sich an link:mysupport.netapp.com["NetApp Support"^] Für weitere Triage.
+Vergewissern Sie sich vor der Fehlerbehebung bei NVMe/FC-Fehlern, dass Sie eine Konfiguration ausführen, die den IMT-Spezifikationen (Interoperabilitäts-Matrix-Tool) entspricht. Wenn Sie immer noch Probleme haben, wenden Sie sich an link:https://mysupport.netapp.com["NetApp Support"^] , um eine weitere Lösung zu erhalten.

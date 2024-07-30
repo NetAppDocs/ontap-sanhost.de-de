@@ -15,7 +15,6 @@ summary: Beschreibt die Konfiguration von NVMe/FC für SUSE Linux Enterprise Ser
 :icons: font
 :linkattrs: 
 :imagesdir: ./media/
-:source-highlighter: highlighter.js
 :toc-position: content
 
 
