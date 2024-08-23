@@ -287,7 +287,7 @@ devices {
 }
 ----
 
-NOTE: Um Oracle Linux 8.6 RedHat Enterprise Kernel (RHCK) zu konfigurieren, verwenden Sie den link:hu_rhel_86.html#recommended-settings["Empfohlene Einstellungen"] Für Red hat Enterprise Linux (RHEL) 8.6.
+NOTE: Um Oracle Linux 8.6 Red hat Enterprise Kernel (RHCK) zu konfigurieren, verwenden Sie den link:hu_rhel_86.html#recommended-settings["Empfohlene Einstellungen"] für Red hat Enterprise Linux (RHEL) 8.6.
 
 
 
