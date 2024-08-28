@@ -264,18 +264,18 @@ QLE2742 FW:v9.12.00 DVR:v10.02.08.100-k
 
 === 1 MB I/O-Größe aktivieren (optional)
 
-ONTAP meldet eine MDTS (MAX Data-Übertragungsgröße) von 8 in den Identifizieren-Controller-Daten, was bedeutet, dass die maximale E/A-Anforderungsgröße bis zu 1 MB betragen kann. Um jedoch I/O-Anforderungen von Größe 1 MB für einen Broadcom-NVMe/FC-Host auszustellen, müssen Sie den erhöhen `lpfc` Wert des `lpfc_sg_seg_cnt` Parameter auf 256 ab dem Standardwert 64.
+ONTAP meldet eine MDTS (MAX Data-Übertragungsgröße) von 8 in den Identifizieren von Controller-Daten. Das bedeutet, dass die maximale E/A-Anforderungsgröße bis zu 1 MB betragen kann. Um I/O-Anforderungen von Größe 1 MB für einen Broadcom-NVMe/FC-Host auszustellen, müssen Sie den `lpfc` Wert des `lpfc_sg_seg_cnt` Parameters ab dem Standardwert 64 auf 256 erhöhen.
 
 .Schritte
-. Stellen Sie die ein `lpfc_sg_seg_cnt` Parameter bis 256.
+. Setzen Sie den `lpfc_sg_seg_cnt` Parameter auf 256:
 +
 [listing]
 ----
 # cat /etc/modprobe.d/lpfc.conf
 options lpfc lpfc_sg_seg_cnt=256
 ----
-. A ausführen `dracut -f` Führen Sie einen Befehl aus, und starten Sie den Host neu.
-. Verifizieren Sie das `lpfc_sg_seg_cnt` Ist 256.
+. Führen Sie einen `dracut -f` Befehl aus, und starten Sie den Host neu:
+. Stellen Sie sicher, dass `lpfc_sg_seg_cnt` 256:
 +
 [listing]
 ----
@@ -584,5 +584,5 @@ Die NVMe-of-Hostkonfiguration für OL 8.8 mit ONTAP-Release hat die folgenden be
 | NetApp Bug ID | Titel | Beschreibung | Bugzilla-ID 
 
 
-| 1517321 | Oracle Linux 8.8 NVMe-of Hosts erstellen doppelte PDCs | Auf OL 8.8 NVMe-of-Hosts werden Persistent Discovery Controller (PDCs) durch Übergeben des erstellt `-p` Option für die `nvme discover` Befehl. Für eine bestimmte Kombination aus Initiator und Ziel wird erwartet, dass bei jedem Aufruf des nur ein PDC erstellt wird `nvme discover` Befehl. Ab OL 8.x erstellen NVMe-of-Hosts jedoch bei jedem Aufruf der doppelte PDCs `nvme discover` Befehl mit dem `-p` Option. Dadurch werden sowohl auf dem Host als auch auf dem Ziel Ressourcen verschwendet. | https://bugzilla.oracle.com/bugzilla/show_bug.cgi?id=18118["18118"^] 
+| 1517321 | Oracle Linux 8.8 NVMe-of Hosts erstellen doppelte PDCs | Auf OL 8.8 NVMe-of-Hosts werden Persistent Discovery Controller (PDCs) erstellt, indem die `-p` Option an den `nvme discover` Befehl übergeben wird. Für eine bestimmte Kombination aus Initiator und Ziel `nvme discover` wird erwartet, dass bei jeder Ausführung des Befehls ein PDC erstellt wird. Ab OL 8.x erstellen NVMe-of-Hosts jedoch doppelte PDCs. Dadurch werden sowohl auf dem Host als auch auf dem Ziel Ressourcen verschwendet. | https://bugzilla.oracle.com/bugzilla/show_bug.cgi?id=18118["18118"^] 
 |===

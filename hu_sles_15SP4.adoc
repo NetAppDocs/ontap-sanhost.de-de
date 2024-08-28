@@ -120,7 +120,7 @@ NOTE: Verwenden Sie keine unverhältnismäßig hohe Anzahl von Pfaden zu einer e
 
 === Konfigurationen ohne ASA
 
-Für Konfigurationen ohne ASA sollten zwei Gruppen von Pfaden mit unterschiedlichen Prioritäten vorhanden sein. Die Pfade mit den höheren Prioritäten sind aktiv/optimiert, was bedeutet, dass sie vom Controller gewartet werden, wo sich das Aggregat befindet. Die Pfade mit den niedrigeren Prioritäten sind aktiv, werden aber nicht optimiert, da sie von einem anderen Controller bereitgestellt werden. Die nicht optimierten Pfade werden nur verwendet, wenn keine optimierten Pfade verfügbar sind.
+Für Konfigurationen ohne ASA sollten zwei Gruppen von Pfaden mit unterschiedlichen Prioritäten vorhanden sein. Die Pfade mit den höheren Prioritäten sind aktiv/optimiert, was bedeutet, dass sie vom Controller gewartet werden, wo sich das Aggregat befindet. Die Pfade mit den niedrigeren Prioritäten sind aktiv, werden aber nicht optimiert, da sie von einem anderen Controller bereitgestellt werden. Die nicht optimierten Pfade werden nur verwendet, wenn optimierte Pfade nicht verfügbar sind.
 
 .Beispiel
 Im folgenden Beispiel wird die richtige Ausgabe für eine ONTAP-LUN mit zwei aktiv/optimierten Pfaden und zwei aktiv/nicht optimierten Pfaden angezeigt:
@@ -151,7 +151,7 @@ Der `multipath.conf` Es muss eine Datei vorhanden sein, damit der Multipath-Daem
 
 Wenn Sie diese Datei zum ersten Mal erstellen, müssen Sie die Multipath-Services unter Umständen aktivieren und starten.
 
-Es ist nicht erforderlich, dem direkt etwas hinzuzufügen `multipath.conf` Datei, es sei denn, Sie haben Geräte, die Sie nicht von Multipath verwalten möchten, oder Sie haben bereits vorhandene Einstellungen, die die Standardeinstellungen überschreiben.
+Es ist nicht erforderlich, der `multipath.conf` Datei direkt etwas hinzuzufügen, es sei denn, Sie verfügen über Geräte, die nicht von Multipath verwaltet werden sollen, oder Sie haben bereits vorhandene Einstellungen, die die Standardeinstellungen außer Kraft setzen.
 
 Sie können die folgende Syntax dem hinzufügen `multipath.conf` Datei zum Ausschließen unerwünschter Geräte.
 
@@ -182,7 +182,7 @@ devnode "^cciss.*"
 
 Sie sollten immer Ihre überprüfen `/etc/multipath.conf` Datei für ältere Einstellungen, insbesondere im Abschnitt „Standardeinstellungen“, die die Standardeinstellungen überschreiben könnte.
 
-Die nachfolgende Tabelle enthält die wichtigen Multipathd-Parameter für ONTAP LUNs und die erforderlichen Werte. Wenn ein Host mit LUNs anderer Anbieter verbunden ist und einer dieser Parameter außer Kraft gesetzt wird, müssen sie später in korrigiert werden `multipath.conf` Die speziell für ONTAP LUNs gelten. Wenn dies nicht ausgeführt wird, funktionieren die ONTAP LUNs möglicherweise nicht wie erwartet. Diese Standardeinstellungen sollten nur in Absprache mit NetApp und/oder dem Anbieter des Betriebssystems außer Kraft gesetzt werden und nur dann, wenn die Auswirkungen vollständig verstanden wurden.
+Die nachfolgende Tabelle enthält die wichtigen Multipathd-Parameter für ONTAP LUNs und die erforderlichen Werte. Wenn ein Host mit LUNs anderer Hersteller verbunden ist und diese Parameter überschrieben werden, müssen sie durch spätere Strophen korrigiert werden, `multipath.conf` die speziell für ONTAP-LUNs gelten. Wenn dies nicht ausgeführt wird, funktionieren die ONTAP LUNs möglicherweise nicht wie erwartet. Sie sollten diese Standardeinstellungen nur in Absprache mit NetApp, dem OS-Anbieter oder beiden außer Kraft setzen, und zwar nur dann, wenn die Auswirkungen vollständig verstanden sind.
 
 [cols="2"]
 |===

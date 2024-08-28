@@ -51,7 +51,7 @@ Aufgrund von Inkompatibilitäten mit der integrierten Multipath Management-Archi
 
 === Konfigurationen ohne ASA
 
-Für Konfigurationen ohne ASA sollten zwei Gruppen von Pfaden mit unterschiedlichen Prioritäten vorhanden sein. Die Pfade mit den höheren Prioritäten sind aktiv/optimiert, was bedeutet, dass sie vom Controller gewartet werden, wo sich das Aggregat befindet. Die Pfade mit den niedrigeren Prioritäten sind aktiv, werden aber nicht optimiert, da sie von einem anderen Controller bereitgestellt werden. Die nicht optimierten Pfade werden nur verwendet, wenn keine optimierten Pfade verfügbar sind.
+Für Konfigurationen ohne ASA sollten zwei Gruppen von Pfaden mit unterschiedlichen Prioritäten vorhanden sein. Die Pfade mit den höheren Prioritäten sind aktiv/optimiert, was bedeutet, dass sie vom Controller gewartet werden, wo sich das Aggregat befindet. Die Pfade mit den niedrigeren Prioritäten sind aktiv, werden aber nicht optimiert, da sie von einem anderen Controller bereitgestellt werden. Die nicht optimierten Pfade werden nur verwendet, wenn optimierte Pfade nicht verfügbar sind.
 
 .Beispiel
 Im folgenden Beispiel wird die richtige Ausgabe für eine ONTAP-LUN mit zwei aktiv/optimierten Pfaden und zwei aktiv/nicht optimierten Pfaden angezeigt:
@@ -122,7 +122,7 @@ Main PID:  3789 (multipathd)
   CGroup:  /control.slice/multipathd.service
             3789  /sbin/multipathd
 ----
-Es besteht keine Anforderung, dem Inhalt hinzuzufügen `/etc/multipath.conf` Datei, es sei denn, Sie haben Geräte, die Sie nicht von Multipath verwalten möchten, oder Sie haben bereits vorhandene Einstellungen, die die Standardeinstellungen überschreiben. Sie können die folgende Syntax dem hinzufügen `multipath.conf` Datei zum Ausschließen unerwünschter Geräte.
+Es ist nicht erforderlich, Inhalte an die `/etc/multipath.conf` Datei anzuhängen, es sei denn, Sie verfügen über Geräte, die nicht von Multipath verwaltet werden sollen, oder Sie haben bereits vorhandene Einstellungen, die die Standardeinstellungen außer Kraft setzen. Sie können der `multipath.conf` Datei die folgende Syntax hinzufügen, um die unerwünschten Geräte auszuschließen.
 
 [listing]
 ----

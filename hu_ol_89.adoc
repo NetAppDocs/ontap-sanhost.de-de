@@ -1,14 +1,14 @@
 ---
 sidebar: sidebar 
-permalink: hu_rhel_93.html 
-keywords: host utilities, red hat, rhel, linux, 9.3, netapp, ontap, rhel 
-summary: Beschreibt die Verwendung von Red hat Enterprise Linux 9.3 mit ONTAP 
+permalink: hu_ol_89.html 
+keywords: host utilities, oracle, linux, 8.9, netapp, ontap 
+summary: Beschreibt die Verwendung von Oracle Linux 8.9 mit ONTAP 
 ---
-= Verwenden Sie Red hat Enterprise Linux 9.3 mit ONTAP
+= Verwenden Sie Oracle Linux 8.9 mit ONTAP
 :hardbreaks:
-:toclevels: 1
+:toclevels: 1P
 :allow-uri-read: 
-:toclevels: 1
+:toclevels: 1P
 :nofooter: 
 :icons: font
 :linkattrs: 
@@ -16,7 +16,7 @@ summary: Beschreibt die Verwendung von Red hat Enterprise Linux 9.3 mit ONTAP
 
 
 [role="lead"]
-Sie können die Konfigurationseinstellungen des ONTAP-SAN-Hosts verwenden, um Red hat Enterprise Linux 9.3 mit ONTAP als Ziel zu konfigurieren.
+Sie können die Konfigurationseinstellungen des ONTAP-SAN-Hosts verwenden, um Oracle Linux 8.9 mit ONTAP als Ziel zu konfigurieren.
 
 
 
@@ -39,34 +39,33 @@ Wenn Sie derzeit eine Version von Linux Unified Host Utilities installiert haben
 
 
 
-== SAN-Tool-Kit
+== SAN-Toolkit
 
-Das Tool-Kit wird automatisch installiert, wenn Sie das NetApp Host Utilities-Paket installieren. Dieses Kit enthält die `sanlun` Dienstprogramm: Unterstützt Sie beim Management von LUNs und HBAs. Der `sanlun` Befehl gibt Informationen über die LUNs zurück, die Ihrem Host zugeordnet sind, Multipathing und Informationen zurück, die zum Erstellen von Initiatorgruppen erforderlich sind.
+Das Tool-Kit wird automatisch installiert, wenn Sie das NetApp Host Utilities-Paket installieren. Dieses Kit enthält die `sanlun` Dienstprogramm zum Managen von LUNs und Host Bus Adaptern (HBAs). Der `sanlun` Befehl gibt Informationen über die LUNs zurück, die Ihrem Host zugeordnet sind, Multipathing und Informationen zurück, die zum Erstellen von Initiatorgruppen erforderlich sind.
 
 Im folgenden Beispiel wird der verwendet `sanlun lun show` Befehl gibt LUN-Informationen zurück.
 
-[source, cli]
+[listing]
 ----
 # sanlun lun show all
 ----
-*Beispielausgabe:*
-
+.Beispielausgabe:
 [listing]
 ----
-controller(7mode/E-Series)/            device     host               lun
-vserver(cDOT/FlashRay)   lun-pathname  filename   adapter  protocol  size    Product
-------------------------------------------------------------------------------------
-vs_147_32glpe	         /vol/vol1/lun	 /dev/sdb	Host11  FCP        10g	cDOT
-vs_147_32glpe	         /vol/vol1/lun	 /dev/sdx	Host11  FCP        10g	cDOT
-vs_147_32glpe	         /vol/vol2/lun	 /dev/sdbt  host12 FCP        10g	cDOT
-vs_147_32glpe	         /vol/vol2/lun	 /dev/sdax	host12  FCP        10g	cDOT
+controller(7mode/E-Series)/              device     host               lun
+vserver(cDOT/FlashRay)  lun-pathname     filename   adapter  protocol  size   Product
+-------------------------------------------------------------------------------------
+data_vserver            /vol/vol1/lun1   /dev/sdb   host16   FCP       80.0g  cDOT
+data_vserver            /vol/vol1/lun1   /dev/sdc   host15   FCP       80.0g  cDOT
+data_vserver            /vol/vol2/lun2   /dev/sdd   host16   FCP       80.0g  cDOT
+data_vserver            /vol/vol2/lun2   /dev/sde   host15   FCP       80.0g  cDOT
 ----
 
 
 == SAN Booting
 
 .Was Sie benötigen
-Wenn Sie sich für das Booten über SAN entscheiden, muss es von Ihrer Konfiguration unterstützt werden. Sie können das verwenden link:https://mysupport.netapp.com/matrix/imt.jsp?components=91241;&solution=236&isHWU&src=IMT["NetApp Interoperabilitäts-Matrix-Tool"^] Um zu überprüfen, ob Betriebssystem, HBA, HBA-Firmware und HBA-Boot-BIOS sowie die ONTAP-Version unterstützt werden.
+Ihre Konfiguration unterstützt das Booten von SAN. link:https://mysupport.netapp.com/matrix/imt.jsp?components=91863;&solution=1&isHWU&src=IMT["NetApp Interoperabilitäts-Matrix-Tool"^]Überprüfen Sie im, ob Betriebssystem, HBA, HBA-Firmware und HBA-Boot-BIOS sowie ONTAP-Version unterstützt werden.
 
 .Schritte
 . Ordnen Sie die SAN-Boot-LUN dem Host zu.
@@ -86,9 +85,11 @@ Informationen zum Aktivieren des HBA-BIOS finden Sie in der anbieterspezifischen
 
 == Multipathing
 
-Für Red hat Enterprise Linux (RHEL) 9.3 ist der `/etc/multipath.conf` Die Datei muss vorhanden sein, Sie müssen jedoch keine spezifischen Änderungen an der Datei vornehmen. RHEL 9.3 ist mit allen Einstellungen kompiliert, die für die Erkennung und korrekte Verwaltung von ONTAP-LUNs erforderlich sind.
+Für Oracle Linux (OL) 8.9 `/etc/multipath.conf` muss die Datei vorhanden sein. Sie müssen keine Änderungen an dieser Datei vornehmen, da Oracle Linux 8.9 mit allen Einstellungen kompiliert ist, die erforderlich sind, um ONTAP-LUNs zu erkennen und korrekt zu verwalten.
 
-Sie können das verwenden `multipath -ll` Überprüfen Sie mit dem Befehl die Einstellungen für Ihre ONTAP LUNs. Die folgenden Abschnitte enthalten ein Beispiel für eine Multipath-Ausgabe für eine LUN, die ASA- und nicht-ASA-Personas zugeordnet ist.
+Sie können das verwenden `multipath -ll` Überprüfen Sie mit dem Befehl die Einstellungen für Ihre ONTAP LUNs.
+
+In den folgenden Abschnitten finden Sie Beispiele für Multipath-Ausgaben für eine LUN, die ASA- und nicht-ASA-Konfigurationen zugeordnet ist.
 
 
 
@@ -102,16 +103,16 @@ Im folgenden Beispiel wird die richtige Ausgabe für eine ONTAP LUN angezeigt:
 [listing]
 ----
 # multipath -ll
-3600a098038314359725d516c69733471 dm-22 NETAPP,LUN C-Mode
-size=160G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
-`-+- policy='service-time 0' prio=50 status=active
-  |- 11:0:3:0  sdau 66:224 active ready running
-  |- 12:0:4:0  sdco 69:192 active ready running
-  |- 12:0:0:0  sdav 66:240 active ready running
-  `- 11:0:2:0  sdat 66:208 active ready running
+3600a098038303634722b4d59646c4436 dm-28 NETAPP,LUN C-Mode
+size=10G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
+|-+- policy='service-time 0' prio=50 status=active
+  |- 11:0:7:6   sdbz 68:208  active ready running
+  |- 11:0:11:6  sddn 71:80   active ready running
+  |- 11:0:15:6  sdfb 129:208 active ready running
+  |- 12:0:1:6   sdgp 132:80  active ready running
 ----
 
-NOTE: Verwenden Sie keine unverhältnismäßig hohe Anzahl von Pfaden zu einer einzelnen LUN. Es sollten nicht mehr als vier Pfade erforderlich sein. Mehr als acht Pfade können bei Storage-Ausfällen zu Pfadproblemen führen.
+NOTE: Für eine einzelne LUN sollten nicht mehr als vier Pfade erforderlich sein. Mehr als acht Pfade können bei Storage-Ausfällen zu Pfadproblemen führen.
 
 
 
@@ -125,15 +126,14 @@ Im folgenden Beispiel wird die richtige Ausgabe für eine ONTAP-LUN mit zwei akt
 [listing]
 ----
 # multipath -ll
-3600a0980383149783224544d334a644d dm-10 NETAPP,LUN C-Mode
+3600a0980383036347ffb4d59646c4436 dm-28 NETAPP,LUN C-Mode
 size=10G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
 |-+- policy='service-time 0' prio=50 status=active
-| |- 12:0:0:18 sdbj 67:208 active ready running
-| `- 11:0:1:18 sdan 66:112 active ready running
+| |- 16:0:6:35 sdwb  69:624  active ready running
+| |- 16:0:5:35 sdun  66:752  active ready running
 `-+- policy='service-time 0' prio=10 status=enabled
-  |- 11:0:0:18 sdt  65:48  active ready running
-  `- 12:0:3:18 sdcf 69:48  active ready running
-
+  |- 15:0:0:35 sdaj  66:48   active ready running
+  |- 15:0:1:35 sdbx  68:176  active ready running
 ----
 
 NOTE: Verwenden Sie keine unverhältnismäßig hohe Anzahl von Pfaden zu einer einzelnen LUN. Es sollten nicht mehr als vier Pfade erforderlich sein. Mehr als acht Pfade können bei Storage-Ausfällen zu Pfadproblemen führen.
@@ -142,7 +142,7 @@ NOTE: Verwenden Sie keine unverhältnismäßig hohe Anzahl von Pfaden zu einer e
 
 == Empfohlene Einstellungen
 
-Das RHEL 9.3-Betriebssystem wird kompiliert, um ONTAP-LUNs zu erkennen und automatisch alle Konfigurationsparameter für ASA- und nicht-ASA-Konfigurationen korrekt einzustellen. Mithilfe der folgenden empfohlenen Einstellungen können Sie die Performance für Ihre Host-Konfiguration weiter optimieren.
+Das Oracle Linux 8.9-Betriebssystem wird kompiliert, um ONTAP-LUNs zu erkennen und automatisch die richtigen Konfigurationsparameter für ASA- und nicht-ASA-Konfigurationen festzulegen. Mithilfe der folgenden empfohlenen Einstellungen können Sie die Performance für Ihre Host-Konfiguration weiter optimieren.
 
 Die `multipath.conf` Datei muss vorhanden sein, damit der Multipath-Daemon gestartet werden kann. Wenn diese Datei nicht vorhanden ist, können Sie eine leere Datei mit einem Zero-Byte-Wert erstellen, indem Sie den folgenden Befehl verwenden:
 
@@ -205,7 +205,7 @@ In der folgenden Tabelle sind die kritischen `multipathd` Parameter für ONTAP-L
 | Erkennen_Prio | ja 
 
 
-| Dev_Loss_tmo | „Unendlich“ 
+| Dev_Loss_tmo | Unendlich 
 
 
 | Failback | Sofort 
@@ -214,25 +214,25 @@ In der folgenden Tabelle sind die kritischen `multipathd` Parameter für ONTAP-L
 | Fast_io_fail_tmo | 5 
 
 
-| Funktionen | „2 pg_init_retries 50“ 
+| Funktionen | 2 pg_init_retries 50 
 
 
-| Flush_on_Last_del | „ja“ 
+| Flush_on_Last_del | ja 
 
 
-| Hardware_Handler | „0“ 
+| Hardware_Handler | 0 
 
 
 | Kein_PATH_retry | Warteschlange 
 
 
-| PATH_Checker | „nur“ 
+| PATH_Checker | tur 
 
 
-| Path_Grouping_Policy | „Group_by_prio“ 
+| Path_Grouping_Policy | Group_by_prio 
 
 
-| Pfad_Auswahl | „Servicezeit 0“ 
+| Pfad_Auswahl | Servicezeit 0 
 
 
 | Polling_Interval | 5 
@@ -247,7 +247,7 @@ In der folgenden Tabelle sind die kritischen `multipathd` Parameter für ONTAP-L
 | Beibehalten_Attached_hw_Handler | ja 
 
 
-| rr_weight | „Einheitlich“ 
+| rr_weight | Einheitlich 
 
 
 | User_friendly_names | Nein 
@@ -256,43 +256,34 @@ In der folgenden Tabelle sind die kritischen `multipathd` Parameter für ONTAP-L
 | Anbieter | NETAPP 
 |===
 .Beispiel
-Das folgende Beispiel zeigt, wie eine überhielte Standardeinstellung korrigiert wird. In diesem Fall die `multipath.conf` Datei definiert Werte für `path_checker` Und `no_path_retry` Die nicht mit ONTAP LUNs kompatibel sind. Wenn sie nicht entfernt werden können, da noch andere SAN-Arrays an den Host angeschlossen sind, können diese Parameter speziell für ONTAP-LUNs mit einem Device stanza korrigiert werden.
+Das folgende Beispiel zeigt, wie eine übergebene Standardeinstellung korrigiert wird. In diesem Fall die `multipath.conf` Datei definiert Werte für `path_checker` Und `no_path_retry` Die nicht mit ONTAP LUNs kompatibel sind. Wenn sie nicht entfernt werden können, da noch andere SAN-Arrays an den Host angeschlossen sind, können diese Parameter speziell für ONTAP-LUNs mit einem Device stanza korrigiert werden.
 
 [listing]
 ----
 defaults {
-   path_checker      readsector0
-   no_path_retry     fail
-}
-
+ path_checker readsector0
+ no_path_retry fail
+ }
 devices {
-   device {
-      vendor         "NETAPP  "
-      product         "LUN.*"
-      no_path_retry    queue
-      path_checker     tur
-   }
+ device {
+ vendor "NETAPP "
+ product "LUN.*"
+ no_path_retry queue
+ path_checker tur
+ }
 }
 ----
 
+NOTE: Um Oracle Linux 8.9 RedHat Enterprise Kernel link:hu_rhel_88.html#recommended-settings["Empfohlene Einstellungen"]zu konfigurieren, verwenden Sie den  für Red hat Enterprise Linux (RHEL) 8.9.
 
-=== KVM-Einstellungen
 
-Sie können die empfohlenen Einstellungen verwenden, um Kernel-Based Virtual Machine (KVM) ebenfalls zu konfigurieren. Es sind keine Änderungen erforderlich, um KVM zu konfigurieren, da die LUN dem Hypervisor zugeordnet ist.
+
+== KVM-Einstellungen
+
+Sie können auch die empfohlenen Einstellungen verwenden, um eine Kernel-basierte virtuelle Maschine (KVM) zu konfigurieren. Zum Konfigurieren einer KVM sind keine Änderungen erforderlich, da die LUN dem Hypervisor zugeordnet ist.
 
 
 
 == Bekannte Probleme
 
-Die RHEL 9.3 mit ONTAP-Version weist folgende bekannte Probleme auf:
-
-[cols="20, 20, 50,20"]
-|===
-| NetApp Bug ID | Titel | Beschreibung | JIRA-ID 
-
-
-| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/1508554["1508554"^] | Zur Unterstützung der Erkennung des Emulex Host Bus Adapters (HBA) ist für die NetApp Linux Host Utilities CLI eine zusätzliche Abhängigkeit vom Bibliothekspaket erforderlich | In RHEL 9.x ist die CLI der NetApp Linux SAN-Hostdienstprogramme `sanlun fcp show adapter -v` Schlägt fehl, da die Abhängigkeiten des Bibliothekspakets zur Unterstützung der Erkennung des Emulex Hostbusadapters (HBA) nicht gefunden werden können. | Keine Angabe 
-
-
-| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/1593771["1593771"^] | Ein Red hat Enterprise Linux 9.3 QLogic SAN-Host kann bei Speichermobilitätsvorgängen den Verlust von teilweisen Multipfaden verzeichnen | Während der Übernahme des ONTAP Storage Controllers geht davon aus, dass die Hälfte der multipath-Pfade ausfällt oder zu einem Failover-Modus wechselt und dann während des Giveback-Workflows auf die volle Pfadanzahl zurückgestellt wird. Bei einem Red hat Enterprise Linux (RHEL) 9.3 QLogic Host werden jedoch nach einem Storage Failover-Giveback-Vorgang nur partielle Multipath-Pfade wiederhergestellt. | RHEL 17811 
-|===
+Es gibt keine bekannten Probleme für die Oracle Linux 8.9 mit ONTAP-Version.

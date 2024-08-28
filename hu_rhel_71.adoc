@@ -120,7 +120,7 @@ NOTE: Verwenden Sie keine unverhältnismäßig hohe Anzahl von Pfaden zu einer e
 
 === Konfigurationen ohne ASA
 
-Für Konfigurationen ohne ASA sollten zwei Gruppen von Pfaden mit unterschiedlichen Prioritäten vorhanden sein. Die Pfade mit den höheren Prioritäten sind aktiv/optimiert, was bedeutet, dass sie vom Controller gewartet werden, wo sich das Aggregat befindet. Die Pfade mit den niedrigeren Prioritäten sind aktiv, werden aber nicht optimiert, da sie von einem anderen Controller bereitgestellt werden. Die nicht optimierten Pfade werden nur verwendet, wenn keine optimierten Pfade verfügbar sind.
+Für Konfigurationen ohne ASA sollten zwei Gruppen von Pfaden mit unterschiedlichen Prioritäten vorhanden sein. Die Pfade mit den höheren Prioritäten sind aktiv/optimiert, was bedeutet, dass sie vom Controller gewartet werden, wo sich das Aggregat befindet. Die Pfade mit den niedrigeren Prioritäten sind aktiv, werden aber nicht optimiert, da sie von einem anderen Controller bereitgestellt werden. Die nicht optimierten Pfade werden nur verwendet, wenn optimierte Pfade nicht verfügbar sind.
 
 .Beispiel
 Im folgenden Beispiel wird die richtige Ausgabe für eine ONTAP-LUN mit zwei aktiv/optimierten Pfaden und zwei aktiv/nicht optimierten Pfaden angezeigt:
@@ -146,20 +146,19 @@ NOTE: Verwenden Sie keine unverhältnismäßig hohe Anzahl von Pfaden zu einer e
 
 Das RHEL 7.1 Betriebssystem wird kompiliert, um ONTAP-LUNs zu erkennen und automatisch alle Konfigurationsparameter für ASA- und nicht-ASA-Konfigurationen korrekt festzulegen.
 
-Der `multipath.conf` Es muss eine Datei vorhanden sein, damit der Multipath-Daemon gestartet werden kann. Sie können jedoch eine leere Zero-Byte-Datei mit dem folgenden Befehl erstellen:
+Die `multipath.conf` Datei muss vorhanden sein, damit der Multipath-Daemon gestartet werden kann. Wenn diese Datei nicht vorhanden ist, können Sie eine leere Datei mit einem Zero-Byte-Wert erstellen, indem Sie den folgenden Befehl verwenden:
 
 `touch /etc/multipath.conf`
 
-Wenn Sie diese Datei zum ersten Mal erstellen, müssen Sie möglicherweise die Multipath-Services aktivieren und starten:
+Wenn Sie die `multipath.conf` Datei zum ersten Mal erstellen, müssen Sie möglicherweise die Multipath-Services mithilfe der folgenden Befehle aktivieren und starten:
 
 [listing]
 ----
-# systemctl enable multipathd
-# systemctl start multipathd
+# chkconfig multipathd on
+# /etc/init.d/multipathd start
 ----
-* Es ist nicht erforderlich, dem direkt etwas hinzuzufügen `multipath.conf` Datei, es sei denn, Sie haben Geräte, die Sie nicht von Multipath verwalten möchten, oder Sie haben bereits vorhandene Einstellungen, die die Standardeinstellungen überschreiben.
-* Um unerwünschte Geräte auszuschließen, fügen Sie die folgende Syntax zum hinzu `multipath.conf` Datei .
-+
+Es ist nicht erforderlich, der `multipath.conf` Datei direkt etwas hinzuzufügen, es sei denn, Sie verfügen über Geräte, die nicht von Multipath verwaltet werden sollen, oder Sie haben bereits vorhandene Einstellungen, die die Standardeinstellungen außer Kraft setzen. Um unerwünschte Geräte auszuschließen, fügen Sie der `multipath.conf` Datei die folgende Syntax hinzu und ersetzen <DevId> durch die WWID-Zeichenfolge des Geräts, das Sie ausschließen möchten:
+
 [listing]
 ----
 blacklist {
@@ -169,16 +168,11 @@ blacklist {
         devnode "^cciss.*"
 }
 ----
-+
-Ersetzen Sie den `<DevId>` Mit dem `WWID` Zeichenfolge des Geräts, das Sie ausschließen möchten.
-
-+
 .Beispiel
 In diesem Beispiel werden wir die WWID eines Geräts ermitteln und dem hinzufügen `multipath.conf` Datei:
 
-+
 .Schritte
-.. Führen Sie den folgenden Befehl aus, um die WWID zu bestimmen:
+. Führen Sie den folgenden Befehl aus, um die WWID zu bestimmen:
 +
 [listing]
 ----
@@ -188,7 +182,7 @@ In diesem Beispiel werden wir die WWID eines Geräts ermitteln und dem hinzufüg
 +
 `sda` Ist die lokale SCSI-Festplatte, die wir zur Blacklist hinzufügen müssen.
 
-.. Fügen Sie die hinzu `WWID` Zur schwarzen Liste stanza in `/etc/multipath.conf`:
+. Fügen Sie die hinzu `WWID` Zur schwarzen Liste stanza in `/etc/multipath.conf`:
 +
 [listing]
 ----
@@ -201,11 +195,9 @@ blacklist {
 ----
 
 
-
-
 Sie sollten immer Ihre überprüfen `/etc/multipath.conf` Datei für ältere Einstellungen, insbesondere im Abschnitt „Standardeinstellungen“, die die Standardeinstellungen überschreiben könnte.
 
-Die folgende Tabelle zeigt das kritische `multipathd` Parameter für ONTAP-LUNs und die erforderlichen Werte. Wenn ein Host mit LUNs anderer Anbieter verbunden ist und einer dieser Parameter außer Kraft gesetzt wird, müssen sie später in Abschnitt korrigiert werden `multipath.conf` Datei, die speziell für ONTAP LUNs gilt. Wenn dies nicht ausgeführt wird, funktionieren die ONTAP LUNs möglicherweise nicht wie erwartet. Diese Standardwerte sollten nur in Absprache mit NetApp und/oder einem Betriebssystemanbieter außer Kraft gesetzt werden und nur dann, wenn die Auswirkungen vollständig verstanden sind.
+In der folgenden Tabelle sind die kritischen `multipathd` Parameter für ONTAP-LUNs und die erforderlichen Werte aufgeführt. Wenn ein Host mit LUNs anderer Hersteller verbunden ist und diese Parameter überschrieben werden, müssen sie durch spätere Strophen in der `multipath.conf` Datei korrigiert werden, die speziell für ONTAP-LUNs gelten. Wenn dies nicht ausgeführt wird, funktionieren die ONTAP LUNs möglicherweise nicht wie erwartet. Sie sollten diese Standardeinstellungen nur in Absprache mit NetApp, dem OS-Anbieter oder beiden außer Kraft setzen, und zwar nur dann, wenn die Auswirkungen vollständig verstanden sind.
 
 [cols="2*"]
 |===
