@@ -16,7 +16,7 @@ indexpage:
     - title: Produktübersicht
       url: "/overview.html"
     - title: VERSIONSHINWEISE ZU AIX Host Utilities
-      url: "/hu_aix_61_rn.html"
+      url: "/hu_aix_rn.html"
     - title: Versionshinweise zu HP-UX Host Utilities
       url: "/hu_hpux_60_rn.html"
     - title: Versionshinweise zu Linux Host Utilities
