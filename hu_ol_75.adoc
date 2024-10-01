@@ -138,7 +138,7 @@ blacklist {
 }
 ----
 .Beispiel
-In diesem Beispiel werden wir die WWID eines Geräts ermitteln und dem hinzufügen `multipath.conf` Datei:
+Das folgende Beispiel bestimmt die WWID eines Geräts und fügt sie der Datei hinzu `multipath.conf`.
 
 .Schritte
 . Führen Sie den folgenden Befehl aus, um die WWID zu bestimmen:
@@ -166,7 +166,7 @@ blacklist {
 
 Sie sollten immer Ihre überprüfen `/etc/multipath.conf` Datei für ältere Einstellungen, insbesondere im Abschnitt „Standardeinstellungen“, die die Standardeinstellungen überschreiben könnte.
 
-In der folgenden Tabelle sind die kritischen `multipathd` Parameter für ONTAP-LUNs und die erforderlichen Werte aufgeführt. Wenn ein Host mit LUNs anderer Hersteller verbunden ist und diese Parameter überschrieben werden, müssen sie durch spätere Strophen in der `multipath.conf` Datei korrigiert werden, die speziell für ONTAP-LUNs gelten. Wenn dies nicht ausgeführt wird, funktionieren die ONTAP LUNs möglicherweise nicht wie erwartet. Sie sollten diese Standardeinstellungen nur in Absprache mit NetApp, dem OS-Anbieter oder beiden außer Kraft setzen, und zwar nur dann, wenn die Auswirkungen vollständig verstanden sind.
+In der folgenden Tabelle sind die kritischen `multipathd` Parameter für ONTAP-LUNs und die erforderlichen Werte aufgeführt. Wenn ein Host mit LUNs anderer Hersteller verbunden ist und diese Parameter überschrieben werden, müssen sie durch spätere Strophen in der `multipath.conf` Datei korrigiert werden, die speziell für ONTAP-LUNs gelten. Ohne diese Korrektur funktionieren die ONTAP-LUNs möglicherweise nicht wie erwartet. Sie sollten diese Standardeinstellungen nur in Absprache mit NetApp, dem OS-Anbieter oder beiden außer Kraft setzen, und zwar nur dann, wenn die Auswirkungen vollständig verstanden sind.
 
 [cols="2*"]
 |===
@@ -250,13 +250,13 @@ NOTE: Um Oracle Linux 7.5 Red hat Enterprise Kernel (RHCK) zu konfigurieren, ver
 
 Die Oracle Linux 7.5 mit ONTAP-Version weist folgende bekannte Probleme auf:
 
-[cols="4*"]
+[cols="3*"]
 |===
-| NetApp Bug ID | Titel | Beschreibung | Bugzilla-ID 
+| NetApp Bug ID | Titel | Beschreibung 
 
 
-| 1440718 | Wenn Sie eine LUN ohne SCSI-erneute Zuordnung aufheben oder zuordnen, kann dies zu Datenbeschädigungen auf dem Host führen. | Wenn Sie den Multipath-Konfigurationsparameter 'disable_changed_wwids' auf YES setzen, wird der Zugriff auf das Pfadgerät bei einer WWID-Änderung deaktiviert. Multipath deaktiviert den Zugriff auf das Pfadgerät, bis die WWID des Pfads auf die WWID des Multipath-Geräts wiederhergestellt ist. Weitere Informationen finden Sie unter link:https://kb.netapp.com/Advice_and_Troubleshooting/Flash_Storage/AFF_Series/The_filesystem_corruption_on_iSCSI_LUN_on_the_Oracle_Linux_7["NetApp Knowledge Base: Beschädigung des Dateisystems auf iSCSI LUN auf Oracle Linux 7"^]. | K. A. 
+| 1440718 | Wenn Sie eine LUN ohne SCSI-erneute Zuordnung aufheben oder zuordnen, kann dies zu Datenbeschädigungen auf dem Host führen. | Wenn Sie den Multipath-Konfigurationsparameter 'disable_changed_wwids' auf YES setzen, wird der Zugriff auf das Pfadgerät bei einer WWID-Änderung deaktiviert. Multipath deaktiviert den Zugriff auf das Pfadgerät, bis die WWID des Pfads auf die WWID des Multipath-Geräts wiederhergestellt ist. Weitere Informationen finden Sie unter link:https://kb.netapp.com/Advice_and_Troubleshooting/Flash_Storage/AFF_Series/The_filesystem_corruption_on_iSCSI_LUN_on_the_Oracle_Linux_7["NetApp Knowledge Base: Beschädigung des Dateisystems auf iSCSI LUN auf Oracle Linux 7"^]. 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1177239["1177239"^] | Bei OL7.5 mit Qlogic QLE2672 16G FC beobachtete Kernel-Störung während des Storage-Failover-Betriebs | Während Speicher-Failover-Operationen auf Oracle Linux 7 (OL7.5) mit Kernel 4.1.12-112.16.4.el7uek.x86_64 und dem Qlogic QLE2672 HBA können Sie eine Kernel-Störung beobachten. Dies fordert einen Neustart des Betriebssystems auf, der eine Anwendungsunterbrechung verursacht. Wenn kdump konfiguriert ist, erstellt die Kernel-Störung eine vmcore-Datei im Verzeichnis /var/crash/. Diese Störung kann im Modul „kmem_Cache_alloc+118“ beobachtet werden, das in der vmcore-Datei protokolliert und mit dem String „Ausnahme RIP: Kmem_Cache_alloc+118“ identifiziert wird. Nach einer Kernel-Störung können Sie eine Wiederherstellung durchführen, indem Sie das Host-Betriebssystem neu starten und die Anwendung neu starten. |  
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1177239["1177239"^] | Bei OL7.5 mit Qlogic QLE2672 16G FC beobachtete Kernel-Störung während des Storage-Failover-Betriebs | Während Speicher-Failover-Operationen auf Oracle Linux 7 (OL7.5) mit Kernel 4.1.12-112.16.4.el7uek.x86_64 und dem Qlogic QLE2672 HBA können Sie eine Kernel-Störung beobachten. Dies fordert einen Neustart des Betriebssystems auf, der eine Anwendungsunterbrechung verursacht. Wenn kdump konfiguriert ist, erstellt die Kernel-Störung eine vmcore-Datei im Verzeichnis /var/crash/. Diese Störung kann im Modul „kmem_Cache_alloc+118“ beobachtet werden, das in der vmcore-Datei protokolliert und mit dem String „Ausnahme RIP: Kmem_Cache_alloc+118“ identifiziert wird. Nach einer Kernel-Störung können Sie eine Wiederherstellung durchführen, indem Sie das Host-Betriebssystem neu starten und die Anwendung neu starten. 
 |===

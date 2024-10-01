@@ -169,7 +169,7 @@ blacklist {
 }
 ----
 .Beispiel
-In diesem Beispiel werden wir die WWID eines Geräts ermitteln und dem hinzufügen `multipath.conf` Datei:
+Das folgende Beispiel bestimmt die WWID eines Geräts und fügt sie der Datei hinzu `multipath.conf`.
 
 .Schritte
 . Führen Sie den folgenden Befehl aus, um die WWID zu bestimmen:
@@ -197,7 +197,7 @@ blacklist {
 
 Sie sollten immer Ihre überprüfen `/etc/multipath.conf` Datei für ältere Einstellungen, insbesondere im Abschnitt „Standardeinstellungen“, die die Standardeinstellungen überschreiben könnte.
 
-In der folgenden Tabelle sind die kritischen `multipathd` Parameter für ONTAP-LUNs und die erforderlichen Werte aufgeführt. Wenn ein Host mit LUNs anderer Hersteller verbunden ist und diese Parameter überschrieben werden, müssen sie durch spätere Strophen in der `multipath.conf` Datei korrigiert werden, die speziell für ONTAP-LUNs gelten. Wenn dies nicht ausgeführt wird, funktionieren die ONTAP LUNs möglicherweise nicht wie erwartet. Sie sollten diese Standardeinstellungen nur in Absprache mit NetApp, dem OS-Anbieter oder beiden außer Kraft setzen, und zwar nur dann, wenn die Auswirkungen vollständig verstanden sind.
+In der folgenden Tabelle sind die kritischen `multipathd` Parameter für ONTAP-LUNs und die erforderlichen Werte aufgeführt. Wenn ein Host mit LUNs anderer Hersteller verbunden ist und diese Parameter überschrieben werden, müssen sie durch spätere Strophen in der `multipath.conf` Datei korrigiert werden, die speziell für ONTAP-LUNs gelten. Ohne diese Korrektur funktionieren die ONTAP-LUNs möglicherweise nicht wie erwartet. Sie sollten diese Standardeinstellungen nur in Absprache mit NetApp, dem OS-Anbieter oder beiden außer Kraft setzen, und zwar nur dann, wenn die Auswirkungen vollständig verstanden sind.
 
 [cols="2*"]
 |===
@@ -288,13 +288,13 @@ Sie können die empfohlenen Einstellungen verwenden, um Kernel-Based Virtual Mac
 
 Die RHEL 7.1 mit ONTAP-Version weist folgende bekannte Probleme auf:
 
-[cols="4*"]
+[cols="3*"]
 |===
-| NetApp Bug ID | Titel | Beschreibung | Bugzilla-ID 
+| NetApp Bug ID | Titel | Beschreibung 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=799323["799323"^] | Emulex FCoE (OCe102-FX-D) Host-Hängezustand oder Pfadausfälle während des I/O-Betriebs beim Storage Failover | Beim I/O mit Storage Failover-Operationen können Sie beispielsweise einen Host- oder Pfadausfall auf dem Emulex 10G FCoE-Host (OCe102-FX-D) beobachten. In solchen Szenarien wird die folgende Meldung angezeigt: "Der Pufferpool des Treibers ist leer, E/A-Bus und SCSI Layer I/O-Abort-Anforderungsstatus" | link:https://bugzilla.redhat.com/show_bug.cgi?id=1061755["1061755"^] 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=799323["799323"^] | Emulex FCoE (OCe102-FX-D) Host-Hängezustand oder Pfadausfälle während des I/O-Betriebs beim Storage Failover | Beim I/O mit Storage Failover-Operationen können Sie beispielsweise einen Host- oder Pfadausfall auf dem Emulex 10G FCoE-Host (OCe102-FX-D) beobachten. In solchen Szenarien wird die folgende Meldung angezeigt: "Der Pufferpool des Treibers ist leer, E/A-Bus und SCSI Layer I/O-Abort-Anforderungsstatus" 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=836875["836875"^] | Beim Booten eines RHEL 7.0 Betriebssystems, das auf einer iSCSI Multipath LUN installiert ist, werden IP-Adressen nicht immer zugewiesen | Wenn Sie den root(/) auf einer iSCSI Multipath-LUN installieren, wird die IP-Adresse für die Ethernet-Schnittstellen in der Kernel-Befehlszeile angegeben, so dass die IP-Adressen vor dem Start des iSCSI-Dienstes zugewiesen werden. Dracut kann jedoch vor dem Start des iSCSI-Dienstes nicht allen Ethernet-Ports IP-Adressen zuweisen. Dies führt dazu, dass die iSCSI-Anmeldung an Schnittstellen ohne IP-Adressen fehlschlägt. Sie werden feststellen, dass der iSCSI-Dienst mehrmals versucht, sich anzumelden, was zu einer Verzögerung beim Starten des Betriebssystems führt. | link:https://bugzilla.redhat.com/show_bug.cgi?id=1114966["1114966"^] 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=836875["836875"^] | Beim Booten eines RHEL 7.0 Betriebssystems, das auf einer iSCSI Multipath LUN installiert ist, werden IP-Adressen nicht immer zugewiesen | Wenn Sie den root(/) auf einer iSCSI Multipath-LUN installieren, wird die IP-Adresse für die Ethernet-Schnittstellen in der Kernel-Befehlszeile angegeben, so dass die IP-Adressen vor dem Start des iSCSI-Dienstes zugewiesen werden. Dracut kann jedoch vor dem Start des iSCSI-Dienstes nicht allen Ethernet-Ports IP-Adressen zuweisen. Dies führt dazu, dass die iSCSI-Anmeldung an Schnittstellen ohne IP-Adressen fehlschlägt. Sie werden feststellen, dass der iSCSI-Dienst mehrmals versucht, sich anzumelden, was zu einer Verzögerung beim Starten des Betriebssystems führt. 
 |===

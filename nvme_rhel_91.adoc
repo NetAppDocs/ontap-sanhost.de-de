@@ -451,10 +451,10 @@ NSID UUID                                   Size
 
 Die NVMe-of-Hostkonfiguration für RHEL 9.1 mit ONTAP weist folgende bekannte Probleme auf:
 
-[cols="10,30,30,10"]
+[cols="20,40,40"]
 |===
-| NetApp Bug ID | Titel | Beschreibung | Bugzilla-ID 
+| NetApp Bug ID | Titel | Beschreibung 
 
 
-| 1503468 | `nvme list-subsys` Der Befehl gibt die sich wiederholende nvme-Controller-Liste für ein bestimmtes Subsystem zurück | Der `nvme list-subsys` Befehl sollte eine eindeutige Liste der nvme Controller zurückgeben, die einem bestimmten Subsystem zugeordnet sind. In RHEL 9.1 zeigt die `nvme list-subsys` Befehl gibt nvme Controller für alle Namespaces zurück, die zu einem bestimmten Subsystem gehören. Der ANA-Status ist jedoch ein per-Namespace-Attribut. Daher wäre es ideal, eindeutige nvme-Controller-Einträge mit dem Pfadstatus anzuzeigen, wenn Sie die Subsystem-Befehlssyntax für einen bestimmten Namespace auflisten. | 2130106 
+| 1503468 | `nvme list-subsys` Der Befehl gibt die sich wiederholende nvme-Controller-Liste für ein bestimmtes Subsystem zurück | Der `nvme list-subsys` Befehl sollte eine eindeutige Liste der nvme Controller zurückgeben, die einem bestimmten Subsystem zugeordnet sind. In RHEL 9.1 zeigt die `nvme list-subsys` Befehl gibt nvme Controller für alle Namespaces zurück, die zu einem bestimmten Subsystem gehören. Der ANA-Status ist jedoch ein per-Namespace-Attribut. Daher wäre es ideal, eindeutige nvme-Controller-Einträge mit dem Pfadstatus anzuzeigen, wenn Sie die Subsystem-Befehlssyntax für einen bestimmten Namespace auflisten. 
 |===

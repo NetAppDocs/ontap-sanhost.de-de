@@ -182,7 +182,7 @@ blacklist {
 }
 ----
 .Beispiel
-In diesem Beispiel werden wir die WWID eines Geräts ermitteln und dem hinzufügen `multipath.conf` Datei:
+Das folgende Beispiel bestimmt die WWID eines Geräts und fügt sie der Datei hinzu `multipath.conf`.
 
 .Schritte
 . Führen Sie den folgenden Befehl aus, um die WWID zu bestimmen:
@@ -210,7 +210,7 @@ blacklist {
 
 Sie sollten immer Ihre überprüfen `/etc/multipath.conf` Datei für ältere Einstellungen, insbesondere im Abschnitt „Standardeinstellungen“, die die Standardeinstellungen überschreiben könnte.
 
-In der folgenden Tabelle sind die kritischen `multipathd` Parameter für ONTAP-LUNs und die erforderlichen Werte aufgeführt. Wenn ein Host mit LUNs anderer Hersteller verbunden ist und diese Parameter überschrieben werden, müssen sie durch spätere Strophen in der `multipath.conf` Datei korrigiert werden, die speziell für ONTAP-LUNs gelten. Wenn dies nicht ausgeführt wird, funktionieren die ONTAP LUNs möglicherweise nicht wie erwartet. Sie sollten diese Standardeinstellungen nur in Absprache mit NetApp, dem OS-Anbieter oder beiden außer Kraft setzen, und zwar nur dann, wenn die Auswirkungen vollständig verstanden sind.
+In der folgenden Tabelle sind die kritischen `multipathd` Parameter für ONTAP-LUNs und die erforderlichen Werte aufgeführt. Wenn ein Host mit LUNs anderer Hersteller verbunden ist und diese Parameter überschrieben werden, müssen sie durch spätere Strophen in der `multipath.conf` Datei korrigiert werden, die speziell für ONTAP-LUNs gelten. Ohne diese Korrektur funktionieren die ONTAP-LUNs möglicherweise nicht wie erwartet. Sie sollten diese Standardeinstellungen nur in Absprache mit NetApp, dem OS-Anbieter oder beiden außer Kraft setzen, und zwar nur dann, wenn die Auswirkungen vollständig verstanden sind.
 
 [cols="2*"]
 |===
@@ -301,10 +301,10 @@ Sie können die empfohlenen Einstellungen verwenden, um Kernel-Based Virtual Mac
 
 Die RHEL 6.4 mit ONTAP-Version weist folgende bekannte Probleme auf:
 
-[cols="4*"]
+[cols="3*"]
 |===
-| NetApp Bug ID | Titel | Beschreibung | Bugzilla-ID 
+| NetApp Bug ID | Titel | Beschreibung 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=673009["673009"^] | Wenn ext4 Dateisystem auf LV erstellt wurde, das über 15 oder mehr verwirft und über Thin Provisioning bereitgestellte Multipath-Geräte verteilt ist, werden Kernel-Fehler „Request botched“ ausgelöst | Es wurden Kernel-Fehler mit „request Blotched“ festgestellt, wenn Benutzer versuchen, ein ext4-Dateisystem auf verworfenen, Thin Provisioning-Multipath-Geräten zu erstellen. Daher kann das Erstellen des ext4-Dateisystems etwas länger dauern, bis gelegentlich Unterbrechungen auftreten. Dieses Problem tritt nur auf, wenn Benutzer versuchen, das ext4-Dateisystem auf einem LV zu erstellen, der über 15 oder mehr discard-fähige Multipath-Geräte auf Systemen mit Red hat Enterprise Linux 6.x und Data ONTAP 8.1.3 und höher in 7-Mode verteilt ist. Das Problem tritt auf, weil der Kernel fälschlicherweise versucht, die Verwerfen-Anforderungen zusammenzuführen, die derzeit auf Red hat Enterprise Linux 6.x nicht unterstützt werden. Wenn dieses Problem auftritt, werden mehrere Instanzen der folgenden Meldung in syslog (/var/log/messages) geschrieben: Kernel: blk: Request botched. Dies führt dazu, dass die Erstellung eines Dateisystems länger dauert als erwartet. | link:https://bugzilla.redhat.com/show_bug.cgi?id=907844["907844"^] 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=673009["673009"^] | Wenn ext4 Dateisystem auf LV erstellt wurde, das über 15 oder mehr verwirft und über Thin Provisioning bereitgestellte Multipath-Geräte verteilt ist, werden Kernel-Fehler „Request botched“ ausgelöst | Es wurden Kernel-Fehler mit „request Blotched“ festgestellt, wenn Benutzer versuchen, ein ext4-Dateisystem auf verworfenen, Thin Provisioning-Multipath-Geräten zu erstellen. Daher kann das Erstellen des ext4-Dateisystems etwas länger dauern, bis gelegentlich Unterbrechungen auftreten. Dieses Problem tritt nur auf, wenn Benutzer versuchen, das ext4-Dateisystem auf einem LV zu erstellen, der über 15 oder mehr discard-fähige Multipath-Geräte auf Systemen mit Red hat Enterprise Linux 6.x und Data ONTAP 8.1.3 und höher in 7-Mode verteilt ist. Das Problem tritt auf, weil der Kernel fälschlicherweise versucht, die Verwerfen-Anforderungen zusammenzuführen, die derzeit auf Red hat Enterprise Linux 6.x nicht unterstützt werden. Wenn dieses Problem auftritt, werden mehrere Instanzen der folgenden Meldung in syslog (/var/log/messages) geschrieben: Kernel: blk: Request botched. Dies führt dazu, dass die Erstellung eines Dateisystems länger dauert als erwartet. 
 |===

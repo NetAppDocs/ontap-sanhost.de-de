@@ -182,7 +182,7 @@ blacklist {
 }
 ----
 .Beispiel
-In diesem Beispiel werden wir die WWID eines Geräts ermitteln und dem hinzufügen `multipath.conf` Datei:
+Das folgende Beispiel bestimmt die WWID eines Geräts und fügt sie der Datei hinzu `multipath.conf`.
 
 .Schritte
 . Führen Sie den folgenden Befehl aus, um die WWID zu bestimmen:
@@ -210,7 +210,7 @@ blacklist {
 
 Sie sollten immer Ihre überprüfen `/etc/multipath.conf` Datei für ältere Einstellungen, insbesondere im Abschnitt „Standardeinstellungen“, die die Standardeinstellungen überschreiben könnte.
 
-In der folgenden Tabelle sind die kritischen `multipathd` Parameter für ONTAP-LUNs und die erforderlichen Werte aufgeführt. Wenn ein Host mit LUNs anderer Hersteller verbunden ist und diese Parameter überschrieben werden, müssen sie durch spätere Strophen in der `multipath.conf` Datei korrigiert werden, die speziell für ONTAP-LUNs gelten. Wenn dies nicht ausgeführt wird, funktionieren die ONTAP LUNs möglicherweise nicht wie erwartet. Sie sollten diese Standardeinstellungen nur in Absprache mit NetApp, dem OS-Anbieter oder beiden außer Kraft setzen, und zwar nur dann, wenn die Auswirkungen vollständig verstanden sind.
+In der folgenden Tabelle sind die kritischen `multipathd` Parameter für ONTAP-LUNs und die erforderlichen Werte aufgeführt. Wenn ein Host mit LUNs anderer Hersteller verbunden ist und diese Parameter überschrieben werden, müssen sie durch spätere Strophen in der `multipath.conf` Datei korrigiert werden, die speziell für ONTAP-LUNs gelten. Ohne diese Korrektur funktionieren die ONTAP-LUNs möglicherweise nicht wie erwartet. Sie sollten diese Standardeinstellungen nur in Absprache mit NetApp, dem OS-Anbieter oder beiden außer Kraft setzen, und zwar nur dann, wenn die Auswirkungen vollständig verstanden sind.
 
 [cols="2*"]
 |===
@@ -301,22 +301,22 @@ Sie können die empfohlenen Einstellungen verwenden, um Kernel-Based Virtual Mac
 
 Die RHEL 6.5 mit ONTAP-Version weist folgende bekannte Probleme auf:
 
-[cols="4*"]
+[cols="3*"]
 |===
-| NetApp Bug ID | Titel | Beschreibung | Bugzilla-ID 
+| NetApp Bug ID | Titel | Beschreibung 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=760515["760515"^] | Bei einem RHEL 6.5 8G Qlogic FC SAN-Host wurden Pfadausfälle oder Host-hängt während eines Storage-Failover-Betriebs beobachtet | Bei einem RHEL 6.5 8G Qlogic FC SAN-Host wurden Pfadausfälle oder Host-hängt während eines Storage-Failover-Betriebs beobachtet. | link:https://bugzilla.redhat.com/show_bug.cgi?id=1033136["1033136"^] 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=760515["760515"^] | Bei einem RHEL 6.5 8G Qlogic FC SAN-Host wurden Pfadausfälle oder Host-hängt während eines Storage-Failover-Betriebs beobachtet | Bei einem RHEL 6.5 8G Qlogic FC SAN-Host wurden Pfadausfälle oder Host-hängt während eines Storage-Failover-Betriebs beobachtet. 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=758271["758271"^] | Bnx2-Firmware wird beim Booten mit Custom initrd nicht geladen (dracut -f) | Broadcom NetXtreme II Gigabit-Controller-Ports pingen nicht aufgrund bnx2-Firmware wird während des Starts mit benutzerdefinierter Initrd nicht geladen. | link:https://bugzilla.redhat.com/show_bug.cgi?id=1007463["1007463"^] 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=758271["758271"^] | Bnx2-Firmware wird beim Booten mit Custom initrd nicht geladen (dracut -f) | Broadcom NetXtreme II Gigabit-Controller-Ports pingen nicht aufgrund bnx2-Firmware wird während des Starts mit benutzerdefinierter Initrd nicht geladen. 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=799394["799394"^] | RHEL 6U5: Host-Absturz durch Emulex 16G FC (LPe16002B-M6) wird bei I/O-Vorgängen bei Storage Failover beobachtet | Emulex (LPe16002B-M6) Host-Absturz wird während der I/O bei Storage Failover-Vorgängen beobachtet. | link:https://bugzilla.redhat.com/show_bug.cgi?id=1063699["1063699"^] 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=799394["799394"^] | RHEL 6U5: Host-Absturz durch Emulex 16G FC (LPe16002B-M6) wird bei I/O-Vorgängen bei Storage Failover beobachtet | Emulex (LPe16002B-M6) Host-Absturz wird während der I/O bei Storage Failover-Vorgängen beobachtet. 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=786571["786571"^] | QLogic FCoE-Host-Hänger-/Pfadausfälle, die bei einem Storage-Failover in RHEL 6.5 bei I/O-Vorgängen beobachtet wurden | QLogic FCoE (QLE8242) -Host-Ausfälle und -Pfade werden bei RHEL 6.5 während I/O-Vorgängen bei Storage-Failover beobachtet. In solchen Szenarien sehen Sie die folgende Meldung: "Mailbox cmd timeout aufgetreten, cmd=0x54, mb[0]=0x54. ISP-Planung abbrechen“-Nachrichten, die zu Host-Hung/Pfad-Fehler führen. | link:https://bugzilla.redhat.com/show_bug.cgi?id=1068619["1068619"^] 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=786571["786571"^] | QLogic FCoE-Host-Hänger-/Pfadausfälle, die bei einem Storage-Failover in RHEL 6.5 bei I/O-Vorgängen beobachtet wurden | QLogic FCoE (QLE8242) -Host-Ausfälle und -Pfade werden bei RHEL 6.5 während I/O-Vorgängen bei Storage-Failover beobachtet. In solchen Szenarien sehen Sie die folgende Meldung: "Mailbox cmd timeout aufgetreten, cmd=0x54, mb[0]=0x54. ISP-Planung abbrechen“-Nachrichten, die zu Host-Hung/Pfad-Fehler führen. 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=801580["801580"^] | QLogic 16G FC-Host-Hänger oder Pfadausfälle, die bei RHEL 6.5 bei I/O-Vorgängen bei Storage-Failover beobachtet werden | Die I/O-Verzögerungen von mehr als 600 Sekunden werden bei QLogic 16G FC-Host (QLE2672) bei Storage Failover-Vorgängen beobachtet. In solchen Szenarien wird die folgende Meldung angezeigt: „Failed mbx[0]=54, mb[1]=0, mb[2]=76b9, mb[3]=5200, cmd=54“ | link:https://bugzilla.redhat.com/show_bug.cgi?id=1068622["1068622"^] 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=801580["801580"^] | QLogic 16G FC-Host-Hänger oder Pfadausfälle, die bei RHEL 6.5 bei I/O-Vorgängen bei Storage-Failover beobachtet werden | Die I/O-Verzögerungen von mehr als 600 Sekunden werden bei QLogic 16G FC-Host (QLE2672) bei Storage Failover-Vorgängen beobachtet. In solchen Szenarien wird die folgende Meldung angezeigt: „Failed mbx[0]=54, mb[1]=0, mb[2]=76b9, mb[3]=5200, cmd=54“ 
 |===

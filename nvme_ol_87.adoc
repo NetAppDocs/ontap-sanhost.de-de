@@ -572,8 +572,8 @@ Die NVMe-of-Hostkonfiguration für OL 8.7 mit ONTAP-Release hat die folgenden be
 
 [cols=""20"]
 |===
-| NetApp Bug ID | Titel | Beschreibung | Bugzilla-ID 
+| NetApp Bug ID | Titel | Beschreibung 
 
 
-| 1517321 | Oracle Linux 8.7 NVMe-of Hosts erstellen doppelte Persistent Discovery Controller | Auf OL 8.7 NVMe-of-Hosts werden Persistent Discovery Controller (PDCs) erstellt, indem die `-p` Option an den `nvme discover` Befehl übergeben wird. Für eine bestimmte Kombination aus Initiator und Ziel `nvme discover` wird erwartet, dass bei jeder Ausführung des Befehls ein PDC erstellt wird. Ab OL 8.x erstellen NVMe-of-Hosts jedoch doppelte PDCs. Dadurch werden sowohl auf dem Host als auch auf dem Ziel Ressourcen verschwendet. | https://bugzilla.oracle.com/bugzilla/show_bug.cgi?id=18118["18118"^] 
+| 1517321 | Oracle Linux 8.7 NVMe-of Hosts erstellen doppelte Persistent Discovery Controller | Auf OL 8.7 NVMe-of-Hosts werden Persistent Discovery Controller (PDCs) erstellt, indem die `-p` Option an den `nvme discover` Befehl übergeben wird. Für eine bestimmte Kombination aus Initiator und Ziel `nvme discover` wird erwartet, dass bei jeder Ausführung des Befehls ein PDC erstellt wird. Ab OL 8.x erstellen NVMe-of-Hosts jedoch doppelte PDCs. Dadurch werden sowohl auf dem Host als auch auf dem Ziel Ressourcen verschwendet. 
 |===

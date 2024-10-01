@@ -168,7 +168,7 @@ blacklist {
 }
 ----
 .Beispiel
-In diesem Beispiel werden wir die WWID eines Geräts ermitteln und dem hinzufügen `multipath.conf` Datei:
+Das folgende Beispiel bestimmt die WWID eines Geräts und fügt sie der Datei hinzu `multipath.conf`.
 
 .Schritte
 . Führen Sie den folgenden Befehl aus, um die WWID zu bestimmen:
@@ -196,7 +196,7 @@ blacklist {
 
 Sie sollten immer Ihre überprüfen `/etc/multipath.conf` Datei für ältere Einstellungen, insbesondere im Abschnitt „Standardeinstellungen“, die die Standardeinstellungen überschreiben könnte.
 
-In der folgenden Tabelle sind die kritischen `multipathd` Parameter für ONTAP-LUNs und die erforderlichen Werte aufgeführt. Wenn ein Host mit LUNs anderer Hersteller verbunden ist und diese Parameter überschrieben werden, müssen sie durch spätere Strophen in der `multipath.conf` Datei korrigiert werden, die speziell für ONTAP-LUNs gelten. Wenn dies nicht ausgeführt wird, funktionieren die ONTAP LUNs möglicherweise nicht wie erwartet. Sie sollten diese Standardeinstellungen nur in Absprache mit NetApp, dem OS-Anbieter oder beiden außer Kraft setzen, und zwar nur dann, wenn die Auswirkungen vollständig verstanden sind.
+In der folgenden Tabelle sind die kritischen `multipathd` Parameter für ONTAP-LUNs und die erforderlichen Werte aufgeführt. Wenn ein Host mit LUNs anderer Hersteller verbunden ist und diese Parameter überschrieben werden, müssen sie durch spätere Strophen in der `multipath.conf` Datei korrigiert werden, die speziell für ONTAP-LUNs gelten. Ohne diese Korrektur funktionieren die ONTAP-LUNs möglicherweise nicht wie erwartet. Sie sollten diese Standardeinstellungen nur in Absprache mit NetApp, dem OS-Anbieter oder beiden außer Kraft setzen, und zwar nur dann, wenn die Auswirkungen vollständig verstanden sind.
 
 [cols="2*"]
 |===
@@ -281,10 +281,10 @@ devices {
 
 Die SLES 15 SP1 mit ONTAP-Version weist folgende bekannte Probleme auf:
 
-[cols="4"]
+[cols="3"]
 |===
-| NetApp Bug ID | Titel | Beschreibung | Bugzilla-ID 
+| NetApp Bug ID | Titel | Beschreibung 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1246622["1246622"^] | Remote-Ports werden während des Storage Failover-Betriebs zu einem blockierten Status auf SLES15SP1 mit Emulex LPe12002 8 GB FC überführt. | Remote-Ports werden beim Storage Failover auf SLES15SP1 mit Emulex LPe12002 8 GB Fibre Channel (FC) in einen blockierten Status überführt. Wenn der Storage Node wieder in einen optimalen Zustand versetzt wird, kommen die LIFs ebenfalls hinzu und der Remote-Port-Status sollte „online“ lesen. Gelegentlich wird der Status des Remote-Ports möglicherweise weiterhin als „gesperrt“ oder „nicht vorhanden“ gelesen. Dieser Status kann zu einem „fehlerhaften“ Pfad zu LUNs in der Multipath-Schicht sowie zu einem I/O-Ausfall für diese LUNs führen. Sie können die Details des remoteports anhand folgender Beispielbefehle überprüfen: ---- CAT/sys/class/fc_Host/Host*/device/rport*/fc_Remote_Ports/rport*/Port_Name CAT/sys/class/fc_Host/Host*/device/rport*/fc_Remote_Ports/rport*/Port_State ---- | link:https://bugzilla.suse.com/show_bug.cgi?id=1139137["1139137"^] 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1246622["1246622"^] | Remote-Ports werden während des Storage Failover-Betriebs zu einem blockierten Status auf SLES15SP1 mit Emulex LPe12002 8 GB FC überführt. | Remote-Ports werden beim Storage Failover auf SLES15SP1 mit Emulex LPe12002 8 GB Fibre Channel (FC) in einen blockierten Status überführt. Wenn der Storage Node wieder in einen optimalen Zustand versetzt wird, kommen die LIFs ebenfalls hinzu und der Remote-Port-Status sollte „online“ lesen. Gelegentlich wird der Status des Remote-Ports möglicherweise weiterhin als „gesperrt“ oder „nicht vorhanden“ gelesen. Dieser Status kann zu einem „fehlerhaften“ Pfad zu LUNs in der Multipath-Schicht sowie zu einem I/O-Ausfall für diese LUNs führen. Sie können die Details des remoteports anhand folgender Beispielbefehle überprüfen: ---- CAT/sys/class/fc_Host/Host*/device/rport*/fc_Remote_Ports/rport*/Port_Name CAT/sys/class/fc_Host/Host*/device/rport*/fc_Remote_Ports/rport*/Port_State ---- 
 |===

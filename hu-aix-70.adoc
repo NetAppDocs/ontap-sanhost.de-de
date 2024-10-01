@@ -43,7 +43,7 @@ Sie können das verwenden https://mysupport.netapp.com/matrix/imt.jsp?components
 
 
 
-NOTE: Das Softwarepaket NetApp AIX Host Utilities steht auf dem link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab["NetApp Support Website"^] in einer komprimierten Datei von tar.gz zur Verfügung. Sie müssen das AIX Host Utilities Kit installieren, während Sie AIX MPIO mit NetApp ONTAP-Speicher verwenden.
+NOTE: Das Softwarepaket NetApp AIX Host Utilities steht auf dem link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.0["NetApp Support Website"^] in einer komprimierten Datei von tar.gz zur Verfügung. Sie müssen das AIX Host Utilities Kit installieren, während Sie AIX MPIO mit NetApp ONTAP-Speicher verwenden.
 
 .Schritte
 . Melden Sie sich bei Ihrem Host an.
@@ -52,7 +52,7 @@ NOTE: Das Softwarepaket NetApp AIX Host Utilities steht auf dem link:https://mys
 ** Melden Sie sich auf einem PowerVM-Host als *padmin* an, und geben Sie dann den `oem_setup_env` Befehl ein, um ein Root-Benutzer zu werden.
 
 
-. Rufen Sie die https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab["NetApp Support Website"^] auf, und laden Sie die komprimierte Datei mit den Host Utilities in ein Verzeichnis auf Ihrem Host herunter.
+. Rufen Sie die https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.0["NetApp Support Website"^] auf, und laden Sie die komprimierte Datei mit den Host Utilities in ein Verzeichnis auf Ihrem Host herunter.
 . Gehen Sie zu dem Verzeichnis, in dem der Download enthalten ist.
 . Dekomprimieren Sie die Datei und extrahieren Sie das SAN Toolkit-Softwarepaket:
 +

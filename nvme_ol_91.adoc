@@ -554,11 +554,11 @@ Die NVMe-of-Hostkonfiguration für OL 9.1 mit ONTAP-Release hat die folgenden be
 
 [cols=""20"]
 |===
-| NetApp Bug ID | Titel | Beschreibung | Bugzilla-ID 
+| NetApp Bug ID | Titel | Beschreibung 
 
 
-| 1536937 | `nvme list-subsys` Befehl druckt wiederholte NVMe-Controller für ein Subsystem | Der `nvme list-subsys` Der Befehl sollte eine eindeutige Liste der NVMe-Controller zurückgeben, die einem bestimmten Subsystem zugeordnet sind. Unter Oracle Linux 9.1 ist der `nvme list-subsys` Command gibt NVMe-Controller mit dem jeweiligen ANA-Status (Asymmetric Namespace Access) für alle Namespaces zurück, die zu einem bestimmten Subsystem gehören. Es wäre jedoch sinnvoll, eindeutige NVMe-Controller-Einträge mit dem Pfadstatus anzuzeigen, wenn Sie die Befehlssyntax des Subsystems für einen bestimmten Namespace auflisten, da der ANA-Status ein Attribut pro Namespace ist. | link:https://bugzilla.oracle.com/bugzilla/show_bug.cgi?id=17998["17998"^] 
+| 1536937 | `nvme list-subsys` Befehl druckt wiederholte NVMe-Controller für ein Subsystem | Der `nvme list-subsys` Der Befehl sollte eine eindeutige Liste der NVMe-Controller zurückgeben, die einem bestimmten Subsystem zugeordnet sind. Unter Oracle Linux 9.1 ist der `nvme list-subsys` Command gibt NVMe-Controller mit dem jeweiligen ANA-Status (Asymmetric Namespace Access) für alle Namespaces zurück, die zu einem bestimmten Subsystem gehören. Es wäre jedoch sinnvoll, eindeutige NVMe-Controller-Einträge mit dem Pfadstatus anzuzeigen, wenn Sie die Befehlssyntax des Subsystems für einen bestimmten Namespace auflisten, da der ANA-Status ein Attribut pro Namespace ist. 
 
 
-| 1539101 | Bei Oracle Linux 9.1 NVMe-of-Hosts ist es nicht möglich, einen persistenten Erkennungs-Controller zu erstellen | Auf Oracle Linux 9.1 NVMe-of Hosts können Sie den verwenden `nvme discover -p` Befehl zum Erstellen von Persistent Discovery Controllern (PDCs). Wenn dieser Befehl verwendet wird, sollte pro Initiator-Ziel-Kombination ein PDC erstellt werden. Wenn Sie jedoch Oracle Linux 9.1 auf einem NVMe-of-Host ausführen, schlägt die PDC-Erstellung fehl, wenn der `nvme discover -p` Befehl wird ausgeführt. | link:https://bugzilla.oracle.com/bugzilla/show_bug.cgi?id=18196["18196"^] 
+| 1539101 | Bei Oracle Linux 9.1 NVMe-of-Hosts ist es nicht möglich, einen persistenten Erkennungs-Controller zu erstellen | Auf Oracle Linux 9.1 NVMe-of Hosts können Sie den verwenden `nvme discover -p` Befehl zum Erstellen von Persistent Discovery Controllern (PDCs). Wenn dieser Befehl verwendet wird, sollte pro Initiator-Ziel-Kombination ein PDC erstellt werden. Wenn Sie jedoch Oracle Linux 9.1 auf einem NVMe-of-Host ausführen, schlägt die PDC-Erstellung fehl, wenn der `nvme discover -p` Befehl wird ausgeführt. 
 |===

@@ -138,7 +138,7 @@ blacklist {
 }
 ----
 .Beispiel
-In diesem Beispiel werden wir die WWID eines Geräts ermitteln und dem hinzufügen `multipath.conf` Datei:
+Das folgende Beispiel bestimmt die WWID eines Geräts und fügt sie der Datei hinzu `multipath.conf`.
 
 .Schritte
 . Führen Sie den folgenden Befehl aus, um die WWID zu bestimmen:
@@ -166,7 +166,7 @@ blacklist {
 
 Sie sollten immer Ihre überprüfen `/etc/multipath.conf` Datei für ältere Einstellungen, insbesondere im Abschnitt „Standardeinstellungen“, die die Standardeinstellungen überschreiben könnte.
 
-In der folgenden Tabelle sind die kritischen `multipathd` Parameter für ONTAP-LUNs und die erforderlichen Werte aufgeführt. Wenn ein Host mit LUNs anderer Hersteller verbunden ist und diese Parameter überschrieben werden, müssen sie durch spätere Strophen in der `multipath.conf` Datei korrigiert werden, die speziell für ONTAP-LUNs gelten. Wenn dies nicht ausgeführt wird, funktionieren die ONTAP LUNs möglicherweise nicht wie erwartet. Sie sollten diese Standardeinstellungen nur in Absprache mit NetApp, dem OS-Anbieter oder beiden außer Kraft setzen, und zwar nur dann, wenn die Auswirkungen vollständig verstanden sind.
+In der folgenden Tabelle sind die kritischen `multipathd` Parameter für ONTAP-LUNs und die erforderlichen Werte aufgeführt. Wenn ein Host mit LUNs anderer Hersteller verbunden ist und diese Parameter überschrieben werden, müssen sie durch spätere Strophen in der `multipath.conf` Datei korrigiert werden, die speziell für ONTAP-LUNs gelten. Ohne diese Korrektur funktionieren die ONTAP-LUNs möglicherweise nicht wie erwartet. Sie sollten diese Standardeinstellungen nur in Absprache mit NetApp, dem OS-Anbieter oder beiden außer Kraft setzen, und zwar nur dann, wenn die Auswirkungen vollständig verstanden sind.
 
 [cols="2*"]
 |===
@@ -250,13 +250,13 @@ NOTE: Um Oracle Linux 7.4 Red hat Enterprise Kernel (RHCK) zu konfigurieren, ver
 
 Die Oracle Linux 7.4 mit ONTAP-Version weist folgende bekannte Probleme auf:
 
-[cols="4*"]
+[cols="3*"]
 |===
-| NetApp Bug ID | Titel | Beschreibung | Bugzilla-ID 
+| NetApp Bug ID | Titel | Beschreibung 
 
 
-| 1440718 | Wenn Sie eine LUN ohne SCSI-erneute Zuordnung aufheben oder zuordnen, kann dies zu Datenbeschädigungen auf dem Host führen. | Wenn Sie den Multipath-Konfigurationsparameter 'disable_changed_wwids' auf YES setzen, wird der Zugriff auf das Pfadgerät bei einer WWID-Änderung deaktiviert. Multipath deaktiviert den Zugriff auf das Pfadgerät, bis die WWID des Pfads auf die WWID des Multipath-Geräts wiederhergestellt ist. Weitere Informationen finden Sie unter link:https://kb.netapp.com/Advice_and_Troubleshooting/Flash_Storage/AFF_Series/The_filesystem_corruption_on_iSCSI_LUN_on_the_Oracle_Linux_7["NetApp Knowledge Base: Beschädigung des Dateisystems auf iSCSI LUN auf Oracle Linux 7"^]. | K. A. 
+| 1440718 | Wenn Sie eine LUN ohne SCSI-erneute Zuordnung aufheben oder zuordnen, kann dies zu Datenbeschädigungen auf dem Host führen. | Wenn Sie den Multipath-Konfigurationsparameter 'disable_changed_wwids' auf YES setzen, wird der Zugriff auf das Pfadgerät bei einer WWID-Änderung deaktiviert. Multipath deaktiviert den Zugriff auf das Pfadgerät, bis die WWID des Pfads auf die WWID des Multipath-Geräts wiederhergestellt ist. Weitere Informationen finden Sie unter link:https://kb.netapp.com/Advice_and_Troubleshooting/Flash_Storage/AFF_Series/The_filesystem_corruption_on_iSCSI_LUN_on_the_Oracle_Linux_7["NetApp Knowledge Base: Beschädigung des Dateisystems auf iSCSI LUN auf Oracle Linux 7"^]. 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1109468["1109468"^] | Firmware-Dumps auf einem OL7.4 Hypervisor mit QLE8362-Karte | Während Speicher-Failover-Vorgänge auf einem OL7.4 Hypervisor mit QLE8362 Karte, werden die Firmware-Dumps gelegentlich beobachtet. Die Firmware-Dumps können zu einem I/O-Ausfall auf dem Host führen, der bis zu 500 Sekunden dauert. Nachdem der Adapter den Firmware-Dump abgeschlossen hat, wird der I/O-Vorgang auf normale Weise fortgesetzt. Auf dem Host ist keine weitere Wiederherstellung erforderlich. Um den Firmware-Dump anzuzeigen, wird die folgende Meldung in der Datei /var/log/message angezeigt: Qla2xxx [0000:0c:00.3]-d001:8: Firmware-Dump gespeichert in Temporär-Puffer (8/ffcc90008901000), Dump-Status-Flags (0x3f) | link:https://bugzilla.oracle.com/bugzilla/show_bug.cgi?id=16039["16039"^] 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1109468["1109468"^] | Firmware-Dumps auf einem OL7.4 Hypervisor mit QLE8362-Karte | Während Speicher-Failover-Vorgänge auf einem OL7.4 Hypervisor mit QLE8362 Karte, werden die Firmware-Dumps gelegentlich beobachtet. Die Firmware-Dumps können zu einem I/O-Ausfall auf dem Host führen, der bis zu 500 Sekunden dauert. Nachdem der Adapter den Firmware-Dump abgeschlossen hat, wird der I/O-Vorgang auf normale Weise fortgesetzt. Auf dem Host ist keine weitere Wiederherstellung erforderlich. Um den Firmware-Dump anzuzeigen, wird die folgende Meldung in der Datei /var/log/message angezeigt: Qla2xxx [0000:0c:00.3]-d001:8: Firmware-Dump gespeichert in Temporär-Puffer (8/ffcc90008901000), Dump-Status-Flags (0x3f) 
 |===

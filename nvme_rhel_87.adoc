@@ -461,10 +461,10 @@ NSID  UUID                                   Size
 
 Die NVMe-of-Hostkonfiguration für RHEL 8.7 mit ONTAP weist folgende bekannte Probleme auf:
 
-[cols="10,30,30,10"]
+[cols="20,40,40"]
 |===
-| NetApp Bug ID | Titel | Beschreibung | Bugzilla-ID 
+| NetApp Bug ID | Titel | Beschreibung 
 
 
-| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/BURT/1479047["1479047"^] | RHEL 8.7 NVMe-of-Hosts erstellen duplizierte persistente Discovery-Controller | Auf NVMe over Fabrics-Hosts (NVMe-of) können Sie den Befehl „nvme discover -p“ verwenden, um persistente Discovery Controller (PDCs) zu erstellen. Wenn dieser Befehl verwendet wird, sollte pro Initiator-Zielkombination nur ein PDC erstellt werden. Wenn Sie jedoch ONTAP 9.10.1 und Red hat Enterprise Linux (RHEL) 8.7 mit einem NVMe-of-Host ausführen, wird bei jeder Ausführung von NVMe discover -p ein doppelter PDC erstellt. Dies führt zu einer unnötigen Nutzung der Ressourcen auf dem Host und dem Ziel. | 2087000 
+| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/BURT/1479047["1479047"^] | RHEL 8.7 NVMe-of-Hosts erstellen duplizierte persistente Discovery-Controller | Auf NVMe over Fabrics-Hosts (NVMe-of) können Sie den Befehl „nvme discover -p“ verwenden, um persistente Discovery Controller (PDCs) zu erstellen. Wenn dieser Befehl verwendet wird, sollte pro Initiator-Zielkombination nur ein PDC erstellt werden. Wenn Sie jedoch ONTAP 9.10.1 und Red hat Enterprise Linux (RHEL) 8.7 mit einem NVMe-of-Host ausführen, wird bei jeder Ausführung von NVMe discover -p ein doppelter PDC erstellt. Dies führt zu einer unnötigen Nutzung der Ressourcen auf dem Host und dem Ziel. 
 |===

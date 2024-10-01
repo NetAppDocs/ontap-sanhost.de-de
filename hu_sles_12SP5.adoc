@@ -168,7 +168,7 @@ blacklist {
 }
 ----
 .Beispiel
-In diesem Beispiel werden wir die WWID eines Geräts ermitteln und dem hinzufügen `multipath.conf` Datei:
+Das folgende Beispiel bestimmt die WWID eines Geräts und fügt sie der Datei hinzu `multipath.conf`.
 
 .Schritte
 . Führen Sie den folgenden Befehl aus, um die WWID zu bestimmen:
@@ -196,7 +196,7 @@ blacklist {
 
 Sie sollten immer Ihre überprüfen `/etc/multipath.conf` Datei für ältere Einstellungen, insbesondere im Abschnitt „Standardeinstellungen“, die die Standardeinstellungen überschreiben könnte.
 
-In der folgenden Tabelle sind die kritischen `multipathd` Parameter für ONTAP-LUNs und die erforderlichen Werte aufgeführt. Wenn ein Host mit LUNs anderer Hersteller verbunden ist und diese Parameter überschrieben werden, müssen sie durch spätere Strophen in der `multipath.conf` Datei korrigiert werden, die speziell für ONTAP-LUNs gelten. Wenn dies nicht ausgeführt wird, funktionieren die ONTAP LUNs möglicherweise nicht wie erwartet. Sie sollten diese Standardeinstellungen nur in Absprache mit NetApp, dem OS-Anbieter oder beiden außer Kraft setzen, und zwar nur dann, wenn die Auswirkungen vollständig verstanden sind.
+In der folgenden Tabelle sind die kritischen `multipathd` Parameter für ONTAP-LUNs und die erforderlichen Werte aufgeführt. Wenn ein Host mit LUNs anderer Hersteller verbunden ist und diese Parameter überschrieben werden, müssen sie durch spätere Strophen in der `multipath.conf` Datei korrigiert werden, die speziell für ONTAP-LUNs gelten. Ohne diese Korrektur funktionieren die ONTAP-LUNs möglicherweise nicht wie erwartet. Sie sollten diese Standardeinstellungen nur in Absprache mit NetApp, dem OS-Anbieter oder beiden außer Kraft setzen, und zwar nur dann, wenn die Auswirkungen vollständig verstanden sind.
 
 [cols="2*"]
 |===
@@ -280,10 +280,10 @@ devices {
 
 Die SLES 12 SP5 mit ONTAP-Version weist folgende bekannte Probleme auf:
 
-[cols="4*"]
+[cols="3*"]
 |===
-| NetApp Bug ID | Titel | Beschreibung | Bugzilla-ID 
+| NetApp Bug ID | Titel | Beschreibung 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1284293["1284293"^] | Kernel-Störung tritt auf SLES12 SP5 mit QLogic QLE2562 8 GB FC HBA bei einem Storage Failover-Betrieb auf | Kernel-Störungen treten bei Storage Failover-Vorgängen auf dem SLES12 SP5 Kernel mit einem QLogic QLE2562 Fibre Channel (FC) Host Bus Adapter (HBA) auf. Die Kernel-Störung bewirkt, dass SLES12 SP5 neu gestartet wird, was zu Applikationsunterbrechungen führt. Wenn der kdump-Mechanismus aktiviert ist, generiert die Kernel-Störung eine vmcore-Datei im Verzeichnis /var/crash/. Überprüfen Sie die vmcore-Datei, um die Ursache des Ausfalls zu ermitteln. Ein Storage Failover mit einem QLogic QLE2562 HBA-Ereignis wirkt sich auf das „THREAD_INFO: Ffffff8aedf723c2c0“-Modul aus. Suchen Sie dieses Ereignis in der vmcore-Datei, indem Sie die folgende Zeichenfolge finden: „ [THREAD_INFO: Ffffff8aedf723c2c0]“. Starten Sie nach der Kernel-Störung das Host-Betriebssystem neu, um die Wiederherstellung zu aktivieren. Starten Sie dann die Applikationen neu. | link:http://bugzilla.suse.com/show_bug.cgi?id=1157966["1157966"^] 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1284293["1284293"^] | Kernel-Störung tritt auf SLES12 SP5 mit QLogic QLE2562 8 GB FC HBA bei einem Storage Failover-Betrieb auf | Kernel-Störungen treten bei Storage Failover-Vorgängen auf dem SLES12 SP5 Kernel mit einem QLogic QLE2562 Fibre Channel (FC) Host Bus Adapter (HBA) auf. Die Kernel-Störung bewirkt, dass SLES12 SP5 neu gestartet wird, was zu Applikationsunterbrechungen führt. Wenn der kdump-Mechanismus aktiviert ist, generiert die Kernel-Störung eine vmcore-Datei im Verzeichnis /var/crash/. Überprüfen Sie die vmcore-Datei, um die Ursache des Ausfalls zu ermitteln. Ein Storage Failover mit einem QLogic QLE2562 HBA-Ereignis wirkt sich auf das „THREAD_INFO: Ffffff8aedf723c2c0“-Modul aus. Suchen Sie dieses Ereignis in der vmcore-Datei, indem Sie die folgende Zeichenfolge finden: „ [THREAD_INFO: Ffffff8aedf723c2c0]“. Starten Sie nach der Kernel-Störung das Host-Betriebssystem neu, um die Wiederherstellung zu aktivieren. Starten Sie dann die Applikationen neu. 
 |===

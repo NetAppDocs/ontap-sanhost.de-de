@@ -182,7 +182,7 @@ blacklist {
 }
 ----
 .Beispiel
-In diesem Beispiel werden wir die WWID eines Geräts ermitteln und dem hinzufügen `multipath.conf` Datei:
+Das folgende Beispiel bestimmt die WWID eines Geräts und fügt sie der Datei hinzu `multipath.conf`.
 
 .Schritte
 . Führen Sie den folgenden Befehl aus, um die WWID zu bestimmen:
@@ -210,7 +210,7 @@ blacklist {
 
 Sie sollten immer Ihre überprüfen `/etc/multipath.conf` Datei für ältere Einstellungen, insbesondere im Abschnitt „Standardeinstellungen“, die die Standardeinstellungen überschreiben könnte.
 
-In der folgenden Tabelle sind die kritischen `multipathd` Parameter für ONTAP-LUNs und die erforderlichen Werte aufgeführt. Wenn ein Host mit LUNs anderer Hersteller verbunden ist und diese Parameter überschrieben werden, müssen sie durch spätere Strophen in der `multipath.conf` Datei korrigiert werden, die speziell für ONTAP-LUNs gelten. Wenn dies nicht ausgeführt wird, funktionieren die ONTAP LUNs möglicherweise nicht wie erwartet. Sie sollten diese Standardeinstellungen nur in Absprache mit NetApp, dem OS-Anbieter oder beiden außer Kraft setzen, und zwar nur dann, wenn die Auswirkungen vollständig verstanden sind.
+In der folgenden Tabelle sind die kritischen `multipathd` Parameter für ONTAP-LUNs und die erforderlichen Werte aufgeführt. Wenn ein Host mit LUNs anderer Hersteller verbunden ist und diese Parameter überschrieben werden, müssen sie durch spätere Strophen in der `multipath.conf` Datei korrigiert werden, die speziell für ONTAP-LUNs gelten. Ohne diese Korrektur funktionieren die ONTAP-LUNs möglicherweise nicht wie erwartet. Sie sollten diese Standardeinstellungen nur in Absprache mit NetApp, dem OS-Anbieter oder beiden außer Kraft setzen, und zwar nur dann, wenn die Auswirkungen vollständig verstanden sind.
 
 [cols="2*"]
 |===
@@ -301,16 +301,16 @@ Sie können die empfohlenen Einstellungen verwenden, um Kernel-Based Virtual Mac
 
 Die RHEL 6.6 mit ONTAP-Version weist folgende bekannte Probleme auf:
 
-[cols="4*"]
+[cols="3*"]
 |===
-| NetApp Bug ID | Titel | Beschreibung | Bugzilla-ID 
+| NetApp Bug ID | Titel | Beschreibung 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=863878["863878"^] | Kernel Crash tritt bei einem RHEL 6U6-Host bei Storage-Ausfällen auf | Möglicherweise beobachten Sie Kernel Crash auf RHEL 6U6 Host während Speicher/Fabric. | link:https://bugzilla.redhat.com/show_bug.cgi?id=1158363["1158363"^] 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=863878["863878"^] | Kernel Crash tritt bei einem RHEL 6U6-Host bei Storage-Ausfällen auf | Möglicherweise beobachten Sie Kernel Crash auf RHEL 6U6 Host während Speicher/Fabric. 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=852674["1076584"^] | I/O-Stillstand bis zu 300 Sek. bei QLogic 16G FC-Host (QLE2672) bei Storage-Ausfällen in RHEL 6U4 | Bei Storage-/Fabric-Ausfällen können Sie einen I/O-Stand von bis zu 300 Sek. auf QLogic 16G FC-Host (QLE2672) beobachten. | link:https://bugzilla.redhat.com/show_bug.cgi?id=1135962["1135962"^] 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=852674["1076584"^] | I/O-Stillstand bis zu 300 Sek. bei QLogic 16G FC-Host (QLE2672) bei Storage-Ausfällen in RHEL 6U4 | Bei Storage-/Fabric-Ausfällen können Sie einen I/O-Stand von bis zu 300 Sek. auf QLogic 16G FC-Host (QLE2672) beobachten. 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=795684["795684"^] | RHEL6 U5 multipatd gruppieren Multipath-Maps bei Mod- und Storage Failover-Fehlervorgängen falsch | Sie beobachten möglicherweise eine falsche Pfadgruppierung auf LUNs, während das Verschieben von Pfaden bei Bedarf zusammen mit Storage-Fehlern erfolgt. Während der Verschiebung eines LUN ändern sich die Multipath-Pfads, und Multipath kann die Gerätetabelle aufgrund von Gerätefehlern, die durch Storage-Fehler verursacht wurden, nicht neu lädt. Dies führt zu einer falschen Pfadgruppierung. | link:https://bugzilla.redhat.com/show_bug.cgi?id=1151020["1151020"^] 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=795684["795684"^] | RHEL6 U5 multipatd gruppieren Multipath-Maps bei Mod- und Storage Failover-Fehlervorgängen falsch | Sie beobachten möglicherweise eine falsche Pfadgruppierung auf LUNs, während das Verschieben von Pfaden bei Bedarf zusammen mit Storage-Fehlern erfolgt. Während der Verschiebung eines LUN ändern sich die Multipath-Pfads, und Multipath kann die Gerätetabelle aufgrund von Gerätefehlern, die durch Storage-Fehler verursacht wurden, nicht neu lädt. Dies führt zu einer falschen Pfadgruppierung. 
 |===

@@ -152,7 +152,7 @@ blacklist {
 }
 ----
 .Beispiel
-In diesem Beispiel werden wir die WWID eines Geräts ermitteln und dem hinzufügen `multipath.conf` Datei:
+Das folgende Beispiel bestimmt die WWID eines Geräts und fügt sie der Datei hinzu `multipath.conf`.
 
 .Schritte
 . Führen Sie den folgenden Befehl aus, um die WWID zu bestimmen:
@@ -180,7 +180,7 @@ blacklist {
 
 Sie sollten immer Ihre überprüfen `/etc/multipath.conf` Datei für ältere Einstellungen, insbesondere im Abschnitt „Standardeinstellungen“, die die Standardeinstellungen überschreiben könnte.
 
-In der folgenden Tabelle sind die kritischen `multipathd` Parameter für ONTAP-LUNs und die erforderlichen Werte aufgeführt. Wenn ein Host mit LUNs anderer Hersteller verbunden ist und diese Parameter überschrieben werden, müssen sie durch spätere Strophen in der `multipath.conf` Datei korrigiert werden, die speziell für ONTAP-LUNs gelten. Wenn dies nicht ausgeführt wird, funktionieren die ONTAP LUNs möglicherweise nicht wie erwartet. Sie sollten diese Standardeinstellungen nur in Absprache mit NetApp, dem OS-Anbieter oder beiden außer Kraft setzen, und zwar nur dann, wenn die Auswirkungen vollständig verstanden sind.
+In der folgenden Tabelle sind die kritischen `multipathd` Parameter für ONTAP-LUNs und die erforderlichen Werte aufgeführt. Wenn ein Host mit LUNs anderer Hersteller verbunden ist und diese Parameter überschrieben werden, müssen sie durch spätere Strophen in der `multipath.conf` Datei korrigiert werden, die speziell für ONTAP-LUNs gelten. Ohne diese Korrektur funktionieren die ONTAP-LUNs möglicherweise nicht wie erwartet. Sie sollten diese Standardeinstellungen nur in Absprache mit NetApp, dem OS-Anbieter oder beiden außer Kraft setzen, und zwar nur dann, wenn die Auswirkungen vollständig verstanden sind.
 
 [cols="2*"]
 |===
@@ -264,25 +264,25 @@ NOTE: Um Oracle Linux 7.0 Red hat Enterprise Kernel (RHCK) zu konfigurieren, ver
 
 Die Oracle Linux 7.0 mit ONTAP-Version weist folgende bekannte Probleme auf:
 
-[cols="4*"]
+[cols="3*"]
 |===
-| NetApp Bug ID | Titel | Beschreibung | Bugzilla-ID 
+| NetApp Bug ID | Titel | Beschreibung 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=901558["901558"^] | OL7.0 : Host verliert alle Pfade zur lun und hängt aufgrund des Fehlers „RSCN Timeout“ auf OL 7.0 UEK r3U5 Beta auf Emulex 8G(LPe12002) Host | Möglicherweise ist zu beachten, dass der Emulex 8G(LPe12002)-Host hängt und ein hoher I/O-Ausfall beim Storage Failover mit I/O-Vorgängen auftritt Sie können beobachten, dass Pfade nicht wiederhergestellt werden, was ein Ergebnis der RSCN-Zeitüberschreitung ist, aufgrund derer der Host alle Pfade verliert und hängt. Die Wahrscheinlichkeit, dieses Problem zu lösen, ist hoch. | link:https://bugzilla.redhat.com/show_bug.cgi?id=14898["14898"^] 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=901558["901558"^] | OL7.0 : Host verliert alle Pfade zur lun und hängt aufgrund des Fehlers „RSCN Timeout“ auf OL 7.0 UEK r3U5 Beta auf Emulex 8G(LPe12002) Host | Möglicherweise ist zu beachten, dass der Emulex 8G(LPe12002)-Host hängt und ein hoher I/O-Ausfall beim Storage Failover mit I/O-Vorgängen auftritt Sie können beobachten, dass Pfade nicht wiederhergestellt werden, was ein Ergebnis der RSCN-Zeitüberschreitung ist, aufgrund derer der Host alle Pfade verliert und hängt. Die Wahrscheinlichkeit, dieses Problem zu lösen, ist hoch. 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=901557["901557"^] | OL 7.0: Hoher I/O-Ausfall auf dem QLogic 8G FC (QLE2562) SAN-Host während eines Storage Failover-Betriebs mit I/O | Sie können einen hohen I/O-Ausfall auf einem QLogic 8G FC-Host (QLE2562) während eines Storage Failover-Betriebs mit I/O beobachten. Bricht den Vorgang ab und setzt das Gerät zurück, gibt es einen I/O-Ausfall des Hosts. Die Wahrscheinlichkeit, dass dieser I/O-Ausfall auftritt, ist hoch. | link:https://bugzilla.redhat.com/show_bug.cgi?id=14894["14894"^] 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=901557["901557"^] | OL 7.0: Hoher I/O-Ausfall auf dem QLogic 8G FC (QLE2562) SAN-Host während eines Storage Failover-Betriebs mit I/O | Sie können einen hohen I/O-Ausfall auf einem QLogic 8G FC-Host (QLE2562) während eines Storage Failover-Betriebs mit I/O beobachten. Bricht den Vorgang ab und setzt das Gerät zurück, gibt es einen I/O-Ausfall des Hosts. Die Wahrscheinlichkeit, dass dieser I/O-Ausfall auftritt, ist hoch. 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=894766["894766"^] | OL7.0: Dracut schließt scsi_dh_alua.ko-Modul in initramfs auf UEKR3U5 alpha nicht ein | das scsi_dh_alua-Modul wird möglicherweise auch nach dem Hinzufügen des Parameters „rdloaddriver=scsi_dh_alua“ in die Kernel-Kommandozeile und dem Erstellen von dracut nicht geladen. Aufgrund dessen ist ALUA nicht auf NetApp LUNs aktiviert, wie empfohlen. | link:https://bugzilla.oracle.com/bugzilla/show_bug.cgi?id=14860["14860"^] 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=894766["894766"^] | OL7.0: Dracut schließt scsi_dh_alua.ko-Modul in initramfs auf UEKR3U5 alpha nicht ein | das scsi_dh_alua-Modul wird möglicherweise auch nach dem Hinzufügen des Parameters „rdloaddriver=scsi_dh_alua“ in die Kernel-Kommandozeile und dem Erstellen von dracut nicht geladen. Aufgrund dessen ist ALUA nicht auf NetApp LUNs aktiviert, wie empfohlen. 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=894796["894796"^] | Anaconda zeigt eine iSCSI-Anmeldefehler an, obwohl die Anmeldungen während der OL 7.0 OS-Installation erfolgreich waren | Wenn Sie OL 7.0 installieren, zeigt der Installationsbildschirm von Anaconda an, dass die iSCSI-Anmeldung bei mehreren Ziel-IPs fehlgeschlagen ist, obwohl die iSCSI-Anmeldungen erfolgreich sind. Anaconda zeigt die folgende Fehlermeldung an: "Node Login failed" Sie beobachten diesen Fehler nur, wenn Sie mehrere Ziel-IPs für die iSCSI-Anmeldung auswählen. Sie können die OS-Installation fortsetzen, indem Sie auf die Schaltfläche „OK“ klicken. Dieser Fehler erschwert weder die iSCSI- noch die OL 7.0 OS-Installation. | link:https://bugzilla.oracle.com/bugzilla/show_bug.cgi?id=14870["14870"^] 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=894796["894796"^] | Anaconda zeigt eine iSCSI-Anmeldefehler an, obwohl die Anmeldungen während der OL 7.0 OS-Installation erfolgreich waren | Wenn Sie OL 7.0 installieren, zeigt der Installationsbildschirm von Anaconda an, dass die iSCSI-Anmeldung bei mehreren Ziel-IPs fehlgeschlagen ist, obwohl die iSCSI-Anmeldungen erfolgreich sind. Anaconda zeigt die folgende Fehlermeldung an: "Node Login failed" Sie beobachten diesen Fehler nur, wenn Sie mehrere Ziel-IPs für die iSCSI-Anmeldung auswählen. Sie können die OS-Installation fortsetzen, indem Sie auf die Schaltfläche „OK“ klicken. Dieser Fehler erschwert weder die iSCSI- noch die OL 7.0 OS-Installation. 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=894771["894771"^] | OL7.0 : Anaconda fügt nicht Bootdev Argument in Kernel cmd Zeile hinzu, um IP-Adresse für iSCSI SANboot OS Installation festzulegen | Anaconda fügt kein Bootdev-Argument in die Kernel-Befehlszeile hinzu, in der Sie die IPv4-Adresse während der OL 7.0 OS-Installation auf einer iSCSI Multipath LUN festlegen. Daher können Sie keine IP-Adressen zu einer der Ethernet-Schnittstellen zuweisen, die für die Einrichtung von iSCSI-Sitzungen mit dem Speichersubsystem während des OL 7.0-Starts konfiguriert wurden. Da iSCSI-Sitzungen nicht eingerichtet sind, wird die Root-LUN nicht erkannt, wenn das Betriebssystem gebootet wird und somit das Booten des OS fehlschlägt. | link:https://bugzilla.oracle.com/bugzilla/show_bug.cgi?id=14871["14871"^] 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=894771["894771"^] | OL7.0 : Anaconda fügt nicht Bootdev Argument in Kernel cmd Zeile hinzu, um IP-Adresse für iSCSI SANboot OS Installation festzulegen | Anaconda fügt kein Bootdev-Argument in die Kernel-Befehlszeile hinzu, in der Sie die IPv4-Adresse während der OL 7.0 OS-Installation auf einer iSCSI Multipath LUN festlegen. Daher können Sie keine IP-Adressen zu einer der Ethernet-Schnittstellen zuweisen, die für die Einrichtung von iSCSI-Sitzungen mit dem Speichersubsystem während des OL 7.0-Starts konfiguriert wurden. Da iSCSI-Sitzungen nicht eingerichtet sind, wird die Root-LUN nicht erkannt, wenn das Betriebssystem gebootet wird und somit das Booten des OS fehlschlägt. 
 
 
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=916501["916501"^] | QLogic 10G FCoE (QLE8152) Host-Kernel-Absturz beim Storage Failover-Vorgang mit IO | Sie können einen Kernel-Absturz im Qlogic-Treibermodul auf 10G FCoE Qlogic (QLE8152)-Host beobachten. Der Absturz erfolgt während eines Storage Failover-Betriebs mit I/O. Die Wahrscheinlichkeit, dass dieser Absturz erreicht wird, ist hoch, was zu einem längeren I/O-Ausfall auf dem Host führt. | link:https://bugzilla.oracle.com/bugzilla/show_bug.cgi?id=15019["15019"^] 
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=916501["916501"^] | QLogic 10G FCoE (QLE8152) Host-Kernel-Absturz beim Storage Failover-Vorgang mit IO | Sie können einen Kernel-Absturz im Qlogic-Treibermodul auf 10G FCoE Qlogic (QLE8152)-Host beobachten. Der Absturz erfolgt während eines Storage Failover-Betriebs mit I/O. Die Wahrscheinlichkeit, dass dieser Absturz erreicht wird, ist hoch, was zu einem längeren I/O-Ausfall auf dem Host führt. 
 |===
