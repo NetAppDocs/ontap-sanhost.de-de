@@ -22,7 +22,7 @@ Sie können NVMe over Fibre Channel (NVMe/FC) auf Initiator-Hosts konfigurieren,
 
 == Instandhaltung
 
-NVMe over Fabrics oder NVMe-of (einschließlich NVMe/FC) wird von Oracle Linux 8.3 unterstützt, wobei Asymmetric Namespace Access (ANA) für die verbleibenden Storage-Failover (SFOs) auf dem ONTAP-Array erforderlich ist. ANA ist das ALUA-Äquivalent in der NVMe-of Umgebung und wird derzeit mit in-Kernel NVMe Multipath implementiert. Dieses Dokument enthält die Details zur Aktivierung von NVMe-of mit in-Kernel-NVMe-Multipath unter Verwendung von ANA auf OL 8.3 und ONTAP als Ziel.
+NVMe over Fabrics oder NVMe-of (einschließlich NVMe/FC) wird von Oracle Linux 8.3 unterstützt, wobei Asymmetric Namespace Access (ANA) für die verbleibenden Storage-Failover (SFOs) auf dem ONTAP-Array erforderlich ist. ANA ist das ALUA-Äquivalent in der NVMe-of Umgebung und wird derzeit mit in-Kernel NVMe Multipath implementiert. Mit diesem Verfahren können Sie NVMe-of mit in-Kernel NVMe Multipath unter Verwendung von ANA auf OL 8.3 und ONTAP als Ziel aktivieren.
 
 
 NOTE: Sie können die in diesem Dokument angegebenen Konfigurationseinstellungen verwenden, um die mit verbundenen Cloud-Clients zu konfigurieren link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^] Und link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["Amazon FSX für ONTAP"^].
@@ -32,7 +32,7 @@ NOTE: Sie können die in diesem Dokument angegebenen Konfigurationseinstellungen
 == Funktionen
 
 * Oracle Linux 8.3 ist für NVMe-Namespaces standardmäßig in-Kernel-Multipath aktiviert.
-* Mit Oracle Linux 8.3 `nvme-fc auto-connect` Skripte sind im nativen nvme-cli-Paket enthalten. Sie können sich auf diese nativen automatischen Verbindungsskripte verlassen, anstatt externe, vom Anbieter bereitgestellte automatische Verbindungsskripte zu installieren.
+* Bei Oracle Linux 8.3 `nvme-fc auto-connect` sind Skripts im nativen nvme-cli-Paket enthalten. Sie können diese nativen automatischen Verbindungsskripte verwenden, anstatt externe, vom Anbieter bereitgestellte automatische Verbindungsskripte zu installieren.
 * Mit Oracle Linux 8.3 als nativer Software `udev` Regel wird als Teil des bereitgestellt `nvme-cli` Paket, das Lastverteilung für NVMe Multipath nach dem Round Robin-Verfahren ermöglicht Daher müssen Sie diese Regel nicht mehr manuell erstellen.
 * Mit Oracle Linux 8.3 kann sowohl NVMe- als auch SCSI-Datenverkehr auf demselben vorhandenen Host ausgeführt werden. Es wird sogar die häufig implementierte Host-Konfiguration sein. Bei SCSI können Sie dm-Multipath wie gewohnt für SCSI LUNs konfigurieren, was zu mpath-Geräten führt, während NVMe Multipath zur Konfiguration von NVMe-of Multipath-Geräten verwendet werden kann (z. B. `/dev/nvmeXnY`) Auf dem Host.
 * Mit Oracle Linux 8.3 hat NetApp ein Plug-in im nativen System `nvme-cli` Das Paket kann ONTAP-Details sowie ONTAP-Namespaces anzeigen.
@@ -224,8 +224,10 @@ NOTE: Dies gilt nicht für Qlogic NVMe/FC-Hosts.
 
 == Konfigurieren Sie den Marvell/QLogic FC-Adapter für NVMe/FC
 
+Der native Inbox qla2xxx Treiber, der im OL 8.3 GA Kernel enthalten ist, hat die neuesten Upstream-Fixes. Diese Fehlerbehebungen sind für die Unterstützung von ONTAP unerlässlich.
+
 .Schritte
-. Stellen Sie sicher, dass Sie den unterstützten Adaptertreiber und die Firmware-Versionen ausführen. Der native Inbox qla2xxx Treiber im OL 8.3 GA Kernel enthält die neuesten Upstream-Fixes, die für die ONTAP Unterstützung unerlässlich sind.
+. Vergewissern Sie sich, dass der unterstützte Adaptertreiber und die unterstützten Firmware-Versionen ausgeführt werden:
 +
 [listing]
 ----

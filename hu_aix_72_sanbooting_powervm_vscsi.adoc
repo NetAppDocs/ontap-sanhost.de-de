@@ -44,7 +44,7 @@ Die LUNs werden auf dem Host als Festplatten angezeigt. Sie können diese Festpl
 Notieren Sie sich die hdisk-Instanznummern. Sie verwenden sie, wenn Sie die Pfadkonfiguration durchführen.
 
 +
-Der `lsdev -type disk` Befehl stellt den folgenden Ausgabetyp her. Die Ausgabe in diesem Beispiel wurde abgeschnitten.
+Der `lsdev -type disk` Befehl gibt den folgenden Ausgabetyp aus. Die Ausgabe im folgenden Beispiel ist abgeschnitten.
 
 +
 [listing]

@@ -16,7 +16,7 @@ summary: Sie können die ONTAP-SAN-Hosteinstellungen für die VMware vSphere 8.x
 
 
 [role="lead"]
-Überprüfen Sie vor der Fehlerbehebung bei NVMe-of-Fehlern für RHEL-, OL- und SLES-Hosts, ob Sie eine Konfiguration ausführen, die den Spezifikationen des Interoperabilitäts-Matrix-Tools (IMT) entspricht, und fahren Sie dann mit den nächsten Schritten fort, um Probleme auf der Hostseite zu beheben.
+Überprüfen Sie vor der Behebung von NVMe-of-Fehlern für RHEL-, OL- und SUSE Linux Enterprise Server-Hosts, ob Sie eine Konfiguration ausführen, die den Spezifikationen des Interoperabilitäts-Matrix-Tools (IMT) entspricht, und fahren Sie dann mit den nächsten Schritten fort, um Probleme auf Hostseite zu beheben.
 
 
 NOTE: Die Anweisungen zur Fehlerbehebung gelten nicht für AIX-, Windows- und ESXi-Hosts.

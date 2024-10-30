@@ -43,7 +43,7 @@ Informationen zum Aktivieren des HBA-BIOS finden Sie in der anbieterspezifischen
 
 == Multipathing
 
-Für Citrix Hypervisor (CH) 8.x der `/etc/multipath.conf` Die Datei muss vorhanden sein, Sie müssen jedoch keine spezifischen Änderungen an der Datei vornehmen. CH 8.x wird mit allen Einstellungen zusammengestellt, die zum Erkennen und korrekten Managen von ONTAP LUNs erforderlich sind. Sie können das verwenden `/sbin/mpathutil` Status Befehl zum Überprüfen der Einstellungen für Ihre ONTAP-LUNs. Die folgenden Abschnitte enthalten ein Beispiel für eine Multipath-Ausgabe für eine LUN, die ASA-Personas zugeordnet ist.
+Für Citrix Hypervisor (CH) 8.x muss die `/etc/multipath.conf` Datei vorhanden sein, Sie müssen jedoch keine spezifischen Änderungen an der Datei vornehmen. CH 8.x wird mit allen Einstellungen zusammengestellt, die zum Erkennen und korrekten Managen von ONTAP LUNs erforderlich sind. Sie können mit dem `/sbin/mpathutil` Statusbefehl die Einstellungen für die ONTAP LUNs überprüfen. Die folgenden Abschnitte enthalten Beispiel-Multipath-Ausgaben für eine LUN, die ASA-Personas zugeordnet ist.
 
 
 
@@ -69,9 +69,9 @@ NOTE: Verwenden Sie keine unverhältnismäßig hohe Anzahl von Pfaden zu einer e
 
 
 
-=== Nicht-ASA-Konfiguration
+=== Konfigurationen ohne ASA
 
-Für eine nicht-ASA-Konfiguration sollte es zwei Gruppen von Pfaden mit unterschiedlichen Prioritäten geben. Die Pfade mit den höheren Prioritäten sind aktiv/optimiert, was bedeutet, dass sie vom Controller gewartet werden, wo sich das Aggregat befindet. Die Pfade mit den niedrigeren Prioritäten sind aktiv, werden aber nicht optimiert, da sie von einem anderen Controller bereitgestellt werden. Die nicht optimierten Pfade werden nur verwendet, wenn optimierte Pfade nicht verfügbar sind.
+Für Konfigurationen ohne ASA sollten zwei Gruppen von Pfaden mit unterschiedlichen Prioritäten vorhanden sein. Die Pfade mit höheren Prioritäten sind aktiv/optimiert, d. h. sie werden vom Controller gewartet, in dem sich das Aggregat befindet. Die Pfade mit niedrigeren Prioritäten sind aktiv, aber nicht optimiert, da sie von einem anderen Controller bedient werden. Die nicht optimierten Pfade werden nur verwendet, wenn optimierte Pfade nicht verfügbar sind.
 
 .Beispiel
 Im folgenden Beispiel wird die richtige Ausgabe für eine ONTAP-LUN mit zwei aktiv/optimierten Pfaden und zwei aktiv/nicht optimierten Pfaden angezeigt:
@@ -88,7 +88,7 @@ size=30G features='4 queue_if_no_path pg_init_retries 50 retain_attached_hw_hand
    `- 12:0:26:11 sdyt  129:720 active ready running
 ....
 
-NOTE: Verwenden Sie keine unverhältnismäßig hohe Anzahl von Pfaden zu einer einzelnen LUN. Es sollten nicht mehr als vier Pfade erforderlich sein. Mehr als acht Pfade können bei Storage-Ausfällen zu Pfadproblemen führen.
+NOTE: Eine einzelne LUN sollte nicht mehr als vier Pfade benötigen. Mehr als acht Pfade können bei Storage-Ausfällen zu Pfadproblemen führen.
 
 
 
@@ -126,7 +126,7 @@ blacklist {
 NOTE: Ersetzen Sie *<Devid>* durch die WWID-Zeichenfolge des Geräts, das Sie ausschließen möchten.
 
 .Beispiel
-In diesem Beispiel für Citrix Hypervisor 8.x, `sda` Ist die lokale SCSI Festplatte, die wir zur Blacklist hinzufügen müssen.
+Im folgenden Beispiel für Citrix Hypervisor 8.x `sda` ist die lokale SCSI-Festplatte, die Sie der Blacklist hinzufügen möchten.
 
 . Führen Sie den folgenden Befehl aus, um die WWID zu bestimmen:
 +

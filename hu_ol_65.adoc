@@ -26,9 +26,9 @@ Das NetApp Linux Unified Host Utilities-Softwarepaket ist auf der erhältlich li
 
 NetApp empfiehlt ausdrücklich die Installation der Linux Unified Host Utilities, dies ist jedoch nicht zwingend erforderlich. Die Dienstprogramme ändern keine Einstellungen auf Ihrem Linux-Host. Die Versorgungseinrichtungen verbessern das Management und unterstützen den NetApp Kunden-Support bei der Erfassung von Informationen zu Ihrer Konfiguration.
 
-.Was Sie benötigen
-Wenn Sie derzeit eine Version von Linux Unified Host Utilities installiert haben, sollten Sie sie aktualisieren oder Sie sollten sie entfernen und die folgenden Schritte verwenden, um die neueste Version zu installieren.
+Wenn Sie derzeit eine Version von Linux Unified Host Utilities installiert haben, sollten Sie diese entweder aktualisieren oder entfernen und die aktuelle Version wie folgt installieren.
 
+.Schritte
 . Laden Sie das Softwarepaket für 32 Bit oder 64 Bit Linux Unified Host Utilities von herunter link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp Support Website"^] Standort zu Ihrem Host.
 . Verwenden Sie den folgenden Befehl, um das Softwarepaket zu installieren:
 +
@@ -58,7 +58,7 @@ Beispielausgabe:
 ----
 controller(7mode/E-Series)/            device     host               lun
 vserver(cDOT/FlashRay)   lun-pathname  filename   adapter  protocol  size    Product
--------------------------------------------------------------------------
+------------------------------------------------------------------------------------
 data_vserver          /vol/vol1/lun1   /dev/sdb   host16   FCP       120.0g  cDOT
 data_vserver          /vol/vol1/lun1   /dev/sdc   host15   FCP       120.0g  cDOT
 data_vserver          /vol/vol2/lun2   /dev/sdd   host16   FCP       120.0g  cDOT
@@ -101,7 +101,7 @@ kernel /vmlinuz-3.8.13-68.1.2.el6uek.x86_64 ro root=/dev/mapper/vg_ibmx3550m4210
 ....
 . Verwenden Sie die `mkinitrd` Befehl zum Neuerstellen des initrd-Image. Oracle 6x und neuere Versionen verwenden entweder: Den Befehl: `mkinitrd -f /boot/ initrd-"uname -r".img uname -r`Oder den Befehl: `dracut -f`
 . Starten Sie den Host neu.
-. Überprüfen Sie die Ausgabe des `cat /proc/cmdline` Befehls, um sicherzustellen, dass die Einstellung abgeschlossen ist. Sie können mit dem `multipath -ll` Befehl die Einstellungen für Ihre ONTAP LUNs überprüfen. Es sollte zwei Gruppen von Pfaden mit unterschiedlichen Prioritäten geben. Die Pfade mit den höheren Prioritäten sind aktiv/optimiert, das heißt, sie werden vom Controller gewartet, wo sich das Aggregat befindet. Die Pfade mit den niedrigeren Prioritäten sind aktiv, werden aber nicht optimiert, da sie von einem anderen Controller bereitgestellt werden. Die nicht optimierten Pfade werden nur verwendet, wenn optimierte Pfade nicht verfügbar sind.
+. Überprüfen Sie die Ausgabe des `cat /proc/cmdline` Befehls, um sicherzustellen, dass die Einstellung abgeschlossen ist. Sie können mit dem `multipath -ll` Befehl die Einstellungen für Ihre ONTAP LUNs überprüfen. Es sollte zwei Gruppen von Pfaden mit unterschiedlichen Prioritäten geben. Die Pfade mit höheren Prioritäten sind aktiv/optimiert, d. h. sie werden vom Controller gewartet, in dem sich das Aggregat befindet. Die Pfade mit niedrigeren Prioritäten sind aktiv, aber nicht optimiert, da sie von einem anderen Controller bedient werden. Die nicht optimierten Pfade werden nur verwendet, wenn optimierte Pfade nicht verfügbar sind.
 
 
 .Beispiel
@@ -120,7 +120,7 @@ size=80G features='4 queue_if_no_path pg_init_retries 50 retain_attached_hw_hand
   |- 0:0:19:37 sddu 71:192  active ready running
 ----
 
-NOTE: Verwenden Sie keine unverhältnismäßig hohe Anzahl von Pfaden zu einer einzelnen LUN. Es sollten nicht mehr als vier Pfade erforderlich sein. Mehr als acht Pfade können bei Storage-Ausfällen zu Pfadproblemen führen.
+NOTE: Eine einzelne LUN sollte nicht mehr als vier Pfade benötigen. Mehr als acht Pfade können bei Storage-Ausfällen zu Pfadproblemen führen.
 
 
 
@@ -128,22 +128,19 @@ NOTE: Verwenden Sie keine unverhältnismäßig hohe Anzahl von Pfaden zu einer e
 
 Das Oracle Linux 6.5 Betriebssystem wird kompiliert, um ONTAP LUNs zu erkennen und automatisch alle Konfigurationsparameter richtig einzustellen.
 
-Der `multipath.conf` Es muss eine Datei vorhanden sein, damit der Multipath-Daemon gestartet werden kann. Sie können jedoch eine leere Zero-Byte-Datei mit dem folgenden Befehl erstellen:
+Die `multipath.conf` Datei muss vorhanden sein, damit der Multipath-Daemon gestartet werden kann. Wenn diese Datei nicht vorhanden ist, können Sie eine leere Datei mit einem Zero-Byte-Wert erstellen, indem Sie den folgenden Befehl verwenden:
 
-`touch /etc/multipath.conf`.
+`touch /etc/multipath.conf`
 
-Wenn Sie diese Datei zum ersten Mal erstellen, müssen Sie die Multipath-Services unter Umständen aktivieren und starten.
+Wenn Sie die `multipath.conf` Datei zum ersten Mal erstellen, müssen Sie möglicherweise die Multipath-Services mithilfe der folgenden Befehle aktivieren und starten:
 
 [listing]
 ----
 # chkconfig multipathd on
 # /etc/init.d/multipathd start
 ----
-* Es ist nicht erforderlich, dem direkt etwas hinzuzufügen `multipath.conf` Datei, es sei denn, Sie haben Geräte, die nicht von Multipath verwaltet werden sollen, oder Sie haben bereits Einstellungen, die die Standardeinstellungen außer Kraft setzen.
-* Sie können die folgende Syntax dem hinzufügen `multipath.conf` Datei zum Ausschließen unerwünschter Geräte:
-+
-** Ersetzen Sie die <DevId> durch die WWID-Zeichenfolge des Geräts, das Sie ausschließen möchten:
-+
+Es ist nicht erforderlich, Geräte direkt zur Datei hinzuzufügen `multipath.conf`, es sei denn, Sie verfügen über Geräte, die nicht von Multipath verwaltet werden sollen, oder Sie haben bereits vorhandene Einstellungen, die die Standardeinstellungen außer Kraft setzen. Um die unerwünschten Geräte auszuschließen, fügen Sie der Datei die folgende Syntax hinzu `multipath.conf` und ersetzen <DevId> durch die WWID-Zeichenfolge des Geräts, das Sie ausschließen möchten:
+
 [listing]
 ----
 blacklist {
@@ -153,12 +150,8 @@ blacklist {
         devnode "^cciss.*"
 }
 ----
-
-
-
-
 .Beispiel
-In diesem Beispiel `sda` Ist die lokale SCSI Festplatte, die wir zur Blacklist hinzufügen müssen.
+Im folgenden Beispiel `sda` ist die lokale SCSI-Festplatte, die Sie der Blacklist hinzufügen möchten.
 
 .Schritte
 . Führen Sie den folgenden Befehl aus, um die WWID zu bestimmen:

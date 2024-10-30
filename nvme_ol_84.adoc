@@ -32,7 +32,7 @@ NOTE: Sie können die in diesem Dokument angegebenen Konfigurationseinstellungen
 == Funktionen
 
 * Oracle Linux 8.4 hat NVMe Multipath im Kernel standardmäßig für NVMe Namepsaces aktiviert.
-* Mit Oracle Linux 8.4 `nvme-fc auto-connect` Skripte sind im nativen enthalten `nvme-cli` Paket. Sie können sich auf diese nativen automatischen Verbindungsskripte verlassen, anstatt externe, vom Anbieter bereitgestellte automatische Verbindungsskripte zu installieren.
+* Bei Oracle Linux 8.4 `nvme-fc auto-connect` sind Skripts im nativen Paket enthalten `nvme-cli`. Sie können diese nativen automatischen Verbindungsskripte verwenden, anstatt externe, vom Anbieter bereitgestellte automatische Verbindungsskripte zu installieren.
 * Mit Oracle Linux 8.4 als nativer Software `udev` Regel wird als Teil des bereitgestellt `nvme-cli` Paket, das Lastverteilung für NVMe Multipath nach dem Round Robin-Verfahren ermöglicht Daher müssen Sie diese Regel nicht mehr manuell erstellen.
 * Mit Oracle Linux 8.4 kann sowohl NVMe- als auch SCSI-Datenverkehr auf demselben vorhandenen Host ausgeführt werden. Es wird sogar die häufig implementierte Host-Konfiguration sein. Daher können Sie dm-Multipath wie gewohnt bei SCSI-LUNs konfigurieren, was zu mpath-Geräten führt, während NVMe Multipath zur Konfiguration von NVMe-of Multipath-Geräten verwendet werden kann (z. B. `/dev/nvmeXnY`) Auf dem Host.
 * Mit Oracle Linux 8.4 hat NetApp ein Plug-in im nativen System `nvme-cli` Das Paket kann ONTAP-Details sowie ONTAP-Namespaces anzeigen.
@@ -217,8 +217,10 @@ NOTE: Dies gilt nicht für Qlogic NVMe/FC-Hosts.
 
 == Konfigurieren Sie den Marvell/QLogic FC-Adapter für NVMe/FC
 
+Der native Inbox qla2xxx Treiber, der im OL 8.4 GA Kernel enthalten ist, hat die neuesten Upstream-Fixes. Diese Fehlerbehebungen sind für die Unterstützung von ONTAP unerlässlich.
+
 .Schritte
-. Stellen Sie sicher, dass Sie den unterstützten Adaptertreiber und die Firmware-Versionen ausführen. Der native Inbox qla2xxx Treiber im OL 8.4 GA Kernel enthält die neuesten Upstream-Fixes, die für die ONTAP Unterstützung unerlässlich sind.
+. Vergewissern Sie sich, dass der unterstützte Adaptertreiber und die unterstützten Firmware-Versionen ausgeführt werden:
 +
 [listing]
 ----

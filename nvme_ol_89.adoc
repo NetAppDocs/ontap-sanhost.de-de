@@ -22,7 +22,7 @@ Die folgende Unterstützung ist für die NVMe-of Host-Konfiguration von Oracle L
 
 * Unterstützung für NVMe over TCP (NVMe/TCP) neben NVMe/FC Über das NetApp-Plug-in im nativen `nvme-cli` Paket werden die ONTAP-Details sowohl für NVMe/FC- als auch für NVMe/TCP-Namespaces angezeigt.
 * Sowohl NVMe- als auch SCSI-Datenverkehr können auf demselben vorhandenen Host ausgeführt werden. Daher können Sie dm-Multipath für SCSI-mpath-Geräte für SCSI-LUNs konfigurieren, während Sie möglicherweise NVMe Multipath verwenden, um NVMe-of Namespace-Geräte auf dem Host zu konfigurieren.
-* Es gibt keine Unterstützung für NVMe-of für Sanlun. Daher wird für NVMe-of auf einem Oracle Linux 8.9 Host keine Host Utility-Unterstützung angeboten. Sie können sich auf das im nativen `nvme-cli` Paket enthaltene NetApp Plug-in für alle NVMe-of-Übertragungen verlassen.
+* Es gibt keine Unterstützung für NVMe-of für Sanlun. Daher wird für NVMe-of auf einem Oracle Linux 8.9 Host keine Host Utility-Unterstützung angeboten. Sie können das im nativen Paket enthaltene NetApp-Plug-in für alle NVMe-of-Übertragungen verwenden `nvme-cli`.
 
 
 Weitere Informationen zu unterstützten Konfigurationen finden Sie im link:https://mysupport.netapp.com/matrix/["NetApp Interoperabilitäts-Matrix-Tool"^].
@@ -243,8 +243,10 @@ FCP CMPL: xb 00001f50 Err 0000d9f8
 --
 .Marvell/QLogic FC Adapter für NVMe/FC
 --
+Der native Inbox qla2xxx Treiber, der im Oracle Linux 8.9 GA Kernel enthalten ist, hat die neuesten Fixes. Diese Fehlerbehebungen sind für die Unterstützung von ONTAP unerlässlich.
+
 .Schritte
-. Der native Inbox qla2xxx Treiber, der im Oracle Linux 8.9 GA Kernel enthalten ist, verfügt über die neuesten Fixes, die für die ONTAP Unterstützung unerlässlich sind. Vergewissern Sie sich, dass der unterstützte Adaptertreiber und die unterstützten Firmware-Versionen ausgeführt werden:
+. Vergewissern Sie sich, dass der unterstützte Adaptertreiber und die unterstützten Firmware-Versionen ausgeführt werden:
 +
 [listing]
 ----

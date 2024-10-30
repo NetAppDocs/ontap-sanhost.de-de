@@ -237,8 +237,10 @@ FCP CMPL: xb 00000629 Err 0001bd3d
 --
 .Marvell/QLogic FC Adapter für NVMe/FC
 --
+Der native Inbox qla2xxx Treiber, der im RHEL 9.4 GA Kernel enthalten ist, hat die neuesten Fehlerbehebungen. Diese Fehlerbehebungen sind für die Unterstützung von ONTAP unerlässlich.
+
 .Schritte
-. Der native Inbox qla2xxx Treiber, der im RHEL 9.4 GA Kernel enthalten ist, hat die neuesten Fixes, die für die Unterstützung von ONTAP unerlässlich sind. Vergewissern Sie sich, dass der unterstützte Adaptertreiber und die unterstützten Firmware-Versionen ausgeführt werden:
+. Vergewissern Sie sich, dass der unterstützte Adaptertreiber und die unterstützten Firmware-Versionen ausgeführt werden:
 +
 [listing]
 ----
@@ -295,9 +297,7 @@ NOTE: Dies gilt nicht für Qlogic NVMe/FC-Hosts.
 
 == Konfiguration von NVMe/TCP
 
-NVMe/TCP verfügt nicht über eine automatische Verbindungsfunktion. Daher müssen Sie die NVMe/TCP Connect- oder Connect-all-Funktion manuell ausführen, um die NVMe/TCP-Subsysteme und Namespaces zu erkennen.
-
-Zum Konfigurieren von NVMe/TCP können Sie das folgende Verfahren verwenden.
+NVMe/TCP verfügt nicht über eine automatische Verbindungsfunktion. Daher sollten Sie das folgende Verfahren verwenden, um die NVMe/TCP-Subsysteme und Namespaces zu ermitteln, indem Sie die Funktionen NVMe/TCP connect oder connect-all manuell ausführen.
 
 .Schritte
 . Vergewissern Sie sich, dass der Initiator-Port die Daten der Erkennungsprotokollseite über die unterstützten NVMe/TCP-LIFs abrufen kann:
@@ -445,7 +445,7 @@ nvme connect-all -t tcp -w host-traddr -a traddr
 
 
 
-NOTE: Ab RHEL 9.4 ist die Standardeinstellung für NVMe/TCP `ctrl_loss_tmo` Timeout ist deaktiviert, was bedeutet, dass die Anzahl der Wiederholungen nicht begrenzt ist (unbestimmter Versuch). Daher müssen Sie keine spezifischen Einstellungen manuell konfigurieren `ctrl_loss_tmo` Timeout-Dauer bei Verwendung des `nvme connect` Oder `nvme connect-all` Befehle (Option -l ). Bei diesem Standardverhalten treten für die NVMe/TCP-Controller bei einem Pfadausfall keine Timeouts auf und bleiben dauerhaft verbunden.
+NOTE: Ab RHEL 9.4 ist die Standardeinstellung für das NVMe/TCP `ctrl_loss_tmo`-Timeout deaktiviert. Dies bedeutet, dass die Anzahl der Wiederholungen (unbestimmter Versuch) nicht begrenzt ist. Daher müssen Sie bei Verwendung der Befehle oder `nvme connect-all` (Option -l ) keine bestimmte Zeitlimitdauer `nvme connect` manuell konfigurieren `ctrl_loss_tmo`. Bei diesem Standardverhalten treten für die NVMe/TCP-Controller bei einem Pfadausfall keine Timeouts auf und bleiben dauerhaft verbunden.
 
 
 

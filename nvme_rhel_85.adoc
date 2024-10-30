@@ -187,7 +187,7 @@ FCP CMPL: xb 00001f50 Err 0000d9f8
 --
 .Marvell/QLogic
 --
-Im nativen Posteingang `qla2xxx` Der im RHEL 8.5 GA-Kernel enthaltene Treiber verfügt über die neuesten Fehlerbehebungen, die für die ONTAP-Unterstützung unerlässlich sind.
+Der native Inbox- `qla2xxx`Treiber des RHEL 8.5 GA-Kernels enthält die neuesten Fehlerbehebungen. Diese Fehlerbehebungen sind für die Unterstützung von ONTAP unerlässlich.
 
 .Schritte
 . Vergewissern Sie sich, dass der unterstützte Adaptertreiber und die unterstützten Firmware-Versionen ausgeführt werden:

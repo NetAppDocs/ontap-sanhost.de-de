@@ -53,7 +53,7 @@ NOTE: NetApp arbeitet weiterhin mit den Host Utilities zusammen, um nach der ers
 
 == In dieser Version behoben
 
-Das zeitweise auftretende Problem mit dem Host-Betriebssystem, das beim Ausführen des auftritt `sanlun lun show -p` Der Befehl in SLES12SP1, OL7.2, RHEL7.2 und RHEL 6.8 ist in dieser Version behoben.
+Das zeitweise auftretende Problem mit dem Ausfall des Host-Betriebssystems, das beim Ausführen des Befehls in SUSE Linux Enterprise Server 12 SP1, OL 7.2, RHEL 7.2 und RHEL 6.8 auftritt `sanlun lun show -p`, wurde in dieser Version behoben.
 
 
 

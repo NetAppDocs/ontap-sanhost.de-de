@@ -191,7 +191,7 @@ FCP CMPL: xb 0000006b Err 00017f99
 --
 .Marvell/QLogic FC Adapter für NVMe/FC
 --
-Im nativen Posteingang `qla2xxx` Der im RHEL 8.7-Kernel enthaltene Treiber verfügt über die neuesten Fehlerbehebungen, die für die ONTAP-Unterstützung unerlässlich sind.
+Der native Inbox- `qla2xxx`Treiber des RHEL 8.7-Kernels enthält die neuesten Fehlerbehebungen. Diese Fehlerbehebungen sind für die Unterstützung von ONTAP unerlässlich.
 
 .Schritte
 . Überprüfen Sie, ob Sie den unterstützten Adaptertreiber und die unterstützte Firmware-Version mit dem folgenden Befehl ausführen:

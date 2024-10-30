@@ -26,9 +26,9 @@ Das NetApp Linux Unified Host Utilities-Softwarepaket ist auf der erhältlich li
 
 NetApp empfiehlt ausdrücklich die Installation der Linux Unified Host Utilities, dies ist jedoch nicht zwingend erforderlich. Die Dienstprogramme ändern keine Einstellungen auf Ihrem Linux-Host. Die Versorgungseinrichtungen verbessern das Management und unterstützen den NetApp Kunden-Support bei der Erfassung von Informationen zu Ihrer Konfiguration.
 
-.Was Sie benötigen
-Wenn Sie derzeit eine Version von Linux Unified Host Utilities installiert haben, sollten Sie sie aktualisieren oder Sie sollten sie entfernen und die folgenden Schritte verwenden, um die neueste Version zu installieren.
+Wenn Sie derzeit eine Version von Linux Unified Host Utilities installiert haben, sollten Sie diese entweder aktualisieren oder entfernen und die aktuelle Version wie folgt installieren.
 
+.Schritte
 . Laden Sie das Softwarepaket für 32 Bit oder 64 Bit Linux Unified Host Utilities von herunter link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp Support Website"^] Standort zu Ihrem Host.
 . Verwenden Sie den folgenden Befehl, um das Softwarepaket zu installieren:
 +
@@ -58,7 +58,7 @@ Beispielausgabe:
 ----
 controller(7mode/E-Series)/            device     host               lun
 vserver(cDOT/FlashRay)   lun-pathname  filename   adapter  protocol  size    Product
--------------------------------------------------------------------------
+------------------------------------------------------------------------------------
 data_vserver          /vol/vol1/lun1   /dev/sdb   host16   FCP       120.0g  cDOT
 data_vserver          /vol/vol1/lun1   /dev/sdc   host15   FCP       120.0g  cDOT
 data_vserver          /vol/vol2/lun2   /dev/sdd   host16   FCP       120.0g  cDOT
@@ -91,7 +91,9 @@ Informationen zum Aktivieren des HBA-BIOS finden Sie in der anbieterspezifischen
 
 Für CentOS 7.9 muss die Datei /etc/Multipath.conf vorhanden sein, aber Sie müssen keine spezifischen Änderungen an der Datei vornehmen. CentOS 7.9 wird mit allen Einstellungen zusammengestellt, die zum Erkennen und korrekten Managen von ONTAP LUNs erforderlich sind.
 
-Sie können das verwenden `multipath -ll` Überprüfen Sie mit dem Befehl die Einstellungen für Ihre ONTAP LUNs. Die folgenden Abschnitte enthalten ein Beispiel für eine Multipath-Ausgabe für eine LUN, die ASA- und nicht-ASA-Personas zugeordnet ist.
+Sie können das verwenden `multipath -ll` Überprüfen Sie mit dem Befehl die Einstellungen für Ihre ONTAP LUNs.
+
+Die folgenden Abschnitte bieten Beispiel-Multipath-Ausgaben für eine LUN, die ASA-Gruppen und nicht-ASA-Personas zugeordnet ist.
 
 
 
@@ -114,13 +116,13 @@ size=80G  features='4 queue_if_no_path pg_init_retries 50 retain_attached_hw_han
   |- 11:0:11:1  sdpt  131:304  active ready running
 ----
 
-NOTE: Verwenden Sie keine unverhältnismäßig hohe Anzahl von Pfaden zu einer einzelnen LUN. Es sollten nicht mehr als vier Pfade erforderlich sein. Mehr als acht Pfade können bei Storage-Ausfällen zu Pfadproblemen führen.
+NOTE: Eine einzelne LUN sollte nicht mehr als vier Pfade benötigen. Mehr als acht Pfade können bei Storage-Ausfällen zu Pfadproblemen führen.
 
 
 
 === Konfigurationen ohne ASA
 
-Für Konfigurationen ohne ASA sollten zwei Gruppen von Pfaden mit unterschiedlichen Prioritäten vorhanden sein. Die Pfade mit den höheren Prioritäten sind aktiv/optimiert, was bedeutet, dass sie vom Controller gewartet werden, wo sich das Aggregat befindet. Die Pfade mit den niedrigeren Prioritäten sind aktiv, werden aber nicht optimiert, da sie von einem anderen Controller bereitgestellt werden. Die nicht optimierten Pfade werden nur verwendet, wenn optimierte Pfade nicht verfügbar sind.
+Für Konfigurationen ohne ASA sollten zwei Gruppen von Pfaden mit unterschiedlichen Prioritäten vorhanden sein. Die Pfade mit höheren Prioritäten sind aktiv/optimiert, d. h. sie werden vom Controller gewartet, in dem sich das Aggregat befindet. Die Pfade mit niedrigeren Prioritäten sind aktiv, aber nicht optimiert, da sie von einem anderen Controller bedient werden. Die nicht optimierten Pfade werden nur verwendet, wenn optimierte Pfade nicht verfügbar sind.
 
 .Beispiel
 Im folgenden Beispiel wird die richtige Ausgabe für eine ONTAP-LUN mit zwei aktiv/optimierten Pfaden und zwei aktiv/nicht optimierten Pfaden angezeigt:
@@ -138,7 +140,7 @@ size=80G features='4 queue_if_no_path pg_init_retries 50 retain_attached_hw_hand
 |- 12:0:0:0 sdz 65:144 active ready running
 ----
 
-NOTE: Verwenden Sie keine unverhältnismäßig hohe Anzahl von Pfaden zu einer einzelnen LUN. Es sollten nicht mehr als vier Pfade erforderlich sein. Mehr als acht Pfade können bei Storage-Ausfällen zu Pfadproblemen führen.
+NOTE: Eine einzelne LUN sollte nicht mehr als vier Pfade benötigen. Mehr als acht Pfade können bei Storage-Ausfällen zu Pfadproblemen führen.
 
 
 
@@ -155,7 +157,7 @@ Wenn Sie die `multipath.conf` Datei zum ersten Mal erstellen, müssen Sie mögli
 # chkconfig multipathd on
 # /etc/init.d/multipathd start
 ----
-Es ist nicht erforderlich, der `multipath.conf` Datei direkt etwas hinzuzufügen, es sei denn, Sie verfügen über Geräte, die nicht von Multipath verwaltet werden sollen, oder Sie haben bereits vorhandene Einstellungen, die die Standardeinstellungen außer Kraft setzen. Um unerwünschte Geräte auszuschließen, fügen Sie der `multipath.conf` Datei die folgende Syntax hinzu und ersetzen <DevId> durch die WWID-Zeichenfolge des Geräts, das Sie ausschließen möchten:
+Es ist nicht erforderlich, der Datei direkt etwas hinzuzufügen `multipath.conf`, es sei denn, Sie haben Geräte, die Sie nicht von Multipath verwalten möchten, oder Sie haben bereits Einstellungen, die die Standardeinstellungen außer Kraft setzen. Um unerwünschte Geräte auszuschließen, fügen Sie der `multipath.conf` Datei die folgende Syntax hinzu und ersetzen <DevId> durch die WWID-Zeichenfolge des Geräts, das Sie ausschließen möchten:
 
 [listing]
 ----
@@ -170,7 +172,7 @@ blacklist {
 Das folgende Beispiel bestimmt die WWID eines Geräts und fügt sie der Datei hinzu `multipath.conf`.
 
 .Schritte
-. Führen Sie den folgenden Befehl aus, um die WWID zu bestimmen:
+. Bestimmen Sie die WWID:
 +
 [listing]
 ----
@@ -178,7 +180,7 @@ Das folgende Beispiel bestimmt die WWID eines Geräts und fügt sie der Datei hi
 360030057024d0730239134810c0cb833
 ----
 +
-`sda` Ist die lokale SCSI-Festplatte, die wir zur Blacklist hinzufügen müssen.
+`sda` Ist das lokale SCSI-Laufwerk, das Sie der Blacklist hinzufügen möchten.
 
 . Fügen Sie die hinzu `WWID` Zur schwarzen Liste stanza in `/etc/multipath.conf`:
 +

@@ -16,7 +16,7 @@ summary: Konfigurieren von NVMe-of Host für RHEL 9.0 mit ONTAP
 
 
 [role="lead"]
-NVMe-of (einschließlich NVMe/FC und NVMe/TCP) wird mit RHEL 9.0 mit Asymmetric Namespace Access (ANA) unterstützt, die für die verbleibenden Storage-Failover (SFOs) auf dem ONTAP Array erforderlich sind. ANA ist das ALUA-Äquivalent in der NVM-of-Umgebung und ist derzeit mit NVMe Multipath im Kernel implementiert. Dieses Dokument enthält die Details zur Aktivierung von NVMe-of mit in-Kernel NVMe Multipath unter Verwendung von ANA auf RHEL 9.0 und ONTAP als Ziel.
+NVMe-of (einschließlich NVMe/FC und NVMe/TCP) wird mit RHEL 9.0 mit Asymmetric Namespace Access (ANA) unterstützt, die für die verbleibenden Storage-Failover (SFOs) auf dem ONTAP Array erforderlich sind. ANA ist das ALUA-Äquivalent in der NVM-of-Umgebung und ist derzeit mit NVMe Multipath im Kernel implementiert. Mit diesem Verfahren können Sie NVMe-of mit in-Kernel NVMe Multipath unter Verwendung von ANA auf RHEL 9.0 und ONTAP als Ziel aktivieren.
 
 Weitere Informationen zu unterstützten Konfigurationen finden Sie im link:https://mysupport.netapp.com/matrix/["NetApp Interoperabilitäts-Matrix-Tool"^].
 
@@ -176,7 +176,7 @@ FCP CMPL: xb 00001f50 Err 0000d9f8
 --
 .Marvell/QLogic
 --
-Der native Inbox qla2xxx Treiber im RHEL 9.0 Kernel enthält die neuesten Fixes, die für die ONTAP Unterstützung wesentlich sind.
+Der native Inbox qla2xxx Treiber, der im RHEL 9.0 Kernel enthalten ist, hat die neuesten Fehlerbehebungen. Diese Fehlerbehebungen sind für die Unterstützung von ONTAP unerlässlich.
 
 .Schritte
 . Vergewissern Sie sich, dass der unterstützte Adaptertreiber und die unterstützten Firmware-Versionen ausgeführt werden:

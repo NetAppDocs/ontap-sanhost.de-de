@@ -13,7 +13,7 @@ Wenn Sie die `multipath.conf` Datei zum ersten Mal erstellen, müssen Sie mögli
 # chkconfig multipathd on
 # /etc/init.d/multipathd start
 ----
-Es ist nicht erforderlich, der `multipath.conf` Datei direkt etwas hinzuzufügen, es sei denn, Sie verfügen über Geräte, die nicht von Multipath verwaltet werden sollen, oder Sie haben bereits vorhandene Einstellungen, die die Standardeinstellungen außer Kraft setzen. Um unerwünschte Geräte auszuschließen, fügen Sie der `multipath.conf` Datei die folgende Syntax hinzu und ersetzen <DevId> durch die WWID-Zeichenfolge des Geräts, das Sie ausschließen möchten:
+Es ist nicht erforderlich, der Datei direkt etwas hinzuzufügen `multipath.conf`, es sei denn, Sie haben Geräte, die Sie nicht von Multipath verwalten möchten, oder Sie haben bereits Einstellungen, die die Standardeinstellungen außer Kraft setzen. Um unerwünschte Geräte auszuschließen, fügen Sie der `multipath.conf` Datei die folgende Syntax hinzu und ersetzen <DevId> durch die WWID-Zeichenfolge des Geräts, das Sie ausschließen möchten:
 
 [listing]
 ----
@@ -28,7 +28,7 @@ blacklist {
 Das folgende Beispiel bestimmt die WWID eines Geräts und fügt sie der Datei hinzu `multipath.conf`.
 
 .Schritte
-. Führen Sie den folgenden Befehl aus, um die WWID zu bestimmen:
+. Bestimmen Sie die WWID:
 +
 [listing]
 ----
@@ -36,7 +36,7 @@ Das folgende Beispiel bestimmt die WWID eines Geräts und fügt sie der Datei hi
 360030057024d0730239134810c0cb833
 ----
 +
-`sda` Ist die lokale SCSI-Festplatte, die wir zur Blacklist hinzufügen müssen.
+`sda` Ist das lokale SCSI-Laufwerk, das Sie der Blacklist hinzufügen möchten.
 
 . Fügen Sie die hinzu `WWID` Zur schwarzen Liste stanza in `/etc/multipath.conf`:
 +

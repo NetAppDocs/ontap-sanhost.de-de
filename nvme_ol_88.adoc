@@ -22,7 +22,7 @@ Folgende Unterstützung ist für die NVMe-of Hostkonfiguration für OL 8.8 mit O
 
 * Unterstützung für NVMe over TCP (NVMe/TCP) neben NVMe/FC Das NetApp-Plug-in im nativen `nvme-cli` Package zeigt ONTAP-Details sowohl für NVMe/FC- als auch für NVMe/TCP-Namespaces an.
 * Sowohl NVMe- als auch SCSI-Datenverkehr können auf demselben vorhandenen Host ausgeführt werden. Daher können Sie bei SCSI-LUNs dm-Multipath für SCSI-mpath-Geräte konfigurieren, während Sie möglicherweise NVMe Multipath verwenden, um NVMe-of Namespace-Geräte auf dem Host zu konfigurieren.
-* Es gibt keine Unterstützung für NVMe-of für Sanlun. Daher gibt es keine Host Utility-Unterstützung für NVMe-of auf einem OL 8.8-Host. Sie können sich auf das NetApp Plug-in verlassen, das im nativen Lieferumfang enthalten ist `nvme-cli` Paket für alle NVMe-of-Transporte.
+* Es gibt keine Unterstützung für NVMe-of für Sanlun. Daher gibt es keine Host Utility-Unterstützung für NVMe-of auf einem OL 8.8-Host. Sie können das im nativen Paket enthaltene NetApp-Plug-in für alle NVMe-of-Übertragungen verwenden `nvme-cli`.
 
 
 Weitere Informationen zu unterstützten Konfigurationen finden Sie im link:https://mysupport.netapp.com/matrix/["NetApp Interoperabilitäts-Matrix-Tool"^].
@@ -240,8 +240,10 @@ FCP CMPL: xb 00001f50 Err 0000d9f8
 --
 .Marvell/QLogic FC Adapter für NVMe/FC
 --
+Der native Inbox qla2xxx Treiber, der im OL 8.8 GA Kernel enthalten ist, hat die neuesten Fixes. Diese Fehlerbehebungen sind für die Unterstützung von ONTAP unerlässlich.
+
 .Schritte
-. Der native Inbox qla2xxx Treiber im OL 8.8 GA Kernel enthält die neuesten Fixes, die für die ONTAP Unterstützung unerlässlich sind. Vergewissern Sie sich, dass der unterstützte Adaptertreiber und die unterstützten Firmware-Versionen ausgeführt werden:
+. Vergewissern Sie sich, dass der unterstützte Adaptertreiber und die unterstützten Firmware-Versionen ausgeführt werden:
 +
 [listing]
 ----

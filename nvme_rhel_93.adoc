@@ -233,8 +233,10 @@ FCP CMPL: xb 00000629 Err 0001bd3d
 --
 .Marvell/QLogic FC Adapter für NVMe/FC
 --
+Der native Inbox qla2xxx Treiber, der im RHEL 9.3 GA Kernel enthalten ist, hat die neuesten Fehlerbehebungen. Diese Fehlerbehebungen sind für die Unterstützung von ONTAP unerlässlich.
+
 .Schritte
-. Der native Inbox qla2xxx Treiber, der im RHEL 9.3 GA Kernel enthalten ist, hat die neuesten Fixes, die für die Unterstützung von ONTAP unerlässlich sind. Vergewissern Sie sich, dass der unterstützte Adaptertreiber und die unterstützten Firmware-Versionen ausgeführt werden:
+. Vergewissern Sie sich, dass der unterstützte Adaptertreiber und die unterstützten Firmware-Versionen ausgeführt werden:
 +
 [listing]
 ----

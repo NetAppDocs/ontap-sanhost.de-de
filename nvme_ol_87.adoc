@@ -237,8 +237,10 @@ FCP CMPL: xb 00000a89 Err 0000e2f3
 --
 .Marvell/Qlogic FC-Adapter für NVMe/FC
 --
+Der native Inbox qla2xxx Treiber, der im OL 8.7 GA Kernel enthalten ist, hat die neuesten Upstream-Fixes. Diese Fehlerbehebungen sind für die Unterstützung von ONTAP unerlässlich.
+
 .Schritte
-. Der native Inbox qla2xxx Treiber im OL 8.7 GA Kernel enthält die neuesten Upstream-Fixes, die für die ONTAP Unterstützung unerlässlich sind. Vergewissern Sie sich, dass der unterstützte Adaptertreiber und die unterstützten Firmware-Versionen ausgeführt werden:
+. Vergewissern Sie sich, dass der unterstützte Adaptertreiber und die unterstützten Firmware-Versionen ausgeführt werden:
 +
 [listing]
 ----
