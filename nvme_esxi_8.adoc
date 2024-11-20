@@ -22,8 +22,9 @@ Sie können NVMe over Fabrics (NVMe-of) auf Initiator-Hosts, die ESXi 8.x ausfü
 
 == Instandhaltung
 
-* Ab ONTAP 9.10.1 wird das NVMe-/TCP-Protokoll für ONTAP unterstützt.
+* Ab ONTAP 9.16.1 ist die Speicherplatzzuweisung standardmäßig für alle neu erstellten NVMe-Namespaces aktiviert.
 * Ab ONTAP 9.9.1 P3 wird das NVMe/FC-Protokoll für ESXi 8 und höher unterstützt.
+* Ab ONTAP 9.10.1 wird das NVMe-/TCP-Protokoll für ONTAP unterstützt.
 
 
 
@@ -266,6 +267,38 @@ tcp.vmnic2:34:80:0d:30:ca:e0-tcp.192.168.100.167:4420-uuid.f4f14337c3ad4a639edf0
    Path State: active
    Path Config: {ANA_GRP_id=6,*ANA_GRP_state=AO*,health=UP}
 ----
+
+
+
+
+== Aktivieren Sie die Speicherplatzzuweisung
+
+Die Speicherplatzzuweisung wird für ESXi 8.x und höher unterstützt.
+
+Wenn die Speicherplatzzuweisung aktiviert ist und einem Namespace der Speicherplatz ausgeht, kommuniziert ONTAP mit dem Host, dass kein freier Speicherplatz für Schreibvorgänge verfügbar ist. Der Namespace bleibt online und Lesevorgänge werden weiter verarbeitet. Die Schreibvorgänge werden wieder aufgenommen, sobald zusätzlicher freier Speicherplatz verfügbar wird. Die Platzzuweisung erlaubt dem Host auch Operationen durchzuführen `UNMAP` (manchmal auch genannt `TRIM`). Durch UNMAP-Vorgänge kann ein Host Datenblöcke identifizieren, die nicht mehr benötigt werden, da sie keine gültigen Daten mehr enthalten. Das Storage-System kann diese Datenblöcke dann Zuordnung aufheben, sodass der Speicherplatz an anderer Stelle verbraucht werden kann.
+
+.Bevor Sie beginnen
+link:https://docs.netapp.com/us-en/ontap/san-admin/enable-space-allocation.html["Aktivieren Sie die Speicherplatzzuweisung auf Ihrem ONTAP Storage-System"^]. Dann sollten Sie die folgenden Schritte auf Ihrem ESXi-Host durchführen.
+
+.Schritte
+. Stellen Sie auf Ihrem ESXi-Host sicher, dass DSM deaktiviert ist:
++
+`esxcfg-advcfg -g /SCSi/NVmeUseDsmTp4040`
+
++
+Der erwartete Wert ist 0.
+
+. Aktivieren Sie NVMe DSM:
++
+`esxcfg-advcfg -s 1 /Scsi/NvmeUseDsmTp4040`
+
+. Stellen Sie sicher, dass DSM aktiviert ist:
++
+`esxcfg-advcfg -g /SCSi/NVmeUseDsmTp4040`
+
++
+Der erwartete Wert ist 1.
+
 
 
 

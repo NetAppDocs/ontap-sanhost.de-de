@@ -39,7 +39,7 @@ Weitere Informationen zu unterstützten Konfigurationen finden Sie im link:https
 == Bekannte Einschränkungen
 
 * Das Booten von SAN über das NVMe-of-Protokoll wird derzeit nicht unterstützt.
-* Für NVMe-of gibt es keine sanlun-Unterstützung. Daher ist die Unterstützung des Host-Dienstprogramms für NVMe-of auf einem SUSE Linux Enterprise Server 15 SP5-Host nicht verfügbar. Sie können das im nativen nvme-cli-Paket enthaltene NetApp-Plug-in für alle NVMe-of-Übertragungen verwenden.
+* Für NVMe-of gibt es keine sanlun-Unterstützung. Daher ist die Unterstützung des Host-Dienstprogramms für NVMe-of auf einem SUSE Linux Enterprise Server 15 SP5-Host nicht verfügbar. Sie können sich auf das NetApp Plug-in im nativen nvme-cli-Paket für alle NVMe-of-Übertragungen verlassen.
 
 
 
@@ -225,26 +225,33 @@ cat /sys/module/qla2xxx/parameters/ql2xnvmeenable
 
 ONTAP meldet eine MDTS (MAX Data-Übertragungsgröße) von 8 in den Identifizieren von Controller-Daten. Das bedeutet, dass die maximale E/A-Anforderungsgröße bis zu 1 MB betragen kann. Um I/O-Anforderungen von Größe 1 MB für einen Broadcom-NVMe/FC-Host auszustellen, müssen Sie den `lpfc` Wert des `lpfc_sg_seg_cnt` Parameters ab dem Standardwert 64 auf 256 erhöhen.
 
+
+NOTE: Die folgenden Schritte gelten nicht für Qlogic NVMe/FC-Hosts.
+
 .Schritte
 . Setzen Sie den `lpfc_sg_seg_cnt` Parameter auf 256:
 +
 [listing]
 ----
-# cat /etc/modprobe.d/lpfc.conf
+cat /etc/modprobe.d/lpfc.conf
+----
++
+.Beispielausgabe
+[listing]
+----
 options lpfc lpfc_sg_seg_cnt=256
 ----
-. Führen Sie einen `dracut -f` Befehl aus, und starten Sie den Host neu:
+. Führen Sie den Befehl aus `dracut -f`, und starten Sie den Host neu:
 . Stellen Sie sicher, dass `lpfc_sg_seg_cnt` 256:
 +
 [listing]
 ----
-# cat /sys/module/lpfc/parameters/lpfc_sg_seg_cnt
-256
+cat /sys/module/lpfc/parameters/lpfc_sg_seg_cnt
 ----
++
+Der erwartete Wert ist 256.
 
 
-
-NOTE: Dies gilt nicht für Qlogic NVMe/FC-Hosts.
 
 
 
@@ -261,7 +268,7 @@ In sind zwei NVMe/FC-Boot-Services enthalten `nvme-cli` Paket, jedoch _nur_ `nvm
 Created symlink /etc/systemd/system/default.target.wants/nvmf-autoconnect.service → /usr/lib/systemd/system/nvmf-autoconnect.service.
 ----
 . Starten Sie den Host neu.
-. Verifizieren Sie das `nvmf-autoconnect.service` Und `nvmefc-boot-connections.service` Werden nach dem Systemstart ausgeführt:
+. Überprüfen Sie, ob `nvmf-autoconnect.service` und `nvmefc-boot-connections.service` nach dem Systemstart ausgeführt werden:
 +
 *Beispielausgabe:*
 
