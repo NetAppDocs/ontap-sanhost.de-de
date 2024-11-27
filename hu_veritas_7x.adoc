@@ -172,7 +172,7 @@ sdcj  ENABLED(A)  Active/Optimized     c14   SFRAC       sfrac0     -      -
 sdea  ENABLED     Active/Non-Optimized c14   SFRAC       sfrac0     -      -
 ----
 
-NOTE: Eine einzelne LUN sollte nicht mehr als vier Pfade benötigen. Mehr als acht Pfade können bei Storage-Ausfällen zu Pfadproblemen führen.
+NOTE: Eine einzelne LUN sollte nicht mehr als vier Pfade benötigen. Eine Verfügbarkeit von mehr als vier Pfaden kann bei Storage-Ausfällen zu Pfadproblemen führen.
 
 
 

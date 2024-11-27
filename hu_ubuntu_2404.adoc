@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
-permalink: hu_ubuntu_2004.html 
+permalink: hu_ubuntu_2404.html 
 keywords: host utilities, red hat, rhel, linux, 20.04, netapp, ontap, ubuntu 
-summary: Beschreibt die Verwendung von Ubuntu 20.04 mit ONTAP 
+summary: Beschreibt die Verwendung von Ubuntu 24.04 mit ONTAP 
 ---
-= Verwenden Sie Ubuntu 20.04 mit ONTAP
+= Verwenden Sie Ubuntu 24.04 mit ONTAP
 :toc: macro
 :hardbreaks:
 :toclevels: 1
@@ -19,17 +19,19 @@ summary: Beschreibt die Verwendung von Ubuntu 20.04 mit ONTAP
 
 
 [role="lead"]
-Sie können die Konfigurationseinstellungen des ONTAP-SAN-Hosts verwenden, um Ubuntu 20.04 mit ONTAP als Ziel zu konfigurieren.
+Sie können die Konfigurationseinstellungen des ONTAP-SAN-Hosts verwenden, um Ubuntu 24.04 mit ONTAP als Ziel zu konfigurieren.
 
 
-NOTE: Das NetApp Linux Unified Host Utilities-Softwarepaket ist für das Ubuntu 20.04 Betriebssystem nicht verfügbar.
+NOTE: Das NetApp Linux Unified Host Utilities Softwarepaket ist für das Ubuntu 24.04 Betriebssystem nicht verfügbar.
 
 
 
 == SAN Booting
 
-.Was Sie benötigen
-Wenn Sie sich für das Booten über SAN entscheiden, muss es von Ihrer Konfiguration unterstützt werden. Sie können das verwenden link:https://mysupport.netapp.com/matrix/imt.jsp?components=91241;&solution=236&isHWU&src=IMT["NetApp Interoperabilitäts-Matrix-Tool"^] Um zu überprüfen, ob Ihr Betriebssystem, HBA, die HBA-Firmware und das HBA-Boot-BIOS sowie die ONTAP-Version unterstützt werden.
+Wenn Sie sich für das Booten über SAN entscheiden, muss es von Ihrer Konfiguration unterstützt werden.
+
+.Bevor Sie beginnen
+Überprüfen Sie mithilfe deslink:https://mysupport.netapp.com/matrix/imt.jsp?components=91241;&solution=236&isHWU&src=IMT["NetApp Interoperabilitäts-Matrix-Tool"^], ob Betriebssystem, HBA, HBA-Firmware, HBA-Boot-BIOS und ONTAP-Version unterstützt werden.
 
 .Schritte
 . Ordnen Sie die SAN-Boot-LUN dem Host zu.
@@ -49,24 +51,24 @@ Informationen zum Aktivieren des HBA-BIOS finden Sie in der anbieterspezifischen
 
 == Multipathing
 
-Für Ubuntu 20.04, die `/etc/multipath.conf` Die Datei muss vorhanden sein, Sie müssen jedoch keine spezifischen Änderungen an der Datei vornehmen. Ubuntu 20.04 ist mit allen Einstellungen kompiliert, die erforderlich sind, um ONTAP LUNs zu erkennen und korrekt zu verwalten.
+Für Ubuntu 24.04 muss die `/etc/multipath.conf` Datei vorhanden sein, aber Sie müssen keine Änderungen an der Datei vornehmen, da Ubuntu 24.04 mit den Einstellungen kompiliert wird, die erforderlich sind, um ONTAP-LUNs zu erkennen und korrekt zu verwalten.
 
-Sie können das verwenden `multipath -ll` Überprüfen Sie mit dem Befehl die Einstellungen für Ihre ONTAP LUNs.
-
-Die folgenden Abschnitte bieten Beispiel-Multipath-Ausgaben für eine LUN, die ASA-Gruppen und nicht-ASA-Personas zugeordnet ist.
+Für Konfigurationen mit All-SAN-Arrays (ASA) und ohne ASA können Sie mit dem `multipath -ll` Befehl die Einstellungen für eine ONTAP-LUN überprüfen, wie in den folgenden Beispielen gezeigt.
 
 
+NOTE: Eine einzelne LUN sollte nicht mehr als vier Pfade benötigen. Mehr als acht Pfade können bei Storage-Ausfällen zu Pfadproblemen führen.
 
-=== Alle SAN-Array-Konfigurationen
 
-In Konfigurationen mit allen SAN-Arrays (ASA) sind alle Pfade zu einer bestimmten LUN aktiv und optimiert. Dies verbessert die Performance, da I/O-Operationen über alle Pfade gleichzeitig ausgeführt werden können.
 
-.Beispiel
-Im folgenden Beispiel wird die richtige Ausgabe für eine ONTAP LUN angezeigt:
+=== ASA-Konfigurationen
+
+In ASA Konfigurationen sind alle Pfade zu einer bestimmten LUN aktiv und optimiert. Dies verbessert die Performance, da I/O-Operationen über alle Pfade gleichzeitig ausgeführt werden können.
+
+Im folgenden Beispiel wird die richtige Ausgabe für eine ONTAP-LUN angezeigt, die einer ASA-Persona zugeordnet ist:
 
 [listing]
 ----
-# multipath -ll
+# # multipath -ll
 3600a098038314559533f524d6c652f62 dm-24 NETAPP,LUN C-Mode
 size=10G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
 `-+- policy='service-time 0' prio=50 status=active
@@ -76,16 +78,12 @@ size=10G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=
   `- 12:0:3:13 sdbx 68:176 active ready running
 ----
 
-NOTE: Eine einzelne LUN sollte nicht mehr als vier Pfade benötigen. Eine Verfügbarkeit von mehr als vier Pfaden kann bei Storage-Ausfällen zu Pfadproblemen führen.
-
-
 
 === Konfigurationen ohne ASA
 
-Für Konfigurationen ohne ASA sollten zwei Gruppen von Pfaden mit unterschiedlichen Prioritäten vorhanden sein. Die Pfade mit höheren Prioritäten sind aktiv/optimiert, d. h. sie werden vom Controller gewartet, in dem sich das Aggregat befindet. Die Pfade mit niedrigeren Prioritäten sind aktiv, aber nicht optimiert, da sie von einem anderen Controller bedient werden. Die nicht optimierten Pfade werden nur verwendet, wenn optimierte Pfade nicht verfügbar sind.
+Für Konfigurationen ohne ASA sollten zwei Gruppen von Pfaden mit unterschiedlichen Prioritäten vorhanden sein. Die Pfade mit höheren Prioritäten sind aktiv/optimiert, d. h. sie werden vom Controller gewartet, in dem sich das Aggregat befindet. Die Pfade mit niedrigeren Prioritäten sind aktiv, aber nicht optimiert, da sie von einem anderen Controller bedient werden. Die nicht optimierten Pfade werden nur verwendet, wenn keine optimierten Pfade verfügbar sind.
 
-.Beispiel
-Im folgenden Beispiel wird die richtige Ausgabe für eine ONTAP-LUN mit zwei aktiv/optimierten Pfaden und zwei aktiv/nicht optimierten Pfaden angezeigt:
+Im folgenden Beispiel wird die richtige Ausgabe für eine ONTAP-LUN mit zwei aktiven/optimierten Pfaden und zwei aktiv/nicht optimierten Pfaden angezeigt, die einer nicht-ASA-Persona zugeordnet sind:
 
 [listing]
 ----
@@ -100,13 +98,10 @@ size=160G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp
   `- 15:0:1:0 sdv  65:80  active ready running
 ----
 
-NOTE: Eine einzelne LUN sollte nicht mehr als vier Pfade benötigen. Eine Verfügbarkeit von mehr als vier Pfaden kann bei Storage-Ausfällen zu Pfadproblemen führen.
-
-
 
 == Empfohlene Einstellungen
 
-Das Ubuntu 20.04-Betriebssystem wird kompiliert, um ONTAP-LUNs zu erkennen und automatisch alle Konfigurationsparameter für ASA- und nicht-ASA-Konfigurationen korrekt einzustellen. Mithilfe der folgenden empfohlenen Einstellungen können Sie die Performance für Ihre Host-Konfiguration weiter optimieren.
+Das Ubuntu 24.04-Betriebssystem wird kompiliert, um ONTAP-LUNs zu erkennen und automatisch alle Konfigurationsparameter für ASA- und nicht-ASA-Konfigurationen korrekt einzustellen. Außerdem können Sie die folgenden empfohlenen Einstellungen verwenden, um die Performance Ihrer Hostkonfiguration weiter zu optimieren.
 
 Die `multipath.conf` Datei muss vorhanden sein, damit der Multipath-Daemon gestartet werden kann. Wenn diese Datei nicht vorhanden ist, können Sie mit dem Befehl eine leere, Null-Byte-Datei erstellen `touch /etc/multipath.conf`
 
@@ -214,8 +209,7 @@ In der folgenden Tabelle sind die kritischen `multipathd` Parameter für ONTAP-L
 
 | Anbieter | NETAPP 
 |===
-.Beispiel
-Das folgende Beispiel zeigt, wie eine überhielte Standardeinstellung korrigiert wird. In diesem Fall die `multipath.conf` Datei definiert Werte für `path_checker` Und `no_path_retry` Die nicht mit ONTAP LUNs kompatibel sind. Wenn sie nicht entfernt werden können, da noch andere SAN-Arrays an den Host angeschlossen sind, können diese Parameter speziell für ONTAP-LUNs mit einem Device stanza korrigiert werden.
+Das folgende Beispiel zeigt, wie eine überhielte Standardeinstellung korrigiert wird. In diesem Fall definiert die `multipath.conf` Datei Werte für `path_checker` und `no_path_retry`, die nicht mit ONTAP LUNs kompatibel sind. Wenn sie nicht entfernt werden können, da noch andere SAN-Arrays an den Host angeschlossen sind, können diese Parameter speziell für ONTAP-LUNs mit einem Device stanza korrigiert werden.
 
 [listing]
 ----
@@ -243,4 +237,4 @@ Sie können die empfohlenen Einstellungen verwenden, um Kernel-Based Virtual Mac
 
 == Bekannte Probleme
 
-Es gibt keine bekannten Probleme für die Ubuntu 20.04 mit ONTAP-Release.
+Es gibt keine bekannten Probleme für die Ubuntu 24.04 mit ONTAP-Release.

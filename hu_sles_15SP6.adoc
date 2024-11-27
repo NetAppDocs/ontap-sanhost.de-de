@@ -116,7 +116,7 @@ size=80G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=
   `- 14:0:7:9   sdiw 8:256   active ready running
 ----
 
-NOTE: Eine einzelne LUN sollte nicht mehr als vier Pfade benötigen. Mehr als acht Pfade können bei Storage-Ausfällen zu Pfadproblemen führen.
+NOTE: Eine einzelne LUN sollte nicht mehr als vier Pfade benötigen. Eine Verfügbarkeit von mehr als vier Pfaden kann bei Storage-Ausfällen zu Pfadproblemen führen.
 
 
 
@@ -140,7 +140,7 @@ size=80G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=
   `- 14:0:5:0   sdgz 132:240 active ready running
 ----
 
-NOTE: Eine einzelne LUN sollte nicht mehr als vier Pfade benötigen. Mehr als acht Pfade können bei Storage-Ausfällen zu Pfadproblemen führen.
+NOTE: Eine einzelne LUN sollte nicht mehr als vier Pfade benötigen. Eine Verfügbarkeit von mehr als vier Pfaden kann bei Storage-Ausfällen zu Pfadproblemen führen.
 
 
 
@@ -148,9 +148,7 @@ NOTE: Eine einzelne LUN sollte nicht mehr als vier Pfade benötigen. Mehr als ac
 
 Das Betriebssystem SUSE Linux Enterprise Server 15 SP6 erkennt ONTAP-LUNs und setzt automatisch alle Konfigurationsparameter für ASA- und nicht-ASA-Konfigurationen korrekt ein. Mithilfe der folgenden empfohlenen Einstellungen können Sie die Performance für Ihre Host-Konfiguration weiter optimieren.
 
-Die `multipath.conf` Datei muss vorhanden sein, damit der Multipath-Daemon gestartet werden kann. Wenn diese Datei nicht vorhanden ist, können Sie eine leere Datei mit einem Zero-Byte-Wert erstellen, indem Sie den folgenden Befehl verwenden:
-
-`touch /etc/multipath.conf`
+Die `multipath.conf` Datei muss vorhanden sein, damit der Multipath-Daemon gestartet werden kann. Wenn diese Datei nicht vorhanden ist, können Sie eine leere, Null-Byte-Datei mit dem Befehl erstellen `touch /etc/multipath.conf`.
 
 Wenn Sie die `multipath.conf` Datei zum ersten Mal erstellen, müssen Sie möglicherweise die Multipath-Services mithilfe der folgenden Befehle aktivieren und starten:
 
@@ -197,7 +195,7 @@ blacklist {
 ----
 
 
-Sie sollten immer Ihre überprüfen `/etc/multipath.conf` Datei für ältere Einstellungen, insbesondere im Abschnitt „Standardeinstellungen“, die die Standardeinstellungen überschreiben könnte.
+Überprüfen Sie Ihre Datei immer `/etc/multipath.conf`, insbesondere im Abschnitt „Standardeinstellungen“, auf ältere Einstellungen, die die Standardeinstellungen überschreiben könnten.
 
 In der folgenden Tabelle sind die kritischen `multipathd` Parameter für ONTAP-LUNs und die erforderlichen Werte aufgeführt. Wenn ein Host mit LUNs anderer Hersteller verbunden ist und diese Parameter überschrieben werden, müssen sie durch spätere Strophen in der `multipath.conf` Datei korrigiert werden, die speziell für ONTAP-LUNs gelten. Wenn dies nicht ausgeführt wird, funktionieren die ONTAP LUNs möglicherweise nicht wie erwartet. Sie sollten diese Standardeinstellungen nur in Absprache mit NetApp und/oder einem OS-Anbieter außer Kraft setzen und nur dann, wenn die Auswirkungen vollständig verstanden sind.
 

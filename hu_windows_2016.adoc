@@ -112,7 +112,7 @@ Für die gesamte SAN Array (ASA)-Konfiguration sollte eine Gruppe von Pfaden mit
 image::asa.png[Screenshot der ONTAP-LUN mit aktiven/optimierten Pfaden]
 
 
-NOTE: Verwenden Sie keine unverhältnismäßig hohe Anzahl von Pfaden zu einer einzelnen LUN. Es sollten nicht mehr als vier Pfade erforderlich sein. Mehr als acht Pfade können bei Storage-Ausfällen zu Pfadproblemen führen.
+NOTE: Eine einzelne LUN sollte nicht mehr als vier Pfade benötigen. Eine Verfügbarkeit von mehr als vier Pfaden kann bei Storage-Ausfällen zu Pfadproblemen führen.
 
 
 
