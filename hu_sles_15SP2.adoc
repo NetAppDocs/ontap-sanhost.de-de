@@ -160,7 +160,7 @@ blacklist {
 ----
 
 
-Überprüfen Sie Ihre Datei immer `/etc/multipath.conf`, insbesondere im Abschnitt „Standardeinstellungen“, auf ältere Einstellungen, die die Standardeinstellungen überschreiben können.
+Überprüfen Sie Ihre Datei immer `/etc/multipath.conf`, insbesondere im Abschnitt „Standardeinstellungen“, auf ältere Einstellungen, die die Standardeinstellungen überschreiben könnten.
 
 In der folgenden Tabelle sind die kritischen `multipathd` Parameter für ONTAP-LUNs und die erforderliche Einstellung aufgeführt. Wenn ein Host mit LUNs anderer Hersteller verbunden ist und diese Parameter überschrieben werden, müssen sie durch spätere Strophen in der `multipath.conf` Datei korrigiert werden, die speziell für ONTAP-LUNs gelten. Ohne diese Korrektur funktionieren die ONTAP-LUNs möglicherweise nicht wie erwartet. Sie sollten diese Standardeinstellungen nur in Absprache mit NetApp, dem OS-Anbieter oder beiden außer Kraft setzen, und zwar nur dann, wenn die Auswirkungen vollständig verstanden sind.
 
