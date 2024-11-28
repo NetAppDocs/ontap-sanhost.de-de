@@ -56,7 +56,7 @@ Für Ubuntu 24.04 muss die `/etc/multipath.conf` Datei vorhanden sein, aber Sie 
 Für Konfigurationen mit All-SAN-Arrays (ASA) und ohne ASA können Sie mit dem `multipath -ll` Befehl die Einstellungen für eine ONTAP-LUN überprüfen, wie in den folgenden Beispielen gezeigt.
 
 
-NOTE: Eine einzelne LUN sollte nicht mehr als vier Pfade benötigen. Mehr als acht Pfade können bei Storage-Ausfällen zu Pfadproblemen führen.
+NOTE: Eine einzelne LUN sollte nicht mehr als vier Pfade benötigen. Mehr als vier Pfade können bei Storage-Ausfällen zu Pfadproblemen führen.
 
 
 
