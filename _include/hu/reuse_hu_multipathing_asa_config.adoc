@@ -1,0 +1,16 @@
+= ASA-Konfigurationen
+:allow-uri-read: 
+
+
+Für Konfigurationen mit All-SAN-Arrays (ASA) und ohne ASA können Sie mit dem `multipath -ll` Befehl die Einstellungen für eine ONTAP-LUN überprüfen, wie in den folgenden Beispielen gezeigt.
+
+
+NOTE: Eine einzelne LUN sollte nicht mehr als vier Pfade benötigen. Mehr als acht Pfade können bei Storage-Ausfällen zu Pfadproblemen führen.
+
+
+
+=== ASA-Konfigurationen
+
+In ASA Konfigurationen sind alle Pfade zu einer bestimmten LUN aktiv und optimiert. Dies verbessert die Performance, da I/O-Operationen über alle Pfade gleichzeitig ausgeführt werden können.
+
+Im folgenden Beispiel wird die richtige Ausgabe für eine ONTAP-LUN angezeigt, die einer ASA-Persona zugeordnet ist:

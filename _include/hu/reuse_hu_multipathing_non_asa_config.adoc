@@ -1,0 +1,11 @@
+= Konfigurationen ohne ASA
+:allow-uri-read: 
+
+
+
+
+=== Konfigurationen ohne ASA
+
+Für Konfigurationen ohne ASA sollten zwei Gruppen von Pfaden mit unterschiedlichen Prioritäten vorhanden sein. Die Pfade mit höheren Prioritäten sind aktiv/optimiert, d. h. sie werden vom Controller gewartet, in dem sich das Aggregat befindet. Die Pfade mit niedrigeren Prioritäten sind aktiv, aber nicht optimiert, da sie von einem anderen Controller bedient werden. Die nicht optimierten Pfade werden nur verwendet, wenn keine optimierten Pfade verfügbar sind.
+
+Im folgenden Beispiel wird die richtige Ausgabe für eine ONTAP-LUN mit zwei aktiven/optimierten Pfaden und zwei aktiv/nicht optimierten Pfaden angezeigt, die einer nicht-ASA-Persona zugeordnet sind:

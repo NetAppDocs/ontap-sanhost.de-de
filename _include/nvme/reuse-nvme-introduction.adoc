@@ -1,0 +1,5 @@
+= 
+:allow-uri-read: 
+
+
+NVMe-of kann mit ONTAP LUNs eingesetzt werden. In NVMe-of Umgebungen entspricht ANA ALUA Multipathing in iSCSI- und FCP-Umgebungen und wird mit der in-Kernel-Multipath-Funktion implementiert.

@@ -148,7 +148,7 @@ NOTE: Eine einzelne LUN sollte nicht mehr als vier Pfade benötigen. Eine Verfü
 
 CentOS 8.4 wird kompiliert, um ONTAP-LUNs zu erkennen und automatisch alle Konfigurationsparameter sowohl für ASA als auch für nicht-ASA-Konfiguration korrekt festzulegen.
 
-Die `multipath.conf` Datei muss vorhanden sein, damit der Multipath-Daemon gestartet werden kann. Wenn diese Datei nicht vorhanden ist, können Sie mit dem Befehl eine leere, Null-Byte-Datei erstellen `touch /etc/multipath.conf`
+Die `multipath.conf` Datei muss vorhanden sein, damit der Multipath-Daemon gestartet werden kann. Wenn diese Datei nicht vorhanden ist, können Sie eine leere, Null-Byte-Datei mit dem Befehl erstellen `touch /etc/multipath.conf`.
 
 Wenn Sie die `multipath.conf` Datei zum ersten Mal erstellen, müssen Sie möglicherweise die Multipath-Services mithilfe der folgenden Befehle aktivieren und starten:
 
@@ -194,7 +194,7 @@ blacklist {
 
 Überprüfen Sie Ihre Datei immer `/etc/multipath.conf`, insbesondere im Abschnitt „Standardeinstellungen“, auf ältere Einstellungen, die die Standardeinstellungen überschreiben könnten.
 
-In der folgenden Tabelle sind die kritischen `multipathd` Parameter für ONTAP-LUNs und die erforderliche Einstellung aufgeführt. Wenn ein Host mit LUNs anderer Hersteller verbunden ist und diese Parameter überschrieben werden, müssen sie durch spätere Strophen in der `multipath.conf` Datei korrigiert werden, die speziell für ONTAP-LUNs gelten. Ohne diese Korrektur funktionieren die ONTAP-LUNs möglicherweise nicht wie erwartet. Sie sollten diese Standardeinstellungen nur in Absprache mit NetApp, dem OS-Anbieter oder beiden außer Kraft setzen, und zwar nur dann, wenn die Auswirkungen vollständig verstanden sind.
+In der folgenden Tabelle sind die kritischen `multipathd` Parameter für ONTAP-LUNs und die erforderlichen Werte aufgeführt. Wenn ein Host mit LUNs anderer Hersteller verbunden ist und diese Parameter überschrieben werden, müssen sie durch spätere Strophen in der `multipath.conf` Datei korrigiert werden, die speziell für ONTAP-LUNs gelten. Ohne diese Korrektur funktionieren die ONTAP-LUNs möglicherweise nicht wie erwartet. Sie sollten diese Standardeinstellungen nur in Absprache mit NetApp, dem OS-Anbieter oder beiden außer Kraft setzen, und zwar nur dann, wenn die Auswirkungen vollständig verstanden sind.
 
 [cols="2*"]
 |===
