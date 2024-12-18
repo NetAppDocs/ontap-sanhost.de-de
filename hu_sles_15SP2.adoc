@@ -120,10 +120,12 @@ Die `multipath.conf` Datei muss vorhanden sein, damit der Multipath-Daemon gesta
 
 Wenn Sie die `multipath.conf` Datei zum ersten Mal erstellen, müssen Sie möglicherweise die Multipath-Services mithilfe der folgenden Befehle aktivieren und starten:
 
-`# chkconfig multipathd on`
-`# /etc/init.d/multipathd start`
-
-Sie müssen der Datei nichts direkt hinzufügen `multipath.conf`, es sei denn, Sie verfügen über Geräte, die nicht von Multipath verwaltet werden sollen, oder Sie haben bereits vorhandene Einstellungen, die die Standardeinstellungen außer Kraft setzen. Um unerwünschte Geräte auszuschließen, fügen Sie der `multipath.conf` Datei die folgende Syntax hinzu und ersetzen <DevId> durch die WWID-Zeichenfolge des Geräts, das Sie ausschließen möchten:
+[listing]
+----
+# systemctl enable multipathd
+# systemctl start multipathd
+----
+Es ist nicht erforderlich, Geräte direkt zur Datei hinzuzufügen `multipath.conf`, es sei denn, Sie verfügen über Geräte, die nicht von Multipath verwaltet werden sollen, oder Sie haben bereits vorhandene Einstellungen, die die Standardeinstellungen außer Kraft setzen. Sie können unerwünschte Geräte ausschließen, indem Sie der Datei die folgende Syntax hinzufügen `multipath.conf` und <DevId> durch die WWID-Zeichenfolge des Geräts ersetzen, das Sie ausschließen möchten:
 
 [listing]
 ----
@@ -134,14 +136,18 @@ blacklist {
         devnode "^cciss.*"
 }
 ----
-Das folgende Beispiel bestimmt die WWID eines Geräts und fügt sie der Datei hinzu `multipath.conf`.
+Im folgenden Beispiel legen Sie die WWID eines Geräts fest und fügen das Gerät der Datei hinzu `multipath.conf`.
 
 .Schritte
 . Bestimmen Sie die WWID:
 +
 [listing]
 ----
-# /lib/udev/scsi_id -gud /dev/sda
+/lib/udev/scsi_id -gud /dev/sda
+----
++
+[listing]
+----
 360030057024d0730239134810c0cb833
 ----
 +
@@ -162,7 +168,7 @@ blacklist {
 
 Überprüfen Sie Ihre Datei immer `/etc/multipath.conf`, insbesondere im Abschnitt „Standardeinstellungen“, auf ältere Einstellungen, die die Standardeinstellungen überschreiben könnten.
 
-In der folgenden Tabelle sind die kritischen `multipathd` Parameter für ONTAP-LUNs und die erforderlichen Werte aufgeführt. Wenn ein Host mit LUNs anderer Hersteller verbunden ist und diese Parameter überschrieben werden, müssen sie durch spätere Strophen in der `multipath.conf` Datei korrigiert werden, die speziell für ONTAP-LUNs gelten. Ohne diese Korrektur funktionieren die ONTAP-LUNs möglicherweise nicht wie erwartet. Sie sollten diese Standardeinstellungen nur in Absprache mit NetApp, dem OS-Anbieter oder beiden außer Kraft setzen, und zwar nur dann, wenn die Auswirkungen vollständig verstanden sind.
+In der folgenden Tabelle sind die kritischen `multipathd` Parameter für ONTAP-LUNs und die erforderlichen Werte aufgeführt. Wenn ein Host mit LUNs anderer Hersteller verbunden ist und diese Parameter überschrieben werden, müssen sie durch spätere Strophen in der `multipath.conf` Datei korrigiert werden, die speziell für ONTAP-LUNs gelten. Wenn dies nicht ausgeführt wird, funktionieren die ONTAP LUNs möglicherweise nicht wie erwartet. Sie sollten diese Standardeinstellungen nur in Absprache mit NetApp und/oder einem OS-Anbieter außer Kraft setzen und nur dann, wenn die Auswirkungen vollständig verstanden sind.
 
 [cols="2"]
 |===

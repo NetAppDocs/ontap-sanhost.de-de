@@ -42,7 +42,7 @@ Sie können die komprimierte Datei mit den Host Utilities Softwarepaketen von he
 
 == SAN Toolkit
 
-Das Tool-Kit wird automatisch installiert, wenn Sie das NetApp Host Utilities-Paket installieren. Dieses Kit enthält die `sanlun` Dienstprogramm: Unterstützt Sie beim Management von LUNs und HBAs. Der `sanlun` Befehl gibt Informationen über die LUNs zurück, die Ihrem Host zugeordnet sind, Multipathing und Informationen zurück, die zum Erstellen von Initiatorgruppen erforderlich sind.
+Durch die Installation des NetApp Host Utilities-Pakets wird das Toolkit automatisch installiert. Dieses Kit enthält das `sanlun` Dienstprogramm, mit dem Sie LUNs und Host-Bus-Adapter (HBAs) verwalten können. Der `sanlun` Befehl gibt Informationen über die LUNs zurück, die Ihrem Host zugeordnet sind, Multipathing und die zum Erstellen von Initiatorgruppen erforderlichen Informationen.
 
 .Beispiel
 Im folgenden Beispiel wird der verwendet `sanlun lun show` Befehl gibt LUN-Informationen zurück.
@@ -81,7 +81,7 @@ Multipathing ermöglicht Ihnen die Konfiguration mehrerer Netzwerkpfade zwischen
 Für Konfigurationen ohne ASA sollten zwei Gruppen von Pfaden mit unterschiedlichen Prioritäten vorhanden sein. Die Pfade mit höheren Prioritäten sind aktiv/optimiert, d. h. sie werden vom Controller gewartet, in dem sich das Aggregat befindet. Die Pfade mit niedrigeren Prioritäten sind aktiv, aber nicht optimiert, da sie von einem anderen Controller bedient werden. Die nicht optimierten Pfade werden nur verwendet, wenn optimierte Pfade nicht verfügbar sind.
 
 .Beispiel
-Im folgenden Beispiel wird die richtige Ausgabe für eine ONTAP-LUN mit zwei aktiv/optimierten Pfaden und zwei aktiv/nicht optimierten Pfaden angezeigt:
+Das folgende Beispiel zeigt die richtige Ausgabe für eine ONTAP-LUN mit zwei aktiv/optimierten Pfaden und zwei aktiv/nicht optimierten Pfaden.
 
 [listing]
 ----
@@ -107,10 +107,10 @@ up       secondary  /dev/dsk/c42t4d5   fcd1    hpux_4     1
 
 === Alle SAN-Array-Konfigurationen
 
-In Konfigurationen mit allen SAN-Arrays (ASA) sind alle Pfade zu einer bestimmten LUN aktiv und optimiert. Dies verbessert die Performance, da I/O-Operationen über alle Pfade gleichzeitig ausgeführt werden können.
+Alle SAN-Array-(ASA-)Konfigurationen optimieren alle Pfade zu einer bestimmten LUN und halten sie aktiv. Dies verbessert die Performance, da I/O-Operationen über alle Pfade gleichzeitig ausgeführt werden können.
 
 .Beispiel
-Im folgenden Beispiel wird die richtige Ausgabe für eine ONTAP LUN angezeigt:
+Im folgenden Beispiel wird die richtige Ausgabe für eine ONTAP-LUN angezeigt.
 
 
 NOTE: Alle SAN-Array-Konfigurationen (ASA) werden ab ONTAP 9.8 für HP-UX 11iv3 unterstützt

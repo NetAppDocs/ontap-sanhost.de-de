@@ -272,7 +272,7 @@ QLE2872 FW:v9.14.02 DVR:v 10.02.09.100-k
 ONTAP meldet eine MDTS (MAX Data-Übertragungsgröße) von 8 in den Identifizieren von Controller-Daten. Das bedeutet, dass die maximale E/A-Anforderungsgröße bis zu 1 MB betragen kann. Um I/O-Anforderungen der Größe 1 MB für einen Broadcom-NVMe/FC-Host auszustellen, sollten Sie den Wert des `lpfc_sg_seg_cnt` Parameters ab dem Standardwert 64 auf 256 erhöhen `lpfc`.
 
 
-NOTE: Die folgenden Schritte gelten nicht für Qlogic NVMe/FC-Hosts.
+NOTE: Diese Schritte gelten nicht für Qlogic NVMe/FC-Hosts.
 
 .Schritte
 . Setzen Sie den `lpfc_sg_seg_cnt` Parameter auf 256:
@@ -286,16 +286,13 @@ cat /etc/modprobe.d/lpfc.conf
 ----
 options lpfc lpfc_sg_seg_cnt=256
 ----
-. Führen Sie den Befehl aus `dracut -f`, und starten Sie den Host neu:
-. Stellen Sie sicher, dass `lpfc_sg_seg_cnt` 256:
+. Führen Sie den Befehl aus `dracut -f`, und starten Sie den Host neu.
+. Stellen Sie sicher, dass der erwartete Wert von `lpfc_sg_seg_cnt` 256 ist:
 +
 [listing]
 ----
 cat /sys/module/lpfc/parameters/lpfc_sg_seg_cnt
 ----
-+
-Der erwartete Wert ist 256.
-
 
 
 
