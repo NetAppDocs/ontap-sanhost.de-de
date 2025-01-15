@@ -194,89 +194,123 @@ Das folgende Beispiel bestimmt die WWID eines Geräts und fügt sie der Datei hi
 [listing]
 ----
 3600a098038314c4a433f5774717a3046
-/lib/udev/scsi_id -gud /dev/sda
 ----
 +
-360030057024d0730239134810c0cb833
+`sda` Ist das lokale SCSI-Laufwerk, das Sie der Blacklist hinzufügen möchten.
+
+. Fügen Sie die hinzu `WWID` Zur schwarzen Liste stanza in `/etc/multipath.conf`:
++
+[source, cli]
+----
+blacklist {
+     wwid   3600a098038314c4a433f5774717a3046
+     devnode "^(ram|raw|loop|fd|md|dm-|sr|scd|st)[0-9]*"
+     devnode "^hd[a-z]"
+     devnode "^cciss.*"
+}
+----
 
 
+Überprüfen Sie Ihre Datei, insbesondere im Abschnitt „Standardeinstellungen“, immer `/etc/multipath.conf` auf ältere Einstellungen, die die Standardeinstellungen überschreiben könnten.
+
+In der folgenden Tabelle sind die kritischen `multipathd` Parameter für ONTAP-LUNs und die erforderlichen Werte aufgeführt. Wenn ein Host mit LUNs anderer Hersteller verbunden ist und diese Parameter überschrieben werden, müssen sie durch spätere Strophen in der `multipath.conf` Datei korrigiert werden, die speziell für ONTAP-LUNs gelten. Ohne diese Korrektur funktionieren die ONTAP-LUNs möglicherweise nicht wie erwartet. Sie sollten diese Standardeinstellungen nur in Absprache mit NetApp, dem OS-Anbieter oder beiden außer Kraft setzen, und zwar nur dann, wenn die Auswirkungen vollständig verstanden sind.
+
+[cols="2*"]
+|===
+| Parameter | Einstellung 
+
+
+| Erkennen_Prio | ja 
+
+
+| Dev_Loss_tmo | „Unendlich“ 
+
+
+| Failback | Sofort 
+
+
+| Fast_io_fail_tmo | 5 
+
+
+| Funktionen | „3 queue_if_no_Pg_init_retries 50“ 
+
+
+| Flush_on_Last_del | „ja“ 
+
+
+| Hardware_Handler | „0“ 
+
+
+| Kein_PATH_retry | Warteschlange 
+
+
+| PATH_Checker | „nur“ 
+
+
+| Path_Grouping_Policy | „Group_by_prio“ 
+
+
+| Pfad_Auswahl | „Round Robin 0“ 
+
+
+| Polling_Interval | 5 
+
+
+| prio | ONTAP 
+
+
+| Produkt | LUN.* 
+
+
+| Beibehalten_Attached_hw_Handler | ja 
+
+
+| rr_weight | „Einheitlich“ 
+
+
+| User_friendly_names | Nein 
+
+
+| Anbieter | NETAPP 
+|===
+.Beispiel
+Das folgende Beispiel zeigt, wie eine überhielte Standardeinstellung korrigiert wird. In diesem Fall die `multipath.conf` Datei definiert Werte für `path_checker` Und `no_path_retry` Die nicht mit ONTAP LUNs kompatibel sind. Wenn sie nicht entfernt werden können, weil andere SAN-Arrays noch an den Host angeschlossen sind, können diese Parameter speziell für ONTAP-LUNs mit einem Device stanza korrigiert werden.
 
 [listing]
 ----
-+
-`sda` is the local SCSI disk that you want to add to the blacklist.
+defaults {
+   path_checker      readsector0
+   no_path_retry      fail
+}
 
-. Add the `WWID` to the blacklist stanza in `/etc/multipath.conf`:
-[source,cli]
-+
+devices {
+   device {
+      vendor         "NETAPP  "
+      product         "LUN.*"
+      no_path_retry     queue
+      path_checker      tur
+   }
+}
 ----
-Blacklist { wwid 3600a098038314c4a433f5774717a3046 Devnode "^ 9^^ }
 
-[listing]
-----
 
-Always check your `/etc/multipath.conf` file, especially in the defaults section, for legacy settings that might be overriding default settings.
+=== Konfigurieren Sie die KVM-Einstellungen
 
-The following table demonstrates the critical `multipathd` parameters for ONTAP LUNs and the required values. If a host is connected to LUNs from other vendors and any of these parameters are overridden, they must be corrected by later stanzas in the `multipath.conf` file that apply specifically to ONTAP LUNs. Without this correction, the ONTAP LUNs might not work as expected. You should only override these defaults in consultation with NetApp, the OS vendor, or both, and only when the impact is fully understood.
+Sie können die empfohlenen Einstellungen verwenden, um Kernel-Based Virtual Machine (KVM) ebenfalls zu konfigurieren. Zum Konfigurieren von KVM sind keine Änderungen erforderlich, da die LUN dem Hypervisor zugeordnet ist.
 
-//ONTAPDOC-2578 9-Dec-2024
-//ONTAPDOC-2561 25-Nov-202
 
-[cols=2*,options="header"]
+
+== Bekannte Probleme
+
+Die RHEL 6.9 mit ONTAP-Version weist folgende bekannte Probleme auf:
+
+[cols="3*"]
 |===
-| Parameter
-| Setting
-| detect_prio | yes
-| dev_loss_tmo | "infinity"
-| failback | immediate
-| fast_io_fail_tmo | 5
-| features | "3 queue_if_no_path pg_init_retries 50"
-| flush_on_last_del | "yes"
-| hardware_handler | "0"
-| no_path_retry | queue
-| path_checker | "tur"
-| path_grouping_policy | "group_by_prio"
-| path_selector | "round-robin 0"
-| polling_interval | 5
-| prio | "ontap"
-| product | LUN.*
-| retain_attached_hw_handler | yes
-| rr_weight | "uniform"
-| user_friendly_names | no
-| vendor | NETAPP
+| NetApp Bug ID | Titel | Beschreibung 
+
+
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1067272["1067272"^] | Der Remote-Port-Status auf EMULEX LPe32002 Hosts befindet sich während eines Storage Failover-Betriebs möglicherweise im „blockierten“ Zustand | Bei Speicher-Failover-Vorgängen kann ein bestimmter Remote-Port-Status auf RHEL 6.9-Host mit LPe32002-Adapter in den Status „gesperrt“ gelangen. Da die logischen Schnittstellen bei Ausfall eines Storage Node ausfallen, setzt der Remote-Port den Status des Storage Node auf „gesperrt“. Wenn der Storage Node jedoch wieder in den optimalen Zustand zurückkehrt, werden auch die logischen Schnittstellen angezeigt und der Remote-Port-Status wird voraussichtlich „Online“ aufweisen. Aber bei bestimmten Gelegenheiten ist der Remote-Port weiterhin im Zustand „blockiert“. Dieser Status manifestiert sich als „fehlerhaft“ in LUNS in der Multipath-Schicht. 
+
+
+| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1076584["1076584"^] | Firmware-Dumps treten bei einem Storage-Failover auf dem HBA von Red hat Enterprise Linux 6.9 QLogic QE8362 auf | Firmware-Dumps können bei Storage-Failover-Vorgängen auf Red hat Enterprise Linux (RHEL) 6.9 Hosts mit QLogic QLE8362 Host Bus Adaptern (HBA) auftreten, Firmware-Dumps werden gelegentlich festgestellt. Die Firmware-Dumps können als I/O-Ausfall auf dem Host auftreten, der bis zu 1200 Sekunden dauern kann. Nachdem der Adapter das Dumping der Firmware-Kerne abgeschlossen hat, wird der I/O-Vorgang normal fortgesetzt. Auf dem Host ist keine weitere Wiederherstellung erforderlich. Um den Firmware-Dump anzugeben, wird die folgende Meldung in der Datei /var/log/ message angezeigt: Kernel: Qla2xxx [0000:0c:00.3]-d001:3: Firmware-Dump in temporären Puffer gespeichert (3/ffcc90018b01000), dump-Status-Flags (0x3f) 
 |===
-
-.Example
-
-The following example shows how to correct an overridden default. In this case, the `multipath.conf` file defines values for `path_checker` and `no_path_retry` that are not compatible with ONTAP LUNs. If they cannot be removed because of other SAN arrays still attached to the host, these parameters can be corrected specifically for ONTAP LUNs with a device stanza.
-
-----
-Standardeinstellungen { path_Checker readsector0 no_path_retry fail }
-
-Devices { device { Vendor „NetApp “ Produkt „LUN.*“ no_path_retry queue path_Checker tur } }
-
-[listing]
-----
-
-=== Configure KVM settings
-
-You can use the recommended settings to configure Kernel-based Virtual Machine (KVM) as well. There are no changes required to configure KVM because the LUN is mapped to the hypervisor.
-
-//ONTAPDOC-2561 5-Dec-2024
-
-[[known-problems-and-limitations]]
-== Known issues
-
-The RHEL 6.9 with ONTAP release has the following known issues:
-
-[cols=3*,options="header"]
-|===
-| NetApp Bug ID
-| Title
-| Description
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1067272[1067272^] | Remote port status on EMULEX LPe32002 host might be in 'Blocked' state during storage failover operations | During storage failover operations, certain remote port status on RHEL 6.9 host with LPe32002 adapter might get into 'Blocked' state. Because the logical   interfaces go down when a storage node is down, the remote port sets the storage node status to "Blocked" state.  However, when the storage node comes back to optimal state, the logical interfaces also comes up and the remote port state is expected to be 'Online'.  But, on certain occasion the remote port continues to be in 'Blocked' state.  This state manifests as 'failed faulty' to LUNS at multipath layer.
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1076584[1076584^] | Firmware dumps occur on Red Hat Enterprise Linux 6.9 QLogic QE8362 HBA during storage failover operations | Firmware dumps can occur during storage failover operations on Red Hat Enterprise Linux (RHEL) 6.9 hosts with QLogic QLE8362 host bus adapters (HBA), firmware dumps are observed occasionally. The firmware dumps might manifest as an I/O outage on the host that can last as long as 1200 seconds. After the adapter completes dumping the firmware cores, the I/O operation resumes normally.  No further recovery procedure is required on the host. To indicate the firmware dump, the following message is displayed in /var/log/ message file: kernel: qla2xxx [0000:0c:00.3]-d001:3: Firmware dump saved to temp buffer (3/ffffc90018b01000), dump status flags (0x3f)
-|===
-
-// 2024 SEP 2, ONTAPDOC-2345
-----
