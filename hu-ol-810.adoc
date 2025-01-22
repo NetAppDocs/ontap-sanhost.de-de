@@ -270,7 +270,7 @@ NOTE: Um Oracle Linux 8.10 RedHat Enterprise Kernel link:hu_rhel_810.html#recomm
 
 == KVM-Einstellungen
 
-Sie können das auch verwenden<<recommended_settings_ol_810,Empfohlene Einstellungen>>, um eine Kernel-basierte virtuelle Maschine (KVM) zu konfigurieren. Zum Konfigurieren einer KVM sind keine Änderungen erforderlich, da die LUN dem Hypervisor zugeordnet ist.
+Sie müssen keine Einstellungen für eine Kernel-basierte virtuelle Maschine unter Oracle Linux 8.10 konfigurieren, da die LUN dem Hypervisor zugeordnet ist.
 
 
 
