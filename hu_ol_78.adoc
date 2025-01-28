@@ -252,7 +252,7 @@ devices {
 }
 ----
 
-NOTE: Um Oracle Linux 7.8 Red hat Enterprise Kernel (RHCK) zu konfigurieren, verwenden Sie den link:hu_rhel_78.html#recommended-settings["Empfohlene Einstellungen"] für Red hat Enterprise Linux (RHEL) 7.8.
+NOTE: Um Oracle Linux 7.8 Red hat Compatible Kernel (RHCK) zu konfigurieren, verwenden Sie den link:hu_rhel_78.html#recommended-settings["Empfohlene Einstellungen"] für Red hat Enterprise Linux (RHEL) 7.8.
 
 
 

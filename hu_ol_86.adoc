@@ -277,13 +277,13 @@ devices {
 }
 ----
 
-NOTE: Um Oracle Linux 8.6 Red hat Enterprise Kernel (RHCK) zu konfigurieren, verwenden Sie den link:hu_rhel_86.html#recommended-settings["Empfohlene Einstellungen"] für Red hat Enterprise Linux (RHEL) 8.6.
+NOTE: Um Oracle Linux 8.6 Red hat Compatible Kernel (RHCK) zu konfigurieren, verwenden Sie den link:hu_rhel_86.html#recommended-settings["Empfohlene Einstellungen"] für Red hat Enterprise Linux (RHEL) 8.6.
 
 
 
-== KVM-Einstellungen
+== Konfigurieren Sie die KVM-Einstellungen
 
-Sie können die empfohlenen Einstellungen verwenden, um Kernel-Based Virtual Machine (KVM) ebenfalls zu konfigurieren. Es sind keine Änderungen erforderlich, um KVM zu konfigurieren, da die LUN dem Hypervisor zugeordnet ist.
+Sie müssen keine Einstellungen für eine Kernel-basierte virtuelle Maschine konfigurieren, da die LUN dem Hypervisor zugeordnet ist.
 
 
 
@@ -292,4 +292,4 @@ Sie können die empfohlenen Einstellungen verwenden, um Kernel-Based Virtual Mac
 Es gibt keine bekannten Probleme für die Oracle Linux 8.6 mit ONTAP-Version.
 
 
-NOTE: Informationen zu bekannten Problemen bei Oracle Linux (Red hat Compatible Kernel) finden Sie im link:hu_rhel_86.html#known-problems-and-limitations["Bekannte Probleme"] Abschnitt in der entsprechenden Dokumentation zur Red hat Enterprise Linux-Version.
+NOTE: Informationen zu bekannten Oracle Linux RHCK-Problemen finden Sie im link:hu_rhel_86.html#known-problems-and-limitations["Bekannte Probleme"] Abschnitt in der entsprechenden Dokumentation zur Red hat Enterprise Linux-Version.

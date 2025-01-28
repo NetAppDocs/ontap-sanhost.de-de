@@ -281,9 +281,9 @@ devices {
 ----
 
 
-=== Konfigurieren Sie die KVM-Einstellungen
+== Konfigurieren Sie die KVM-Einstellungen
 
-Sie können die empfohlenen Einstellungen verwenden, um Kernel-Based Virtual Machine (KVM) ebenfalls zu konfigurieren. Zum Konfigurieren von KVM sind keine Änderungen erforderlich, da die LUN dem Hypervisor zugeordnet ist.
+Sie müssen keine Einstellungen für eine Kernel-basierte virtuelle Maschine konfigurieren, da die LUN dem Hypervisor zugeordnet ist.
 
 
 

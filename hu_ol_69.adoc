@@ -253,7 +253,7 @@ devices {
 }
 ----
 
-NOTE: Um Oracle Linux 6.9 Red hat Enterprise Kernel (RHCK) zu konfigurieren, verwenden Sie den link:hu_rhel_69.html#recommended-settings["Empfohlene Einstellungen"] für Red hat Enterprise Linux (RHEL) 6.9.
+NOTE: Um Oracle Linux 6.9 Red hat Compatible Kernel (RHCK) zu konfigurieren, verwenden Sie den link:hu_rhel_69.html#recommended-settings["Empfohlene Einstellungen"] für Red hat Enterprise Linux (RHEL) 6.9.
 
 
 
@@ -269,4 +269,4 @@ Die Oracle Linux 6.9 mit ONTAP-Version weist folgende bekannte Probleme auf:
 | link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1082780["1082780"^] | Firmware Dumps werden gelegentlich auf OL6.9 Hypervisor mit der QLE8362 Karte beobachtet | Während Storage Failover-Vorgänge auf dem OL6.9 Hypervisor mit QLE8362 Karte werden die Firmware Dumps gelegentlich beobachtet. Die Firmware-Dumps können zu einem I/O-Ausfall auf dem Host führen, der bis zu tausend Sekunden in Anspruch nimmt. Nachdem der Adapter den Firmware-Dump abgeschlossen hat, wird der I/O-Vorgang auf normale Weise fortgesetzt. Auf dem Host ist keine weitere Wiederherstellung erforderlich. Um den Firmware-Dump anzuzeigen, wird die folgende Meldung in der Datei /var/log/message angezeigt: Qla2xxx [0000:0c:00.3]-d001:3: Firmware-Dump gespeichert in Temporär-Puffer (3/ffc90008901000), Dump-Status-Flags (0x3f). 
 |===
 
-NOTE: Informationen zu bekannten Problemen mit Oracle Linux (Red hat kompatibler Kernel) finden Sie im link:hu_rhel_69.html#known-problems-and-limitations["Bekannte Probleme"] Für Red hat Enterprise Linux (RHEL) 6.9.
+NOTE: Informationen zu bekannten Oracle Linux RHCK-Problemen finden Sie im link:hu_rhel_69.html#known-problems-and-limitations["Bekannte Probleme"] für RHEL 6.9.

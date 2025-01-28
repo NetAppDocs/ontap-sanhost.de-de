@@ -261,7 +261,7 @@ devices {
 }
 ----
 
-NOTE: Um Oracle Linux 7.2 Red hat Enterprise Kernel (RHCK) zu konfigurieren, verwenden Sie den link:hu_rhel_72.html#recommended-settings["Empfohlene Einstellungen"] für Red hat Enterprise Linux (RHEL) 7.2.
+NOTE: Um Oracle Linux 7.2 Red hat Compatible Kernel (RHCK) zu konfigurieren, verwenden Sie den link:hu_rhel_72.html#recommended-settings["Empfohlene Einstellungen"] für Red hat Enterprise Linux (RHEL) 7.2.
 
 
 

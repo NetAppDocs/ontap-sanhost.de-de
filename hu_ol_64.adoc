@@ -253,7 +253,7 @@ devices {
 }
 ----
 
-NOTE: Um Oracle Linux 6.4 Red hat Enterprise Kernel (RHCK) zu konfigurieren, verwenden Sie den link:hu_rhel_64.html#recommended-settings["Empfohlene Einstellungen"] für Red hat Enterprise Linux (RHEL) 6.4.
+NOTE: Um Oracle Linux 6.4 Red hat Compatible Kernel (RHCK) zu konfigurieren, verwenden Sie den link:hu_rhel_64.html#recommended-settings["Empfohlene Einstellungen"] für Red hat Enterprise Linux (RHEL) 6.4.
 
 
 
@@ -278,4 +278,4 @@ Die Oracle Linux 6.4 mit ONTAP-Version weist folgende bekannte Probleme auf:
 | link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=739909["739909"^] | Der Systemaufruf SG_IO ioctl auf dm-Multipath-Geräten schlägt nach einem FC-Fehler auf OL6.x- und OL5.x-Hosts mit UEK2 fehl | Auf Oracle Linux 6.x Hosts mit UEK2 Kernel und Oracle Linux 5.x Hosts mit UEK2 Kernel ist ein Problem aufgetreten. Die sg_*-Befehle auf einem Multipath-Gerät scheitern nach einem Fabric-Fehler mit EAGAIN-Fehlercode (errno), der alle Pfade in der aktiven Pfadgruppe nach unten führt. Dieses Problem tritt nur auf, wenn die Multipath-Geräte keine I/O-Vorgänge aufweisen. Im Folgenden ein Beispiel: # sg_inq -V /dev/mapper/3600a098041764937303f436c75324370 Anfrage cdb: 12 00 00 00 24 00 ioctl(SG_IO v3) fehlgeschlagen mit os_err (errno) = 11 Anfrage: Pass-through os Fehler: Ressource vorübergehend nicht verfügbar HDIO_GET_IDENTITY ioctl fehlgeschlagen: Ressource vorübergehend nicht verfügbar [11] sowohl SCSI-ANFRAGE als auch Abrufen von ATA-Informationen fehlgeschlagen auf /dev/mapper/3600a098041764937303f436c75324370 # Dieses Problem tritt auf, weil die Umschaltung der Pfadgruppe auf andere aktive Gruppen während ioctl()-Aufrufen nicht aktiviert ist, wenn auf dem DM-Multipath-Gerät keine I/O erfolgt. Das Problem wurde bei den folgenden Versionen der Kernel-uek- und Device-Mapper-Multipath-Pakete beobachtet: OL6.4 Versionen: Kernel-uek-2.6.39-400.17.1.el6uek Device-Mapper-Multipath-0.4.9-64.0.1.el6 OL5.9 Versionen: Kernel-uek-2.6.39-400.17.1.el5uek Device-Mapper-Multipath-0.4.9-64.0.el5uek 
 |===
 
-NOTE: Informationen zu bekannten Problemen mit Oracle Linux (Red hat kompatibler Kernel) finden Sie im link:hu_rhel_64.html#known-problems-and-limitations["Bekannte Probleme"] Für Red hat Enterprise Linux (RHEL) 6.4.
+NOTE: Informationen zu bekannten Oracle Linux RHCK-Problemen finden Sie im link:hu_rhel_64.html#known-problems-and-limitations["Bekannte Probleme"] für RHEL 6.4.

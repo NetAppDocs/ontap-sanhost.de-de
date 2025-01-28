@@ -272,13 +272,13 @@ devices {
 }
 ----
 
-NOTE: Um Oracle Linux 8.9 RedHat Enterprise Kernel zu konfigurieren, verwenden Sie den link:hu_rhel_89.html#recommended-settings["Empfohlene Einstellungen"] für Red hat Enterprise Linux (RHEL) 8.9.
+NOTE: Um Oracle Linux 8.9 Red hat Compatible Kernel (RHCK) zu konfigurieren, verwenden Sie den link:hu_rhel_89.html#recommended-settings["Empfohlene Einstellungen"] für Red hat Enterprise Linux (RHEL) 8.9.
 
 
 
-== KVM-Einstellungen
+== Konfigurieren Sie die KVM-Einstellungen
 
-Sie können auch die empfohlenen Einstellungen verwenden, um eine Kernel-basierte virtuelle Maschine (KVM) zu konfigurieren. Zum Konfigurieren einer KVM sind keine Änderungen erforderlich, da die LUN dem Hypervisor zugeordnet ist.
+Sie müssen keine Einstellungen für eine Kernel-basierte virtuelle Maschine konfigurieren, da die LUN dem Hypervisor zugeordnet ist.
 
 
 
