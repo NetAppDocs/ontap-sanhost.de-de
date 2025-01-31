@@ -8,10 +8,7 @@ summary: Rechtliche Hinweise ermöglichen den Zugriff auf Copyright-Erklärungen
 :allow-uri-read: 
 
 
-[role="lead"]
-Rechtliche Hinweise ermöglichen den Zugriff auf Copyright-Erklärungen, Marken, Patente und mehr.
-
-[role="lead"]
+[role="lead lead"]
 Rechtliche Hinweise ermöglichen den Zugriff auf Copyright-Erklärungen, Marken, Patente und mehr.
 
 
@@ -41,14 +38,6 @@ link:https://www.netapp.com/pdf.html?item=/media/11887-patentspage.pdf["https://
 == Datenschutzrichtlinie
 
 link:https://www.netapp.com/company/legal/privacy-policy/["https://www.netapp.com/company/legal/privacy-policy/"^]
-
-
-
-== Open Source
-
-In den Benachrichtigungsdateien finden Sie Informationen zu Urheberrechten und Lizenzen von Drittanbietern, die in der NetApp Software verwendet werden.
-
-Stellt Informationen über das Urheberrecht und die Lizenzen Dritter bereit, die in diesem Produkt verwendet werden.
 
 * link:./media/Notices-AIX61-2023.pdf["Hinweis für AIX"^]
 * link:./media/Linux_Unified_Host_Utilities.pdf["Hinweis für Linux"^]

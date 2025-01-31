@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
 permalink: hu_wuhu_72.html 
-keywords: wuhu, 7.2, host utilities, SAN, windows, unified 
-summary: Die Windows Unified Host Utilities umfassen ein Installationsprogramm, das die erforderlichen Windows Registrierungs- und HBA-Parameter so eingestellt, dass der Windows Host die Verhaltensweisen von Storage-Systemen der NetApp ONTAP und E-Series Plattformen korrekt verarbeitet. 
+keywords: windows, 7.2, host utilities, SAN, windows 
+summary: Die Windows Host Utilities umfassen ein Installationsprogramm, das die erforderlichen Windows Registrierungs- und HBA-Parameter so festlegt, dass der Windows Host die Verhaltensweisen von ONTAP und E-Series Plattformen des Storage-Systems korrekt verarbeitet. 
 ---
-= Installieren Sie Windows Unified Host Utilities 7.2
+= Installieren Sie Windows Host Utilities 7.2
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,9 +14,9 @@ summary: Die Windows Unified Host Utilities umfassen ein Installationsprogramm, 
 
 
 [role="lead"]
-Mit den Windows Unified Host Utilities (WUHU) können Sie einen Windows Hostcomputer an NetApp Speichersysteme anschließen.
+Mithilfe der Windows Host Utilities können Sie einen Windows Host-Computer mit NetApp Storage-Systemen verbinden.
 
-Die Windows Unified Host Utilities unterstützen die folgenden Versionen von Windows:
+Die Windows Host Utilities unterstützen die folgenden Versionen von Windows:
 
 * Windows 2022
 * Windows 2019
@@ -25,7 +25,7 @@ Die Windows Unified Host Utilities unterstützen die folgenden Versionen von Win
 * Windows 2012
 
 
-Die Windows Unified Host Utilities umfassen ein Installationsprogramm, das die erforderlichen Windows Registry- und Host Bus Adapter (HBA)-Parameter festlegt, damit ein Windows Host die Storage-Systemverhalten von NetApp ONTAP und E-Series Plattformen korrekt verarbeiten kann.
+Die Windows Host Utilities umfassen ein Installationsprogramm, das die erforderlichen Windows Registrierungs- und HBA-Parameter (Host Bus Adapter) festlegt, damit ein Windows Host die Storage-Systemverhalten der ONTAP und E-Series Plattformen korrekt verarbeiten kann.
 
 Wenn Sie die Host Utilities-Software installieren, legt das Installationsprogramm die erforderlichen Windows Registry- und HBA-Parameter fest.
 
@@ -49,16 +49,16 @@ Die folgenden Programme und Dateien werden auf dem Windows-Hostcomputer installi
 
 | `san_version.exe` | Zeigt die Version der Host Utilities und FC HBAs an. 
 |===
-Die Host Utilities unterstützen verschiedene Windows Host-Konfigurationen, Protokolle und Multipathing-Optionen. Weitere Informationen finden Sie im https://mysupport.netapp.com/matrix/["NetApp Interoperabilitäts-Matrix-Tool"^].
+Die Host Utilities unterstützen verschiedene Windows Host-Konfigurationen, Protokolle und Multipathing-Optionen. Weitere Informationen finden Sie im https://mysupport.netapp.com/matrix/["Interoperabilitäts-Matrix-Tool"^].
 
 
 
 == Überprüfen Sie die Konfiguration Ihres Host- und Storage-Systems
 
-Bevor Sie die Host-Dienstprogramme installieren, müssen Sie überprüfen, ob die Host-Dienstprogramme-Version Ihre Host- und Speichersystem-Konfiguration unterstützt, damit die Software korrekt installiert wird.
+Bevor Sie die Host Utilities installieren, müssen Sie überprüfen, ob die Version der Host Utilities die Konfiguration des Host- und Speichersystems unterstützt, damit die Software ordnungsgemäß installiert wird.
 
 .Schritte
-. Überprüfen Sie die unterstützte Konfiguration im http://mysupport.netapp.com/matrix["NetApp Interoperabilitäts-Matrix-Tool"^].
+. Überprüfen Sie die unterstützte Konfiguration im http://mysupport.netapp.com/matrix["Interoperabilitäts-Matrix-Tool"^].
 . Prüfen Sie die für den jeweiligen Host erforderlichen Hotfixes im link:https://docs.netapp.com/us-en/ontap-sanhost/index.html["SAN-Host, Windows-Dokumentation"].
 +
 
@@ -98,24 +98,24 @@ CAUTION: Ändern Sie die HBA-Einstellungen nicht manuell.
 
 == Installieren Sie die Host Utilities
 
-Das Installationsprogramm installiert das Host-Dienstprogramme-Paket und legt die Windows-Registrierung und HBA-Einstellungen fest.
+Das Installationsprogramm installiert das Host Utilities-Paket und setzt die Windows-Registry- und HBA-Einstellungen.
 
-Sie müssen angeben, ob Multipathing-Unterstützung enthält, wenn Sie das Windows Unified Host Utilities Softwarepaket installieren. Das Installationsprogramm fordert Sie zur Eingabe der folgenden Optionen auf. Sie können eine ruhige (unbeaufsichtigte) Installation auch über eine Windows-Eingabeaufforderung ausführen.
+Sie müssen angeben, ob Multipathing-Unterstützung bei der Installation des Windows Host Utilities-Softwarepakets einbezogen werden soll. Das Installationsprogramm fordert Sie zur Eingabe der folgenden Optionen auf. Sie können eine ruhige (unbeaufsichtigte) Installation auch über eine Windows-Eingabeaufforderung ausführen.
 
 .Multipathing-Unterstützung
 * Wählen `MPIO` Wenn Sie mehr als einen Pfad vom Windows-Host oder der virtuellen Maschine zum Speichersystem haben.
 * Wählen `no MPIO` Nur, wenn Sie einen einzelnen Pfad zum Storage-System verwenden.
 
 
-Die MPIO-Auswahl ist für Windows XP und Windows Vista-Systeme nicht verfügbar. Multipath-I/O wird auf diesen Gast-Betriebssystemen nicht unterstützt. Für Hyper-V-Gäste werden im Gastbetriebssystem keine RAW-Festplatten (Pass-Through) angezeigt, wenn Sie Multipathing-Unterstützung wählen. Sie können entweder RAW-Festplatten verwenden oder MPIO verwenden, aber beide können nicht im Gastbetriebssystem verwendet werden.
+Die Microsoft Multipath-E/A-Auswahl (MPIO) ist für Windows XP- und Windows Vista-Systeme nicht verfügbar; Multipath-E/A wird auf diesen Gastbetriebssystemen nicht unterstützt. Für Hyper-V-Gäste werden im Gastbetriebssystem keine RAW-Festplatten (Pass-Through) angezeigt, wenn Sie Multipathing-Unterstützung wählen. Sie können entweder RAW-Festplatten verwenden oder MPIO verwenden, aber beide können nicht im Gastbetriebssystem verwendet werden.
 
-Sie können die Host-Dienstprogramme interaktiv oder über die Befehlszeile installieren. Das neue Installationspaket für Host Utilities muss sich in einem Pfad befinden, der vom Windows Host zugänglich ist. Befolgen Sie die Anweisungen zum interaktiven Installieren der Host Utilities oder über die Windows Befehlszeile.
+Sie können die Host Utilities interaktiv oder über die Befehlszeile installieren. Das neue Installationspaket für Host Utilities muss sich in einem Pfad befinden, der vom Windows Host zugänglich ist. Befolgen Sie die Anweisungen zum interaktiven Installieren der Host Utilities oder über die Windows Befehlszeile.
 
 [role="tabbed-block"]
 ====
 .Interaktiv installieren
 --
-Um das Host Utilities-Softwarepaket interaktiv zu installieren, müssen Sie das Host Utilities-Installationsprogramm ausführen und den Aufforderungen folgen.
+Um das Host Utilities-Softwarepaket interaktiv zu installieren, müssen Sie das Installationsprogramm für Host Utilities ausführen und die Anweisungen befolgen.
 
 .Schritte
 . Laden Sie die ausführbare Datei vom herunter https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.2/downloads["NetApp Support Website"^].
@@ -127,7 +127,7 @@ Um das Host Utilities-Softwarepaket interaktiv zu installieren, müssen Sie das 
 --
 .Installation über eine Befehlszeile
 --
-Sie können eine (unbeaufsichtigte) Installation der Hostdienstprogramme durchführen, indem Sie die entsprechenden Befehle an der Windows-Eingabeaufforderung eingeben. Nach Abschluss der Installation wird das System automatisch neu gestartet.
+Sie können eine (unbeaufsichtigte) Installation der Host Utilities ausführen, indem Sie die entsprechenden Befehle an der Windows-Eingabeaufforderung eingeben. Nach Abschluss der Installation wird das System automatisch neu gestartet.
 
 .Schritte
 . Geben Sie den folgenden Befehl an der Windows-Eingabeaufforderung ein:
@@ -137,7 +137,7 @@ Sie können eine (unbeaufsichtigte) Installation der Hostdienstprogramme durchf�
 +
 ** `installer` Ist der Name des `.msi` Datei für Ihre CPU-Architektur.
 ** MULTIPATHING gibt an, ob MPIO-Unterstützung installiert ist. Die zulässigen Werte sind „0“ für „Nein“ und „1“ für „Ja“.
-** `inst_path` Ist der Pfad, in dem die Host-Dienstprogramme-Dateien installiert sind. Der Standardpfad lautet `C:\Program Files\NetApp\Windows Host Utilities\`.
+** `inst_path` Ist der Pfad, in dem die Host Utilities-Dateien installiert werden. Der Standardpfad lautet `C:\Program Files\NetApp\Windows Host Utilities\`.
 
 
 

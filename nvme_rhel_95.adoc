@@ -18,10 +18,7 @@ summary: Konfigurieren des NVMe-of-Hosts für RHEL 9.5 mit ONTAP
 [role="lead"]
 NetApp SAN-Host-Konfigurationen unterstützen das NVMe over Fabrics (NVMe-of)-Protokoll mit Asymmetric Namespace Access (ANA). In NVMe-of Umgebungen entspricht ANA dem Multipathing des Asymmetric Logical Unit Access (ALUA) in iSCSI- und FCP-Umgebungen. ANA ist mit der in-Kernel NVMe Multipath-Funktion implementiert.
 
-
-
-== Über diese Aufgabe
-
+.Über diese Aufgabe
 Sie können die folgenden Support- und Features mit der NVMe-of-Hostkonfiguration für Red hat Enterprise Linux (RHEL) 9.5 verwenden. Sie sollten auch die bekannten Einschränkungen überprüfen, bevor Sie mit dem Konfigurationsprozess beginnen.
 
 * Support verfügbar:
@@ -29,7 +26,7 @@ Sie können die folgenden Support- und Features mit der NVMe-of-Hostkonfiguratio
 ** Unterstützung für NVMe over TCP (NVMe/TCP) neben NVMe over Fibre Channel (NVMe/FC) Über das NetApp-Plug-in im nativen `nvme-cli` Paket werden ONTAP-Details sowohl für NVMe/FC- als auch für NVMe/TCP-Namespaces angezeigt.
 ** Ausführen von NVMe- und SCSI-Datenverkehr auf demselben Host. Sie können beispielsweise dm-Multipath für SCSI-mpath-Geräte für SCSI-LUNs konfigurieren und NVMe Multipath verwenden, um NVMe-of-Namespace-Geräte auf dem Host zu konfigurieren.
 +
-Weitere Informationen zu unterstützten Konfigurationen finden Sie im link:https://mysupport.netapp.com/matrix/["NetApp Interoperabilitäts-Matrix-Tool"^].
+Weitere Informationen zu unterstützten Konfigurationen finden Sie im link:https://mysupport.netapp.com/matrix/["Interoperabilitäts-Matrix-Tool"^].
 
 
 
@@ -177,7 +174,7 @@ Emulex LightPulse LPe36002-M64 2-Port 64Gb Fibre Channel Adapter
 
 
 +
-Die aktuelle Liste der unterstützten Adaptertreiber- und Firmware-Versionen finden Sie unter link:https://mysupport.netapp.com/matrix/["NetApp Interoperabilitäts-Matrix-Tool"^].
+Die aktuelle Liste der unterstützten Adaptertreiber- und Firmware-Versionen finden Sie im link:https://mysupport.netapp.com/matrix/["Interoperabilitäts-Matrix-Tool"^].
 
 . Stellen Sie sicher, dass die erwartete Ausgabe von `lpfc_enable_fc4_type` auf eingestellt ist `3`:
 +
@@ -303,7 +300,7 @@ cat /etc/modprobe.d/lpfc.conf
 options lpfc lpfc_sg_seg_cnt=256
 ----
 . Führen Sie den Befehl aus `dracut -f`, und starten Sie den Host neu.
-. Stellen Sie sicher, dass der erwartete Wert von `lpfc_sg_seg_cnt` 256 ist:
+. Stellen Sie sicher, dass der Wert für `lpfc_sg_seg_cnt` 256 lautet:
 +
 [listing]
 ----

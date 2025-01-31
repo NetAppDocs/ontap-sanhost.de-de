@@ -20,14 +20,14 @@ Sie können die Konfigurationseinstellungen des ONTAP-SAN-Hosts verwenden, um Or
 
 
 
-== Installieren Sie die Linux Unified Host Utilities
+== Installieren Sie die Linux Host Utilities
 
-Sie können das NetApp Linux Unified Host Utilities Softwarepaket als 64-bit.rpm-Datei von der herunterladenlink:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp Support Website"^].
+Sie können das Softwarepaket NetApp Linux Host Utilities als 64-bit.rpm-Datei aus der herunterladenlink:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp Support Website"^].
 
-NetApp empfiehlt ausdrücklich die Installation der Linux Unified Host Utilities, dies ist jedoch nicht zwingend erforderlich. Die Dienstprogramme ändern keine Einstellungen auf Ihrem Linux-Host. Die Versorgungseinrichtungen verbessern das Management und unterstützen den NetApp Kunden-Support bei der Erfassung von Informationen zu Ihrer Konfiguration.
+NetApp empfiehlt ausdrücklich die Installation der Linux Host Utilities, dies ist jedoch nicht zwingend erforderlich. Die Dienstprogramme ändern keine Einstellungen auf Ihrem Linux-Host. Die Versorgungseinrichtungen verbessern das Management und unterstützen den NetApp Kunden-Support bei der Erfassung von Informationen zu Ihrer Konfiguration.
 
 .Schritte
-. Laden Sie das Softwarepaket für die 64-Bit-Version von Linux Unified Host Utilities von herunter https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp Support Website"^] Auf Ihren Host.
+. Laden Sie das 64-Bit-Linux Host Utilities-Softwarepaket vom auf Ihren Host herunter https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp Support Website"^].
 . Installieren des Softwarepakets:
 +
 `rpm -ivh netapp_linux_unified_host_utilities-7-1.x86_64`
@@ -36,9 +36,9 @@ NetApp empfiehlt ausdrücklich die Installation der Linux Unified Host Utilities
 
 
 
-== SAN-Toolkit
+== SAN Toolkit
 
-Das Tool-Kit wird automatisch installiert, wenn Sie das NetApp Host Utilities-Paket installieren. Dieses Kit enthält die `sanlun` Dienstprogramm zum Managen von LUNs und Host Bus Adaptern (HBAs). Der `sanlun` Befehl gibt Informationen über die LUNs zurück, die Ihrem Host zugeordnet sind, Multipathing und Informationen zurück, die zum Erstellen von Initiatorgruppen erforderlich sind.
+Das Toolkit wird automatisch installiert, wenn Sie das NetApp Host Utilities-Paket installieren. Dieses Kit enthält die `sanlun` Dienstprogramm zum Managen von LUNs und Host Bus Adaptern (HBAs). Der `sanlun` Befehl gibt Informationen über die LUNs zurück, die Ihrem Host zugeordnet sind, Multipathing und Informationen zurück, die zum Erstellen von Initiatorgruppen erforderlich sind.
 
 Im folgenden Beispiel wird der verwendet `sanlun lun show` Befehl gibt LUN-Informationen zurück.
 
@@ -61,8 +61,8 @@ data_vserver          /vol/vol2/lun2   /dev/sde   host15   FCP       80.0g  cDOT
 
 == SAN Booting
 
-.Was Sie benötigen
-Wenn Sie sich für das Booten über SAN entscheiden, muss es von Ihrer Konfiguration unterstützt werden. Sie können das verwenden link:https://mysupport.netapp.com/matrix/imt.jsp?components=91863;&solution=1&isHWU&src=IMT["NetApp Interoperabilitäts-Matrix-Tool"^] Um zu überprüfen, ob Ihr Betriebssystem, HBA, die HBA-Firmware und das HBA-Boot-BIOS sowie die ONTAP-Version unterstützt werden.
+.Bevor Sie beginnen
+Wenn Sie sich für das Booten über SAN entscheiden, muss es von Ihrer Konfiguration unterstützt werden. Sie können mit dem link:https://imt.netapp.com/matrix/#welcome["Interoperabilitäts-Matrix-Tool"^]überprüfen, ob Ihr Betriebssystem, HBA, die HBA-Firmware und das HBA-StartBIOS sowie die ONTAP-Version unterstützt werden.
 
 .Schritte
 . Ordnen Sie die SAN-Boot-LUN dem Host zu.
@@ -292,7 +292,7 @@ Die Oracle Linux 9.1 mit NetApp ONTAP-Version weist folgende bekannte Probleme a
 
 
 | https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/BURT/1508554["1508554"^] | FÜR DAS SAN-LUN-Dienstprogramm mit Emulex HBA werden symbolische Links von Bibliothekspaketen benötigt  a| 
-Wenn Sie den Linux Unified Host Utilities CLI-Befehl „sanlun fcp show Adapter -V“ auf einem SAN-Host ausführen, schlägt der Befehl mit der Fehlermeldung fehl, die anzeigt, dass die für die Erkennung eines Host Bus Adapters (HBA) erforderlichen Bibliotheksabhängigkeiten nicht gefunden werden können:
+Wenn Sie den Linux Host Utilities CLI-Befehl „sanlun fcp show Adapter -V“ auf einem SAN-Host ausführen, schlägt der Befehl mit einer Fehlermeldung fehl, die anzeigt, dass die für die Erkennung eines Host Bus Adapters (HBA) erforderlichen Bibliotheksabhängigkeiten nicht gefunden werden können:
 
 [listing]
 ----

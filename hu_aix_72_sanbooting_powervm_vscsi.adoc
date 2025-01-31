@@ -30,7 +30,7 @@ Der Befehl cfgdev führt zu folgenden Ursachen:
 +
 ** Die Initiatoren, die sich bei der Fabric anmelden sollen.
 ** Das System, das auf neue Geräte überprüft werden soll.
-** Das System erstellt neue Geräteeinträge, bei denen die neuen LUNs über das Standard-PCM als MPIO-Geräte zugeordnet werden.
+** Das System zum Erstellen neuer Geräteeinträge, bei denen die neuen LUNs unter Verwendung des Standard-PCM als Microsoft Multipath I/O (MPIO)-Geräte zugeordnet werden.
 
 
 . Geben Sie den folgenden Befehl ein, um zu überprüfen, ob die hdisk MPIO-Geräte erstellt wurden:
@@ -59,7 +59,7 @@ hdisk4   Available   MPIO NetApp FCP Default PCM Disk
 hdisk5   Available   MPIO NetApp FCP Default PCM Disk
 hdisk6   Available   MPIO NetApp FCP Default PCM Disk
 ----
-. Geben Sie den folgenden Befehl ein, um Informationen über das Setup zu erhalten:
+. Informationen zu Ihrem Setup abrufen:
 +
 `lsdev -dev hdisk_name -attr`
 
@@ -97,7 +97,7 @@ scsi_id         0xd10001                         SCSI ID                        
 start_timeout   60                               START unit time out value               True
 ww_name         0x500a0984994ae0e0               FC World Wide Name                      False
 ----
-. Wenn Ihre Konfiguration ALUA nicht unterstützt, müssen Sie das Dienstprogramm dotphs ausführen, um die Pfadprioritäten festzulegen. Das dotpaths-Dienstprogramm wird installiert, wenn Sie die Host Utilities installieren. Verwenden Sie das dotpaths-Dienstprogramm nicht, wenn ALUA aktiviert ist. Wechseln Sie zum `oem_setup_env` Modus zum Ausführen der Dotpathhs durch Eingabe des folgenden Befehls:
+. Wenn Ihre Konfiguration ALUA nicht unterstützt, müssen Sie das Dienstprogramm dotpaths verwenden, um die Pfadprioritäten festzulegen. Das dotpaths-Dienstprogramm wird installiert, wenn Sie die Host Utilities installieren. Verwenden Sie das dotpaths-Dienstprogramm nicht, wenn ALUA aktiviert ist. Wechseln Sie in den `oem_setup_env` Modus, um die dotpaths auszuführen, indem Sie den folgenden Befehl eingeben:
 +
 `oem_setup_env`
 
@@ -119,9 +119,9 @@ Wenn Sie das eingeben `oem_setup_env` Im Modus ändert sich die Eingabeaufforder
 
 
 
-. Wenn Ihre Konfiguration ALUA nicht unterstützt, müssen Sie das Dienstprogramm dotphs ausführen, um die Pfadprioritäten festzulegen. Das dotpaths-Dienstprogramm wird installiert, wenn Sie die Host Utilities installieren. Verwenden Sie das dotpaths-Dienstprogramm nicht, wenn ALUA aktiviert ist.
+. Wenn Ihre Konfiguration ALUA nicht unterstützt, müssen Sie das Dienstprogramm dotpaths verwenden, um die Pfadprioritäten festzulegen. Das dotpaths-Dienstprogramm wird installiert, wenn Sie die Host Utilities installieren. Verwenden Sie das dotpaths-Dienstprogramm nicht, wenn ALUA aktiviert ist.
 +
-.. Um die Priorität für alle Data ONTAP LUNs festzulegen, geben Sie Folgendes ein:
+.. Um die Priorität für alle ONTAP LUNs festzulegen, geben Sie Folgendes ein:
 +
 `dotpaths`
 

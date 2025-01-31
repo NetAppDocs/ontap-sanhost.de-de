@@ -16,9 +16,9 @@ summary: Konfigurieren des NVMe/FC-Hosts für RHEL 8.3 mit ONTAP
 
 
 [role="lead"]
-NVMe/FC wird für Red hat Enterprise Linux (RHEL) 8.3 unter ONTAP 9.6 oder höher unterstützt. Auf dem RHEL 8.3 Host wird sowohl NVMe- als auch SCSI-Datenverkehr über dieselben FC-Initiator-Adapter-Ports ausgeführt. Siehe link:https://hwu.netapp.com/Home/Index["Hardware Universe"^] Für eine Liste der unterstützten FC-Adapter und Controller.
+Ab ONTAP 9.6 wird NVMe/FC für Red hat Enterprise Linux (RHEL) 8.3 unterstützt. Auf dem RHEL 8.3 Host wird sowohl NVMe- als auch SCSI-Datenverkehr über dieselben FC-Initiator-Adapter-Ports ausgeführt. Eine Liste der unterstützten FC-Adapter und Controller finden Sie im link:https://hwu.netapp.com/Home/Index["Hardware Universe"^] .
 
-Siehe link:https://mysupport.netapp.com/matrix/["NetApp Interoperabilitäts-Matrix-Tool"^] Hier finden Sie die aktuelle Liste der unterstützten Konfigurationen.
+Die aktuelle Liste der unterstützten Konfigurationen finden Sie imlink:https://mysupport.netapp.com/matrix/["Interoperabilitäts-Matrix-Tool"^].
 
 
 
@@ -79,7 +79,7 @@ yum install nvmecli
 4.18.0-240.el8.x86_64
 ----
 +
-Siehe link:https://mysupport.netapp.com/matrix/["NetApp Interoperabilitäts-Matrix-Tool"^] Erhalten Sie auf der aktuellen Liste der unterstützten Versionen.
+Die aktuelle Liste der unterstützten Versionen finden Sie imlink:https://mysupport.netapp.com/matrix/["Interoperabilitäts-Matrix-Tool"^].
 
 . Installieren Sie das nvme-cli-Paket:
 +
@@ -135,7 +135,7 @@ TIP: Wenn die Host-NQN-Strings nicht übereinstimmen, verwenden Sie den `vserver
 +
 [NOTE]
 ====
-Wenn Sie sowohl NVMe- als auch SCSI-Datenverkehr auf demselben vorhandenen RHEL 8.3 Host ausführen möchten, empfiehlt NetApp die Verwendung von NVMe Multipath im Kernel für ONTAP-Namespaces bzw. dm-Multipath für ONTAP-LUNs. Sie sollten auch die ONTAP-Namespaces in dm-Multipath auf eine Blacklist setzen, um zu verhindern, dass dm-Multipath diese Namespace-Geräte beansprucht. Sie können dies tun, indem Sie die hinzufügen `enable_foreign` Einstellung auf /etc/multipath.conf, wie unten gezeigt:
+Wenn Sie sowohl NVMe- als auch SCSI-Datenverkehr auf demselben RHEL 8.3 Host ausführen möchten, empfiehlt NetApp die Verwendung von NVMe Multipath im Kernel für ONTAP-Namespaces bzw. dm-Multipath für ONTAP-LUNs. Sie sollten auch die ONTAP-Namespaces in dm-Multipath auf eine Blacklist setzen, um zu verhindern, dass dm-Multipath diese Namespace-Geräte beansprucht. Sie können dies tun, indem Sie die Einstellung der Datei /etc/multipath.conf hinzufügen `enable_foreign`, wie unten gezeigt:
 
 [listing]
 ----
@@ -272,7 +272,7 @@ Device               Vserver            Namespace Path                          
 
 Sie können den Broadcom-FC-Adapter wie folgt konfigurieren.
 
-Die aktuelle Liste der unterstützten Adapter finden Sie im link:https://mysupport.netapp.com/matrix/["NetApp Interoperabilitäts-Matrix-Tool"^].
+Die aktuelle Liste der unterstützten Adapter finden Sie im link:https://mysupport.netapp.com/matrix/["Interoperabilitäts-Matrix-Tool"^].
 
 .Schritte
 . Vergewissern Sie sich, dass Sie den unterstützten Adapter verwenden.
@@ -341,7 +341,7 @@ FCP CMPL: xb 00001f50 Err 0000d9f8
 ----
 . 1 MB I/O-Größe _ (optional)_ aktivieren.
 +
-Der `lpfc_sg_seg_cnt` Der Parameter muss auf 256 gesetzt werden, damit der lpfc-Treiber E/A-Anforderungen bis 1 MB groß ausgibt.
+Der `lpfc_sg_seg_cnt` Parameter muss auf 256 gesetzt werden, damit der lpfc-Treiber E/A-Anfragen mit einer Größe von bis zu 1 MB ausgeben kann.
 
 +
 [listing]

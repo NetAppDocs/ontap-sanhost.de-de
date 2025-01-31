@@ -2,9 +2,9 @@
 sidebar: sidebar 
 permalink: hu_luhu_71_cmd.html 
 keywords: host utilities, unified, oracle, linux, 7.1, netapp, ontap 
-summary: Beschreibt die Verwendung von Linux Unified Host Utilities 7.1 mit ONTAP 
+summary: Hier wird die Verwendung der Linux Host Utilities 7.1 mit ONTAP beschrieben 
 ---
-= Befehlsreferenz für Linux Unified Host Utilities 7.1
+= Befehlsreferenz für Linux Host Utilities 7.1
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -16,7 +16,7 @@ summary: Beschreibt die Verwendung von Linux Unified Host Utilities 7.1 mit ONTA
 
 
 [role="lead"]
-Sie können die Beispielbefehlsreferenz für Linux Unified Host Utilities 7.1 verwenden, um die NetApp Storage-Konfiguration mit dem Host Utilities Tool vollständig zu validieren.
+Sie können die Beispielbefehlsreferenz für Linux Host Utilities 7.1 für eine End-to-End-Validierung der NetApp Storage-Konfiguration mit dem Host Utilities Tool verwenden.
 
 
 

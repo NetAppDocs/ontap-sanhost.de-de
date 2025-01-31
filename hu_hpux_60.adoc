@@ -2,9 +2,9 @@
 sidebar: sidebar 
 permalink: hu_hpux_60.html 
 keywords: host utilities, unified, oracle, linux, 7.1, netapp, ontap 
-summary: Beschreibt die Verwendung der HP-UX Unified Host Utilities 6.0 mit ONTAP 
+summary: Beschreibt die Verwendung der HP-UX Host Utilities 6.0 mit ONTAP-Speicher 
 ---
-= HP-UX Host Utilitys 6.0
+= HP-UX Host Utilitys 6.0 für ONTAP-Speicher
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -16,22 +16,22 @@ summary: Beschreibt die Verwendung der HP-UX Unified Host Utilities 6.0 mit ONTA
 
 
 [role="lead"]
-Mit den HP-UX Host Utilities können Sie einen HP-UX-Host mit NetApp-Speicher verbinden.
+Mithilfe der NetApp HP-UX Host Utilities können Sie einen HP-UX Host mit ONTAP Storage verbinden.
 
 Die HP-UX Host Utilities unterstützen mehrere Protokolle und die folgenden Umgebungen:
 
-* Native MPIO
+* Native Microsoft Multipath-I/O (MPIO)
 * Veritas Dynamic Multipathing (DMP)
 
 
 
 NOTE: Um anzugeben, welche Umgebung verwendet wird, gibt dieses Dokument manchmal „DMP“ für die Veritas DMP-Umgebung und „MPIO“ für die native HP-UX-Umgebung an. In einigen Fällen können die von Ihnen verwendeten Befehle von den Treibern abweichen. In diesen Fällen werden sowohl die Umgebung als auch die Treibertypen angegeben.
 
-.Was Sie benötigen
+.Bevor Sie beginnen
 * Stellen Sie für einen zuverlässigen Betrieb sicher, dass Ihre gesamte iSCSI-, FC- oder FCoE-Konfiguration unterstützt wird.
 
 
-Sie können das verwenden link:https://mysupport.netapp.com/matrix/imt.jsp?components=71102;&solution=1&isHWU&src=IMT["NetApp Interoperabilitäts-Matrix-Tool"^] Um Ihre Konfiguration zu überprüfen.
+Sie können die verwendenlink:https://imt.netapp.com/matrix/#welcome["Interoperabilitäts-Matrix-Tool"^], um Ihre Konfiguration zu überprüfen.
 
 .Über diese Aufgabe
 Das NetApp HP-UX Host Utilities-Softwarepaket ist auf der erhältlich link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/6.0/downloads["NetApp Support Website"^] In einer komprimierten Datei. Nachdem Sie die Datei heruntergeladen haben, müssen Sie sie vor der Installation dekomprimieren.
@@ -66,7 +66,7 @@ Der `swinstall` Mit dem Befehl wird ein Installationsskript ausgeführt, das den
 
 == SAN Toolkit
 
-HP-UX Host Utilities ist eine NetApp Host Software, die auf Ihrem HP-UX Host ein Befehlszeilen-Tool Kit enthält. Das Toolkit wird bei der Installation des NetApp Host Utilities-Pakets installiert. Dieses Kit enthält die `sanlun` Dienstprogramm, das Sie beim Verwalten der LUNs und Hostbus-Adapter unterstützt. (HBAs). Der `sanlun` Befehl gibt Informationen über die LUNs zurück, die Ihrem Host zugeordnet sind, Multipathing und Informationen zurück, die zum Erstellen von Initiatorgruppen erforderlich sind.
+HP-UX Host Utilities ist eine NetApp-Hostsoftware, die ein Befehlszeilen-Toolkit auf Ihrem HP-UX-Host bereitstellt. Das Toolkit wird bei der Installation des NetApp Host Utilities-Pakets installiert. Dieses Kit enthält das `sanlun` Dienstprogramm, das Sie beim Verwalten der LUNs und Host-Bus-Adapter unterstützt. (HBAs). Der `sanlun` Befehl gibt Informationen über die LUNs zurück, die Ihrem Host zugeordnet sind, Multipathing und die zum Erstellen von Initiatorgruppen erforderlichen Informationen.
 
 .Beispiel
 Im folgenden Beispiel wird der verwendet `sanlun lun show` Mit dem Befehl werden die LUN-Informationen zurückgegeben.
@@ -85,4 +85,4 @@ sanboot_unix         /vol/hpux_boot/boot_hpux_lun      /dev/rdsk/c81t0d0  fclp0 
 
 ----
 
-NOTE: Dieses Toolkit ist für alle Host Utilities-Konfigurationen und -Protokolle üblich. Als Ergebnis gelten einige ihrer Inhalte auf eine Konfiguration, jedoch nicht auf eine andere. Ungenutzte Komponenten haben keine Auswirkungen auf die Systemleistung.
+NOTE: Dieses Toolkit ist für alle Host Utilities-Konfigurationen und -Protokolle üblich. Daher gelten nicht alle Komponenten für jede Konfiguration. Nicht verwendete Komponenten beeinträchtigen nicht die Systemleistung. Das SAN Toolkit wird auf AIX- und PowerVM/VIOS-Versionen unterstützt.

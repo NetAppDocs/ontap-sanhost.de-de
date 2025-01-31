@@ -24,7 +24,7 @@ Die folgende Unterstützung ist für die NVMe-of Hostkonfiguration für Ubuntu 2
 * Verwendung von gleichzeitig vorhandenem NVMe und SCSI-Datenverkehr auf demselben Host in einem bestimmten Host Bus Adapter (HBA) ohne die expliziten dm-Multipath-Einstellungen, um die Inanspruchnahme von NVMe-Namespaces zu verhindern.
 
 
-Weitere Informationen zu unterstützten Konfigurationen finden Sie im link:https://mysupport.netapp.com/matrix/["NetApp Interoperabilitäts-Matrix-Tool"^].
+Weitere Informationen zu unterstützten Konfigurationen finden Sie im link:https://mysupport.netapp.com/matrix/["Interoperabilitäts-Matrix-Tool"^].
 
 
 
@@ -166,7 +166,7 @@ Emulex LPe36002-M64 2-Port 64Gb Fibre Channel Adapter
 
 ----
 +
-Die aktuelle Liste der unterstützten Adaptertreiber- und Firmware-Versionen finden Sie unter link:https://mysupport.netapp.com/matrix/["NetApp Interoperabilitäts-Matrix-Tool"^].
+Die aktuelle Liste der unterstützten Adaptertreiber- und Firmware-Versionen finden Sie im link:https://mysupport.netapp.com/matrix/["Interoperabilitäts-Matrix-Tool"^].
 
 . Verifizieren Sie das `lpfc_enable_fc4_type` Ist auf festgelegt `3`:
 +
@@ -270,7 +270,7 @@ cat /etc/modprobe.d/lpfc.conf
 options lpfc lpfc_sg_seg_cnt=256
 ----
 . Führen Sie den Befehl aus `dracut -f`, und starten Sie den Host neu.
-. Stellen Sie sicher, dass der erwartete Wert von `lpfc_sg_seg_cnt` 256 ist:
+. Stellen Sie sicher, dass der Wert für `lpfc_sg_seg_cnt` 256 lautet:
 +
 [listing]
 ----

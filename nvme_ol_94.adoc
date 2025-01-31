@@ -26,7 +26,7 @@ Bei der NVMe-of-Host-Konfiguration für Oracle Linux 9.4 mit ONTAP Storage stehe
 ** Unterstützung für NVMe over TCP (NVMe/TCP) neben NVMe over Fibre Channel (NVMe/FC) Über das NetApp-Plug-in im nativen nvme-cli-Paket werden ONTAP-Details für NVMe/FC- und NVMe/TCP-Namespaces angezeigt.
 ** Ausführen von NVMe- und SCSI-Datenverkehr auf demselben Host. Sie können beispielsweise dm-Multipath für SCSI-mpath-Geräte für SCSI-LUNs konfigurieren und NVMe Multipath verwenden, um NVMe-of-Namespace-Geräte auf dem Host zu konfigurieren.
 +
-Weitere Informationen zu unterstützten Konfigurationen finden Sie im link:https://mysupport.netapp.com/matrix/["NetApp Interoperabilitäts-Matrix-Tool"^].
+Weitere Informationen zu unterstützten Konfigurationen finden Sie im link:https://mysupport.netapp.com/matrix/["Interoperabilitäts-Matrix-Tool"^].
 
 
 
@@ -173,7 +173,7 @@ Emulex LightPulse LPe32002-M2 2-Port 32Gb Fibre Channel Adapter
 0:14.2.0.13
 ----
 +
-Die aktuelle Liste der unterstützten Adaptertreiber- und Firmware-Versionen finden Sie unter link:https://mysupport.netapp.com/matrix/["NetApp Interoperabilitäts-Matrix-Tool"^].
+Die aktuelle Liste der unterstützten Adaptertreiber- und Firmware-Versionen finden Sie im link:https://mysupport.netapp.com/matrix/["Interoperabilitäts-Matrix-Tool"^].
 
 
 
@@ -303,7 +303,7 @@ cat /etc/modprobe.d/lpfc.conf
 options lpfc lpfc_sg_seg_cnt=256
 ----
 . Führen Sie den Befehl aus `dracut -f`, und starten Sie den Host neu.
-. Stellen Sie sicher, dass der erwartete Wert von `lpfc_sg_seg_cnt` 256 ist:
+. Stellen Sie sicher, dass der Wert für `lpfc_sg_seg_cnt` 256 lautet:
 +
 [listing]
 ----

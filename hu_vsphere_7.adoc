@@ -22,8 +22,8 @@ Sie können die Konfigurationseinstellungen des ONTAP-SAN-Hosts für die vSphere
 
 == Booten des Hypervisor-SAN
 
-.Was Sie benötigen
-Wenn Sie sich für das Booten über SAN entscheiden, muss es von Ihrer Konfiguration unterstützt werden. Sie können das verwenden https://mysupport.netapp.com/matrix/imt.jsp?components=65623;64703;&solution=1&isHWU&src=IMT["NetApp Interoperabilitäts-Matrix-Tool"^] Um zu überprüfen, ob Ihr Betriebssystem, HBA, die HBA-Firmware und das HBA-Boot-BIOS sowie die ONTAP-Version unterstützt werden.
+.Bevor Sie beginnen
+Wenn Sie sich für das Booten über SAN entscheiden, muss es von Ihrer Konfiguration unterstützt werden. Sie können mit dem link:https://imt.netapp.com/matrix/#welcome["Interoperabilitäts-Matrix-Tool"^]überprüfen, ob Ihr Betriebssystem, HBA, die HBA-Firmware und das HBA-StartBIOS sowie die ONTAP-Version unterstützt werden.
 
 .Schritte
 . Ordnen Sie die SAN-Boot-LUN dem Host zu.
@@ -43,9 +43,9 @@ Informationen zum Aktivieren des HBA-BIOS finden Sie in der anbieterspezifischen
 
 == Multipathing
 
-ESXi stellt ein erweiterbares Multipathing-Modul namens NMP (NMP) zur Verfügung, mit dem die Sub-Plug-ins Storage Array Type Plugins (SATPs) und PSPs (Path Selection Plugins) verwaltet werden. Diese SATP-Regeln sind standardmäßig in ESXi verfügbar.
+ESXi bietet ein erweiterbares Multipathing-Modul namens Native Multipathing Plug-in (NMP), das die Sub-Plugins, Storage Array Type Plugins (SATPs) und Path Selection Plugins (PSPs) verwaltet. Diese SATP-Regeln sind standardmäßig in ESXi verfügbar.
 
-Für NetApp ONTAP Storage wird das VMW_SATP_ALUA Plug-in standardmäßig mit VMW_PSP_RR als Pfadauswahl-Richtlinie (PSP) verwendet. Dies kann mit dem folgenden Befehl bestätigt werden.
+Für ONTAP-Speicher wird standardmäßig das „VMW_SATP_ALUA“-Plugin mit „VMW_PSP_RR“ als Pfadauswahlrichtlinie (PSP) verwendet. Du kannst den folgenden Befehl ausführen, um die PSP zu bestätigen.
 
 *`esxcli storage nmp satp rule list -s VMW_SATP_ALUA`*
 
@@ -194,7 +194,7 @@ Virtual Volumes (VVols) sind ein VMware Objekttyp, der einer VM-Festplatte (Virt
 
 Die ONTAP Tools für VMware vSphere umfassen den VASA Provider für ONTAP, der den Integrationspunkt für VMware vCenter zur Nutzung von VVols-basiertem Storage bietet. Bei der Implementierung der ONTAP Tools OVA wird sie automatisch beim vCenter Server registriert und aktiviert den VASA Provider.
 
-Wenn Sie einen VVols Datastore über die vCenter Benutzeroberfläche erstellen, sind Sie damit in der Lage, FlexVols als Backup Storage für den Datastore zu erstellen. VVols in einem VVols-Datastore können über einen Protokollendpunkt (PE) von ESXi Hosts auf zugreifen. In SAN-Umgebungen wird auf jedem FlexVol im Datastore eine 4-MB-LUN zur Verwendung als PE erstellt. Ein SAN PE ist eine administrative logische Einheit (Alu). VVols sind subsidiäre logische Einheiten (SLUs).
+Wenn Sie einen VVols-Datastore über die vCenter UI erstellen, werden FlexVols als Backup-Storage für den Datastore erstellt. VVols in einem VVols-Datastore können ESXi-Hosts über einen Protokollendpunkt (PE) auf diese zugreifen. In SAN-Umgebungen wird auf jedem FlexVol im Datastore eine 4-MB-LUN zur Verwendung als PE erstellt. Ein SAN PE ist eine administrative logische Einheit (Alu). VVols sind untergeordnete logische Einheiten (SLUs).
 
 Bei der Verwendung von VVols gelten Standardanforderungen und Best Practices für SAN-Umgebungen, darunter (aber nicht beschränkt auf) die folgenden:
 
@@ -209,9 +209,9 @@ NOTE: Um den VASA Provider zu aktivieren, müssen Sie ONTAP Tools für VMware vS
 
 NetApp empfiehlt derzeit nicht, alle VVols-Einstellungen vom Standard zu ändern.
 
-Siehe https://mysupport.netapp.com/matrix/imt.jsp?components=65623;64703;&solution=1&isHWU&src=IMT["NetApp Interoperabilitäts-Matrix-Tool"^] Für bestimmte Versionen der ONTAP Tools oder Legacy VASA Provider für Ihre spezifischen Versionen von vSphere und ONTAP.
+Spezifische Versionen von ONTAP Tools finden Sie im. Weitere Informationen finden Sie im https://imt.netapp.com/matrix/#welcome["Interoperabilitäts-Matrix-Tool"^] alten VASA Provider für Ihre spezifischen Versionen von vSphere und ONTAP.
 
-Weitere Informationen zum Bereitstellen und Verwalten von VVols finden Sie auch in der Dokumentation zu ONTAP-Tools für VMware vSphere link:https://docs.netapp.com/us-en/netapp-solutions/virtualization/vsphere_ontap_ontap_for_vsphere.html["TR-4597-VMware vSphere with ONTAP"^] Und link:https://www.netapp.com/pdf.html?item=/media/13555-tr4400pdf.pdf["TR-4400"^].
+Ausführliche Informationen zum Bereitstellen und Managen von VVols finden Sie in der Dokumentation zu ONTAP Tools für VMware vSphere sowie link:https://docs.netapp.com/us-en/netapp-solutions/virtualization/vsphere_ontap_ontap_for_vsphere.html["TR-4597-VMware vSphere with ONTAP"^] zu und link:https://www.netapp.com/pdf.html?item=/media/13555-tr4400pdf.pdf["TR-4400"^].
 
 
 
@@ -283,7 +283,7 @@ Mit dem folgenden Befehl können Sie die Einstellung HardwareAcceleratedLocking 
 ----
 
 
-=== Überprüfen der Festplatten-IOPS-Einstellung
+=== Überprüfen Sie die Festplatten-IOPS-Einstellung
 
 Überprüfen Sie die IOPS-Einstellung mit dem folgenden Befehl.
 

@@ -4,7 +4,7 @@ permalink: hu_aix_72_sanbooting_aix.html
 keywords: host utilities, aix, netapp, ontap, configure, discover, configuring, discovering 
 summary: Beschreibt, wie LUNS mit AIX gefunden und konfiguriert werden können 
 ---
-= (AIX MPIO ohne PowerVM) ermitteln und Konfigurieren von LUNs mit AIX
+= (AIX MPIO ohne PowerVM) ermitteln und konfigurieren Sie LUNs mit AIX
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -16,7 +16,7 @@ summary: Beschreibt, wie LUNS mit AIX gefunden und konfiguriert werden können
 
 
 [role="lead"]
-Wenn Sie AIX ohne PowerVM verwenden, verwenden Sie den Befehl cfgmgr, um den Host dazu zu bringen, die LUNs zu erkennen. Sie müssen den Host nicht neu starten, um die LUNs zu ermitteln. Um zu bestätigen, dass der Host die LUNS erkannt hat, können Sie das Dienstprogramm sanlun verwenden.
+Wenn Sie AIX ohne PowerVM verwenden, können Sie den Befehl ausführen `cfgmgr`, damit der Host die LUNs erkennen kann. Sie müssen den Host nicht neu starten, um die LUNs zu ermitteln. Um zu bestätigen, dass der Host die LUNS erkannt hat, können Sie das Dienstprogramm sanlun verwenden.
 
 
 NOTE: Die folgenden Schritte gelten nicht für einen Host, auf dem eine PowerVM-Umgebung ausgeführt wird.
@@ -36,7 +36,7 @@ Der `cfgmgr` Befehl unterstützt folgende Bereiche:
 ** Das System zum Erstellen neuer Geräteeinträge.
 
 
-. Geben Sie den folgenden Befehl ein, um alle AIX-Festplatten einschließlich der NetApp LUNs anzuzeigen:
+. Alle AIX-Laufwerke anzeigen, einschließlich der NetApp-LUNs:
 +
 `lsdev -Cc disk`
 
@@ -47,9 +47,12 @@ Die LUNs werden auf dem Host als Festplatten angezeigt. Sie können diese Festpl
 Notieren Sie sich die hdisk-Instanznummern. Sie verwenden sie, wenn Sie die Pfadkonfiguration durchführen.
 
 +
-Die folgende Art der Ausgabe des Befehls lsdev -CC Disk erzeugt in einer Umgebung mit FC.
+Im folgenden Beispiel wird die Befehlsausgabe in einer FC-Umgebung angezeigt `lsdev -Cc disk`.
 
 +
+.Beispielausgabe anzeigen
+[%collapsible]
+====
 [listing]
 ----
 # lsdev -Cc disk
@@ -60,14 +63,15 @@ hdisk3 Available 04-08-02  MPIO NetApp FCP Default PCM Disk
 hdisk4 Available 04-08-02  MPIO NetApp FCP Default PCM Disk
 hdisk5 Available 04-08-02  MPIO NetApp FCP Default PCM Disk
 ----
-. Geben Sie den folgenden Befehl ein, um Informationen über das Setup zu erhalten:
+====
+. Informationen zu Ihrem Setup abrufen:
 +
 `lsattr -El hdisk_name`
 
 +
-Mit diesem Befehl wird die folgende Ausgabe erzeugt.
-
-+
+.Beispielausgabe anzeigen
+[%collapsible]
+====
 [listing]
 ----
 # lsattr -El hdisk65
@@ -97,6 +101,7 @@ scsi_id         0xd10001                         SCSI ID                        
 start_timeout   60                               START unit time out value               True
 ww_name         0x500a0984994ae0e0               FC World Wide Name                      False
 ----
+====
 . Falls Ihre Konfiguration ALUA unterstützt, können Sie damit die Pfadpriorität festlegen. Vergewissern Sie sich, dass ALUA aktiviert ist:
 +
 `lun igroup show -instance igroup_name`
@@ -108,30 +113,32 @@ ww_name         0x500a0984994ae0e0               FC World Wide Name             
 
 
 
-. Wenn Ihre Konfiguration ALUA nicht unterstützt, müssen Sie das Dienstprogramm dotphs ausführen, um die Pfadprioritäten festzulegen. Das dotpaths-Dienstprogramm wird installiert, wenn Sie die Host Utilities installieren. Verwenden Sie das dotpaths-Dienstprogramm nicht, wenn ALUA aktiviert ist.
+. Wenn Ihre Konfiguration ALUA nicht unterstützt, müssen Sie das Dienstprogramm dotpaths verwenden, um die Pfadprioritäten festzulegen. Das dotpaths-Dienstprogramm wird installiert, wenn Sie die Host Utilities installieren. Verwenden Sie das Dienstprogramm dotpaths nicht, wenn ALUA aktiviert ist.
 +
-.. Um die Priorität für alle Data ONTAP LUNs festzulegen, geben Sie Folgendes ein:
+.. Legen Sie die Priorität für alle ONTAP LUNs fest:
 +
 `dotpaths`
 
-.. So legen Sie die Priorität für einen bestimmten Festplattensatz fest:
+.. Legen Sie die Priorität für einen bestimmten Festplattensatz fest:
 +
 `dotpaths [-hqv] [hdiskN ...]`
 
 +
-Verwenden Sie die `-v` Option zum Aktivieren des ausführlichen Modus und zur Anzeige aller Prioritäten. Verwenden Sie die `-q` Option, um alle oder einzelne Festplattenprioritäten abzufragen.
+Verwenden Sie die `-v` Option, um den ausführlichen Modus zu aktivieren und alle Prioritäten anzuzeigen. Verwenden Sie die `-q` Option, um alle oder einzelne Festplattenprioritäten abzufragen.
 
 
 
-. Geben Sie den folgenden Befehl ein, um zu überprüfen, ob der Host die LUNs erkannt hat:
+. Überprüfen Sie, ob der Host die LUNs erkannt hat:
 +
 `# sanlun lun show`
 
 +
-.Beispiel
-Dieses Beispiel zeigt die typische Ausgabe des `sanlun lun show` Befehl in einer MPIO Multipathing-Umgebung.
+Im folgenden Beispiel wird die typische Ausgabe des Befehls in einer Microsoft Multipath I/O (MPIO) Multipathing-Umgebung gezeigt `sanlun lun show`:
 
 +
+.Beispielausgabe anzeigen
+[%collapsible]
+====
 [listing]
 ----
 sanlun lun show -p
@@ -167,4 +174,5 @@ up        secondary   path13 fcs1    4a                                         
 up        primary     path14 fcs1    4b                                             1
 up        primary     path15 fcs1    4a                                             1
 ----
+====
 

@@ -23,7 +23,7 @@ Folgende Unterstützung ist für die NVMe-of-Hostkonfiguration von RHEL 8.8 mit 
 * Unterstützung für NVMe over TCP (NVMe/TCP) neben NVMe/FC Über das NetApp-Plug-in im nativen nvme-cli-Paket werden ONTAP-Details für NVMe/FC- und NVMe/TCP-Namespaces angezeigt.
 
 
-Weitere Informationen zu unterstützten Konfigurationen finden Sie im link:https://mysupport.netapp.com/matrix/["NetApp Interoperabilitäts-Matrix-Tool"^].
+Weitere Informationen zu unterstützten Konfigurationen finden Sie im link:https://mysupport.netapp.com/matrix/["Interoperabilitäts-Matrix-Tool"^].
 
 
 
@@ -180,7 +180,7 @@ Emulex LightPulse LPe32002-M2 2-Port 32Gb Fibre Channel Adapter
 0:14.0.0.18
 ----
 +
-Die aktuelle Liste der unterstützten Adaptertreiber- und Firmware-Versionen finden Sie unter link:https://mysupport.netapp.com/matrix/["NetApp Interoperabilitäts-Matrix-Tool"^].
+Die aktuelle Liste der unterstützten Adaptertreiber- und Firmware-Versionen finden Sie im link:https://mysupport.netapp.com/matrix/["Interoperabilitäts-Matrix-Tool"^].
 
 . Verifizieren Sie das `lpfc_enable_fc4_type` Ist auf festgelegt `3`:
 +
@@ -290,7 +290,7 @@ cat /etc/modprobe.d/lpfc.conf
 options lpfc lpfc_sg_seg_cnt=256
 ----
 . Führen Sie den Befehl aus `dracut -f`, und starten Sie den Host neu.
-. Stellen Sie sicher, dass der erwartete Wert von `lpfc_sg_seg_cnt` 256 ist:
+. Stellen Sie sicher, dass der Wert für `lpfc_sg_seg_cnt` 256 lautet:
 +
 [listing]
 ----

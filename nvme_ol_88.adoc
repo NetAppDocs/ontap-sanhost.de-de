@@ -21,11 +21,11 @@ NVMe over Fabrics (NVMe-of), einschließlich NVMe over Fibre Channel (NVMe/FC) u
 Folgende Unterstützung ist für die NVMe-of Hostkonfiguration für OL 8.8 mit ONTAP verfügbar:
 
 * Unterstützung für NVMe over TCP (NVMe/TCP) neben NVMe/FC Das NetApp-Plug-in im nativen `nvme-cli` Package zeigt ONTAP-Details sowohl für NVMe/FC- als auch für NVMe/TCP-Namespaces an.
-* Sowohl NVMe- als auch SCSI-Datenverkehr können auf demselben vorhandenen Host ausgeführt werden. Daher können Sie bei SCSI-LUNs dm-Multipath für SCSI-mpath-Geräte konfigurieren, während Sie möglicherweise NVMe Multipath verwenden, um NVMe-of Namespace-Geräte auf dem Host zu konfigurieren.
+* NVMe- und SCSI-Datenverkehr können auf demselben Host ausgeführt werden. Daher können Sie bei SCSI-LUNs dm-Multipath für SCSI-mpath-Geräte konfigurieren, während Sie möglicherweise NVMe Multipath verwenden, um NVMe-of Namespace-Geräte auf dem Host zu konfigurieren.
 * Es gibt keine Unterstützung für NVMe-of für Sanlun. Daher gibt es keine Host Utility-Unterstützung für NVMe-of auf einem OL 8.8-Host. Sie können sich auf das im nativen `nvme-cli` Paket enthaltene NetApp Plug-in für alle NVMe-of-Übertragungen verlassen.
 
 
-Weitere Informationen zu unterstützten Konfigurationen finden Sie im link:https://mysupport.netapp.com/matrix/["NetApp Interoperabilitäts-Matrix-Tool"^].
+Weitere Informationen zu unterstützten Konfigurationen finden Sie im link:https://mysupport.netapp.com/matrix/["Interoperabilitäts-Matrix-Tool"^].
 
 
 
@@ -182,7 +182,7 @@ Emulex LightPulse LPe32002-M2 2-Port 32Gb Fibre Channel Adapter
 0:14.2.0.5
 ----
 +
-Die aktuelle Liste der unterstützten Adaptertreiber- und Firmware-Versionen finden Sie unter link:https://mysupport.netapp.com/matrix/["NetApp Interoperabilitäts-Matrix-Tool"^].
+Die aktuelle Liste der unterstützten Adaptertreiber- und Firmware-Versionen finden Sie im link:https://mysupport.netapp.com/matrix/["Interoperabilitäts-Matrix-Tool"^].
 
 . Verifizieren Sie das `lpfc_enable_fc4_type` Ist auf festgelegt `3`:
 +
@@ -284,7 +284,7 @@ cat /etc/modprobe.d/lpfc.conf
 options lpfc lpfc_sg_seg_cnt=256
 ----
 . Führen Sie den Befehl aus `dracut -f`, und starten Sie den Host neu.
-. Stellen Sie sicher, dass der erwartete Wert von `lpfc_sg_seg_cnt` 256 ist:
+. Stellen Sie sicher, dass der Wert für `lpfc_sg_seg_cnt` 256 lautet:
 +
 [listing]
 ----

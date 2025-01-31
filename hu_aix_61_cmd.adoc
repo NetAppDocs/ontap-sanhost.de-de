@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: hu_aix_61_cmd.html 
 keywords: host utilities, aix, powervm, vios, 3.1, 7.2, 7.0, netapp, ontap 
-summary: Sie können die Beispielbefehlreferenz für die AIX Host Utilities für eine End-to-End-Validierung der NetApp-Speicherkonfiguration mit dem Host Utilities-Tool verwenden. 
+summary: Sie können die Beispielbefehlsreferenz des AIX Host Utilities-Beispiels für eine vollständige Validierung der NetApp Storage-Konfiguration mit dem Host Utilities Tool verwenden. 
 ---
 = Beispiel-Befehlsreferenz für AIX Host Utilities
 :hardbreaks:
@@ -16,7 +16,7 @@ summary: Sie können die Beispielbefehlreferenz für die AIX Host Utilities für
 
 
 [role="lead"]
-Sie können die Beispielbefehlreferenz für die AIX Host Utilities für eine End-to-End-Validierung der NetApp-Speicherkonfiguration mit dem Host Utilities-Tool verwenden.
+Sie können die Beispielbefehlsreferenz des AIX Host Utilities-Beispiels für eine vollständige Validierung der NetApp Storage-Konfiguration mit dem Host Utilities Tool verwenden.
 
 
 

@@ -81,7 +81,7 @@ Wenn die Host-NQN-Strings nicht übereinstimmen, sollten Sie den verwenden `vser
 
 Der `lpfc` Treiber und die `qlnativefc` Für Treiber in vSphere 8.x ist die NVMe/FC-Funktion standardmäßig aktiviert.
 
-Siehe link:https://mysupport.netapp.com/matrix/["NetApp Interoperabilitäts-Matrix-Tool"^] Um zu überprüfen, ob die Konfiguration mit dem Treiber oder der Firmware unterstützt wird.
+link:https://mysupport.netapp.com/matrix/["Interoperabilitäts-Matrix-Tool"^]Überprüfen Sie, ob die Konfiguration mit dem Treiber oder der Firmware unterstützt wird.
 
 
 

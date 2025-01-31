@@ -53,7 +53,7 @@ FCP CMPL: xb 00001f50 Err 0000d9f8
 ----
 . 1 MB I/O-Größe _ (optional)_ aktivieren.
 +
-Der `lpfc_sg_seg_cnt` Der Parameter muss auf 256 gesetzt werden, damit der lpfc-Treiber E/A-Anforderungen bis 1 MB groß ausgibt.
+Der `lpfc_sg_seg_cnt` Parameter muss auf 256 gesetzt werden, damit der lpfc-Treiber E/A-Anfragen mit einer Größe von bis zu 1 MB ausgeben kann.
 
 +
 [listing]

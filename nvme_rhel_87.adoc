@@ -18,7 +18,7 @@ summary: Konfigurieren von NVMe-of Host für RHEL 8.7 mit ONTAP
 [role="lead"]
 NVMe over Fabrics oder NVMe-of (einschließlich NVMe/FC und andere Übertragungen) wird mit Red hat Enterprise Linux (RHEL) 8.7 mit ANA (Asymmetric Namespace Access) unterstützt. ANA ist das ALUA-Äquivalent (Asymmetric Logical Unit Access) in der NVMe-of-Umgebung und wird derzeit mit NVMe Multipath im Kernel implementiert. Während dieses Verfahrens aktivieren Sie NVMe-of mit in-Kernel NVMe Multipath unter Verwendung von ANA auf RHEL 8.7 und ONTAP als Ziel.
 
-Siehe link:https://mysupport.netapp.com/matrix/["NetApp Interoperabilitäts-Matrix-Tool"^] Finden Sie genaue Details zu unterstützten Konfigurationen.
+Genaue Informationen zu unterstützten Konfigurationen finden Sie imlink:https://mysupport.netapp.com/matrix/["Interoperabilitäts-Matrix-Tool"^].
 
 
 
@@ -43,7 +43,7 @@ Sie können das folgende Verfahren verwenden, um in-Kernel NVMe Multipath zu akt
 
 .Schritte
 . Installieren Sie RHEL 8.7 auf dem Server.
-. Stellen Sie nach Abschluss der Installation sicher, dass Sie den angegebenen RHEL 8.7-Kernel ausführen. Siehe link:https://mysupport.netapp.com/matrix/["NetApp Interoperabilitätsmatrix"^] Erhalten Sie auf der aktuellen Liste der unterstützten Versionen.
+. Überprüfen Sie nach Abschluss der Installation, ob Sie den angegebenen RHEL 8.7-Kernel ausführen. Die aktuelle Liste der unterstützten Versionen finden Sie imlink:https://mysupport.netapp.com/matrix/["Interoperabilitäts-Matrix-Tool"^].
 +
 Beispiel:
 
@@ -121,7 +121,7 @@ Sie können NVMe/FC für Broadcom/Emulex- oder Marvell/Qlogic-Adapter konfigurie
 .Broadcom/Emulex
 --
 .Schritte
-. Vergewissern Sie sich, dass Sie den unterstützten Adapter verwenden. Siehe link:https://mysupport.netapp.com/matrix/["NetApp Interoperabilitätsmatrix"^] Erhalten Sie in der aktuellen Liste der unterstützten Adapter.
+. Vergewissern Sie sich, dass Sie den unterstützten Adapter verwenden. Eine aktuelle Liste der unterstützten Adapter finden Sie imlink:https://mysupport.netapp.com/matrix/["Interoperabilitäts-Matrix-Tool"^].
 +
 [listing]
 ----
@@ -132,7 +132,7 @@ LPe35002-M2
 Emulex LightPulse LPe35002-M2 2-Port 32Gb Fibre Channel Adapter
 Emulex LightPulse LPe35002-M2 2-Port 32Gb Fibre Channel Adapter
 ----
-. Überprüfen Sie, ob Sie die empfohlene Broadcom lpfc-Firmware und den Posteingangstreiber verwenden. Siehe link:https://mysupport.netapp.com/matrix/["NetApp Interoperabilitätsmatrix"^] Aktuelle Liste der unterstützten Adaptertreiber- und Firmware-Versionen.
+. Überprüfen Sie, ob Sie die empfohlene Broadcom lpfc-Firmware und den Posteingangstreiber verwenden. Die aktuelle Liste der unterstützten Adaptertreiber- und Firmware-Versionen finden Sie imlink:https://mysupport.netapp.com/matrix/["Interoperabilitäts-Matrix-Tool"^].
 +
 [listing]
 ----
@@ -235,7 +235,7 @@ cat /etc/modprobe.d/lpfc.conf
 options lpfc lpfc_sg_seg_cnt=256
 ----
 . Führen Sie den Befehl aus `dracut -f`, und starten Sie den Host neu.
-. Stellen Sie sicher, dass der erwartete Wert von `lpfc_sg_seg_cnt` 256 ist:
+. Stellen Sie sicher, dass der Wert für `lpfc_sg_seg_cnt` 256 lautet:
 +
 [listing]
 ----

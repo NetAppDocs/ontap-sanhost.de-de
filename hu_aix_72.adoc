@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar 
 permalink: hu_aix_72.html 
-keywords: host utilities, aix, powervm, vios, 3.1, 7.2 netapp, ontap 
+keywords: Host Utilities, aix, powervm, vios, 3.1, 7.2 netapp, ontap 
 summary: Beschreibt die Verwendung von IBM AIX 7.2 und/oder PowerVM VIOS 3.1 mit ONTAP 
 ---
 = Verwenden Sie IBM AIX 7.2 und/oder PowerVM (VIOS 3.1) mit ONTAP
@@ -20,13 +20,13 @@ Sie können die Konfigurationseinstellungen des ONTAP-SAN-Hosts verwenden, um IB
 
 
 
-== Installieren Sie die AIX/VIOS-Hostdienstprogramme
+== Installieren Sie die AIX/VIOS Host Utilities
 
-Sie müssen das AIX Host Utilities Kit bei der Verwendung von AIX MPIO mit NetApp ONTAP Storage installieren.
+Sie müssen das AIX Host Utilities Kit installieren, während Sie AIX Microsoft Multipath I/O (MPIO) mit ONTAP-Speicher verwenden.
 
-Sie können die komprimierte Datei mit den Host Utilities Softwarepaketen von herunterladen link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/6.1/downloads["NetApp Support Website"^]. Nachdem Sie die Datei installiert haben, müssen Sie sie dekomprimieren, um die beiden Softwarepakete zu erhalten, die Sie zur Installation der Host-Dienstprogramme benötigen.
+Sie können die komprimierte Datei mit den Host Utilities-Softwarepaketen von herunterladenlink:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/6.1/downloads["NetApp Support Website"^]. Nachdem Sie die Datei installiert haben, müssen Sie sie dekomprimieren, um die beiden Softwarepakete zu erhalten, die Sie zur Installation der Host Utilities benötigen.
 
-NetApp AIX Host Utilities 6.1 ist die neueste Version. Dieser Release behebt das Problem mit Speicherlecks, das in den vorherigen Versionen gemeldet wurde. Weitere Informationen finden Sie im Abschnitt mit den Versionshinweisen.
+Die AIX Host Utilities 6.1-Version behebt das Speicherleck-Problem, das in früheren Versionen gemeldet wurde. Weitere Informationen finden Sie imlink:hu_aix_rn.html["Versionshinweise"].
 
 .Schritte
 . Melden Sie sich bei Ihrem Host an.
@@ -55,7 +55,7 @@ Das folgende Verzeichnis wird beim Dekomprimieren der Datei erstellt: `ntap_aix_
 
 
 
-== SAN-Toolkit
+== SAN Toolkit
 
 Durch die Installation des NetApp Host Utilities-Pakets wird das Toolkit automatisch installiert. Dieses Kit enthält das `sanlun` Dienstprogramm, mit dem Sie LUNs und Host-Bus-Adapter (HBAs) verwalten können. Der `sanlun` Befehl gibt Informationen über die LUNs zurück, die Ihrem Host zugeordnet sind, Multipathing und die zum Erstellen von Initiatorgruppen erforderlichen Informationen.
 
@@ -79,8 +79,8 @@ data_vserver      /vol/vol4/lun4    hdisk14     fcs0       FCP       20g    C
 
 == SAN Booting
 
-.Was Sie benötigen
-Wenn Sie sich für das Booten über SAN entscheiden, muss es von Ihrer Konfiguration unterstützt werden. Sie können das verwenden link:https://mysupport.netapp.com/matrix/imt.jsp?components=71102;&solution=1&isHWU&src=IMT["NetApp Interoperabilitäts-Matrix-Tool"^] Um zu überprüfen, ob Ihr Betriebssystem, HBA, die HBA-Firmware und das HBA-Boot-BIOS sowie die ONTAP-Version unterstützt werden.
+.Bevor Sie beginnen
+Wenn Sie sich für das Booten über SAN entscheiden, muss es von Ihrer Konfiguration unterstützt werden. Sie können mit dem link:https://imt.netapp.com/matrix/#welcome["Interoperabilitäts-Matrix-Tool"^]überprüfen, ob Ihr Betriebssystem, HBA, die HBA-Firmware und das HBA-StartBIOS sowie die ONTAP-Version unterstützt werden.
 
 BEIM Booten VON SAN wird eine SAN-Attached Disk (eine LUN) als Boot-Gerät für einen AIX/PowerVM-Host eingerichtet. Sie können eine SAN-Boot-LUN einrichten, um in einer AIX MPIO-Umgebung zu arbeiten, in der AIX Host Utilities entweder mit dem FC- oder FCoE-Protokoll ausgeführt werden. Die Methode, die Sie zum Erstellen einer SAN-Boot-LUN und zur Installation eines neuen OS-Images darauf in einer AIX MPIO-Umgebung verwenden, kann je nach verwendetem Protokoll variieren.
 
@@ -158,7 +158,7 @@ up     primary  path3  fcs1    fc_aix_4     1
 
 == Empfohlene Einstellungen
 
-Im Folgenden finden Sie einige empfohlene Parametereinstellungen für ONTAP LUNs.  Die wichtigen Parameter für ONTAP LUNs werden nach der Installation des NetApp Host Utilities Kit automatisch festgelegt.
+Im Folgenden finden Sie einige empfohlene Parametereinstellungen für ONTAP LUNs. Die wichtigen Parameter für ONTAP LUNs werden nach der Installation des NetApp Host Utilities Kit automatisch festgelegt.
 
 [cols="4*"]
 |===
@@ -242,5 +242,5 @@ Die IBM AIX 7.2 und/oder PowerVM (VIOS 3.1) mit ONTAP-Version weist folgende bek
 | link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/1414700["1414700"^] | AIX 7.2 TL04 hat bei einem Storage Failover eine I/O-Störung auf virtuellen iSCSI-Festplatten (VIOS 3.1.1.x) festgestellt | Eine I/O-Unterbrechung kann bei Storage Failover-Vorgängen auf AIX 7.2 TL4 Hosts auf den virtuellen iSCSI-Festplatten auftreten, die über das VIOS 3.1.1.x zugeordnet sind Standardmäßig wird der verwendet `rw_timeout` Der Wert des vSCSI-Adapters auf VIOC beträgt 45 Sekunden. Wenn während eines Storage Failover eine I/O-Verzögerung von mehr als 45 Sekunden auftritt, kann es zu einem I/O-Ausfall kommen. Um diese Situation zu vermeiden, schlagen Sie sich bitte in der in BURT erwähnten Behelfslösung vor. | NA 
 
 
-| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/1307653["1307653"^] | Erkennen von I/O-Problemen auf der VIOS 3.1.1.10 bei SFO-Fehlern und geraden I/O-Operationen | Bei VIOS 3.1.1 sind IO-Ausfälle möglicherweise auf NPIV Client-Festplatte zu sehen, die durch 16/32-GB-FC-Adapter unterstützt werden. Auch ein `vfchost` Der Treiber befindet sich möglicherweise in einem Zustand, in dem er die Verarbeitung von I/O-Anfragen vom Client beendet. Das Problem wird durch den Einsatz von IBM APAR IJ22290 behoben. | NA 
+| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/1307653["1307653"^] | I/O-Probleme treten auf VIOS 3.1.1.10 bei SFO-Fehlern und geraden I/O-Vorgängen auf | Auf VIOS 3.1 können I/O-Fehler auf NPIV-Client-Festplatten auftreten, die durch 16-GB- oder 32-GB-FC-Adapter unterstützt werden. Darüber hinaus kann der `vfchost` Treiber die Verarbeitung von I/O-Anfragen vom Client stoppen. Die Anwendung von IBM APAR IJ22290 IBM APAR IJ23222 behebt das Problem. | NA 
 |===

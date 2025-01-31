@@ -2,9 +2,9 @@
 sidebar: sidebar 
 permalink: hu_luhu_71_rn.html 
 keywords: host utilities, linux, 7.1, netapp, ontap, release, notes, linux 
-summary: Versionshinweise zu Linux Unified Host Utilities 7.1 
+summary: Versionshinweise für Linux Host Utilities 7.1 
 ---
-= Linux Unified Host Utilities 7.1 – Versionshinweise
+= Versionshinweise Zu Linux Host Utilities 7.1
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -18,7 +18,7 @@ summary: Versionshinweise zu Linux Unified Host Utilities 7.1
 [role="lead"]
 In den Versionshinweisen werden neue Funktionen und Verbesserungen, bekannte Probleme und Einschränkungen sowie wichtige Hinweise zur Konfiguration und Verwaltung Ihres spezifischen Hosts mit Ihrem ONTAP-Speichersystem beschrieben.
 
-Informationen zu den von Host Utilities unterstützten Betriebssystemversionen und Updates finden Sie im link:https://mysupport.netapp.com/matrix/imt.jsp?components=65623;64703;&solution=1&isHWU&src=IMT["NetApp Interoperabilitäts-Matrix-Tool"^].
+Spezifische Informationen zu den von den Host Utilities unterstützten Betriebssystemversionen und link:https://imt.netapp.com/matrix/#welcome["Interoperabilitäts-Matrix-Tool"^]-Updates finden Sie im .
 
 
 
@@ -47,7 +47,7 @@ NOTE: Jede Nennung der Host Utilities oder Linux Host Utilities in diesem Dokume
 
 
 
-NOTE: NetApp arbeitet weiterhin mit den Host Utilities zusammen, um nach der ersten Version Unterstützung für Funktionen hinzuzufügen. Aktuelle Informationen über unterstützte Funktionen und die neuen Funktionen finden Sie im link:https://mysupport.netapp.com/matrix/imt.jsp?components=65623;64703;&solution=1&isHWU&src=IMT["NetApp Interoperabilitäts-Matrix-Tool"^].
+NOTE: NetApp arbeitet weiterhin mit den Host Utilities zusammen, um nach der ersten Version Unterstützung für Funktionen hinzuzufügen. Aktuelle Informationen zu den unterstützten Funktionen und den neu hinzugefügten Funktionen finden Sie im link:https://imt.netapp.com/matrix/#welcome["Interoperabilitäts-Matrix-Tool"^].
 
 
 
@@ -66,12 +66,9 @@ Die Linux Host Utilities 7.1-Version weist die folgenden bekannten Probleme und 
 | NetApp Bug ID | Titel | Beschreibung 
 
 
-| 1457017 |  `sanlun` Installationsprobleme mit Warnmeldungen im Zusammenhang mit `libdevmapper.so` Und `libnl.so` Bibliotheken. Diese Warnungen wirken sich nicht auf die Funktionalität von aus `sanlun` Kit. | Wenn Sie den Linux Unified Host Utilities CLI-Befehl „sanlun fcp show Adapter -V“ auf einem SAN-Host ausführen, schlägt der Befehl mit der Fehlermeldung fehl, die anzeigt, dass die für die Erkennung eines Host Bus Adapters (HBA) erforderlichen Bibliotheksabhängigkeiten nicht sein können
-Standort:
-
-[Root@hostname ~]# sanlun fcp show Adapter -V
-Die Bibliothek /usr/lib64/libHBAAPI.so konnte nicht gefunden werden
-Stellen Sie sicher, dass das Paket, das die Bibliothek installiert und geladen ist, installiert ist
-Siehe NetApp Bugs Online - link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/1508554["1508554"^]. 
+| 1457017 |  `sanlun` Installationsprobleme mit Warnmeldungen im Zusammenhang mit `libdevmapper.so` Und `libnl.so` Bibliotheken. Diese Warnungen wirken sich nicht auf die Funktionalität von aus `sanlun` Kit. | Wenn Sie den Linux Host Utilities CLI-Befehl - „sanlun fcp show Adapter -V“ auf einem SAN-Host ausführen, schlägt der Befehl fehl und zeigt die Fehlermeldung an, dass die für die Erkennung eines Host Bus Adapters (HBA) erforderlichen Bibliotheksabhängigkeiten nicht gefunden werden können: 
+`[root@hostname ~]# sanlun fcp show adapter -v
+Unable to locate /usr/lib64/libHBAAPI.so library
+Make sure the package installing the library is installed & loaded`Siehe NetApp Bugs Online - link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/1508554["1508554"^]. 
 |===
 link:https://mysupport.netapp.com/site/bugs-online/product["NetApp Bugs Online"^] Bietet vollständige Informationen für die meisten bekannten Probleme, einschließlich Lösungsvorschläge, falls möglich.

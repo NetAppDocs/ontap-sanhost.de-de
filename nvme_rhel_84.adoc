@@ -41,7 +41,7 @@ Sie können das folgende Verfahren verwenden, um in-Kernel NVMe Multipath zu akt
 
 .Schritte
 . Installieren Sie RHEL 8.4 GA auf dem Server.
-. Stellen Sie nach Abschluss der Installation sicher, dass Sie den angegebenen RHEL 8.4-Kernel ausführen. Siehe link:https://mysupport.netapp.com/matrix/["NetApp Interoperabilitätsmatrix"^] Erhalten Sie auf der aktuellen Liste der unterstützten Versionen.
+. Überprüfen Sie nach Abschluss der Installation, ob Sie den angegebenen RHEL 8.4-Kernel ausführen. Die aktuelle Liste der unterstützten Versionen finden Sie imlink:https://mysupport.netapp.com/matrix/["Interoperabilitäts-Matrix-Tool"^].
 +
 Beispiel:
 
@@ -88,7 +88,7 @@ NOTE: Wenn die Host-NQN-Strings nicht übereinstimmen, sollten Sie den verwenden
 +
 [NOTE]
 ====
-Wenn Sie beabsichtigen, sowohl NVMe- als auch SCSI-Datenverkehr auf demselben Host auszuführen, wird die Verwendung von NVMe Multipath im Kernel für ONTAP-Namespaces und dm-Multipath für ONTAP-LUNs empfohlen. Das bedeutet, dass die ONTAP-Namespaces von dm-Multipath ausgeschlossen werden sollten, um zu verhindern, dass dm-Multipath diese Namespace-Geräte beanspruchen kann. Dies kann durch Hinzufügen der Einstellung enable_foreign zum erfolgen `/etc/multipath.conf` Datei:
+Wenn Sie beabsichtigen, sowohl NVMe als auch SCSI gemeinsamen Datenverkehr auf demselben Host auszuführen, wird die Verwendung von NVMe Multipath im Kernel für ONTAP-Namespaces und dm-Multipath für ONTAP-LUNs empfohlen. Das bedeutet, dass die ONTAP-Namespaces von dm-Multipath ausgeschlossen werden sollten, um zu verhindern, dass dm-Multipath diese Namespace-Geräte beanspruchen kann. Dazu kann die Einstellung enable_foreign der Datei hinzugefügt werden `/etc/multipath.conf`:
 
 [listing]
 ----
@@ -113,7 +113,7 @@ Sie können NVMe/FC für Broadcom/Emulex- oder Marvell/Qlogic-Adapter konfigurie
 .Broadcom/Emulex
 --
 .Schritte
-. Vergewissern Sie sich, dass Sie den unterstützten Adapter verwenden. Siehe link:https://mysupport.netapp.com/matrix/["NetApp Interoperabilitäts-Matrix-Tool"^] Erhalten Sie in der aktuellen Liste der unterstützten Adapter.
+. Vergewissern Sie sich, dass Sie den unterstützten Adapter verwenden. Eine aktuelle Liste der unterstützten Adapter finden Sie imlink:https://mysupport.netapp.com/matrix/["Interoperabilitäts-Matrix-Tool"^].
 +
 [listing]
 ----
@@ -124,7 +124,7 @@ LPe32002-M2
 Emulex LightPulse LPe32002-M2 2-Port 32Gb Fibre Channel Adapter
 Emulex LightPulse LPe32002-M2 2-Port 32Gb Fibre Channel Adapter
 ----
-. Überprüfen Sie, ob Sie die empfohlene Broadcom lpfc-Firmware und den Posteingangstreiber verwenden. Siehe link:https://mysupport.netapp.com/matrix/["NetApp Interoperabilitäts-Matrix-Tool"^] Aktuelle Liste der unterstützten Adaptertreiber- und Firmware-Versionen.
+. Überprüfen Sie, ob Sie die empfohlene Broadcom lpfc-Firmware und den Posteingangstreiber verwenden. Die aktuelle Liste der unterstützten Adaptertreiber- und Firmware-Versionen finden Sie imlink:https://mysupport.netapp.com/matrix/["Interoperabilitäts-Matrix-Tool"^].
 +
 [listing]
 ----
@@ -224,7 +224,7 @@ cat /etc/modprobe.d/lpfc.conf
 options lpfc lpfc_sg_seg_cnt=256
 ----
 . Führen Sie den Befehl aus `dracut -f`, und starten Sie den Host neu.
-. Stellen Sie sicher, dass der erwartete Wert von `lpfc_sg_seg_cnt` 256 ist:
+. Stellen Sie sicher, dass der Wert für `lpfc_sg_seg_cnt` 256 lautet:
 +
 [listing]
 ----

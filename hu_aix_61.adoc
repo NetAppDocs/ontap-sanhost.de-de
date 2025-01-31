@@ -4,7 +4,7 @@ permalink: hu_aix_61.html
 keywords: host utilities, aix, powervm, vios, 3.1, 7.2 netapp, ontap 
 summary: Beschreibt die Verwendung von IBM AIX 7.2 und/oder PowerVM VIOS 3.1 mit ONTAP 
 ---
-= Installieren Sie AIX Host Utilities 6.1
+= Installieren Sie AIX Host Utilities 6.1 für ONTAP-Speicher
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -16,7 +16,7 @@ summary: Beschreibt die Verwendung von IBM AIX 7.2 und/oder PowerVM VIOS 3.1 mit
 
 
 [role="lead"]
-Die AIX Unified Host Utilities unterstützen Sie beim Management von NetApp ONTAP-Speicher mit Anbindung an einen AIX-Host.
+Die AIX Host Utilities unterstützen Sie beim Management von ONTAP-Speicher mit Anbindung an einen AIX-Host.
 
 AIX Host Utilities unterstützen die folgenden Protokolle:
 
@@ -27,23 +27,23 @@ AIX Host Utilities unterstützen die folgenden Protokolle:
 
 AIX Host Utilities unterstützen die folgenden Umgebungen:
 
-* AIX MPIO (NATIVES BETRIEBSSYSTEM)
+* AIX Microsoft Multipath I/O (MPIO) (natives Betriebssystem)
 * PowerVM
 +
 Weitere Informationen zu PowerVM finden Sie im IBM PowerVM Live Partition Mobility Red Book.
 
 
 
-.Was Sie benötigen
+.Bevor Sie beginnen
 * Stellen Sie für einen zuverlässigen Betrieb sicher, dass Ihre gesamte iSCSI-, FC- oder FCoE-Konfiguration unterstützt wird.
 +
-Sie können das verwenden https://mysupport.netapp.com/matrix/imt.jsp?components=65623%3B64703%3B&solution=1&isHWU&src=IMT["NetApp Interoperabilitäts-Matrix-Tool"^] Um Ihre Konfiguration zu überprüfen.
+Sie können die verwendenlink:https://imt.netapp.com/matrix/#welcome["Interoperabilitäts-Matrix-Tool"^], um Ihre Konfiguration zu überprüfen.
 
-* Das dynamische Tracking muss für alle FC- und FCoE-Initiatoren aktiviert sein.
+* Aktivieren Sie die dynamische Verfolgung für alle FC- und FCoE-Initiatoren.
 
 
 
-NOTE: Das Software-Paket NetApp AIX Host Utilities finden Sie auf der link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/6.1/downloads["NetApp Support Website"^] In einer komprimierten Datei von tar.gz. Sie müssen das AIX Host Utilities Kit installieren, während Sie AIX MPIO mit NetApp ONTAP-Speicher verwenden.
+NOTE: Das Softwarepaket NetApp AIX Host Utilities ist auf dem  in einem komprimierten `tar.gz file` verfügbarlink:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/6.1/downloads["NetApp Support Website"^]. Sie müssen das AIX Host Utilities Kit installieren, während Sie AIX MPIO mit ONTAP-Speicher verwenden.
 
 .Schritte
 . Melden Sie sich bei Ihrem Host an.
@@ -54,7 +54,7 @@ NOTE: Das Software-Paket NetApp AIX Host Utilities finden Sie auf der link:https
 
 . Wechseln Sie zum https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/6.1/downloads["NetApp Support Website"^] Und laden Sie die komprimierte Datei mit den Host Utilities in ein Verzeichnis auf Ihrem Host herunter.
 . Gehen Sie zu dem Verzeichnis, in dem der Download enthalten ist.
-. Dekomprimieren Sie die Datei und extrahieren Sie das SAN Toolkit-Softwarepaket.
+. Dekomprimieren Sie die Datei und extrahieren Sie das SAN Toolkit Softwarepaket.
 +
 `# tar -xvf ntap_aix_host_utilities_6.1.tar.gz`
 
@@ -65,7 +65,7 @@ Das folgende Verzeichnis wird beim Dekomprimieren der Datei erstellt: `ntap_aix_
 +
 `# installp -aXYd /var/tmp/ntap_aix_host_utilities_6.1/MPIO NetApp.MPIO_Host_Utilities_Kit`
 
-. Installieren Sie das SAN-Toolkit:
+. Installieren Sie das SAN Toolkit:
 +
 `# installp -aXYd /var/tmp/ntap_aix_host_utilities_6.1/SAN_Tool_Kit NetApp.SAN_toolkit`
 
@@ -82,7 +82,7 @@ Das folgende Verzeichnis wird beim Dekomprimieren der Datei erstellt: `ntap_aix_
 
 == SAN Toolkit
 
-AIX Host Utilities ist eine NetApp-Host-Software, die ein Kommandozeilen-Toolkit auf Ihrem IBM AIX-Host bereitstellt. Das Toolkit wird bei der Installation des NetApp Host Utilities-Pakets installiert. Dieses Kit enthält die `sanlun` Dienstprogramm zum Managen von LUNs und Host Bus Adaptern (HBAs). Der `sanlun` Befehl gibt Informationen über die LUNs zurück, die Ihrem Host zugeordnet sind, Multipathing und Informationen zurück, die zum Erstellen von Initiatorgruppen erforderlich sind.
+AIX Host Utilities ist eine NetApp-Host-Software, die ein Kommandozeilen-Toolkit auf Ihrem IBM AIX-Host bereitstellt. Das Toolkit wird bei der Installation des Host Utilities-Pakets installiert. Dieses Kit enthält das `sanlun` Dienstprogramm, mit dem Sie LUNs und Host-Bus-Adapter (HBAs) verwalten können. Der `sanlun` Befehl gibt Informationen über die LUNs zurück, die Ihrem Host zugeordnet sind, Multipathing und die zum Erstellen von Initiatorgruppen erforderlichen Informationen.
 
 *Beispiel*
 
@@ -106,4 +106,4 @@ data_vserver   /vol/vol3/lun3 hdisk11 fcs0   FCP      20g C
 data_vserver   /vol/vol4/lun4 hdisk14 fcs0   FCP      20g C
 ----
 
-NOTE: Dieses Toolkit ist für alle Host Utilities-Konfigurationen und -Protokolle üblich. Als Ergebnis gelten einige ihrer Inhalte auf eine Konfiguration, jedoch nicht auf eine andere. Ungenutzte Komponenten haben keine Auswirkungen auf die Systemleistung. Das SAN Toolkit wird auf den Versionen AIX und PowerVM/VIOS unterstützt.
+NOTE: Dieses Toolkit ist für alle Host Utilities-Konfigurationen und -Protokolle üblich. Daher gelten nicht alle Komponenten für jede Konfiguration. Nicht verwendete Komponenten beeinträchtigen nicht die Systemleistung. Das SAN Toolkit wird auf AIX- und PowerVM/VIOS-Versionen unterstützt

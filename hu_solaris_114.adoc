@@ -70,7 +70,7 @@ Der `host_config` Befehl führt Folgendes aus:
 
 
 
-== SAN-Toolkit
+== SAN Toolkit
 
 Durch die Installation des NetApp Host Utilities-Pakets wird das Toolkit automatisch installiert. Dieses Kit enthält das `sanlun` Dienstprogramm, mit dem Sie LUNs und Host-Bus-Adapter (HBAs) verwalten können. Der `sanlun` Befehl gibt Informationen über die LUNs zurück, die Ihrem Host zugeordnet sind, Multipathing und die zum Erstellen von Initiatorgruppen erforderlichen Informationen.
 
@@ -91,12 +91,12 @@ data_vserver       /vol/vol2/lun2  /dev/rdsk/c0t600A098038314362705D51465A626475
 
 == SAN Booting
 
-.Was Sie benötigen
-Wenn Sie sich für das Booten über SAN entscheiden, muss es von Ihrer Konfiguration unterstützt werden. Sie können das verwenden link:https://mysupport.netapp.com/matrix/imt.jsp?components=71102;&solution=1&isHWU&src=IMT["NetApp Interoperabilitäts-Matrix-Tool"^] Um zu überprüfen, ob Ihr Betriebssystem, HBA, die HBA-Firmware und das HBA-Boot-BIOS sowie die ONTAP-Version unterstützt werden.
+.Bevor Sie beginnen
+Wenn Sie sich für das Booten über SAN entscheiden, muss es von Ihrer Konfiguration unterstützt werden. Sie können mit dem link:https://imt.netapp.com/matrix/#welcome["Interoperabilitäts-Matrix-Tool"^]überprüfen, ob Ihr Betriebssystem, HBA, die HBA-Firmware und das HBA-StartBIOS sowie die ONTAP-Version unterstützt werden.
 
 BEIM BOOTEN VON SAN wird ein SAN-Attached-Laufwerk (eine LUN) als Startgerät für einen Solaris-Host eingerichtet.
 
-Sie können eine SAN-Start-LUN einrichten, um in einer Solaris MPxIO-Umgebung mit dem FC-Protokoll und dem Ausführen von Solaris Host Utilities zu arbeiten. Die Methode zur Einrichtung einer SAN-Boot-LUN kann je nach Volume-Manager und Dateisystem variieren. Siehe link:hu_solaris_62.html["Installieren Sie Solaris Host Utilities"] Für Details zu SAN-Boot-LUNs in einer Solaris MPIO-Umgebung (Multipath I/O).
+Sie können eine SAN-Start-LUN einrichten, um in einer Solaris MPxIO-Umgebung mit dem FC-Protokoll und dem Ausführen von Solaris Host Utilities zu arbeiten. Die Methode zur Einrichtung einer SAN-Boot-LUN kann je nach Volume-Manager und Dateisystem variieren. Weitere Informationen zu SAN-Boot-LUNs in einer Solaris MPIO-Umgebung (Microsoft Multipath I/O) finden Sie unterlink:hu_solaris_62.html["Installieren Sie Solaris Host Utilities"].
 
 
 
@@ -147,7 +147,7 @@ NOTE: Alle SAN-Arrays (ASA)-Konfigurationen werden ab ONTAP 9.8 für Solaris-Hos
 
 == Empfohlene Einstellungen
 
-NetApp empfiehlt die Verwendung der folgenden Parametereinstellungen für Solaris 11.4 SPARC und x86_64 mit NetApp ONTAP-LUNs. Diese Parameterwerte werden von Host Utilities festgelegt. Weitere Systemeinstellungen für Solaris 11.4 finden Sie unter Oracle DOC-ID: 2595926.1.
+NetApp empfiehlt die Verwendung der folgenden Parametereinstellungen für Solaris 11.4 SPARC und x86_64 mit ONTAP-LUNs. Diese Parameterwerte werden von Host Utilities festgelegt. Weitere Systemeinstellungen für Solaris 11.4 finden Sie unter Oracle DOC-ID: 2595926.1.
 
 [cols="2*"]
 |===
@@ -218,8 +218,8 @@ Standardmäßig kann das Solaris-Betriebssystem die E/A-Vorgänge nach *20s* nic
 
 * Die Virtualisierungsoptionen von Solaris umfassen logische Solaris Domains (auch LDOMs oder Oracle VM Server für SPARC), Solaris Dynamic Domains, Solaris Zones und Solaris Container. Diese Technologien wurden allgemein als „Oracle Virtual Machines“ unter dem Markennamen „neu“ bezeichnet, obwohl sie auf verschiedenen Architekturen basieren.
 * In einigen Fällen können mehrere Optionen zusammen verwendet werden, z. B. ein Solaris Container in einer bestimmten logischen Solaris-Domäne.
-* NetApp unterstützt die Nutzung dieser Virtualisierungstechnologien, bei denen die gesamte Konfiguration von Oracle unterstützt wird und jede Partition mit direktem Zugriff auf LUNs ist auf der aufgeführt link:https://mysupport.netapp.com/matrix/imt.jsp?components=95803;&solution=1&isHWU&src=IMT["NetApp Interoperabilitätsmatrix"^] In einer unterstützten Konfiguration. Dazu gehören Root-Container, LDOM I/O-Domänen und LDOM mit NPIV für den Zugriff auf LUNs.
-* Partitionen oder Virtual Machines, die nur virtualisierte Storage-Ressourcen verwenden, z. B. `vdsk`, Benötigen keine speziellen Qualifikationen, da sie keinen direkten Zugriff auf NetApp LUNs haben. Nur die Partition oder virtuelle Maschine, die direkten Zugriff auf die zugrunde liegende LUN hat, wie z. B. eine LDOM-I/O-Domäne, muss in gefunden werden link:https://mysupport.netapp.com/matrix/imt.jsp?components=95803;&solution=1&isHWU&src=IMT["NetApp Interoperabilitäts-Matrix-Tool"^].
+* NetApp unterstützt in der Regel den Einsatz dieser Virtualisierungstechnologien, wobei die Gesamtkonfiguration von Oracle unterstützt wird und jede Partition mit direktem Zugriff auf LUNs in einer unterstützten Konfiguration im aufgeführt wirdlink:https://imt.netapp.com/matrix/#welcome["Interoperabilitäts-Matrix-Tool"^]. Dazu gehören Root-Container, LDOM I/O-Domänen und LDOM mit NPIV für den Zugriff auf LUNs.
+* Partitionen oder virtuelle Maschinen, die nur virtualisierte Speicherressourcen verwenden, wie z. B. `vdsk` , benötigen keine besonderen Qualifikationen, da sie keinen direkten Zugriff auf NetApp-LUNs haben. Nur die Partition oder die virtuelle Maschine, die direkten Zugriff auf die zugrunde liegende LUN hat, wie link:https://imt.netapp.com/matrix/#welcome["Interoperabilitäts-Matrix-Tool"^]z. B. eine LDOM-I/O-Domäne, muss in der gefunden werden.
 
 
 

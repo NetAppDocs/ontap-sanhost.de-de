@@ -22,7 +22,7 @@ NVMe/FC wird auf ONTAP 9.7 oder höher für Windows Server 2012 unterstützt.
 
 Beachten Sie, dass der Broadcom Initiator sowohl NVMe/FC- als auch FCP-Datenverkehr über dieselben 32-Gbit-FC-Adapter-Ports verarbeiten kann. Verwenden Sie für FCP und FC/NVMe MSDSM als Microsoft Multipath I/O (MPIO) Option.
 
-Siehe link:https://hwu.netapp.com/Home/Index["Hardware Universe"^] Für eine Liste der unterstützten FC-Adapter und Controller. Die aktuelle Liste der unterstützten Konfigurationen und Versionen finden Sie unter link:https://mysupport.netapp.com/matrix/["NetApp Interoperabilitätsmatrix"^].
+Eine Liste der unterstützten FC-Adapter und Controller finden Sie im link:https://hwu.netapp.com/Home/Index["Hardware Universe"^] . Die aktuelle Liste der unterstützten Konfigurationen und Versionen finden Sie im link:https://mysupport.netapp.com/matrix/["Interoperabilitäts-Matrix-Tool"^].
 
 
 NOTE: Sie können die in diesem Dokument angegebenen Konfigurationseinstellungen verwenden, um die mit verbundenen Cloud-Clients zu konfigurieren link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^] Und link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["Amazon FSX für ONTAP"^].

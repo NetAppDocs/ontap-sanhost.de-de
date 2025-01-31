@@ -18,14 +18,14 @@ summary: Beschreibt die Konfiguration von NVMe/FC für SUSE Linux Enterprise Ser
 [role="lead"]
 Sie können NVMe over Fibre Channel (NVMe/FC) auf Hosts konfigurieren, auf denen SUSE Linux Enterprise Server 15 SP1 und ONTAP als Ziel ausgeführt werden.
 
-NVMe/FC wird auf ONTAP 9 6 oder höher für die folgenden Versionen von SUSE Linux Enterprise Server unterstützt:
+Ab ONTAP 9.6 wird NVMe/FC für die folgenden Versionen von SUSE Linux Enterprise Server unterstützt:
 
 * SUSE Linux Enterprise Server 15 SP1
 +
 Auf dem SUSE Linux Enterprise Server 15 SP1-Host kann sowohl NVMe/FC- als auch FCP-Datenverkehr über dieselben Fibre-Channel-Initiator-Adapter-Ports ausgeführt werden. Eine Liste der unterstützten FC-Adapter und Controller finden Sie im link:https://hwu.netapp.com/Home/Index["Hardware Universe"^] .
 
 +
-Die aktuelle Liste der unterstützten Konfigurationen und Versionen finden Sie unter link:https://mysupport.netapp.com/matrix/["NetApp Interoperabilitätsmatrix"^].
+Die aktuelle Liste der unterstützten Konfigurationen und Versionen finden Sie im link:https://mysupport.netapp.com/matrix/["Interoperabilitäts-Matrix-Tool"^].
 
 * Das nvme-cli-Paket enthält native NVMe/FC-Skripts für die automatische Verbindung. Sie können den nativen Inbox-lpfc-Treiber unter SUSE Linux Enterprise Server 15 SP1 verwenden.
 
@@ -74,7 +74,7 @@ nqn.2014-08.org.nvmexpress:uuid:75953f3b-77fe-4e03-bf3c-09d5a156fbcd
 
 == Konfigurieren Sie den Broadcom FC-Adapter für NVMe/FC
 
-. Vergewissern Sie sich, dass Sie den unterstützten Adapter verwenden. Die aktuelle Liste der unterstützten Adapter finden Sie im link:https://mysupport.netapp.com/matrix/["NetApp Interoperabilitätsmatrix"^].
+. Vergewissern Sie sich, dass Sie den unterstützten Adapter verwenden. Die aktuelle Liste der unterstützten Adapter finden Sie im link:https://mysupport.netapp.com/matrix/["Interoperabilitäts-Matrix-Tool"^].
 +
 [listing]
 ----
@@ -240,7 +240,7 @@ cat /etc/modprobe.d/lpfc.conf
 options lpfc lpfc_sg_seg_cnt=256
 ----
 . Führen Sie den Befehl aus `dracut -f`, und starten Sie den Host neu.
-. Stellen Sie sicher, dass der erwartete Wert von `lpfc_sg_seg_cnt` 256 ist:
+. Stellen Sie sicher, dass der Wert für `lpfc_sg_seg_cnt` 256 lautet:
 +
 [listing]
 ----

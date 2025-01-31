@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
 permalink: hu_sanhost_index.html 
-keywords:  
-summary:  
+keywords: san, host, utility, software, netapp 
+summary: Erfahren Sie mehr über die neuesten Informationen zu SAN Host Utility-Versionen und greifen Sie auf das Installationsverfahren für Ihre Hostkonfiguration zu. 
 ---
-= Überblick
+= Weitere Informationen zu SAN Host Utilities
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -16,7 +16,13 @@ summary:
 
 
 [role="lead"]
-Entdecken Sie die neuesten Informationen zu SAN Host Utility-Versionen und greifen Sie auf das Installationsverfahren für Ihre Host-Konfiguration zu.
+Erfahren Sie mehr über die neuesten Informationen zu SAN Host Utility-Versionen und greifen Sie auf das Installationsverfahren für Ihre Hostkonfiguration zu.
+
+Auf der NetApp Support-Website sind mehrere SAN-Host Utilities-Softwarepakete verfügbar. NetApp empfiehlt die Verwendung der SAN Host Utilities-Software, wenn diese für Ihren SAN-Host verfügbar ist.
+
+Die AIX-, HP-UX-, Linux- und Solaris Host Utilities-Software stellt ein Befehlszeilen-Toolkit bereit. Das Toolkit unterstützt Sie beim Management von ONTAP LUNs und Host Bus Adaptern (HBAs). Der NetApp Kunden-Support kann auch die SAN Host Utilities verwenden, um Informationen über Ihre Konfiguration zu sammeln, wenn Sie beim Problem Unterstützung benötigen. Das Toolkit wird automatisch installiert, wenn Sie das Host Utilities-Softwarepaket installieren.
+
+Mithilfe der Windows Host Utilities können Sie einen Windows Host-Computer mit NetApp Storage-Systemen verbinden. Die Software enthält ein Installationsprogramm, das die erforderlichen Windows-Registrierungs- und HBA-Parameter festlegt. So kann der Windows Host das Verhalten des Storage-Systems bei ONTAP und E-Series Plattformen korrekt handhaben.
 
 
-NOTE: Für einen zuverlässigen Betrieb nach der Installation verwenden Sie den https://mysupport.netapp.com/matrix/imt.jsp?components=65623%3B64703%3B&solution=1&isHWU&src=IMT["NetApp Interoperabilitäts-Matrix-Tool"^] Überprüfen Sie, ob Ihr Host die gesamten NVMe over Fabrics (einschließlich NVMe over TCP und NVMe over Fibre Channel)-, iSCSI-, FC- oder FCoE-Konfigurationen unterstützt.
+NOTE: Überprüfen Sie für einen zuverlässigen Betrieb nach der Installation mithilfe deslink:https://imt.netapp.com/matrix/#welcome["Interoperabilitäts-Matrix-Tool"^], ob Ihr Host die gesamten NVMe over Fabrics (einschließlich NVMe over TCP und NVMe over Fibre Channel), die iSCSI-, FC- oder FCoE-Konfiguration unterstützt.

@@ -2,9 +2,9 @@
 sidebar: sidebar 
 permalink: hu_luhu_71.html 
 keywords: host utilities, unified, oracle, linux, 7.1, netapp, ontap 
-summary: Beschreibt die Verwendung von Linux Unified Host Utilities 7.1 mit ONTAP 
+summary: Hier wird die Verwendung der Linux Host Utilities 7.1 mit ONTAP beschrieben 
 ---
-= Installieren Sie Linux Unified Host Utilities 7.1
+= Installieren Sie Linux Host Utilities 7.1
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -16,7 +16,7 @@ summary: Beschreibt die Verwendung von Linux Unified Host Utilities 7.1 mit ONTA
 
 
 [role="lead"]
-Die Linux Unified Host Utilities (LUHU) unterstützt Sie beim Management von mit einem Linux-Host verbundenen NetApp ONTAP-Storage. NetApp empfiehlt ausdrücklich die Installation der Linux Unified Host Utilities, dies ist jedoch nicht zwingend erforderlich. Die Dienstprogramme ändern keine Einstellungen auf Ihrem Linux-Host. Die Versorgungseinrichtungen verbessern das Management und unterstützen den NetApp Kunden-Support bei der Erfassung von Informationen zu Ihrer Konfiguration.
+Die Linux Host Utilities unterstützen Sie beim Management von mit einem Linux-Host verbundenen ONTAP-Speicher. NetApp empfiehlt ausdrücklich die Installation der Linux Host Utilities, dies ist jedoch nicht zwingend erforderlich. Die Dienstprogramme ändern keine Einstellungen auf Ihrem Linux-Host. Die Versorgungseinrichtungen verbessern das Management und unterstützen den NetApp Kunden-Support bei der Erfassung von Informationen zu Ihrer Konfiguration.
 
 Die folgenden Linux-Distributionen werden unterstützt:
 
@@ -27,16 +27,16 @@ Die folgenden Linux-Distributionen werden unterstützt:
 * Citrix XenServer
 
 
-.Was Sie benötigen
-Das NetApp Linux Unified Host Utilities-Softwarepaket ist auf der erhältlich link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp Support Website"^] In einer 32-Bit- oder 64-Bit-.rpm-Datei.
+.Bevor Sie beginnen
+Das NetApp Linux-Hostdienstprogramme-Softwarepaket ist auf dem  in einer 32-Bit- oder 64-Bit-.rpm-Datei verfügbarlink:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp Support Website"^].
 
 * Für einen zuverlässigen Betrieb müssen Sie sicherstellen, dass Ihre gesamte iSCSI-, FC- oder FCoE-Konfiguration unterstützt wird.
 +
-Sie können das verwenden https://mysupport.netapp.com/matrix/imt.jsp?components=65623;64703;&solution=1&isHWU&src=IMT["NetApp Interoperabilitäts-Matrix-Tool"^] Um Ihre Konfiguration zu überprüfen.
+Sie können die verwendenlink:https://imt.netapp.com/matrix/#welcome["Interoperabilitäts-Matrix-Tool"^], um Ihre Konfiguration zu überprüfen.
 
 * Sie müssen die auf der Support-Website des Anbieters verfügbaren Verwaltungspakete für den Host Bus Adapter (HBA) installieren.
 +
-Die Managementsoftware aktiviert die SAN-Toolkit-Befehle, um Informationen über FC HBAs, z. B. deren WWPNs, zu erfassen. Für das `sanlun fcp show adapter` Befehl zum Arbeiten, überprüfen Sie, ob die folgenden Pakete korrekt installiert sind:
+Die Managementsoftware aktiviert die SAN-Toolkit-Befehle, um Informationen über FC-HBAs, z. B. deren WWPNs, zu sammeln. Überprüfen Sie, ob die folgenden Pakete korrekt installiert sind, damit `sanlun fcp show adapter` der Befehl funktioniert:
 
 +
 ** Marvell QLogic HBA – QConvergeConsole CLI
@@ -48,28 +48,25 @@ Die Managementsoftware aktiviert die SAN-Toolkit-Befehle, um Informationen über
 
 
 
-NOTE: Die Linux Unified Host Utilities Software unterstützt keine NVMe over Fibre Channel (NVMe/FC)- und NVMe over TCP (NVMe/TCP)-Host-Protokolle.
+NOTE: Die Linux Host Utilities Software unterstützt keine NVMe over Fibre Channel (NVMe/FC)- und NVMe over TCP (NVMe/TCP)-Host-Protokolle.
 
 .Schritte
-. Wenn derzeit eine Version der Linux Unified Host Utilities installiert ist, entfernen Sie diese mit dem folgenden Befehl:
+. Wenn Sie derzeit eine Version von Linux Host Utilities installiert haben, entfernen Sie diese mit dem folgenden Befehl:
 +
 [source, cli]
 ----
 rpm -e netapp_linux_unified_host_utilities-7-1
 ----
 +
-Bei älteren Versionen von Linux Host Utilities wechseln Sie zum Verzeichnis, in dem die Host Utility-Software installiert ist, und geben den Deinstallationsbefehl ein, um das installierte Paket zu entfernen.
+Bei früheren Versionen von Linux Host Utilities wechseln Sie zum Verzeichnis, in dem die Host Utility-Software installiert ist, und geben den Deinstallationsbefehl ein, um das installierte Paket zu entfernen.
 
-. Laden Sie das Softwarepaket für 32 Bit oder 64 Bit Linux Unified Host Utilities von herunter link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp Support Website"^] Auf Ihren Host.
+. Laden Sie das 32-Bit- oder 64-Bit-Linux Host Utilities-Softwarepaket vom auf Ihren Host herunterlink:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp Support Website"^].
 . Rufen Sie das Verzeichnis auf, in dem Sie das Softwarepaket heruntergeladen haben, und installieren Sie es mit dem folgenden Befehl:
 +
 [source, cli]
 ----
 rpm -ivh netapp_linux_unified_host_utilities-7-1.x86_xx.rpm
 ----
-+
-*Beispielausgabe*
-
 +
 [listing]
 ----
@@ -84,9 +81,6 @@ Updating / installing...
 ----
 sanlun version
 ----
-+
-*Beispielausgabe*
-
 +
 [listing]
 ----
@@ -104,7 +98,7 @@ Wenn Sie eine FC-Umgebung konfigurieren, die native Inbox-Treiber verwendet, die
 
 == SAN Toolkit
 
-Linux Unified Host Utilities ist eine NetApp Host Software, die auf Ihrem Linux Host ein Befehlszeilen-Tool Kit bereitstellt.
+Linux Host Utilities ist eine NetApp Host-Software, die ein Befehlszeilen-Toolkit auf Ihrem Linux-Host bereitstellt.
 
 Das Toolkit wird automatisch installiert, wenn Sie das NetApp Host Utilities-Paket installieren. Dieses Kit enthält die `sanlun` Dienstprogramm: Unterstützt Sie beim Management von LUNs und HBAs. Der `sanlun` Befehl gibt Informationen über die LUNs zurück, die Ihrem Host zugeordnet sind, Multipathing und Informationen zurück, die zum Erstellen von Initiatorgruppen erforderlich sind.
 

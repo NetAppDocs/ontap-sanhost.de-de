@@ -34,7 +34,7 @@ NOTE: Sie können die in diesem Dokument angegebenen Konfigurationseinstellungen
 * Oracle Linux 8.3 ist für NVMe-Namespaces standardmäßig in-Kernel-Multipath aktiviert.
 * Bei Oracle Linux 8.3 `nvme-fc auto-connect` sind Skripts im nativen nvme-cli-Paket enthalten. Sie können diese nativen automatischen Verbindungsskripte verwenden, anstatt externe, vom Anbieter bereitgestellte automatische Verbindungsskripte zu installieren.
 * Mit Oracle Linux 8.3 als nativer Software `udev` Regel wird als Teil des bereitgestellt `nvme-cli` Paket, das Lastverteilung für NVMe Multipath nach dem Round Robin-Verfahren ermöglicht Daher müssen Sie diese Regel nicht mehr manuell erstellen.
-* Mit Oracle Linux 8.3 kann sowohl NVMe- als auch SCSI-Datenverkehr auf demselben vorhandenen Host ausgeführt werden. Es wird sogar die häufig implementierte Host-Konfiguration sein. Bei SCSI können Sie dm-Multipath wie gewohnt für SCSI LUNs konfigurieren, was zu mpath-Geräten führt, während NVMe Multipath zur Konfiguration von NVMe-of Multipath-Geräten verwendet werden kann (z. B. `/dev/nvmeXnY`) Auf dem Host.
+* Mit Oracle Linux 8.3 kann sowohl NVMe- als auch SCSI-Datenverkehr auf demselben Host ausgeführt werden. Dies ist die häufig bereitgestellte Host-Konfiguration. Sie können dm-Multipath wie gewohnt für SCSI-LUNs konfigurieren, was zu mpath-Geräten führt, und zudem NVMe Multipath verwenden, um NVMe-of Multipath-Geräte (z. B. ) auf dem Host zu konfigurieren `/dev/nvmeXnY`.
 * Mit Oracle Linux 8.3 hat NetApp ein Plug-in im nativen System `nvme-cli` Das Paket kann ONTAP-Details sowie ONTAP-Namespaces anzeigen.
 
 
@@ -48,14 +48,14 @@ Das Booten von SAN über das NVMe-of-Protokoll wird derzeit nicht unterstützt.
 
 == Konfigurationsanforderungen
 
-Siehe http://mysupport.netapp.com/matrix3["NetApp Interoperabilitäts-Matrix-Tool (IMT)"^] In der aktuellen Liste der unterstützten Konfigurationen.
+Die aktuelle Liste der unterstützten Konfigurationen finden Sie im http://mysupport.netapp.com/matrix3["Interoperabilitäts-Matrix-Tool (IMT)"^].
 
 
 
 == Aktivieren Sie NVMe/FC mit Oracle Linux 8.3
 
 .Schritte
-. Installieren Sie Oracle Linux 8.3 GA auf dem Server. Überprüfen Sie nach Abschluss der Installation, ob Sie den angegebenen Oracle Linux 8.3 GA-Kernel ausführen. Siehe https://mysupport.netapp.com/matrix/["NetApp Interoperabilitäts-Matrix-Tool"^] Erhalten Sie auf der aktuellen Liste der unterstützten Versionen.
+. Installieren Sie Oracle Linux 8.3 GA auf dem Server. Überprüfen Sie nach Abschluss der Installation, ob Sie den angegebenen Oracle Linux 8.3 GA-Kernel ausführen. Die aktuelle Liste der unterstützten Versionen finden Sie im https://mysupport.netapp.com/matrix/["Interoperabilitäts-Matrix-Tool"^].
 +
 [listing]
 ----
@@ -90,7 +90,7 @@ NOTE: Wenn die hostnqn-Zeichenfolgen nicht übereinstimmen, sollten Sie die verw
 +
 [NOTE]
 ====
-Wenn Sie sowohl NVMe- als auch SCSI-Datenverkehr auf demselben vorhandenen Oracle Linux 8.3 Host ausführen möchten, empfiehlt NetApp die Verwendung des NVMe Multipath im Kernel für die ONTAP-Namespaces und `dm-multipath` Für ONTAP LUNs. Dies bedeutet auch, dass die ONTAP-Namespaces in auf der schwarzen Liste stehen sollten `dm-multipath` Um zu verhindern `dm-multipath` Diese Namespace-Geräte beanspruchen. Dies kann durch Hinzufügen der Einstellung _enable_foreign_ zum erfolgen `/etc/multipath.conf` Datei:
+Wenn Sie sowohl NVMe- als auch SCSI-Datenverkehr auf demselben Oracle Linux 8.3 Host ausführen möchten, empfiehlt NetApp die Verwendung des NVMe Multipath im Kernel für ONTAP-Namespaces `dm-multipath` bzw. für ONTAP-LUNs. Dies bedeutet auch, dass die ONTAP-Namespaces in auf die schwarze Liste gesetzt werden sollten `dm-multipath`, um zu verhindern `dm-multipath`, dass diese Namespace-Geräte beansprucht werden. Dies kann durch Hinzufügen der _enable_foreign_-Einstellung zur Datei erfolgen `/etc/multipath.conf`:
 
 [listing]
 ----
@@ -109,7 +109,7 @@ Starten Sie den multipathd-Daemon neu, indem Sie den Befehl _systemctl restart m
 == Konfigurieren Sie den Broadcom FC-Adapter für NVMe/FC
 
 .Schritte
-. Vergewissern Sie sich, dass Sie den unterstützten Adapter verwenden. Die aktuelle Liste der unterstützten Adapter finden Sie im https://mysupport.netapp.com/matrix/["NetApp Interoperabilitäts-Matrix-Tool"^].
+. Vergewissern Sie sich, dass Sie den unterstützten Adapter verwenden. Die aktuelle Liste der unterstützten Adapter finden Sie im https://mysupport.netapp.com/matrix/["Interoperabilitäts-Matrix-Tool"^].
 +
 [listing]
 ----
@@ -124,7 +124,7 @@ LPe36002-M2
 Emulex LPe36002-M64 2-Port 64Gb Fibre Channel Adapter
 Emulex LPe36002-M64 2-Port 64Gb Fibre Channel Adapter
 ----
-. Überprüfen Sie, ob Sie die empfohlene Broadcom lpfc-Firmware und den Posteingangstreiber verwenden. Die aktuelle Liste der unterstützten Adaptertreiber und Firmware-Versionen finden Sie im https://mysupport.netapp.com/matrix/["NetApp Interoperabilitäts-Matrix-Tool"^].
+. Überprüfen Sie, ob Sie die empfohlene Broadcom lpfc-Firmware und den Posteingangstreiber verwenden. Die aktuelle Liste der unterstützten Adaptertreiber und Firmware-Versionen finden Sie im https://mysupport.netapp.com/matrix/["Interoperabilitäts-Matrix-Tool"^].
 +
 [listing]
 ----
@@ -215,7 +215,7 @@ cat /etc/modprobe.d/lpfc.conf
 options lpfc lpfc_sg_seg_cnt=256
 ----
 . Führen Sie den Befehl aus `dracut -f`, und starten Sie den Host neu.
-. Stellen Sie sicher, dass der erwartete Wert von `lpfc_sg_seg_cnt` 256 ist:
+. Stellen Sie sicher, dass der Wert für `lpfc_sg_seg_cnt` 256 lautet:
 +
 [listing]
 ----

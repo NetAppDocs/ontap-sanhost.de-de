@@ -22,7 +22,7 @@ Sie können NVMe over Fibre Channel (NVMe/FC) auf Initiator-Hosts konfigurieren,
 
 == Instandhaltung
 
-NVMe/FC wird auf ONTAP 9.6 oder höher für Oracle Linux 8.2 unterstützt. Auf dem Oracle Linux 8.2 Host kann sowohl NVMe/FC- als auch FCP-Datenverkehr über dieselben FC-Initiator-Adapter-Ports (Fibre Channel) ausgeführt werden. Eine Liste der unterstützten FC-Adapter und Controller finden Sie im link:https://hwu.netapp.com/Home/Index["Hardware Universe"^] . Die aktuelle Liste der unterstützten Konfigurationen finden Sie im link:https://mysupport.netapp.com/matrix/["NetApp Interoperabilitätsmatrix"^].
+Ab ONTAP 9.6 wird NVMe/FC für Oracle Linux 8.2 unterstützt. Auf dem Oracle Linux 8.2 Host kann sowohl NVMe/FC- als auch FCP-Datenverkehr über dieselben FC-Initiator-Adapter-Ports (Fibre Channel) ausgeführt werden. Eine Liste der unterstützten FC-Adapter und Controller finden Sie im link:https://hwu.netapp.com/Home/Index["Hardware Universe"^] . Die aktuelle Liste der unterstützten Konfigurationen finden Sie im link:https://mysupport.netapp.com/matrix/["Interoperabilitäts-Matrix-Tool"^].
 
 
 NOTE: Sie können die in diesem Dokument angegebenen Konfigurationseinstellungen verwenden, um die mit verbundenen Cloud-Clients zu konfigurieren link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^] Und link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["Amazon FSX für ONTAP"^].
@@ -38,7 +38,7 @@ Das Booten von SAN über das NVMe-of-Protokoll wird derzeit nicht unterstützt.
 == NVMe/FC aktivieren
 
 . Installieren Sie Oracle Linux 8.2 auf dem Server.
-. Stellen Sie nach Abschluss der Installation sicher, dass der unterstützte Unbreakable Enterprise Kernel ausgeführt wird. Siehe link:https://mysupport.netapp.com/matrix/["NetApp Interoperabilitätsmatrix"^].
+. Stellen Sie nach Abschluss der Installation sicher, dass der unterstützte Unbreakable Enterprise Kernel ausgeführt wird. Siehe link:https://mysupport.netapp.com/matrix/["Interoperabilitäts-Matrix-Tool"^].
 +
 [listing]
 ----
@@ -78,7 +78,7 @@ Wenn die +hostnqn+-Strings nicht übereinstimmen, sollten Sie den vserver modify
 
 == Konfigurieren Sie den Broadcom FC-Adapter für NVMe/FC
 
-. Vergewissern Sie sich, dass Sie den unterstützten Adapter verwenden. Die aktuelle Liste der unterstützten Adapter finden Sie im link:https://mysupport.netapp.com/matrix/["NetApp Interoperabilitätsmatrix"^].
+. Vergewissern Sie sich, dass Sie den unterstützten Adapter verwenden. Die aktuelle Liste der unterstützten Adapter finden Sie im link:https://mysupport.netapp.com/matrix/["Interoperabilitäts-Matrix-Tool"^].
 +
 [listing]
 ----
@@ -262,7 +262,7 @@ cat /etc/modprobe.d/lpfc.conf
 options lpfc lpfc_sg_seg_cnt=256
 ----
 . Führen Sie den Befehl aus `dracut -f`, und starten Sie den Host neu.
-. Stellen Sie sicher, dass der erwartete Wert von `lpfc_sg_seg_cnt` 256 ist:
+. Stellen Sie sicher, dass der Wert für `lpfc_sg_seg_cnt` 256 lautet:
 +
 [listing]
 ----

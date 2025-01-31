@@ -22,8 +22,8 @@ Sie können die Konfigurationseinstellungen für den ONTAP-SAN-Host für die Bet
 
 == SAN wird gebootet
 
-.Was Sie benötigen
-Wenn Sie sich für das Booten über SAN entscheiden, muss es von Ihrer Konfiguration unterstützt werden. Sie können das verwenden link:https://mysupport.netapp.com/matrix/imt.jsp?components=91241;&solution=236&isHWU&src=IMT["NetApp Interoperabilitäts-Matrix-Tool"^] Um zu überprüfen, ob Ihr Betriebssystem, HBA, die HBA-Firmware und das HBA-Boot-BIOS sowie die ONTAP-Version unterstützt werden.
+.Bevor Sie beginnen
+Wenn Sie sich für das Booten über SAN entscheiden, muss es von Ihrer Konfiguration unterstützt werden. Sie können mit dem link:https://imt.netapp.com/matrix/#welcome["Interoperabilitäts-Matrix-Tool"^]überprüfen, ob Ihr Betriebssystem, HBA, die HBA-Firmware und das HBA-StartBIOS sowie die ONTAP-Version unterstützt werden.
 
 .Schritte
 . Ordnen Sie die SAN-Boot-LUN dem Host zu.
@@ -45,7 +45,7 @@ Informationen zum Aktivieren des HBA-BIOS finden Sie in der anbieterspezifischen
 
 Die Multipath-Unterstützung in Citrix XenServer basiert auf den Komponenten Device Mapper Multipathd. Device Mapper Nodes werden nicht automatisch für alle LUNs erstellt, die dem XenServer zur Verfügung stehen und werden nur bereitgestellt, wenn LUNs von der Storage Management Layer (API) aktiv genutzt werden. Das Citrix XenServer Storage Manager API-Plug-in steuert die automatische Aktivierung und Deaktivierung von Multipath-Knoten.
 
-Aufgrund von Inkompatibilitäten mit der integrierten Multipath Management-Architektur empfiehlt Citrix, die Citrix XenCenter-Applikation für das Management der Storage-Konfiguration zu verwenden. Wenn Sie den Status von Device Mapper-Tabellen manuell abfragen oder aktive Device Mapper Multipath-Knoten auf dem System auflisten müssen, können Sie den verwenden `/sbin/mpathutil status` Überprüfen Sie mit dem Befehl die Einstellungen für Ihre ONTAP LUNs. Weitere Informationen finden Sie in der Dokumentation zum Standardanbieter für Citrix XenServer.
+Aufgrund von Inkompatibilitäten mit der integrierten Multipath Management-Architektur empfiehlt Citrix, die Citrix XenCenter-Applikation für das Management der Storage-Konfiguration zu verwenden. Wenn Sie den Status der Device Mapper-Tabellen manuell abfragen oder aktive Device Mapper-Multipath-Nodes im System auflisten müssen, können Sie mit dem `/sbin/mpathutil status` Befehl die Einstellungen für Ihre ONTAP-LUNs überprüfen. Weitere Informationen finden Sie in der Dokumentation zum Standardanbieter für Citrix XenServer.
 
 
 

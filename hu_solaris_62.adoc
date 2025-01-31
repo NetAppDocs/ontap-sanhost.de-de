@@ -2,9 +2,9 @@
 sidebar: sidebar 
 permalink: hu_solaris_62.html 
 keywords: host utilities, unified, oracle, linux, 7.1, netapp, ontap 
-summary: Beschreibt die Verwendung von Linux Unified Host Utilities 7.1 mit ONTAP 
+summary: Beschreibt die Verwendung der Solaris Host Utilities 6.2 mit ONTAP 
 ---
-= Installieren Sie Solaris Host Utilities 6.2
+= Installieren Sie Solaris Host Utilities 6.2 für ONTAP-Speicher
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -16,25 +16,25 @@ summary: Beschreibt die Verwendung von Linux Unified Host Utilities 7.1 mit ONTA
 
 
 [role="lead"]
-Die Solaris Unified Host Utilities unterstützen Sie bei der Verwaltung von NetApp ONTAP-Speicher, der mit einem Solaris-Host verbunden ist.
+Die Solaris Host Utilities unterstützen Sie bei der Verwaltung von ONTAP-Speicher, der mit einem Solaris-Host verbunden ist.
 
-Solaris Host Utilities 6.2 unterstützt mehrere Solaris Umgebungen und Protokolle. Die primären Host-Utilities-Umgebungen sind:
+Solaris Host Utilities 6.2 unterstützt mehrere Solaris Umgebungen und Protokolle. Die primären Host Utilities-Umgebungen sind:
 
 * Natives Betriebssystem mit MPxIO mit Fibre Channel (FC) oder iSCSI-Protokoll auf einem System mit SPARC-Prozessor oder x86/64-Prozessor.
 * Veritas Dynamic Multipathing (DMP) mit dem FC- oder iSCSI-Protokoll auf einem System mit SPARC Prozessor oder dem iSCSI-Protokoll auf einem System mit x86/64-Prozessor.
 
 
-Solaris Unified Host Utilities 6.2 unterstützt weiterhin die folgenden Versionen von Solaris:
+Solaris Host Utilities 6.2 unterstützt weiterhin die folgenden Versionen von Solaris:
 
 * Solaris 11.x-Serie
 * Solaris 10.x-Serie
 
 
-.Was Sie benötigen
+.Bevor Sie beginnen
 * Stellen Sie für einen zuverlässigen Betrieb sicher, dass Ihre gesamte iSCSI-, FC- oder FCoE-Konfiguration unterstützt wird.
 
 
-Sie können das verwenden link:https://mysupport.netapp.com/matrix/imt.jsp?components=71102;&solution=1&isHWU&src=IMT["NetApp Interoperabilitäts-Matrix-Tool"^] Um Ihre Konfiguration zu überprüfen.
+Sie können die verwendenlink:https://imt.netapp.com/matrix/#welcome["Interoperabilitäts-Matrix-Tool"^], um Ihre Konfiguration zu überprüfen.
 
 
 NOTE: Das Software-Paket NetApp Solaris Host Utilities steht auf der zur Verfügung link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/6.2/downloads["NetApp Support Website"^] In einem komprimierten Dateiformat für Ihren Prozessor. Sie können das Host Utilities Software-Paket für Ihre Umgebung von der Support-Website herunterladen.
@@ -55,13 +55,16 @@ Zum Zeitpunkt der Erstellung dieser Dokumentation wurden die komprimierten Datei
 +
 `# gunzip netapp_solaris_host_utilities_6_2_sparc.tar.gz`
 
-. Entpacken Sie die Datei. Sie können das verwenden `tar xvf` Befehl um dies zu tun.
+. Entpacken Sie die Datei mit dem `tar xvf` folgenden Befehl:
 +
 `# tar xvf netapp_solaris_host_utilities_6_2_sparc.tar`
 
-. Fügen Sie die Pakete, die Sie aus tar-Datei extrahiert haben, zu Ihrem Host hinzu. Sie können das verwenden `pkgadd` Befehl um dies zu tun.
+. Fügen Sie die Pakete, die Sie aus der tar-Datei extrahiert haben, mit dem Befehl zu Ihrem Host `pkgadd` hinzu.
 +
-Die Pakete werden dem hinzugefügt `/opt/NTAP/SANToolkit/bin` Verzeichnis. Im folgenden Beispiel wird das verwendet `pkgadd` Befehl zum Installieren des Solaris Installationspakets:
+Die Pakete werden dem hinzugefügt `/opt/NTAP/SANToolkit/bin` Verzeichnis.
+
++
+Im folgenden Beispiel wird der Befehl verwendet `pkgadd`, um das Solaris-Installationspaket zu installieren:
 
 +
 `# pkgadd -d ./NTAPSANTool.pkg`
@@ -126,4 +129,4 @@ data_vserver                     /vol/vol3/lun4     /dev/rdsk/c0t600A09803830443
 
 ----
 
-NOTE: Dieses Toolkit ist für alle Host Utilities-Konfigurationen und -Protokolle üblich. Daher können einige Toolkit-Inhalte auf eine Konfiguration angewendet werden, aber nicht auf eine andere. Ungenutzte Komponenten haben keine Auswirkungen auf die Systemleistung.
+NOTE: Dieses Toolkit ist für alle Host Utilities-Konfigurationen und -Protokolle üblich. Daher gelten nicht alle Komponenten für jede Konfiguration. Nicht verwendete Komponenten beeinträchtigen nicht die Systemleistung. Das SAN Toolkit wird auf AIX- und PowerVM/VIOS-Versionen unterstützt.

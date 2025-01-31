@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: hu_hpux_60_cmd.html 
 keywords: host utilities, unified, oracle, linux, 7.1, netapp, ontap 
-summary: Beschreibt die Verwendung von Linux Unified Host Utilities 7.1 mit ONTAP 
+summary: Hier wird die Verwendung der Linux Host Utilities 7.1 mit ONTAP beschrieben 
 ---
 = HP-UX Host Utilities 6.0 Befehlsreferenz
 :hardbreaks:
@@ -16,7 +16,7 @@ summary: Beschreibt die Verwendung von Linux Unified Host Utilities 7.1 mit ONTA
 
 
 [role="lead"]
-Sie können die Beispielbefehlsreferenz für HP-UX Unified Host Utilities 6.0 verwenden, um die NetApp Storage-Konfiguration mit dem Host Utilities Tool vollständig zu validieren.
+Sie können die Beispielbefehlsreferenz des HP-UX Host Utilities 6.0 für eine End-to-End-Validierung der ONTAP Storage-Konfiguration mit dem Host Utilities Tool verwenden.
 
 
 

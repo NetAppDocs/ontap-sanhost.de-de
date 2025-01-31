@@ -20,16 +20,16 @@ Sie können die Konfigurationseinstellungen des ONTAP-SAN-Hosts verwenden, um Re
 
 
 
-== Installieren Sie die Linux Unified Host Utilities
+== Installieren Sie die Linux Host Utilities
 
-Das NetApp Linux Unified Host Utilities-Softwarepaket ist auf dem  in einer 32-Bit- und 64-Bit-RPM-Datei verfügbarlink:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp Support Website"^]. Wenn Sie nicht wissen, welche Datei für Ihre Konfiguration geeignet ist, überprüfen Sie mithilfe der, welche Datei link:https://mysupport.netapp.com/matrix/#welcome["NetApp Interoperabilitäts-Matrix-Tool"^]Sie benötigen.
+Das NetApp Linux-Host-Utilitys-Softwarepaket ist auf dem  in einer 32-Bit- und 64-Bit-RPM-Datei verfügbarlink:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp Support Website"^]. Wenn Sie nicht wissen, welche Datei für Ihre Konfiguration geeignet ist, überprüfen Sie mithilfe der, welche Datei link:https://mysupport.netapp.com/matrix/#welcome["Interoperabilitäts-Matrix-Tool"^]Sie benötigen.
 
-NetApp empfiehlt ausdrücklich die Installation der Linux Unified Host Utilities, dies ist jedoch nicht zwingend erforderlich. Die Dienstprogramme ändern keine Einstellungen auf Ihrem Linux-Host. Die Versorgungseinrichtungen verbessern das Management und unterstützen den NetApp Kunden-Support bei der Erfassung von Informationen zu Ihrer Konfiguration.
+NetApp empfiehlt ausdrücklich die Installation der Linux Host Utilities, dies ist jedoch nicht zwingend erforderlich. Die Dienstprogramme ändern keine Einstellungen auf Ihrem Linux-Host. Die Versorgungseinrichtungen verbessern das Management und unterstützen den NetApp Kunden-Support bei der Erfassung von Informationen zu Ihrer Konfiguration.
 
-Wenn Sie Linux Unified Host Utilities derzeit installiert haben, sollten Sie entweder ein Upgrade auf die neueste Version durchführen oder diese entfernen und die aktuelle Version wie folgt installieren.
+Wenn Sie Linux Host Utilities derzeit installiert haben, sollten Sie entweder ein Upgrade auf die neueste Version durchführen, oder es entfernen und die folgenden Schritte ausführen, um die neueste Version zu installieren.
 
 .Schritte
-. Laden Sie das Softwarepaket für 32 Bit oder 64 Bit Linux Unified Host Utilities von herunter link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp Support Website"^] Auf Ihren Host.
+. Laden Sie das 32-Bit- oder 64-Bit-Linux Host Utilities-Softwarepaket vom auf Ihren Host herunterlink:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp Support Website"^].
 . Installieren des Softwarepakets:
 +
 `rpm -ivh netapp_linux_unified_host_utilities-7-1.x86_64`
@@ -68,8 +68,8 @@ data_vserver          /vol/vol2/lun2   /dev/sde   host15   FCP       120.0g  cDO
 
 == SAN wird gebootet
 
-.Was Sie benötigen
-Wenn Sie sich für das Booten über SAN entscheiden, muss es von Ihrer Konfiguration unterstützt werden. Sie können das verwenden link:https://mysupport.netapp.com/matrix/imt.jsp?components=71102;&solution=1&isHWU&src=IMT["NetApp Interoperabilitäts-Matrix-Tool"^] Um zu überprüfen, ob Ihr Betriebssystem, HBA, die HBA-Firmware und das HBA-Boot-BIOS sowie die ONTAP-Version unterstützt werden.
+.Bevor Sie beginnen
+Wenn Sie sich für das Booten über SAN entscheiden, muss es von Ihrer Konfiguration unterstützt werden. Sie können mit dem link:https://imt.netapp.com/matrix/#welcome["Interoperabilitäts-Matrix-Tool"^]überprüfen, ob Ihr Betriebssystem, HBA, die HBA-Firmware und das HBA-StartBIOS sowie die ONTAP-Version unterstützt werden.
 
 .Schritte
 . Ordnen Sie die SAN-Boot-LUN dem Host zu.

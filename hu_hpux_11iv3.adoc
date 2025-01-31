@@ -63,8 +63,8 @@ sanboot_unix      /vol/hpux_215_boot_en_0/goot_hpux_215_lun /dev/rdsk/c12t0d0 fc
 
 == SAN wird gebootet
 
-.Was Sie benötigen
-Wenn Sie sich für das Booten über SAN entscheiden, muss es von Ihrer Konfiguration unterstützt werden. Sie können das verwenden link:https://mysupport.netapp.com/matrix/imt.jsp?components=71102;&solution=1&isHWU&src=IMT["NetApp Interoperabilitäts-Matrix-Tool"^] Um zu überprüfen, ob Ihr Betriebssystem, HBA, die HBA-Firmware und das HBA-Boot-BIOS sowie die ONTAP-Version unterstützt werden.
+.Bevor Sie beginnen
+Wenn Sie sich für das Booten über SAN entscheiden, muss es von Ihrer Konfiguration unterstützt werden. Sie können mit dem link:https://imt.netapp.com/matrix/#welcome["Interoperabilitäts-Matrix-Tool"^]überprüfen, ob Ihr Betriebssystem, HBA, die HBA-Firmware und das HBA-StartBIOS sowie die ONTAP-Version unterstützt werden.
 
 BEIM Booten VON SAN wird eine SAN-Attached Disk (eine LUN) als Boot-Gerät für einen HP-UX-Host eingerichtet. Host Utilities unterstützen das SAN-Booten mit FC- und FCoE-Protokollen in HP-UX-Umgebungen.
 

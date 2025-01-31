@@ -1,8 +1,8 @@
 ---
 sidebar: sidebar 
 permalink: hu_solaris_62_cmd.html 
-keywords: host utilities, unified, oracle, linux, 7.1, netapp, ontap 
-summary: Beschreibt die Verwendung von Linux Unified Host Utilities 7.1 mit ONTAP 
+keywords: host utilities, unified, solaris, 6.2, netapp, ontap 
+summary: Beschreibt die Verwendung der Solaris Host Utilities 6.2 mit ONTAP 
 ---
 = Solaris Host Utilities 6.2-Befehlsreferenz
 :hardbreaks:
@@ -16,7 +16,7 @@ summary: Beschreibt die Verwendung von Linux Unified Host Utilities 7.1 mit ONTA
 
 
 [role="lead"]
-Sie können die Beispielbefehlsreferenz für Solaris Host Utilities 6.2 für eine End-to-End-Validierung der NetApp-Speicherkonfiguration mit dem Host Utilities-Tool verwenden.
+Sie können die Beispielbefehlsreferenz für Solaris Host Utilities 6.2 für eine End-to-End-Validierung der NetApp-Storage-Konfiguration mit dem Host Utilities Tool verwenden.
 
 
 
