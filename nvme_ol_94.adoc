@@ -403,7 +403,7 @@ NOTE: Ab Oracle Linux 9.4 ist die Standardeinstellung für NVMe/TCP `ctrl_loss_t
 
 == NVMe-of validieren
 
-Um den korrekten Betrieb von ONTAP LUNs zu unterstützen, stellen Sie sicher, dass der NVMe Multipath-Status, der ANA-Status und die ONTAP-Namespaces für die NVMe-of Konfiguration richtig sind.
+Vergewissern Sie sich, dass der in-Kernel-Multipath-Status, der ANA-Status und die ONTAP-Namespaces für die NVMe-of-Konfiguration richtig sind.
 
 .Schritte
 . Überprüfen Sie die folgenden NVMe/FC-Einstellungen auf dem Oracle Liniux 9.4-Host:

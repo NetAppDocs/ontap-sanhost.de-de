@@ -1,0 +1,11 @@
+= 
+:allow-uri-read: 
+
+
+Die MPIO-Software stellt dem Windows-Betriebssystem eine einzige Festplatte für alle Pfade zur Verfügung, und ein gerätespezifisches Modul (DSM) verwaltet Pfad-Failover. Auf einem Windows-System sind die beiden Hauptkomponenten einer MPIO-Lösung DSM und Windows MPIO.
+
+
+CAUTION: Wenn Sie die MPIO-Software nicht installieren, sieht das Windows-Betriebssystem jeden Pfad möglicherweise als separate Festplatte. Dies kann zu Datenbeschädigungen führen.
+
+
+NOTE: Windows XP oder Windows Vista, die auf einer virtuellen Hyper-V-Maschine ausgeführt werden, unterstützt MPIO nicht.

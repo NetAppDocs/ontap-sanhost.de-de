@@ -18,6 +18,7 @@ Mithilfe der Windows Host Utilities können Sie einen Windows Host-Computer mit 
 
 Die Windows Host Utilities unterstützen die folgenden Versionen von Windows:
 
+* Windows 2025
 * Windows 2022
 * Windows 2019
 * Windows 2016
@@ -62,7 +63,7 @@ Bevor Sie die Host Utilities installieren, müssen Sie überprüfen, ob die Vers
 . Prüfen Sie die für den jeweiligen Host erforderlichen Hotfixes im link:https://docs.netapp.com/us-en/ontap-sanhost/index.html["SAN-Host, Windows-Dokumentation"].
 +
 
-NOTE: Der link:https://docs.netapp.com/us-en/ontap-sanhost/hu_windows_2022.html["Verwenden von Windows Server 2022 mit ONTAP"] Das Dokument enthält Anweisungen zu link:https://docs.netapp.com/us-en/ontap-sanhost/hu_windows_2022.html#installing-windows-hotfixes["Windows Hotfixes werden installiert"] Für Windows Server 2022. In den Windows-Dokumenten in der Kategorie Hostkonfigurationen finden Sie die entsprechenden Hotfix-Informationen für frühere Versionen von Windows-Servern.
+NOTE: Das link:https://docs.netapp.com/us-en/ontap-sanhost/hu_windows_2022.html["Verwenden Sie Windows Server 2022 mit ONTAP"] Dokument enthält Anweisungen link:https://docs.netapp.com/us-en/ontap-sanhost/hu_windows_2022.html#installing-windows-hotfixes["Windows Hotfixes werden installiert"]für Windows Server 2022. In den Windows-Dokumenten in der Kategorie Hostkonfigurationen finden Sie die entsprechenden Hotfix-Informationen für frühere Versionen von Windows-Servern.
 
 . Fügen Sie die iSCSI-, FCP- oder NVMe-of-Lizenz hinzu und starten Sie den Zielservice.
 +

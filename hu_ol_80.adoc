@@ -35,7 +35,7 @@ NetApp empfiehlt ausdrücklich die Installation der Linux Host Utilities, dies i
 
 
 
-NOTE: Sie können die in diesem Dokument angegebenen Konfigurationseinstellungen verwenden, um die mit verbundenen Cloud-Clients zu konfigurieren link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^] Und link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["Amazon FSX für ONTAP"^].
+NOTE: Mit den in diesem Verfahren angegebenen Konfigurationseinstellungen können Sie Cloud-Clients konfigurieren, die mit  und verbunden link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^]link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["Amazon FSX für ONTAP"^]sind.
 
 
 
@@ -89,7 +89,7 @@ Informationen zum Aktivieren des HBA-BIOS finden Sie in der anbieterspezifischen
 
 Für Oracle Linux 8.0 muss die Datei /etc/Multipath.conf vorhanden sein, Sie müssen jedoch keine spezifischen Änderungen an der Datei vornehmen. Oracle Linux 8.0 wird mit allen Einstellungen zusammengestellt, die zum Erkennen und korrekten Managen von ONTAP LUNs erforderlich sind.
 
-Sie können mit dem `multipath -ll` Befehl die Einstellungen für Ihre ONTAP LUNs überprüfen. Es sollte zwei Gruppen von Pfaden mit unterschiedlichen Prioritäten geben. Die Pfade mit höheren Prioritäten sind aktiv/optimiert, d. h. sie werden vom Controller gewartet, in dem sich das Aggregat befindet. Die Pfade mit niedrigeren Prioritäten sind aktiv, aber nicht optimiert, da sie von einem anderen Controller bedient werden. Die nicht optimierten Pfade werden nur verwendet, wenn optimierte Pfade nicht verfügbar sind.
+Sie können mit dem `multipath -ll` Befehl die Einstellungen für Ihre ONTAP LUNs überprüfen. Es sollte zwei Gruppen von Pfaden mit unterschiedlichen Prioritäten geben. Die Pfade mit höheren Prioritäten sind aktiv/optimiert. Das heißt, sie werden vom Controller gewartet, wo sich das Aggregat befindet. Die Pfade mit niedrigeren Prioritäten sind aktiv, aber nicht optimiert, da sie von einem anderen Controller bedient werden. Die nicht optimierten Pfade werden nur verwendet, wenn optimierte Pfade nicht verfügbar sind.
 
 .Beispiel
 Im folgenden Beispiel wird die richtige Ausgabe für eine ONTAP-LUN mit zwei aktiv/optimierten Pfaden und zwei aktiv/nicht optimierten Pfaden angezeigt:

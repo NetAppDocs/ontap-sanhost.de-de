@@ -1,6 +1,111 @@
-= 
+---
+sidebar: sidebar 
+permalink: nvme-windows-2025.html 
+keywords: nvme, windows, enterprise 
+summary: NVMe/FC-Host-Konfiguration für Windows Server 2052 mit ONTAP 
+---
+= Konfigurieren Sie Windows Server 2025 mit NVMe/FC für ONTAP
+:hardbreaks:
+:toclevels: 1
 :allow-uri-read: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
 
+
+[role="lead"]
+Sie können NVMe over Fibre Channel (NVMe/FC) auf Hosts konfigurieren, auf denen Windows Server 2025 für den Betrieb mit ONTAP-LUNs ausgeführt wird.
+
+.Über diese Aufgabe
+Sie können die folgende Unterstützung für die NVMe/FC-Hostkonfiguration für Windows 2025 verwenden. Sie sollten auch die bekannten Einschränkungen überprüfen, bevor Sie mit dem Konfigurationsprozess beginnen.
+
+* Support verfügbar:
++
+Ab ONTAP 9.10.1 wird NVMe/FC für Windows Server 2025 unterstützt.
+
++
+Eine Liste der unterstützten FC-Adapter und Controller finden Sie im link:https://hwu.netapp.com/Home/Index["Hardware Universe"^]. Die aktuelle Liste der unterstützten Konfigurationen und Versionen finden Sie im link:https://mysupport.netapp.com/matrix/["Interoperabilitäts-Matrix-Tool"^].
+
+* Bekannte Einschränkungen:
++
+Windows Failover Cluster wird mit NVMe/FC nicht unterstützt, da ONTAP derzeit persistente Reservierungen mit NVMe/FC nicht unterstützt.
+
++
+
+NOTE: Broadcom liefert einen externen Treiber für Windows NVMe/FC, der ein translationaler SCSI ⇄ NVMe-Treiber und kein echter NVMe/FC-Treiber ist. Der translationale Overhead beeinträchtigt nicht unbedingt die Performance, doch er hebt die Performance-Vorteile von NVMe/FC auf. Daher ist die Performance von NVMe/FC und FCP auf Windows Servern im Gegensatz zu anderen Betriebssystemen wie Linux, bei denen die NVMe/FC-Performance deutlich besser ist als die von FCP.
+
+
+
+
+
+== NVMe/FC aktivieren
+
+Aktivieren Sie FC/NVMe auf dem Windows Initiator-Host.
+
+.Schritte
+. Installieren Sie das OneCommand Manager-Dienstprogramm auf dem Windows-Host.
+. Legen Sie an jedem der HBA-Initiator-Ports die folgenden HBA-Treiberparameter fest:
++
+** EnableNVMe = 1
+** NVMEMode = 0
+
+
+. Starten Sie den Host neu.
+
+
+
+
+== Konfigurieren Sie den Broadcom FC-Adapter
+
+Der Broadcom Initiator kann sowohl NVMe/FC- als auch FCP-Datenverkehr über dieselben 32-Gbit-FC-Adapter-Ports bedienen. Für FCP und FC/NVMe sollten Sie das Microsft Device-Specific Module (DSM) als Microsoft Multipath I/O (MPIO)-Option verwenden.
+
+Ein `+hostnqn+` ist jedem HBA-Port (Host Bus Adapter) für den Broadcom-Adapter mit FC/NVMe in einer Windows-Umgebung zugeordnet. Das `+hostnqn+` ist wie im folgenden Beispiel gezeigt formatiert:
+
+....
+nqn.2017-01.com.broadcom:ecd:nvmf:fc:100000109b1b9765
+nqn.2017-01.com.broadcom:ecd:nvmf:fc:100000109b1b9766
+....
+
+
+=== MPIO für NVMe-Geräte aktivieren
+
+Sie müssen MPIO für NVMe-Geräte aktivieren, um die NVMe-Konfiguration auf dem Windows-Host abzuschließen.
+
+.Schritte
+. Installieren link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["Windows Host Utility Kit 7.1"] Treiber-Parameter einstellen, die für FC und NVMe gemeinsam sind.
+. Öffnen Sie die MPIO-Eigenschaften.
+. Fügen Sie auf der Registerkarte *Multi-Paths* die für NVMe angegebene Geräte-ID hinzu.
++
+MPIO erkennt NVMe-Geräte, die im Festplattenmanagement sichtbar sind.
+
+. Öffnen Sie * Disk Management* und gehen Sie zu *Disk Properties*.
+. Wählen Sie auf der Registerkarte *MPIO* die Option *Details*.
+. Stellen Sie die folgenden Microsoft DSM-Einstellungen ein:
++
+** PathVerifiedPeriod: *10*
+** PathVerifyEnabled: *Enable*
+** RetryCount: *6*
+** Wiederholungsintervall: *1*
+** PDORemovedPeriod: *130*
+
+
+. Wählen Sie die MPIO-Richtlinie *Round Robin mit Untergruppe* aus.
+. Ändern Sie die Registrierungswerte:
++
+[listing]
+----
+HKLM\SYSTEM\CurrentControlSet\Services\mpio\Parameters\PathRecoveryInterval DWORD -> 30
+
+HKLM\SYSTEM\CurrentControlSet\Services\mpio \Parameters\ UseCustomPathRecoveryInterval  DWORD-> 1
+----
+. Starten Sie den Host neu.
+
+
+
+
+== Validieren der NVMe/FC-Konfiguration
 
 Vergewissern Sie sich, dass die NVMe-Subsysteme erkannt wurden und die ONTAP-Namespaces für die NVMe-of Konfiguration richtig sind.
 

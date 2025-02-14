@@ -154,7 +154,7 @@ NOTE: Verwenden Sie keine unverhältnismäßig hohe Anzahl von Pfaden zu einer e
 
 == Nicht-ASA-Konfiguration
 
-Für eine nicht-ASA-Konfiguration sollte es zwei Gruppen von Pfaden mit unterschiedlichen Prioritäten geben. Die Pfade mit höheren Prioritäten sind aktiv/optimiert, d. h. sie werden vom Controller gewartet, in dem sich das Aggregat befindet. Die Pfade mit niedrigeren Prioritäten sind aktiv, aber nicht optimiert, da sie von einem anderen Controller bedient werden. Die nicht optimierten Pfade werden nur verwendet, wenn optimierte Pfade nicht verfügbar sind.
+Für eine nicht-ASA-Konfiguration sollte es zwei Gruppen von Pfaden mit unterschiedlichen Prioritäten geben. Die Pfade mit höheren Prioritäten sind aktiv/optimiert. Das heißt, sie werden vom Controller gewartet, wo sich das Aggregat befindet. Die Pfade mit niedrigeren Prioritäten sind aktiv, aber nicht optimiert, da sie von einem anderen Controller bedient werden. Die nicht optimierten Pfade werden nur verwendet, wenn optimierte Pfade nicht verfügbar sind.
 
 .Beispiel
 Im folgenden Beispiel wird die richtige Ausgabe für eine ONTAP-LUN mit zwei aktiv/optimierten Pfaden und zwei aktiv/nicht optimierten Pfaden angezeigt:

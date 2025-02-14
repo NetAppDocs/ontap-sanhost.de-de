@@ -1,0 +1,7 @@
+= 
+:allow-uri-read: 
+
+
+Windows Failover Cluster wird mit NVMe/FC nicht unterstützt, da ONTAP derzeit persistente Reservierungen mit NVMe/FC nicht unterstützt.
+
++ HINWEIS: Broadcom liefert einen externen Treiber für Windows NVMe/FC, der ein translationaler SCSI ⇄ NVMe-Treiber und kein echter NVMe/FC-Treiber ist. Der translationale Overhead beeinträchtigt nicht unbedingt die Performance, doch er hebt die Performance-Vorteile von NVMe/FC auf. Daher ist die Performance von NVMe/FC und FCP auf Windows Servern im Gegensatz zu anderen Betriebssystemen wie Linux, bei denen die NVMe/FC-Performance deutlich besser ist als die von FCP.

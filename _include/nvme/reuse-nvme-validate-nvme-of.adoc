@@ -2,4 +2,4 @@
 :allow-uri-read: 
 
 
-Um den korrekten Betrieb von ONTAP LUNs zu unterstützen, stellen Sie sicher, dass der NVMe Multipath-Status, der ANA-Status und die ONTAP-Namespaces für die NVMe-of Konfiguration richtig sind.
+Vergewissern Sie sich, dass der in-Kernel-Multipath-Status, der ANA-Status und die ONTAP-Namespaces für die NVMe-of-Konfiguration richtig sind.

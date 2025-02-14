@@ -4,7 +4,7 @@ permalink: hu_windows_2012r2.html
 keywords: windows, enterprise 
 summary: Verwenden von Windows Server 2012 R2 mit ONTAP 
 ---
-= Verwenden von Windows Server 2012 R2 mit ONTAP
+= Verwenden Sie Windows Server 2012 R2 mit ONTAP
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -16,120 +16,131 @@ summary: Verwenden von Windows Server 2012 R2 mit ONTAP
 
 
 [role="lead"]
-Sie können die Konfigurationseinstellungen des ONTAP-SAN-Hosts verwenden, um Windows Server 2012 R2 mit ONTAP als Ziel zu konfigurieren.
+Mithilfe der Konfigurationseinstellungen für den ONTAP-SAN-Host können Sie Windows Server 2012 R2 für den Betrieb mit ONTAP Storage konfigurieren.
 
 
 
-== Booten des Betriebssystems
+== Starten Sie das Windows-Betriebssystem
 
-Es gibt zwei Optionen für das Booten des Betriebssystems: Durch die Verwendung von lokalem Booten oder SAN-Boot. Zum lokalen Booten installieren Sie das Betriebssystem auf der lokalen Festplatte (SSD, SATA, RAID usw.). Informationen zum Booten über SAN finden Sie unten.
+Sie können das Windows-Betriebssystem mit einem lokalen Boot oder einem SAN-Boot starten. NetApp empfiehlt die Verwendung eines SAN-Starts, wenn dies von Ihrer Konfiguration unterstützt wird.
+
+[role="tabbed-block"]
+====
+.Lokaler Start
+--
+Führen Sie einen lokalen Start durch, indem Sie das Windows-Betriebssystem auf der lokalen Festplatte (SSD, SATA, RAID usw.) installieren.
+
+--
+.SAN Booting
+--
+Wenn Sie sich für den SAN-Bootvorgang entscheiden, muss dies von Ihrer Konfiguration unterstützt werden.
 
 
+NOTE: Mit den in diesem Verfahren angegebenen Konfigurationseinstellungen können Sie Cloud-Clients konfigurieren, die mit  und verbunden link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^]link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["Amazon FSX für ONTAP"^]sind.
 
-=== SAN Booting
+.Bevor Sie beginnen
+Überprüfen Sie mithilfe des https://mysupport.netapp.com/matrix/#welcome["Interoperabilitäts-Matrix-Tool"^], ob Ihr Windows-Betriebssystem, Ihr Hostbusadapter (HBA), die HBA-Firmware, das HBA-StartBIOS und die ONTAP-Version das Booten über das SAN unterstützen.
 
-Wenn Sie sich für SAN-Bootvorgang entscheiden, muss dies von Ihrer Konfiguration unterstützt werden. Sie können mit dem Interoperabilitäts-Matrix-Tool überprüfen, ob Betriebssystem, HBA, HBA-Firmware, HBA-Boot-BIOS und ONTAP-Version unterstützt werden.
-
+.Schritte
 . Ordnen Sie die SAN-Boot-LUN dem Host zu.
++
+Siehe link:https://docs.netapp.com/us-en/ontap/san-management/index.html["SAN-Storage-Management"^].
+
 . Vergewissern Sie sich, dass mehrere Pfade verfügbar sind.
 +
 
 NOTE: Mehrere Pfade sind nur verfügbar, nachdem das Host-Betriebssystem auf den Pfaden ausgeführt wurde.
 
-. Aktivieren Sie das SAN-Booten im Server-BIOS für die Ports, denen die SAN-Boot-LUN zugeordnet ist. Informationen zum Aktivieren des HBA-BIOS finden Sie in der anbieterspezifischen Dokumentation.
-. Starten Sie den Host neu, um sicherzustellen, dass der Startvorgang erfolgreich ist.
+. Aktivieren Sie das SAN-Booten im Server-BIOS für die Ports, denen die SAN-Boot-LUN zugeordnet ist.
++
+Informationen zum Aktivieren des HBA-BIOS finden Sie in der anbieterspezifischen Dokumentation.
+
+. Starten Sie den Host neu, um zu überprüfen, ob der Startvorgang erfolgreich war
 
 
-
-NOTE: Sie können die in diesem Dokument angegebenen Konfigurationseinstellungen verwenden, um die mit verbundenen Cloud-Clients zu konfigurieren link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^] Und link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["Amazon FSX für ONTAP"^].
-
+--
+====
 
 
 == Installieren Sie Windows Hotfixes
 
-NetApp empfiehlt, das *letzte kumulative Update* auf dem Server zu installieren.
+NetApp empfiehlt die Installation des *neuesten kumulativen Updates* aus dem Microsoft Update-Katalog auf dem Hostserver.
 
-
-NOTE: Wechseln Sie zum link:https://www.catalog.update.microsoft.com/Search.aspx?q=Update+Windows+Server+2012_R2["Microsoft Update Catalog 2012 R2"^] Website, um die erforderlichen Windows Hotfixes für Ihre Windows-Version zu erhalten und zu installieren.
-
-. Laden Sie Hotfixes von der Microsoft Support-Website herunter.
+.Schritte
+. Laden Sie die Hotfixes von der herunterlink:https://www.catalog.update.microsoft.com/Search.aspx?q=Update+Windows+Server+2012_R2["Microsoft Update Catalog 2012 R2"^].
 
 
 
-NOTE: Einige Hotfixes stehen nicht zum direkten Download zur Verfügung. In diesen Fällen müssen Sie einen bestimmten Hotfix von Microsoft Support-Mitarbeitern anfordern.
+NOTE: Wenden Sie sich an den Microsoft Support für die Hotfixes, die nicht im Microsoft Update Catalog heruntergeladen werden können.
 
 . Befolgen Sie die Anweisungen von Microsoft zur Installation der Hotfixes.
 
 
 
-TIP: Viele Hotfixes benötigen einen Neustart Ihres Windows-Hosts, aber Sie können abwarten, den Host neu zu starten, bis _nach_ Sie die Host Utilities installieren oder aktualisieren.
+TIP: Viele Hotfixes erfordern einen Neustart Ihres Windows Hosts. Sie können den Host so lange neu starten, bis _after_ Sie die Host Utilities installieren oder aktualisieren.
 
 
 
 == Installieren Sie die Windows Host Utilities
 
-Die Windows Host Utilities sind eine Reihe von Softwareprogrammen mit Dokumentation, die es Ihnen ermöglicht, Hostcomputer mit virtuellen Laufwerken (LUNs) auf einem NetApp-SAN zu verbinden. NetApp empfiehlt, das aktuelle Utility Kit herunterzuladen und zu installieren. Informationen und Anweisungen zur Konfiguration von WUHU finden Sie imlink:https://docs.netapp.com/us-en/ontap-sanhost/hu_wuhu_71_rn.html["Dokumentation zu Windows Host Utilities"], und wählen Sie das Installationsverfahren für Ihre Windows Host Utilities-Version aus.
+Die Windows Host Utilities sind eine Reihe von Softwareprogrammen mit Dokumentation, die es Ihnen ermöglicht, Hostcomputer mit virtuellen Laufwerken (LUNs) auf einem NetApp-SAN zu verbinden. NetApp empfiehlt, das aktuelle Utility Kit herunterzuladen und zu installieren. Informationen zur Konfiguration von Windows Host Utilities und Anweisungen finden Sie unter link:https://docs.netapp.com/us-en/ontap-sanhost/hu_wuhu_71_rn.html["Dokumentation zu Windows Host Utilities"]und wählen Sie das Installationsverfahren für Ihre Windows Host Utilities-Version aus.
 
 
 
 == Multipathing
 
-Sie müssen die Microsoft Multipath I/O (MPIO)-Software installieren und Multipathing einrichten, wenn Ihr Windows-Host über mehr als einen Pfad zum Speichersystem verfügt. Ohne MPIO-Software kann das Betriebssystem jeden Pfad als separate Festplatte sehen, was zu Datenbeschädigungen führen kann. Die MPIO-Software stellt für alle Pfade eine einzelne Festplatte zum Betriebssystem bereit, und ein gerätespezifisches Modul (DSM) managt den Pfad-Failover.
+Sie müssen die Microsoft Multipath I/O (MPIO)-Software installieren und Multipathing aktivieren, wenn Ihr Windows-Host über mehr als einen Pfad zum Speichersystem verfügt. Wenn Sie MPIO-Unterstützung auswählen, aktiviert Windows Host Utilities die MPIO-Funktion, die in Windows Server 2012 R2 enthalten ist. Wenn Sie die Windows Host Utilities nicht verwenden, müssen Sie Multipathing manuell aktivieren.
 
-Auf einem Windows-System sind die beiden Hauptkomponenten einer MPIO-Lösung ein DSM und das Windows MPIO. MPIO wird für Windows XP oder Windows Vista auf einer virtuellen Hyper-V-Maschine nicht unterstützt.
+Die MPIO-Software stellt dem Windows-Betriebssystem eine einzige Festplatte für alle Pfade zur Verfügung, und ein gerätespezifisches Modul (DSM) verwaltet Pfad-Failover. Auf einem Windows-System sind die beiden Hauptkomponenten einer MPIO-Lösung DSM und Windows MPIO.
 
 
-NOTE: Wenn Sie MPIO-Unterstützung auswählen, aktiviert Windows Host Utilities die enthaltene MPIO-Funktion von Windows Server 2012 R2.
+CAUTION: Wenn Sie die MPIO-Software nicht installieren, sieht das Windows-Betriebssystem jeden Pfad möglicherweise als separate Festplatte. Dies kann zu Datenbeschädigungen führen.
+
+
+NOTE: Windows XP oder Windows Vista, die auf einer virtuellen Hyper-V-Maschine ausgeführt werden, unterstützt MPIO nicht.
 
 
 
 == SAN-Konfiguration
 
+Je nach SAN-Konfiguration verwendet der Host für den Zugriff auf ONTAP-LUNs All-SAN-Array (ASA)- oder nicht-ASA-Konfigurationen. Sowohl in ASA- als auch in nicht-ASA-Konfigurationen sollten Sie nicht mehr als vier Pfade für den Zugriff auf eine einzelne ONTAP-LUN benötigen. Falls mehr als vier Pfade vorhanden sind, kann dies bei einem Storage-Ausfall zu Problemen mit den Pfaden führen.
+
+
+
+=== Konfiguration des gesamten SAN-Arrays
+
+Eine ASA-Konfiguration sollte eine Gruppe von aktiv/optimierten Pfaden mit einzelnen Prioritäten enthalten. Das bedeutet, dass die Pfade vom Controller gewartet werden und der I/O auf allen aktiven Pfaden gesendet wird.
+
+Im folgenden Beispiel wird die richtige Ausgabe für eine ONTAP-LUN mit aktiv/optimierten Pfaden angezeigt.
+
+image::asa.png[Screenshot der ONTAP-LUN mit aktiven/optimierten Pfaden]
+
 
 
 === Nicht-ASA-Konfiguration
 
-Für eine nicht-ASA-Konfiguration sollte es zwei Gruppen von Pfaden mit unterschiedlichen Prioritäten geben.
+Eine nicht-ASA-Konfiguration sollte zwei Gruppen von Pfaden mit unterschiedlichen Prioritäten enthalten. Die Pfade mit höheren Prioritäten sind aktiv/optimiert. Das bedeutet, dass die aktiv/optimierten Pfade vom Controller gewartet werden, in dem sich das Aggregat befindet. Die Pfade mit niedrigeren Prioritäten sind aktiv, aber nicht optimiert, da sie von einem anderen Controller bedient werden. Die nicht optimierten Pfade werden nur verwendet, wenn keine optimierten Pfade verfügbar sind.
 
-Die Pfade mit höheren Prioritäten sind aktiv/optimiert, d. h. sie werden vom Controller gewartet, in dem sich das Aggregat befindet.
-
-Die Pfade mit niedrigeren Prioritäten sind aktiv, aber nicht optimiert, da sie von einem anderen Controller bedient werden.
-
-
-NOTE: Die nicht optimierten Pfade werden nur verwendet, wenn optimierte Pfade nicht verfügbar sind.
-
-.Beispiel
 Das folgende Beispiel zeigt die richtige Ausgabe für eine ONTAP-LUN mit zwei aktiv/optimierten Pfaden und zwei aktiv/nicht optimierten Pfaden.
 
 image::nonasa.png[Screenshot einer ONTAP-LUN mit zwei aktiven/optimierten Pfaden und zwei aktiven/nicht optimierten Pfaden]
 
 
 
-=== Konfiguration des gesamten SAN-Arrays
-
-Für die gesamte SAN Array (ASA)-Konfiguration sollte eine Gruppe von Pfaden mit einzelnen Prioritäten vorhanden sein. Alle Pfade sind aktiv/optimiert, das heißt, sie werden vom Controller verarbeitet und der I/O wird auf allen aktiven Pfaden gesendet.
-
-image::asa.png[Screenshot der ONTAP-LUN mit aktiven/optimierten Pfaden]
-
-
-NOTE: Eine einzelne LUN sollte nicht mehr als vier Pfade benötigen. Eine Verfügbarkeit von mehr als vier Pfaden kann bei Storage-Ausfällen zu Pfadproblemen führen.
-
-
-
 == Hyper-V VHD erfordert eine Ausrichtung für beste Performance
 
-Wenn die Grenzen des Datenblocks einer Festplattenpartition nicht mit den Blockgrenzen der zugrunde liegenden LUN übereinstimmen, muss das Storage-System häufig zwei Blocklesevorgänge bzw. -Schreibvorgänge für jedes Betriebssystem-Block-Lese- oder -Schreibvorgang ausführen. Die zusätzlichen Lese- und Schreibzugriffe von Blöcken, die durch eine falsche Ausrichtung verursacht wurden, können zu ernsthaften Performance-Problemen führen.
+Wenn sich die Blockgrenzen einer Festplattenpartition nicht an den Blockgrenzen der zugrunde liegenden LUN ausrichten, muss das Storage-System häufig zwei Block-Lese- oder -Schreibvorgänge für jeden Lese- oder Schreibblock des Betriebssystems durchführen. Die zusätzlichen Lese- und Schreibzugriffe von Blöcken, die durch eine falsche Ausrichtung verursacht wurden, können zu ernsthaften Performance-Problemen führen.
 
-Falsche Ausrichtung wird durch die Position des Startsektors für jede durch den Master Boot Record definierte Partition verursacht.
+Die Position des Ausgangssektors für jede vom Master-Boot-Datensatz definierte Partition verursacht eine Fehlausrichtung.
 
 
 NOTE: Partitionen, die von Windows Server 2016 erstellt wurden, sollten standardmäßig ausgerichtet sein.
 
-Verwenden Sie die `Get-NaVirtualDiskAlignment` Cmdlet in ONTAP PowerShell Toolkit: Prüfen Sie, ob Partitionen mit den zugrunde liegenden LUNs abgeglichen sind. Wenn die Partitionen falsch ausgerichtet sind, verwenden Sie den `Repair-NaVirtualDiskAlignment` Cmdlet zum Erstellen einer neuen VHD-Datei mit der korrekten Ausrichtung. Dieses Cmdlet kopiert alle Partitionen in die neue Datei. Die ursprüngliche VHD-Datei wird nicht geändert oder gelöscht. Die Virtual Machine muss heruntergefahren werden, während die Daten kopiert werden.
+Verwenden Sie das `Get-NaVirtualDiskAlignment` Cmdlet im ONTAP PowerShell Toolkit, um zu überprüfen, ob Partitionen an den zugrunde liegenden LUNs ausgerichtet sind. Wenn die Partitionen falsch ausgerichtet sind, erstellen Sie mit dem `Repair-NaVirtualDiskAlignment` Cmdlet eine neue VHD-Datei mit der korrekten Ausrichtung. Dieses Cmdlet kopiert alle Partitionen in die neue Datei. Die ursprüngliche VHD-Datei wird nicht geändert oder gelöscht. Die Virtual Machine muss heruntergefahren werden, während die Daten kopiert werden.
 
-Sie können das ONTAP PowerShell Toolkit in NetApp Communities herunterladen. Sie müssen die entpacken `DataONTAP.zip` Datei in den von der Umgebungsvariable angegebenen Speicherort `%PSModulePath%` (Oder verwenden Sie den `Install.ps1` Skript, um es für Sie zu tun). Verwenden Sie nach Abschluss der Installation die `Show-NaHelp` Cmdlet erhalten Sie Hilfe zu den Cmdlets.
+Sie können das ONTAP PowerShell Toolkit in NetApp Communities herunterladen. Sie müssen die Datei an den von der Umgebungsvariable angegebenen Speicherort `%PSModulePath%` entpacken `DataONTAP.zip` (oder das Skript verwenden, `Install.ps1` um es für Sie zu tun). Nachdem Sie die Installation abgeschlossen haben, verwenden Sie das `Show-NaHelp` Cmdlet, um Hilfe zu den Cmdlets zu erhalten.
 
-Das PowerShell Toolkit unterstützt nur VHD-Dateien mit fester Größe mit MBR-Partitionen. VHDs, die dynamische Windows-Festplatten oder GPT-Partitionen verwenden, werden nicht unterstützt. Darüber hinaus erfordert das PowerShell Toolkit eine Mindestpartitionsgröße von 4 GB. Kleinere Partitionen können nicht korrekt ausgerichtet werden.
+Das PowerShell Toolkit unterstützt nur VHD-Dateien mit fester Größe mit MBR-Partitionen. VHDs mit dynamischen Windows-Laufwerken oder GPT-Partitionen werden nicht unterstützt. Darüber hinaus erfordert das PowerShell Toolkit eine Mindestpartitionsgröße von 4 GB. Kleinere Partitionen können nicht korrekt ausgerichtet werden.
 
 
 NOTE: Bei virtuellen Linux-Maschinen, die den GRUB-Boot-Loader auf einer VHD verwenden, müssen Sie die Boot-Konfiguration aktualisieren, nachdem Sie das PowerShell Toolkit ausgeführt haben.
@@ -140,54 +151,67 @@ NOTE: Bei virtuellen Linux-Maschinen, die den GRUB-Boot-Loader auf einer VHD ver
 
 Nach dem Ausführen `mbralign` Auf Festplatten zur Korrektur der MBR-Ausrichtung mit PowerShell Toolkit auf Linux Gast-Betriebssystemen mithilfe des GRUB-Boot-Loaders müssen Sie GRUB neu installieren, um sicherzustellen, dass das Gastbetriebssystem ordnungsgemäß gestartet wird.
 
-Das Cmdlet zum PowerShell Toolkit ist in der VHD-Datei für die virtuelle Maschine abgeschlossen. Dieses Thema gilt nur für Linux Gast-Betriebssysteme unter Verwendung des GRUB-Bootloaders und `SystemRescueCd`.
+.Über diese Aufgabe
+Das Cmdlet zum PowerShell Toolkit ist in der VHD-Datei für die virtuelle Maschine abgeschlossen. Dieses Verfahren gilt nur für Linux-Gastbetriebssysteme, die die GRUB-Boot-Loader und verwenden `SystemRescueCd`.
 
+.Schritte
 . Mounten Sie das ISO-Image von Laufwerk 1 der Installations-CDs für die richtige Linux-Version für die virtuelle Maschine.
 . Öffnen Sie die Konsole für die virtuelle Maschine in Hyper-V Manager.
-. Wenn die VM läuft und auf dem GRUB-Bildschirm aufgehängt wird, klicken Sie im Anzeigebereich auf, um sicherzustellen, dass sie aktiv ist. Klicken Sie dann auf das Symbol *Strg-Alt-Löschen*, um die VM neu zu starten. Wenn die VM nicht ausgeführt wird, starten Sie sie, und klicken Sie dann sofort in den Anzeigebereich, um sicherzustellen, dass sie aktiv ist.
+. Wenn die VM auf dem GRUB-Bildschirm läuft und eingefroren ist, klicken Sie in den Anzeigebereich, um sicherzustellen, dass sie aktiv ist, und wählen Sie dann das Symbolleistensymbol *Strg-Alt-Delete*, um die VM neu zu starten. Wenn die VM nicht ausgeführt wird, starten Sie sie, und klicken Sie dann sofort in den Anzeigebereich, um sicherzustellen, dass sie aktiv ist.
 . Sobald Sie den VMware BIOS Startbildschirm sehen, drücken Sie einmal die Taste *Esc*. Das Startmenü wird angezeigt.
 . Wählen Sie im Startmenü die Option *CD-ROM* aus.
 . Geben Sie auf dem Linux-Startbildschirm Folgendes ein: `linux rescue`
 . Nehmen Sie die Standardeinstellungen für Anaconda (die blauen/roten Konfigurationsbildschirme). Networking ist optional.
 . GRUB starten, indem Sie Folgendes eingeben: `grub`
-. Wenn in dieser VM nur eine virtuelle Festplatte vorhanden ist oder mehrere Festplatten vorhanden sind, die erste jedoch die Boot-Festplatte ist, führen Sie die folgenden GRUB-Befehle aus:
-
-
+. Wenn sich nur ein virtuelles Laufwerk in dieser VM befindet oder wenn mehrere Laufwerke vorhanden sind und das erste das Startlaufwerk ist, führen Sie die folgenden GRUB-Befehle aus:
++
 [listing]
 ----
 root (hd0,0)
 setup (hd0)
 quit
 ----
-Wenn Sie mehrere virtuelle Laufwerke in der VM haben und die Boot-Festplatte nicht die erste Festplatte ist, oder Sie GRUB durch Booten von der falsch ausgerichteten Backup VHD beheben, geben Sie den folgenden Befehl ein, um die Boot-Festplatte zu identifizieren:
++
+Wenn die VM mehrere virtuelle Laufwerke enthält und die Boot-Festplatte nicht die erste Festplatte ist, oder wenn Sie GRUB durch Booten von der falsch ausgerichteten Backup-VHD beheben, geben Sie zum Identifizieren der Boot-Festplatte den folgenden Befehl ein:
 
++
 [listing]
 ----
 find /boot/grub/stage1
 ----
++
 Führen Sie dann die folgenden Befehle aus:
 
++
 [listing]
 ----
 root (boot_disk,0)
 setup (boot_disk)
 quit
 ----
++
 
-NOTE: Beachten Sie das `boot_disk`, Oben, ist ein Platzhalter für die tatsächliche Disk-ID der Boot-Disk.
+NOTE: In `setup (boot_disk)` `boot_disk` ist ein Platzhalter für die tatsächliche Datenträgerkennung der Startfestplatte.
+
+
 
 . Drücken Sie *Strg-D*, um sich abzumelden.
-
-
++
 Die Linux-Rettung wird heruntergefahren und dann neu gestartet.
+
+
 
 
 
 == Empfohlene Einstellungen
 
-Auf Systemen, die FC verwenden, sind bei der Auswahl von MPIO die folgenden Zeitüberschreitungswerte für Emulex und QLogic FC HBAs erforderlich.
+Wenn Sie MPIO auf Systemen auswählen, die FC verwenden, legt das Host Utilities Installer die erforderlichen Zeitüberschreitungswerte für Emulex und QLogic FC HBAs fest.
 
-Für Emulex Fibre Channel HBAs:
+[role="tabbed-block"]
+====
+.Emulex FC
+--
+Die Zeitüberschreitungswerte für Emulex FC HBAs:
 
 [cols="2*"]
 |===
@@ -199,7 +223,10 @@ Für Emulex Fibre Channel HBAs:
 
 | NodeTimeOut | 10 
 |===
-Für QLogic Fibre Channel HBAs:
+--
+.QLogic FC
+--
+Die Zeitüberschreitungswerte für QLogic FC HBAs:
 
 [cols="2*"]
 |===
@@ -211,8 +238,10 @@ Für QLogic Fibre Channel HBAs:
 
 | PortDownRetryCount | 10 
 |===
+--
+====
 
-NOTE: Windows Host Utility legt diese Werte fest. Detaillierte empfohlene Einstellungen finden Sie im, link:https://docs.netapp.com/us-en/ontap-sanhost/hu_wuhu_71_rn.html["Dokumentation zu Windows Host Utilities"]und wählen Sie das Installationsverfahren für Ihre Windows Host Utilities-Version aus.
+NOTE: Weitere Informationen zu den empfohlenen Einstellungen finden Sie unter link:hu_wuhu_hba_settings.html["Konfigurieren Sie die Registrierungseinstellungen für Windows Host Utilities"].
 
 
 

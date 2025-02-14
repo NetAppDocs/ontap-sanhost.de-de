@@ -49,7 +49,7 @@ Für Citrix Hypervisor (CH) 8.x muss die `/etc/multipath.conf` Datei vorhanden s
 
 === Konfiguration von All-SAN-Arrays (ASA
 
-Für die gesamte SAN Array-(ASA-)Konfiguration sollte eine Gruppe von Pfaden mit einzelnen Prioritäten vorhanden sein. Alle Pfade sind aktiv/optimiert, was bedeutet, dass sie vom Controller gewartet werden und I/O wird an alle aktiven Pfade gesendet.
+Für die gesamte SAN Array-(ASA-)Konfiguration sollte eine Gruppe von Pfaden mit einzelnen Prioritäten vorhanden sein. Alle Pfade sind aktiv/optimiert. Das heißt, sie werden vom Controller gewartet und I/O wird auf allen aktiven Pfaden gesendet.
 
 .Beispiel
 Im folgenden Beispiel wird die richtige Ausgabe für eine ONTAP-LUN mit vier aktiv/optimierten Pfaden angezeigt:
@@ -71,7 +71,7 @@ NOTE: Verwenden Sie keine unverhältnismäßig hohe Anzahl von Pfaden zu einer e
 
 === Konfigurationen ohne ASA
 
-Für Konfigurationen ohne ASA sollten zwei Gruppen von Pfaden mit unterschiedlichen Prioritäten vorhanden sein. Die Pfade mit höheren Prioritäten sind aktiv/optimiert, d. h. sie werden vom Controller gewartet, in dem sich das Aggregat befindet. Die Pfade mit niedrigeren Prioritäten sind aktiv, aber nicht optimiert, da sie von einem anderen Controller bedient werden. Die nicht optimierten Pfade werden nur verwendet, wenn optimierte Pfade nicht verfügbar sind.
+Für Konfigurationen ohne ASA sollten zwei Gruppen von Pfaden mit unterschiedlichen Prioritäten vorhanden sein. Die Pfade mit höheren Prioritäten sind aktiv/optimiert. Das heißt, sie werden vom Controller gewartet, wo sich das Aggregat befindet. Die Pfade mit niedrigeren Prioritäten sind aktiv, aber nicht optimiert, da sie von einem anderen Controller bedient werden. Die nicht optimierten Pfade werden nur verwendet, wenn optimierte Pfade nicht verfügbar sind.
 
 .Beispiel
 Das folgende Beispiel zeigt die richtige Ausgabe für eine ONTAP-LUN mit zwei aktiv/optimierten Pfaden und zwei aktiv/nicht optimierten Pfaden.

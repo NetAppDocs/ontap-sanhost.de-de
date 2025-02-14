@@ -1,10 +1,15 @@
-= 
+= Konfiguration des gesamten SAN-Arrays
 :allow-uri-read: 
 
 
-Für die gesamte SAN Array (ASA)-Konfiguration sollte eine Gruppe von Pfaden mit einzelnen Prioritäten vorhanden sein. Alle Pfade sind aktiv/optimiert, das heißt, sie werden vom Controller verarbeitet und der I/O wird auf allen aktiven Pfaden gesendet.
+Je nach SAN-Konfiguration verwendet der Host für den Zugriff auf ONTAP-LUNs All-SAN-Array (ASA)- oder nicht-ASA-Konfigurationen. Sowohl in ASA- als auch in nicht-ASA-Konfigurationen sollten Sie nicht mehr als vier Pfade für den Zugriff auf eine einzelne ONTAP-LUN benötigen. Falls mehr als vier Pfade vorhanden sind, kann dies bei einem Storage-Ausfall zu Problemen mit den Pfaden führen.
+
+
+
+=== Konfiguration des gesamten SAN-Arrays
+
+Eine ASA-Konfiguration sollte eine Gruppe von aktiv/optimierten Pfaden mit einzelnen Prioritäten enthalten. Das bedeutet, dass die Pfade vom Controller gewartet werden und der I/O auf allen aktiven Pfaden gesendet wird.
+
+Im folgenden Beispiel wird die richtige Ausgabe für eine ONTAP-LUN mit aktiv/optimierten Pfaden angezeigt.
 
 image::asa.png[Screenshot der ONTAP-LUN mit aktiven/optimierten Pfaden]
-
-
-NOTE: Eine einzelne LUN sollte nicht mehr als vier Pfade benötigen. Eine Verfügbarkeit von mehr als vier Pfaden kann bei Storage-Ausfällen zu Pfadproblemen führen.

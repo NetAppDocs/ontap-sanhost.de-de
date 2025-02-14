@@ -2,9 +2,13 @@
 :allow-uri-read: 
 
 
-Auf Systemen, die FC verwenden, sind bei der Auswahl von MPIO die folgenden Zeitüberschreitungswerte für Emulex und QLogic FC HBAs erforderlich.
+Wenn Sie MPIO auf Systemen auswählen, die FC verwenden, legt das Host Utilities Installer die erforderlichen Zeitüberschreitungswerte für Emulex und QLogic FC HBAs fest.
 
-Für Emulex Fibre Channel HBAs:
+[role="tabbed-block"]
+====
+.Emulex FC
+--
+Die Zeitüberschreitungswerte für Emulex FC HBAs:
 
 [cols="2*"]
 |===
@@ -16,7 +20,10 @@ Für Emulex Fibre Channel HBAs:
 
 | NodeTimeOut | 10 
 |===
-Für QLogic Fibre Channel HBAs:
+--
+.QLogic FC
+--
+Die Zeitüberschreitungswerte für QLogic FC HBAs:
 
 [cols="2*"]
 |===
@@ -28,5 +35,7 @@ Für QLogic Fibre Channel HBAs:
 
 | PortDownRetryCount | 10 
 |===
+--
+====
 
-NOTE: Windows Host Utility legt diese Werte fest. Detaillierte empfohlene Einstellungen finden Sie im, link:https://docs.netapp.com/us-en/ontap-sanhost/hu_wuhu_71_rn.html["Dokumentation zu Windows Host Utilities"]und wählen Sie das Installationsverfahren für Ihre Windows Host Utilities-Version aus.
+NOTE: Weitere Informationen zu den empfohlenen Einstellungen finden Sie unter link:hu_wuhu_hba_settings.html["Konfigurieren Sie die Registrierungseinstellungen für Windows Host Utilities"].

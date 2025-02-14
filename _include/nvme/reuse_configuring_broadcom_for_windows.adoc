@@ -2,7 +2,9 @@
 :allow-uri-read: 
 
 
-Mit dem Broadcom Adapter für FC/NVMe in einer Windows-Umgebung a `+hostnqn+` Ist jedem Port des Host Bus Adapters (HBA) zugeordnet. Der `+hostnqn+` Ist wie folgt formatiert.
+Der Broadcom Initiator kann sowohl NVMe/FC- als auch FCP-Datenverkehr über dieselben 32-Gbit-FC-Adapter-Ports bedienen. Für FCP und FC/NVMe sollten Sie das Microsft Device-Specific Module (DSM) als Microsoft Multipath I/O (MPIO)-Option verwenden.
+
+Ein `+hostnqn+` ist jedem HBA-Port (Host Bus Adapter) für den Broadcom-Adapter mit FC/NVMe in einer Windows-Umgebung zugeordnet. Das `+hostnqn+` ist wie im folgenden Beispiel gezeigt formatiert:
 
 ....
 nqn.2017-01.com.broadcom:ecd:nvmf:fc:100000109b1b9765

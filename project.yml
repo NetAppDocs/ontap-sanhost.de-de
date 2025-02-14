@@ -11,11 +11,11 @@ sidebar:
   entries:
   - title: Konfigurieren Sie SAN-Hosts und Cloud-Clients
     url: "/index.html"
-  - title: Überblick
+  - title: Informieren Sie sich über SAN-Host-Konfigurationen
     url: "/overview.html"
   - title: Installieren Sie SAN Host Utilities
     entries:
-    - title: Überblick
+    - title: Weitere Informationen zu SAN Host Utilities
       url: "/hu_sanhost_index.html"
     - title: AIX Host Utilitys
       entries:
@@ -378,6 +378,8 @@ sidebar:
     - title: Windows
       pdf-filename: Windows FCP
       entries:
+      - title: '2025'
+        url: "/hu-windows-2025.html"
       - title: '2022'
         url: "/hu_windows_2022.html"
       - title: '2019'
@@ -510,6 +512,8 @@ sidebar:
         url: "/nvme_ubuntu_2204.html"
     - title: Windows
       entries:
+      - title: '2025'
+        url: "/nvme-windows-2025.html"
       - title: '2022'
         url: "/nvme_windows_2022.html"
       - title: '2019'

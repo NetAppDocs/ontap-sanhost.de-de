@@ -2,4 +2,4 @@
 :allow-uri-read: 
 
 
-Die Windows Host Utilities sind eine Reihe von Softwareprogrammen mit Dokumentation, die es Ihnen ermöglicht, Hostcomputer mit virtuellen Laufwerken (LUNs) auf einem NetApp-SAN zu verbinden. NetApp empfiehlt, das aktuelle Utility Kit herunterzuladen und zu installieren. Informationen und Anweisungen zur Konfiguration von WUHU finden Sie imlink:https://docs.netapp.com/us-en/ontap-sanhost/hu_wuhu_71_rn.html["Dokumentation zu Windows Host Utilities"], und wählen Sie das Installationsverfahren für Ihre Windows Host Utilities-Version aus.
+Die Windows Host Utilities sind eine Reihe von Softwareprogrammen mit Dokumentation, die es Ihnen ermöglicht, Hostcomputer mit virtuellen Laufwerken (LUNs) auf einem NetApp-SAN zu verbinden. NetApp empfiehlt, das aktuelle Utility Kit herunterzuladen und zu installieren. Informationen zur Konfiguration von Windows Host Utilities und Anweisungen finden Sie unter link:https://docs.netapp.com/us-en/ontap-sanhost/hu_wuhu_71_rn.html["Dokumentation zu Windows Host Utilities"]und wählen Sie das Installationsverfahren für Ihre Windows Host Utilities-Version aus.

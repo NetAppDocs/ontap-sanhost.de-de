@@ -25,7 +25,7 @@ Sie können NVMe over Fibre Channel (NVMe/FC) auf Initiator-Hosts konfigurieren,
 NVMe over Fabrics oder NVMe-of (einschließlich NVMe/FC und NVMe/TCP) wird mit Oracle Linux 8.4 mit Asymmetric Namespace Access (ANA) unterstützt, der für die verbleibenden Storage-Failovers (SFOs) auf dem ONTAP-Array erforderlich ist. ANA ist das ALUA-Äquivalent (Asymmetric Logical Unit Access) in der NVMe-of-Umgebung und wird derzeit mit NVMe Multipath im Kernel implementiert. In diesem Thema wird detailliert beschrieben, wie NVMe-of mit in-Kernel NVMe Multipath unter Verwendung von ANA auf Oracle Linux 8.4 mit ONTAP als Ziel aktiviert wird.
 
 
-NOTE: Sie können die in diesem Dokument angegebenen Konfigurationseinstellungen verwenden, um die mit verbundenen Cloud-Clients zu konfigurieren link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^] Und link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["Amazon FSX für ONTAP"^].
+NOTE: Mit den in diesem Verfahren angegebenen Konfigurationseinstellungen können Sie Cloud-Clients konfigurieren, die mit  und verbunden link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^]link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["Amazon FSX für ONTAP"^]sind.
 
 
 

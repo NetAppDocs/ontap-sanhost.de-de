@@ -1,5 +1,0 @@
-= 
-:allow-uri-read: 
-
-
-Es gibt zwei Optionen für das Booten des Betriebssystems: Durch die Verwendung von lokalem Booten oder SAN-Boot. Zum lokalen Booten installieren Sie das Betriebssystem auf der lokalen Festplatte (SSD, SATA, RAID usw.). Informationen zum Booten über SAN finden Sie unten.

@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
-permalink: hu_windows_2019.html 
+permalink: hu-windows-2025.html 
 keywords: windows, enterprise 
-summary: Verwenden von Windows Server 2019 mit ONTAP 
+summary: Sie können die Konfigurationseinstellungen des ONTAP-SAN-Hosts verwenden, um Windows Server 2025 für den Betrieb mit ONTAP-Speicher zu konfigurieren. 
 ---
-= Verwenden Sie Windows Server 2019 mit ONTAP
+= Konfigurieren Sie Windows Server 2025 für ONTAP-Speicher
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -16,7 +16,7 @@ summary: Verwenden von Windows Server 2019 mit ONTAP
 
 
 [role="lead"]
-Sie können die Konfigurationseinstellungen des ONTAP-SAN-Hosts verwenden, um Windows Server 2019 mit ONTAP für den Betrieb mit ONTAP-Speicher zu konfigurieren.
+Sie können die Konfigurationseinstellungen des ONTAP-SAN-Hosts verwenden, um Windows Server 2025 für den Betrieb mit ONTAP-Speicher zu konfigurieren.
 
 
 
@@ -34,9 +34,6 @@ Führen Sie einen lokalen Start durch, indem Sie das Windows-Betriebssystem auf 
 .SAN Booting
 --
 Wenn Sie sich für den SAN-Bootvorgang entscheiden, muss dies von Ihrer Konfiguration unterstützt werden.
-
-
-NOTE: Mit den in diesem Verfahren angegebenen Konfigurationseinstellungen können Sie Cloud-Clients konfigurieren, die mit  und verbunden link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^]link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["Amazon FSX für ONTAP"^]sind.
 
 .Bevor Sie beginnen
 Überprüfen Sie mithilfe des https://mysupport.netapp.com/matrix/#welcome["Interoperabilitäts-Matrix-Tool"^], ob Ihr Windows-Betriebssystem, Ihr Hostbusadapter (HBA), die HBA-Firmware, das HBA-StartBIOS und die ONTAP-Version das Booten über das SAN unterstützen.
@@ -67,7 +64,7 @@ Informationen zum Aktivieren des HBA-BIOS finden Sie in der anbieterspezifischen
 NetApp empfiehlt die Installation des *neuesten kumulativen Updates* aus dem Microsoft Update-Katalog auf dem Hostserver.
 
 .Schritte
-. Laden Sie die Hotfixes von der herunterlink:https://www.catalog.update.microsoft.com/Search.aspx?q=Update+Windows+Server+2019["Microsoft Update Catalog 2019"^].
+. Laden Sie die Hotfixes von der herunterlink:https://www.catalog.update.microsoft.com/Search.aspx?q=update%20%22windows%20server%202025%22["Microsoft Update Catalog 2025"^].
 
 
 
@@ -89,7 +86,7 @@ Die Windows Host Utilities sind eine Reihe von Softwareprogrammen mit Dokumentat
 
 == Multipathing
 
-Sie müssen die Microsoft Multipath I/O (MPIO)-Software installieren und Multipathing aktivieren, wenn Ihr Windows-Host über mehr als einen Pfad zum Speichersystem verfügt. Wenn Sie MPIO-Unterstützung auswählen, aktiviert Windows Host Utilities die MPIO-Funktion, die in Windows Server 2019 enthalten ist. Wenn Sie die Windows Host Utilities nicht verwenden, müssen Sie Multipathing manuell aktivieren.
+Sie müssen die Microsoft Multipath I/O (MPIO)-Software installieren und Multipathing aktivieren, wenn Ihr Windows-Host über mehr als einen Pfad zum Speichersystem verfügt.
 
 Die MPIO-Software stellt dem Windows-Betriebssystem eine einzige Festplatte für alle Pfade zur Verfügung, und ein gerätespezifisches Modul (DSM) verwaltet Pfad-Failover. Auf einem Windows-System sind die beiden Hauptkomponenten einer MPIO-Lösung DSM und Windows MPIO.
 
@@ -171,4 +168,4 @@ NOTE: Weitere Informationen zu den empfohlenen Einstellungen finden Sie unter li
 
 == Bekannte Probleme
 
-Es gibt keine bekannten Probleme für Windows Server 2019 mit ONTAP-Version.
+Es gibt keine bekannten Probleme für Windows Server 2025 mit ONTAP-Version.
