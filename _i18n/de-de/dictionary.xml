@@ -507,7 +507,6 @@
   <block id="8f84cc2094be4df68793798acab1c394" category="cell">AIX 7.2 TL04 hat bei einem Storage Failover eine I/O-Störung auf virtuellen iSCSI-Festplatten (VIOS 3.1.1.x) festgestellt</block>
   <block id="7187b48095d030e01ab6d9d7338221f3" category="cell">Eine I/O-Unterbrechung kann bei Storage Failover-Vorgängen auf AIX 7.2 TL4 Hosts auf den virtuellen iSCSI-Festplatten auftreten, die über das VIOS 3.1.1.x zugeordnet sind Standardmäßig wird der verwendet<block ref="855ee26b12bb48fa666d76672b8532b8" prefix=" " category="inline-code"></block> Der Wert des vSCSI-Adapters auf VIOC beträgt 45 Sekunden. Wenn während eines Storage Failover eine I/O-Verzögerung von mehr als 45 Sekunden auftritt, kann es zu einem I/O-Ausfall kommen. Um diese Situation zu vermeiden, schlagen Sie sich bitte in der in BURT erwähnten Behelfslösung vor.</block>
   <block id="de6158aaf59eefd0e967674f80bf69a0" category="cell">1307653</block>
-  <block id="410517e1f795e6fa809a7ff5630e2bdd" category="list-text">Installieren Sie das OneCommand Manager-Dienstprogramm auf dem Windows-Host.</block>
   <block id="7d182740e5fe1d15ec7f97f69178b4a8" category="list-text">Legen Sie an jedem der HBA-Initiator-Ports die folgenden HBA-Treiberparameter fest:</block>
   <block id="1d71ea83cceb2b7470e1c54838adb506" category="list-text">EnableNVMe = 1</block>
   <block id="814e9f528f5fa391cd6774e57a5c651c" category="list-text">NVMEMode = 0</block>
@@ -3728,4 +3727,5 @@ Weitere Informationen und empfohlene Änderungen an den Standardeinstellungen fi
   <block id="446a12d919c8ace091d69571c8964509" category="paragraph">Ab ONTAP 9.7 wird NVMe/FC für Windows Server 2022 unterstützt.</block>
   <block id="d26e08171a5072e33fe155b7ad5a5659" category="doc">Informieren Sie sich über SAN-Host-Konfigurationen</block>
   <block id="312351bff07989769097660a56395065" category="sidebar">2025</block>
+  <block id="439a17362d8592514caf19c7e8ec2147" category="list-text">Installieren Sie das Emulex HBA Manager-Dienstprogramm auf dem Windows-Host.</block>
 </blocks>

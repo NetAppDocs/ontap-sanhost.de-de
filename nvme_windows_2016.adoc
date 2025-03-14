@@ -48,7 +48,7 @@ NOTE: Broadcom liefert einen externen Treiber für Windows NVMe/FC, der ein tran
 Aktivieren Sie FC/NVMe auf dem Windows Initiator-Host.
 
 .Schritte
-. Installieren Sie das OneCommand Manager-Dienstprogramm auf dem Windows-Host.
+. Installieren Sie das Emulex HBA Manager-Dienstprogramm auf dem Windows-Host.
 . Legen Sie an jedem der HBA-Initiator-Ports die folgenden HBA-Treiberparameter fest:
 +
 ** EnableNVMe = 1
