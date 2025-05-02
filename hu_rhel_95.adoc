@@ -55,7 +55,7 @@ NOTE: Durch die Installation der Linux Host Utilities werden keine Host-Timeout-
 
 
 
-== Schritt 2: Bestätigen Sie die Multipath-Konfiguration für Ihren Host
+== Schritt 3: Bestätigen Sie die Multipath-Konfiguration für Ihren Host
 
 Sie können Multipathing mit RHEL 9.5 zum Verwalten von ONTAP-LUNs verwenden.
 
