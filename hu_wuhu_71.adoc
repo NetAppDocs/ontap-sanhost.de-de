@@ -21,7 +21,7 @@ summary: Die Windows Host Utilities umfassen ein Installationsprogramm, das die 
 [role="lead"]
 Mithilfe der Windows Host Utilities können Sie einen Windows Host-Computer mit NetApp Storage-Systemen verbinden.
 
-Die Windows Host Utilities unterstützen die folgenden Versionen von Windows:
+Windows Host Utilities unterstützt die folgenden Versionen von Windows:
 
 * Windows 2022
 * Windows 2019
@@ -60,7 +60,7 @@ Die Host Utilities unterstützen verschiedene Windows Host-Konfigurationen, Prot
 
 == Überprüfen Sie Ihre Host- und Speichersystemkonfigurationen
 
-Bevor Sie die Host Utilities installieren, müssen Sie überprüfen, ob die Version der Host Utilities die Konfiguration des Host- und Speichersystems unterstützt, damit die Software ordnungsgemäß installiert wird.
+Vergewissern Sie sich, dass die Host- und Speichersystem-Konfiguration unterstützt wird, bevor Sie Windows Host Utilities für die installieren<<supported-windows-versions-71,Unterstützte Windows-Version>>.
 
 .Schritte
 . Überprüfen Sie die unterstützte Konfiguration im http://mysupport.netapp.com/matrix["Interoperabilitäts-Matrix-Tool"^].

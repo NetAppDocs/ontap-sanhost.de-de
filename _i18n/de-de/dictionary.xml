@@ -176,7 +176,6 @@
   <block id="b47148f0acf3e7b3db202890d4c8c0c4" category="cell">Remote-Ports werden während des Storage Failover-Betriebs zu einem blockierten Status auf SLES15SP1 mit Emulex LPe12002 8 GB FC überführt.</block>
   <block id="15427ef3cacf89471c2525932d2937ee" category="cell">Remote-Ports werden beim Storage Failover auf SLES15SP1 mit Emulex LPe12002 8 GB Fibre Channel (FC) in einen blockierten Status überführt. Wenn der Storage Node wieder in einen optimalen Zustand versetzt wird, kommen die LIFs ebenfalls hinzu und der Remote-Port-Status sollte „online“ lesen. Gelegentlich wird der Status des Remote-Ports möglicherweise weiterhin als „gesperrt“ oder „nicht vorhanden“ gelesen. Dieser Status kann zu einem „fehlerhaften“ Pfad zu LUNs in der Multipath-Schicht sowie zu einem I/O-Ausfall für diese LUNs führen. Sie können die Details des remoteports anhand folgender Beispielbefehle überprüfen: ---- CAT/sys/class/fc_Host/Host*/device/rport*/fc_Remote_Ports/rport*/Port_Name CAT/sys/class/fc_Host/Host*/device/rport*/fc_Remote_Ports/rport*/Port_State ----</block>
   <block id="c345c92c1db74865c1b5cb8dad478651" category="summary">Dieser Inhalt enthält eine vertriebsspezifische Anleitung zur Konfiguration von SAN-Clients, die mit ONTAP Storage verbunden sind.</block>
-  <block id="d1c811acf82829db30f1d8b3e6c940d6" category="doc">SAN-Hosts und Cloud-Clients</block>
   <block id="c517a5fb26b575817c996f5b44f027c8" category="inline-link-macro">1238719</block>
   <block id="228d243156f27b227dbffd03f56f02b7" category="cell"><block ref="cf56f7936c19e5af5e4aa99ffc3fc54e" category="inline-link-macro-rx"></block></block>
   <block id="cb5cb6cd9eae3b558f871729ba82fea1" category="cell">Kernel-Störung auf RHEL8 mit QLogic QLE2672 16GB FC während des Storage Failover-Betriebs</block>
@@ -746,7 +745,6 @@
   <block id="eeca789d03a65dbfd928a28fa9ca3aab" category="cell"><block ref="40ae86d8058ed8f77d09ba68da7331e1" prefix="" category="inline-code"></block></block>
   <block id="271e95bb5110c34300c9e4e30ad2991d" category="cell"><block ref="95d597fa4b68f57018df6fffa460bc20" prefix="" category="inline-code"></block></block>
   <block id="c0a6e0dc55b98c30081b044a2713737b" category="section-title">Überprüfen Sie die Konfiguration Ihres Host- und Storage-Systems</block>
-  <block id="700f2514d3d4cc2ed02cb06d8b922b2d" category="paragraph">Bevor Sie die Host Utilities installieren, müssen Sie überprüfen, ob die Version der Host Utilities die Konfiguration des Host- und Speichersystems unterstützt, damit die Software ordnungsgemäß installiert wird.</block>
   <block id="0165fb41a35ddb937948f77394256403" category="inline-link-macro">SAN-Host, Windows-Dokumentation</block>
   <block id="6edf97e112927c25a9a1571ba78c02f9" category="list-text">Prüfen Sie die für den jeweiligen Host erforderlichen Hotfixes auf der <block ref="d639dff184f4bf79d87dbc978d26f542" category="inline-link-macro-rx"></block>.</block>
   <block id="eff83cf87307f9f0c4cf876914031ade" category="inline-link-macro">Windows Hotfixes werden installiert</block>
@@ -1112,7 +1110,6 @@
   <block id="dfcc398099d6a64026e51ab282e16253" category="sidebar">Mehr Ressourcen</block>
   <block id="8f631f7b4d000947dcf86232c51cf147" category="sidebar">Konfiguration der All-SAN-Array-Software</block>
   <block id="587c9aa3c6003c9a9fa1fc9c2ceb2eaa" category="sidebar">SAN-Administration</block>
-  <block id="2275d26c218f9babebe06ed5dcc73dab" category="sidebar">Konfigurieren Sie SAN-Hosts und Cloud-Clients</block>
   <block id="3b878279a04dc47d60932cb294d96259" category="sidebar">Überblick</block>
   <block id="2ee1fba4400a50245e66ef649b54d588" category="sidebar">Installieren Sie AIX HU 6.1</block>
   <block id="7d0ee6fed10d3d4e5c9ee496729ab519" category="sidebar">Versionshinweise</block>
@@ -3228,7 +3225,6 @@ Weitere Informationen und empfohlene Änderungen an den Standardeinstellungen fi
   <block id="550d5f0555aa2a5e59269c14de819e78" category="summary">Die Windows Host Utilities umfassen ein Installationsprogramm, das die erforderlichen Windows Registrierungs- und HBA-Parameter so festlegt, dass der Windows Host die Verhaltensweisen von ONTAP und E-Series Plattformen des Storage-Systems korrekt verarbeitet.</block>
   <block id="6896363d719a238fdc4b6d2ef8ef5a78" category="doc">Installieren Sie Windows Host Utilities 7.1</block>
   <block id="f0ed46888b875cc5c73315cc1272f90b" category="paragraph">Mithilfe der Windows Host Utilities können Sie einen Windows Host-Computer mit NetApp Storage-Systemen verbinden.</block>
-  <block id="fd0cfddf11b707411ea1c87986350b1a" category="paragraph">Die Windows Host Utilities unterstützen die folgenden Versionen von Windows:</block>
   <block id="0652c88686b5ecfc5bf453239b43dbd5" category="paragraph">Die Windows Host Utilities umfassen ein Installationsprogramm, das die erforderlichen Windows Registrierungs- und HBA-Parameter (Host Bus Adapter) festlegt, damit ein Windows Host die Storage-Systemverhalten der ONTAP und E-Series Plattformen korrekt verarbeiten kann.</block>
   <block id="2a1a96da7bfe08f1d385743c49246a17" category="paragraph">Die Host Utilities unterstützen verschiedene Windows Host-Konfigurationen, Protokolle und Multipathing-Optionen. Die aktuelle Liste der unterstützten Konfigurationen finden Sie im<block ref="e29293ebfe5b9174e3113da62e6426ca" category="inline-link-rx"></block>.</block>
   <block id="440a0a613ea9d79644732dd469b879c6" category="list-text">Überprüfen Sie die unterstützte Konfiguration im<block ref="8202e2d9ff186d084c29140284f981f1" category="inline-link-rx"></block>.</block>
@@ -3653,7 +3649,6 @@ Weitere Informationen und empfohlene Änderungen an den Standardeinstellungen fi
   <block id="f3f5e5774254d60ece67c2757e73c5fe" category="summary">Installieren Sie die Linux Host Utilities auf einem RHEL 9.5 Host, um FCP- und iSCSI-Protokollvorgänge mit ONTAP LUNs zu managen.</block>
   <block id="bf2e2850028a550db4d4777a6c320006" category="doc">Konfigurieren Sie RHEL 9.5 für FCP und iSCSI mit ONTAP-Speicher</block>
   <block id="9c2f294f2ce9dacd34475fe6a3fa5c52" category="paragraph">Die Linux Host Utilities-Software enthält Management- und Diagnose-Tools für Linux-Hosts, die mit dem ONTAP-Storage verbunden sind. Wenn Sie die Linux Host Utilities auf einem Red hat Enterprise Linux (RHEL) 9.5 Host installieren, können Sie mit den Host Utilities beim Management von FCP- und iSCSI-Protokolloperationen mit ONTAP LUNs unterstützen.</block>
-  <block id="dd8d9457c96c61b509341e8fc9c06a5a" category="section-title">Schritt 2: Bestätigen Sie die Multipath-Konfiguration für Ihren Host</block>
   <block id="0f1de05675767624511aae207e8e0251" category="paragraph">Sie können Multipathing mit RHEL 9.5 zum Verwalten von ONTAP-LUNs verwenden.</block>
   <block id="df703c7c915219367c5e3f921d60e7af" category="summary">Installieren Sie die Linux Host Utilities auf einem SUSE Linux Enterprise Server 12, um FCP- und iSCSI-Protokollvorgänge mit ONTAP-LUNs zu managen.</block>
   <block id="43d4d647f16dbd3d230e0439558b88db" category="doc">Konfigurieren Sie SUSE Linux Enterprise Server 12 für FCP und iSCSI mit ONTAP Storage</block>
@@ -3716,4 +3711,10 @@ Weitere Informationen und empfohlene Änderungen an den Standardeinstellungen fi
   <block id="d29ad9efbcae6053e82420f1cc871c51" category="paragraph">Ausführliche Informationen zum Bereitstellen und Managen von VVols finden Sie in der Dokumentation zu ONTAP Tools für VMware vSphere sowie in der Dokumentation zu<block ref="c45840700e4ab6d55371aa3a3251b306" category="inline-link-rx"></block> und <block ref="506dc68919d50d1567e18d25faf7ae58" category="inline-link-macro-rx"></block>.</block>
   <block id="764c3360f3f7d6cb07c2ff1a79f2cf58" category="paragraph">Ausführliche Informationen zum Bereitstellen und Managen von VVols finden Sie in der Dokumentation zu ONTAP Tools für VMware vSphere sowie  in der Dokumentation zu <block ref="11b7981a4bc487d4291cc9a0614db625" category="inline-link-macro-rx"></block>und <block ref="506dc68919d50d1567e18d25faf7ae58" category="inline-link-macro-rx"></block>.</block>
   <block id="d04eb85f6d5ba5f0fcd2c894dea16fe5" category="paragraph">Ausführliche Informationen zum Bereitstellen und Managen von VVols finden Sie in der Dokumentation zu ONTAP Tools for VMware vSphere, <block ref="11b7981a4bc487d4291cc9a0614db625" category="inline-link-macro-rx"></block>und <block ref="506dc68919d50d1567e18d25faf7ae58" category="inline-link-macro-rx"></block>.</block>
+  <block id="db3880822387ba5ff86b2e765ae8e03d" category="paragraph">Windows Host Utilities unterstützt die folgenden Versionen von Windows:</block>
+  <block id="6338107550646e4da84ebb66cf1e3b7e" category="inline-xref">Unterstützte Windows-Version</block>
+  <block id="14aa8f54a503ff6089f17bed95d65cb6" category="paragraph">Vergewissern Sie sich, dass die Host- und Speichersystem-Konfiguration unterstützt wird, bevor Sie Windows Host Utilities für die installieren<block ref="e07b0c094759647153725a704df4b0de" category="inline-xref-macro-rx"></block>.</block>
+  <block id="74464dd5db6f61c62453cee626aca30f" category="paragraph">Vergewissern Sie sich, dass die Host- und Speichersystem-Konfiguration unterstützt wird, bevor Sie Windows Host Utilities für die installieren<block ref="fa2ff82d2dc57012eed1f266cf01842e" category="inline-xref-macro-rx"></block>.</block>
+  <block id="a85fe49c4f48d905593c7bce3b551763" category="sidebar">ONTAP SAN-Hosts und Cloud-Clients</block>
+  <block id="6fbaf2334ca5f8d82bd9bd67bc534670" category="sidebar">Konfiguration von ONTAP SAN-Hosts und Cloud-Clients</block>
 </blocks>

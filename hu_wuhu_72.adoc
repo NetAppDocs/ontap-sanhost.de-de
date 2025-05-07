@@ -56,7 +56,7 @@ Die Host Utilities unterstützen verschiedene Windows Host-Konfigurationen, Prot
 
 == Überprüfen Sie die Konfiguration Ihres Host- und Storage-Systems
 
-Bevor Sie die Host Utilities installieren, müssen Sie überprüfen, ob die Version der Host Utilities die Konfiguration des Host- und Speichersystems unterstützt, damit die Software ordnungsgemäß installiert wird.
+Vergewissern Sie sich, dass die Host- und Speichersystem-Konfiguration unterstützt wird, bevor Sie Windows Host Utilities für die installieren<<supported-windows-versions-72,Unterstützte Windows-Version>>.
 
 .Schritte
 . Überprüfen Sie die unterstützte Konfiguration im http://mysupport.netapp.com/matrix["Interoperabilitäts-Matrix-Tool"^].
