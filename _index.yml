@@ -1,6 +1,6 @@
 ---
 indexpage:
-  title: ONTAP SAN-Hosts und Cloud-Clients
+  title: ONTAP SAN Host Utilitys
   summary: Dieser Inhalt enthält eine vertriebsspezifische Anleitung zur Konfiguration
     von SAN-Clients, die mit ONTAP Storage verbunden sind.
   keywords: ontap, san, host, rhel, red, hat, linux, sles, suse, esxi, nvme, oracle,
