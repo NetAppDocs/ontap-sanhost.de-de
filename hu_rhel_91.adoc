@@ -19,7 +19,7 @@ summary: Installieren Sie die Linux Host Utilities auf einem RHEL 9.1 Host, um F
 Die Linux Host Utilities-Software enthält Management- und Diagnose-Tools für Linux-Hosts, die mit dem ONTAP-Storage verbunden sind. Wenn Sie die Linux Host Utilities auf einem Red hat Enterprise Linux (RHEL) 9.1 Host installieren, können Sie mit den Host Utilities beim Management von FCP- und iSCSI-Protokolloperationen mit ONTAP LUNs unterstützen.
 
 
-NOTE: Sie müssen keine Kernel-basierten KVM-Einstellungen (Virtual Machine) konfigurieren, da ONTAP-LUNs automatisch dem KVM-Hypervisor zugeordnet werden.
+NOTE: Sie müssen die Einstellungen der Kernel-basierten virtuellen Maschine (KVM) nicht manuell konfigurieren, da ONTAP LUNs automatisch dem Hypervisor zugeordnet werden.
 
 
 

@@ -19,6 +19,9 @@ summary: Installieren Sie die Linux Host Utilities auf einem SUSE Linux Enterpri
 Die Linux Host Utilities-Software enthält Management- und Diagnose-Tools für Linux-Hosts, die mit dem ONTAP-Storage verbunden sind. Wenn Sie die Linux Host Utilities auf einem SUSE Linux Enterprise Server 12 SP1-Host installieren, können Sie mithilfe der Host Utilities FCP- und iSCSI-Protokollvorgänge mit ONTAP-LUNs managen.
 
 
+NOTE: Sie müssen die Einstellungen der Kernel-basierten virtuellen Maschine (KVM) nicht manuell konfigurieren, da ONTAP LUNs automatisch dem Hypervisor zugeordnet werden.
+
+
 
 == Schritt 1: Aktivieren Sie optional den SAN-Bootvorgang
 
