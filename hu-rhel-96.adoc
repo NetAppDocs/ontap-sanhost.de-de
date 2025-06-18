@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
-permalink: hu_rhel_80.html 
-keywords: host utilities, red hat, rhel, linux, 8.0, netapp, ontap 
-summary: Installieren Sie die Linux Host Utilities auf einem RHEL 8.0 Host, um FCP- und iSCSI-Protokollvorgänge mit ONTAP LUNs zu managen. 
+permalink: hu-rhel-96.html 
+keywords: host utilities, red hat, rhel, linux, 9.6, netapp, ontap, rhel 
+summary: Installieren Sie die Linux Host Utilities auf einem RHEL 9.6 Host, um FCP- und iSCSI-Protokollvorgänge mit ONTAP LUNs zu managen. 
 ---
-= Konfigurieren Sie RHEL 8.0 für FCP und iSCSI mit ONTAP-Speicher
+= Konfigurieren Sie RHEL 9.6 für FCP und iSCSI mit ONTAP-Speicher
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -16,7 +16,7 @@ summary: Installieren Sie die Linux Host Utilities auf einem RHEL 8.0 Host, um F
 
 
 [role="lead"]
-Die Linux Host Utilities-Software enthält Management- und Diagnose-Tools für Linux-Hosts, die mit dem ONTAP-Storage verbunden sind. Wenn Sie die Linux Host Utilities auf einem Red hat Enterprise Linux (RHEL) 8.0 Host installieren, können Sie mit den Host Utilities beim Management von FCP- und iSCSI-Protokolloperationen mit ONTAP LUNs unterstützen.
+Die Linux Host Utilities-Software enthält Management- und Diagnose-Tools für Linux-Hosts, die mit dem ONTAP-Storage verbunden sind. Wenn Sie die Linux Host Utilities auf einem Red hat Enterprise Linux (RHEL) 9.6 Host installieren, können Sie mit den Host Utilities beim Management von FCP- und iSCSI-Protokolloperationen mit ONTAP LUNs unterstützen.
 
 
 NOTE: Sie müssen die Einstellungen der Kernel-basierten virtuellen Maschine (KVM) nicht manuell konfigurieren, da ONTAP LUNs automatisch dem Hypervisor zugeordnet werden.
@@ -57,7 +57,7 @@ NOTE: Durch die Installation der Linux Host Utilities werden keine Host-Timeout-
 
 == Schritt 3: Bestätigen Sie die Multipath-Konfiguration für Ihren Host
 
-Sie können Multipathing mit RHEL 8.0 zum Verwalten von ONTAP-LUNs verwenden.
+Sie können Multipathing mit RHEL 9.6 zum Verwalten von ONTAP-LUNs verwenden.
 
 Um sicherzustellen, dass Multipathing für Ihren Host korrekt konfiguriert ist, überprüfen Sie, ob die `/etc/multipath.conf` Datei definiert ist und ob die von NetApp empfohlenen Einstellungen für Ihre ONTAP LUNs konfiguriert sind.
 
@@ -264,30 +264,8 @@ devices {
 
 == Schritt 6: Überprüfen Sie die bekannten Probleme
 
-Die RHEL 8.0 mit ONTAP-Speicherversion weist folgende bekannte Probleme auf:
+Es sind keine Probleme bekannt.
 
-[cols="3*"]
-|===
-| NetApp Bug ID | Titel | Beschreibung 
-
-
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1238719["1238719"^] | Kernel-Störung auf RHEL8 mit QLogic QLE2672 16GB FC während des Storage Failover-Betriebs | Bei Storage Failover-Vorgängen auf einem Red hat Enterprise Linux (RHEL) 8 Kernel mit einem QLogic QLE2672 Host Bus Adapter (HBA) kann es zu Kernel-Störungen kommen. Die Kernel-Störung bewirkt, dass das Betriebssystem neu gestartet wird. Das Neubooten bewirkt eine Applikationsunterbrechung und generiert die vmcore-Datei unter dem Verzeichnis /var/crash/Directory, wenn kdump konfiguriert ist. Verwenden Sie die vmcore-Datei, um die Ursache des Fehlers zu identifizieren. In diesem Fall befindet sich die Störung im Modul „kmem_Cache_alloc+160“. Sie wird in der vmcore-Datei mit der folgenden Zeichenfolge protokolliert: „[Ausnahme-RIP: Kmem_Cache_alloc+160]“. Starten Sie das Host-Betriebssystem neu, um das Betriebssystem wiederherzustellen, und starten Sie dann die Anwendung neu. 
-
-
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1226783["1226783"^] | RHEL8 OS startet bis zum „Notfallmodus“, wenn mehr als 204 SCSI-Geräte auf allen Fibre Channel (FC) Host Bus Adaptern (HBA) abgebildet sind | Wenn ein Host während eines laufenden Systemneustarts mehr als 204 SCSI-Geräte zugeordnet ist, kann das RHEL8-Betriebssystem nicht in den „normalen Modus“ gestartet werden und wechselt in den „Notfallmodus“. Dies führt dazu, dass der Großteil der Host Services nicht mehr verfügbar ist. 
-
-
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1230882["1230882"^] | Das Erstellen einer Partition auf einem iSCSI Multipath-Gerät während der RHEL8-Installation ist nicht möglich. | ISCSI SAN LUN Multipath-Geräte werden während der RHEL 8-Installation nicht in der Festplattenauswahl aufgeführt. Folglich ist der Multipath-Service auf dem SAN Boot-Gerät nicht aktiviert. 
-
-
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1235998["1235998"^] | Der Befehl „rescan-scsi-bus.sh -a“ scannt nicht mehr als 328 Geräte | Wenn ein Red hat Enterprise Linux 8-Host mit mehr als 328 SCSI-Geräten zuordnet, scannt der Host-Betriebssystem-Befehl „rescan-scsi-bus.sh -A“ nur 328 Geräte. Der Host entdeckt keine verbleibenden zugeordneten Geräte. 
-
-
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1231087["1231087"^] | Remote-Ports werden beim Storage Failover-Betrieb in einen blockierten Status auf RHEL8 mit Emulex LPe16002 16 GB FC überführt | Remote-Ports werden beim Storage Failover in einen blockierten Status auf RHEL8 mit Emulex LPe16002 16 GB Fibre Channel (FC) überführt. Wenn der Storage Node wieder in einen optimalen Zustand versetzt wird, kommen die LIFs ebenfalls hinzu und der Remote-Port-Status sollte „online“ lesen. Gelegentlich wird der Status des Remote-Ports möglicherweise weiterhin als „gesperrt“ oder „nicht vorhanden“ gelesen. Dieser Status kann zu einem „fehlerhaften“ Pfad zu LUNs in der Multipath-Schicht führen 
-
-
-| link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1231098["1231098"^] | Remote-Ports werden während des Storage Failover-Betriebs auf RHEL8 mit Emulex LPe32002 32 GB FC in blockierten Status versetzt | Remote-Ports werden beim Storage Failover in einen blockierten Status auf RHEL8 mit Emulex LPe32002 32 GBFibre Channel (FC) überführt. Wenn der Storage Node wieder in einen optimalen Zustand versetzt wird, kommen die LIFs ebenfalls hinzu und der Remote-Port-Status sollte „online“ lesen. Gelegentlich wird der Status des Remote-Ports möglicherweise weiterhin als „gesperrt“ oder „nicht vorhanden“ gelesen. Dieser Status kann zu einem „fehlerhaften“ Pfad zu LUNs in der Multipath-Schicht führen. 
-|===
 
 
 == Was kommt als Nächstes?
