@@ -108,7 +108,7 @@ drwxr-xr-x   3 root     sys            4 Jul 22  2019 ..
 
 
 
-== SAN Toolkit
+== SAN-Toolkit aktivieren
 
 Solaris Host Utilities ist eine NetApp Host Software, die auf Ihrem Oracle Solaris Host ein Befehlszeilen-Toolkit bietet. Das Toolkit wird bei der Installation des NetApp Host Utilities-Pakets installiert. Dieses Kit enthält die `sanlun` Dienstprogramm zum Verwalten von LUNs und Host Bus Adaptern (HBAs). Der `sanlun` Befehl gibt Informationen über die LUNs zurück, die Ihrem Host zugeordnet sind, Multipathing und Informationen zurück, die zum Erstellen von Initiatorgruppen erforderlich sind.
 

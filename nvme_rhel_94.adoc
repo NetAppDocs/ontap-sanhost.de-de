@@ -42,6 +42,27 @@ Es gibt keine bekannten Einschränkungen.
 
 
 
+== Aktivieren Sie das Booten über SAN
+
+Sie können Ihren Host so konfigurieren, dass er SAN-Booting verwendet, um die Bereitstellung zu vereinfachen und die Skalierbarkeit zu verbessern.
+
+.Bevor Sie beginnen
+Überprüfen Sie mithilfe deslink:https://mysupport.netapp.com/matrix/#welcome["Interoperabilitäts-Matrix-Tool"^], ob Ihr Linux-Betriebssystem, Ihr Host Bus Adapter (HBA), die HBA-Firmware, das HBA-Boot-BIOS und die ONTAP-Version das Booten über das SAN unterstützen.
+
+.Schritte
+. Erstellen Sie einen SAN-Boot-Namespace und ordnen Sie ihn dem Host zu.
++
+Siehe https://docs.netapp.com/us-en/ontap/san-admin/create-nvme-namespace-subsystem-task.html["NVMe-Storage wird bereitgestellt"^].
+
+. Aktivieren Sie das SAN-Booten im Server-BIOS für die Ports, denen die SAN-Boot-LUN zugeordnet ist.
++
+Informationen zum Aktivieren des HBA-BIOS finden Sie in der anbieterspezifischen Dokumentation.
+
+. Überprüfen Sie, ob die Konfiguration erfolgreich war, indem Sie den Host neu starten und überprüfen, ob das Betriebssystem ausgeführt wird.
+
+
+
+
 == Validieren der Softwareversionen
 
 Mit dem folgenden Verfahren können Sie die unterstützten Mindestversionen von RHEL 9.4 validieren.
@@ -278,10 +299,13 @@ NOTE: Diese Schritte gelten nicht für Qlogic NVMe/FC-Hosts.
 .Schritte
 . Setzen Sie den `lpfc_sg_seg_cnt` Parameter auf 256:
 +
-[listing]
+[source, cli]
 ----
 cat /etc/modprobe.d/lpfc.conf
 ----
++
+Sie sollten eine Ausgabe ähnlich dem folgenden Beispiel sehen:
+
 +
 [listing]
 ----
@@ -290,7 +314,7 @@ options lpfc lpfc_sg_seg_cnt=256
 . Führen Sie den Befehl aus `dracut -f`, und starten Sie den Host neu.
 . Stellen Sie sicher, dass der Wert für `lpfc_sg_seg_cnt` 256 lautet:
 +
-[listing]
+[source, cli]
 ----
 cat /sys/module/lpfc/parameters/lpfc_sg_seg_cnt
 ----
