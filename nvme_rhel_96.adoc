@@ -4,7 +4,7 @@ permalink: nvme-rhel-96.html
 keywords: nvme, linux, rhel, red hat, enterprise 
 summary: Konfigurieren des NVMe-of-Hosts für RHEL 9.6 mit ONTAP 
 ---
-= NVMe-of Hostkonfiguration für RHEL 9.6 mit ONTAP
+= Konfigurieren Sie RHEL 9.6 für NVMe-oF mit ONTAP-Speicher
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -25,7 +25,6 @@ Sie können die folgenden Support- und Features mit der NVMe-of-Hostkonfiguratio
 +
 ** Unterstützung für NVMe over TCP (NVMe/TCP) neben NVMe over Fibre Channel (NVMe/FC) Über das NetApp-Plug-in im nativen `nvme-cli` Paket werden ONTAP-Details sowohl für NVMe/FC- als auch für NVMe/TCP-Namespaces angezeigt.
 ** Ausführen von NVMe- und SCSI-Datenverkehr auf demselben Host. Sie können beispielsweise dm-Multipath für SCSI-mpath-Geräte für SCSI-LUNs konfigurieren und NVMe Multipath verwenden, um NVMe-of-Namespace-Geräte auf dem Host zu konfigurieren.
-** Unterstützung für SAN-Booting über das NVMe/FC-Protokoll
 ** RHEL 9.6 ermöglicht standardmäßig in-Kernel-NVMe-Multipath für NVMe-Namespaces, sodass keine expliziten Einstellungen erforderlich sind.
 ** Ab ONTAP 9.12.1 wird die sichere In-Band-Authentifizierung für NVMe/TCP unterstützt. Sie können die sichere In-Band-Authentifizierung für NVMe/TCP mit RHEL 9,6 verwenden.
 +
@@ -55,10 +54,7 @@ Sie können Ihren Host so konfigurieren, dass er SAN-Booting verwendet, um die B
 Überprüfen Sie mithilfe deslink:https://mysupport.netapp.com/matrix/#welcome["Interoperabilitäts-Matrix-Tool"^], ob Ihr Linux-Betriebssystem, Ihr Host Bus Adapter (HBA), die HBA-Firmware, das HBA-Boot-BIOS und die ONTAP-Version das Booten über das SAN unterstützen.
 
 .Schritte
-. Erstellen Sie einen SAN-Boot-Namespace und ordnen Sie ihn dem Host zu.
-+
-Siehe https://docs.netapp.com/us-en/ontap/san-admin/create-nvme-namespace-subsystem-task.html["NVMe-Storage wird bereitgestellt"^].
-
+. https://docs.netapp.com/us-en/ontap/san-admin/create-nvme-namespace-subsystem-task.html["Erstellen Sie einen SAN-Boot-Namespace und ordnen Sie ihn dem Host zu"^].
 . Aktivieren Sie das SAN-Booten im Server-BIOS für die Ports, denen der SAN-Boot-Namespace zugeordnet ist.
 +
 Informationen zum Aktivieren des HBA-BIOS finden Sie in der anbieterspezifischen Dokumentation.
@@ -80,7 +76,7 @@ Verwenden Sie das folgende Verfahren, um die mindestens unterstützten RHEL 9,6-
 uname -r
 ----
 +
-Das folgende Beispiel zeigt eine RHEL-Kernelversion:
+Das folgende Beispiel zeigt eine Rocky Linux-Kernelversion:
 
 +
 [listing]
@@ -115,7 +111,7 @@ Das folgende Beispiel zeigt eine  `libnvme` Paketversion:
 ----
 libnvme-1.11.1-1.el9.x86_64
 ----
-. Überprüfen Sie auf dem RHEL 9.6-Host den hostnqn-String unter `/etc/nvme/hostnqn`:
+. Überprüfen Sie auf dem RHEL-Host die Zeichenfolge hostnqn unter  `/etc/nvme/hostnqn` :
 +
 [source, cli]
 ----
@@ -220,8 +216,8 @@ Das folgende Beispiel zeigt Firmware-Versionen:
 +
 [listing]
 ----
-14.4.393.25, sli-4:6:d
-14.4.393.25, sli-4:6:d
+14.0.539.16, sli-4:6:d
+14.0.539.16, sli-4:6:d
 ----
 .. Zeigen Sie die Posteingangstreiberversion an:
 +
@@ -235,7 +231,7 @@ Das folgende Beispiel zeigt eine Treiberversion:
 +
 [listing]
 ----
-0: 14.4.0.6
+0:14.4.0.6
 ----
 
 
@@ -260,8 +256,8 @@ Das folgende Beispiel zeigt Portidentitäten:
 +
 [listing]
 ----
-0x100000109bf044b1
-0x100000109bf044b2
+0x2100f4c7aa0cd7c2
+0x2100f4c7aa0cd7c3
 ----
 . Überprüfen Sie, ob Ihre Initiator-Ports online sind:
 +
@@ -367,8 +363,8 @@ Das folgende Beispiel zeigt Treiber- und Firmware-Versionen:
 +
 [listing]
 ----
-QLE2872 FW:v9.15.03 DVR:v10.02.09.300-k-debug
-QLE2872 FW:v9.15.03 DVR:v10.02.09.300-k-debug
+QLE2872 FW:v9.15.00 DVR:v10.02.09.300-k
+QLE2872 FW:v9.15.00 DVR:v10.02.09.300-k
 ----
 . Verifizieren Sie das `ql2xnvmeenable` Ist festgelegt. Dadurch kann der Marvell Adapter als NVMe/FC-Initiator verwendet werden:
 +
@@ -420,7 +416,7 @@ cat /sys/module/lpfc/parameters/lpfc_sg_seg_cnt
 
 == Schritt 5: Überprüfen der NVMe-Bootdienste
 
-Mit RHEL 9.6 wird die  `nvmefc-boot-connections.service` Und  `nvmf-autoconnect.service` In NVMe/FC enthaltene Boot-Dienste  `nvme-cli` Paket wird beim Systemstart automatisch gestartet. Überprüfen Sie nach Abschluss des Systemstarts, ob die Startdienste aktiviert sind.
+Mit RHEL 9,6 wird die  `nvmefc-boot-connections.service` Und  `nvmf-autoconnect.service` In NVMe/FC enthaltene Boot-Dienste  `nvme-cli` Pakete werden beim Systemstart automatisch aktiviert. Überprüfen Sie nach dem Booten, ob die Dienste aktiviert sind.
 
 .Schritte
 . Vergewissern Sie sich, dass `nvmf-autoconnect.service` aktiviert ist:
@@ -473,12 +469,12 @@ Jun 10 01:08:36 localhost systemd[1]: Finished Auto-connect to subsystems on FC-
 
 == Schritt 6: NVMe/TCP konfigurieren
 
-Das NVMe/TCP-Protokoll unterstützt den Vorgang nicht `auto-connect`. Stattdessen können Sie die NVMe/TCP-Subsysteme und -Namespaces erkennen, indem Sie NVMe/TCP oder `connect-all` Vorgänge manuell ausführen `connect`.
+Das NVMe/TCP-Protokoll unterstützt den automatischen Verbindungsvorgang nicht. Stattdessen können Sie die NVMe/TCP-Subsysteme und -Namespaces ermitteln, indem Sie die NVMe/TCP-Verbindungs- oder -Alles-Verbindungsvorgänge manuell ausführen.
 
 .Schritte
 . Vergewissern Sie sich, dass der Initiator-Port die Daten der Erkennungsprotokollseite über die unterstützten NVMe/TCP-LIFs abrufen kann:
 +
-[source, cli]
+[listing]
 ----
 nvme discover -t tcp -w host-traddr -a traddr
 ----
@@ -542,7 +538,7 @@ subtype: *nvme subsystem*
 treq:    not specified
 portid:  4
 trsvcid: 4420
-subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:subsystem. Unidirectional_DHCP_NONE_1_3
+subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:subsystem.nvme_tcp_1
 traddr:  192.168.2.25
 eflags:  none
 sectype: none
@@ -553,7 +549,7 @@ subtype: *nvme subsystem*
 treq:    not specified
 portid:  2
 trsvcid: 4420
-subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:subsystem. Unidirectional_DHCP_NONE_1_4
+subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:subsystem.nvme_tcp_1
 traddr:  192.168.1.25
 eflags:  none
 sectype: none
@@ -564,7 +560,7 @@ subtype: *nvme subsystem*
 treq:    not specified
 portid:  5
 trsvcid: 4420
-subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:subsystem. Unidirectional_DHCP_NONE_1_5
+subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:subsystem.nvme_tcp_1
 traddr:  192.168.2.24
 eflags:  none
 sectype: none
@@ -575,7 +571,7 @@ subtype: *nvme subsystem*
 treq:    not specified
 portid:  1
 trsvcid: 4420
-subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:subsystem. Unidirectional_DHCP_2_2
+subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:subsystem.nvme_tcp_1
 traddr:  192.168.1.24
 eflags:  none
 sectype: none
@@ -586,7 +582,7 @@ subtype: *nvme subsystem*
 treq:    not specified
 portid:  4
 trsvcid: 4420
-subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:subsystem. Unidirectional_DHCP_2_3
+subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:subsystem.nvme_tcp_4
 traddr:  192.168.2.25
 eflags:  none
 sectype: none
@@ -597,7 +593,7 @@ subtype: *nvme subsystem*
 treq:    not specified
 portid:  2
 trsvcid: 4420
-subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:subsystem. Unidirectional_DHCP_2_5
+subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:subsystem.nvme_tcp_4
 traddr:  192.168.1.25
 eflags:  none
 sectype: none
@@ -608,7 +604,7 @@ subtype: *nvme subsystem*
 treq:    not specified
 portid:  5
 trsvcid: 4420
-subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:subsystem. Bidirectional_DHCP_2_2
+subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:subsystem.nvme_tcp_4
 traddr:  192.168.2.24
 eflags:  none
 sectype: none
@@ -619,7 +615,7 @@ subtype: *nvme subsystem*
 treq:    not specified
 portid:  1
 trsvcid: 4420
-subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:subsystem. Bidirectional_DHCP_2_3
+subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:subsystem.nvme_tcp_4
 traddr:  192.168.1.24
 eflags:  none
 sectype: none
@@ -630,7 +626,7 @@ subtype: *nvme subsystem*
 treq:    not specified
 portid:  4
 trsvcid: 4420
-subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:subsystem. Bidirectional_DHCP_2_3
+subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:subsystem.nvme_tcp_3
 traddr:  192.168.2.25
 eflags:  none
 sectype: none
@@ -641,7 +637,7 @@ subtype: *nvme subsystem*
 treq:    not specified
 portid:  2
 trsvcid: 4420
-subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:subsystem. Bidirectional_DHCP_NONE_2_4
+subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:subsystem.nvme_tcp_3
 traddr:  192.168.1.25
 eflags:  none
 sectype: none
@@ -652,7 +648,7 @@ subtype: *nvme subsystem*
 treq:    not specified
 portid:  5
 trsvcid: 4420
-subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:subsystem. Bidirectional_DHCP_NONE_2_5
+subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:subsystem.nvme_tcp_3
 traddr:  192.168.2.24
 eflags:  none
 sectype: none
@@ -663,7 +659,7 @@ subtype: *nvme subsystem*
 treq:    not specified
 portid:  1
 trsvcid: 4420
-subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:subsystem. Bidirectional_DHCP_NONE_2_6
+subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:subsystem.nvme_tcp_3
 traddr:  192.168.1.24
 eflags:  none
 sectype: none
@@ -674,7 +670,7 @@ subtype: *nvme subsystem*
 treq:    not specified
 portid:  4
 trsvcid: 4420
-subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:subsystem. Bidirectional_DHCP_NONE_2_7
+subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:subsystem.nvme_tcp_2
 traddr:  192.168.2.25
 eflags:  none
 sectype: none
@@ -685,7 +681,7 @@ subtype: *nvme subsystem*
 treq:    not specified
 portid:  2
 trsvcid: 4420
-subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:subsystem. Bidirectional_DHCP_NONE_2_8
+subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:subsystem.nvme_tcp_2
 traddr:  192.168.1.25
 eflags:  none
 sectype: none
@@ -707,15 +703,15 @@ subtype: *nvme subsystem*
 treq:    not specified
 portid:  1
 trsvcid: 4420
-subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:subsystem. Bidirectional_DHCP_NONE_2_9
+subnqn:  nqn.1992-08.com.netapp:sn.0f4ba1e74eb611ef9f50d039eab6cb6d:subsystem.nvme_tcp_2
 traddr:  192.168.1.24
 eflags:  none
 sectype: none
 ----
 ====
-. Vergewissern Sie sich, dass die anderen LIF-Kombinationen des NVMe/TCP-Initiators die Daten der Erkennungsprotokollseite erfolgreich abrufen können:
+. Vergewissern Sie sich, dass die anderen LIF-Kombinationen des NVMe/TCP-Initiators erfolgreich beim Abrufen von Protokollseitendaten der Bestandsaufnahme abgerufen werden können:
 +
-[source, cli]
+[listing]
 ----
 nvme discover -t tcp -w host-traddr -a traddr
 ----
@@ -733,7 +729,7 @@ nvme discover -t tcp -w 192.168.2.31 -a 192.168.2.25
 ====
 . Führen Sie die aus `nvme connect-all` Befehl über alle unterstützten NVMe/TCP Initiator-Ziel-LIFs der Nodes hinweg:
 +
-[source, cli]
+[listing]
 ----
 nvme connect-all -t tcp -w host-traddr -a traddr
 ----
@@ -750,9 +746,6 @@ nvme	connect-all	-t	tcp	-w	192.168.2.31	-a	192.168.2.25
 ----
 ====
 
-
-
-NOTE: Ab RHEL 9.5 ist die Standardeinstellung für das NVMe/TCP `ctrl_loss_tmo`-Timeout deaktiviert. Dies bedeutet, dass die Anzahl der Wiederholungen (unbestimmter Versuch) nicht begrenzt ist. Daher müssen Sie bei Verwendung der Befehle oder `nvme connect-all` (Option -l ) keine bestimmte Zeitlimitdauer `nvme connect` manuell konfigurieren `ctrl_loss_tmo`. Bei diesem Standardverhalten treten für die NVMe/TCP-Controller bei einem Pfadausfall keine Timeouts auf und bleiben dauerhaft verbunden.
 
 
 
@@ -1013,8 +1006,7 @@ cat /sys/class/nvme-subsystem/<nvme-subsysX>/nvme*/dhchap_secret
 =====
 [listing]
 ----
-cat /sys/class/nvme-subsystem/nvme-
-subsys1/nvme*/dhchap_secret
+cat /sys/class/nvme-subsystem/nvme-subsys1/nvme*/dhchap_secret
 DHHC-1:01:CNxTYq73T9vJk0JpOfDBZrhDCqpWBN4XVZI5WxwPgDUieHAi:
 DHHC-1:01:CNxTYq73T9vJk0JpOfDBZrhDCqpWBN4XVZI5WxwPgDUieHAi:
 DHHC-1:01:CNxTYq73T9vJk0JpOfDBZrhDCqpWBN4XVZI5WxwPgDUieHAi:
@@ -1058,8 +1050,7 @@ Verwenden Sie die  `-o` Option zum Generieren der JSON-Datei. Weitere Syntaxopti
 
 NOTE: Im folgenden Beispiel  `dhchap_key` entspricht  `dhchap_secret` Und  `dhchap_ctrl_key` entspricht  `dhchap_ctrl_secret` .
 
-
-
++
 .Beispiel anzeigen
 [%collapsible]
 =====

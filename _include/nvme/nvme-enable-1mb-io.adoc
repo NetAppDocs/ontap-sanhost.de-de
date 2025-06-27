@@ -1,0 +1,29 @@
+= 
+:allow-uri-read: 
+
+
+Sie können E/A-Anfragen der Größe 1 MB für NVMe/FC aktivieren, die mit einem Broadcom-Adapter konfiguriert sind. ONTAP meldet in den Identify Controller-Daten eine maximale Datenübertragungsgröße (MDTS) von 8. Das bedeutet, dass die maximale E/A-Anforderungsgröße bis zu 1 MB betragen kann. Um E/A-Anfragen der Größe 1 MB zu stellen, müssen Sie den lpfc-Wert des  `lpfc_sg_seg_cnt` Parameter vom Standardwert 64 auf 256.
+
+
+NOTE: Diese Schritte gelten nicht für Qlogic NVMe/FC-Hosts.
+
+.Schritte
+. Setzen Sie den `lpfc_sg_seg_cnt` Parameter auf 256:
++
+[listing]
+----
+cat /etc/modprobe.d/lpfc.conf
+----
++
+[listing]
+----
+options lpfc lpfc_sg_seg_cnt=256
+----
+. Führen Sie den Befehl aus `dracut -f`, und starten Sie den Host neu.
+. Stellen Sie sicher, dass der Wert für `lpfc_sg_seg_cnt` 256 lautet:
++
+[listing]
+----
+cat /sys/module/lpfc/parameters/lpfc_sg_seg_cnt
+----
+
