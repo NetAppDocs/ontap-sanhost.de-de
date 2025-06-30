@@ -31,10 +31,7 @@ Sie können Ihren Host so konfigurieren, dass er SAN-Booting verwendet, um die B
 Überprüfen Sie mithilfe deslink:https://mysupport.netapp.com/matrix/#welcome["Interoperabilitäts-Matrix-Tool"^], ob Ihr Linux-Betriebssystem, Ihr Host Bus Adapter (HBA), die HBA-Firmware, das HBA-Boot-BIOS und die ONTAP-Version das Booten über das SAN unterstützen.
 
 .Schritte
-. Erstellen Sie eine SAN-Boot-LUN, und ordnen Sie sie dem Host zu.
-+
-Siehe https://docs.netapp.com/us-en/ontap/san-admin/provision-storage.html["SAN-Storage bereitstellen"^].
-
+. link:https://docs.netapp.com/us-en/ontap/san-admin/provision-storage.html["Erstellen Sie eine SAN-Boot-LUN und ordnen Sie sie dem Host zu"^].
 . Aktivieren Sie das SAN-Booten im Server-BIOS für die Ports, denen die SAN-Boot-LUN zugeordnet ist.
 +
 Informationen zum Aktivieren des HBA-BIOS finden Sie in der anbieterspezifischen Dokumentation.
@@ -228,7 +225,7 @@ Ein Beispiel WWID ist `360030057024d0730239134810c0cb833`.
 
 . Fügen Sie die WWID der schwarzen Liste hinzu:
 +
-[listing]
+[source, cli]
 ----
 blacklist {
 	     wwid   360030057024d0730239134810c0cb833
@@ -262,7 +259,7 @@ defaults {
 devices {
    device {
       vendor          "NETAPP"
-      product         "LUN.*"
+      product         "LUN"
       no_path_retry   *queue*
       path_checker    *tur*
    }
