@@ -2,9 +2,9 @@
 sidebar: sidebar 
 permalink: hu_ol_74.html 
 keywords: host utilities, oracle, linux, 7.4, netapp, ontap 
-summary: Beschreibt die Verwendung von Oracle Linux 7.4 mit ONTAP 
+summary: Installieren Sie Linux Host Utilities auf einem Oracle Linux 7.4-Host, um FCP- und iSCSI-Protokollvorgänge mit ONTAP LUNs zu verwalten. 
 ---
-= Verwenden Sie Oracle Linux 7.4 mit ONTAP
+= Konfigurieren Sie Oracle Linux 7.4 für FCP und iSCSI mit ONTAP-Speicher
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -16,160 +16,78 @@ summary: Beschreibt die Verwendung von Oracle Linux 7.4 mit ONTAP
 
 
 [role="lead"]
-Sie können die Konfigurationseinstellungen des ONTAP-SAN-Hosts verwenden, um Oracle Linux 7.4 mit ONTAP als Ziel zu konfigurieren.
+Die Linux Host Utilities-Software enthält Management- und Diagnose-Tools für Linux-Hosts, die mit dem ONTAP-Storage verbunden sind. Wenn Sie die Linux Host Utilities auf einem Oracle Linux 7.4-Host installieren, können Sie die Host Utilities zur Verwaltung von FCP- und iSCSI-Protokollvorgängen mit ONTAP LUNs verwenden.
+
+
+NOTE: Sie müssen die Einstellungen der Kernel-basierten virtuellen Maschine (KVM) nicht manuell konfigurieren, da ONTAP LUNs automatisch dem Hypervisor zugeordnet werden.
 
 
 
-== Installieren Sie die Linux Host Utilities
+== Schritt 1: Aktivieren Sie optional den SAN-Bootvorgang
 
-Das NetApp Linux-Host-Utilitys-Softwarepaket ist auf dem  in einer 32-Bit- und 64-Bit-RPM-Datei verfügbarlink:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp Support Website"^]. Wenn Sie nicht wissen, welche Datei für Ihre Konfiguration geeignet ist, überprüfen Sie mithilfe der, welche Datei link:https://mysupport.netapp.com/matrix/#welcome["Interoperabilitäts-Matrix-Tool"^]Sie benötigen.
-
-NetApp empfiehlt ausdrücklich die Installation der Linux Host Utilities, dies ist jedoch nicht zwingend erforderlich. Die Dienstprogramme ändern keine Einstellungen auf Ihrem Linux-Host. Die Versorgungseinrichtungen verbessern das Management und unterstützen den NetApp Kunden-Support bei der Erfassung von Informationen zu Ihrer Konfiguration.
-
-Wenn Sie Linux Host Utilities derzeit installiert haben, sollten Sie entweder ein Upgrade auf die neueste Version durchführen, oder es entfernen und die folgenden Schritte ausführen, um die neueste Version zu installieren.
-
-.Schritte
-. Laden Sie das 32-Bit- oder 64-Bit-Linux Host Utilities-Softwarepaket vom auf Ihren Host herunterlink:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp Support Website"^].
-. Installieren des Softwarepakets:
-+
-`rpm -ivh netapp_linux_unified_host_utilities-7-1.x86_64`
-
-
-
-
-NOTE: Mit den in diesem Verfahren angegebenen Konfigurationseinstellungen können Sie Cloud-Clients konfigurieren, die mit  und verbunden link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^]link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["Amazon FSX für ONTAP"^]sind.
-
-
-
-== SAN Toolkit
-
-Das Toolkit wird automatisch installiert, wenn Sie das NetApp Host Utilities-Paket installieren. Dieses Kit enthält die `sanlun` Dienstprogramm: Unterstützt Sie beim Management von LUNs und HBAs. Der `sanlun` Befehl gibt Informationen über die LUNs zurück, die Ihrem Host zugeordnet sind, Multipathing und Informationen zurück, die zum Erstellen von Initiatorgruppen erforderlich sind.
-
-.Beispiel
-Im folgenden Beispiel wird der verwendet `sanlun lun show` Befehl gibt LUN-Informationen zurück.
-
-[source, cli]
-----
-# sanlun lun show all
-----
-Beispielausgabe:
-
-[listing]
-----
-controller(7mode/E-Series)/            device     host               lun
-vserver(cDOT/FlashRay)   lun-pathname  filename   adapter  protocol  size    Product
-------------------------------------------------------------------------------------
-data_vserver          /vol/vol1/lun1   /dev/sdb   host16   FCP       120.0g  cDOT
-data_vserver          /vol/vol1/lun1   /dev/sdc   host15   FCP       120.0g  cDOT
-data_vserver          /vol/vol2/lun2   /dev/sdd   host16   FCP       120.0g  cDOT
-data_vserver          /vol/vol2/lun2   /dev/sde   host15   FCP       120.0g  cDOT
-----
-
-
-== SAN wird gebootet
+Sie können Ihren Host so konfigurieren, dass er SAN-Booting verwendet, um die Bereitstellung zu vereinfachen und die Skalierbarkeit zu verbessern.
 
 .Bevor Sie beginnen
-Wenn Sie sich für das Booten über SAN entscheiden, muss es von Ihrer Konfiguration unterstützt werden. Sie können mit dem link:https://imt.netapp.com/matrix/#welcome["Interoperabilitäts-Matrix-Tool"^]überprüfen, ob Ihr Betriebssystem, HBA, die HBA-Firmware und das HBA-StartBIOS sowie die ONTAP-Version unterstützt werden.
+Überprüfen Sie mithilfe deslink:https://mysupport.netapp.com/matrix/#welcome["Interoperabilitäts-Matrix-Tool"^], ob Ihr Linux-Betriebssystem, Ihr Host Bus Adapter (HBA), die HBA-Firmware, das HBA-Boot-BIOS und die ONTAP-Version das Booten über das SAN unterstützen.
 
 .Schritte
-. Ordnen Sie die SAN-Boot-LUN dem Host zu.
-. Vergewissern Sie sich, dass mehrere Pfade verfügbar sind.
-+
-
-NOTE: Mehrere Pfade sind verfügbar, nachdem das Host-Betriebssystem auf den Pfaden ausgeführt wurde.
-
+. link:https://docs.netapp.com/us-en/ontap/san-admin/provision-storage.html["Erstellen Sie eine SAN-Boot-LUN und ordnen Sie sie dem Host zu"^].
 . Aktivieren Sie das SAN-Booten im Server-BIOS für die Ports, denen die SAN-Boot-LUN zugeordnet ist.
 +
 Informationen zum Aktivieren des HBA-BIOS finden Sie in der anbieterspezifischen Dokumentation.
 
-. Starten Sie den Host neu, um zu überprüfen, ob der Startvorgang erfolgreich war.
+. Überprüfen Sie, ob die Konfiguration erfolgreich war, indem Sie den Host neu starten und überprüfen, ob das Betriebssystem ausgeführt wird.
 
 
 
 
-== Multipathing
+== Schritt 2: Installieren Sie die Linux Host Utilities
 
-Für Oracle Linux 7.4 muss die Datei /etc/Multipath.conf vorhanden sein, Sie müssen jedoch keine spezifischen Änderungen an der Datei vornehmen. Oracle Linux 7.4 wird mit allen Einstellungen zusammengestellt, die zum Erkennen und korrekten Managen von ONTAP LUNs erforderlich sind.
+NetApp empfiehlt dringend die Installation der Linux Host Utilities, um die ONTAP LUN-Verwaltung zu unterstützen, und den technischen Support beim Sammeln von Konfigurationsdaten zu unterstützen.
 
-Sie können mit dem `multipath -ll` Befehl die Einstellungen für Ihre ONTAP LUNs überprüfen. Es sollte zwei Gruppen von Pfaden mit unterschiedlichen Prioritäten geben. Die Pfade mit höheren Prioritäten sind aktiv/optimiert. Das heißt, sie werden vom Controller gewartet, wo sich das Aggregat befindet. Die Pfade mit niedrigeren Prioritäten sind aktiv, aber nicht optimiert, da sie von einem anderen Controller bedient werden. Die nicht optimierten Pfade werden nur verwendet, wenn optimierte Pfade nicht verfügbar sind.
+link:hu_luhu_71.html["Installieren Sie Linux Host Utilities 7.1"].
 
-.Beispiel
-Im folgenden Beispiel wird die richtige Ausgabe für eine ONTAP-LUN mit zwei aktiv/optimierten Pfaden und zwei aktiv/nicht optimierten Pfaden angezeigt:
 
-[listing]
-----
-# multipath -ll
-3600a09803831347657244e527766394e dm-5 NETAPP,LUN C-Mode
-size=80G features='4 queue_if_no_path pg_init_retries 50 retain_attached_hw_handle' hwhandler='1 alua' wp=rw
-|-+- policy='service-time 0' prio=50 status=active
-| |- 11:0:1:0 sdj 8:144 active ready running
-| |- 11:0:2:0 sdr 65:16 active ready running
-|-+- policy='service-time 0' prio=10 status=enabled
-|- 11:0:0:0 sdb 8:i6 active ready running
-|- 12:0:0:0 sdz 65:144 active ready running
-----
-
-NOTE: Eine einzelne LUN sollte nicht mehr als vier Pfade benötigen. Eine Verfügbarkeit von mehr als vier Pfaden kann bei Storage-Ausfällen zu Pfadproblemen führen.
+NOTE: Durch die Installation der Linux Host Utilities werden keine Host-Timeout-Einstellungen auf Ihrem Linux-Host geändert.
 
 
 
-== Empfohlene Einstellungen
+== Schritt 3: Bestätigen Sie die Multipath-Konfiguration für Ihren Host
 
-Das Oracle Linux 7.4-Betriebssystem wird kompiliert, um ONTAP-LUNs zu erkennen und automatisch alle Konfigurationsparameter korrekt einzustellen. Die `multipath.conf` Datei muss vorhanden sein, damit der Multipath-Daemon gestartet werden kann. Wenn diese Datei nicht vorhanden ist, können Sie eine leere, Null-Byte-Datei mit dem Befehl erstellen `touch /etc/multipath.conf`.
+Sie können Multipathing mit Oracle Linux 7.4 verwenden, um ONTAP-LUNs zu verwalten.
 
-Wenn Sie die `multipath.conf` Datei zum ersten Mal erstellen, müssen Sie möglicherweise die Multipath-Services mithilfe der folgenden Befehle aktivieren und starten:
 
-[listing]
-----
-chkconfig multipathd on
-/etc/init.d/multipathd start
-----
-Sie müssen der Datei nichts direkt hinzufügen `multipath.conf`, es sei denn, Sie verfügen über Geräte, die nicht von Multipath verwaltet werden sollen, oder Sie haben bereits vorhandene Einstellungen, die die Standardeinstellungen außer Kraft setzen. Um unerwünschte Geräte auszuschließen, fügen Sie der Datei die folgende Syntax hinzu `multipath.conf` und ersetzen <DevId> durch die Zeichenfolge Worldwide Identifier (WWID) des Geräts, das Sie ausschließen möchten:
+NOTE: Sie können die link:hu_rhel_74.html#rhel-rhck["empfohlene Einstellungen für Red Hat Enterprise Linux (RHEL) 7.4"] um den Red Hat Compatible Kernel für Oracle Linux 7.4 zu konfigurieren.
 
-[listing]
-----
-blacklist {
-        wwid <DevId>
-        devnode "^(ram|raw|loop|fd|md|dm-|sr|scd|st)[0-9]*"
-        devnode "^hd[a-z]"
-        devnode "^cciss.*"
-}
-----
-Das folgende Beispiel bestimmt die WWID eines Geräts und fügt sie der Datei hinzu `multipath.conf`.
+Um sicherzustellen, dass Multipathing für Ihren Host korrekt konfiguriert ist, überprüfen Sie, ob die `/etc/multipath.conf` Datei definiert ist und ob die von NetApp empfohlenen Einstellungen für Ihre ONTAP LUNs konfiguriert sind.
 
 .Schritte
-. Bestimmen Sie die WWID:
-+
-[listing]
-----
-/lib/udev/scsi_id -gud /dev/sda
-----
-+
-[listing]
-----
-3600a098038314c4a433f5774717a3046
-----
-+
-`sda` Ist das lokale SCSI-Laufwerk, das Sie der Blacklist hinzufügen möchten.
-
-. Fügen Sie die hinzu `WWID` Zur schwarzen Liste stanza in `/etc/multipath.conf`:
+. Überprüfen Sie, ob die `/etc/multipath.conf` Datei beendet wird. Wenn die Datei nicht vorhanden ist, erstellen Sie eine leere, Null-Byte-Datei:
 +
 [source, cli]
 ----
-blacklist {
-     wwid   3600a098038314c4a433f5774717a3046
-     devnode "^(ram|raw|loop|fd|md|dm-|sr|scd|st)[0-9]*"
-     devnode "^hd[a-z]"
-     devnode "^cciss.*"
-}
+touch /etc/multipath.conf
 ----
+. Beim ersten Erstellen der `multipath.conf` Datei müssen Sie möglicherweise die Multipath-Services aktivieren und starten, um die empfohlenen Einstellungen zu laden:
++
+[source, cli]
+----
+chkconfig multipathd on
+----
++
+[source, cli]
+----
+/etc/init.d/multipathd start
+----
+. Jedes Mal, wenn Sie den Host starten, lädt die leere `/etc/multipath.conf` Zero-Byte-Datei automatisch die von NetApp empfohlenen Multipath-Parameter als Standardeinstellungen. Sie sollten keine Änderungen an der Datei für Ihren Host vornehmen `/etc/multipath.conf` müssen, da das Betriebssystem mit den Multipath-Parametern kompiliert wird, die ONTAP-LUNs korrekt erkennen und verwalten.
++
+In der folgenden Tabelle sind die nativen kompilierten Multipath-Parametereinstellungen für ONTAP LUNs unter Linux aufgeführt.
 
-
-Überprüfen Sie Ihre Datei, insbesondere im Abschnitt „Standardeinstellungen“, immer `/etc/multipath.conf` auf ältere Einstellungen, die die Standardeinstellungen überschreiben könnten.
-
-In der folgenden Tabelle sind die kritischen `multipathd` Parameter für ONTAP-LUNs und die erforderlichen Werte aufgeführt. Wenn ein Host mit LUNs anderer Hersteller verbunden ist und diese Parameter überschrieben werden, müssen sie durch spätere Strophen in der `multipath.conf` Datei korrigiert werden, die speziell für ONTAP-LUNs gelten. Ohne diese Korrektur funktionieren die ONTAP-LUNs möglicherweise nicht wie erwartet. Sie sollten diese Standardeinstellungen nur in Absprache mit NetApp, dem OS-Anbieter oder beiden außer Kraft setzen, und zwar nur dann, wenn die Auswirkungen vollständig verstanden sind.
-
-[cols="2*"]
++
+.Parametereinstellungen anzeigen
+[%collapsible]
+====
+[cols="2"]
 |===
 | Parameter | Einstellung 
 
@@ -186,13 +104,16 @@ In der folgenden Tabelle sind die kritischen `multipathd` Parameter für ONTAP-L
 | Fast_io_fail_tmo | 5 
 
 
-| Funktionen | „3 queue_if_no_Pg_init_retries 50“ 
+| Funktionen | „2 pg_init_retries 50“ 
 
 
 | Flush_on_Last_del | „ja“ 
 
 
 | Hardware_Handler | „0“ 
+
+
+| Kein_PATH_retry | Warteschlange 
 
 
 | PATH_Checker | „nur“ 
@@ -210,7 +131,7 @@ In der folgenden Tabelle sind die kritischen `multipathd` Parameter für ONTAP-L
 | prio | ONTAP 
 
 
-| Produkt | LUN.* 
+| Produkt | LUN 
 
 
 | Beibehalten_Attached_hw_Handler | ja 
@@ -224,38 +145,111 @@ In der folgenden Tabelle sind die kritischen `multipathd` Parameter für ONTAP-L
 
 | Anbieter | NETAPP 
 |===
-.Beispiel
-Das folgende Beispiel zeigt, wie eine überhielte Standardeinstellung korrigiert wird. In diesem Fall definiert die `multipath.conf` Datei Werte für `path_checker` und `detect_prio`, die nicht mit ONTAP LUNs kompatibel sind. Wenn sie nicht entfernt werden können, weil andere SAN-Arrays noch an den Host angeschlossen sind, können diese Parameter speziell für ONTAP-LUNs mit einem Device stanza korrigiert werden.
+====
+. Überprüfen Sie die Parametereinstellungen und den Pfadstatus für Ihre ONTAP LUNs:
++
+[source, cli]
+----
+multipath -ll
+----
++
+Die standardmäßigen Multipath-Parameter unterstützen AFF- und FAS-Konfigurationen. In diesen Konfigurationen sollte eine einzelne ONTAP-LUN nicht mehr als vier Pfade benötigen. Wenn mehr als vier Pfade vorhanden sind, kann dies bei einem Storage-Ausfall zu Problemen mit den Pfaden führen.
 
++
+Eine AFF- oder FAS-Konfiguration sollte zwei Pfadgruppen mit höheren und niedrigeren Prioritäten aufweisen. Aktiv/optimierte Pfade mit höherer Priorität werden vom Controller bedient, wo sich das Aggregat befindet. Pfade mit niedriger Priorität sind aktiv, jedoch nicht optimiert, da sie von einem anderen Controller bedient werden. Nicht optimierte Pfade werden nur verwendet, wenn keine optimierten Pfade verfügbar sind.
+
++
+Die folgenden Beispielausgaben zeigen die richtigen Parametereinstellungen und den Pfadstatus für ONTAP LUNs in einer AFF- oder FAS-Konfiguration mit zwei aktiven/optimierten Pfaden und zwei aktiven/nicht optimierten Pfaden:
+
++
+.Beispiel anzeigen
+[%collapsible]
+====
 [listing]
 ----
-defaults {
- path_checker readsector0
- detect_prio no
- }
-devices {
- device {
- vendor "NETAPP "
- product "LUN.*"
- path_checker tur
- detect_prio yes
- }
+multipath -ll
+3600a0980383036347ffb4d59646c4436 dm-28 NETAPP,LUN C-Mode
+size=10G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
+|-+- policy='service-time 0' prio=50 status=active
+| |- 16:0:6:35 sdwb  69:624  active ready running
+| |- 16:0:5:35 sdun  66:752  active ready running
+`-+- policy='service-time 0' prio=10 status=enabled
+  |- 15:0:0:35 sdaj  66:48   active ready running
+  |- 15:0:1:35 sdbx  68:176  active ready running
+----
+====
+
+
+
+
+== Schritt 4: Optional: Schließen Sie ein Gerät vom Multipathing aus
+
+Bei Bedarf können Sie ein Gerät vom Multipathing ausschließen, indem Sie die WWID für das unerwünschte Gerät der „Blacklist“-Strophe für die Datei hinzufügen `multipath.conf`.
+
+.Schritte
+. Bestimmen Sie die WWID:
++
+[source, cli]
+----
+/lib/udev/scsi_id -gud /dev/sda
+----
++
+„sda“ ist die lokale SCSI-Festplatte, die Sie der Blacklist hinzufügen möchten.
+
++
+Ein Beispiel WWID ist `360030057024d0730239134810c0cb833`.
+
+. Fügen Sie die WWID der schwarzen Liste hinzu:
++
+[source, cli]
+----
+blacklist {
+	     wwid   360030057024d0730239134810c0cb833
+        devnode "^(ram|raw|loop|fd|md|dm-|sr|scd|st)[0-9]*"
+        devnode "^hd[a-z]"
+        devnode "^cciss.*"
 }
 ----
 
-NOTE: Um Oracle Linux 7.4 Red hat Compatible Kernel (RHCK) zu konfigurieren, verwenden Sie den link:hu_rhel_74.html#recommended-settings["Empfohlene Einstellungen"] für Red hat Enterprise Linux (RHEL) 7.4.
 
 
 
-== ASM Spiegelung
+== Schritt 5: Passen Sie Multipath-Parameter für ONTAP LUNs an
 
-Bei der ASM-Spiegelung (Automatic Storage Management) sind möglicherweise Änderungen an den Linux Multipath-Einstellungen erforderlich, damit ASM ein Problem erkennen und zu einer alternativen Fehlergruppe wechseln kann. Die meisten ASM-Konfigurationen auf ONTAP verwenden externe Redundanz, was bedeutet, dass Datenschutz vom externen Array bereitgestellt wird und ASM keine Daten spiegelt. Einige Standorte verwenden ASM mit normaler Redundanz, um normalerweise zwei-Wege-Spiegelung über verschiedene Standorte hinweg bereitzustellen. Weitere Informationen finden Sie unterlink:https://docs.netapp.com/us-en/ontap-apps-dbs/oracle/oracle-overview.html["Oracle-Datenbanken auf ONTAP"^].
+Wenn Ihr Host mit LUNs anderer Hersteller verbunden ist und eine der Multipath-Parametereinstellungen überschrieben wird, müssen Sie diese korrigieren, indem Sie später Strophen in der Datei hinzufügen `multipath.conf`, die speziell für ONTAP-LUNs gelten. Wenn Sie dies nicht tun, funktionieren die ONTAP LUNs möglicherweise nicht wie erwartet.
+
+Überprüfen Sie Ihre `/etc/multipath.conf` Datei, insbesondere im Abschnitt Standardeinstellungen, auf Einstellungen, die die überschreiben könnten<<multipath-parameter-settings,Standardeinstellungen für Multipath-Parameter>>.
 
 
+CAUTION: Die empfohlenen Parametereinstellungen für ONTAP LUNs sollten Sie nicht außer Kraft setzen. Diese Einstellungen sind für eine optimale Performance Ihrer Hostkonfiguration erforderlich. Weitere Informationen erhalten Sie vom NetApp-Support, vom Hersteller Ihres Betriebssystems oder von beiden.
 
-== Bekannte Probleme
+Das folgende Beispiel zeigt, wie eine überhielte Standardeinstellung korrigiert wird. In diesem Beispiel definiert die `multipath.conf` Datei Werte für `path_checker` und `no_path_retry`, die nicht mit ONTAP-LUNs kompatibel sind. Sie können diese Parameter nicht entfernen, da ONTAP-Speicher-Arrays noch mit dem Host verbunden sind. Stattdessen korrigieren Sie die Werte für `path_checker` und `no_path_retry`, indem Sie der Datei, die speziell auf die ONTAP-LUNs zutrifft, eine Gerätestanze hinzufügen `multipath.conf`.
 
-Die Oracle Linux 7.4 mit ONTAP-Version weist folgende bekannte Probleme auf:
+.Beispiel anzeigen
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+defaults {
+   path_checker      *readsector0*
+   no_path_retry     *fail*
+}
+
+devices {
+   device {
+      vendor          "NETAPP"
+      product         "LUN"
+      no_path_retry   *queue*
+      path_checker    *tur*
+   }
+}
+----
+====
+
+
+== Schritt 6: Überprüfen Sie die bekannten Probleme
+
+Beim Oracle Linux 7.4-Host mit ONTAP-Speicher sind die folgenden Probleme bekannt:
 
 [cols="3*"]
 |===
@@ -267,3 +261,13 @@ Die Oracle Linux 7.4 mit ONTAP-Version weist folgende bekannte Probleme auf:
 
 | link:https://mysupport.netapp.com/NOW/cgi-bin/bol?Type=Detail&Display=1109468["1109468"^] | Firmware-Dumps auf einem OL7.4 Hypervisor mit QLE8362-Karte | Während Speicher-Failover-Vorgänge auf einem OL7.4 Hypervisor mit QLE8362 Karte, werden die Firmware-Dumps gelegentlich beobachtet. Die Firmware-Dumps können zu einem I/O-Ausfall auf dem Host führen, der bis zu 500 Sekunden dauert. Nachdem der Adapter den Firmware-Dump abgeschlossen hat, wird der I/O-Vorgang auf normale Weise fortgesetzt. Auf dem Host ist keine weitere Wiederherstellung erforderlich. Um den Firmware-Dump anzuzeigen, wird die folgende Meldung in der Datei /var/log/message angezeigt: Qla2xxx [0000:0c:00.3]-d001:8: Firmware-Dump gespeichert in Temporär-Puffer (8/ffcc90008901000), Dump-Status-Flags (0x3f) 
 |===
+
+
+== Was kommt als Nächstes?
+
+* link:hu_luhu_71_cmd.html["Erfahren Sie mehr über die Verwendung des Linux Host Utilities-Tools"].
+* Erfahren Sie mehr über ASM Mirroring.
++
+Bei der ASM-Spiegelung (Automatic Storage Management) sind möglicherweise Änderungen an den Linux Multipath-Einstellungen erforderlich, damit ASM ein Problem erkennen und zu einer alternativen Fehlergruppe wechseln kann. Die meisten ASM-Konfigurationen auf ONTAP verwenden externe Redundanz, was bedeutet, dass Datenschutz vom externen Array bereitgestellt wird und ASM keine Daten spiegelt. Einige Standorte verwenden ASM mit normaler Redundanz, um normalerweise zwei-Wege-Spiegelung über verschiedene Standorte hinweg bereitzustellen. Weitere Informationen finden Sie unterlink:https://docs.netapp.com/us-en/ontap-apps-dbs/oracle/oracle-overview.html["Oracle-Datenbanken auf ONTAP"^].
+
+

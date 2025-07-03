@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: hu-rockylinux-92.html 
 keywords: host utilities, rocky, linux, 9.2, netapp, ontap, fcp, iscsi 
-summary: Installieren Sie die Linux Host Utilities auf einem Rocky Linux 9.2-Host, um FCP- und iSCSI-Protokollvorgänge mit ONTAP LUNs zu verwalten. 
+summary: Installieren Sie Linux Host Utilities auf einem Rocky Linux 9.2-Host, um FCP- und iSCSI-Protokollvorgänge mit ONTAP LUNs zu verwalten. 
 ---
 = Konfigurieren Sie Rocky Linux 9.2 für FCP und iSCSI mit ONTAP-Speicher
 :hardbreaks:
@@ -16,7 +16,7 @@ summary: Installieren Sie die Linux Host Utilities auf einem Rocky Linux 9.2-Hos
 
 
 [role="lead"]
-Die Linux Host Utilities-Software enthält Management- und Diagnose-Tools für Linux-Hosts, die mit dem ONTAP-Storage verbunden sind. Wenn Sie die Linux Host Utilities auf einem Rocky Linux 9.2-Host installieren, können Sie die Host Utilities zur Verwaltung von FCP- und iSCSI-Protokollvorgängen mit ONTAP LUNs verwenden.
+Die Linux Host Utilities-Software enthält Management- und Diagnose-Tools für Linux-Hosts, die mit dem ONTAP-Storage verbunden sind. Wenn Sie Linux Host Utilities auf einem Rocky Linux 9.2-Host installieren, können Sie die Host Utilities zur Verwaltung von FCP- und iSCSI-Protokollvorgängen mit ONTAP LUNs verwenden.
 
 
 NOTE: Sie müssen keine Kernel-basierten KVM-Einstellungen (Virtual Machine) konfigurieren, da ONTAP-LUNs automatisch dem KVM-Hypervisor zugeordnet werden.

@@ -241,6 +241,9 @@ CAUTION: Die empfohlenen Parametereinstellungen für ONTAP LUNs sollten Sie nich
 
 Das folgende Beispiel zeigt, wie eine überhielte Standardeinstellung korrigiert wird. In diesem Beispiel definiert die `multipath.conf` Datei Werte für `path_checker` und `no_path_retry`, die nicht mit ONTAP-LUNs kompatibel sind. Sie können diese Parameter nicht entfernen, da ONTAP-Speicher-Arrays noch mit dem Host verbunden sind. Stattdessen korrigieren Sie die Werte für `path_checker` und `no_path_retry`, indem Sie der Datei, die speziell auf die ONTAP-LUNs zutrifft, eine Gerätestanze hinzufügen `multipath.conf`.
 
+.Beispiel anzeigen
+[%collapsible]
+====
 [listing, subs="+quotes"]
 ----
 defaults {
@@ -257,6 +260,7 @@ devices {
    }
 }
 ----
+====
 
 
 == Schritt 6: Überprüfen Sie die bekannten Probleme

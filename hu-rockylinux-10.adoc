@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: hu-rockylinux-10.html 
 keywords: host utilities, rocky, linux, 10, netapp, ontap 
-summary: Installieren Sie die Linux Host Utilities auf einem Rocky Linux 10-Host, um FCP- und iSCSI-Protokollvorgänge mit ONTAP LUNs zu verwalten. 
+summary: Installieren Sie Linux Host Utilities auf einem Rocky Linux 10-Host, um FCP- und iSCSI-Protokollvorgänge mit ONTAP LUNs zu verwalten. 
 ---
 = Konfigurieren Sie Rocky Linux 10 für FCP und iSCSI mit ONTAP-Speicher
 :hardbreaks:
@@ -16,7 +16,7 @@ summary: Installieren Sie die Linux Host Utilities auf einem Rocky Linux 10-Host
 
 
 [role="lead"]
-Die Linux Host Utilities-Software enthält Management- und Diagnose-Tools für Linux-Hosts, die mit dem ONTAP-Storage verbunden sind. Wenn Sie die Linux Host Utilities auf einem Rocky Linux 10-Host installieren, können Sie die Host Utilities zur Verwaltung von FCP- und iSCSI-Protokollvorgängen mit ONTAP LUNs verwenden.
+Die Linux Host Utilities-Software enthält Management- und Diagnose-Tools für Linux-Hosts, die mit dem ONTAP-Storage verbunden sind. Wenn Sie Linux Host Utilities auf einem Rocky Linux 10-Host installieren, können Sie die Host Utilities zur Verwaltung von FCP- und iSCSI-Protokollvorgängen mit ONTAP LUNs verwenden.
 
 
 NOTE: Sie müssen die Einstellungen der Kernel-basierten virtuellen Maschine (KVM) nicht manuell konfigurieren, da ONTAP LUNs automatisch dem Hypervisor zugeordnet werden.
