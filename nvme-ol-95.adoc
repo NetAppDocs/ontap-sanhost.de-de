@@ -24,9 +24,9 @@ Bei der NVMe-of-Host-Konfiguration für Oracle Linux 9.5 mit ONTAP Storage stehe
 * Support verfügbar:
 +
 ** Unterstützung für NVMe over TCP (NVMe/TCP) neben NVMe over Fibre Channel (NVMe/FC) Über das NetApp-Plug-in im nativen nvme-cli-Paket werden ONTAP-Details für NVMe/FC- und NVMe/TCP-Namespaces angezeigt.
-** Ausführen von NVMe- und SCSI-Datenverkehr auf demselben Host. Sie können beispielsweise dm-Multipath für SCSI-mpath-Geräte für SCSI-LUNs konfigurieren und NVMe Multipath verwenden, um NVMe-of-Namespace-Geräte auf dem Host zu konfigurieren.
+** Ausführen von NVMe- und SCSI-Datenverkehr auf demselben Host. Sie können beispielsweise dm-multipath auf SCSI-mpath-Geräten für SCSI-LUNs konfigurieren und NVMe-Multipath verwenden, um NVMe-oF-Namespace-Geräte auf dem Host zu konfigurieren.
 ** Oracle Linux 9.5 aktiviert standardmäßig NVMe-Multipath im Kernel für NVMe-Namespaces, sodass keine expliziten Einstellungen mehr erforderlich sind.
-** Ab ONTAP 9.12.1 wird die sichere In-Band-Authentifizierung für NVMe/TCP unterstützt. Sie können die sichere In-Band-Authentifizierung für NVMe/TCP mit Oracle Linux 9.5 verwenden
+** Ab ONTAP 9.12.1 wird die sichere In-Band-Authentifizierung für NVMe/TCP unterstützt. Sie können die sichere In-Band-Authentifizierung für NVMe/TCP mit Oracle Linux 9.5 verwenden.
 
 
 +

@@ -24,7 +24,7 @@ Sie können die folgende Unterstützung und Funktionen mit der NVMe-oF-Hostkonfi
 * Support verfügbar:
 +
 ** Unterstützung für NVMe over TCP (NVMe/TCP) neben NVMe over Fibre Channel (NVMe/FC) Über das NetApp-Plug-in im nativen `nvme-cli` Paket werden ONTAP-Details sowohl für NVMe/FC- als auch für NVMe/TCP-Namespaces angezeigt.
-** Ausführen von NVMe- und SCSI-Datenverkehr auf demselben Host. Sie können beispielsweise dm-Multipath für SCSI-mpath-Geräte für SCSI-LUNs konfigurieren und NVMe Multipath verwenden, um NVMe-of-Namespace-Geräte auf dem Host zu konfigurieren.
+** Ausführen von NVMe- und SCSI-Datenverkehr auf demselben Host. Sie können beispielsweise dm-multipath für SCSI-mpath-Geräte auf SCSI-LUNs konfigurieren und NVMe-Multipath verwenden, um NVMe-oF-Namespace-Geräte auf dem Host zu konfigurieren.
 ** Ab ONTAP 9.12.1 wird die sichere In-Band-Authentifizierung für NVMe/TCP unterstützt. Sie können mit Rocky Linux 10 eine sichere In-Band-Authentifizierung für NVMe/TCP verwenden.
 
 
