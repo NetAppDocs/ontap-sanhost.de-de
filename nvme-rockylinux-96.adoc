@@ -27,14 +27,14 @@ Sie können die folgende Unterstützung und Funktionen mit der NVMe-oF-Hostkonfi
 ** Ausführen von NVMe- und SCSI-Datenverkehr auf demselben Host. Sie können beispielsweise dm-Multipath für SCSI-mpath-Geräte für SCSI-LUNs konfigurieren und NVMe Multipath verwenden, um NVMe-of-Namespace-Geräte auf dem Host zu konfigurieren.
 ** Rocky Linux 9.6 aktiviert standardmäßig NVMe-Multipath im Kernel für NVMe-Namespaces, sodass keine expliziten Einstellungen mehr erforderlich sind.
 ** Ab ONTAP 9.12.1 wird die sichere In-Band-Authentifizierung für NVMe/TCP unterstützt. Sie können mit Rocky Linux 9.6 eine sichere In-Band-Authentifizierung für NVMe/TCP verwenden.
+
+
 +
 Weitere Informationen zu unterstützten Konfigurationen finden Sie im link:https://mysupport.netapp.com/matrix/["Interoperabilitäts-Matrix-Tool"^].
 
-
-
 * Verfügbare Funktionen:
 +
-** Es sind keine neuen Funktionen verfügbar.
+** Diese Version enthält keine neuen Funktionen.
 
 
 * Bekannte Einschränkungen:
@@ -418,7 +418,9 @@ cat /sys/module/lpfc/parameters/lpfc_sg_seg_cnt
 
 == Schritt 5: Überprüfen der NVMe-Bootdienste
 
-Mit Rocky Linux 9.6 wird die  `nvmefc-boot-connections.service` Und  `nvmf-autoconnect.service` In NVMe/FC enthaltene Boot-Dienste  `nvme-cli` Paket werden beim Systemstart automatisch aktiviert. Überprüfen Sie nach dem Booten, ob die Dienste aktiviert sind.
+Mit Rocky Linux 9.6 wird die  `nvmefc-boot-connections.service` Und  `nvmf-autoconnect.service` In NVMe/FC enthaltene Boot-Dienste  `nvme-cli` Paket werden beim Systemstart automatisch aktiviert.
+
+Überprüfen Sie nach dem Booten, ob die  `nvmefc-boot-connections.service` Und  `nvmf-autoconnect.service` Boot-Dienste sind aktiviert.
 
 .Schritte
 . Vergewissern Sie sich, dass `nvmf-autoconnect.service` aktiviert ist:
@@ -749,9 +751,16 @@ nvme	connect-all	-t	tcp	-w	192.168.2.31	-a	192.168.2.25
 ====
 
 
+[NOTE]
+====
+Ab Rocky Linux 9.4 ist die Einstellung für NVMe/TCP  `ctrl_loss_tmo timeout` ist automatisch auf „Aus“ gestellt. Das Ergebnis:
 
-NOTE: Ab Rocky Linux 9.5 ist die Standardeinstellung für NVMe/TCP  `ctrl_loss_tmo` Timeout ist deaktiviert. Dies bedeutet, dass die Anzahl der Wiederholungen (unbestimmter Versuch) nicht begrenzt ist. Daher müssen Sie bei Verwendung der Befehle oder `nvme connect-all` (Option -l ) keine bestimmte Zeitlimitdauer `nvme connect` manuell konfigurieren `ctrl_loss_tmo`. Bei diesem Standardverhalten treten für die NVMe/TCP-Controller bei einem Pfadausfall keine Timeouts auf und bleiben dauerhaft verbunden.
+* Es gibt keine Begrenzung für die Anzahl der Wiederholungsversuche (unbegrenzte Wiederholung).
+* Sie müssen kein bestimmtes  `ctrl_loss_tmo timeout` Dauer bei Verwendung des  `nvme connect` oder  `nvme connect-all` Befehle (Option -l ).
+* Bei den NVMe/TCP-Controllern kommt es im Falle eines Pfadausfalls nicht zu Timeouts und die Verbindung bleibt unbegrenzt bestehen.
 
+
+====
 
 
 == Schritt 7: NVMe-oF validieren

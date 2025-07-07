@@ -1,0 +1,8 @@
+= 
+:allow-uri-read: 
+
+
+* Es gibt keine Begrenzung für die Anzahl der Wiederholungsversuche (unbegrenzte Wiederholung).
+* Sie müssen kein bestimmtes  `ctrl_loss_tmo timeout` Dauer bei Verwendung des  `nvme connect` oder  `nvme connect-all` Befehle (Option -l ).
+* Bei den NVMe/TCP-Controllern kommt es im Falle eines Pfadausfalls nicht zu Timeouts und die Verbindung bleibt unbegrenzt bestehen.
+

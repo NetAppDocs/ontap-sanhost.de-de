@@ -604,17 +604,24 @@ nvme connect-all -t tcp -w host-traddr -a traddr
 ====
 [listing, subs="+quotes"]
 ----
-nvme	connect-all	-t	tcp	-w	192.168.1.31	-a	192.168.1.24
-nvme	connect-all	-t	tcp	-w	192.168.2.31	-a	192.168.2.24
-nvme	connect-all	-t	tcp	-w	192.168.1.31	-a	192.168.1.25
-nvme	connect-all	-t	tcp	-w	192.168.2.31	-a	192.168.2.25
+nvme connect-all -t	tcp	-w 192.168.1.31	-a 192.168.1.24
+nvme connect-all -t	tcp	-w 192.168.2.31	-a 192.168.2.24
+nvme connect-all -t	tcp	-w 192.168.1.31	-a 192.168.1.25
+nvme connect-all -t	tcp	-w 192.168.2.31	-a 192.168.2.25
 ----
 ====
 
 
+[NOTE]
+====
+Ab RHEL 9.4 ist die Einstellung für NVMe/TCP  `ctrl_loss_tmo timeout` ist automatisch auf „Aus“ gestellt. Das Ergebnis:
 
-NOTE: Ab RHEL 9.5 ist die Standardeinstellung für das NVMe/TCP `ctrl_loss_tmo`-Timeout deaktiviert. Dies bedeutet, dass die Anzahl der Wiederholungen (unbestimmter Versuch) nicht begrenzt ist. Daher müssen Sie bei Verwendung der Befehle oder `nvme connect-all` (Option -l ) keine bestimmte Zeitlimitdauer `nvme connect` manuell konfigurieren `ctrl_loss_tmo`. Bei diesem Standardverhalten treten für die NVMe/TCP-Controller bei einem Pfadausfall keine Timeouts auf und bleiben dauerhaft verbunden.
+* Es gibt keine Begrenzung für die Anzahl der Wiederholungsversuche (unbegrenzte Wiederholung).
+* Sie müssen kein bestimmtes  `ctrl_loss_tmo timeout` Dauer bei Verwendung des  `nvme connect` oder  `nvme connect-all` Befehle (Option -l ).
+* Bei den NVMe/TCP-Controllern kommt es im Falle eines Pfadausfalls nicht zu Timeouts und die Verbindung bleibt unbegrenzt bestehen.
 
+
+====
 
 
 == NVMe-of validieren
