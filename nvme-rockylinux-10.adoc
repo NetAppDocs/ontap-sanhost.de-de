@@ -16,7 +16,7 @@ summary: So konfigurieren Sie einen NVMe-oF-Host für Rocky Linux 10 mit ONTAP-S
 
 
 [role="lead"]
-NetApp SAN-Host-Konfigurationen unterstützen das NVMe over Fabrics (NVMe-of)-Protokoll mit Asymmetric Namespace Access (ANA). In NVMe-of Umgebungen entspricht ANA dem Multipathing des Asymmetric Logical Unit Access (ALUA) in iSCSI- und FCP-Umgebungen. ANA ist mit der in-Kernel NVMe Multipath-Funktion implementiert.
+Ungelöste Direktive in <stdin> – include::_include/nvme/reuse-nvme-introduction.adoc[]
 
 .Über diese Aufgabe
 Sie können die folgende Unterstützung und Funktionen mit der NVMe-oF-Hostkonfiguration für Rocky Linux 10 verwenden. Sie sollten auch die bekannten Einschränkungen überprüfen, bevor Sie mit dem Konfigurationsprozess beginnen.
@@ -354,34 +354,7 @@ Das erwartete ouptut ist 1.
 
 == Schritt 4: Optional 1 MB I/O aktivieren
 
-ONTAP meldet eine MDTS (MAX Data-Übertragungsgröße) von 8 in den Identifizieren von Controller-Daten. Das bedeutet, dass die maximale E/A-Anforderungsgröße bis zu 1 MB betragen kann. Um I/O-Anforderungen der Größe 1 MB für einen Broadcom-NVMe/FC-Host auszustellen, sollten Sie den Wert des `lpfc_sg_seg_cnt` Parameters ab dem Standardwert 64 auf 256 erhöhen `lpfc`.
-
-
-NOTE: Diese Schritte gelten nicht für Qlogic NVMe/FC-Hosts.
-
-.Schritte
-. Setzen Sie den `lpfc_sg_seg_cnt` Parameter auf 256:
-+
-[source, cli]
-----
-cat /etc/modprobe.d/lpfc.conf
-----
-+
-Sie sollten eine Ausgabe ähnlich dem folgenden Beispiel sehen:
-
-+
-[listing]
-----
-options lpfc lpfc_sg_seg_cnt=256
-----
-. Führen Sie den Befehl aus `dracut -f`, und starten Sie den Host neu.
-. Stellen Sie sicher, dass der Wert für `lpfc_sg_seg_cnt` 256 lautet:
-+
-[source, cli]
-----
-cat /sys/module/lpfc/parameters/lpfc_sg_seg_cnt
-----
-
+Ungelöste Direktive in <stdin> – include::_include/nvme/reuse_nvme_enabling_broadcom_1mb_size.adoc[]
 
 
 
@@ -442,7 +415,7 @@ Jun 10 01:08:36 localhost systemd[1]: Finished Auto-connect to subsystems on FC-
 
 == Schritt 6: NVMe/TCP konfigurieren
 
-Das NVMe/TCP-Protokoll unterstützt den Vorgang nicht `auto-connect`. Stattdessen können Sie die NVMe/TCP-Subsysteme und -Namespaces erkennen, indem Sie NVMe/TCP oder `connect-all` Vorgänge manuell ausführen `connect`.
+Ungelöste Direktive in <stdin> – include::_include/nvme/reuse-nvme-configure-nvme-tcp.adoc[]
 
 .Schritte
 . Vergewissern Sie sich, dass der Initiator-Port die Daten der Erkennungsprotokollseite über die unterstützten NVMe/TCP-LIFs abrufen kann:
@@ -602,7 +575,7 @@ Ab Rocky Linux 9.4 ist die Einstellung für NVMe/TCP  `ctrl_loss_tmo timeout` is
 
 == Schritt 7: NVMe-oF validieren
 
-Vergewissern Sie sich, dass der in-Kernel-Multipath-Status, der ANA-Status und die ONTAP-Namespaces für die NVMe-of-Konfiguration richtig sind.
+Ungelöste Direktive in <stdin> – include::_include/nvme/reuse-nvme-validate-nvme-of.adoc[]
 
 .Schritte
 . Vergewissern Sie sich, dass die entsprechenden NVMe-of-Einstellungen (z. B. auf NetApp ONTAP-Controller gesetzt auf Modell und Load-Balancing-IOpolicy auf Round-Robin eingestellt) für die jeweiligen ONTAP-Namespaces den Host korrekt widerspiegeln:

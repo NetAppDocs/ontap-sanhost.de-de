@@ -1,5 +1,0 @@
-= 
-:allow-uri-read: 
-
-
-Das NVMe/TCP-Protokoll unterstützt den Vorgang nicht `auto-connect`. Stattdessen können Sie die NVMe/TCP-Subsysteme und -Namespaces erkennen, indem Sie NVMe/TCP oder `connect-all` Vorgänge manuell ausführen `connect`.

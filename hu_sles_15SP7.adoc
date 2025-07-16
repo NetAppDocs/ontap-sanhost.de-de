@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
-permalink: hu_sles_15SP5.html 
-keywords: host utilities, suse linux enterprise server 15 sp5, suse, linux, 15 sp5, netapp, ontap 
-summary: Installieren Sie Linux Host Utilities auf einem SUSE Linux Enterprise Server 15 SP5, um FCP- und iSCSI-Protokollvorgänge mit ONTAP LUNs zu verwalten. 
+permalink: hu_sles_15SP7.html 
+keywords: host utilities, suse linux enterprise server 15 sp7, suse, linux, 15 sp7, netapp, ontap, fcp, iscsi 
+summary: Installieren Sie die Linux Host Utilities auf einem SUSE Linux Enterprise Server 15 SP7, um FCP- und iSCSI-Protokollvorgänge mit ONTAP-LUNs zu managen. 
 ---
-= Konfigurieren Sie SUSE Linux Enterprise Server 15 SP5 für FCP und iSCSI mit ONTAP-Speicher
+= Konfigurieren Sie SUSE Linux Enterprise Server 15 SP7 für FCP und iSCSI mit ONTAP-Speicher
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -16,7 +16,7 @@ summary: Installieren Sie Linux Host Utilities auf einem SUSE Linux Enterprise S
 
 
 [role="lead"]
-Die Linux Host Utilities-Software enthält Management- und Diagnose-Tools für Linux-Hosts, die mit dem ONTAP-Storage verbunden sind. Wenn Sie die Linux Host Utilities auf einem SUSE Linux Enterprise Server 15 SP5-Host installieren, können Sie mithilfe der Host Utilities FCP- und iSCSI-Protokollvorgänge mit ONTAP-LUNs managen.
+Die Linux Host Utilities-Software enthält Management- und Diagnose-Tools für Linux-Hosts, die mit dem ONTAP-Storage verbunden sind. Wenn Sie die Linux Host Utilities auf einem SUSE Linux Enterprise Server 15 SP7-Host installieren, können Sie die Host Utilities zur Verwaltung von FCP- und iSCSI-Protokollvorgängen mit ONTAP LUNs verwenden.
 
 
 NOTE: Sie müssen die Einstellungen der Kernel-basierten virtuellen Maschine (KVM) nicht manuell konfigurieren, da ONTAP LUNs automatisch dem Hypervisor zugeordnet werden.
@@ -54,7 +54,7 @@ NOTE: Durch die Installation der Linux Host Utilities werden keine Host-Timeout-
 
 == Schritt 3: Bestätigen Sie die Multipath-Konfiguration für Ihren Host
 
-Sie können Multipathing mit SUSE Linux Enterprise Server 15 SP5 zur Verwaltung von ONTAP-LUNs verwenden.
+Sie können Multipathing mit SUSE Linux Enterprise Server 15 SP7 zur Verwaltung von ONTAP-LUNs verwenden.
 
 Um sicherzustellen, dass Multipathing für Ihren Host korrekt konfiguriert ist, überprüfen Sie, ob die `/etc/multipath.conf` Datei definiert ist und ob die von NetApp empfohlenen Einstellungen für Ihre ONTAP LUNs konfiguriert sind.
 

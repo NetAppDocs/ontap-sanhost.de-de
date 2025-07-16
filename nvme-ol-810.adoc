@@ -431,6 +431,79 @@ NOTE: NetApp empfiehlt, die Option auf „-1“ zu setzen `ctrl-loss-tmo`, damit
 Vergewissern Sie sich, dass der in-Kernel-Multipath-Status, der ANA-Status und die ONTAP-Namespaces für die NVMe-of-Konfiguration richtig sind.
 
 .Schritte
+. Vergewissern Sie sich, dass das in-Kernel NVMe Multipath aktiviert ist:
++
+[source, cli]
+----
+cat /sys/module/nvme_core/parameters/multipath
+----
++
+Die folgende Ausgabe sollte angezeigt werden:
+
++
+[listing]
+----
+Y
+----
+. Vergewissern Sie sich, dass die entsprechenden NVMe-of-Einstellungen (z. B. auf NetApp ONTAP-Controller gesetzt auf Modell und Load-Balancing-IOpolicy auf Round-Robin eingestellt) für die jeweiligen ONTAP-Namespaces den Host korrekt widerspiegeln:
++
+.. Zeigen Sie die Subsysteme an:
++
+[source, cli]
+----
+cat /sys/class/nvme-subsystem/nvme-subsys*/model
+----
++
+Die folgende Ausgabe sollte angezeigt werden:
+
++
+[listing]
+----
+NetApp ONTAP Controller
+NetApp ONTAP Controller
+----
+.. Zeigen Sie die Richtlinie an:
++
+[source, cli]
+----
+cat /sys/class/nvme-subsystem/nvme-subsys*/iopolicy
+----
++
+Die folgende Ausgabe sollte angezeigt werden:
+
++
+[listing]
+----
+round-robin
+round-robin
+----
+
+
+. Überprüfen Sie, ob die Namespaces auf dem Host erstellt und richtig erkannt wurden:
++
+[source, cli]
+----
+nvme list
+----
++
+.Beispiel anzeigen
+[%collapsible]
+====
+[listing]
+----
+Node         SN                   Model
+---------------------------------------------------------
+/dev/nvme4n1 81Ix2BVuekWcAAAAAAAB	NetApp ONTAP Controller
+
+
+Namespace Usage    Format             FW             Rev
+-----------------------------------------------------------
+1                 21.47 GB / 21.47 GB	4 KiB + 0 B   FFFFFFFF
+----
+====
+
+
+.Schritte
 . Vergewissern Sie sich, dass in-Kernel NVMe Multipath aktiviert ist:
 +
 `cat /sys/module/nvme_core/parameters/multipath`

@@ -1,5 +1,0 @@
-= 
-:allow-uri-read: 
-
-
-Vergewissern Sie sich, dass der in-Kernel-Multipath-Status, der ANA-Status und die ONTAP-Namespaces für die NVMe-of-Konfiguration richtig sind.

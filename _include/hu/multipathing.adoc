@@ -82,7 +82,7 @@ In der folgenden Tabelle sind die nativen vom Linux OS kompilierten Multipath-Pa
 | prio | ONTAP 
 
 
-| Produkt | LUN.* 
+| Produkt | LUN 
 
 
 | Beibehalten_Attached_hw_Handler | ja 
