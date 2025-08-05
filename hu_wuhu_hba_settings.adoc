@@ -4,7 +4,7 @@ permalink: hu_wuhu_hba_settings.html
 keywords: windows, host, utilities, 7.1, hba, fibre, channel, SANtricity, netapp, san, host, e-series, platform 
 summary: Die Windows Host Utilities umfassen ein Installationsprogramm, das die erforderlichen Windows Registrierungs- und HBA-Parameter so festlegt, dass der Windows Host die Verhaltensweisen von ONTAP und E-Series Plattformen des Storage-Systems korrekt verarbeitet. 
 ---
-= Konfigurieren Sie die Registrierungseinstellungen für Windows Host Utilities
+= Konfigurieren Sie die Registrierungseinstellungen für Windows Host Utilities mit ONTAP -Speicher
 :toc: macro
 :hardbreaks:
 :toclevels: 1
@@ -23,7 +23,7 @@ Die Host Utilities erfordern bestimmte Registry- und Parametereinstellungen, um 
 
 Windows Host Utilities legt die Parameter fest, die sich auf die Reaktion des Windows-Hosts auf eine Verzögerung oder Datenverlust auswirken. Die bestimmten Werte wurden ausgewählt, um zu überprüfen, ob der Windows-Host Ereignisse wie das Failover eines Controllers im Speichersystem auf seinen Partner-Controller korrekt verarbeitet.
 
-Nicht alle Werte gelten für das gerätespezifische Modul (DSM) für den SANtricity-Storage-Manager. Jede Überlappung der von den Host Utilities und den vom DSM für den SANtricity-Storage-Manager festgelegten Werte führt jedoch nicht zu Konflikten.
+Nicht alle Werte gelten für das gerätespezifische Modul (DSM) für SANtricity Storage Manager. Eine Überschneidung der von den Host Utilities festgelegten Werte und der vom DSM für SANtricity Storage Manager festgelegten Werte führt jedoch nicht zu Konflikten.
 
 FC-, NVMe/FC- und iSCSI-HBAs verfügen auch über Parameter, die Sie festlegen müssen, um beste Performance zu gewährleisten und Storage-Systemereignisse erfolgreich zu behandeln.
 
@@ -35,18 +35,124 @@ Das Installationsprogramm legt unterschiedliche Werte fest, je nachdem, ob Sie b
 
 [NOTE]
 ====
-Sie müssen den LimTransferSize-Parameterwert ändern, nachdem Sie Windows Host Utilities 7.2 installiert haben, siehe <<nvme_parameters,NVMe-Parameter>>.
+Sie müssen den Parameterwert LimTransferSize nach der Installation von Windows Host Utilities 7.2 ändern. Sehen <<nvme_parameter,NVME-Parameter>> .
 
-Für alle anderen Parameter und Registrierungsschlüssel für Windows Host Utilities 7.2 und 7.1 sollten Sie die Werte nur dann ändern, wenn Sie vom technischen Support dazu informiert werden.
+Bei allen anderen Parametern und Registrierungsschlüsseln für Windows Host Utilities 8.0, 7.2 oder 7.1 müssen Sie die Werte nicht ändern, es sei denn, der technische Support rät Ihnen dazu.
 
+====
+
+
+== Von Windows Host Utilities 8.0 festgelegte Registrierungswerte
+
+Das Installationsprogramm von Windows Host Utilities legt automatisch Registrierungswerte und NVMe-Parameter fest, die auf den Auswahlen basieren, die Sie während der Installation treffen.  Sie sollten diese Werte und die Betriebssystemversion kennen.
+
+[role="tabbed-block"]
+====
+.HKLM-Werte
+--
+Die folgenden Registrierungswerte werden vom Windows Host Utilities-Installationsprogramm festgelegt.  Alle Werte sind Dezimalwerte, sofern nicht anders angegeben.
+
+
+NOTE: HKLM ist die Abkürzung für `HKEY_LOCAL_MACHINE`.
+
+[cols="20,20,30"]
+|===
+| Registrierungsschlüssel | Wert | Wenn eingestellt 
+
+
+| HKLM\SYSTEM\CurrentControlSet\Services \msdsm\Parameters \DsmMaximumRetryTimeDuringStateTransition | 120 | Wenn MPIO-Unterstützung angegeben ist und Ihr Server Windows Server 2025, 2022, 2019 oder 2016 ist 
+
+
+| HKLM\SYSTEM\CurrentControlSet \Services\msdsm\Parameters \DsmMaximumStateTransitionTime | 120 | Wenn MPIO-Unterstützung angegeben ist und Ihr Server Windows Server 2025, 2022, 2019 oder 2016 ist 
+
+
+| HKLM\SYSTEM\CurrentControlSet\Services \msdsm\Parameters\DsmSupportedDeviceList | „NETAPP LUN“, „NETAPP LUN C- Mode“ „NVMe NetApp ONTAO Con“ | Bei Angabe der MPIO-Unterstützung 
+
+
+| HKLM\SYSTEM\CurrentControlSet\Control \Class\ {iSCSI_driver_GUID}\ Instance_ID \Parameters \IPSecConfigTimeout | 60 | Immer 
+
+
+| HKLM\SYSTEM\CurrentControlSet\Control \Class\ {iSCSI_driver_GUID}\ Instance_ID \Parameters \LinkDownTime | 10 | Immer 
+
+
+| HKLM\SYSTEM\CurrentControlSet\Services \ClusDisk \Parameters\ManageDisksOnSystemBuses | 1 | Immer 
+
+
+| HKLM\SYSTEM\CurrentControlSet\Control \Class\ {iSCSI_driver_GUID}\ Instance_ID \Parameters \MaxRequestHoldTime | 120 | Wenn keine MPIO-Unterstützung ausgewählt ist 
+
+
+| HKLM\SYSTEM\CurrentControlSet\Control \Class\ {iSCSI_driver_GUID}\ Instance_ID \Parameters \MaxRequestHoldTime | 30 | Immer 
+
+
+| HKLM\SYSTEM\CurrentControlSet\Control \MPDEV\MPIOSupportedDeviceList | „NETAPP LUN“, „NETAPP LUN C- Mode“, „NVMe NetApp ONTAO Con“ | Bei Angabe der MPIO-Unterstützung 
+
+
+| HKLM\SYSTEM\CurrentControlSet\Services\mpio \Parameters\PathRecoveryInterval | 30 | Wenn Ihr Server Windows Server 2025, 2022, 2019 oder 2016 ist 
+
+
+| HKLM\SYSTEM\CurrentControlSet\Services\mpio \Parameters\PathVerifyEnabled | 1 | Bei Angabe der MPIO-Unterstützung 
+
+
+| HKLM\SYSTEM\CurrentControlSet\Services \msdsm\Parameters\PathVerifyEnabed | 1 | Wenn MPIO-Unterstützung angegeben ist und Ihr Server Windows Server 2025, 2022, 2019 oder 2016 ist 
+
+
+| HKLM\SYSTEM\CurrentControlSet\Services \vnetapp\Parameters\PathVerifyEnabled | 0 | Bei Angabe der MPIO-Unterstützung 
+
+
+| HKLM\SYSTEM\CurrentControlSet\Services \mpio\Parameters\PDORemovePeriod | 130 | Bei Angabe der MPIO-Unterstützung 
+
+
+| HKLM\SYSTEM\CurrentControlSet\Services\msdsm \Parameters\PDORemovePeriod | 130 | Wenn MPIO-Unterstützung angegeben ist und Ihr Server Windows Server 2025, 2022, 2019 oder 2016 ist 
+
+
+| HKLM\SYSTEM\CurrentControlSet\Services\vnetapp \Parameters\PDORemovePeriod | 130 | Bei Angabe der MPIO-Unterstützung 
+
+
+| HKLM\SYSTEM\CurrentControlSet\Services\mpio \Parameters\RetryCount | 6 | Bei Angabe der MPIO-Unterstützung 
+
+
+| HKLM\SYSTEM\CurrentControlSet\Services\msdsm \Parameters\RetryCount | 6 | Wenn MPIO-Unterstützung angegeben ist und Ihr Server Windows Server 2025, 2022, 2019 oder 2016 ist 
+
+
+| HKLM\SYSTEM\CurrentControlSet\Services\mpio \Parameters\RetryInterval | 1 | Bei Angabe der MPIO-Unterstützung 
+
+
+| HKLM\SYSTEM\CurrentControlSet\Services\msdsm \Parameters\RetryInterval | 1 | Wenn MPIO-Unterstützung angegeben ist und Ihr Server Windows Server 2025, 2022, 2019 oder 2016 ist 
+
+
+| HKLM\SYSTEM\CurrentControlSet\Services\vnetapp \Parameters\RetryInterval | 1 | Bei Angabe der MPIO-Unterstützung 
+
+
+.2+| HKLM\SYSTEM\CurrentControlSet \Services\Disk\TimeOutValue | 120 | Wenn keine MPIO-Unterstützung ausgewählt ist 
+
+
+| 60 | Bei Angabe der MPIO-Unterstützung 
+
+
+| Wenn keine MPIO-Unterstützung ausgewählt ist | HKLM\SYSTEM\CurrentControlSet\Services\mpio \Parameters\UseCustomRecoveryIntervall | 1 
+|===
+--
+.NVMe-Parameter
+--
+Die folgenden NVMe Emulex-Treiberparameter werden aktualisiert, wenn Sie Windows Host Utilities 8.0 installieren:
+
+* EnableNVMe = 1
+* NVMEMode = 0
+
+
+--
 ====
 
 
 == Von Windows Host Utilities 7.2 festgelegte Registrierungswerte
 
-Das Windows Host Utilities-Installationsprogramm legt automatisch Registrierungswerte fest, die auf den bei der Installation getroffenen Entscheidungen basieren. Diese Registrierungswerte und die Betriebssystemversion sollten Sie kennen.
+Das Installationsprogramm von Windows Host Utilities legt automatisch Registrierungswerte und NVMe-Parameter fest, die auf den Auswahlen basieren, die Sie während der Installation treffen.  Sie sollten diese Werte und die Betriebssystemversion kennen.
 
-Die folgenden Werte werden vom Windows Host Utilities-Installationsprogramm festgelegt. Sofern nicht anders angegeben, werden alle Werte in Dezimalform angegeben.
+[#nvme_parameter,role="tabbed-block"]
+====
+.HKLM-Werte
+--
+Die folgenden Registrierungswerte werden vom Windows Host Utilities-Installationsprogramm festgelegt.  Alle Werte sind Dezimalwerte, sofern nicht anders angegeben.
 
 
 NOTE: HKLM ist die Abkürzung für `HKEY_LOCAL_MACHINE`.
@@ -119,16 +225,18 @@ NOTE: HKLM ist die Abkürzung für `HKEY_LOCAL_MACHINE`.
 | HKLM\SYSTEM\CurrentControlSet\Services\vnetapp \Parameters\RetryInterval | 1 | Bei Angabe der MPIO-Unterstützung 
 
 
-| HKLM\SYSTEM\CurrentControlSet\Services \Disk\TimeOutValue | 120 | Wenn keine MPIO-Unterstützung ausgewählt ist 
+.2+| HKLM\SYSTEM\CurrentControlSet \Services\Disk\TimeOutValue | 120 | Wenn keine MPIO-Unterstützung ausgewählt ist 
+
+
+| 60 | Bei Angabe der MPIO-Unterstützung 
 
 
 | HKLM\SYSTEM\CurrentControlSet\Services\mpio \Parameters\UseCustomRecoveryIntervall | 1 | Wenn MPIO-Unterstützung angegeben ist und Ihr Server Windows Server 2025, 2022, 2019, 2016 oder 2012 R2 ist 
 |===
-
-
-=== NVMe-Parameter
-
-Die folgenden NVMe Emulex Treiberparameter werden beim Installieren von Windows Host Utilities 7.2 aktualisiert:
+--
+.NVMe-Parameter
+--
+Die folgenden NVMe Emulex-Treiberparameter werden aktualisiert, wenn Sie Windows Host Utilities 7.2 installieren:
 
 * EnableNVMe = 1
 * NVMEMode = 0
@@ -138,6 +246,8 @@ Der LimTransferSize-Parameter wird automatisch auf „1“ gesetzt, wenn Sie Win
 
 
 
+--
+====
 
 
 == Von Windows Host Utilities 7.1 festgelegte Registrierungswerte
@@ -238,10 +348,10 @@ NOTE: `HKLM` Ist die Abkürzung für `HKEY_LOCAL_MACHINE`.
 | HKLM\SYSTEM\CurrentControlSet\Services \vnetapp\Parameter\RetryIntervall | 1 | Wenn MPIO unterstützt wird, außer wenn Data ONTAP DSM erkannt wird 
 
 
-.2+| HKLM\SYSTEM\CurrentControlSet \Services\Disk\TimeOutValue | 120 | Wenn keine MPIO-Unterstützung ausgewählt ist, außer wenn Data ONTAP DSM erkannt wird 
+.2+| HKLM\SYSTEM\CurrentControlSet \Services\Disk\TimeOutValue | 120 | Wenn keine MPIO-Unterstützung ausgewählt ist 
 
 
-| 60 | Wenn MPIO unterstützt wird, außer wenn Data ONTAP DSM erkannt wird 
+| 60 | Bei Angabe der MPIO-Unterstützung 
 
 
 | HKLM\SYSTEM\CurrentControlSet\Services\mpio \Parameters\UseCustomRecoveryIntervall | 1 | Wenn Ihr Server Windows Server 2016, 2012 R2, 2012, 2008 R2 oder 2008 ist 
@@ -319,33 +429,33 @@ Die Host Utilities `fcconfig.ini` Datei zeigt diesen Parameter als entweder an `
 
 
 
-=== Informieren Sie sich über die Änderungen der Host Utilities zu den FC HBA-Treibereinstellungen
+== Erfahren Sie mehr über die Host Utilities-Änderungen an den FC HBA-Treibereinstellungen
 
-Während der Installation der erforderlichen Emulex- oder QLogic-HBA-Treiber auf einem FC-System werden mehrere Parameter überprüft und in manchen Fällen geändert.
+Während der Installation der erforderlichen Emulex- oder QLogic-HBA-Treiber auf einem FC-System werden mehrere Parameter überprüft und in einigen Fällen von Windows Host Utilities geändert.
 
-Die Host Utilities legen Werte für die folgenden Parameter fest, wenn MS DSM für Windows MPIO erkannt wird:
+Windows Host Utilities legt Werte für die folgenden Parameter fest, wenn MS DSM für Windows MPIO erkannt wird:
 
-* LinkTimeOut – definiert die Länge der Zeit in Sekunden, die der Host-Port wartet, bevor die I/O wieder aufgenommen wird, nachdem eine physische Verbindung getrennt ist.
-* NodeTimeOut – definiert die Länge der Zeit in Sekunden, bevor der Host-Port erkennt, dass eine Verbindung zum Zielgerät ausgefallen ist.
+* *LinkTimeOut*: Definiert die Zeitspanne in Sekunden, die der Host-Port wartet, bevor er die E/A wieder aufnimmt, nachdem eine physische Verbindung unterbrochen wurde.
+* *NodeTimeOut*: Definiert die Zeitspanne in Sekunden, bevor der Host-Port erkennt, dass eine Verbindung zum Zielgerät unterbrochen ist.
 
 
 Überprüfen Sie beim Beheben von HBA-Problemen, ob diese Einstellungen über die richtigen Werte verfügen. Die richtigen Werte hängen von zwei Faktoren ab:
 
 * Der HBA-Anbieter
-* Ob Sie Multipathing-Software (MPIO) verwenden
+* Ob Sie MPIO-Software verwenden.
 
 
-Sie können die HBA-Einstellungen korrigieren, indem Sie die Reparatur-Option des Windows Host Utilities-Installationsprogramms ausführen.
+Sie können die HBA-Einstellungen korrigieren, indem Sielink:hu_wuhu_repair_remove.html["Ausführen der Reparaturoption"] im Installationsprogramm der Windows Host Utilities.
 
 [role="tabbed-block"]
 ====
 .Emulex HBA-Treiber
 --
-Wenn Sie über ein FC-System verfügen, müssen Sie die Emulex HBA-Treibereinstellungen überprüfen. Diese Einstellungen müssen für jeden Port des HBA vorhanden sein.
+Wenn Sie ein FC-System haben, überprüfen Sie die Emulex HBA-Treibereinstellungen.  Diese Einstellungen müssen für jeden Port auf dem HBA vorhanden sein.
 
 .Schritte
 . Öffnen Sie den OnCommand Manager.
-. Wählen Sie den entsprechenden HBA aus der Liste aus und klicken Sie auf die Registerkarte *Treiberparameter*.
+. Wählen Sie den entsprechenden HBA aus der Liste aus und wählen Sie die Registerkarte *Treiberparameter*.
 +
 Die Treiberparameter werden angezeigt.
 
@@ -369,10 +479,10 @@ Die Treiberparameter werden angezeigt.
 --
 .QLogic HBA-Treiber
 --
-Auf FC-Systemen müssen Sie die QLogic-HBA-Treibereinstellungen überprüfen. Diese Einstellungen müssen für jeden Port des HBA vorhanden sein.
+Überprüfen Sie auf FC-Systemen die QLogic HBA-Treibereinstellungen.  Diese Einstellungen müssen für jeden Port auf dem HBA vorhanden sein.
 
 .Schritte
-. Öffnen Sie QConvergeConsole, und klicken Sie dann in der Symbolleiste auf *Verbinden*.
+. Öffnen Sie QConvergeConsole und wählen Sie dann *Verbinden* in der Symbolleiste.
 +
 Das Dialogfeld *mit Host verbinden* wird angezeigt.
 
@@ -388,7 +498,7 @@ Im Bereich FC HBA wird eine Liste der HBAs angezeigt.
 ** Port Down Retry Count (Portdwnrc) - 10
 
 
-. Wenn Sie die MPIO-Software nicht verwenden, überprüfen Sie, ob Sie über die folgenden Treibereinstellungen verfügen:
+. Wenn Sie keine MPIO-Software verwenden, überprüfen Sie, ob Sie über die folgenden Treibereinstellungen verfügen:
 +
 ** Link Down Timeout (linkdwnto) - 30
 ** Port Down Retry Count (Portdwnrc) - 120

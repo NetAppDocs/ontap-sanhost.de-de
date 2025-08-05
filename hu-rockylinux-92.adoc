@@ -45,7 +45,7 @@ Informationen zum Aktivieren des HBA-BIOS finden Sie in der anbieterspezifischen
 
 NetApp empfiehlt dringend die Installation der Linux Host Utilities, um die ONTAP LUN-Verwaltung zu unterstützen, und den technischen Support beim Sammeln von Konfigurationsdaten zu unterstützen.
 
-link:hu_luhu_71.html["Installieren Sie Linux Host Utilities 7.1"].
+link:hu-luhu-80.html["Installieren Sie Linux Host Utilities 8.0"] .
 
 
 NOTE: Durch die Installation der Linux Host Utilities werden keine Host-Timeout-Einstellungen auf Ihrem Linux-Host geändert.
@@ -285,7 +285,7 @@ Die Rocky Linux 9.2-Version für FCP und iSCSI mit ONTAP-Speicher weist die folg
 
 == Was kommt als Nächstes?
 
-* link:hu_luhu_71_cmd.html["Erfahren Sie mehr über die Verwendung des Linux Host Utilities-Tools"].
+* link:hu-luhu-command-reference.html["Erfahren Sie mehr über die Verwendung des Linux Host Utilities-Tools"] .
 * Erfahren Sie mehr über ASM Mirroring.
 +
 Bei der ASM-Spiegelung (Automatic Storage Management) sind möglicherweise Änderungen an den Linux Multipath-Einstellungen erforderlich, damit ASM ein Problem erkennen und zu einer alternativen Fehlergruppe wechseln kann. Die meisten ASM-Konfigurationen auf ONTAP verwenden externe Redundanz, was bedeutet, dass Datenschutz vom externen Array bereitgestellt wird und ASM keine Daten spiegelt. Einige Standorte verwenden ASM mit normaler Redundanz, um normalerweise zwei-Wege-Spiegelung über verschiedene Standorte hinweg bereitzustellen. Weitere Informationen finden Sie unterlink:https://docs.netapp.com/us-en/ontap-apps-dbs/oracle/oracle-overview.html["Oracle-Datenbanken auf ONTAP"^].

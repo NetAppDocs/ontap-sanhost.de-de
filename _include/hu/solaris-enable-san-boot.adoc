@@ -1,0 +1,28 @@
+= Schritt 1: Aktivieren Sie optional den SAN-Bootvorgang
+:allow-uri-read: 
+
+
+
+
+== Schritt 1: Aktivieren Sie optional den SAN-Bootvorgang
+
+Sie können Ihren Host für die Verwendung von SAN-Boot konfigurieren, um die Bereitstellung zu vereinfachen und die Skalierbarkeit zu verbessern.  Wenn Ihre Konfiguration kein SAN-Booten unterstützt, können Sie einen lokalen Boot verwenden.
+
+[role="tabbed-block"]
+====
+.SAN Booting
+--
+Beim SAN-Booten handelt es sich um den Vorgang, bei dem eine an ein SAN angeschlossene Festplatte (eine LUN) als Bootgerät für einen Solaris-Host eingerichtet wird.  Sie können eine SAN-Boot-LUN für den Betrieb in einer Solaris MPxIO-Umgebung einrichten, die das FC-Protokoll verwendet und Solaris Host Utilities ausführt.  Die Methode, die Sie zum Einrichten einer SAN-Boot-LUN verwenden, hängt von Ihrem Volume-Manager und Dateisystem ab.
+
+.Schritte
+. Verwenden Sie dielink:https://mysupport.netapp.com/matrix/#welcome["Interoperabilitäts-Matrix-Tool"^] um zu überprüfen, ob Ihr Solaris-Betriebssystem, Ihr Protokoll und ONTAP Version das SAN-Booten unterstützen.
+. Befolgen Sie die Best Practices zum Einrichten eines SAN-Boots in der Solaris-Herstellerdokumentation.
+
+
+--
+.Lokaler Start
+--
+Führen Sie einen lokalen Start durch, indem Sie das Solaris-Betriebssystem auf der lokalen Festplatte installieren, z. B. auf einer SSD, SATA oder einem RAID.
+
+--
+====

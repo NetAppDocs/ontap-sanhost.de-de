@@ -1,0 +1,7 @@
+= 
+:allow-uri-read: 
+
+
+Wenn Sie die Host Utilities-Software installieren, legt das Installationsprogramm die erforderlichen Windows Registry- und HBA-Parameter fest.
+
+Die folgenden Programme und Dateien werden auf dem Windows-Hostcomputer installiert. Das Standardverzeichnis ist `C:\Program Files\NetApp\Windows Host Utilities`.

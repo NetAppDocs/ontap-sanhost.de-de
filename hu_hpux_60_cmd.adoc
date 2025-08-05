@@ -4,7 +4,7 @@ permalink: hu_hpux_60_cmd.html
 keywords: host utilities, unified, oracle, linux, 7.1, netapp, ontap 
 summary: Hier wird die Verwendung der Linux Host Utilities 7.1 mit ONTAP beschrieben 
 ---
-= HP-UX Host Utilities 6.0 Befehlsreferenz
+= Verwenden Sie HP-UX Host Utilities-Befehle, um die ONTAP Speicherkonfiguration zu überprüfen
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -16,20 +16,21 @@ summary: Hier wird die Verwendung der Linux Host Utilities 7.1 mit ONTAP beschri
 
 
 [role="lead"]
-Sie können die Beispielbefehlsreferenz des HP-UX Host Utilities 6.0 für eine End-to-End-Validierung der ONTAP Storage-Konfiguration mit dem Host Utilities Tool verwenden.
+Verwenden Sie die Beispielbefehlsreferenz von HP-UX Host Utilities 6.0 für eine End-to-End-Validierung der ONTAP Speicherkonfiguration mit dem Host Utilities-Tool.
 
 
 
 == Führen Sie alle Host-Initiatoren auf, die dem Host zugeordnet sind
 
-Sie können eine Liste aller Host-Initiatoren abrufen, die einem Host zugeordnet sind.
+Rufen Sie eine Liste aller Host-Initiatoren ab, die einem Host zugeordnet sind.
 
 [source, cli]
 ----
-# sanlun fcp show adapter -v
+sanlun fcp show adapter -v
 ----
-*Beispielausgabe*
-
+.Beispielausgabe anzeigen
+[%collapsible]
+====
 [listing]
 ----
 adapter name:      fclp2
@@ -66,18 +67,20 @@ supported speed:   8 GBit/sec
 negotiated speed:  Speed not established
 OS device name:    /dev/fclp3
 ----
+====
 
 
 == Listen Sie alle LUNs auf, die dem Host zugeordnet sind
 
-Sie können eine Liste aller LUNs abrufen, die einem Host zugeordnet sind.
+Rufen Sie eine Liste aller einem Host zugeordneten LUNs ab.
 
 [source, cli]
 ----
-# sanlun lun show -p -v all
+sanlun lun show -p -v all
 ----
-*Beispielausgabe*
-
+.Beispielausgabe anzeigen
+[%collapsible]
+====
 [listing]
 ----
 \
@@ -98,20 +101,21 @@ up       primary    /dev/dsk/c37t6d7     fclp0   hpux_7                         
 up       primary    /dev/dsk/c22t6d7     fclp1   hpux_8                                         0
 up       secondary  /dev/dsk/c36t6d7     fclp0   hpux_5                                         1
 up       secondary  /dev/dsk/c44t6d7     fclp1   hpux_6                                         1
-
 ----
+====
 
 
 == Listen Sie alle LUNs auf, die einem Host von einer bestimmten SVM zugeordnet sind
 
-Sie können eine Liste aller LUNs, die dem Host zugeordnet sind, von einer bestimmten SVM abrufen.
+Rufen Sie eine Liste aller LUNs ab, die einem Host von einer bestimmten SVM zugeordnet sind.
 
 [source, cli]
 ----
-# sanlun lun show -p -v vs_hp_cluster
+sanlun lun show -p -v vs_hp_cluster
 ----
-*Beispielausgabe*
-
+.Beispielausgabe anzeigen
+[%collapsible]
+====
 [listing]
 ----
                     ONTAP Path: vs_hp_cluster:/vol/chathpux_217_vol_en_1_10/hp_en_217_lun
@@ -131,21 +135,21 @@ up       primary    /dev/dsk/c37t6d7     fclp0   hpux_7                         
 up       primary    /dev/dsk/c22t6d7     fclp1   hpux_8                                         0
 up       secondary  /dev/dsk/c36t6d7     fclp0   hpux_5                                         1
 up       secondary  /dev/dsk/c44t6d7     fclp1   hpux_6                                         1
-
 ----
+====
 
 
 == Listen Sie alle Attribute einer bestimmten LUN auf, die dem Host zugeordnet sind
 
-Sie können eine Liste aller Attribute einer angegebenen LUN abrufen, die einem Host zugeordnet ist.
+Rufen Sie eine Liste aller Attribute einer angegebenen LUN ab, die einem Host zugeordnet ist.
 
 [source, cli]
 ----
-
-# sanlun lun show -p -v vs_hp_cluster:/vol/chathpux_217_vol_en_1_5/hp_en_217_lun
+sanlun lun show -p -v vs_hp_cluster:/vol/chathpux_217_vol_en_1_5/hp_en_217_lun
 ----
-*Beispielausgabe*
-
+.Beispielausgabe anzeigen
+[%collapsible]
+====
 [listing]
 ----
 
@@ -166,20 +170,21 @@ up       primary    /dev/dsk/c37t6d1     fclp0   hpux_7                         
 up       primary    /dev/dsk/c22t6d1     fclp1   hpux_8                                         0
 up       secondary  /dev/dsk/c36t6d1     fclp0   hpux_5                                         1
 up       secondary  /dev/dsk/c44t6d1     fclp1   hpux_6                                         1
-
 ----
+====
 
 
 == Liste der ONTAP-LUN-Attribute nach Dateiname des Hostgeräts
 
-Sie können eine Liste der ONTAP-LUN-Attribute anhand eines angegebenen Dateinamens für das Hostgerät abrufen.
+Rufen Sie eine Liste der ONTAP LUN-Attribute anhand eines angegebenen Hostgerätedateinamens ab.
 
 [source, cli]
 ----
-#sanlun lun show -dv /dev/rdisk/disk716
+sanlun lun show -dv /dev/rdisk/disk716
 ----
-*Beispielausgabe*
-
+.Beispielausgabe anzeigen
+[%collapsible]
+====
 [listing]
 ----
                                                                  device             host                  lun
@@ -199,18 +204,20 @@ vs_hp_cluster        /vol/chathpux_217_vol_en_1_14/hp_en_217_lun /dev/rdisk/disk
            Vserver volume name: chathpux_217_vol_en_1_14        MSID::0x00000000000000000000000080915935
          Vserver snapshot name:
 ----
+====
 
 
 == Führen Sie alle dem Host angeschlossenen SVM-Ziel-LIF-WWPNs auf
 
-Sie können eine Liste aller mit einem Host verbundenen logischen SVM-Ziel-WWPNs abrufen.
+Rufen Sie eine Liste aller an einen Host angeschlossenen SVM-Ziel-LIF-WWPNs ab.
 
 [source, cli]
 ----
-# sanlun lun show -wwpn
+sanlun lun show -wwpn
 ----
-*Beispielausgabe*
-
+.Beispielausgabe anzeigen
+[%collapsible]
+====
 [listing]
 ----
 
@@ -233,3 +240,4 @@ fclp0           15g         C
 fclp1           30g         C
 fclp0           30g         C
 ----
+====

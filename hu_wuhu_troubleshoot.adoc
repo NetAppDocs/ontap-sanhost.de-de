@@ -4,7 +4,7 @@ permalink: hu_wuhu_troubleshoot.html
 keywords: windows, host, utilities, 7.1, hba, fibre, channel, SANtricity, netapp, san, host, e-series, platform 
 summary: Die Windows Host Utilities umfassen ein Installationsprogramm, das die erforderlichen Windows Registrierungs- und HBA-Parameter so festlegt, dass der Windows Host die Verhaltensweisen von ONTAP und E-Series Plattformen des Storage-Systems korrekt verarbeitet. 
 ---
-= Fehlerbehebung
+= Beheben Sie Probleme mit Windows Host Utilities mit der ONTAP -Speicherkonfiguration
 :toc: macro
 :hardbreaks:
 :toclevels: 1
@@ -19,7 +19,7 @@ summary: Die Windows Host Utilities umfassen ein Installationsprogramm, das die 
 
 
 [role="lead"]
-Sie können die allgemeinen Fehlerbehebungstechniken für Windows Host Utilities verwenden. Prüfen Sie in den aktuellen Versionshinweisen auf bekannte Probleme und Lösungen.
+Verwenden Sie die allgemeinen Techniken zur Fehlerbehebung, um Probleme zu untersuchen, die bei einer Windows Host Utilities-Konfiguration mit ONTAP -Speicher auftreten können.  Überprüfen Sie auch dielink:hu-wuhu-release-notes.html["Versionshinweise Zu Windows Host Utilities"] für bekannte Probleme und Lösungen.
 
 Im Folgenden finden Sie eine Liste der verschiedenen Bereiche, die Sie auf mögliche Interoperabilitätsprobleme untersuchen können:
 
@@ -28,7 +28,7 @@ Im Folgenden finden Sie eine Liste der verschiedenen Bereiche, die Sie auf mögl
 * Wenn iSCSI-LUNs nach einem Neustart nicht verfügbar sind, überprüfen Sie, ob das Ziel auf der Registerkarte *Persistent Targets* der Microsoft iSCSI-Initiator-GUI als persistent aufgeführt ist.
 * Wenn Anwendungen, die die LUNs verwenden, beim Start Fehler anzeigen, überprüfen Sie, ob die Anwendungen so konfiguriert sind, dass sie vom iSCSI-Dienst abhängen.
 * Bei FC-Pfaden zu Storage-Controllern, die ONTAP ausführen, müssen Sie sicherstellen, dass die FC-Switches mithilfe der WWPNs der Ziel-LIFs Zonen zugewiesen sind, nicht durch die WWPNs der physischen Ports auf dem Node.
-* Überprüfen Sie die link:hu_wuhu_71_rn.html["Versionshinweise"] Unter Windows Host Utilities können Sie nach bekannten Problemen suchen. Die Versionshinweise enthalten eine Liste bekannter Probleme und Einschränkungen.
+* Überprüfen Sie dielink:hu-wuhu-release-notes.html["Versionshinweise"] für Windows Host Utilities, um nach bekannten Problemen zu suchen.  Die Versionshinweise enthalten eine Liste bekannter Probleme und Einschränkungen.
 * Lesen Sie die Informationen zur Fehlerbehebung in der https://docs.netapp.com/us-en/ontap/san-admin/index.html["ONTAP SAN-Administration"^] Dokumentation.
 * Suche https://mysupport.netapp.com/site/bugs-online/product["NetApp Bugs Online"^] Für kürzlich entdeckte Probleme.
 +

@@ -1,0 +1,47 @@
+---
+sidebar: sidebar 
+permalink: hu-hpux-sanlun-toolkit.html 
+keywords: host utilities, unified, oracle, linux, 7.1, netapp, ontap 
+summary: Beschreibt die Verwendung der HP-UX Host Utilities 6.0 mit ONTAP-Speicher 
+---
+= Erfahren Sie mehr über das SAN Toolkit für ONTAP -Speicher
+:hardbreaks:
+:toclevels: 1
+:allow-uri-read: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+HP-UX Host Utilities ist eine NetApp Hostsoftware, die ein Befehlszeilen-Toolkit auf Ihrem HP-UX-Host bereitstellt.  Das Toolkit wird installiert, wenn Sie das NetApp Host Utilities-Paket installieren.  Dieses Kit bietet die `sanlun` Dienstprogramm, das Sie bei der Verwaltung von ONTAP LUNs und Hostbusadaptern unterstützt.  Der `sanlun` Der Befehl gibt Informationen zu den Ihrem Host zugeordneten LUNs, Multipathing und die zum Erstellen von Initiatorgruppen erforderlichen Informationen zurück.
+
+Im folgenden Beispiel wird die `sanlun lun show` Der Befehl gibt ONTAP LUN-Informationen zurück.
+
+[listing]
+----
+# sanlun lun show all
+
+controller(7mode)/ device host lun
+vserver(Cmode)           lun-pathname                   filename          adapter    protocol   size   mode
+------------------------------------------------------------------------------------------------------------
+sanboot_unix         /vol/hpux_boot/boot_hpux_lun      /dev/rdsk/c34t0d0  fclp1      FCP        150g    C
+sanboot_unix         /vol/hpux_boot/boot_hpux_lun      /dev/rdsk/c23t0d0  fclp1      FCP        150g    C
+sanboot_unix         /vol/hpux_boot/boot_hpux_lun      /dev/rdsk/c12t0d0  fclp0      FCP        150g    C
+sanboot_unix         /vol/hpux_boot/boot_hpux_lun      /dev/rdsk/c81t0d0  fclp0      FCP        150g    C
+
+----
+[NOTE]
+====
+Dieses SAN-Toolkit ist für alle Host Utilities-Konfigurationen und -Protokolle gleich.  Daher sind nicht alle Komponenten für jede Konfiguration gültig.  Nicht verwendete Komponenten beeinträchtigen die Leistung Ihres Systems nicht.
+
+Das SAN Toolkit wird auf den Betriebssystemversionen AIX und PowerVM/VIOS unterstützt.
+
+====
+
+
+== Was kommt als Nächstes?
+
+link:hu_hpux_60_cmd.html["Erfahren Sie mehr über die Verwendung des HP-UX Host Utilities-Tools"] .

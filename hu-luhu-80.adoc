@@ -1,0 +1,113 @@
+---
+sidebar: sidebar 
+permalink: hu-luhu-80.html 
+keywords: host utilities, unified, oracle, linux, 8.0, netapp, ontap 
+summary: Beschreibt die Verwendung der Linux Host Utilities 8.0 mit ONTAP 
+---
+= Installieren Sie Linux Host Utilities 8.0 für ONTAP -Speicher
+:hardbreaks:
+:toclevels: 1
+:allow-uri-read: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Die Linux Host Utilities unterstützen Sie bei der Verwaltung des an einen Linux-Host angeschlossenen ONTAP Speichers.  NetApp empfiehlt dringend die Installation der Linux Host Utilities, dies ist jedoch nicht zwingend erforderlich.  Die Dienstprogramme verbessern die Verwaltung und unterstützen den NetApp Kundensupport beim Sammeln von Informationen zu Ihrer Konfiguration.
+
+Linux Host Utilities 8.0 unterstützt die folgenden Distributionstypen:
+
+* Red Hat Enterprise Linux
+* SUSE Linux Enterprise Server
+* Oracle Linux
+* Oracle VM
+
+
+
+NOTE: Die Linux Host Utilities Software unterstützt keine NVMe over Fibre Channel (NVMe/FC)- und NVMe over TCP (NVMe/TCP)-Host-Protokolle.
+
+.Über diese Aufgabe
+Wenn Sie die Linux Host Utilities installieren, werden keine Einstellungen auf Ihrem Linux-Host geändert.
+
+.Bevor Sie beginnen
+* Für einen zuverlässigen Betrieb verwenden Sie dielink:https://imt.netapp.com/matrix/#welcome["Interoperabilitäts-Matrix-Tool"^] um zu überprüfen, ob Ihre iSCSI-, FC- oder FCoE-Konfiguration unterstützt wird.
+* Installieren Sie die auf der Support-Site des Anbieters verfügbaren Host Bus Adapter (HBA)-Verwaltungspakete.  Die Managementsoftware ermöglicht die `sanlun` Befehle zum Sammeln von Informationen über die FC-HBAs, beispielsweise ihre WWPNs.
++
+Überprüfen Sie anhand der Herstellerdokumentation, ob die folgenden Pakete korrekt installiert sind.  Diese Pakete sind erforderlich zur Unterstützung der `sanlun fcp show adapter` Befehl:
+
++
+** Marvell QLogic HBA – QConvergeConsole CLI
+** Broadcom Emulex HBA – OneCommand Manager-CLI für die Kernanwendung
+
+
+
+
+.Schritte
+. Wenn Sie derzeit eine Version von Linux Host Utilities installiert haben, entfernen Sie diese:
++
+[source, cli]
+----
+rpm -e netapp_linux_unified_host_utilities-8-0
+----
++
+Bei früheren Versionen von Linux Host Utilities wechseln Sie zum Verzeichnis, in dem die Host Utility-Software installiert ist, und geben den Deinstallationsbefehl ein, um das installierte Paket zu entfernen.
+
+. Das Softwarepaket „NetApp Linux Host Utilities“ ist auf der NetApp -Support-Site in einer 64-Bit-RPM-Datei verfügbar.  Laden Sie die 64-Bit-Datei von derlink:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp Support Website"^] an Ihren Gastgeber.
+. Gehen Sie in das Verzeichnis, in das Sie das Softwarepaket heruntergeladen haben, und installieren Sie es:
++
+[source, cli]
+----
+rpm -ivh netapp_linux_unified_host_utilities-8-0.x86_xx.rpm
+----
++
+Sie sollten eine Ausgabe ähnlich dem folgenden Beispiel sehen:
+
++
+[listing]
+----
+rpm -ivh netapp_linux_unified_host_utilities-8-0.x86_64.rpm
+Verifying...                          ################################# [100%]
+Preparing...                          ################################# [100%]
+Updating / installing...
+   1:netapp_linux_unified_host_utiliti################################# [100%]
+
+----
++
+[NOTE]
+====
+Wenn Sie ein Ubuntu-Hostbetriebssystem verwenden, müssen Sie es manuell mit der HBA-Bibliothek verknüpfen:
+
+[source, cli]
+----
+cp /opt/QLogic_Corporation/QConvergeConsoleCLI/lib64/libHBAAPI.so.2.0.2 /usr/lib64/libHBAAPI.so
+----
+====
+. Überprüfen Sie die Installation:
++
+[source, cli]
+----
+sanlun version
+----
++
+Sie sollten eine Ausgabe ähnlich dem folgenden Beispiel sehen:
+
++
+[listing]
+----
+sanlun version 8.0.386.1644
+----
+
+
+
+
+== Was kommt als Nächstes?
+
+* Empfohlene Treibereinstellungen mit Linux-Kernel
++
+Wenn Sie eine FC-Umgebung konfigurieren, die native Inbox-Treiber verwendet, die mit dem Linux-Kernel gebündelt sind, können Sie die Standardwerte für die Treiber verwenden.
+
+* link:hu-luhu-sanlun-utility.html["Erfahren Sie mehr über das Dienstprogramm „sanlun“"] .
+

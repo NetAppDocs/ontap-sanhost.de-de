@@ -4,7 +4,7 @@ permalink: hu_wuhu_72.html
 keywords: windows, 7.2, host utilities, SAN, windows 
 summary: Die Windows Host Utilities umfassen ein Installationsprogramm, das die erforderlichen Windows Registrierungs- und HBA-Parameter so festlegt, dass der Windows Host die Verhaltensweisen von ONTAP und E-Series Plattformen des Storage-Systems korrekt verarbeitet. 
 ---
-= Installieren Sie Windows Host Utilities 7.2
+= Installieren Sie Windows Host Utilities 7.2 für ONTAP -Speicher
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -54,69 +54,78 @@ Die Host Utilities unterstützen verschiedene Windows Host-Konfigurationen, Prot
 
 
 
-== Überprüfen Sie die Konfiguration Ihres Host- und Storage-Systems
+== Schritt 1: Überprüfen Sie die Konfiguration Ihres Hosts und Speichersystems
 
 Vergewissern Sie sich, dass die Host- und Speichersystem-Konfiguration unterstützt wird, bevor Sie Windows Host Utilities für die installieren<<supported-windows-versions-72,Unterstützte Windows-Version>>.
 
 .Schritte
 . Überprüfen Sie die unterstützte Konfiguration im http://mysupport.netapp.com/matrix["Interoperabilitäts-Matrix-Tool"^].
-. Prüfen Sie die für den jeweiligen Host erforderlichen Hotfixes im link:https://docs.netapp.com/us-en/ontap-sanhost/index.html["SAN-Host, Windows-Dokumentation"].
+. Überprüfen Sie die für Ihre Windows Server-Hostversion erforderlichen Hotfixes imlink:https://docs.netapp.com/us-en/ontap-sanhost/index.html["SAN-Host, Windows-Dokumentation"] .
++
+Zum Beispiel dielink:https://docs.netapp.com/us-en/ontap-sanhost/hu_windows_2022.html["Konfigurieren Sie Windows Server 2022 für ONTAP -Speicher"] Die Dokumentation enthält Anweisungen zum Installieren von Windows-Hotfixes für Windows Server 2022.
+
+. link:https://docs.netapp.com/us-en/ontap/san-admin/verify-license-fc-iscsi-task.html["Fügen Sie die iSCSI- oder FCP-Lizenz hinzu"^] .
 +
 
-NOTE: Das link:https://docs.netapp.com/us-en/ontap-sanhost/hu_windows_2022.html["Verwenden Sie Windows Server 2022 mit ONTAP"] Dokument enthält Anweisungen link:https://docs.netapp.com/us-en/ontap-sanhost/hu_windows_2022.html#installing-windows-hotfixes["Windows Hotfixes werden installiert"]für Windows Server 2022. In den Windows-Dokumenten in der Kategorie Hostkonfigurationen finden Sie die entsprechenden Hotfix-Informationen für frühere Versionen von Windows-Servern.
+NOTE: Für die FC- und iSCSI-Protokolle sind auf Speichersystemen der E-Serie, die den SANtricity Storage Manager verwenden, keine Lizenzen erforderlich.
 
-. Fügen Sie die iSCSI-, FCP- oder NVMe-of-Lizenz hinzu und starten Sie den Zielservice.
-+
-
-NOTE: FC- und iSCSI-Protokolle erfordern keine Lizenzen auf E-Series Storage-Systemen mit dem SANtricity Storage Manager.
-
+. Starten Sie den Zieldienst.
 . Überprüfen Sie die Verkabelung.
 +
-Siehe https://docs.netapp.com/us-en/ontap/san-config/index.html["Referenz zur SAN-Konfiguration"^] Dokumentation für Ihre Version von ONTAP oder https://docs.netapp.com/us-en/e-series/install-hw-cabling/index.html["Hardwareverkabelung der E-Series"^] Detaillierte Informationen zu Verkabelung und Konfiguration
+Weitere Informationen finden Sie im https://docs.netapp.com/us-en/ontap/san-config/index.html["Referenz zur SAN-Konfiguration"^] für detaillierte Informationen zur Verkabelung und Konfiguration.
 
 
 
 
 
-== Konfigurieren Sie FC HBAs und Switches
+== Schritt 2: FC-HBAs und Switches konfigurieren
 
 Installieren und konfigurieren Sie einen oder mehrere unterstützte FC-Hostbusadapter (HBAs) für FC-Verbindungen zum Speichersystem.
 
 Das Windows Host Utilities-Installationsprogramm legt die erforderlichen FC HBA-Einstellungen fest.
 
 
-CAUTION: Ändern Sie die HBA-Einstellungen nicht manuell.
+CAUTION: Sie sollten nur zulassen, dass das Installationsprogramm von Windows Host Utilities die HBA-Parameter einstellt.  Dadurch wird sichergestellt, dass der Windows-Host das Speichersystemverhalten für ONTAP -Plattformen korrekt verarbeiten kann.
 
 .Schritte
 . Installieren Sie einen oder mehrere unterstützte FC-HBAs gemäß den Anweisungen des HBA-Anbieters.
 . Beziehen Sie die unterstützten HBA-Treiber und Verwaltungsprogrammen ein, und installieren Sie diese gemäß den Anweisungen des HBA-Anbieters.
-. Verbinden Sie die HBAs mit Ihren FC-Switches oder direkt mit dem Speichersystem.
-. Erstellen Sie auf dem FC-Switch Zonen gemäß Ihrer FC-Switch-Dokumentation.
-. Wenn ONTAP verwendet wird, Zonen Sie den Switch mit dem WWPN. Vergewissern Sie sich, dass Sie den WWPN der logischen Schnittstellen (LIFs) und nicht den WWPN der physischen Ports auf den Storage Controllern verwenden. Siehe https://docs.netapp.com/us-en/ontap/san-config/index.html["Referenz zur SAN-Konfiguration"^] Dokumentation für weitere Informationen.
+. https://docs.netapp.com/us-en/ontap/san-management/index.html["Verbinden Sie die HBAs mit Ihren FC-Switches oder direkt mit dem Speichersystem"^] .
+. https://docs.netapp.com/us-en/ontap/san-config/fibre-channel-fcoe-zoning-concept.html["Erstellen Sie Zonen auf dem FC-Switch gemäß Ihrer FC-Switch-Dokumentation"^] .
+. Bei ONTAP zonieren Sie den Switch nach dem WWPN.  Achten Sie darauf, die WWPN der logischen Schnittstellen (LIFs) und nicht die WWPN der physischen Ports auf den Speichercontrollern zu verwenden. Weitere Informationen finden Sie im  https://docs.netapp.com/us-en/ontap/san-config/index.html["Referenz zur SAN-Konfiguration"^] für weitere Informationen.
 
 
 
 
-== Installieren Sie die Host Utilities
+== Schritt 3: Installieren Sie die Windows-Host-Dienstprogramme
 
-Das Installationsprogramm installiert das Host Utilities-Paket und setzt die Windows-Registry- und HBA-Einstellungen.
+Das Installationsprogramm installiert das Windows Host Utilities-Paket und legt die Windows-Registrierung und die HBA-Einstellungen fest.
 
-Sie müssen angeben, ob Multipathing-Unterstützung bei der Installation des Windows Host Utilities-Softwarepakets einbezogen werden soll. Das Installationsprogramm fordert Sie zur Eingabe der folgenden Optionen auf. Sie können eine ruhige (unbeaufsichtigte) Installation auch über eine Windows-Eingabeaufforderung ausführen.
+.Über diese Aufgabe
+Optional können Sie Multipathing-Unterstützung einschließen, wenn Sie das Softwarepaket „Windows Host Utilities“ installieren.  Das Installationsprogramm fordert Sie zur Eingabe der folgenden Optionen auf:
 
-.Multipathing-Unterstützung
 * Wählen `MPIO` Wenn Sie mehr als einen Pfad vom Windows-Host oder der virtuellen Maschine zum Speichersystem haben.
-* Wählen `no MPIO` Nur, wenn Sie einen einzelnen Pfad zum Storage-System verwenden.
+* Wählen `no MPIO` nur, wenn Sie einen einzelnen Pfad zum Speichersystem verwenden.
 
 
-Die Microsoft Multipath-E/A-Auswahl (MPIO) ist für Windows XP- und Windows Vista-Systeme nicht verfügbar; Multipath-E/A wird auf diesen Gastbetriebssystemen nicht unterstützt. Für Hyper-V-Gäste werden im Gastbetriebssystem keine RAW-Festplatten (Pass-Through) angezeigt, wenn Sie Multipathing-Unterstützung wählen. Sie können entweder RAW-Festplatten verwenden oder MPIO verwenden, aber beide können nicht im Gastbetriebssystem verwendet werden.
+Sie können die Multipathing-Unterstützung auch über eine Windows-Eingabeaufforderung auswählen.
 
-Sie können die Host Utilities interaktiv oder über die Befehlszeile installieren. Das neue Installationspaket für Host Utilities muss sich in einem Pfad befinden, der vom Windows Host zugänglich ist. Befolgen Sie die Anweisungen zum interaktiven Installieren der Host Utilities oder über die Windows Befehlszeile.
+Bei Hyper-V-Gästen werden Raw-Datenträger (Pass-Through) nicht im Gastbetriebssystem angezeigt, wenn Sie die Multipathing-Unterstützung wählen.  Sie können entweder Raw-Festplatten oder MPIO verwenden, aber nicht beides im Gastbetriebssystem.
+
+
+CAUTION: Wenn Sie die MPIO-Software nicht installieren, sieht das Windows-Betriebssystem jeden Pfad möglicherweise als separate Festplatte. Dies kann zu Datenbeschädigungen führen.
+
+
+NOTE: Windows XP oder Windows Vista, die auf einer virtuellen Hyper-V-Maschine ausgeführt werden, unterstützt MPIO nicht.
+
+.Schritte
+Sie können die Host-Dienstprogramme interaktiv oder über die Windows-Befehlszeile installieren.  Das neue Host Utilities-Installationspaket muss sich in einem Pfad befinden, auf den der Windows-Host zugreifen kann.
 
 [role="tabbed-block"]
 ====
 .Interaktiv installieren
 --
-Um das Host Utilities-Softwarepaket interaktiv zu installieren, müssen Sie das Installationsprogramm für Host Utilities ausführen und die Anweisungen befolgen.
+Installieren Sie das Host Utilities-Softwarepaket interaktiv, indem Sie das Host Utilities-Installationsprogramm ausführen und den Anweisungen folgen.
 
 .Schritte
 . Laden Sie die ausführbare Datei vom herunter https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.2/downloads["NetApp Support Website"^].
@@ -126,15 +135,17 @@ Um das Host Utilities-Softwarepaket interaktiv zu installieren, müssen Sie das 
 
 
 --
-.Installation über eine Befehlszeile
+.Nicht-interaktiv installieren
 --
-Sie können eine (unbeaufsichtigte) Installation der Host Utilities ausführen, indem Sie die entsprechenden Befehle an der Windows-Eingabeaufforderung eingeben. Nach Abschluss der Installation wird das System automatisch neu gestartet.
+Führen Sie eine nicht interaktive Installation der Host-Dienstprogramme mithilfe der Windows-Befehlszeile durch.  Das System wird nach Abschluss der Installation automatisch neu gestartet.
 
 .Schritte
 . Geben Sie den folgenden Befehl an der Windows-Eingabeaufforderung ein:
 +
-`msiexec /i installer.msi /quiet MULTIPATHING= {0 | 1} [INSTALLDIR=inst_path]`
-
+[source, cli]
+----
+msiexec /i installer.msi /quiet MULTIPATHING= {0 | 1} [INSTALLDIR=inst_path]
+----
 +
 ** `installer` Ist der Name des `.msi` Datei für Ihre CPU-Architektur.
 ** MULTIPATHING gibt an, ob MPIO-Unterstützung installiert ist. Die zulässigen Werte sind „0“ für „Nein“ und „1“ für „Ja“.
@@ -148,3 +159,8 @@ NOTE: Um die standardmäßigen Microsoft Installer-Optionen (MSI) für die Proto
 
 --
 ====
+
+
+== Was kommt als Nächstes?
+
+link:hu_wuhu_hba_settings.html["Konfigurieren der Registrierungseinstellungen für Windows Host Utilities"] .

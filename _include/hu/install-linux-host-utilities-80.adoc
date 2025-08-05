@@ -1,0 +1,14 @@
+= Schritt 2: Installieren Sie die Linux Host Utilities
+:allow-uri-read: 
+
+
+
+
+== Schritt 2: Installieren Sie die Linux Host Utilities
+
+NetApp empfiehlt dringend die Installation der Linux Host Utilities, um die ONTAP LUN-Verwaltung zu unterstützen, und den technischen Support beim Sammeln von Konfigurationsdaten zu unterstützen.
+
+link:hu-luhu-80.html["Installieren Sie Linux Host Utilities 8.0"] .
+
+
+NOTE: Durch die Installation der Linux Host Utilities werden keine Host-Timeout-Einstellungen auf Ihrem Linux-Host geändert.

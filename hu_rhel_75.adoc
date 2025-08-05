@@ -298,7 +298,7 @@ Die RHEL 7.5 mit ONTAP-Speicherversion weist folgende bekannte Probleme auf:
 
 == Was kommt als Nächstes?
 
-* link:hu_luhu_71_cmd.html["Erfahren Sie mehr über die Verwendung des Linux Host Utilities-Tools"].
+* link:hu-luhu-command-reference.html["Erfahren Sie mehr über die Verwendung des Linux Host Utilities-Tools"] .
 * Erfahren Sie mehr über ASM Mirroring.
 +
 Bei der ASM-Spiegelung (Automatic Storage Management) sind möglicherweise Änderungen an den Linux Multipath-Einstellungen erforderlich, damit ASM ein Problem erkennen und zu einer alternativen Fehlergruppe wechseln kann. Die meisten ASM-Konfigurationen auf ONTAP verwenden externe Redundanz, was bedeutet, dass Datenschutz vom externen Array bereitgestellt wird und ASM keine Daten spiegelt. Einige Standorte verwenden ASM mit normaler Redundanz, um normalerweise zwei-Wege-Spiegelung über verschiedene Standorte hinweg bereitzustellen. Weitere Informationen finden Sie unterlink:https://docs.netapp.com/us-en/ontap-apps-dbs/oracle/oracle-overview.html["Oracle-Datenbanken auf ONTAP"^].

@@ -16,50 +16,63 @@ summary: Beschreibt die Verwendung der Solaris Host Utilities 6.2 mit ONTAP
 
 
 [role="lead"]
-Die Solaris Host Utilities unterstützen Sie bei der Verwaltung von ONTAP-Speicher, der mit einem Solaris-Host verbunden ist.
+Die Solaris Host Utilities helfen Ihnen bei der Verwaltung des an einen Solaris-Host angeschlossenen ONTAP Speichers und unterstützen den technischen Support beim Erfassen von Konfigurationsdaten.
 
-Solaris Host Utilities 6.2 unterstützt mehrere Solaris Umgebungen und Protokolle. Die primären Host Utilities-Umgebungen sind:
+Die Solaris Host Utilities unterstützen mehrere Solaris-Umgebungen und mehrere Transportprotokolle.  Dies sind die primären Solaris Host Utilities-Umgebungen:
 
-* Natives Betriebssystem mit MPxIO mit Fibre Channel (FC) oder iSCSI-Protokoll auf einem System mit SPARC-Prozessor oder x86/64-Prozessor.
+* Das native Betriebssystem mit MPxIO und entweder dem Fibre Channel (FC)- oder dem iSCSI-Protokoll auf einem System, das entweder einen SPARC-Prozessor oder einen x86/64-Prozessor verwendet.
 * Veritas Dynamic Multipathing (DMP) mit dem FC- oder iSCSI-Protokoll auf einem System mit SPARC Prozessor oder dem iSCSI-Protokoll auf einem System mit x86/64-Prozessor.
 
 
-Solaris Host Utilities 6.2 unterstützt weiterhin die folgenden Versionen von Solaris:
+Die Solaris Host Utilities 6.2 unterstützen die folgenden Solaris-Serien:
 
-* Solaris 11.x-Serie
-* Solaris 10.x-Serie
+* Solaris 11.x
+* Solaris 10.x
 
 
 .Bevor Sie beginnen
-* Stellen Sie für einen zuverlässigen Betrieb sicher, dass Ihre gesamte iSCSI-, FC- oder FCoE-Konfiguration unterstützt wird.
-
-
-Sie können die verwendenlink:https://imt.netapp.com/matrix/#welcome["Interoperabilitäts-Matrix-Tool"^], um Ihre Konfiguration zu überprüfen.
-
-
-NOTE: Das Software-Paket NetApp Solaris Host Utilities steht auf der zur Verfügung link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/6.2/downloads["NetApp Support Website"^] In einem komprimierten Dateiformat für Ihren Prozessor. Sie können das Host Utilities Software-Paket für Ihre Umgebung von der Support-Website herunterladen.
+Stellen Sie sicher, dass Ihre iSCSI-, FC- oder FCoE-Konfiguration unterstützt wird.  Sie können dielink:https://imt.netapp.com/matrix/#welcome["Interoperabilitäts-Matrix-Tool"^] um Ihre Konfiguration zu überprüfen.
 
 .Schritte
-. Melden Sie sich bei Ihrem Host als Root an.
-. Laden Sie eine Kopie der komprimierten Datei mit den Host Utilities von herunter link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/6.2/downloads["NetApp Support Website"^] Zu einem Verzeichnis auf Ihrem Host.
+. Melden Sie sich als Root bei Ihrem Host an.
+. Laden Sie eine Kopie der komprimierten Datei mit den Host-Dienstprogrammen von derlink:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/6.2/downloads["NetApp Support Website"^] in ein Verzeichnis auf Ihrem Solaris-Host:
 +
-Zum Zeitpunkt der Erstellung dieser Dokumentation wurden die komprimierten Dateien aufgerufen:
-
-+
-** SPARC CPU: `netapp_solaris_host_utilities_6_2_sparc.tar.gz`
-** X86/x64-CPU: `netapp_solaris_host_utilities_6_2_amd.tar.gz`
-
-
-. Gehen Sie zu dem Verzeichnis, in dem der Download enthalten ist.
+[role="tabbed-block"]
+====
+.SPARC-CPU
+--
+[source, cli]
+----
+netapp_solaris_host_utilities_6_2_sparc.tar.gz
+----
+--
+.x86/x64-CPU
+--
+[source, cli]
+----
+netapp_solaris_host_utilities_6_2_amd.tar.gz
+----
+--
+====
+. Gehen Sie zu dem Verzeichnis auf Ihrem Solaris-Host, das den Download enthält.
 . Entpacken Sie die Datei mithilfe des `gunzip` Befehl:
 +
-`# gunzip netapp_solaris_host_utilities_6_2_sparc.tar.gz`
-
-. Entpacken Sie die Datei mit dem `tar xvf` folgenden Befehl:
+[source, cli]
+----
+gunzip netapp_solaris_host_utilities_6_2_sparc.tar.gz
+----
+. Extrahieren Sie die Datei mit dem `tar xvf` Befehl:
 +
-`# tar xvf netapp_solaris_host_utilities_6_2_sparc.tar`
-
-. Fügen Sie die Pakete, die Sie aus der tar-Datei extrahiert haben, mit dem Befehl zu Ihrem Host `pkgadd` hinzu.
+[source, cli]
+----
+tar xvf netapp_solaris_host_utilities_6_2_sparc.tar
+----
+. Fügen Sie die Pakete, die Sie aus der Tar-Datei extrahiert haben, zu Ihrem Host hinzu
++
+[source, cli]
+----
+pkgadd
+----
 +
 Die Pakete werden dem hinzugefügt `/opt/NTAP/SANToolkit/bin` Verzeichnis.
 
@@ -67,10 +80,25 @@ Die Pakete werden dem hinzugefügt `/opt/NTAP/SANToolkit/bin` Verzeichnis.
 Im folgenden Beispiel wird der Befehl verwendet `pkgadd`, um das Solaris-Installationspaket zu installieren:
 
 +
-`# pkgadd -d ./NTAPSANTool.pkg`
-
-. Bestätigen Sie, dass das Toolkit erfolgreich mit dem installiert wurde `pkginfo` Befehl oder das `ls - al` Befehl.
+[source, cli]
+----
+pkgadd -d ./NTAPSANTool.pkg
+----
+. Bestätigen Sie mit einem der folgenden Befehle, dass das Toolkit erfolgreich installiert wurde:
 +
+[source, cli]
+----
+pkginfo
+----
++
+[source, cli]
+----
+ls - al
+----
++
+.Beispielausgaben anzeigen
+[%collapsible]
+====
 [listing]
 ----
 # ls -alR /opt/NTAP/SANToolkit
@@ -94,39 +122,23 @@ drwxr-xr-x   3 root     sys            4 Jul 22  2019 ..
 -r-xr-xr-x   1 root     sys        12266 Sep 13  2017 host_config.1
 -r-xr-xr-x   1 root     sys         9044 Sep 13  2017 sanlun.1
 ----
-. Konfigurieren Sie anschließend die Host-Parameter für Ihre Umgebung mithilfe der `/opt/NTAP/SANToolkit/bin/host_config` Befehl:
+====
+. Konfigurieren Sie die Hostparameter für Ihre MPxIO- oder Veritas DMP-Umgebung:
 +
-** Mpxio
-** Veritas DMP
-
-
+[source, cli]
+----
+/opt/NTAP/SANToolkit/bin/host_config
+----
 . Überprüfen Sie die Installation:
 +
-`sanlun version`
-
-
-
-
-
-== SAN-Toolkit aktivieren
-
-Solaris Host Utilities ist eine NetApp Host Software, die auf Ihrem Oracle Solaris Host ein Befehlszeilen-Toolkit bietet. Das Toolkit wird bei der Installation des NetApp Host Utilities-Pakets installiert. Dieses Kit enthält die `sanlun` Dienstprogramm zum Verwalten von LUNs und Host Bus Adaptern (HBAs). Der `sanlun` Befehl gibt Informationen über die LUNs zurück, die Ihrem Host zugeordnet sind, Multipathing und Informationen zurück, die zum Erstellen von Initiatorgruppen erforderlich sind.
-
-.Beispiel
-Im folgenden Beispiel wird der verwendet `sanlun lun show` Mit dem Befehl werden die LUN-Informationen zurückgegeben.
-
-[listing]
+[source, cli]
 ----
-#sanlun lun show all
-controller(7mode)/ device host lun
-vserver(Cmode)                     lun-pathname       filename                                       adapter protocol size mode
------------------------------------------------------------------------------------------------------------------------------------
-data_vserver                     /vol/vol1/lun1     /dev/rdsk/c0t600A098038304437522B4E694E49792Dd0s2 qlc3   FCP       10g cDOT
-data_vserver                     /vol/vol0/lun2     /dev/rdsk/c0t600A098038304437522B4E694E497938d0s2 qlc3   FCP       10g cDOT
-data_vserver                     /vol/vol2/lun3     /dev/rdsk/c0t600A098038304437522B4E694E497939d0s2 qlc3   FCP       10g cDOT
-data_vserver                     /vol/vol3/lun4     /dev/rdsk/c0t600A098038304437522B4E694E497941d0s2 qlc3   FCP       10g cDOT
-
-
+sanlun version
 ----
 
-NOTE: Dieses Toolkit ist für alle Host Utilities-Konfigurationen und -Protokolle üblich. Daher gelten nicht alle Komponenten für jede Konfiguration. Nicht verwendete Komponenten beeinträchtigen nicht die Systemleistung. Das SAN Toolkit wird auf AIX- und PowerVM/VIOS-Versionen unterstützt.
+
+
+
+== Was kommt als Nächstes?
+
+link:hu-solaris-san-toolkit.html["Erfahren Sie mehr über das SAN Toolkit"] .

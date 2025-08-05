@@ -23,10 +23,12 @@ NOTE: Die folgenden Schritte gelten nicht für einen Host, auf dem eine PowerVM-
 
 .Schritte
 . Melden Sie sich als Root auf dem Host an.
-. Geben Sie auf dem AIX-Host den folgenden Befehl ein, um die neu erstellten LUNs zu ermitteln:
+. Ermitteln Sie auf dem AIX-Host die neu erstellten LUNs:
 +
-`cfgmgr`
-
+[source, cli]
+----
+cfgmgr
+----
 +
 Der `cfgmgr` Befehl unterstützt folgende Bereiche:
 
@@ -38,8 +40,10 @@ Der `cfgmgr` Befehl unterstützt folgende Bereiche:
 
 . Alle AIX-Laufwerke anzeigen, einschließlich der NetApp-LUNs:
 +
-`lsdev -Cc disk`
-
+[source, cli]
+----
+lsdev -Cc disk
+----
 +
 Die LUNs werden auf dem Host als Festplatten angezeigt. Sie können diese Festplatten auf die gleiche Weise verwenden, wie Sie lokale Festplatten auf dem Host. Die ODM-Datei mit den Host-Einstellungen, die im Rahmen der Host Utilities installiert ist, führt dazu, dass die LUNs als NetApp FCP-Festplatten angezeigt werden.
 
@@ -66,8 +70,10 @@ hdisk5 Available 04-08-02  MPIO NetApp FCP Default PCM Disk
 ====
 . Informationen zu Ihrem Setup abrufen:
 +
-`lsattr -El hdisk_name`
-
+[source, cli]
+----
+lsattr -El hdisk_name
+----
 +
 .Beispielausgabe anzeigen
 [%collapsible]
@@ -104,25 +110,33 @@ ww_name         0x500a0984994ae0e0               FC World Wide Name             
 ====
 . Falls Ihre Konfiguration ALUA unterstützt, können Sie damit die Pfadpriorität festlegen. Vergewissern Sie sich, dass ALUA aktiviert ist:
 +
-`lun igroup show -instance igroup_name`
-
+[source, cli]
+----
+lun igroup show -instance igroup_name
+----
 +
 .. Wenn ALUA nicht aktiviert ist, aktivieren Sie es:
 +
-`igroup set igroup_name alua yes`
-
+[source, cli]
+----
+igroup set igroup_name alua yes
+----
 
 
 . Wenn Ihre Konfiguration ALUA nicht unterstützt, müssen Sie das Dienstprogramm dotpaths verwenden, um die Pfadprioritäten festzulegen. Das dotpaths-Dienstprogramm wird installiert, wenn Sie die Host Utilities installieren. Verwenden Sie das Dienstprogramm dotpaths nicht, wenn ALUA aktiviert ist.
 +
 .. Legen Sie die Priorität für alle ONTAP LUNs fest:
 +
-`dotpaths`
-
+[source, cli]
+----
+dotpaths
+----
 .. Legen Sie die Priorität für einen bestimmten Festplattensatz fest:
 +
-`dotpaths [-hqv] [hdiskN ...]`
-
+[source, cli]
+----
+dotpaths [-hqv] [hdiskN ...]
+----
 +
 Verwenden Sie die `-v` Option, um den ausführlichen Modus zu aktivieren und alle Prioritäten anzuzeigen. Verwenden Sie die `-q` Option, um alle oder einzelne Festplattenprioritäten abzufragen.
 
@@ -130,8 +144,10 @@ Verwenden Sie die `-v` Option, um den ausführlichen Modus zu aktivieren und all
 
 . Überprüfen Sie, ob der Host die LUNs erkannt hat:
 +
-`# sanlun lun show`
-
+[source, cli]
+----
+sanlun lun show
+----
 +
 Im folgenden Beispiel wird die typische Ausgabe des Befehls in einer Microsoft Multipath I/O (MPIO) Multipathing-Umgebung gezeigt `sanlun lun show`:
 

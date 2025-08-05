@@ -1,0 +1,5 @@
+= 
+:allow-uri-read: 
+
+
+Die AIX Host Utilities unterstützen Sie bei der Verwaltung des an einen AIX-Host angeschlossenen ONTAP Speichers.  NetApp empfiehlt dringend die Installation der AIX Host Utilities, um die ONTAP Speicherverwaltung zu verbessern und den NetApp -Support beim Sammeln von Informationen zu Ihrer Konfiguration zu unterstützen.

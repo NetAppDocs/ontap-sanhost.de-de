@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
-permalink: hu_luhu_71_cmd.html 
-keywords: host utilities, unified, oracle, linux, 7.1, netapp, ontap 
+permalink: hu-luhu-command-reference.html 
+keywords: host utilities, unified, oracle, linux, 7.1, 8.0, netapp, ontap 
 summary: Hier wird die Verwendung der Linux Host Utilities 7.1 mit ONTAP beschrieben 
 ---
-= Befehlsreferenz für Linux Host Utilities 7.1
+= Verwenden Sie Linux Host Utilities-Befehle, um die ONTAP Speicherkonfiguration zu überprüfen
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -16,7 +16,7 @@ summary: Hier wird die Verwendung der Linux Host Utilities 7.1 mit ONTAP beschri
 
 
 [role="lead"]
-Sie können die Beispielbefehlsreferenz für Linux Host Utilities 7.1 für eine End-to-End-Validierung der NetApp Storage-Konfiguration mit dem Host Utilities Tool verwenden.
+Sie können die Beispielbefehlsreferenz von Linux Host Utilities für eine End-to-End-Validierung der NetApp Speicherkonfiguration mithilfe des Host Utilities-Tools verwenden.
 
 
 
@@ -26,10 +26,11 @@ Sie können eine Liste aller Host-Initiatoren abrufen, die einem Host zugeordnet
 
 [source, cli]
 ----
-# sanlun fcp show adapter -v
+sanlun fcp show adapter -v
 ----
-*Beispielausgabe*
-
+.Beispiel anzeigen
+[%collapsible]
+====
 [listing]
 ----
 adapter name:      host15
@@ -66,6 +67,7 @@ supported speed:   4 GBit/sec, 8 GBit/sec, 16 GBit/sec
 negotiated speed:  16 GBit/sec
 OS device name:    /sys/class/scsi_host/host16
 ----
+====
 
 
 == Listen Sie alle LUNs auf, die dem Host zugeordnet sind
@@ -74,10 +76,11 @@ Sie können eine Liste aller LUNs abrufen, die einem Host zugeordnet sind.
 
 [source, cli]
 ----
-# sanlun lun show -p -v all
+sanlun lun show -p -v all
 ----
-*Beispielausgabe*
-
+.Beispiel anzeigen
+[%collapsible]
+====
 [listing]
 ----
 
@@ -104,6 +107,7 @@ active      up        secondary  sdr    15:0:6:0     lif_19      65:16
 active      up        secondary  sdad   16:0:4:0     lif_27      66:96
 active      up        secondary  sdan   16:0:6:0     lif_28      66:112
 ----
+====
 
 
 == Listen Sie alle LUNs auf, die einem Host von einer bestimmten SVM zugeordnet sind
@@ -112,10 +116,11 @@ Sie können eine Liste aller LUNs, die einem Host zugeordnet sind, von einer bes
 
 [source, cli]
 ----
-# sanlun lun show -p -v vs_sanboot
+sanlun lun show -p -v vs_sanboot
 ----
-*Beispielausgabe*
-
+.Beispiel anzeigen
+[%collapsible]
+====
 [listing]
 ----
 
@@ -142,6 +147,7 @@ active      up        secondary  sdcf    15:0:6:0     lif_16g_2       69:48
 active      up        secondary  sdfj    16:0:4:0     lif_16g_3       130:80
 active      up        secondary  sdfl    16:0:6:0     lif_16g_4       130:112
 ----
+====
 
 
 == Listen Sie alle Attribute einer bestimmten LUN auf, die dem Host zugeordnet sind
@@ -150,10 +156,11 @@ Sie können eine Liste aller Attribute einer angegebenen LUN abrufen, die einem 
 
 [source, cli]
 ----
-# sanlun lun show -p -v vs_sanboot:/vol/sanboot_169/lun
+sanlun lun show -p -v vs_sanboot:/vol/sanboot_169/lun
 ----
-*Beispielausgabe*
-
+.Beispiel anzeigen
+[%collapsible]
+====
 [listing]
 ----
 
@@ -180,6 +187,7 @@ active      up        secondary  sdcf    15:0:6:0     lif_16g_2         69:48
 active      up        secondary  sdfj    16:0:4:0     lif_16g_3         130:80
 active      up        secondary  sdfl    16:0:6:0     lif_16g_4         130:112
 ----
+====
 
 
 == Geben Sie die ONTAP-SVM-Identität an, aus der eine bestimmte LUN dem Host zugeordnet ist
@@ -188,10 +196,11 @@ Sie können eine Liste der ONTAP SVM-Identität abrufen, von der eine bestimmte 
 
 [source, cli]
 ----
-# sanlun lun show -m -v vs_sanboot:/vol/sanboot_169/lun
+sanlun lun show -m -v vs_sanboot:/vol/sanboot_169/lun
 ----
-*Beispielausgabe*
-
+.Beispiel anzeigen
+[%collapsible]
+====
 [listing]
 ----
                                                              device          host                  lun
@@ -209,6 +218,7 @@ vs_sanboot                    /vol/sanboot_169/lun           /dev/sdfm       hos
            Vserver volume name: sanboot_169     MSID::0x000000000000000000000000809E7CC3
          Vserver snapshot name:
 ----
+====
 
 
 == Liste der ONTAP-LUN-Attribute nach Dateiname des Hostgeräts
@@ -217,10 +227,11 @@ Sie können eine Liste der ONTAP-LUN-Attribute anhand eines Dateinamens des Host
 
 [source, cli]
 ----
-# sanlun lun show -d /dev/sdce
+sanlun lun show -d /dev/sdce
 ----
-*Beispielausgabe*
-
+.Beispiel anzeigen
+[%collapsible]
+====
 [listing]
 ----
 controller(7mode/E-Series)/                          device        host                lun
@@ -229,6 +240,7 @@ vserver(cDOT/FlashRay)      lun-pathname           filename      adapter    prot
 vs_sanboot                 /vol/sanboot_169/lun    /dev/sdce     host15     FCP        160g    cDOT
 [root@sr630-13-169 ~]#
 ----
+====
 
 
 == Führen Sie alle dem Host angeschlossenen SVM-Ziel-LIF-WWPNs auf
@@ -237,10 +249,11 @@ Sie können eine Liste aller mit einem Host verbundenen logischen SVM-Ziel-WWPNs
 
 [source, cli]
 ----
-# sanlun lun show -wwpn
+sanlun lun show -wwpn
 ----
-*Beispielausgabe*
-
+.Beispiel anzeigen
+[%collapsible]
+====
 [listing]
 ----
 controller(7mode/E-Series)/   target                                            device          host       lun
@@ -251,6 +264,7 @@ vs_169_16gEmu                 202cd039ea1308e5   /vol/VOL_8g_169_2_9/lun        
 vs_169_16gEmu                 202cd039ea1308e5   /vol/VOL_8g_169_2_7/lun        /dev/sdln       host18     10g     cDOT
 vs_169_16gEmu                 202cd039ea1308e5   /vol/VOL_8g_169_2_5/lun        /dev/sdll       host18     10g     cDOT
 ----
+====
 
 
 == Nennen Sie ONTAP-LUNs, die vom Host durch einen bestimmten SVM Ziel-LIF-WWPN erkannt wurden
@@ -259,10 +273,11 @@ Sie können eine Liste der auf einem Host bemerkten ONTAP LUNs durch einen angeg
 
 [source, cli]
 ----
-# sanlun lun show -wwpn 2010d039ea1308e5
+sanlun lun show -wwpn 2010d039ea1308e5
 ----
-*Beispielausgabe*
-
+.Beispiel anzeigen
+[%collapsible]
+====
 [listing]
 ----
 controller(7mode/E-Series)/   target                                     device         host       lun
@@ -270,3 +285,4 @@ vserver(cDOT/FlashRay)        wwpn               lun-pathname            filenam
 ---------------------------------------------------------------------------------------------------------------
 vs_sanboot                    2010d039ea1308e5   /vol/sanboot_169/lun    /dev/sdfm      host16     160g    cDOT
 ----
+====

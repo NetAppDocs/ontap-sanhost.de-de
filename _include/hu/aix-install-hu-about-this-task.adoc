@@ -1,0 +1,13 @@
+= 
+:allow-uri-read: 
+
+
+.Über diese Aufgabe
+* Sie müssen das AIX Host Utilities SAN Toolkit mit AIX MPIO installieren, um den an einen AIX-Host angeschlossenen ONTAP -Speicher zu verwalten.
+* Wenn Sie AIX Host Utilities installieren, werden keine Einstellungen auf Ihrem AIX-Host geändert.
+
+
+.Bevor Sie beginnen
+* Verwenden Sie dielink:https://mysupport.netapp.com/matrix/#welcome["Interoperabilitäts-Matrix-Tool"^] um zu überprüfen, ob Ihr AIX-Betriebssystem, Ihr Protokoll und ONTAP Version das SAN-Booten unterstützen.
+* Aktivieren Sie die dynamische Verfolgung für alle FC- und FCoE-Initiatoren, indem Sie den `chdev -l <fscsi_device> -a dyntrk=ye` Befehl auf dem AIX-Host.
+

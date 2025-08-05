@@ -7,5 +7,10 @@ Die MPIO-Software stellt dem Windows-Betriebssystem eine einzige Festplatte für
 
 CAUTION: Wenn Sie die MPIO-Software nicht installieren, sieht das Windows-Betriebssystem jeden Pfad möglicherweise als separate Festplatte. Dies kann zu Datenbeschädigungen führen.
 
+[NOTE]
+====
+* Bei Windows Host Utilities 8.0 wird die MPIO-Funktion automatisch aktiviert, wenn Sie MPIO-Unterstützung auswählen.
+* Windows XP oder Windows Vista, die in einer virtuellen Hyper-V-Maschine ausgeführt werden, unterstützen MPIO nicht.
 
-NOTE: Windows XP oder Windows Vista, die auf einer virtuellen Hyper-V-Maschine ausgeführt werden, unterstützt MPIO nicht.
+
+====

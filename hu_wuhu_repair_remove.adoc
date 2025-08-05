@@ -4,7 +4,7 @@ permalink: hu_wuhu_repair_remove.html
 keywords: windows, host, utilities, 7.1, hba, fibre, channel, SANtricity, netapp, san, host, e-series, platform 
 summary: Die Windows Host Utilities umfassen ein Installationsprogramm, das die erforderlichen Windows Registrierungs- und HBA-Parameter so festlegt, dass der Windows Host die Verhaltensweisen von ONTAP und E-Series Plattformen des Storage-Systems korrekt verarbeitet. 
 ---
-= Reparieren und entfernen Sie die Windows Host Utilities
+= Reparieren und entfernen Sie die Windows Host Utilities für ONTAP -Speicher
 :toc: macro
 :hardbreaks:
 :toclevels: 1
@@ -19,7 +19,7 @@ summary: Die Windows Host Utilities umfassen ein Installationsprogramm, das die 
 
 
 [role="lead"]
-Sie können die Option *Repair* des Host Utilities-Installationsprogramms verwenden, um den Host Bus Adapter (HBA) und die Windows Registry-Einstellungen zu aktualisieren. Sie können die Host Utilities auch vollständig entfernen, entweder interaktiv oder über die Windows Befehlszeile.
+Verwenden Sie die Option *Reparieren* im Installationsprogramm von Host Utilities, um den Hostbusadapter (HBA) und die Windows-Registrierungseinstellungen zu aktualisieren.  Sie können die Host-Dienstprogramme auch vollständig entfernen, entweder interaktiv oder über die Windows-Befehlszeile.
 
 [role="tabbed-block"]
 ====
@@ -36,15 +36,17 @@ Die Option *Repair* aktualisiert die Windows-Registrierung und FC-HBAs mit den e
 
 
 --
-.Reparieren oder entfernen von der Befehlszeile
+.Nicht interaktiv reparieren oder entfernen
 --
 Die Option *Repair* aktualisiert die Windows-Registrierung und FC-HBAs mit den erforderlichen Einstellungen. Sie können auch die Host Utilities vollständig von einer Windows-Kommandozeile entfernen.
 
 .Schritte
 . Windows Host Utilities Reparieren:
 +
-`msiexec /f installer.msi [/quiet]`
-
+[source, cli]
+----
+msiexec /f installer.msi [/quiet]
+----
 +
 ** `/f` Repariert die Installation.
 ** `installer.msi` Ist der Name des Windows Host Utilities-Installationsprogramms auf Ihrem System.

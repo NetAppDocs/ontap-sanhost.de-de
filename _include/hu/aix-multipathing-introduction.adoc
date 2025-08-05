@@ -1,0 +1,9 @@
+= 
+:allow-uri-read: 
+
+
+Mit Multipathing können Sie mehrere Netzwerkpfade zwischen dem Host und dem Speichersystem konfigurieren.  Wenn ein Pfad ausfällt, wird der Verkehr über die verbleibenden Pfade fortgesetzt.  Die AIX- und PowerVM-Umgebungen der Host Utilities verwenden die native Multipathing-Lösung (MPIO) von AIX.
+
+Das Path Control Module (PCM) ist für die Steuerung mehrerer Pfade für einen AIX-Host verantwortlich.  Das PCM ist ein vom Speicheranbieter bereitgestellter Code, der die Pfadverwaltung übernimmt und während der Installation von Host Utilities installiert und aktiviert wird.
+
+Um sicherzustellen, dass Multipathing für Ihren Host richtig konfiguriert ist, überprüfen Sie, ob Sie die von NetApp empfohlenen Einstellungen für Ihre ONTAP -LUNs konfiguriert haben.

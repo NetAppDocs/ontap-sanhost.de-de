@@ -1,0 +1,160 @@
+---
+sidebar: sidebar 
+permalink: hu-aix-80.html 
+keywords: host utilities, aix, powervm, vios, 3.1, 7.0, netapp, ontap 
+summary: Die AIX Host Utilities unterstützen Sie beim Management von ONTAP-Speicher mit Anbindung an einen AIX-Host. 
+---
+= Installieren Sie AIX Host Utilities 8.0 für ONTAP -Speicher
+:hardbreaks:
+:toclevels: 1
+:allow-uri-read: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Die AIX Host Utilities unterstützen Sie bei der Verwaltung des an einen AIX-Host angeschlossenen ONTAP Speichers.  NetApp empfiehlt dringend die Installation der AIX Host Utilities, um die ONTAP Speicherverwaltung zu verbessern und den NetApp -Support beim Sammeln von Informationen zu Ihrer Konfiguration zu unterstützen.
+
+AIX Host Utilities 8.0 unterstützt die folgenden Transportprotokolle und AIX-Umgebungen:
+
+* FC, FCoE und iSCSI
+* AIX Multipath I/O (MPIO)
+* PowerVM
++
+Informationen zu PowerVM finden Sie im IBM PowerVM Live Partition Mobility Red Book.
+
+
+
+.Über diese Aufgabe
+* Sie müssen das AIX Host Utilities SAN Toolkit mit AIX MPIO installieren, um den an einen AIX-Host angeschlossenen ONTAP -Speicher zu verwalten.
+* Wenn Sie AIX Host Utilities installieren, werden keine Einstellungen auf Ihrem AIX-Host geändert.
+
+
+.Bevor Sie beginnen
+* Verwenden Sie dielink:https://mysupport.netapp.com/matrix/#welcome["Interoperabilitäts-Matrix-Tool"^] um zu überprüfen, ob Ihr AIX-Betriebssystem, Ihr Protokoll und ONTAP Version das SAN-Booten unterstützen.
+* Aktivieren Sie die dynamische Verfolgung für alle FC- und FCoE-Initiatoren, indem Sie den `chdev -l <fscsi_device> -a dyntrk=ye` Befehl auf dem AIX-Host.
+
+
+.Schritte
+. Melden Sie sich bei Ihrem Host an:
++
+[role="tabbed-block"]
+====
+.AIX
+--
+Melden Sie sich auf einem AIX-Host als *root* an.
+
+--
+.PowerVM
+--
+Auf einem PowerVM-Host:
+
+.. Melden Sie sich als *padmin* an.
+.. Werden Sie Root-Benutzer:
++
+[source, cli]
+----
+oem_setup_env
+----
+
+
+--
+====
+. Rufen Sie die https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.0["NetApp Support Website"^] auf, und laden Sie die komprimierte Datei mit den Host Utilities in ein Verzeichnis auf Ihrem Host herunter.
+. Gehen Sie zu dem Verzeichnis, in dem der Download enthalten ist.
+. Dekomprimieren Sie die Datei und extrahieren Sie das SAN Toolkit-Softwarepaket:
++
+[source, cli]
+----
+tar -xvf ntap_aix_host_utilities_8.0.tar.gz
+----
++
+Der `ntap_aix_host_utilities_8.0.` Das Verzeichnis wird erstellt, wenn Sie die Datei dekomprimieren.  Dieses Verzeichnis enthält eines der folgenden Unterverzeichnisse: MPIO, NON_MPIO oder SAN_Tool_Kit.
+
+. Installieren Sie AIX MPIO:
++
+[source, cli]
+----
+installp -aXYd /var/tmp/ntap_aix_host_utilities_8.0/MPIO NetApp.MPIO_Host_Utilities_Kit
+----
+. Installieren Sie das SAN Toolkit:
++
+[source, cli]
+----
+installp -aXYd /var/tmp/ntap_aix_host_utilities_8.0/ NetApp.SAN_toolkit
+----
+. Starten Sie den Host neu.
+. Überprüfen Sie die Installation:
++
+[source, cli]
+----
+lslpp -l |grep -i netapp
+----
++
+.Beispielausgabe anzeigen
+[%collapsible]
+====
+[listing]
+----
+NetApp.MPIO_Host_Utilities_Kit.config
+                             8.0.0.0  COMMITTED  NetApp MPIO PCM Host Utilities
+  NetApp.MPIO_Host_Utilities_Kit.fcp
+                             8.0.0.0  COMMITTED  NetApp MPIO PCM Host Utilities
+  NetApp.MPIO_Host_Utilities_Kit.iscsi
+                             8.0.0.0  COMMITTED  NetApp MPIO PCM Host Utilities
+  NetApp.MPIO_Host_Utilities_Kit.pcmodm
+                             8.0.0.0 COMMITTED  NetApp MPIO PCM Host Utilities
+NetApp.SAN_toolkit.sanlun  8.0.0.0 COMMITTED NetApp SAN Toolkit sanlun
+----
+====
+. Bestätigen Sie, dass die Softwareversion 8.0.1f0fc74c ist:
++
+[source, cli]
+----
+sanlun version
+----
+. Überprüfen Sie, ob die SCSI UNMAP `lbp_enabled` Parameter wurde zum ODM hinzugefügt:
++
+[source, cli]
+----
+odmget -q "uniquetype=disk/fcp/NetAppMPIO" PdAt |grep  "lbp_enabled"
+----
++
+.Beispielausgabe
+[listing]
+----
+attribute = "lbp_enabled"
+----
++
+[source, cli]
+----
+odmget -q "uniquetype=disk/fcp/NetAppMPIO and attribute=lbp_enabled" PdAt`
+----
++
+.Beispielausgabe anzeigen
+[%collapsible]
+====
+[listing]
+----
+PdAt:
+        uniquetype = "disk/fcp/NetAppMPIO"
+        attribute = "lbp_enabled"
+        deflt = "true"
+        values = "true,false"
+        width = ""
+        type = "R"
+        generic = ""
+        rep = "s"
+        nls_index = 18
+----
+====
+
+
+
+
+== Was kommt als Nächstes?
+
+link:hu-aix-san-toolkit.html["Erfahren Sie mehr über das AIX SAN Toolkit"] .

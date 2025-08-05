@@ -1,0 +1,29 @@
+= Schritt 3: Installieren Sie die Windows-Host-Dienstprogramme
+:allow-uri-read: 
+
+
+
+
+== Schritt 3: Installieren Sie die Windows-Host-Dienstprogramme
+
+Das Installationsprogramm installiert das Windows Host Utilities-Paket und legt die Windows-Registrierung und die HBA-Einstellungen fest.
+
+.Über diese Aufgabe
+Optional können Sie Multipathing-Unterstützung einschließen, wenn Sie das Softwarepaket „Windows Host Utilities“ installieren.  Das Installationsprogramm fordert Sie zur Eingabe der folgenden Optionen auf:
+
+* Wählen `MPIO` Wenn Sie mehr als einen Pfad vom Windows-Host oder der virtuellen Maschine zum Speichersystem haben.
+* Wählen `no MPIO` nur, wenn Sie einen einzelnen Pfad zum Speichersystem verwenden.
+
+
+Sie können die Multipathing-Unterstützung auch über eine Windows-Eingabeaufforderung auswählen.
+
+Bei Hyper-V-Gästen werden Raw-Datenträger (Pass-Through) nicht im Gastbetriebssystem angezeigt, wenn Sie die Multipathing-Unterstützung wählen.  Sie können entweder Raw-Festplatten oder MPIO verwenden, aber nicht beides im Gastbetriebssystem.
+
+
+CAUTION: Wenn Sie die MPIO-Software nicht installieren, sieht das Windows-Betriebssystem jeden Pfad möglicherweise als separate Festplatte. Dies kann zu Datenbeschädigungen führen.
+
+
+NOTE: Windows XP oder Windows Vista, die auf einer virtuellen Hyper-V-Maschine ausgeführt werden, unterstützt MPIO nicht.
+
+.Schritte
+Sie können die Host-Dienstprogramme interaktiv oder über die Windows-Befehlszeile installieren.  Das neue Host Utilities-Installationspaket muss sich in einem Pfad befinden, auf den der Windows-Host zugreifen kann.

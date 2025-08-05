@@ -1,0 +1,14 @@
+= Wie geht es weiter?
+:allow-uri-read: 
+
+
+
+
+== Was kommt als Nächstes?
+
+* Empfohlene Treibereinstellungen mit Linux-Kernel
++
+Wenn Sie eine FC-Umgebung konfigurieren, die native Inbox-Treiber verwendet, die mit dem Linux-Kernel gebündelt sind, können Sie die Standardwerte für die Treiber verwenden.
+
+* link:hu-luhu-sanlun-utility.html["Erfahren Sie mehr über das Dienstprogramm „sanlun“"] .
+

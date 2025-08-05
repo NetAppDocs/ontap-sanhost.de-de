@@ -1,0 +1,67 @@
+---
+sidebar: sidebar 
+permalink: hu-aix-release-notes.html 
+keywords: host utilities, aix, 6.1 netapp, 7.0, ontap, powervm 
+summary: Versionshinweise zu AIX Host Utilities 6.1 
+---
+= VERSIONSHINWEISE zu AIX Host Utilities
+:hardbreaks:
+:toclevels: 1
+:allow-uri-read: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Die Versionshinweise beschreiben neue Funktionen und Verbesserungen, in der aktuellen Version behobene Probleme, bekannte Probleme und Einschränkungen sowie wichtige Vorsichtsmaßnahmen im Zusammenhang mit der Konfiguration und Verwaltung Ihres spezifischen AIX-Hosts mit Ihrem ONTAP Speichersystem.
+
+Spezifische Informationen zu den von den Host Utilities unterstützten Betriebssystemversionen und link:https://imt.netapp.com/matrix/#welcome["Interoperabilitäts-Matrix-Tool"^]-Updates finden Sie im .
+
+Die Versionen der AIX Host Utilities enthalten die folgenden neuen Funktionen und Verbesserungen.
+
+
+
+== Was ist neu in AIX Host Utilities 8.0
+
+Für AIX Host Utilities 8.0 ist ein IBM Interim Fix (ifix) verfügbar, der sicherstellt, dass `sanlun fcp show adapter –v` Der Befehl zeigt die richtigen HBA-Geschwindigkeitsinformationen an, z. B. unterstützte und ausgehandelte Geschwindigkeiten für die Adapter.  Sie können das ifix auf den folgenden AIX- und VIOS-Versionen installieren:
+
+* AIX: 7.3 TL3 SP0, 7.3 TL2 SP2, 7.3 TL1 SP4, 7.2 TL5 SP9, 7.2 TL5 SP8
+* VIOS: 4.1.1.0, 4.1.0.21, 3.1.4.50, 3.1.4.41
+
+
+
+
+== Was ist neu in AIX Host Utilities 7.0
+
+AIX Host Utilities 7.0 unterstützt SCSI UNMAP auf dem AIX-Host-Betriebssystem. Mit AIX Host Utilities 7.0 funktioniert SCSI Thin Provisioning nahtlos mit AIX und NetApp LUNs für FC-Geräte.
+
+
+
+== Was ist neu in AIX Host Utilities 6.1
+
+AIX Host Utilities 6.1 unterstützt das Speicherfehlerproblem, das in früheren Versionen des AIX-Host-Betriebssystems aufgetreten ist. Mit AIX Host Utilities 6.1 hat sich nur die sanlun-Binärdatei geändert. Microsoft Multipath I/O (MPIO) und zugehörige ODM bleiben unverändert.
+
+
+
+== Bekannte Probleme und Einschränkungen
+
+Sie sollten sich der folgenden bekannten Probleme und Einschränkungen bewusst sein, die die Leistung auf Ihrem spezifischen Host beeinträchtigen können:
+
+[cols="4"]
+|===
+| Fehler-ID | Betrifft Version | Titel | Beschreibung 
+
+
+| K. A. | 7.0 | SCSI-UNMAP-Unterstützung für ONTAP-iSCSI-LUNs | AIX Host Utilities 7.0 unterstützt nur die SCSI-UNMAP-Funktion für FC-Geräte. SCSI-UNMAP-Unterstützung für iSCSI-Geräte ist in dieser Version nicht enthalten. 
+
+
+| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/BURT/1069147["1069147"^] |  | AIX HU Sanlun meldet eine falsche HBA-Geschwindigkeit | Instanzen von Sanlun mit falschen HBA-Geschwindigkeiten werden während der Ausführung von gemeldet `sanlun fcp show adapter –v` Befehl. Der `sanlun fcp show adapter –v` Mit dem Befehl werden die HBA-Karten-Informationen angezeigt, z. B. die unterstützten und vereinbarten Geschwindigkeiten für die Adapter. Dies scheint nur ein Problem der Berichterstattung zu sein. Um die tatsächliche Geschwindigkeit zu bestimmen, verwenden Sie den `fcstat fcsx` Befehl. 
+|===
+link:https://mysupport.netapp.com/site/["NetApp Bugs Online"^] Bietet vollständige Informationen für die meisten bekannten Probleme, einschließlich Lösungsvorschläge, falls möglich. Einige Schlüsselwortkombinationen und Fehlertypen, die Sie möglicherweise verwenden möchten, sind:
+
+* FCP Allgemein: Zeigt FC- und HBA-Fehler an, die nicht mit einem bestimmten Host verknüpft sind.
+* FCP – AIX
+

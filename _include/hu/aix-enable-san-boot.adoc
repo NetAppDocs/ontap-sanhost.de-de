@@ -1,0 +1,28 @@
+= Schritt 1: Aktivieren Sie optional den SAN-Bootvorgang
+:allow-uri-read: 
+
+
+
+
+== Schritt 1: Aktivieren Sie optional den SAN-Bootvorgang
+
+Sie können Ihren Host für die Verwendung von SAN-Boot konfigurieren, um die Bereitstellung zu vereinfachen und die Skalierbarkeit zu verbessern.  Wenn Ihre Konfiguration kein SAN-Booten unterstützt, können Sie einen lokalen Boot verwenden.
+
+[role="tabbed-block"]
+====
+.SAN Booting
+--
+Beim SAN-Booten handelt es sich um den Vorgang, bei dem eine an ein SAN angeschlossene Festplatte (eine LUN) als Bootgerät für einen AIX/PowerVM-Host eingerichtet wird.  Sie können eine SAN-Boot-LUN für den Betrieb in einer AIX Multipath I/O (MPIO)-Umgebung einrichten, die das FC-Protokoll verwendet und AIX Host Utilities entweder mit dem FC- oder dem FCoE-Protokoll ausführt.  Die Methode, die Sie zum Erstellen einer SAN-Boot-LUN und zum Installieren eines neuen Betriebssystem-Images in einer AIX MPIO-Umgebung verwenden, hängt vom verwendeten Protokoll ab.
+
+.Schritte
+. Verwenden Sie dielink:https://mysupport.netapp.com/matrix/#welcome["Interoperabilitäts-Matrix-Tool"^] um zu überprüfen, ob Ihr AIX-Betriebssystem, Ihr Protokoll und ONTAP Version das SAN-Booten unterstützen.
+. Befolgen Sie die Best Practices zum Einrichten eines SAN-Boots in der Herstellerdokumentation.
+
+
+--
+.Lokaler Start
+--
+Führen Sie einen lokalen Bootvorgang durch, indem Sie das AIX-Betriebssystem auf der lokalen Festplatte installieren, beispielsweise auf einer SSD, SATA oder einem RAID.
+
+--
+====

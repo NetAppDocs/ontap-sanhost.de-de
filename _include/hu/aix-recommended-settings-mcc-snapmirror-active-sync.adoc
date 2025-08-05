@@ -1,0 +1,24 @@
+= 
+:allow-uri-read: 
+
+
+. Wenn Ihre Speicherkonfiguration MetroCluster oder SnapMirror Active Sync umfasst, ändern Sie die Standardeinstellungen:
++
+[role="tabbed-block"]
+====
+.MetroCluster
+--
+Standardmäßig erzwingt das AIX-Betriebssystem ein kürzeres E/A-Timeout, wenn keine Pfade zu einer LUN verfügbar sind.  Dies kann in Konfigurationen auftreten, die ein SAN-Fabric mit einem Switch umfassen, und in MetroCluster -Konfigurationen, bei denen es zu ungeplanten Failovers kommt.  Weitere Informationen und empfohlene Änderungen der Standardeinstellungen finden Sie im Knowledge Base-Artikellink:https://kb.netapp.com/on-prem/ontap/mc/MC-KBs/What_are_AIX_Host_support_considerations_in_a_MetroCluster_configuration["Welche Überlegungen gibt es hinsichtlich der AIX-Host-Unterstützung in einer MetroCluster -Konfiguration?"^] .
+
+--
+.SnapMirror aktive Synchronisierung
+--
+Ab ONTAP 9.11.1 wird SnapMirror Active Sync für einen AIX-Host unterstützt.  Der primäre Cluster in einer AIX-Konfiguration ist der „aktive“ Cluster.
+
+In einer AIX-Konfiguration sind Failovers störend.  Bei jedem Failover müssen Sie einen erneuten Scan auf dem Host durchführen, damit die E/A-Vorgänge fortgesetzt werden können.
+
+Lesen Sie den Knowledge Base-Artikellink:https://kb.netapp.com/on-prem/ontap/DP/SnapMirror/SnapMirror-KBs/How_to_configure_AIX_Host_for_SnapMirror_active_sync_in_ONTAP["Konfigurieren eines AIX-Hosts für SnapMirror Active Sync"^] .
+
+--
+====
+

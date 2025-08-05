@@ -4,7 +4,7 @@ permalink: hu_luhu_71.html
 keywords: host utilities, unified, oracle, linux, 7.1, netapp, ontap 
 summary: Hier wird die Verwendung der Linux Host Utilities 7.1 mit ONTAP beschrieben 
 ---
-= Installieren Sie Linux Host Utilities 7.1
+= Installieren Sie Linux Host Utilities 7.1 für ONTAP -Speicher
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -16,9 +16,9 @@ summary: Hier wird die Verwendung der Linux Host Utilities 7.1 mit ONTAP beschri
 
 
 [role="lead"]
-Die Linux Host Utilities unterstützen Sie beim Management von mit einem Linux-Host verbundenen ONTAP-Speicher. NetApp empfiehlt ausdrücklich die Installation der Linux Host Utilities, dies ist jedoch nicht zwingend erforderlich. Die Dienstprogramme ändern keine Einstellungen auf Ihrem Linux-Host. Die Versorgungseinrichtungen verbessern das Management und unterstützen den NetApp Kunden-Support bei der Erfassung von Informationen zu Ihrer Konfiguration.
+Die Linux Host Utilities unterstützen Sie bei der Verwaltung des an einen Linux-Host angeschlossenen ONTAP Speichers.  NetApp empfiehlt dringend die Installation der Linux Host Utilities, dies ist jedoch nicht zwingend erforderlich.  Die Dienstprogramme verbessern die Verwaltung und unterstützen den NetApp Kundensupport beim Sammeln von Informationen zu Ihrer Konfiguration.
 
-Die folgenden Linux-Distributionen werden unterstützt:
+Linux Host Utilities 7.1 unterstützt die folgenden Distributionstypen:
 
 * Red Hat Enterprise Linux
 * SUSE Linux Enterprise Server
@@ -27,16 +27,17 @@ Die folgenden Linux-Distributionen werden unterstützt:
 * Citrix XenServer
 
 
+
+NOTE: Die Linux Host Utilities Software unterstützt keine NVMe over Fibre Channel (NVMe/FC)- und NVMe over TCP (NVMe/TCP)-Host-Protokolle.
+
+.Über diese Aufgabe
+Wenn Sie die Linux Host Utilities installieren, werden keine Einstellungen auf Ihrem Linux-Host geändert.
+
 .Bevor Sie beginnen
-Das NetApp Linux-Hostdienstprogramme-Softwarepaket ist auf dem  in einer 32-Bit- oder 64-Bit-.rpm-Datei verfügbarlink:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp Support Website"^].
-
-* Für einen zuverlässigen Betrieb müssen Sie sicherstellen, dass Ihre gesamte iSCSI-, FC- oder FCoE-Konfiguration unterstützt wird.
+* Für einen zuverlässigen Betrieb verwenden Sie dielink:https://imt.netapp.com/matrix/#welcome["Interoperabilitäts-Matrix-Tool"^] um zu überprüfen, ob Ihre iSCSI-, FC- oder FCoE-Konfiguration unterstützt wird.
+* Installieren Sie die auf der Support-Site des Anbieters verfügbaren Host Bus Adapter (HBA)-Verwaltungspakete.  Die Managementsoftware ermöglicht die `sanlun` Befehle zum Sammeln von Informationen über die FC-HBAs, beispielsweise ihre WWPNs.
 +
-Sie können die verwendenlink:https://imt.netapp.com/matrix/#welcome["Interoperabilitäts-Matrix-Tool"^], um Ihre Konfiguration zu überprüfen.
-
-* Sie müssen die auf der Support-Website des Anbieters verfügbaren Verwaltungspakete für den Host Bus Adapter (HBA) installieren.
-+
-Die Managementsoftware aktiviert die SAN-Toolkit-Befehle, um Informationen über FC-HBAs, z. B. deren WWPNs, zu sammeln. Überprüfen Sie, ob die folgenden Pakete korrekt installiert sind, damit `sanlun fcp show adapter` der Befehl funktioniert:
+Überprüfen Sie anhand der Herstellerdokumentation, ob die folgenden Pakete korrekt installiert sind.  Diese Pakete sind erforderlich zur Unterstützung der `sanlun fcp show adapter` Befehl:
 
 +
 ** Marvell QLogic HBA – QConvergeConsole CLI
@@ -44,14 +45,11 @@ Die Managementsoftware aktiviert die SAN-Toolkit-Befehle, um Informationen über
 ** Marvell Brocade HBA – Brocade Command Utility CLI
 
 
-* RPM Pakete "libhbaapi" und "libhbalinux", die für jede Linux-Distribution zur Verfügung stehen, sollten auf dem Host-Betriebssystem installiert werden.
+* Installieren Sie die für jede Linux-Distribution verfügbaren RPM-Pakete „libhbaapi“ und „libhbalinux“ auf dem Linux-Host-Betriebssystem.
 
-
-
-NOTE: Die Linux Host Utilities Software unterstützt keine NVMe over Fibre Channel (NVMe/FC)- und NVMe over TCP (NVMe/TCP)-Host-Protokolle.
 
 .Schritte
-. Wenn Sie derzeit eine Version von Linux Host Utilities installiert haben, entfernen Sie diese mit dem folgenden Befehl:
+. Wenn Sie derzeit eine Version von Linux Host Utilities installiert haben, entfernen Sie diese:
 +
 [source, cli]
 ----
@@ -61,12 +59,15 @@ rpm -e netapp_linux_unified_host_utilities-7-1
 Bei früheren Versionen von Linux Host Utilities wechseln Sie zum Verzeichnis, in dem die Host Utility-Software installiert ist, und geben den Deinstallationsbefehl ein, um das installierte Paket zu entfernen.
 
 . Laden Sie das 32-Bit- oder 64-Bit-Linux Host Utilities-Softwarepaket vom auf Ihren Host herunterlink:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.1/downloads["NetApp Support Website"^].
-. Rufen Sie das Verzeichnis auf, in dem Sie das Softwarepaket heruntergeladen haben, und installieren Sie es mit dem folgenden Befehl:
+. Gehen Sie in das Verzeichnis, in das Sie das Softwarepaket heruntergeladen haben, und installieren Sie es:
 +
 [source, cli]
 ----
 rpm -ivh netapp_linux_unified_host_utilities-7-1.x86_xx.rpm
 ----
++
+Sie sollten eine Ausgabe ähnlich dem folgenden Beispiel sehen:
+
 +
 [listing]
 ----
@@ -82,6 +83,9 @@ Updating / installing...
 sanlun version
 ----
 +
+Sie sollten eine Ausgabe ähnlich dem folgenden Beispiel sehen:
+
++
 [listing]
 ----
 sanlun version 7.1.386.1644
@@ -90,41 +94,11 @@ sanlun version 7.1.386.1644
 
 
 
-== Empfohlene Treibereinstellungen mit Linux-Kernel
+== Was kommt als Nächstes?
 
+* Empfohlene Treibereinstellungen mit Linux-Kernel
++
 Wenn Sie eine FC-Umgebung konfigurieren, die native Inbox-Treiber verwendet, die mit dem Linux-Kernel gebündelt sind, können Sie die Standardwerte für die Treiber verwenden.
 
+* link:hu-luhu-sanlun-utility.html["Erfahren Sie mehr über das Dienstprogramm „sanlun“"] .
 
-
-== SAN Toolkit
-
-Linux Host Utilities ist eine NetApp Host-Software, die ein Befehlszeilen-Toolkit auf Ihrem Linux-Host bereitstellt.
-
-Das Toolkit wird automatisch installiert, wenn Sie das NetApp Host Utilities-Paket installieren. Dieses Kit enthält die `sanlun` Dienstprogramm: Unterstützt Sie beim Management von LUNs und HBAs. Der `sanlun` Befehl gibt Informationen über die LUNs zurück, die Ihrem Host zugeordnet sind, Multipathing und Informationen zurück, die zum Erstellen von Initiatorgruppen erforderlich sind.
-
-.Beispiel
-Im folgenden Beispiel wird der verwendet `sanlun lun show` Befehl gibt LUN-Informationen zurück.
-
-[source, cli]
-----
-# sanlun lun show all
-----
-Beispielausgabe:
-
-[listing]
-----
-controller(7mode/E-Series)/            device     host               lun
-vserver(cDOT/FlashRay)   lun-pathname  filename   adapter  protocol  size    Product
-------------------------------------------------------------------------------------
-data_vserver          /vol/vol1/lun1   /dev/sdb   host16   FCP       120.0g  cDOT
-data_vserver          /vol/vol1/lun1   /dev/sdc   host15   FCP       120.0g  cDOT
-data_vserver          /vol/vol2/lun2   /dev/sdd   host16   FCP       120.0g  cDOT
-data_vserver          /vol/vol2/lun2   /dev/sde   host15   FCP       120.0g  cDOT
-----
-[NOTE]
-====
-* Dieses Toolkit ist für alle Konfigurationen und Protokolle der Host Utilities üblich. Als Ergebnis gelten einige ihrer Inhalte auf eine Konfiguration, jedoch nicht auf eine andere. Ungenutzte Komponenten haben keine Auswirkungen auf die Systemleistung.
-* Das SAN Toolkit wird auf Citrix XenServer, Oracle VM und Red hat Enterprise Virtualization Hypervisor nicht unterstützt.
-
-
-====

@@ -4,7 +4,7 @@ permalink: hu_wuhu_upgrade.html
 keywords: windows, host, utilities, 7.1, hba, fibre, channel, SANtricity, netapp, san, host, e-series, platform 
 summary: Die Windows Host Utilities umfassen ein Installationsprogramm, das die erforderlichen Windows Registrierungs- und HBA-Parameter so festlegt, dass der Windows Host die Verhaltensweisen von ONTAP und E-Series Plattformen des Storage-Systems korrekt verarbeitet. 
 ---
-= Aktualisieren Sie die Windows Host Utilities
+= Aktualisieren Sie die Windows Host Utilities für ONTAP -Speicher
 :toc: macro
 :hardbreaks:
 :toclevels: 1
@@ -19,13 +19,13 @@ summary: Die Windows Host Utilities umfassen ein Installationsprogramm, das die 
 
 
 [role="lead"]
-Das neue Installationspaket für Host Utilities muss sich in einem Pfad befinden, der vom Windows Host zugänglich ist. Befolgen Sie die Anweisungen zur interaktiven Installation der Host Utilities oder über die Windows-Befehlszeile, um das Installationspaket zu aktualisieren.
+Sie können die Windows Host Utilities-Software in Ihrer ONTAP Speicherkonfiguration aktualisieren, indem Sie die Installationsanweisungen interaktiv befolgen oder die Windows-Befehlszeile verwenden.  Sie müssen die neue Installationssoftware „Windows Host Utilities“ auf einem Pfad installieren, auf den der Windows-Host zugreifen kann.
 
 [role="tabbed-block"]
 ====
 .Interaktives Upgrade
 --
-Um das Host Utilities-Softwarepaket interaktiv zu aktualisieren, müssen Sie das Host Utilities-Installationsprogramm ausführen und den Aufforderungen folgen.
+Aktualisieren Sie die Windows Host Utilities-Software interaktiv, indem Sie das Host Utilities-Installationsprogramm ausführen und den Anweisungen folgen.
 
 .Schritte
 . Wechseln Sie in das Verzeichnis, in dem Sie die ausführbare Datei heruntergeladen haben.
@@ -40,15 +40,17 @@ Um das Host Utilities-Softwarepaket interaktiv zu aktualisieren, müssen Sie das
 
 
 --
-.Upgrade von einer Befehlszeile aus
+.Nicht-interaktives Upgrade
 --
-Sie können ein stille (unbeaufsichtigtes) Upgrade der neuen Host Utilities durchführen, indem Sie die entsprechenden Befehle an der Windows-Eingabeaufforderung eingeben.
+Führen Sie mithilfe der Windows-Befehlszeile ein nicht interaktives Software-Upgrade der Windows Host Utilities durch.
 
 .Schritte
 . Geben Sie den folgenden Befehl an der Windows-Eingabeaufforderung ein:
 +
-`msiexec /i installer.msi /quiet MULTIPATHING= {0 | 1} [INSTALLDIR=inst_path]`
-
+[source, cli]
+----
+msiexec /i installer.msi /quiet MULTIPATHING= {0 | 1} [INSTALLDIR=inst_path]
+----
 +
 ** `installer` Ist der Name des `.msi` Datei für Ihre CPU-Architektur.
 ** MULTIPATHING gibt an, ob Microsoft Multipath-I/O-Unterstützung (MPIO) installiert ist. Die zulässigen Werte sind „0“ für „Nein“ und „1“ für „Ja“.

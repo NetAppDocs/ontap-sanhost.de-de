@@ -1,0 +1,29 @@
+= Schritt 2: FC-HBAs und Switches konfigurieren
+:allow-uri-read: 
+
+
+. Starten Sie den Zieldienst.
+. Überprüfen Sie die Verkabelung.
++
+Weitere Informationen finden Sie im https://docs.netapp.com/us-en/ontap/san-config/index.html["Referenz zur SAN-Konfiguration"^] für detaillierte Informationen zur Verkabelung und Konfiguration.
+
+
+
+
+
+== Schritt 2: FC-HBAs und Switches konfigurieren
+
+Installieren und konfigurieren Sie einen oder mehrere unterstützte FC-Hostbusadapter (HBAs) für FC-Verbindungen zum Speichersystem.
+
+Das Windows Host Utilities-Installationsprogramm legt die erforderlichen FC HBA-Einstellungen fest.
+
+
+CAUTION: Sie sollten nur zulassen, dass das Installationsprogramm von Windows Host Utilities die HBA-Parameter einstellt.  Dadurch wird sichergestellt, dass der Windows-Host das Speichersystemverhalten für ONTAP -Plattformen korrekt verarbeiten kann.
+
+.Schritte
+. Installieren Sie einen oder mehrere unterstützte FC-HBAs gemäß den Anweisungen des HBA-Anbieters.
+. Beziehen Sie die unterstützten HBA-Treiber und Verwaltungsprogrammen ein, und installieren Sie diese gemäß den Anweisungen des HBA-Anbieters.
+. https://docs.netapp.com/us-en/ontap/san-management/index.html["Verbinden Sie die HBAs mit Ihren FC-Switches oder direkt mit dem Speichersystem"^] .
+. https://docs.netapp.com/us-en/ontap/san-config/fibre-channel-fcoe-zoning-concept.html["Erstellen Sie Zonen auf dem FC-Switch gemäß Ihrer FC-Switch-Dokumentation"^] .
+. Bei ONTAP zonieren Sie den Switch nach dem WWPN.  Achten Sie darauf, die WWPN der logischen Schnittstellen (LIFs) und nicht die WWPN der physischen Ports auf den Speichercontrollern zu verwenden. Weitere Informationen finden Sie im  https://docs.netapp.com/us-en/ontap/san-config/index.html["Referenz zur SAN-Konfiguration"^] für weitere Informationen.
+
