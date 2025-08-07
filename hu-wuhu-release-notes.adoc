@@ -52,3 +52,9 @@ Sie sollten sich der folgenden bekannten Probleme und Einschränkungen bewusst s
 | Ausführen des `linux_gos_timeout-install.sh` Für Hyper-V-Gäste mit Red hat Enterprise Linux oder SUSE Linux Enterprise Server ist kein Skript mehr erforderlich | 7.1 | Sie müssen das Skript nicht mehr ausführen `linux_gos_timeout-install.sh`, um die Festplatten-Timeouts auf Red hat Enterprise Linux 5, Red hat Enterprise Linux 6 oder SUSE Linux Enterprise Server 11 Hyper-V-Gastservern zu ändern, da die Standard-Timeout-Einstellungen verwendet werden. Das `linux_gos_timeout-install.sh` Skript, das in früheren Versionen der Host Utilities enthalten war, ist nicht mehr in der Version 7.1 der Windows Host Utilities enthalten. Windows Host Utilities 7.1 verwendet die standardmäßigen Einstellungen für das Festplatten-Timeout. | Keine Angabe 
 |===
 link:https://mysupport.netapp.com/site/bugs-online/product["NetApp Bugs Online"^] Bietet vollständige Informationen für die meisten bekannten Probleme, einschließlich Lösungsvorschläge, falls möglich.
+
+
+
+== Was kommt als nächstes
+
+link:hu-wuhu-80.html["Erfahren Sie mehr über die Installation von Windows Host Utilities"]

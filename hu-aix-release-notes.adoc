@@ -65,3 +65,9 @@ link:https://mysupport.netapp.com/site/["NetApp Bugs Online"^] Bietet vollständ
 * FCP Allgemein: Zeigt FC- und HBA-Fehler an, die nicht mit einem bestimmten Host verknüpft sind.
 * FCP – AIX
 
+
+
+
+== Was kommt als Nächstes?
+
+link:hu-aix-80.html["Informationen zur Installation von AIX Host Utilities"]

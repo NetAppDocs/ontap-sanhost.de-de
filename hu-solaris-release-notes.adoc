@@ -50,3 +50,9 @@ Die Bindung des FC-Treibers wird von geändert `ssd(4D)` Bis `sd(4D)`. Verschieb
 * FCP Allgemein: Zeigt FC- und HBA-Fehler (Host Bus Adapter) an, die keinem bestimmten Host zugeordnet sind.
 * FCP – Solaris
 
+
+
+
+== Was kommt als nächstes
+
+link:hu-solaris-80.html["Informationen zur Installation von Solaris Host Utilities"]

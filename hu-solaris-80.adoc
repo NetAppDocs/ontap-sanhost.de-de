@@ -128,18 +128,40 @@ drwxr-xr-x   3 root     sys            4 Mar  7 13:11 ..
 `/opt/NTAP/SANToolkit/bin/host_config -setup -protocol fcp|iscsi|mixed -multipath mpxio|dmp|non [-noalua] [-mcc 60|90|120]`
 
 +
-[cols="2*"]
+[cols="1a,2a"]
 |===
 | Wenn Ihr Setup beispielsweise ... ist. | Verwenden Sie den Befehl... 
 
 
-| FCP mit Multipath als MPxIO | `#/opt/NTAP/SANToolkit/bin/host_config -setup -protocol fcp -multipath mpxio`Informationen zu den Konfigurationsänderungen für SnapMirror Active Sync finden Sie im Knowledge Base-Artikellink:https://kb.netapp.com/on-prem/ontap/DP/SnapMirror/SnapMirror-KBs/Solaris_Host_support_recommended_settings_in_SnapMirror_active_sync_formerly_SM_BC_configuration["Solaris Host unterstützt empfohlene Einstellungen in der SnapMirror Active Sync-Konfiguration (früher SM-BC)"^] . 
+ a| 
+FCP mit Multipath als MPxIO
+ a| 
+[source, cli]
+----
+#/opt/NTAP/SANToolkit/bin/host_config -setup -protocol fcp -multipath mpxio
+----
+Informationen zu den Konfigurationsänderungen für SnapMirror Active Sync finden Sie im Knowledge Base-Artikellink:https://kb.netapp.com/on-prem/ontap/DP/SnapMirror/SnapMirror-KBs/Solaris_Host_support_recommended_settings_in_SnapMirror_active_sync_formerly_SM_BC_configuration["Solaris Host unterstützt empfohlene Einstellungen in der SnapMirror Active Sync-Konfiguration (früher SM-BC)"^] .
 
 
-| FCP mit Multipath als DMP | `#/opt/NTAP/SANToolkit/bin/host_config -setup -protocol fcp -multipath dmp` 
+
+ a| 
+FCP mit Multipath als DMP
+ a| 
+[source, cli]
+----
+#/opt/NTAP/SANToolkit/bin/host_config -setup -protocol fcp -multipath dmp
+----
 
 
-| FCP auf MetroCluster mit Multipath als MPxIO, und der Wert „Alle Pfade deaktiviert“ ist auf 120 s eingestellt.  (Dies ist die empfohlene Einstellung für MetroCluster -Konfigurationen). | `#/opt/NTAP/SANToolkit/bin/host_config -setup -protocol fcp -multipath mpxio -mcc 120`Weitere Informationen finden Sie im Knowledge Base-Artikellink:https://kb.netapp.com/on-prem/ontap/mc/MC-KBs/Solaris_host_support_considerations_in_a_MetroCluster_configuration["Überlegungen zum Support von Solaris Hosts in einer MetroCluster-Konfiguration"^] . 
+ a| 
+FCP auf MetroCluster mit Multipath als MPxIO, und der Wert „Alle Pfade deaktiviert“ ist auf 120 s eingestellt.  (Dies ist die empfohlene Einstellung für MetroCluster -Konfigurationen).
+ a| 
+[source, cli]
+----
+#/opt/NTAP/SANToolkit/bin/host_config -setup -protocol fcp -multipath mpxio -mcc 120
+----
+Weitere Informationen finden Sie im Knowledge Base-Artikel link:https://kb.netapp.com/on-prem/ontap/mc/MC-KBs/Solaris_host_support_considerations_in_a_MetroCluster_configuration["Überlegungen zum Support von Solaris Hosts in einer MetroCluster-Konfiguration"^] .
+
 |===
 . Starten Sie den Host neu.
 +
