@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: hu_centos_77.html 
 keywords: host utilities, centos, linux, 7.7, netapp, ontap, netapp 
-summary: Beschreibt die Verwendung von CentOS 7.7 mit ONTAP 
+summary: Installieren Sie Linux Host Utilities auf einem CentOS 7.7-Host, um FCP- und iSCSI-Protokollvorgänge mit ONTAP LUNs zu verwalten. 
 ---
 = Konfigurieren Sie CentOS 7.7 für FCP und iSCSI für ONTAP-Speicher
 :hardbreaks:

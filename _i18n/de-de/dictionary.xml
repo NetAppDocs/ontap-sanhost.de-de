@@ -71,7 +71,6 @@
   <block id="db8b5cb66e41a6692e5280271b55feb6" category="section-title">Listen Sie alle LUNs auf, die einem Host von einer bestimmten SVM zugeordnet sind</block>
   <block id="475c20ed4a6682ddf4e29696ef0600f4" category="section-title">Listen Sie alle Attribute einer bestimmten LUN auf, die dem Host zugeordnet sind</block>
   <block id="e562a7759abbf518b77dba4c6bf7b87d" category="section-title">Führen Sie alle dem Host angeschlossenen SVM-Ziel-LIF-WWPNs auf</block>
-  <block id="c33b879e8a189cf4ded38992165273b7" category="summary">Beschreibt die Verwendung von CentOS 8.5 mit ONTAP</block>
   <block id="2d42bb9d7307ce616ea0bcece7fd8556" category="cell">„2 pg_init_retries 50“</block>
   <block id="9434de34302b4f40887a7277cf35a8fc" category="cell">Kein_PATH_retry</block>
   <block id="a9d1cbf71942327e98b40cf5ef38a960" category="cell">Warteschlange</block>
@@ -84,14 +83,12 @@
   <block id="8e164918c56328c6560a73785d09e24f" category="cell">NetApp Bug ID</block>
   <block id="b78a3223503896721cca1303f776159b" category="cell">Titel</block>
   <block id="b5a7adde1af5c87d7fd797b6245c2a39" category="cell">Beschreibung</block>
-  <block id="ba9c5cfb8923c683e175b0343242d5b2" category="summary">Beschreibt die Verwendung von CentOS 8.0 mit ONTAP</block>
   <block id="e7565a20fc615772fc73eed9c1b34d4a" category="inline-link-macro">Bekannte Probleme</block>
   <block id="382b0f5185773fa0f67a8ed8056c7759" category="cell">K. A.</block>
   <block id="dd0ef0f389a16b505e475797a7b752ac" category="list-text">Laden Sie die Datei HP-UX Host Utilities herunter<block ref="dfa8e0cbcc24953d6f700e7d845f35aa" prefix=" " category="inline-code"></block> Von <block ref="a42716fdd3c80ae75cadfb8024b65de0" category="inline-link-macro-rx"></block> Auf Ihren HP-UX-Host.</block>
   <block id="1bad318175e7aa1eb67e6db2256bb9b1" category="paragraph">Das System legt die extrahierte Software in das Verzeichnis, in dem Sie die Depotdatei unkomprimiert haben.</block>
   <block id="999cc5e84fec57fdd157e6fdacc5c96a" category="paragraph"><block ref="dd352037f1892741a1b2287230d933e4" prefix="" category="inline-code"></block> Gibt den Pfad und den Namen der Depotdatei an.</block>
   <block id="e661cef1335457aaa4b6047327cfb656" category="paragraph">Der<block ref="83250d1c05e63f6d60e79cc99841ad93" prefix=" " category="inline-code"></block> Mit dem Befehl wird ein Installationsskript ausgeführt, das den Status des HP-UX-Setups überprüft. Wenn Ihr System die Anforderungen erfüllt, installiert dieses Skript das<block ref="3a8e4afa851609127d534b04e7d29c08" prefix=" " category="inline-code"></block> Dienstprogramme und Diagnoseskripte im<block ref="00efbfd132947bf52638b0d09c5d373e" prefix=" " category="inline-code"></block> Verzeichnis.</block>
-  <block id="480c1af29fcb3cc17dbe8a841a6a3c06" category="summary">Beschreibt die Verwendung von CentOS 8.2 mit ONTAP</block>
   <block id="cebcd1a5ff2049be4533aaf6b185029d" category="summary">Versionshinweise zu AIX Host Utilities 6.1</block>
   <block id="b066ca6122c9857ad1ee3a44f18cc5e7" category="cell">Fehler-ID</block>
   <block id="31a061fd71807c34f31d154d95c10691" category="inline-link-macro">1069147</block>
@@ -262,7 +259,6 @@
   <block id="784c795c066fdf3c4713aae58af639ff" category="paragraph">Es sind keine Probleme bekannt.</block>
   <block id="52f50d0f0ab285059648c7da67b4b07f" category="inline-link-macro">Unterstützung von VMware vSphere 5.x, 6.x und 7.x mit NetApp MetroCluster (2031038)</block>
   <block id="8a515fe16331b7269862c5871e55c7e4" category="list-text"><block ref="8a515fe16331b7269862c5871e55c7e4" category="inline-link-macro-rx"></block></block>
-  <block id="3bb3263aa16bbeb228b8ecd7584a8064" category="summary">Beschreibt die Verwendung von CentOS 7.3 mit ONTAP</block>
   <block id="04a5e299cf45ffa9952cc41f997c1f37" category="paragraph">Sie können das verwenden<block ref="3d80983fc82ff72fd51e5d1f7e90c56d" prefix=" " category="inline-code"></block> Überprüfen Sie mit dem Befehl die Einstellungen für Ihre ONTAP LUNs.</block>
   <block id="eea65c7c864efb688d55381c5b21a910" category="summary">Beschreibt die Verwendung von Veritas Infoscale 6.5 und 6.7 für Linux mit ONTAP</block>
   <block id="97702a0c8ad7bf7deb907e6a931a9c14" category="paragraph">In dem obigen Beispiel wurde die LUN aus NetApp Storage mit 4 Pfaden zugeordnet (4 aktiv-optimiert).</block>
@@ -320,7 +316,6 @@
   <block id="2813f127dc58929fb553bc32684c2e46" category="section-title">Bekannte Probleme und Einschränkungen</block>
   <block id="8b777dc32f2f743eb513fca0bfd52348" category="cell">1457017</block>
   <block id="0078173d6c66e3e11217e80e4ecc1d1b" category="cell"><block ref="3a8e4afa851609127d534b04e7d29c08" prefix="" category="inline-code"></block> Installationsprobleme mit Warnmeldungen im Zusammenhang mit<block ref="6bbfa21cc363f3f43fa45e0fee1ab78c" prefix=" " category="inline-code"></block> Und<block ref="c4e8c1a43552f3f4b93665bea2f8ccd3" prefix=" " category="inline-code"></block> Bibliotheken. Diese Warnungen wirken sich nicht auf die Funktionalität von aus<block ref="3a8e4afa851609127d534b04e7d29c08" prefix=" " category="inline-code"></block> Kit.</block>
-  <block id="0a4a555ba90159c1b3608a4b2e3295e1" category="summary">Beschreibt die Verwendung von CentOS 7.4 mit ONTAP</block>
   <block id="579d7a7046fd4b01f78000a1f5680baa" category="summary">Beschreibt die Verwendung von Red hat Enterprise Linux 6.5 mit ONTAP</block>
   <block id="85e17eb00215b5ddc7559e4c06c95724" category="paragraph">Für Red hat Enterprise Linux (RHEL) 6.5 muss die Datei /etc/Multipath.conf vorhanden sein, Sie müssen jedoch keine spezifischen Änderungen an der Datei vornehmen. RHEL 6.5 wird mit allen Einstellungen zusammengestellt, die zum Erkennen und korrekten Managen von ONTAP-LUNs erforderlich sind. So aktivieren Sie ALUA Handler:</block>
   <block id="9ae9889f119b7b05c0dd62bfe7085ce7" category="paragraph">Das RHEL 6.5 Betriebssystem wird kompiliert, um ONTAP-LUNs zu erkennen und automatisch alle Konfigurationsparameter für ASA- und nicht-ASA-Konfigurationen korrekt festzulegen.</block>
@@ -508,7 +503,6 @@
   <block id="6b41fb8eea99b0d8d062e30f5b71d616" category="summary">NVMe/FC-Host-Konfiguration für Windows Server 2019 mit ONTAP</block>
   <block id="6b83d866c4dfa9b95b03b5a6ede846f7" category="summary">Verwenden von Windows Server 2019 mit ONTAP</block>
   <block id="51da3f0f90428027f2a496d366e696eb" category="inline-link-macro">Microsoft Update Catalog 2019</block>
-  <block id="0b9f55b9dffba7eae6a1222b3c2e4753" category="summary">Beschreibt die Verwendung von CentOS 7.1 mit ONTAP</block>
   <block id="81a952f0a3b26ee44dabb3aa10180e75" category="summary">Beschreibt die Verwendung von CentOS 6.8 mit ONTAP</block>
   <block id="60f8eeb8d7158ff3d8c8948d846f8e3b" category="paragraph">Für CentOS 6.8 die<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> Die Datei muss vorhanden sein, Sie müssen jedoch keine spezifischen Änderungen an der Datei vornehmen. CentOS 6.8 wird mit allen Einstellungen zusammengestellt, die zum Erkennen und korrekten Managen von ONTAP LUNs erforderlich sind.</block>
   <block id="b470854a78b9856c135ae5a7ed45b720" category="paragraph">Das CentOS 6.8 wird kompiliert, um ONTAP-LUNs zu erkennen und automatisch alle Konfigurationsparameter sowohl für die ASA- als auch für nicht-ASA-Konfiguration korrekt festzulegen.</block>
@@ -517,14 +511,11 @@
   <block id="95a7c4ebc7538126d41cf3497f8e09b4" category="summary">Beschreibt die Verwendung von Red hat Enterprise Linux 6.4 mit ONTAP</block>
   <block id="f0fac0f2b3b710a9568f39594d5f9df3" category="paragraph">Für Red hat Enterprise Linux (RHEL) 6.4 muss die Datei /etc/Multipath.conf vorhanden sein, Sie müssen jedoch keine spezifischen Änderungen an der Datei vornehmen. RHEL 6.4 wird mit allen Einstellungen zusammengestellt, die zum Erkennen und korrekten Managen von ONTAP-LUNs erforderlich sind. So aktivieren Sie ALUA Handler:</block>
   <block id="857c2f89db30800ff3058931e331923e" category="paragraph">Das RHEL 6.4 Betriebssystem wird kompiliert, um ONTAP-LUNs zu erkennen und automatisch alle Konfigurationsparameter für ASA- und nicht-ASA-Konfigurationen korrekt festzulegen.</block>
-  <block id="fbd83cf0e839e6dec73fa3ff243bb8c5" category="summary">Beschreibt die Verwendung von CentOS 7.8 mit ONTAP</block>
-  <block id="b277f2029ada9ac25bce475d62557cb4" category="summary">Beschreibt die Verwendung von CentOS 7.9 mit ONTAP</block>
   <block id="7b226a13926b533ec9331dd4d86cd914" category="summary">Beschreibt die Verwendung von CentOS 6.7 mit ONTAP</block>
   <block id="2a1ab1135667d6dc77c69e8562aa36e0" category="paragraph">Für CentOS 6.7 die<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> Die Datei muss vorhanden sein, Sie müssen jedoch keine spezifischen Änderungen an der Datei vornehmen. CentOS 6.7 wird mit allen Einstellungen zusammengestellt, die zum Erkennen und korrekten Managen von ONTAP LUNs erforderlich sind. So aktivieren Sie ALUA Handler:</block>
   <block id="eb694d82bb8432a9005a1a1f219b1fa0" category="paragraph">Das CentOS 6.7 Betriebssystem wird kompiliert, um ONTAP-LUNs zu erkennen und automatisch alle Konfigurationsparameter sowohl für ASA als auch für nicht-ASA-Konfiguration korrekt einzustellen.</block>
   <block id="0960de670071121018c377f3ca40c5e7" category="summary">Beschreibt die Verwendung von IBM AIX 7.1 mit ONTAP</block>
   <block id="297f86e3f009c4831d4973ff8e686c8e" category="cell">500 für AIX (Standalone/Physical) 200 für VIOC</block>
-  <block id="41e7560cde89e1cd58f68637cb85187c" category="summary">Beschreibt die Verwendung von CentOS 7.6 mit ONTAP</block>
   <block id="dcda2cb33413b9ab0c8373225de75578" category="summary">Konfigurieren von NVMe-of Host für RHEL 8.5 mit ONTAP</block>
   <block id="ec81597eac06c85c5ddfa44cc8fcbd52" category="list-text">RHEL 8.5 unterstützt zusätzlich zu NVMe/FC NVMe/TCP (als Technology Preview Feature). Das NetApp Plug-in im nativen nvme-cli-Paket zeigt ONTAP-Details sowohl für NVMe/FC als auch für NVMe/TCP-Namespaces an.</block>
   <block id="206f20ba4ee9fc54736165b9006258a5" category="list-text">Bei RHEL 8.5 bleibt NVMe Multipath in-Kernel standardmäßig deaktiviert. Deshalb müssen Sie sie manuell aktivieren.</block>
@@ -560,9 +551,6 @@
   <block id="11f09804b54aa2c55c142764b2502d82" category="paragraph">Das folgende Beispiel zeigt die Verwendung des Dienstprogramms dotpaths:</block>
   <block id="2a894c946342eacded4eef5c9a7b96b9" category="list-text">Geben Sie den folgenden Befehl ein, um zu überprüfen, ob der Host die LUNs erkannt hat:</block>
   <block id="a335fa6e5bef06439b229f8adabc7dfe" category="section-title">Listen Sie alle LUNs auf, die dem Host von einer bestimmten SVM zugeordnet sind/Listen Sie alle Attribute einer bestimmten LUN auf, die dem Host zugeordnet sind</block>
-  <block id="62d54f77039c15fe0a65691e9ff3f4c2" category="summary">Beschreibt die Verwendung von CentOS 7.5 mit ONTAP</block>
-  <block id="39e2f887814ee9598f2240638f02ad73" category="summary">Beschreibt die Verwendung von CentOS 8.3 mit ONTAP</block>
-  <block id="9128494ba0ee37c628f015b5af093f58" category="summary">Beschreibt die Verwendung von CentOS 7.0 mit ONTAP</block>
   <block id="04dff1447143c8e4e6195f792be9979e" category="summary">Beschreibt die Verwendung von Red hat Enterprise Linux 6.8 mit ONTAP</block>
   <block id="d58ee726eea2726eefac984fb7e051d6" category="paragraph">Für Red hat Enterprise Linux (RHEL) 6.8 muss die Datei /etc/Multipath.conf vorhanden sein, Sie müssen jedoch keine spezifischen Änderungen an der Datei vornehmen. RHEL 6.8 wird mit allen Einstellungen zusammengestellt, die zum Erkennen und korrekten Managen von ONTAP-LUNs erforderlich sind. So aktivieren Sie ALUA Handler:</block>
   <block id="27903dacace5a068c1878082e92ceefc" category="paragraph">Das RHEL 6.8 Betriebssystem wird kompiliert, um ONTAP-LUNs zu erkennen und automatisch alle Konfigurationsparameter für ASA- und nicht-ASA-Konfigurationen korrekt festzulegen.</block>
@@ -671,12 +659,10 @@
   <block id="32b426d292728e3b54d4487c435db8bc" category="list-text">Port Down Retry Count (Portdwnrc) - 10</block>
   <block id="64e869d9ef872c0eb27623237f739ca1" category="list-text">Link Down Timeout (linkdwnto) - 30</block>
   <block id="c41a9d8b262cc81ee865acdfb4ddd138" category="list-text">Port Down Retry Count (Portdwnrc) - 120</block>
-  <block id="b0825624074d948cc02dab7178882abe" category="summary">Beschreibt die Verwendung von CentOS 8.1 mit ONTAP</block>
   <block id="616c70c8118c8dd6fcab27eaebd42bdf" category="summary">Beschreibt die Konfiguration von NVMe/FC für SUSE Linux Enterprise Server 15 SP1 mit ONTAP</block>
   <block id="1793cac86fac919fc2d9ce3ee8be0a5b" category="doc">NVMe/FC-Hostkonfiguration für SUSE Linux Enterprise Server 15 SP1 mit ONTAP</block>
   <block id="c7f1791a3f59c536386990c900c326c1" category="list-text">Führen Sie ein Upgrade auf die empfohlene nvme-cli MU-Version durch.</block>
   <block id="ee2f5b4a1ef164e582aea7f06ef626bc" category="list-text">Stellen Sie sicher, dass Sie die empfohlene Broadcom lpfc-Firmware und native Inbox-Treiber-Versionen verwenden.</block>
-  <block id="35a2873560c7df91eb3565c5ce683568" category="summary">Beschreibt die Verwendung von CentOS 7.2 mit ONTAP</block>
   <block id="ce33fe68519e0e2d14428572a71c7569" category="summary">Einrichten der VME/FC-Hostkonfiguration für Oracle Linux 8.2 mit ONTAP, mit Beispielen</block>
   <block id="89d62bb3e0891fdc6a601122dddc0440" category="doc">NVMe/FC-Host-Konfiguration für Oracle Linux 8.2 mit ONTAP</block>
   <block id="444ce06dcc32d405185ecb72eb5ab7a2" category="list-text">Installieren Sie Oracle Linux 8.2 auf dem Server.</block>
@@ -780,7 +766,6 @@
   <block id="23aa57b371bac8344dedcd1613b8be86" category="cell"><block ref="27cd76b3a4455543cfaba6391cb8f5b5" category="inline-link-macro-rx"></block></block>
   <block id="c0f2efac60484d28bcdd08cfb17caa1d" category="cell">Der Systemaufruf SG_IO ioctl auf dm-Multipath-Geräten schlägt nach einem FC-Fehler auf OL6.x- und OL5.x-Hosts mit UEK2 fehl</block>
   <block id="97e64aa1a81f574216de1997c1b5ba68" category="cell">Auf Oracle Linux 6.x Hosts mit UEK2 Kernel und Oracle Linux 5.x Hosts mit UEK2 Kernel ist ein Problem aufgetreten. Die sg_*-Befehle auf einem Multipath-Gerät scheitern nach einem Fabric-Fehler mit EAGAIN-Fehlercode (errno), der alle Pfade in der aktiven Pfadgruppe nach unten führt. Dieses Problem tritt nur auf, wenn die Multipath-Geräte keine I/O-Vorgänge aufweisen. Im Folgenden ein Beispiel: # sg_inq -V /dev/mapper/3600a098041764937303f436c75324370 Anfrage cdb: 12 00 00 00 24 00 ioctl(SG_IO v3) fehlgeschlagen mit os_err (errno) = 11 Anfrage: Pass-through os Fehler: Ressource vorübergehend nicht verfügbar HDIO_GET_IDENTITY ioctl fehlgeschlagen: Ressource vorübergehend nicht verfügbar [11] sowohl SCSI-ANFRAGE als auch Abrufen von ATA-Informationen fehlgeschlagen auf /dev/mapper/3600a098041764937303f436c75324370 # Dieses Problem tritt auf, weil die Umschaltung der Pfadgruppe auf andere aktive Gruppen während ioctl()-Aufrufen nicht aktiviert ist, wenn auf dem DM-Multipath-Gerät keine I/O erfolgt. Das Problem wurde bei den folgenden Versionen der Kernel-uek- und Device-Mapper-Multipath-Pakete beobachtet: OL6.4 Versionen: Kernel-uek-2.6.39-400.17.1.el6uek Device-Mapper-Multipath-0.4.9-64.0.1.el6 OL5.9 Versionen: Kernel-uek-2.6.39-400.17.1.el5uek Device-Mapper-Multipath-0.4.9-64.0.el5uek</block>
-  <block id="f4bba4cff96aef30f859bc5d933b86d1" category="summary">Beschreibt die Verwendung von CentOS 7.7 mit ONTAP</block>
   <block id="a57fd33007e3d579c230eadee6c70cda" category="summary">Einrichten der VME/FC-Hostkonfiguration für Oracle Linux 7.9 mit ONTAP, mit Beispielen</block>
   <block id="ed635118a854903a3b0358da07cc869e" category="doc">NVMe/FC-Host-Konfiguration für Oracle Linux 7.9 mit ONTAP</block>
   <block id="a636ca8cde3102effb73bcff59dece16" category="list-text">Im befinden sich keine nativen NVMe/FC-Skripts für die automatische Verbindung<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block> Paket. Verwenden Sie die vom HBA-Anbieter bereitgestellten externen Skripts zur automatischen Verbindung.</block>
@@ -833,7 +818,6 @@
   <block id="78c18a0ec4c11bcb1c4a85c4cdf0d99e" category="list-text">Die Initiatoren, die sich bei der Fabric anmelden sollen.</block>
   <block id="a730e8552a7628ff9ad83769197f8f97" category="list-text">Das System zum Erstellen neuer Geräteeinträge.</block>
   <block id="dd4865aa42fae9d7b3e5284ece55c182" category="paragraph">Die LUNs werden auf dem Host als Festplatten angezeigt. Sie können diese Festplatten auf die gleiche Weise verwenden, wie Sie lokale Festplatten auf dem Host. Die ODM-Datei mit den Host-Einstellungen, die im Rahmen der Host Utilities installiert ist, führt dazu, dass die LUNs als NetApp FCP-Festplatten angezeigt werden.</block>
-  <block id="3eeb371f92f74d2b6501646282092ca7" category="summary">Beschreibt die Verwendung von CentOS 8.4 mit ONTAP</block>
   <block id="903b07b1963af0c45e65b6d887a9b059" category="summary">Beschreibt die Verwendung von Red hat Enterprise Linux 6.9 mit ONTAP</block>
   <block id="b2da1ca8334b29f1d40436a25662d8d6" category="paragraph">Für Red hat Enterprise Linux (RHEL) 6.9 muss die Datei /etc/Multipath.conf vorhanden sein, Sie müssen jedoch keine spezifischen Änderungen an der Datei vornehmen. RHEL 6.9 wird mit allen Einstellungen zusammengestellt, die zum Erkennen und korrekten Managen von ONTAP-LUNs erforderlich sind. So aktivieren Sie ALUA Handler:</block>
   <block id="481485305bd44028530f59a9a9614451" category="paragraph">Das RHEL 6.9 Betriebssystem wird kompiliert, um ONTAP-LUNs zu erkennen und automatisch alle Konfigurationsparameter für ASA- und nicht-ASA-Konfigurationen korrekt festzulegen.</block>
@@ -1438,12 +1422,10 @@
 Die Bindung des FC-Treibers wird von geändert<block ref="b9ca0a083600812be33f42f91f00492c" prefix=" " category="inline-code"></block> Bis<block ref="200efcf5dbc2c08d7c76deba0c7ecda8" prefix=" " category="inline-code"></block>. Verschieben Sie die Konfiguration in<block ref="d5ef7f69fa74e42b54d8244ee447ab2b" prefix=" " category="inline-code"></block> Bis<block ref="88cafedaeae385b0e8278ab1804829cd" prefix=" " category="inline-code"></block> Wie bereits in Oracle erwähnt (Doc-ID 2595926.1). Das Verhalten variiert je nach neu installierten Solaris 11.4-Systemen und Systemen, die von 11.3 oder älteren Versionen aktualisiert wurden.</block>
   <block id="eb5d1a08cb5aa5e6c62dcec6f972d7ef" category="list-text">FCP Allgemein: Zeigt FC- und HBA-Fehler (Host Bus Adapter) an, die keinem bestimmten Host zugeordnet sind.</block>
   <block id="b2996e4a9c3c0535f864240f52e9bcdc" category="list-text">Veritas Dynamic Multipathing (DMP) mit dem FC- oder iSCSI-Protokoll auf einem System mit SPARC Prozessor oder dem iSCSI-Protokoll auf einem System mit x86/64-Prozessor.</block>
-  <block id="43202c148f53a3c518890e18ae6998e4" category="list-text">Laden Sie eine Kopie der komprimierten Datei mit den Host Utilities von herunter <block ref="71858c0235496b8ba65e5e8097fdda2a" category="inline-link-macro-rx"></block> Zu einem Verzeichnis auf Ihrem Host.</block>
   <block id="f01e00e50e3260a96149df0279bca6c7" category="list-text">Entpacken Sie die Datei mithilfe des<block ref="28c378002cbdc25e8dbf07ffe605f6ac" prefix=" " category="inline-code"></block> Befehl:</block>
   <block id="16337c2b0ad3e64aaeb3714d78256deb" category="paragraph">Solaris Host Utilities ist eine NetApp Host Software, die auf Ihrem Oracle Solaris Host ein Befehlszeilen-Toolkit bietet. Das Toolkit wird bei der Installation des NetApp Host Utilities-Pakets installiert. Dieses Kit enthält die<block ref="3a8e4afa851609127d534b04e7d29c08" prefix=" " category="inline-code"></block> Dienstprogramm zum Verwalten von LUNs und Host Bus Adaptern (HBAs). Der<block ref="3a8e4afa851609127d534b04e7d29c08" prefix=" " category="inline-code"></block> Befehl gibt Informationen über die LUNs zurück, die Ihrem Host zugeordnet sind, Multipathing und Informationen zurück, die zum Erstellen von Initiatorgruppen erforderlich sind.</block>
   <block id="5cbce7f0ea158500dcff175373e3cbcf" category="paragraph">In den Versionshinweisen werden neue Funktionen und Verbesserungen, in der aktuellen Version behobene Probleme, bekannte Probleme und Einschränkungen sowie wichtige Hinweise zur Konfiguration und Verwaltung Ihres spezifischen AIX-Hosts mit Ihrem ONTAP-Speichersystem beschrieben.</block>
   <block id="33871b6190a8d5adbe8b15282054766c" category="section-title">Was ist neu</block>
-  <block id="e4e1c13bb0b14f6cb7608cbecea948ef" category="list-text">ISCSI</block>
   <block id="c791b15d48a2be7d8c6a9c0b2badc362" category="list-text">PowerVM</block>
   <block id="f46d29974d2e1fa7b1fb4f55e009f7c2" category="paragraph">Weitere Informationen zu PowerVM finden Sie im IBM PowerVM Live Partition Mobility Red Book.</block>
   <block id="7cfc2a0609811d433edc27220510bde6" category="list-text">Wechseln Sie zum<block ref="4885f2a79813769d8236c375fd40eeb7" category="inline-link-rx"></block> Und laden Sie die komprimierte Datei mit den Host Utilities in ein Verzeichnis auf Ihrem Host herunter.</block>
@@ -1556,7 +1538,6 @@ Die Bindung des FC-Treibers wird von geändert<block ref="b9ca0a083600812be33f42
   <block id="b16452e3905ac336b68babc6fa562702" category="paragraph">Sie können die Konfigurationseinstellungen des ONTAP-SAN-Hosts verwenden, um Oracle Linux 6.9 mit ONTAP als Ziel zu konfigurieren.</block>
   <block id="a69f90991b7861bf298029c85947f926" category="paragraph">Die Oracle Linux 6.9 mit ONTAP-Version weist folgende bekannte Probleme auf:</block>
   <block id="95ee459b709d0e4cae7ea12ed33763f9" category="paragraph">Es gibt keine bekannten Probleme für SUSE Linux Enterprise Server 15 SP4 mit ONTAP-Version.</block>
-  <block id="0d3d494fc08d768af320e003868e2ebc" category="paragraph">Sie können die Konfigurationseinstellungen des ONTAP-SAN-Hosts verwenden, um HP-UX 11i v3 mit ONTAP als Ziel zu konfigurieren.</block>
   <block id="1bc24cef68b137efe0e69c2b269dd7da" category="paragraph">Es gibt keine bekannten Probleme für die Veritas Infoscale 8 für Linux mit ONTAP Release.</block>
   <block id="7145b773c01d1ea2262969c3644747a0" category="paragraph">Es gibt keine bekannten Probleme für Windows Server 2022 mit ONTAP-Version.</block>
   <block id="3d8d5b2f05311b66754ca058971f7e2e" category="paragraph">Es gibt keine bekannten Probleme für SUSE Linux Enterprise Server 15 SP5 mit ONTAP-Version.</block>
@@ -2944,14 +2925,9 @@ Die Host Utilities<block ref="a49e6041666308abe45789ecfadd593e" prefix=" " categ
   <block id="c76dae5432bc09fa983706505086692e" category="list-text">Generieren Sie den Dhchap-Schlüssel für den RHEL 9.6-Host.</block>
   <block id="eaf2f97729e8d5e4d205672da8afc9a5" category="sidebar">9,6</block>
   <block id="c90e2c8eff8de67c2e01d748085394db" category="list-text">Überprüfen Sie, ob die <block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> Datei existiert. Wenn die Datei nicht vorhanden ist, erstellen Sie eine leere, Null-Byte-Datei:</block>
-  <block id="9143f7bbdb93a1e9aa2dc28f3c922fcc" category="summary">Beschreibt die Verwendung von Citrix Hypervisor 8.2 mit ONTAP</block>
   <block id="0825e58b251b6f1e1956c9f982c69b3d" category="doc">Konfigurieren Sie Citrix Hypervisor 8.2 für FCP und iSCSI mit ONTAP-Speicher</block>
-  <block id="efb6a029c96ca3e81423fa8765c5e1f2" category="paragraph">Die Linux Host Utilities-Software enthält Management- und Diagnose-Tools für Linux-Hosts, die mit dem ONTAP-Storage verbunden sind. Wenn Sie die Linux Host Utilities auf einem Citrix Hypervisor 8.2-Host installieren, können Sie die Host Utilities verwenden, um FCP- und iSCSI-Protokollvorgänge mit ONTAP LUNs zu verwalten.</block>
   <block id="3e2e1ae5727d07e3ee9163e73df8e73f" category="paragraph">Sie können Multipathing mit Citrix Hypervisor 8.2 verwenden, um ONTAP LUNs zu verwalten.</block>
-  <block id="b335d4f62ea30021bc1fd547fa7ca552" category="summary">Beschreibt die Verwendung von Citrix XenServer 8.4 mit ONTAP</block>
   <block id="6d9eef6a4c2617ee0a8dfdc9ae7a468a" category="doc">Konfigurieren Sie Citrix Xenserver 8.4 für FCP und iSCSI mit ONTAP-Speicher</block>
-  <block id="a2e2d0fcc9350f73f4294c53a7b2fa53" category="paragraph">Die Linux Host Utilities-Software enthält Management- und Diagnose-Tools für Linux-Hosts, die mit dem ONTAP-Storage verbunden sind. Wenn Sie die Linux Host Utilities auf einem Citrix Xenserver 8.4-Host installieren, können Sie die Host Utilities zur Verwaltung von FCP- und iSCSI-Protokollvorgängen mit ONTAP LUNs verwenden.</block>
-  <block id="405ee507e1b0e20ba609f39dc449664e" category="paragraph">Sie können Multipathing mit Citrix Xenserver 8.4 verwenden, um ONTAP LUNs zu verwalten.</block>
   <block id="7ef93303f99987d3f82b96411ca41f0f" category="sidebar">XenServer 8,4</block>
   <block id="c4bb680e83ce918749e1d4853b0073d1" category="sidebar">Hypervisor 8.2 (LTSR)</block>
   <block id="73dbe2792e643c8d49d1c396963179b8" category="inline-link-macro">Erstellen Sie eine SAN-Boot-LUN und ordnen Sie sie dem Host zu</block>
@@ -3666,7 +3642,6 @@ Die Host Utilities<block ref="a49e6041666308abe45789ecfadd593e" prefix=" " categ
   <block id="08c083ab3d2dc85cc17c16aa87be865d" category="list-text">Melden Sie sich als *padmin* an.</block>
   <block id="5a5324c7cd51d134dd7b4074df426843" category="list-text">Werden Sie Root-Benutzer:</block>
   <block id="930931415b499a122be49a153545f591" category="list-text">Überprüfen Sie, ob die SCSI UNMAP<block ref="ce7e54a230e7d7f6125c862b6201f954" prefix=" " category="inline-code"></block> Parameter wird zum ODM hinzugefügt:</block>
-  <block id="1902e1a7238623f94367d983e59c5a3b" category="summary">Beschreibt die Verwendung von IBM AIX 7.3 und/oder PowerVM VIOS 4.x mit ONTAP</block>
   <block id="4743f8e0bf68713a9a85d0855c2d28cc" category="doc">Konfigurieren Sie AIX 7.3/VIOS 4.x für FCP und iSCSI mit ONTAP -Speicher</block>
   <block id="e3bdc2d79b7f752397bd2b07e719c94d" category="paragraph">Die AIX Host Utilities-Software bietet Verwaltungs- und Diagnosetools für AIX-Hosts, die mit ONTAP Speicher verbunden sind.  Wenn Sie die AIX Host Utilities auf einem AIX 7.3/VIOS 4.x-Host installieren, können Sie die Host Utilities zur Verwaltung von FCP- und iSCSI-Protokollvorgängen mit ONTAP LUNs verwenden.</block>
   <block id="ea07c36b18e97a60b8e39185af2e70d2" category="inline-link-macro">Installieren Sie AIX Host Utilities 8.0</block>
@@ -3675,8 +3650,6 @@ Die Host Utilities<block ref="a49e6041666308abe45789ecfadd593e" prefix=" " categ
   <block id="808f509e0f9c43c998453cb36e32d6b9" category="list-text">Stellen Sie sicher, dass „MPIO NetApp“ verfügbar ist.  „MPIO NetApp“ wird während der Installation der AIX Host Utilities geladen und ist nach dem Neustart des Hosts verfügbar.</block>
   <block id="f3a66c03dd24364f67a928342777d333" category="paragraph"><block ref="e5220707910060523bb96d6b9caa48a3" prefix="" category="inline-code"></block></block>
   <block id="bc6a13eaaadb92e952fe0780a8c05fa5" category="list-text">Die AIX Host Utilities laden die folgenden Parametereinstellungen für ONTAP LUNs.</block>
-  <block id="b85351e18a5da33e0eb75ecc1fbda104" category="list-text">Konfigurieren Sie die folgenden Einstellungen, um E/A-Vorgänge für FC und iSCSI zu optimieren.</block>
-  <block id="a7c815fafe60ae637d38216fa6300395" category="open-title">FCP</block>
   <block id="92d3d1084eb6c8f1ef216786e227ba4d" category="cell">AIX-Versionen</block>
   <block id="f8b9e823d50ed3e99fd77acc2363ca70" category="cell">AIX OS-Standardwert</block>
   <block id="024c7088f8cb994f40e5d60b87c10cbb" category="cell">Empfohlener Wert von NetApp</block>
@@ -3746,7 +3719,6 @@ Die Host Utilities<block ref="a49e6041666308abe45789ecfadd593e" prefix=" " categ
   <block id="54d2be6229d60cd6144f8a215e8e77e9" category="list-text">Installieren Sie die auf der Support-Site des Anbieters verfügbaren Host Bus Adapter (HBA)-Verwaltungspakete.  Die Managementsoftware ermöglicht die<block ref="3a8e4afa851609127d534b04e7d29c08" prefix=" " category="inline-code"></block> Befehle zum Sammeln von Informationen über die FC-HBAs, beispielsweise ihre WWPNs.</block>
   <block id="0ea3e528a268f7a469a48d5d8aae4f82" category="paragraph">Überprüfen Sie anhand der Herstellerdokumentation, ob die folgenden Pakete korrekt installiert sind.  Diese Pakete sind erforderlich zur Unterstützung der<block ref="09a10ae06f964cc0f5c0201377e37384" prefix=" " category="inline-code"></block> Befehl:</block>
   <block id="291498f8ec1453e277a2e2b46e71ae68" category="list-text">Wenn Sie derzeit eine Version von Linux Host Utilities installiert haben, entfernen Sie diese:</block>
-  <block id="637c8507f72183e29c96c146c86d7988" category="list-text">Das Softwarepaket „NetApp Linux Host Utilities“ ist auf der NetApp -Support-Site in einer 64-Bit-RPM-Datei verfügbar.  Laden Sie die 64-Bit-Datei von der<block ref="43f1e3306c26d9daf12133f7af036caf" category="inline-link-macro-rx"></block> an Ihren Gastgeber.</block>
   <block id="a47e489edc31ec3082b9f72fed5a5375" category="list-text">Gehen Sie in das Verzeichnis, in das Sie das Softwarepaket heruntergeladen haben, und installieren Sie es:</block>
   <block id="b13f2391541d6900841a6b191f26531d" category="paragraph">Wenn Sie ein Ubuntu-Hostbetriebssystem verwenden, müssen Sie es manuell mit der HBA-Bibliothek verknüpfen:</block>
   <block id="bf2fa1be3b14254d86cd9857c8495543" category="doc">Verwenden Sie Linux Host Utilities-Befehle, um die ONTAP Speicherkonfiguration zu überprüfen</block>
@@ -4039,15 +4011,45 @@ Die Host Utilities<block ref="a49e6041666308abe45789ecfadd593e" prefix=" " categ
   <block id="2a620c94e95b2a7a9b0a5187427a9dc9" category="paragraph"><block ref="2a620c94e95b2a7a9b0a5187427a9dc9" category="inline-link-macro-rx"></block></block>
   <block id="f98d44b09f5d0cc59433485eb0048243" category="inline-link-macro">Erfahren Sie mehr über die Installation von Windows Host Utilities</block>
   <block id="cc30e60c3bfc777355fb5c1a9f21201f" category="paragraph"><block ref="cc30e60c3bfc777355fb5c1a9f21201f" category="inline-link-macro-rx"></block></block>
-  <block id="eb9e9eaeca9a2fe6f091f95c60ceeda4" category="summary">Konfigurieren Sie Ubuntu 20.04 für Multipathing und mit spezifischen Parametern und Einstellungen für den FCP- und iSCSI-Betrieb mit ONTAP -Speicher.</block>
   <block id="2eea900ee581f5726b661093cf8ad505" category="doc">Konfigurieren Sie Ubuntu 20.04 für FCP und iSCSI mit ONTAP -Speicher</block>
   <block id="dd8d9457c96c61b509341e8fc9c06a5a" category="section-title">Schritt 2: Bestätigen Sie die Multipath-Konfiguration für Ihren Host</block>
   <block id="86068021aef836dc1f6f1acf0c458729" category="paragraph">Sie können Multipathing mit Ubuntu 20.04 verwenden, um ONTAP -LUNs zu verwalten.</block>
   <block id="e5c9aae3aa070feffc71ad22ae694781" category="section-title">Schritt 5: Überprüfen der bekannten Probleme</block>
-  <block id="00958a9c412688342677cda75697e733" category="summary">Konfigurieren Sie Ubuntu 22.04 für Multipathing und mit spezifischen Parametern und Einstellungen für den FCP- und iSCSI-Betrieb mit ONTAP -Speicher.</block>
   <block id="ff819e4a2fe4a976a60235e7548a85fb" category="doc">Konfigurieren Sie Ubuntu 22.04 für FCP und iSCSI mit ONTAP -Speicher</block>
   <block id="0ec9e84225e24bae7e1764e1ec2d5208" category="paragraph">Sie können Multipathing mit Ubuntu 22.04 verwenden, um ONTAP -LUNs zu verwalten.</block>
   <block id="7ffbdb03ebbe3dde997db38f057eaa6f" category="doc">Konfigurieren Sie Ubuntu 24.04 für FCP und iSCSI mit ONTAP -Speicher</block>
-  <block id="907d5397191da1f1ee4679d077fb0523" category="paragraph">Konfigurieren Sie Ubuntu 24.04 für Multipathing und mit spezifischen Parametern und Einstellungen für den FCP- und iSCSI-Betrieb mit ONTAP -Speicher.</block>
   <block id="7346a23f776ee48b909f292127a35cfd" category="paragraph">Sie können Multipathing mit Ubuntu 24.04 verwenden, um ONTAP -LUNs zu verwalten.</block>
+  <block id="c57ba702358115215fa1859fbd41c62f" category="summary">Installieren Sie Linux Host Utilities auf einem AIX 7.3/VIOS 4.x-Host, um FCP- und iSCSI-Protokollvorgänge mit ONTAP LUNs zu verwalten.</block>
+  <block id="7f47ce68c3e9712b2e5eeb570615f772" category="list-text">Konfigurieren Sie die folgenden Einstellungen, um E/A-Vorgänge für FC zu optimieren.</block>
+  <block id="38df161a4bef837a9583cd463465319a" category="list-text">Konfigurieren Sie die folgenden Einstellungen, um E/A-Vorgänge für iSCSI zu optimieren.</block>
+  <block id="70b16312ca41521a63845d682d638bec" category="list-text">Gehen Sie zum<block ref="4d71adee66f8e315be0be498f4a01c67" category="inline-link-rx"></block> und laden Sie die komprimierte Datei mit den Host-Dienstprogrammen in ein Verzeichnis auf Ihrem Host herunter.</block>
+  <block id="c294ad1e453d7b752c4a7b6ffca30fa7" category="list-text">Das Softwarepaket „NetApp Linux Host Utilities“ ist auf der NetApp -Support-Site in einer 64-Bit-RPM-Datei verfügbar. Laden Sie die 64-Bit-Datei von der<block ref="237990affc48ceaf00880be7be2d0c19" category="inline-link-macro-rx"></block> an Ihren Gastgeber.</block>
+  <block id="23ca7e804a2f969375c0a54dad8a855e" category="list-text">Laden Sie eine Kopie der komprimierten Datei mit den Host-Dienstprogrammen von der<block ref="237990affc48ceaf00880be7be2d0c19" category="inline-link-macro-rx"></block> in ein Verzeichnis auf Ihrem Host.</block>
+  <block id="8af7a3daa634a1fe75d982742d9c6988" category="list-text">Laden Sie die ausführbare Datei von der<block ref="4d71adee66f8e315be0be498f4a01c67" category="inline-link-rx"></block> .</block>
+  <block id="7b14446bb459cc461b85225eb36e5ddb" category="list-text">Führen Sie den<block ref="2ae3756e5933ab49d9a7fd370e8bb672" prefix=" " category="inline-code"></block> Datei und folgen Sie den Anweisungen auf dem Bildschirm.</block>
+  <block id="33fc47220446607f038d8aa5cbb2f85f" category="summary">Installieren Sie Linux Host Utilities auf einem CentOS 7.0-Host, um FCP- und iSCSI-Protokollvorgänge mit ONTAP LUNs zu verwalten.</block>
+  <block id="06d16027989212eb9ec30fbbceecc483" category="summary">Installieren Sie Linux Host Utilities auf einem CentOS 7.1-Host, um FCP- und iSCSI-Protokollvorgänge mit ONTAP LUNs zu verwalten.</block>
+  <block id="d6736620899a1598c3323f146c329a47" category="summary">Installieren Sie Linux Host Utilities auf einem CentOS 7.2-Host, um FCP- und iSCSI-Protokollvorgänge mit ONTAP LUNs zu verwalten.</block>
+  <block id="c7093ee3b2d76f9f54e1c7967a8757ed" category="summary">Installieren Sie Linux Host Utilities auf einem CentOS 7.3-Host, um FCP- und iSCSI-Protokollvorgänge mit ONTAP LUNs zu verwalten.</block>
+  <block id="f51784140f9e4c18aaaaabc97ab88175" category="summary">Installieren Sie Linux Host Utilities auf einem CentOS 7.4-Host, um FCP- und iSCSI-Protokollvorgänge mit ONTAP LUNs zu verwalten.</block>
+  <block id="bdc9a2b049ed8b5764f50150bca8aacd" category="summary">Installieren Sie Linux Host Utilities auf einem CentOS 7.5-Host, um FCP- und iSCSI-Protokollvorgänge mit ONTAP LUNs zu verwalten.</block>
+  <block id="f3a268ccef73be1a6f14d0c5e46779f4" category="summary">Installieren Sie Linux Host Utilities auf einem CentOS 7.6-Host, um FCP- und iSCSI-Protokollvorgänge mit ONTAP LUNs zu verwalten.</block>
+  <block id="3950d47aea232c7c0f4d9f45a43bda17" category="summary">Installieren Sie Linux Host Utilities auf einem CentOS 7.7-Host, um FCP- und iSCSI-Protokollvorgänge mit ONTAP LUNs zu verwalten.</block>
+  <block id="d539ad578c66b9df653e9cf83bd0c001" category="summary">Installieren Sie Linux Host Utilities auf einem CentOS 7.8-Host, um FCP- und iSCSI-Protokollvorgänge mit ONTAP LUNs zu verwalten.</block>
+  <block id="696f3bd641d1ac208e9dcbc482739bd0" category="summary">Installieren Sie Linux Host Utilities auf einem CentOS 7.9-Host, um FCP- und iSCSI-Protokollvorgänge mit ONTAP LUNs zu verwalten.</block>
+  <block id="252d89392684bcfcf4005f42db245f9a" category="summary">Installieren Sie Linux Host Utilities auf einem CentOS 8.0-Host, um FCP- und iSCSI-Protokollvorgänge mit ONTAP LUNs zu verwalten.</block>
+  <block id="5c8eef54a7730dec61d5ef002cd898f1" category="summary">Installieren Sie Linux Host Utilities auf einem CentOS 8.1-Host, um FCP- und iSCSI-Protokollvorgänge mit ONTAP LUNs zu verwalten.</block>
+  <block id="b683b84fbd22cd466d30eec590f61226" category="summary">Installieren Sie Linux Host Utilities auf einem CentOS 8.2-Host, um FCP- und iSCSI-Protokollvorgänge mit ONTAP LUNs zu verwalten.</block>
+  <block id="09c8e0bd6acf9d6ae65366b23ef6a356" category="summary">Installieren Sie Linux Host Utilities auf einem CentOS 8.3-Host, um FCP- und iSCSI-Protokollvorgänge mit ONTAP LUNs zu verwalten.</block>
+  <block id="ac161b2d475197d66b93469d29587e22" category="summary">Installieren Sie Linux Host Utilities auf einem CentOS 8.4-Host, um FCP- und iSCSI-Protokollvorgänge mit ONTAP LUNs zu verwalten.</block>
+  <block id="49cc988afc6b092ce6281b15b9a60972" category="summary">Installieren Sie Linux Host Utilities auf einem CentOS 8.5-Host, um FCP- und iSCSI-Protokollvorgänge mit ONTAP LUNs zu verwalten.</block>
+  <block id="3c7efd424a20046d29e4da88c0d5c486" category="summary">Konfigurieren Sie Citrix Hypervisor 8.2 für Multipathing und mit spezifischen Parametern und Einstellungen für FCP- und iSCSI-Protokollvorgänge mit ONTAP Speicher.</block>
+  <block id="1f5a17864fe735a3a834371ab2c3043e" category="paragraph">Das Softwarepaket Linux Host Utilities unterstützt keine Citrix Hypervisor-Betriebssysteme.</block>
+  <block id="de920f5dd498ae73930aaae6ead146f6" category="summary">Konfigurieren Sie Citrix Hypervisor 8.4 für Multipathing und mit spezifischen Parametern und Einstellungen für FCP- und iSCSI-Protokollvorgänge mit ONTAP Speicher.</block>
+  <block id="936b4d22e2607b9ac84f06791fe03923" category="paragraph">Sie können Multipathing mit Citrix Hypervisor 8.4 verwenden, um ONTAP -LUNs zu verwalten.</block>
+  <block id="56eaee8dcecb52bd60025f4df180e2f4" category="summary">Installieren Sie Linux Host Utilities auf einem HP-UX 11i v3-Host, um FCP- und iSCSI-Protokollvorgänge mit ONTAP LUNs zu verwalten.</block>
+  <block id="bb53e7efc63e8dc547146d694f3c97c1" category="summary">Konfigurieren Sie Ubuntu 20.04 für Multipathing und mit spezifischen Parametern und Einstellungen für FCP- und iSCSI-Protokollvorgänge mit ONTAP Speicher.</block>
+  <block id="3d4de8befb0eddb7be95b9eb899bcd21" category="summary">Installieren Sie Linux Host Utilities auf einem Ubuntu 24.04-Host, um FCP- und iSCSI-Protokollvorgänge mit ONTAP LUNs zu verwalten.</block>
+  <block id="faed4c9c8188f7390b773fb64e42fc29" category="paragraph">Die Linux Host Utilities-Software bietet Verwaltungs- und Diagnosetools für Linux-Hosts, die mit ONTAP Speicher verbunden sind.  Wenn Sie die Linux Host Utilities auf einem Ubuntu 22.04-Host installieren, können Sie die Host Utilities zur Verwaltung von FCP- und iSCSI-Protokollvorgängen mit ONTAP LUNs verwenden.</block>
+  <block id="3b2ad8d11d49615d3cb062774e116630" category="paragraph">Die Linux Host Utilities-Software bietet Verwaltungs- und Diagnosetools für Linux-Hosts, die mit ONTAP Speicher verbunden sind.  Wenn Sie die Linux Host Utilities auf einem Ubuntu 24.04-Host installieren, können Sie die Host Utilities zur Verwaltung von FCP- und iSCSI-Protokollvorgängen mit ONTAP LUNs verwenden.</block>
 </blocks>

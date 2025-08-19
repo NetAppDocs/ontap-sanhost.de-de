@@ -31,7 +31,7 @@ Stellen Sie sicher, dass Ihre iSCSI-, FC- oder FCoE-Konfiguration unterstützt w
 
 .Schritte
 . Melden Sie sich als Root bei Ihrem Host an.
-. Laden Sie eine Kopie der komprimierten Datei mit den Host Utilities von herunter link:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/6.2/downloads["NetApp Support Website"^] Zu einem Verzeichnis auf Ihrem Host.
+. Laden Sie eine Kopie der komprimierten Datei mit den Host-Dienstprogrammen von derlink:https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/8.0/downloads["NetApp Support Website"^] in ein Verzeichnis auf Ihrem Host.
 +
 [role="tabbed-block"]
 ====

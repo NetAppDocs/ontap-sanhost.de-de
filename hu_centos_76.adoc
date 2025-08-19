@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: hu_centos_76.html 
 keywords: host utilities, centos, linux, 7.6, netapp, ontap 
-summary: Beschreibt die Verwendung von CentOS 7.6 mit ONTAP 
+summary: Installieren Sie Linux Host Utilities auf einem CentOS 7.6-Host, um FCP- und iSCSI-Protokollvorgänge mit ONTAP LUNs zu verwalten. 
 ---
 = Konfigurieren Sie CentOS 7.6 für FCP und iSCSI für ONTAP-Speicher
 :hardbreaks:

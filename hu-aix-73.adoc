@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: hu-aix-73.html 
 keywords: Host Utilities, aix, powervm, vios, 3.1, 7.2 netapp, ontap 
-summary: Beschreibt die Verwendung von IBM AIX 7.3 und/oder PowerVM VIOS 4.x mit ONTAP 
+summary: Installieren Sie Linux Host Utilities auf einem AIX 7.3/VIOS 4.x-Host, um FCP- und iSCSI-Protokollvorgänge mit ONTAP LUNs zu verwalten. 
 ---
 = Konfigurieren Sie AIX 7.3/VIOS 4.x für FCP und iSCSI mit ONTAP -Speicher
 :hardbreaks:
@@ -131,12 +131,8 @@ lsdev -Cc disk
 | num_cmd_elems | MPIO / Non-MPIO | 1024 für AIX | FC EN0G 
 |===
 ====
-. Konfigurieren Sie die folgenden Einstellungen, um E/A-Vorgänge für FC und iSCSI zu optimieren.
+. Konfigurieren Sie die folgenden Einstellungen, um E/A-Vorgänge für FC zu optimieren.
 +
-[role="tabbed-block"]
-====
-.FCP
---
 [cols="4*"]
 |===
 | Parameter | AIX-Versionen | AIX OS-Standardwert | Empfohlener Wert von NetApp 
@@ -153,9 +149,8 @@ lsdev -Cc disk
 
 | VIOS 4.1 | 30 Sekunden | 30 Sekunden 
 |===
---
-.ISCSI
---
+. Konfigurieren Sie die folgenden Einstellungen, um E/A-Vorgänge für iSCSI zu optimieren.
++
 [cols="4*"]
 |===
 | Parameter | AIX-Versionen | AIX OS-Standardwert | Empfohlener Wert von NetApp 
@@ -178,8 +173,6 @@ lsdev -Cc disk
 
 | isw_err_recov (iscsi0) | Alle AIX7.2 und AIX 7.3 Standalone | verzögerter_Fehler | fast_fail 
 |===
---
-====
 . Wenn Ihre Speicherkonfiguration MetroCluster oder SnapMirror Active Sync umfasst, ändern Sie die Standardeinstellungen:
 +
 [role="tabbed-block"]

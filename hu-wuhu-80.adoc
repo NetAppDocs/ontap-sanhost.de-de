@@ -115,9 +115,9 @@ Sie können die Host-Dienstprogramme interaktiv oder über die Windows-Befehlsze
 --
 Installieren Sie das Softwarepaket „Windows Host Utilities“ interaktiv, indem Sie das Installationsprogramm ausführen und den Anweisungen folgen.
 
-. Laden Sie die ausführbare Datei vom herunter https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/7.2/downloads["NetApp Support Website"^].
+. Laden Sie die ausführbare Datei von der https://mysupport.netapp.com/site/products/all/details/hostutilities/downloads-tab/download/61343/8.0/downloads["NetApp Support Website"^] .
 . Wechseln Sie in das Verzeichnis, in dem Sie die ausführbare Datei heruntergeladen haben.
-. Führen Sie die aus `netapp_windows_host_utilities_7.2_x64` Datei und folgen Sie den Anweisungen auf dem Bildschirm.
+. Führen Sie den `netapp_windows_host_utilities_8.0.0_x64` Datei und folgen Sie den Anweisungen auf dem Bildschirm.
 . Starten Sie den Windows-Host neu, wenn Sie dazu aufgefordert werden.
 
 

@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: hu_ubuntu_2204.html 
 keywords: host utilities, red hat, rhel, linux, 20.04, netapp, ontap, ubuntu 
-summary: Konfigurieren Sie Ubuntu 22.04 für Multipathing und mit spezifischen Parametern und Einstellungen für den FCP- und iSCSI-Betrieb mit ONTAP -Speicher. 
+summary: Installieren Sie Linux Host Utilities auf einem Ubuntu 24.04-Host, um FCP- und iSCSI-Protokollvorgänge mit ONTAP LUNs zu verwalten. 
 ---
 = Konfigurieren Sie Ubuntu 22.04 für FCP und iSCSI mit ONTAP -Speicher
 :toc: macro
@@ -19,15 +19,11 @@ summary: Konfigurieren Sie Ubuntu 22.04 für Multipathing und mit spezifischen P
 
 
 [role="lead"]
-Konfigurieren Sie Ubuntu 22.04 für Multipathing und mit spezifischen Parametern und Einstellungen für den FCP- und iSCSI-Betrieb mit ONTAP -Speicher.
+Die Linux Host Utilities-Software bietet Verwaltungs- und Diagnosetools für Linux-Hosts, die mit ONTAP Speicher verbunden sind.  Wenn Sie die Linux Host Utilities auf einem Ubuntu 22.04-Host installieren, können Sie die Host Utilities zur Verwaltung von FCP- und iSCSI-Protokollvorgängen mit ONTAP LUNs verwenden.
 
-[NOTE]
-====
-Das Softwarepaket „Linux Host Utilities“ unterstützt keine Ubuntu-Betriebssysteme.
 
-Sie müssen die Einstellungen der Kernel-basierten virtuellen Maschine (KVM) nicht manuell konfigurieren, da ONTAP LUNs automatisch dem Hypervisor zugeordnet werden.
+NOTE: Sie müssen die Einstellungen der Kernel-basierten virtuellen Maschine (KVM) nicht manuell konfigurieren, da ONTAP LUNs automatisch dem Hypervisor zugeordnet werden.
 
-====
 
 
 == Schritt 1: Aktivieren Sie optional den SAN-Bootvorgang
@@ -48,7 +44,18 @@ Informationen zum Aktivieren des HBA-BIOS finden Sie in der anbieterspezifischen
 
 
 
-== Schritt 2: Bestätigen Sie die Multipath-Konfiguration für Ihren Host
+== Schritt 2: Installieren Sie die Linux Host Utilities
+
+NetApp empfiehlt dringend die Installation der Linux Host Utilities, um die ONTAP LUN-Verwaltung zu unterstützen, und den technischen Support beim Sammeln von Konfigurationsdaten zu unterstützen.
+
+link:hu-luhu-80.html["Installieren Sie Linux Host Utilities 8.0"] .
+
+
+NOTE: Durch die Installation der Linux Host Utilities werden keine Host-Timeout-Einstellungen auf Ihrem Linux-Host geändert.
+
+
+
+== Schritt 3: Bestätigen Sie die Multipath-Konfiguration für Ihren Host
 
 Sie können Multipathing mit Ubuntu 22.04 verwenden, um ONTAP -LUNs zu verwalten.
 
@@ -202,7 +209,7 @@ size=160G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp
 
 
 
-== Schritt 3: Optionales Ausschließen eines Geräts vom Multipathing
+== Schritt 4: Optional: Schließen Sie ein Gerät vom Multipathing aus
 
 Bei Bedarf können Sie ein Gerät vom Multipathing ausschließen, indem Sie die WWID für das unerwünschte Gerät der „Blacklist“-Strophe für die Datei hinzufügen `multipath.conf`.
 
@@ -234,7 +241,7 @@ blacklist {
 
 
 
-== Schritt 4: Multipath-Parameter für ONTAP LUNs anpassen
+== Schritt 5: Passen Sie Multipath-Parameter für ONTAP LUNs an
 
 Wenn Ihr Host mit LUNs anderer Hersteller verbunden ist und eine der Multipath-Parametereinstellungen überschrieben wird, müssen Sie diese korrigieren, indem Sie später Strophen in der Datei hinzufügen `multipath.conf`, die speziell für ONTAP-LUNs gelten. Wenn Sie dies nicht tun, funktionieren die ONTAP LUNs möglicherweise nicht wie erwartet.
 
@@ -267,6 +274,17 @@ devices {
 ====
 
 
-== Schritt 5: Überprüfen der bekannten Probleme
+== Schritt 6: Überprüfen Sie die bekannten Probleme
 
 Es sind keine Probleme bekannt.
+
+
+
+== Was kommt als Nächstes?
+
+* link:hu-luhu-command-reference.html["Erfahren Sie mehr über die Verwendung des Linux Host Utilities-Tools"] .
+* Erfahren Sie mehr über ASM Mirroring.
++
+Bei der ASM-Spiegelung (Automatic Storage Management) sind möglicherweise Änderungen an den Linux Multipath-Einstellungen erforderlich, damit ASM ein Problem erkennen und zu einer alternativen Fehlergruppe wechseln kann. Die meisten ASM-Konfigurationen auf ONTAP verwenden externe Redundanz, was bedeutet, dass Datenschutz vom externen Array bereitgestellt wird und ASM keine Daten spiegelt. Einige Standorte verwenden ASM mit normaler Redundanz, um normalerweise zwei-Wege-Spiegelung über verschiedene Standorte hinweg bereitzustellen. Weitere Informationen finden Sie unterlink:https://docs.netapp.com/us-en/ontap-apps-dbs/oracle/oracle-overview.html["Oracle-Datenbanken auf ONTAP"^].
+
+

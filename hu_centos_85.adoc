@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: hu_centos_85.html 
 keywords: host utilities, centos, linux, 8.5, netapp, ontap 
-summary: Beschreibt die Verwendung von CentOS 8.5 mit ONTAP 
+summary: Installieren Sie Linux Host Utilities auf einem CentOS 8.5-Host, um FCP- und iSCSI-Protokollvorgänge mit ONTAP LUNs zu verwalten. 
 ---
 = Konfigurieren Sie CentOS 8.5 für FCP und iSCSI für ONTAP-Speicher
 :hardbreaks:
