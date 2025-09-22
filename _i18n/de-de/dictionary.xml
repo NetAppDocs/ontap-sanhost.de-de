@@ -3707,7 +3707,6 @@ Die Host Utilities<block ref="a49e6041666308abe45789ecfadd593e" prefix=" " categ
   <block id="0ea3e528a268f7a469a48d5d8aae4f82" category="paragraph">Überprüfen Sie anhand der Herstellerdokumentation, ob die folgenden Pakete korrekt installiert sind.  Diese Pakete sind erforderlich zur Unterstützung der<block ref="09a10ae06f964cc0f5c0201377e37384" prefix=" " category="inline-code"></block> Befehl:</block>
   <block id="291498f8ec1453e277a2e2b46e71ae68" category="list-text">Wenn Sie derzeit eine Version von Linux Host Utilities installiert haben, entfernen Sie diese:</block>
   <block id="a47e489edc31ec3082b9f72fed5a5375" category="list-text">Gehen Sie in das Verzeichnis, in das Sie das Softwarepaket heruntergeladen haben, und installieren Sie es:</block>
-  <block id="b13f2391541d6900841a6b191f26531d" category="paragraph">Wenn Sie ein Ubuntu-Hostbetriebssystem verwenden, müssen Sie es manuell mit der HBA-Bibliothek verknüpfen:</block>
   <block id="bf2fa1be3b14254d86cd9857c8495543" category="doc">Verwenden Sie Linux Host Utilities-Befehle, um die ONTAP Speicherkonfiguration zu überprüfen</block>
   <block id="3a61827896464412c2e42d33f758f4f1" category="paragraph">Sie können die Beispielbefehlsreferenz von Linux Host Utilities für eine End-to-End-Validierung der NetApp Speicherkonfiguration mithilfe des Host Utilities-Tools verwenden.</block>
   <block id="509349566982f99a656299d84be158b8" category="summary">Versionshinweise für Linux-Host-Dienstprogramme</block>
@@ -4051,4 +4050,11 @@ Die Host Utilities<block ref="a49e6041666308abe45789ecfadd593e" prefix=" " categ
   <block id="30fe8c509bd758431e60f7f83e9085f0" category="paragraph">Die Windows Host Utilities legen Werte für die folgenden Parameter fest, wenn MS DSM für Windows MPIO erkannt wird:</block>
   <block id="d7ffc66640801d3b23e6403b53045607" category="paragraph">Überprüfen Sie die Emulex HBA-Treibereinstellungen auf FC-Systemen. Diese Einstellungen müssen für jeden Port auf dem HBA vorhanden sein.</block>
   <block id="0aa9ab84e08417b1d87c1a5606b6b1b4" category="paragraph">Überprüfen Sie die QLogic HBA-Treibereinstellungen auf FC-Systemen. Diese Einstellungen müssen für jeden Port auf dem HBA vorhanden sein.</block>
+  <block id="eb13ea1edb52f2f7cdf4b15544892c06" category="list-text">Red Hat Enterprise Linux (RHEL)</block>
+  <block id="cfe19b0ae08454358fbe515d88fd6095" category="open-title">Linux-Hosts</block>
+  <block id="fc474797a9f95d446d20392a22b50563" category="paragraph">Entfernen Sie Linux Host Utilities von einem RHEL-, SUSE Linux Enterprise Server- oder Oracle Linux-Host:</block>
+  <block id="2b65cdb03e4760333180898a7c50951b" category="paragraph">Entfernen Sie Linux Host Utilities von einem Ubuntu-Host:</block>
+  <block id="de3b6129e1e522c8f5cf6e37ce4b9f22" category="paragraph">Installieren Sie Linux Host Utilities 8.0 auf einem RHEL-, SUSE Linux Enterprise Server- oder Oracle Linux-Host:</block>
+  <block id="b9e9a39780b968851bca7471c4bdb04f" category="list-text">Installieren Sie Linux Host Utilities 8.0 auf einem Ubuntu-Host:</block>
+  <block id="50a27e0ec26dfc22ecff73b4716eee33" category="list-text">Verknüpfen Sie das Ubuntu-Betriebssystem manuell mit der HBA-Bibliothek:</block>
 </blocks>
