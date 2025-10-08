@@ -1,0 +1,127 @@
+---
+sidebar: sidebar 
+permalink: hu-nvme-index.html 
+keywords: nvme, san, host, aix, linux, vsphere, windows 
+summary: 'Sie können bestimmte SAN-Hosts für das NVMe-of-Protokoll (NVMe over Fabrics) konfigurieren.' 
+---
+= Erfahren Sie mehr über die Konfiguration von ONTAP SAN-Hosts mit NVMe-OF
+:hardbreaks:
+:toclevels: 1
+:allow-uri-read: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Sie können unterstützte SAN-Hosts so konfigurieren, dass sie das NVMe over Fabrics (NVMe-oF)-Protokoll mit ONTAP als Speicherziel verwenden.  NVMe-oF umfasst NVMe über Fibre Channel (NVMe/FC) und NVMe über TCP (NVMe/TCP).  Abhängig von Ihrem Host-Betriebssystem und Ihrer ONTAP -Version konfigurieren und validieren Sie das NVMe/FC- oder NVMe/TCP-Protokoll oder beide auf dem Host.
+
+
+
+== ONTAP Support und -Funktionen
+
+Die Tabelle zeigt die von ONTAP -Versionen und SAN-Host-Betriebssystemen unterstützten ONTAP Funktionen:
+
+[cols="40,30,30"]
+|===
+| ONTAP -Funktion | Unterstützte SAN-Hosts | ONTAP-Version 
+
+
+| *Sichere In-Band-Authentifizierung für NVMe/TCP*  a| 
+* RHEL 10,0
+* RHEL 9.6, 9.5
+* Rocky Linux 10,0
+* Rocky Linux 9.6, 9.5
+
+| Der Support beginnt mit 9.12.1 
+
+
+| *NVMe/TCP zusätzlich zu NVMe/FC* Bietet ONTAP Details für NVMe/FC- und NVMe/TCP-Namespaces unter Verwendung der nativen `nvme-cli` Paket.  a| 
+* RHEL 10,0
+* RHEL 9.6, 9.5, 9.4, 9.3, 9.2, 9.1
+* RHEL 8.10, 8.9, 8.8, 8.7, 8.6, 8.5, 8.4, 8.8, 8.2
+* Rocky Linux 10,0
+* Rocky Linux 9.6, 9.5, 9.4, 9.3, 9.2, 9.1
+* Rocky Linux 8.10, 8.9, 8.8, 8.7, 8.6, 8.5, 8.4, 8.8, 8.2
+
+| Der Support beginnt mit 9.10.1 
+
+
+| *NVMe/TCP ist eine vollständig unterstützte Enterprise-Funktion*  a| 
+* RHEL 10,0
+* RHEL 9.6, 9.5, 9.4, 9.3, 9.2, 9.1, 9.0
+* Rocky Linux 10,0
+* Rocky Linux 9.6, 9.5, 9.4, 9.3, 9.2, 9.1, 9.0
+
+| Der Support beginnt mit 9.10.1 
+
+
+| *NVMe- und SCSI-Verkehr werden auf demselben Host unterstützt* Verwenden Sie dm-multipath für SCSI-LUNs und NVMe-Multipath für NVMe-oF-Namespaces.  a| 
+* RHEL 10,0
+* RHEL 9.6, 9.5, 9.4, 9.3, 9.2, 9.1, 9.0
+* RHEL 8.10, 8.9, 8.8, 8.7, 8.6, 8.5, 8.4, 8.3, 8.2
+* Rocky Linux 10,0
+* Rocky Linux 9.6, 9.5, 9.4, 9.3, 9.2, 9.1, 9.0
+* Rocky Linux 8.10, 8.9, 8.8, 8.7, 8.6, 8.5, 8.4, 8.3, 8.2
+
+| Support beginnt mit 9.4 
+|===
+ONTAP unterstützt die folgenden SAN-Host-Funktionen, unabhängig von der ONTAP -Version, die auf Ihrem System-Setup ausgeführt wird:
+
+[cols="50,50"]
+|===
+| ONTAP -Funktion | Unterstützte SAN-Hosts 
+
+
+| *Natives NVMe-Multipathing ist immer aktiviert* ONTAP unterstützt kein Device Mapper (DM)-Multipath für NVMe-oF.  a| 
+* RHEL 10,0
+* Rocky Linux 10,0
+
+
+
+
+| *SAN-Booten mit NVMe/FC-Protokoll*  a| 
+* RHEL 10,0
+* RHEL 9.6, 9.5, 9.4
+* Rocky Linux 10,0
+* Rocky Linux 9.6, 9.5, 9.4
+
+
+
+
+| *`nvme-cli`Paket enthält Auto-Connect-Skripte* Sie benötigen keine Skripte von Drittanbietern.  a| 
+* RHEL 10,0
+* RHEL 9.6, 9.5, 9.4, 9.3, 9.2, 9.1, 9.0
+* RHEL 8.10, 8.9, 8.8, 8.7, 8.6, 8.5, 8.4, 8.3, 8.2
+* Rocky Linux 10,0
+* Rocky Linux 9.6, 9.5, 9.4, 9.3, 9.2, 9.1, 9.0
+* Rocky Linux 8.10, 8.9, 8.8, 8.7, 8.6, 8.5, 8.4, 8.3, 8.2
+
+
+
+
+| *Native udev-Regel in `nvme-cli` Paket* Bietet Round-Robin-Lastausgleich für NVMe-Multipath.  a| 
+* RHEL 10,0
+* RHEL 9.6, 9.5, 9.4, 9.3, 9.2, 9.1, 9.0
+* RHEL 8.10, 8.9, 8.8, 8.7, 8.6, 8.5, 8.4, 8.3, 8.2
+* Rocky Linux 10,0
+* Rocky Linux 9.6, 9.5, 9.4, 9.3, 9.2, 9.1, 9.0
+* Rocky Linux 8.10, 8.9, 8.8, 8.7, 8.6, 8.5, 8.4, 8.3, 8.2
+
+
+
+
+| *In-Kernel-NVMe-Multipathing für NVMe-Namespaces* ONTAP aktiviert diese Funktion standardmäßig; Sie müssen keine Einstellungen ändern.  a| 
+* RHEL 9.6, 9.5, 9.4, 9.3, 9.2, 9.1, 9.0
+* Rocky Linux 9.6, 9.5, 9.4, 9.3, 9.2, 9.1, 9.0
+
+
+|===
+
+NOTE: Einzelheiten zu unterstützten Konfigurationen finden Sie imlink:https://mysupport.netapp.com/matrix/["Interoperabilitäts-Matrix-Tool"^] .
+
+.Verwandte Informationen
+* link:https://www.netapp.com/pdf.html?item=/media/10681-tr4684pdf.pdf["NetApp Knowledge Base: Erfahren Sie mehr über NVMe-oF"^] .
+

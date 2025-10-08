@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
-permalink: nvme-rockylinux-10.html 
-keywords: nvme, linux, rocky, linux, red hat, enterprise 
-summary: So konfigurieren Sie einen NVMe-oF-Host für Rocky Linux 10.0 mit ONTAP Speicher 
+permalink: nvme-rhel-10.html 
+keywords: nvme, linux, rhel, red hat, enterprise 
+summary: So konfigurieren Sie den NVMe-oF-Host für RHEL 10.0 mit ONTAP 
 ---
-= Konfigurieren Sie Rocky Linux 10.0 für NVMe-oF mit ONTAP Speicher
+= Konfigurieren Sie RHEL 10.0 für NVMe-oF mit ONTAP Speicher
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -18,9 +18,9 @@ summary: So konfigurieren Sie einen NVMe-oF-Host für Rocky Linux 10.0 mit ONTAP
 [role="lead"]
 Red Hat Enterprise Linux (RHEL)-Hosts unterstützen die Protokolle NVMe over Fibre Channel (NVMe/FC) und NVMe over TCP (NVMe/TCP) mit Asymmetric Namespace Access (ANA).  ANA bietet Multipathing-Funktionalität, die dem asymmetrischen logischen Einheitenzugriff (ALUA) in iSCSI- und FCP-Umgebungen entspricht.
 
-Erfahren Sie, wie Sie NVMe over Fabrics (NVMe-oF)-Hosts für Rocky Linux 10.0 konfigurieren.  Weitere Informationen zu Support und Funktionen finden Sie unterlink:hu-nvme-index.html["NVME-oF-Übersicht"^] .
+Erfahren Sie, wie Sie NVMe over Fabrics (NVMe-oF)-Hosts für RHEL 10.0 konfigurieren.  Weitere Informationen zu Support und Funktionen finden Sie unterlink:hu-nvme-index.html["NVME-oF-Übersicht"^] .
 
-*NVMe-oF mit Rocky Linux 10.0 hat die folgenden bekannten Einschränkungen:*
+*NVMe-oF mit RHEL 10.0 weist die folgenden bekannten Einschränkungen auf:*
 
 * DM-Multipath-Unterstützung für NVMe-oF wird nicht unterstützt.
 * Vermeiden Sie die Ausgabe von  `nvme disconnect-all` Befehl auf Systemen, die von SAN über NVMe-TCP- oder NVMe-FC-Namespaces booten, da er sowohl Root- als auch Datendateisysteme trennt und zu Systeminstabilität führen kann.
@@ -48,14 +48,14 @@ Informationen zum Aktivieren des HBA-BIOS finden Sie in der anbieterspezifischen
 Überprüfen Sie, ob Ihr System die Softwareanforderungen erfüllt, und überprüfen Sie die NVMe-Paketinstallationen und die Hostkonfiguration.
 
 .Schritte
-. Installieren Sie Rocky Linux 10.0 auf dem Server.  Überprüfen Sie nach Abschluss der Installation, ob Sie den erforderlichen Rocky Linux 10.0-Kernel ausführen:
+. Installieren Sie RHEL 10.0 auf dem Server.  Überprüfen Sie nach Abschluss der Installation, ob Sie den erforderlichen RHEL 10.0-Kernel ausführen:
 +
 [source, cli]
 ----
 uname -r
 ----
 +
-Beispiel einer Rocky Linux-Kernelversion:
+Beispiel für eine RHEL-Kernelversion:
 
 +
 [listing]
@@ -97,7 +97,7 @@ libnvme-1.11.1-1.el10.x86_64
 cat /etc/nvme/hostnqn
 ----
 +
-Das folgende Beispiel zeigt eine `hostnqn` Wert:
+Das folgende Beispiel zeigt eine  `hostnqn` Version:
 
 +
 [listing]
@@ -108,7 +108,7 @@ nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0056-5410-8048-b9c04f425633
 +
 [source, cli]
 ----
-::> vserver nvme subsystem host show -vserver vs_nvme_194_rockylinux10
+::> vserver nvme subsystem host show -vserver vs_nvme_194_rhel10
 ----
 +
 .Beispiel anzeigen
@@ -118,23 +118,22 @@ nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0056-5410-8048-b9c04f425633
 ----
 Vserver Subsystem Priority  Host NQN
 ------- --------- --------  ------------------------------------------------
-vs_nvme_194_rockylinux10
+vs_ nvme_194_rhel10
         nvme4
-                  regular   nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0056-5410-8048-c7c04f425633
+                  regular   nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0056-5410-8048- c7c04f425633
         nvme_1
-                  regular   nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0056-5410-8048-c7c04f425633
+                  regular   nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0056-5410-8048- c7c04f425633
         nvme_2
-                  regular   nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0056-5410-8048-c7c04f425633
+                  regular   nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0056-5410-8048- c7c04f425633
         nvme_3
-                  regular   nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0056-5410-8048-c7c04f425633
+                  regular   nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0056-5410-8048- c7c04f425633
 4 entries were displayed.
 ----
 ====
-+
+
+
 
 NOTE: Wenn die `hostnqn` Zeichenfolgen nicht übereinstimmen, verwenden Sie die `vserver modify` Befehl zum Aktualisieren der `hostnqn` Zeichenfolge auf Ihrem entsprechenden ONTAP -Speichersystem-Subsystem, um die Übereinstimmung mit `hostnqn` Zeichenfolge von `/etc/nvme/hostnqn` auf dem Host.
-
-
 
 
 
@@ -237,8 +236,7 @@ Sie sollten eine Ausgabe ähnlich der folgenden sehen:
 +
 [listing]
 ----
-0x2100f4c7aa0cd7c2
-0x2100f4c7aa0cd7c3
+0x100000109b1c1205
 ----
 . Überprüfen Sie, ob Ihre Initiator-Ports online sind:
 +
@@ -400,7 +398,7 @@ subtype: *nvme subsystem*
 treq:    not specified
 portid:  4
 trsvcid: 4420
-subnqn:  nqn.1992-08.com.netapp:sn.64e65e6caae711ef9668d039ea951c46:subsystem.rockylinux10_tcp_subsystem
+subnqn:  nqn.1992-08.com.netapp:sn.64e65e6caae711ef9668d039ea951c46:subsystem.rhel10_tcp_subsystem
 traddr:  192.168.21.21
 eflags:  none
 sectype: none
@@ -411,7 +409,7 @@ subtype: *nvme subsystem*
 treq:    not specified
 portid:  2
 trsvcid: 4420
-subnqn:  nqn.1992-08.com.netapp:sn.64e65e6caae711ef9668d039ea951c46:subsystem.rockylinux10_tcp_subsystem
+subnqn:  nqn.1992-08.com.netapp:sn.64e65e6caae711ef9668d039ea951c46:subsystem.rhel10_tcp_subsystem
 traddr:  192.168.20.21
 eflags:  none
 sectype: none
@@ -422,7 +420,7 @@ subtype: *nvme subsystem*
 treq:    not specified
 portid:  3
 trsvcid: 4420
-subnqn:  nqn.1992-08.com.netapp:sn.64e65e6caae711ef9668d039ea951c46:subsystem.rockylinux10_tcp_subsystem
+subnqn:  nqn.1992-08.com.netapp:sn.64e65e6caae711ef9668d039ea951c46:subsystem.rhel10_tcp_subsystem
 traddr:  192.168.21.20
 eflags:  none
 sectype: none
@@ -433,7 +431,7 @@ subtype: *nvme subsystem*
 treq:    not specified
 portid:  1
 trsvcid: 4420
-subnqn:  nqn.1992-08.com.netapp:sn.64e65e6caae711ef9668d039ea951c46:subsystem.rockylinux10_tcp_subsystem
+subnqn:  nqn.1992-08.com.netapp:sn.64e65e6caae711ef9668d039ea951c46:subsystem.rhel10_tcp_subsystem
 traddr:  192.168.20.20
 eflags:  none
 sectype: none
@@ -479,7 +477,7 @@ nvme	connect-all	-t	tcp	-w	192.168.21.1	-a	192.168.21.21
 
 [NOTE]
 ====
-Ab Rocky Linux 9.4 ist die Einstellung für NVMe/TCP  `ctrl_loss_tmo timeout` ist automatisch auf „Aus“ gestellt. Das Ergebnis:
+Ab RHEL 9.4 ist die Einstellung für NVMe/TCP  `ctrl_loss_tmo timeout` ist automatisch auf „Aus“ gestellt. Das Ergebnis:
 
 * Es gibt keine Begrenzung für die Anzahl der Wiederholungsversuche (unbegrenzte Wiederholung).
 * Sie müssen kein bestimmtes  `ctrl_loss_tmo timeout` Dauer bei Verwendung des  `nvme connect` oder  `nvme connect-all` Befehle (Option -l ).
@@ -718,11 +716,11 @@ nvme netapp ontapdevices -o column
 ----
 
 Device        Vserver   Namespace Path
------------------------ ------------------------------------
-/dev/nvme10n1     vs_tcp_rockylinux10       /vol/vol10/ns10
+----------------------- ------------------------------
+/dev/nvme10n1     vs_tcp_rhel10       /vol/vol10/ns10
 
 NSID       UUID                                   Size
------------------------ ------------------------------------
+----------------------- ------------------------------
 1    bbf51146-fc64-4197-b8cf-8a24f6f359b3   21.47GB
 ----
 =====
@@ -742,7 +740,7 @@ nvme netapp ontapdevices -o json
   "ONTAPdevices":[
     {
       "Device":"/dev/nvme10n1",
-      "Vserver":"vs_tcp_rockylinux10",
+      "Vserver":"vs_tcp_rhel10",
       "Namespace_Path":"/vol/vol10/ns10",
       "NSID":1,
       "UUID":"bbf51146-fc64-4197-b8cf-8a24f6f359b3",
@@ -762,7 +760,7 @@ nvme netapp ontapdevices -o json
 
 == Schritt 7: Einrichten einer sicheren In-Band-Authentifizierung
 
-Ab ONTAP 9.12.1 wird die sichere In-Band-Authentifizierung über NVMe/TCP zwischen einem Rocky Linux 10.0-Host und einem ONTAP Controller unterstützt.
+Ab ONTAP 9.12.1 wird eine sichere In-Band-Authentifizierung über NVMe/TCP zwischen einem RHEL 10.0-Host und einem ONTAP Controller unterstützt.
 
 Jeder Host oder Controller muss mit einem  `DH-HMAC-CHAP` Schlüssel zur Einrichtung einer sicheren Authentifizierung .  `DH-HMAC-CHAP` Der Schlüssel ist eine Kombination aus dem NQN des NVMe-Hosts oder -Controllers und einem vom Administrator konfigurierten Authentifizierungsgeheimnis. Um seinen Peer zu authentifizieren, muss ein NVMe-Host oder -Controller den dem Peer zugeordneten Schlüssel erkennen.
 
@@ -781,7 +779,7 @@ Richten Sie die sichere bandinterne Authentifizierung über die CLI ein.
 ----
 cat /etc/nvme/hostnqn
 ----
-. Generieren Sie den dhchap-Schlüssel für den Rocky Linux 10.0-Host.
+. Generieren Sie den DHCP-Schlüssel für den RHEL 10.0-Host.
 +
 Die folgende Ausgabe beschreibt die `gen-dhchap-key` Befehlsparameter:
 

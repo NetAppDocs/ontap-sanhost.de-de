@@ -16,67 +16,45 @@ summary: So konfigurieren Sie einen NVMe-oF-Host für Rocky Linux 9.6 mit ONTAP
 
 
 [role="lead"]
-NetApp SAN-Host-Konfigurationen unterstützen das NVMe over Fabrics (NVMe-of)-Protokoll mit Asymmetric Namespace Access (ANA). In NVMe-of Umgebungen entspricht ANA dem Multipathing des Asymmetric Logical Unit Access (ALUA) in iSCSI- und FCP-Umgebungen. ANA ist mit der in-Kernel NVMe Multipath-Funktion implementiert.
+Red Hat Enterprise Linux (RHEL)-Hosts unterstützen die Protokolle NVMe over Fibre Channel (NVMe/FC) und NVMe over TCP (NVMe/TCP) mit Asymmetric Namespace Access (ANA).  ANA bietet Multipathing-Funktionalität, die dem asymmetrischen logischen Einheitenzugriff (ALUA) in iSCSI- und FCP-Umgebungen entspricht.
 
-.Über diese Aufgabe
-Sie können die folgende Unterstützung und Funktionen mit der NVMe-oF-Hostkonfiguration für Rocky Linux 9.6 verwenden. Sie sollten auch die bekannten Einschränkungen überprüfen, bevor Sie mit dem Konfigurationsprozess beginnen.
+Erfahren Sie, wie Sie NVMe over Fabrics (NVMe-oF)-Hosts für Rocky Linux 9.6 konfigurieren.  Weitere Informationen zu Support und Funktionen finden Sie unterlink:hu-nvme-index.html["NVME-oF-Übersicht"^] .
 
-* Support verfügbar:
-+
-** Unterstützung für NVMe over TCP (NVMe/TCP) neben NVMe over Fibre Channel (NVMe/FC) Über das NetApp-Plug-in im nativen `nvme-cli` Paket werden ONTAP-Details sowohl für NVMe/FC- als auch für NVMe/TCP-Namespaces angezeigt.
-** Ausführen von NVMe- und SCSI-Datenverkehr auf demselben Host. Sie können beispielsweise dm-multipath für SCSI-mpath-Geräte auf SCSI-LUNs konfigurieren und NVMe-Multipath verwenden, um NVMe-oF-Namespace-Geräte auf dem Host zu konfigurieren.
-** Rocky Linux 9.6 aktiviert standardmäßig NVMe-Multipath im Kernel für NVMe-Namespaces, sodass keine expliziten Einstellungen mehr erforderlich sind.
-** Ab ONTAP 9.12.1 wird die sichere In-Band-Authentifizierung für NVMe/TCP unterstützt. Sie können mit Rocky Linux 9.6 eine sichere In-Band-Authentifizierung für NVMe/TCP verwenden.
+*NVMe-oF mit Rocky Linux 9.6 hat die folgenden bekannten Einschränkungen:*
 
-
-+
-Weitere Informationen zu unterstützten Konfigurationen finden Sie im link:https://mysupport.netapp.com/matrix/["Interoperabilitäts-Matrix-Tool"^].
-
-* Verfügbare Funktionen:
-+
-** Diese Version enthält keine neuen Funktionen.
-
-
-* Bekannte Einschränkungen:
-+
-** Vermeiden Sie die Ausgabe von  `nvme disconnect-all` Befehl auf Systemen, die von SAN über NVMe-TCP- oder NVMe-FC-Namespaces booten, da er sowohl Root- als auch Datendateisysteme trennt und zu Systeminstabilität führen kann.
-
-
+* Vermeiden Sie die Ausgabe von  `nvme disconnect-all` Befehl auf Systemen, die von SAN über NVMe-TCP- oder NVMe-FC-Namespaces booten, da er sowohl Root- als auch Datendateisysteme trennt und zu Systeminstabilität führen kann.
 
 
 
 
 == Schritt 1: Aktivieren Sie optional den SAN-Bootvorgang
 
-Sie können Ihren Host so konfigurieren, dass er SAN-Booting verwendet, um die Bereitstellung zu vereinfachen und die Skalierbarkeit zu verbessern.
-
-.Bevor Sie beginnen
-Überprüfen Sie mithilfe deslink:https://mysupport.netapp.com/matrix/#welcome["Interoperabilitäts-Matrix-Tool"^], ob Ihr Linux-Betriebssystem, Ihr Host Bus Adapter (HBA), die HBA-Firmware, das HBA-Boot-BIOS und die ONTAP-Version das Booten über das SAN unterstützen.
+Sie können Ihren Host für die Verwendung von SAN-Boot konfigurieren, um die Bereitstellung zu vereinfachen und die Skalierbarkeit zu verbessern. Verwenden Sie dielink:https://mysupport.netapp.com/matrix/#welcome["Interoperabilitäts-Matrix-Tool"^] um zu überprüfen, ob Ihr Linux-Betriebssystem, Ihr Hostbusadapter (HBA), Ihre HBA-Firmware, Ihr HBA-Boot-BIOS und ONTAP -Version das SAN-Booten unterstützen.
 
 .Schritte
-. https://docs.netapp.com/us-en/ontap/san-admin/create-nvme-namespace-subsystem-task.html["Erstellen Sie einen SAN-Boot-Namespace und ordnen Sie ihn dem Host zu"^].
+. https://docs.netapp.com/us-en/ontap/san-admin/create-nvme-namespace-subsystem-task.html["Erstellen Sie einen NVMe-Namespace und ordnen Sie ihn dem Host zu"^] .
 . Aktivieren Sie das SAN-Booten im Server-BIOS für die Ports, denen der SAN-Boot-Namespace zugeordnet ist.
 +
 Informationen zum Aktivieren des HBA-BIOS finden Sie in der anbieterspezifischen Dokumentation.
 
-. Überprüfen Sie, ob die Konfiguration erfolgreich war, indem Sie den Host neu starten und überprüfen, ob das Betriebssystem ausgeführt wird.
+. Starten Sie den Host neu und überprüfen Sie, ob das Betriebssystem läuft.
 
 
 
 
-== Schritt 2: Softwareversionen validieren
+== Schritt 2: Überprüfen der Softwareversion und der NVMe-Konfiguration
 
-Verwenden Sie das folgende Verfahren, um die mindestens unterstützten Rocky Linux 9.6-Softwareversionen zu validieren.
+Überprüfen Sie, ob Ihr System die Softwareanforderungen erfüllt, und überprüfen Sie die NVMe-Paketinstallationen und die Hostkonfiguration.
 
 .Schritte
-. Installieren Sie Rocky Linux 9.6 auf dem Server. Überprüfen Sie nach Abschluss der Installation, ob Sie den angegebenen Rocky Linux 9.6-Kernel verwenden:
+. Installieren Sie Rocky Linux 9.6 auf dem Server.  Überprüfen Sie nach Abschluss der Installation, ob Sie den erforderlichen Rocky Linux 9.6-Kernel ausführen:
 +
 [source, cli]
 ----
 uname -r
 ----
 +
-Das folgende Beispiel zeigt eine Rocky Linux-Kernelversion:
+Beispiel einer Rocky Linux-Kernelversion:
 
 +
 [listing]
@@ -159,13 +137,13 @@ NOTE: Wenn der `hostnqn` Zeichenfolgen stimmen nicht überein. Verwenden Sie die
 
 
 
-== Schritt 3: NVMe/FC konfigurieren
+== Schritt 3: Konfigurieren Sie NVMe/FC und NVMe/TCP
 
-Sie können NVMe/FC mit Broadcom/Emulex FC- oder Marvell/Qlogic FC-Adaptern konfigurieren. Bei NVMe/FC, die mit einem Broadcom-Adapter konfiguriert sind, können Sie I/O-Anforderungen mit einer Größe von 1 MB aktivieren.
+Konfigurieren Sie NVMe/FC mit Broadcom/Emulex- oder Marvell/QLogic-Adaptern oder konfigurieren Sie NVMe/TCP mithilfe manueller Erkennungs- und Verbindungsvorgänge.
 
 [role="tabbed-block"]
 ====
-.Broadcom/Emulex
+.FC – Broadcom/Emulex
 --
 Konfigurieren Sie NVMe/FC für einen Broadcom/Emulex-Adapter.
 
@@ -213,7 +191,7 @@ Emulex LightPulse LPe36002-M64 2-Port 64Gb Fibre Channel Adapter
 cat /sys/class/scsi_host/host*/fwrev
 ----
 +
-Das folgende Beispiel zeigt Firmware-Versionen:
+Der Befehl gibt die Firmware-Versionen zurück:
 
 +
 [listing]
@@ -240,7 +218,7 @@ Das folgende Beispiel zeigt eine Treiberversion:
 +
 Die aktuelle Liste der unterstützten Adaptertreiber- und Firmware-Versionen finden Sie im link:https://mysupport.netapp.com/matrix/["Interoperabilitäts-Matrix-Tool"^].
 
-. Stellen Sie sicher, dass die erwartete Ausgabe von `lpfc_enable_fc4_type` auf eingestellt ist `3`:
+. Verifizieren Sie das `lpfc_enable_fc4_type` Ist auf festgelegt `3`:
 +
 [source, cli]
 ----
@@ -348,19 +326,19 @@ FCP CMPL: xb 000035cc Err 000fcfc0
 
 
 --
-.Marvell/QLogic
+.FC – Marvell/QLogic
 --
 Konfigurieren Sie NVMe/FC für einen Marvell/QLogic-Adapter.
 
 .Schritte
-. Vergewissern Sie sich, dass der unterstützte Adaptertreiber und die unterstützten Firmware-Versionen ausgeführt werden:
+. Stellen Sie sicher, dass Sie die unterstützten Adaptertreiber- und Firmware-Versionen verwenden:
 +
 [source, cli]
 ----
 cat /sys/class/fc_host/host*/symbolic_name
 ----
 +
-Das folgende Beispiel zeigt Treiber- und Firmware-Versionen:
+Das folgende Beispiel zeigt Treiber- und Firmwareversionen:
 
 +
 [listing]
@@ -375,108 +353,17 @@ QLE2872 FW:v9.15.00 DVR:v10.02.09.300-k
 cat /sys/module/qla2xxx/parameters/ql2xnvmeenable
 ----
 +
-Das erwartete ouptut ist 1.
+Die erwartete Ausgabe ist 1.
 
 
 
 --
-====
-
-
-== Schritt 4: Optional 1 MB I/O aktivieren
-
-ONTAP meldet eine MDTS (MAX Data-Übertragungsgröße) von 8 in den Identifizieren von Controller-Daten. Das bedeutet, dass die maximale E/A-Anforderungsgröße bis zu 1 MB betragen kann. Um I/O-Anforderungen der Größe 1 MB für einen Broadcom-NVMe/FC-Host auszustellen, sollten Sie den Wert des `lpfc_sg_seg_cnt` Parameters ab dem Standardwert 64 auf 256 erhöhen `lpfc`.
-
-
-NOTE: Diese Schritte gelten nicht für Qlogic NVMe/FC-Hosts.
+.TCP
+--
+Das NVMe/TCP-Protokoll unterstützt den automatischen Verbindungsvorgang nicht.  Sie müssen die NVMe/TCP-Verbindungs- oder -Allesverbindungsvorgänge manuell durchführen, um die NVMe/TCP-Subsysteme und -Namespaces zu ermitteln.
 
 .Schritte
-. Setzen Sie den `lpfc_sg_seg_cnt` Parameter auf 256:
-+
-[source, cli]
-----
-cat /etc/modprobe.d/lpfc.conf
-----
-+
-Sie sollten eine Ausgabe ähnlich dem folgenden Beispiel sehen:
-
-+
-[listing]
-----
-options lpfc lpfc_sg_seg_cnt=256
-----
-. Führen Sie den Befehl aus `dracut -f`, und starten Sie den Host neu.
-. Stellen Sie sicher, dass der Wert für `lpfc_sg_seg_cnt` 256 lautet:
-+
-[source, cli]
-----
-cat /sys/module/lpfc/parameters/lpfc_sg_seg_cnt
-----
-
-
-
-
-== Schritt 5: Überprüfen der NVMe-Bootdienste
-
-Mit Rocky Linux 9.6 wird die  `nvmefc-boot-connections.service` Und  `nvmf-autoconnect.service` In NVMe/FC enthaltene Boot-Dienste  `nvme-cli` Paket werden beim Systemstart automatisch aktiviert.
-
-Überprüfen Sie nach dem Booten, ob die  `nvmefc-boot-connections.service` Und  `nvmf-autoconnect.service` Boot-Dienste sind aktiviert.
-
-.Schritte
-. Vergewissern Sie sich, dass `nvmf-autoconnect.service` aktiviert ist:
-+
-[source, cli]
-----
-systemctl status nvmf-autoconnect.service
-----
-+
-.Beispielausgabe anzeigen
-[%collapsible]
-====
-[listing]
-----
-nvmf-autoconnect.service - Connect NVMe-oF subsystems automatically during boot
-     Loaded: loaded (/usr/lib/systemd/system/nvmf-autoconnect.service; enabled; preset: disabled)
-     Active: inactive (dead)
-
-Jun 10 04:06:26 SR630-13-201.lab.eng.btc.netapp.in systemd[1]: Starting Connect NVMe-oF subsystems automatically during boot...
-Jun 10 04:06:26 SR630-13-201.lab.eng.btc.netapp.in systemd[1]: nvmf-autoconnect.service: Deactivated successfully.
-Jun 10 04:06:26 SR630-13-201.lab.eng.btc.netapp.in systemd[1]: Finished Connect NVMe-oF subsystems automatically during boot.
-----
-====
-. Vergewissern Sie sich, dass `nvmefc-boot-connections.service` aktiviert ist:
-+
-[source, cli]
-----
-systemctl status nvmefc-boot-connections.service
-----
-+
-.Beispielausgabe anzeigen
-[%collapsible]
-====
-[listing]
-----
-nvmefc-boot-connections.service - Auto-connect to subsystems on FC-NVME devices found during boot
-     Loaded: loaded (/usr/lib/systemd/system/nvmefc-boot-connections.service; enabled; preset: enabled)
-     Active: inactive (dead) since Tue 2025-06-10 01:08:36 EDT; 2h 59min ago
-   Main PID: 7090 (code=exited, status=0/SUCCESS)
-        CPU: 30ms
-
-Jun 10 01:08:36 localhost systemd[1]: Starting Auto-connect to subsystems on FC-NVME devices found during boot...
-Jun 10 01:08:36 localhost systemd[1]: nvmefc-boot-connections.service: Deactivated successfully.
-Jun 10 01:08:36 localhost systemd[1]: Finished Auto-connect to subsystems on FC-NVME devices found during boot.
-----
-====
-
-
-
-
-== Schritt 6: NVMe/TCP konfigurieren
-
-Das NVMe/TCP-Protokoll unterstützt den Vorgang nicht `auto-connect`. Stattdessen können Sie die NVMe/TCP-Subsysteme und -Namespaces erkennen, indem Sie NVMe/TCP oder `connect-all` Vorgänge manuell ausführen `connect`.
-
-.Schritte
-. Vergewissern Sie sich, dass der Initiator-Port die Daten der Erkennungsprotokollseite über die unterstützten NVMe/TCP-LIFs abrufen kann:
+. Überprüfen Sie, ob der Initiator-Port die Daten der Erkennungsprotokollseite über die unterstützten NVMe/TCP-LIFs abrufen kann:
 +
 [source, cli]
 ----
@@ -485,7 +372,7 @@ nvme discover -t tcp -w host-traddr -a traddr
 +
 .Beispiel anzeigen
 [%collapsible]
-====
+=====
 [listing, subs="+quotes"]
 ----
 nvme discover -t tcp -w 192.168.1.31 -a 192.168.1.24
@@ -712,8 +599,8 @@ traddr:  192.168.1.24
 eflags:  none
 sectype: none
 ----
-====
-. Vergewissern Sie sich, dass die anderen LIF-Kombinationen des NVMe/TCP-Initiators die Daten der Erkennungsprotokollseite erfolgreich abrufen können:
+=====
+. Überprüfen Sie, ob die anderen NVMe/TCP-Initiator-Ziel-LIF-Kombinationen erfolgreich Daten der Erkennungsprotokollseite abrufen können:
 +
 [source, cli]
 ----
@@ -722,7 +609,7 @@ nvme discover -t tcp -w host-traddr -a traddr
 +
 .Beispiel anzeigen
 [%collapsible]
-====
+=====
 [listing, subs="+quotes"]
 ----
 nvme discover -t tcp -w 192.168.1.31 -a 192.168.1.24
@@ -730,7 +617,7 @@ nvme discover -t tcp -w 192.168.2.31 -a 192.168.2.24
 nvme discover -t tcp -w 192.168.1.31 -a 192.168.1.25
 nvme discover -t tcp -w 192.168.2.31 -a 192.168.2.25
 ----
-====
+=====
 . Führen Sie die aus `nvme connect-all` Befehl über alle unterstützten NVMe/TCP Initiator-Ziel-LIFs der Nodes hinweg:
 +
 [source, cli]
@@ -740,7 +627,7 @@ nvme connect-all -t tcp -w host-traddr -a traddr
 +
 .Beispiel anzeigen
 [%collapsible]
-====
+=====
 [listing, subs="+quotes"]
 ----
 nvme	connect-all	-t	tcp	-w	192.168.1.31	-a	192.168.1.24
@@ -748,7 +635,7 @@ nvme	connect-all	-t	tcp	-w	192.168.2.31	-a	192.168.2.24
 nvme	connect-all	-t	tcp	-w	192.168.1.31	-a	192.168.1.25
 nvme	connect-all	-t	tcp	-w	192.168.2.31	-a	192.168.2.25
 ----
-====
+=====
 
 
 [NOTE]
@@ -761,9 +648,99 @@ Ab Rocky Linux 9.4 ist die Einstellung für NVMe/TCP  `ctrl_loss_tmo timeout` is
 
 
 ====
+--
+====
 
 
-== Schritt 7: NVMe-oF validieren
+== Schritt 4: Optional 1 MB I/O für NVMe/FC aktivieren
+
+ONTAP meldet in den Identify Controller-Daten eine maximale Datenübertragungsgröße (MDTS) von 8.  Dies bedeutet, dass die maximale E/A-Anforderungsgröße bis zu 1 MB betragen kann.  Um E/A-Anfragen der Größe 1 MB für einen Broadcom NVMe/FC-Host auszugeben, sollten Sie die `lpfc` Wert des `lpfc_sg_seg_cnt` Parameter vom Standardwert 64 auf 256.
+
+
+NOTE: Diese Schritte gelten nicht für Qlogic NVMe/FC-Hosts.
+
+.Schritte
+. Setzen Sie den `lpfc_sg_seg_cnt` Parameter auf 256:
++
+[source, cli]
+----
+cat /etc/modprobe.d/lpfc.conf
+----
++
+Sie sollten eine Ausgabe ähnlich dem folgenden Beispiel sehen:
+
++
+[listing]
+----
+options lpfc lpfc_sg_seg_cnt=256
+----
+. Führen Sie den Befehl aus `dracut -f`, und starten Sie den Host neu.
+. Stellen Sie sicher, dass der Wert für `lpfc_sg_seg_cnt` 256 lautet:
++
+[source, cli]
+----
+cat /sys/module/lpfc/parameters/lpfc_sg_seg_cnt
+----
+
+
+
+
+== Schritt 5: Überprüfen der NVMe-Bootdienste
+
+Der `nvmefc-boot-connections.service` Und `nvmf-autoconnect.service` In NVMe/FC enthaltene Boot-Dienste `nvme-cli` Paket werden beim Systemstart automatisch aktiviert.
+
+Überprüfen Sie nach dem Booten, ob die  `nvmefc-boot-connections.service` Und  `nvmf-autoconnect.service` Boot-Dienste sind aktiviert.
+
+.Schritte
+. Vergewissern Sie sich, dass `nvmf-autoconnect.service` aktiviert ist:
++
+[source, cli]
+----
+systemctl status nvmf-autoconnect.service
+----
++
+.Beispielausgabe anzeigen
+[%collapsible]
+====
+[listing]
+----
+nvmf-autoconnect.service - Connect NVMe-oF subsystems automatically during boot
+     Loaded: loaded (/usr/lib/systemd/system/nvmf-autoconnect.service; enabled; preset: disabled)
+     Active: inactive (dead)
+
+Jun 10 04:06:26 SR630-13-201.lab.eng.btc.netapp.in systemd[1]: Starting Connect NVMe-oF subsystems automatically during boot...
+Jun 10 04:06:26 SR630-13-201.lab.eng.btc.netapp.in systemd[1]: nvmf-autoconnect.service: Deactivated successfully.
+Jun 10 04:06:26 SR630-13-201.lab.eng.btc.netapp.in systemd[1]: Finished Connect NVMe-oF subsystems automatically during boot.
+----
+====
+. Vergewissern Sie sich, dass `nvmefc-boot-connections.service` aktiviert ist:
++
+[source, cli]
+----
+systemctl status nvmefc-boot-connections.service
+----
++
+.Beispielausgabe anzeigen
+[%collapsible]
+====
+[listing]
+----
+nvmefc-boot-connections.service - Auto-connect to subsystems on FC-NVME devices found during boot
+     Loaded: loaded (/usr/lib/systemd/system/nvmefc-boot-connections.service; enabled; preset: enabled)
+     Active: inactive (dead) since Tue 2025-06-10 01:08:36 EDT; 2h 59min ago
+   Main PID: 7090 (code=exited, status=0/SUCCESS)
+        CPU: 30ms
+
+Jun 10 01:08:36 localhost systemd[1]: Starting Auto-connect to subsystems on FC-NVME devices found during boot...
+Jun 10 01:08:36 localhost systemd[1]: nvmefc-boot-connections.service: Deactivated successfully.
+Jun 10 01:08:36 localhost systemd[1]: Finished Auto-connect to subsystems on FC-NVME devices found during boot.
+----
+====
+
+
+
+
+== Schritt 6: Überprüfen der Multipathing-Konfiguration
 
 Vergewissern Sie sich, dass der in-Kernel-Multipath-Status, der ANA-Status und die ONTAP-Namespaces für die NVMe-of-Konfiguration richtig sind.
 
@@ -949,7 +926,7 @@ nvme netapp ontapdevices -o json
 
 
 
-== Schritt 8: Einrichten einer sicheren In-Band-Authentifizierung
+== Schritt 7: Einrichten einer sicheren In-Band-Authentifizierung
 
 Ab ONTAP 9.12.1 wird die sichere In-Band-Authentifizierung über NVMe/TCP zwischen einem Rocky Linux 9.6-Host und einem ONTAP-Controller unterstützt.
 
@@ -972,7 +949,7 @@ cat /etc/nvme/hostnqn
 ----
 . Generieren Sie den DHCP-Schlüssel für den Rocky Linux 9.6-Host.
 +
-In der folgenden Ausgabe werden die Befehlsparameter beschrieben `gen-dhchap-key`:
+Die folgende Ausgabe beschreibt die `gen-dhchap-key` Befehlsparameter:
 
 +
 [listing]
@@ -1052,11 +1029,11 @@ DHHC-1:03:wSpuuKbBHTzC0W9JZxMBsYd9JFV8Si9aDh22k2BR/4m852vH7KGlrJeMpzhmyjDWOo0PJJ
 
 
 --
-.JSON-Datei
+.JSON
 --
-Wenn in der ONTAP-Controller-Konfiguration mehrere NVMe-Subsysteme verfügbar sind, kann die Datei mit dem `nvme connect-all` Befehl verwendet `/etc/nvme/config.json` werden.
+Wenn mehrere NVMe-Subsysteme auf dem ONTAP Controller verfügbar sind, können Sie die `/etc/nvme/config.json` Datei mit dem `nvme connect-all` Befehl.
 
-Verwenden Sie die  `-o` Option zum Generieren der JSON-Datei. Weitere Syntaxoptionen finden Sie auf den Handseiten für NVMe Connect-all.
+Verwenden Sie die `-o` Option zum Generieren der JSON-Datei.  Weitere Syntaxoptionen finden Sie in den Manpages zu NVMe connect-all.
 
 .Schritte
 . Konfigurieren Sie die JSON-Datei.
@@ -1186,6 +1163,6 @@ DHHC-1:03:wSpuuKbBHTzC0W9JZxMBsYd9JFV8Si9aDh22k2BR/4m852vH7KGlrJeMpzhmyjDWOo0PJJ
 ====
 
 
-== Schritt 9: Überprüfen Sie die bekannten Probleme
+== Schritt 8: Überprüfen Sie die bekannten Probleme
 
 Es sind keine Probleme bekannt.

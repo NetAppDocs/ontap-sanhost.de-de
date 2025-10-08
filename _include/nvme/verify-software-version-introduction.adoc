@@ -1,0 +1,5 @@
+= 
+:allow-uri-read: 
+
+
+Überprüfen Sie, ob Ihr System die Softwareanforderungen erfüllt, und überprüfen Sie die NVMe-Paketinstallationen und die Hostkonfiguration.
