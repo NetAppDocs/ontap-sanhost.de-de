@@ -29,7 +29,7 @@ Ihre SAN-Hosts und ONTAP-Storage können sich entweder vor Ort, in der Cloud ode
 
 NOTE: In einer Cloud-Umgebung werden Hosts normalerweise als Clients bezeichnet. Alle hostspezifischen Informationen in diesem Inhalt gelten auch für Cloud Clients.
 
-Beispielsweise können Sie lokalen ONTAP Storage konfigurieren, um eine Verbindung zu lokalen SAN-Hosts oder SAN-Cloud-Clients herzustellen. Sie können auch Storage-Services konfigurieren, die in einer Cloud-Umgebung wie ausgeführt werden link:https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^] Oder link:https://docs.netapp.com/us-en/bluexp-fsx-ontap/index.html["Amazon FSX für NetApp ONTAP"^] Für die Verbindung mit lokalen SAN-Hosts oder SAN-Cloud-Clients.
+Sie können beispielsweise den lokalen ONTAP -Speicher so konfigurieren, dass er eine Verbindung zu lokalen SAN-Hosts oder SAN-Cloud-Clients herstellt.  Sie können auch Speicherdienste konfigurieren, die in einer Cloud-Umgebung ausgeführt werden, wie z. B.link:https://docs.netapp.com/us-en/cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^] oderlink:https://docs.netapp.com/us-en/storage-management-fsx-ontap/index.html["Amazon FSX für NetApp ONTAP"^] um eine Verbindung zu lokalen SAN-Hosts oder SAN-Cloud-Clients herzustellen.
 
 .Verwandte Informationen
 * link:https://docs.netapp.com/us-en/ontap/san-config/index.html["ONTAP-SAN-Konfigurationsreferenz"^]

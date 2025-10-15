@@ -1,8 +1,8 @@
 ---
 sidebar: sidebar 
 permalink: hu_citrix_84.html 
-keywords: host utilities, citrix, XenServer, 8 series, netapp, ontap, san, boot 
-summary: Konfigurieren Sie Citrix Hypervisor 8.4 für Multipathing und mit spezifischen Parametern und Einstellungen für FCP- und iSCSI-Protokollvorgänge mit ONTAP Speicher. 
+keywords: host utilities, citrix, Xenserver, 8 series, netapp, ontap, san, boot 
+summary: Konfigurieren Sie Citrix Xenserver 8.4 für Multipathing und mit spezifischen Parametern und Einstellungen für FCP- und iSCSI-Protokollvorgänge mit ONTAP Speicher. 
 ---
 = Konfigurieren Sie Citrix Xenserver 8.4 für FCP und iSCSI mit ONTAP-Speicher
 :hardbreaks:
@@ -16,11 +16,11 @@ summary: Konfigurieren Sie Citrix Hypervisor 8.4 für Multipathing und mit spezi
 
 
 [role="lead"]
-Konfigurieren Sie Citrix Hypervisor 8.4 für Multipathing und mit spezifischen Parametern und Einstellungen für FCP- und iSCSI-Protokollvorgänge mit ONTAP Speicher.
+Konfigurieren Sie Citrix Xenserver 8.4 für Multipathing und mit spezifischen Parametern und Einstellungen für FCP- und iSCSI-Protokollvorgänge mit ONTAP Speicher.
 
 [NOTE]
 ====
-Das Softwarepaket Linux Host Utilities unterstützt keine Citrix Hypervisor-Betriebssysteme.
+Das Softwarepaket „Linux Host Utilities“ unterstützt keine Citrix Xenserver-Betriebssysteme.
 
 ====
 
@@ -45,7 +45,7 @@ Informationen zum Aktivieren des HBA-BIOS finden Sie in der anbieterspezifischen
 
 == Schritt 2: Bestätigen Sie die Multipath-Konfiguration für Ihren Host
 
-Sie können Multipathing mit Citrix Hypervisor 8.4 verwenden, um ONTAP -LUNs zu verwalten.
+Sie können Multipathing mit Citrix Xenserver 8.4 verwenden, um ONTAP -LUNs zu verwalten.
 
 Um sicherzustellen, dass Multipathing für Ihren Host korrekt konfiguriert ist, überprüfen Sie, ob die `/etc/multipath.conf` Datei definiert ist und ob die von NetApp empfohlenen Einstellungen für Ihre ONTAP LUNs konfiguriert sind.
 
