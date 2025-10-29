@@ -9,4 +9,4 @@ NOTE: Wenden Sie sich an den Microsoft Support für die Hotfixes, die nicht im M
 
 
 
-TIP: Viele Hotfixes erfordern einen Neustart Ihres Windows Hosts. Sie können den Host so lange neu starten, bis _after_ Sie die Host Utilities installieren oder aktualisieren.
+TIP: Viele Hotfixes erfordern einen Neustart des Windows-Hosts.  Sie können mit dem Neustart des Hosts warten, bis Sie die Host-Dienstprogramme installiert oder aktualisiert haben.

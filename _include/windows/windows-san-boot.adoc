@@ -1,0 +1,35 @@
+= Schritt 1: Aktivieren Sie optional den SAN-Bootvorgang
+:allow-uri-read: 
+
+
+
+
+== Schritt 1: Aktivieren Sie optional den SAN-Bootvorgang
+
+Sie können das Windows-Betriebssystem entweder lokal oder über ein SAN starten.  NetApp empfiehlt die Verwendung eines SAN-Bootvorgangs, um die Bereitstellung zu vereinfachen und die Skalierbarkeit zu verbessern.
+
+[role="tabbed-block"]
+====
+.SAN Booting
+--
+Wenn Sie sich für den SAN-Bootvorgang entscheiden, muss dies von Ihrer Konfiguration unterstützt werden.
+
+.Bevor Sie beginnen
+Überprüfen Sie mithilfe des https://mysupport.netapp.com/matrix/#welcome["Interoperabilitäts-Matrix-Tool"^], ob Ihr Windows-Betriebssystem, Ihr Hostbusadapter (HBA), die HBA-Firmware, das HBA-StartBIOS und die ONTAP-Version das Booten über das SAN unterstützen.
+
+.Schritte
+. link:https://docs.netapp.com/us-en/ontap/san-management/index.html["Erstellen Sie eine SAN-Boot-LUN und ordnen Sie sie dem Host zu"^].
+. Aktivieren Sie das SAN-Booten im Server-BIOS für die Ports, denen die SAN-Boot-LUN zugeordnet ist.
++
+Informationen zum Aktivieren des HBA-BIOS finden Sie in der anbieterspezifischen Dokumentation.
+
+. Überprüfen Sie, ob die Konfiguration erfolgreich war, indem Sie den Host neu starten und überprüfen, ob das Betriebssystem ausgeführt wird.
+
+
+--
+.Lokaler Start
+--
+Führen Sie einen lokalen Bootvorgang durch, indem Sie das Windows-Betriebssystem auf der lokalen Festplatte installieren, beispielsweise auf einer SSD, SATA oder einem RAID-System.
+
+--
+====

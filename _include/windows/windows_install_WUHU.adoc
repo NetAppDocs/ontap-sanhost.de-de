@@ -1,0 +1,11 @@
+= Schritt 3: Installieren Sie die Windows-Host-Dienstprogramme
+:allow-uri-read: 
+
+
+
+
+== Schritt 3: Installieren Sie die Windows-Host-Dienstprogramme
+
+Die Windows Host Utilities sind eine Reihe von Softwareprogrammen mit zugehöriger Dokumentation, die es Ihnen ermöglichen, Host-Computer mit virtuellen Datenträgern (LUNs) auf einem NetApp SAN zu verbinden.  NetApp empfiehlt, die neuesten Windows Host Utilities herunterzuladen und zu installieren, um die ONTAP LUN-Verwaltung zu unterstützen und dem technischen Support die Erfassung von Konfigurationsdaten zu erleichtern.
+
+Informationen zur Konfiguration und Installation der Windows-Hostdienstprogramme finden Sie unterlink:https://docs.netapp.com/us-en/ontap-sanhost/hu_wuhu_71_rn.html["Windows Host Utilities"] Dokumentation und wählen Sie die Installationsprozedur für Ihre Windows Host Utilities-Version aus.

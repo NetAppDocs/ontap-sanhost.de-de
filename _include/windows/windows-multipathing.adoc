@@ -1,0 +1,81 @@
+= Schritt 4: Bestätigen Sie die Multipath-Konfiguration für Ihren Host
+:allow-uri-read: 
+
+
+
+
+== Schritt 4: Bestätigen Sie die Multipath-Konfiguration für Ihren Host
+
+Installieren Sie die Microsoft Multipath I/O (MPIO)-Software und aktivieren Sie Multipathing, wenn Ihr Windows-Host über mehr als einen Pfad zum Speichersystem verfügt.
+
+Auf einem Windows-System sind die beiden Hauptkomponenten einer MPIO-Lösung das gerätespezifische Modul (DSM) und das Windows MPIO.  MPIO stellt dem Windows-Betriebssystem für alle Pfade eine einzige Festplatte zur Verfügung, und das DSM verwaltet die Pfad-Failover.
+
+
+CAUTION: Wenn Sie die MPIO-Software nicht installieren, sieht das Windows-Betriebssystem jeden Pfad möglicherweise als separate Festplatte. Dies kann zu Datenbeschädigungen führen.
+
+
+NOTE: Windows XP oder Windows Vista, die auf einer virtuellen Hyper-V-Maschine ausgeführt werden, unterstützt MPIO nicht.
+
+.Schritte
+. Installieren Sie die MPIO-Software und aktivieren Sie Multipathing.
+. Wenn Sie MPIO auf Systemen auswählen, die FC verwenden, legt das Host Utilities Installer die erforderlichen Zeitüberschreitungswerte für Emulex und QLogic FC HBAs fest.
++
+[role="tabbed-block"]
+====
+.Emulex FC
+--
+Die Zeitüberschreitungswerte für Emulex FC HBAs:
+
+[cols="2*"]
+|===
+| Eigenschaftstyp | Eigenschaftswert 
+
+
+| LinkTimeOut | 1 
+
+
+| NodeTimeOut | 10 
+|===
+--
+.QLogic FC
+--
+Die Zeitüberschreitungswerte für QLogic FC HBAs:
+
+[cols="2*"]
+|===
+| Eigenschaftstyp | Eigenschaftswert 
+
+
+| LinkDownTimeOut | 1 
+
+
+| PortDownRetryCount | 10 
+|===
+--
+====
+. Überprüfen Sie den Pfadstatus für Ihre ONTAP LUNs:
++
+Je nach SAN-Konfiguration verwendet der Host ASA, AFF oder FAS -Konfigurationen für den Zugriff auf ONTAP -LUNs.  Diese Konfigurationen sollten nicht mehr als vier Pfade benötigen, um auf eine einzelne ONTAP LUN zuzugreifen.  Bei einem Speicherausfall können mehr als vier Pfade Probleme verursachen.
+
++
+Die folgenden Beispielausgaben zeigen die korrekten Einstellungen für ONTAP -LUNs für eine ASA, AFF oder FAS Konfiguration.
+
++
+[role="tabbed-block"]
+====
+.ASA-Konfiguration
+--
+Eine ASA -Konfiguration sollte eine Gruppe von aktiven/optimierten Pfaden mit jeweils einer Priorität aufweisen.  Der Controller verwaltet die Pfade und sendet E/A-Operationen auf allen aktiven Pfaden.
+
+image::asa.png[Screenshot der ONTAP-LUN mit aktiven/optimierten Pfaden]
+
+--
+.AFF- oder FAS-Konfiguration
+--
+Eine AFF oder FAS Konfiguration sollte zwei Pfadgruppen mit unterschiedlichen Prioritäten aufweisen.  Die Pfade mit höherer Priorität sind aktiv/optimiert und werden von dem Controller bedient, auf dem sich das Aggregat befindet.  Die Pfade mit niedrigerer Priorität werden von einem anderen Controller bedient.  Sie sind aktiv, aber nicht optimiert und werden nur dann verwendet, wenn optimierte Pfade nicht verfügbar sind.
+
+image::nonasa.png[Screenshot einer ONTAP-LUN mit zwei aktiven/optimierten Pfaden und zwei aktiven/nicht optimierten Pfaden]
+
+--
+====
+

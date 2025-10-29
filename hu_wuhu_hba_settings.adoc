@@ -127,7 +127,7 @@ NOTE: HKLM ist die Abkürzung für `HKEY_LOCAL_MACHINE`.
 | 60 | Bei Angabe der MPIO-Unterstützung 
 
 
-| Wenn keine MPIO-Unterstützung ausgewählt ist | HKLM\SYSTEM\CurrentControlSet\Services\mpio \Parameters\UseCustomRecoveryIntervall | 1 
+| HKLM\SYSTEM\CurrentControlSet\Services\mpio \Parameters\UseCustomRecoveryIntervall | 1 | Wenn MPIO-Unterstützung angegeben ist und Ihr Server Windows Server 2025, 2022, 2019 oder 2016 ist 
 |===
 --
 .NVMe-Parameter

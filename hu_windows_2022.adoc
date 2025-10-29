@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
 permalink: hu_windows_2022.html 
-keywords: windows, enterprise 
-summary: Verwenden von Windows Server 2022 mit ONTAP 
+keywords: fcp, iscsi, windows, host, utilities, 2022, ontp, luns, configure 
+summary: Installieren Sie Windows Host Utilities auf einem Windows Server 2022-Host, um die FCP- und iSCSI-Protokollvorgänge mit ONTAP LUNs zu verwalten. 
 ---
-= Verwenden Sie Windows Server 2022 mit ONTAP
+= Konfigurieren von Windows Server 2022 für FCP und iSCSI mit ONTAP -Speicher
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -16,21 +16,16 @@ summary: Verwenden von Windows Server 2022 mit ONTAP
 
 
 [role="lead"]
-Sie können die Konfigurationseinstellungen des ONTAP-SAN-Hosts verwenden, um Windows Server 2022 für den Betrieb mit ONTAP-Speicher zu konfigurieren.
+Mit den Windows Host Utilities können Sie Windows-Hosts mit virtuellen Datenträgern (LUNs) auf einem NetApp SAN verbinden.  Installieren Sie die Windows Host Utilities auf einem Windows Server 2022-Host, um die FCP- und iSCSI-Protokollvorgänge mit ONTAP LUNs zu verwalten.
 
 
 
-== Starten Sie das Windows-Betriebssystem
+== Schritt 1: Aktivieren Sie optional den SAN-Bootvorgang
 
-Sie können das Windows-Betriebssystem mit einem lokalen Boot oder einem SAN-Boot starten. NetApp empfiehlt die Verwendung eines SAN-Starts, wenn dies von Ihrer Konfiguration unterstützt wird.
+Sie können das Windows-Betriebssystem entweder lokal oder über ein SAN starten.  NetApp empfiehlt die Verwendung eines SAN-Bootvorgangs, um die Bereitstellung zu vereinfachen und die Skalierbarkeit zu verbessern.
 
 [role="tabbed-block"]
 ====
-.Lokaler Start
---
-Führen Sie einen lokalen Start durch, indem Sie das Windows-Betriebssystem auf der lokalen Festplatte (SSD, SATA, RAID usw.) installieren.
-
---
 .SAN Booting
 --
 Wenn Sie sich für den SAN-Bootvorgang entscheiden, muss dies von Ihrer Konfiguration unterstützt werden.
@@ -39,27 +34,24 @@ Wenn Sie sich für den SAN-Bootvorgang entscheiden, muss dies von Ihrer Konfigur
 Überprüfen Sie mithilfe des https://mysupport.netapp.com/matrix/#welcome["Interoperabilitäts-Matrix-Tool"^], ob Ihr Windows-Betriebssystem, Ihr Hostbusadapter (HBA), die HBA-Firmware, das HBA-StartBIOS und die ONTAP-Version das Booten über das SAN unterstützen.
 
 .Schritte
-. Ordnen Sie die SAN-Boot-LUN dem Host zu.
-+
-Siehe link:https://docs.netapp.com/us-en/ontap/san-management/index.html["SAN-Storage-Management"^].
-
-. Vergewissern Sie sich, dass mehrere Pfade verfügbar sind.
-+
-
-NOTE: Mehrere Pfade sind nur verfügbar, nachdem das Host-Betriebssystem auf den Pfaden ausgeführt wurde.
-
+. link:https://docs.netapp.com/us-en/ontap/san-management/index.html["Erstellen Sie eine SAN-Boot-LUN und ordnen Sie sie dem Host zu"^].
 . Aktivieren Sie das SAN-Booten im Server-BIOS für die Ports, denen die SAN-Boot-LUN zugeordnet ist.
 +
 Informationen zum Aktivieren des HBA-BIOS finden Sie in der anbieterspezifischen Dokumentation.
 
-. Starten Sie den Host neu, um zu überprüfen, ob der Startvorgang erfolgreich war
+. Überprüfen Sie, ob die Konfiguration erfolgreich war, indem Sie den Host neu starten und überprüfen, ob das Betriebssystem ausgeführt wird.
 
+
+--
+.Lokaler Start
+--
+Führen Sie einen lokalen Bootvorgang durch, indem Sie das Windows-Betriebssystem auf der lokalen Festplatte installieren, beispielsweise auf einer SSD, SATA oder einem RAID-System.
 
 --
 ====
 
 
-== Installieren Sie Windows Hotfixes
+== Schritt 2: Windows-Hotfixes installieren
 
 NetApp empfiehlt die Installation des *neuesten kumulativen Updates* aus dem Microsoft Update-Katalog auf dem Hostserver.
 
@@ -74,64 +66,34 @@ NOTE: Wenden Sie sich an den Microsoft Support für die Hotfixes, die nicht im M
 
 
 
-TIP: Viele Hotfixes erfordern einen Neustart Ihres Windows Hosts. Sie können den Host so lange neu starten, bis _after_ Sie die Host Utilities installieren oder aktualisieren.
+TIP: Viele Hotfixes erfordern einen Neustart des Windows-Hosts.  Sie können mit dem Neustart des Hosts warten, bis Sie die Host-Dienstprogramme installiert oder aktualisiert haben.
 
 
 
-== Installieren Sie die Windows Host Utilities
+== Schritt 3: Installieren Sie die Windows-Host-Dienstprogramme
 
-Bei den Windows Host Utilities handelt es sich um eine Reihe von Softwareprogrammen mit Dokumentation, mit denen Sie Hostcomputer mit virtuellen Festplatten (LUNs) auf einem NetApp SAN verbinden können.  NetApp empfiehlt, das neueste Utility-Kit herunterzuladen und zu installieren.  Informationen und Anweisungen zur Konfiguration von Windows Host Utilities finden Sie imlink:https://docs.netapp.com/us-en/ontap-sanhost/hu-wuhu-release-notes.html["Dokumentation zu Windows Host Utilities"] und wählen Sie das Installationsverfahren für Ihre Windows Host Utilities-Version aus.
+Die Windows Host Utilities sind eine Reihe von Softwareprogrammen mit zugehöriger Dokumentation, die es Ihnen ermöglichen, Host-Computer mit virtuellen Datenträgern (LUNs) auf einem NetApp SAN zu verbinden.  NetApp empfiehlt, die neuesten Windows Host Utilities herunterzuladen und zu installieren, um die ONTAP LUN-Verwaltung zu unterstützen und dem technischen Support die Erfassung von Konfigurationsdaten zu erleichtern.
+
+Informationen zur Konfiguration und Installation der Windows-Hostdienstprogramme finden Sie unterlink:https://docs.netapp.com/us-en/ontap-sanhost/hu_wuhu_71_rn.html["Windows Host Utilities"] Dokumentation und wählen Sie die Installationsprozedur für Ihre Windows Host Utilities-Version aus.
 
 
 
-== Multipathing
+== Schritt 4: Bestätigen Sie die Multipath-Konfiguration für Ihren Host
 
-Sie müssen die Microsoft Multipath I/O (MPIO)-Software installieren und Multipathing aktivieren, wenn Ihr Windows-Host über mehr als einen Pfad zum Speichersystem verfügt. Wenn Sie MPIO-Unterstützung auswählen, aktiviert Windows Host Utilities die MPIO-Funktion, die in Windows Server 2022 enthalten ist. Wenn Sie die Windows Host Utilities nicht verwenden, müssen Sie Multipathing manuell aktivieren.
+Installieren Sie die Microsoft Multipath I/O (MPIO)-Software und aktivieren Sie Multipathing, wenn Ihr Windows-Host über mehr als einen Pfad zum Speichersystem verfügt.
 
-Die MPIO-Software stellt dem Windows-Betriebssystem eine einzige Festplatte für alle Pfade zur Verfügung, und ein gerätespezifisches Modul (DSM) verwaltet Pfad-Failover. Auf einem Windows-System sind die beiden Hauptkomponenten einer MPIO-Lösung DSM und Windows MPIO.
+Auf einem Windows-System sind die beiden Hauptkomponenten einer MPIO-Lösung das gerätespezifische Modul (DSM) und das Windows MPIO.  MPIO stellt dem Windows-Betriebssystem für alle Pfade eine einzige Festplatte zur Verfügung, und das DSM verwaltet die Pfad-Failover.
 
 
 CAUTION: Wenn Sie die MPIO-Software nicht installieren, sieht das Windows-Betriebssystem jeden Pfad möglicherweise als separate Festplatte. Dies kann zu Datenbeschädigungen führen.
 
-[NOTE]
-====
-* Bei Windows Host Utilities 8.0 wird die MPIO-Funktion automatisch aktiviert, wenn Sie MPIO-Unterstützung auswählen.
-* Windows XP oder Windows Vista, die in einer virtuellen Hyper-V-Maschine ausgeführt werden, unterstützen MPIO nicht.
 
+NOTE: Windows XP oder Windows Vista, die auf einer virtuellen Hyper-V-Maschine ausgeführt werden, unterstützt MPIO nicht.
 
-====
-
-
-== SAN-Konfiguration
-
-Je nach SAN-Konfiguration verwendet der Host für den Zugriff auf ONTAP-LUNs All-SAN-Array (ASA)- oder nicht-ASA-Konfigurationen. Sowohl in ASA- als auch in nicht-ASA-Konfigurationen sollten Sie nicht mehr als vier Pfade für den Zugriff auf eine einzelne ONTAP-LUN benötigen. Falls mehr als vier Pfade vorhanden sind, kann dies bei einem Storage-Ausfall zu Problemen mit den Pfaden führen.
-
-
-
-=== Konfiguration des gesamten SAN-Arrays
-
-Eine ASA-Konfiguration sollte eine Gruppe von aktiv/optimierten Pfaden mit einzelnen Prioritäten enthalten. Das bedeutet, dass die Pfade vom Controller gewartet werden und der I/O auf allen aktiven Pfaden gesendet wird.
-
-Im folgenden Beispiel wird die richtige Ausgabe für eine ONTAP-LUN mit aktiv/optimierten Pfaden angezeigt.
-
-image::asa.png[Screenshot der ONTAP-LUN mit aktiven/optimierten Pfaden]
-
-
-
-=== Nicht-ASA-Konfiguration
-
-Eine nicht-ASA-Konfiguration sollte zwei Gruppen von Pfaden mit unterschiedlichen Prioritäten enthalten. Die Pfade mit höheren Prioritäten sind aktiv/optimiert. Das bedeutet, dass die aktiv/optimierten Pfade vom Controller gewartet werden, in dem sich das Aggregat befindet. Die Pfade mit niedrigeren Prioritäten sind aktiv, aber nicht optimiert, da sie von einem anderen Controller bedient werden. Die nicht optimierten Pfade werden nur verwendet, wenn keine optimierten Pfade verfügbar sind.
-
-Das folgende Beispiel zeigt die richtige Ausgabe für eine ONTAP-LUN mit zwei aktiv/optimierten Pfaden und zwei aktiv/nicht optimierten Pfaden.
-
-image::nonasa.png[Screenshot einer ONTAP-LUN mit zwei aktiven/optimierten Pfaden und zwei aktiven/nicht optimierten Pfaden]
-
-
-
-== Empfohlene Einstellungen
-
-Wenn Sie MPIO auf Systemen auswählen, die FC verwenden, legt das Host Utilities Installer die erforderlichen Zeitüberschreitungswerte für Emulex und QLogic FC HBAs fest.
-
+.Schritte
+. Installieren Sie die MPIO-Software und aktivieren Sie Multipathing.
+. Wenn Sie MPIO auf Systemen auswählen, die FC verwenden, legt das Host Utilities Installer die erforderlichen Zeitüberschreitungswerte für Emulex und QLogic FC HBAs fest.
++
 [role="tabbed-block"]
 ====
 .Emulex FC
@@ -165,11 +127,41 @@ Die Zeitüberschreitungswerte für QLogic FC HBAs:
 |===
 --
 ====
+. Überprüfen Sie den Pfadstatus für Ihre ONTAP LUNs:
++
+Je nach SAN-Konfiguration verwendet der Host ASA, AFF oder FAS -Konfigurationen für den Zugriff auf ONTAP -LUNs.  Diese Konfigurationen sollten nicht mehr als vier Pfade benötigen, um auf eine einzelne ONTAP LUN zuzugreifen.  Bei einem Speicherausfall können mehr als vier Pfade Probleme verursachen.
 
-NOTE: Weitere Informationen zu den empfohlenen Einstellungen finden Sie unter link:hu_wuhu_hba_settings.html["Konfigurieren Sie die Registrierungseinstellungen für Windows Host Utilities"].
++
+Die folgenden Beispielausgaben zeigen die korrekten Einstellungen für ONTAP -LUNs für eine ASA, AFF oder FAS Konfiguration.
+
++
+[role="tabbed-block"]
+====
+.ASA-Konfiguration
+--
+Eine ASA -Konfiguration sollte eine Gruppe von aktiven/optimierten Pfaden mit jeweils einer Priorität aufweisen.  Der Controller verwaltet die Pfade und sendet E/A-Operationen auf allen aktiven Pfaden.
+
+image::asa.png[Screenshot der ONTAP-LUN mit aktiven/optimierten Pfaden]
+
+--
+.AFF- oder FAS-Konfiguration
+--
+Eine AFF oder FAS Konfiguration sollte zwei Pfadgruppen mit unterschiedlichen Prioritäten aufweisen.  Die Pfade mit höherer Priorität sind aktiv/optimiert und werden von dem Controller bedient, auf dem sich das Aggregat befindet.  Die Pfade mit niedrigerer Priorität werden von einem anderen Controller bedient.  Sie sind aktiv, aber nicht optimiert und werden nur dann verwendet, wenn optimierte Pfade nicht verfügbar sind.
+
+image::nonasa.png[Screenshot einer ONTAP-LUN mit zwei aktiven/optimierten Pfaden und zwei aktiven/nicht optimierten Pfaden]
+
+--
+====
 
 
 
-== Bekannte Probleme
 
-Es gibt keine bekannten Probleme für Windows Server 2022 mit ONTAP-Version.
+== Schritt 5: Bekannte Probleme überprüfen
+
+Es sind keine Probleme bekannt.
+
+
+
+== Was kommt als Nächstes?
+
+link:hu_wuhu_hba_settings.html["Erfahren Sie mehr über die Registrierungseinstellungen für Windows Host Utilities."].
