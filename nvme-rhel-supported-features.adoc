@@ -1,0 +1,92 @@
+---
+sidebar: sidebar 
+permalink: nvme-rhel-supported-features.html 
+keywords: nvme, linux, rhel, red hat, enterprise 
+summary: Erfahren Sie mehr über ONTAP Unterstützung und -Funktionen für RHEL-Hosts. 
+---
+= Erfahren Sie mehr über ONTAP Unterstützung und -Funktionen für RHEL-Hosts.
+:hardbreaks:
+:toclevels: 1
+:allow-uri-read: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Die für die Hostkonfiguration mit NVMe over Fabrics (NVMe-oF) unterstützten Funktionen variieren je nach Ihrer ONTAP und RHEL-Version.
+
+[cols="50,25,25"]
+|===
+| Funktion | RHEL-Hostversion | ONTAP-Version 
+
+
+| Eine sichere In-Band-Authentifizierung wird über NVMe/TCP zwischen einem RHEL-Host und einem ONTAP Controller unterstützt.  a| 
+9.3 oder später
+| 9.12.1 oder später 
+
+
+| NVMe/TCP stellt Namensräume unter Verwendung des nativen `nvme-cli` Paket  a| 
+8.2 oder später
+| 9.10.1 oder später 
+
+
+| NVMe/TCP ist eine vollständig unterstützte Unternehmensfunktion.  a| 
+9.0 oder höher
+| 9.10.1 oder später 
+
+
+| NVMe- und SCSI-Datenverkehr werden auf demselben Host unterstützt, wobei NVMe Multipath für NVMe-oF-Namespaces und dm-Multipath für SCSI-LUNs verwendet werden.  a| 
+8.2 oder später
+| 9.4 oder später 
+|===
+ONTAP unterstützt die folgenden SAN-Hostfunktionen unabhängig von der auf Ihrem System ausgeführten ONTAP Version.
+
+[cols="75,25"]
+|===
+| Funktion | RHEL-Hostversion 
+
+
+| Native NVMe-Multipathing ist standardmäßig aktiviert.  a| 
+10.0 oder später
+
+
+
+| SAN-Booten wird durch die Verwendung des NVMe/FC-Protokolls aktiviert.  a| 
+9.4 oder später
+
+
+
+| Der `nvme-cli` Das Paket enthält Skripte zur automatischen Verbindung, sodass keine Skripte von Drittanbietern benötigt werden.  a| 
+8.2 oder später
+
+
+
+| Die native udev-Regel in `nvme-cli` Das Paket bietet Round-Robin-Lastverteilung für NVMe-Multipath  a| 
+8.2 oder später
+
+|===
+
+NOTE: Einzelheiten zu unterstützten Konfigurationen finden Sie imlink:https://mysupport.netapp.com/matrix/["Interoperabilitäts-Matrix-Tool"^] .
+
+
+
+== Was kommt als nächstes
+
+[cols="50,50"]
+|===
+| Wenn Ihre RHEL-Version ... ist. | Erfahren Sie mehr über ... 
+
+
+| 10er-Serie | link:nvme-rhel-10x.html["NVMe für RHEL 10x konfigurieren"] 
+
+
+| 9er-Serie | link:nvme-rhel-9x.html["NVMe für RHEL 9x konfigurieren"] 
+
+
+| 8er-Serie | link:nvme-rhel-8x.html["NVMe für RHEL 8x konfigurieren"] 
+|===
+.Verwandte Informationen
+link:https://docs.netapp.com/us-en/ontap/san-admin/start-nvme-fc-service-svm-task.html["Erfahren Sie mehr über die Verwaltung von NVMe-Protokollen."]

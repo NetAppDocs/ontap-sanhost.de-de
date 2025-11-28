@@ -16,9 +16,9 @@ summary: So konfigurieren Sie einen NVMe-oF-Host für Rocky Linux 8.9 mit ONTAP
 
 
 [role="lead"]
-Red Hat Enterprise Linux (RHEL)-Hosts unterstützen die Protokolle NVMe over Fibre Channel (NVMe/FC) und NVMe over TCP (NVMe/TCP) mit Asymmetric Namespace Access (ANA).  ANA bietet Multipathing-Funktionalität, die dem asymmetrischen logischen Einheitenzugriff (ALUA) in iSCSI- und FCP-Umgebungen entspricht.
+Rocky Linux-Hosts unterstützen die NVMe over Fibre Channel (NVMe/FC)- und NVMe over TCP (NVMe/TCP)-Protokolle mit Asymmetric Namespace Access (ANA). ANA bietet Multipathing-Funktionalität, die dem asymmetrischen logischen Einheitenzugriff (ALUA) in iSCSI- und FCP-Umgebungen entspricht.
 
-Erfahren Sie, wie Sie NVMe over Fabrics (NVMe-oF)-Hosts für Rocky Linux 8.9 konfigurieren.  Weitere Informationen zu Support und Funktionen finden Sie unterlink:hu-nvme-index.html["NVME-oF-Übersicht"^] .
+Erfahren Sie, wie Sie NVMe over Fabrics (NVMe-oF)-Hosts für Rocky Linux 8.9 konfigurieren. Weitere Informationen zu Support und Funktionen finden Sie unter link:nvme-rockylinux-overview.html["Rocky Linux ONTAP Unterstützung und Funktionen"]Die
 
 *NVMe-oF mit Rocky Linux 8.9 hat die folgenden bekannten Einschränkungen:*
 
@@ -46,7 +46,7 @@ Informationen zum Aktivieren des HBA-BIOS finden Sie in der anbieterspezifischen
 
 == Schritt 2: Überprüfen der Softwareversion und der NVMe-Konfiguration
 
-Überprüfen Sie, ob Ihr System die Softwareanforderungen erfüllt, und überprüfen Sie die NVMe-Paketinstallationen und die Hostkonfiguration.
+Um Ihren Host für NVMe-oF zu konfigurieren, sollten Sie die Host- und NVMe-Softwarepakete installieren, Multipathing aktivieren und Ihre Host-NQN-Konfiguration überprüfen.
 
 .Schritte
 . Installieren Sie Rocky Linux 8.9 auf dem Server.  Überprüfen Sie nach Abschluss der Installation, ob Sie den erforderlichen Rocky Linux 8.9-Kernel ausführen:
