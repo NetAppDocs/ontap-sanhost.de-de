@@ -1,5 +1,8 @@
+---
+permalink: hu_sles_15SP1.html 
+redirect: ontap-sanhost/hu-sles-15spx.html 
+---
 = 
 :allow-uri-read: 
 
 
-git pull origin main --- Permalink: hu_sles_15SP1.html Weiterleitung: ontap-sanhost/hu-sles-15spx.html ---
