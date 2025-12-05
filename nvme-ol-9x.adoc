@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
-permalink: nvme-ol-95.html 
-keywords: nvme, oracle linux, 9.5, host configuration 
-summary: NVMe-of Host-Konfiguration für Oracle Linux 9.5 mit ONTAP 
+permalink: nvme-ol-9x.html 
+keywords: nvme, oracle linux, 9x, host configuration 
+summary: NVMe-oF-Hostkonfiguration für Oracle Linux 9x mit ONTAP 
 ---
-= Konfigurieren Sie Oracle Linux 9.5 mit NVMe-oF für ONTAP-Speicher
+= Konfigurieren Sie Oracle Linux 9x mit NVMe-oF für ONTAP -Speicher
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -18,35 +18,12 @@ summary: NVMe-of Host-Konfiguration für Oracle Linux 9.5 mit ONTAP
 [role="lead"]
 Oracle Linux-Hosts unterstützen die NVMe over Fibre Channel (NVMe/FC)- und NVMe over TCP (NVMe/TCP)-Protokolle mit Asymmetric Namespace Access (ANA). ANA bietet Multipathing-Funktionalität, die dem asymmetrischen logischen Einheitenzugriff (ALUA) in iSCSI- und FCP-Umgebungen entspricht.
 
-.Über diese Aufgabe
-Bei der NVMe-of-Host-Konfiguration für Oracle Linux 9.5 mit ONTAP Storage stehen die folgenden Support- und Funktionsfunktionen zur Verfügung.
+Erfahren Sie, wie Sie NVMe over Fabrics (NVMe-oF)-Hosts für Oracle Linux 9x konfigurieren. Weitere Informationen zu Support und Funktionen finden Sie unter link:nvme-ol-supported-features.html["Oracle Linux ONTAP Unterstützung und -Funktionen"]Die
 
-* Support verfügbar:
-+
-** Unterstützung für NVMe over TCP (NVMe/TCP) neben NVMe over Fibre Channel (NVMe/FC) Über das NetApp-Plug-in im nativen nvme-cli-Paket werden ONTAP-Details für NVMe/FC- und NVMe/TCP-Namespaces angezeigt.
-** Ausführen von NVMe- und SCSI-Datenverkehr auf demselben Host. Sie können beispielsweise dm-multipath auf SCSI-mpath-Geräten für SCSI-LUNs konfigurieren und NVMe-Multipath verwenden, um NVMe-oF-Namespace-Geräte auf dem Host zu konfigurieren.
-** Oracle Linux 9.5 aktiviert standardmäßig NVMe-Multipath im Kernel für NVMe-Namespaces, sodass keine expliziten Einstellungen mehr erforderlich sind.
-** Ab ONTAP 9.12.1 wird die sichere In-Band-Authentifizierung für NVMe/TCP unterstützt. Sie können die sichere In-Band-Authentifizierung für NVMe/TCP mit Oracle Linux 9.5 verwenden.
+NVMe-oF unter Oracle Linux 9x weist folgende bekannte Einschränkungen auf:
 
-
-+
---
-
-NOTE: Die NetApp  `sanlun` Das Host-Dienstprogramm wird für NVMe-oF nicht unterstützt. Stattdessen können Sie das im nativen  `nvme-cli` für alle NVMe-oF-Transporte.
-
-Weitere Informationen zu unterstützten Konfigurationen finden Sie im link:https://mysupport.netapp.com/matrix/["Interoperabilitäts-Matrix-Tool"^].
-
---
-* Verfügbare Funktionen:
-+
-** Diese Version enthält keine neuen Funktionen.
-
-
-* Bekannte Einschränkungen:
-+
-** Vermeiden Sie die Ausgabe von  `nvme disconnect-all` Befehl auf Systemen, die von SAN über NVMe-TCP- oder NVMe-FC-Namespaces booten, da er sowohl Root- als auch Datendateisysteme trennt und zu Systeminstabilität führen kann.
-
-
+* Das Booten von SAN über das NVMe-oF-Protokoll wird nicht unterstützt.
+* Der `nvme disconnect-all` Dieser Befehl trennt sowohl das Root- als auch das Datendateisystem und kann zu Systeminstabilität führen.  Diese Meldung sollte nicht auf Systemen ausgegeben werden, die von SAN über NVMe-TCP- oder NVMe-FC-Namespaces booten.
 
 
 
@@ -66,19 +43,19 @@ Informationen zum Aktivieren des HBA-BIOS finden Sie in der anbieterspezifischen
 
 
 
-== Schritt 2: Softwareversionen validieren
+== Schritt 2: Installieren Sie die Oracle Linux- und NVMe-Software und überprüfen Sie Ihre Konfiguration.
 
-Verwenden Sie das folgende Verfahren, um die mindestens unterstützten Oracle Linux 9.5-Softwareversionen zu validieren.
+Gehen Sie wie folgt vor, um die minimal unterstützten Oracle Linux 9x Softwareversionen zu überprüfen.
 
 .Schritte
-. Installieren Sie Oracle Linux 9.5 auf dem Server. Überprüfen Sie nach Abschluss der Installation, ob Sie den angegebenen Oracle Linux 9.5-Kernel ausführen.
+. Installieren Sie Oracle Linux 9x auf dem Server.  Nach Abschluss der Installation überprüfen Sie, ob Sie den angegebenen Oracle Linux 9x-Kernel verwenden.
 +
 [source, cli]
 ----
 uname -r
 ----
 +
-Das folgende Beispiel zeigt eine Oracle Linux-Kernelversion:
+Beispiel einer Oracle Linux-Kernelversion:
 
 +
 [listing]
@@ -113,7 +90,7 @@ Das folgende Beispiel zeigt eine  `libnvme` Paketversion:
 ----
 libnvme-1.9-3.el9.x86_64
 ----
-. Überprüfen Sie auf dem Oracle Linux 9.5-Host den `hostnqn` String unter `/etc/nvme/hostnqn`:
+. Überprüfen Sie auf dem Oracle Linux 9x-Host die `hostnqn` Zeichenkette bei `/etc/nvme/hostnqn` :
 +
 [source, cli]
 ----
@@ -127,7 +104,7 @@ Das folgende Beispiel zeigt eine  `hostnqn` Version:
 ----
 nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0050-3410-8035-c2c04f4a5933
 ----
-. Überprüfen Sie das `hostnqn` Die Zeichenfolge entspricht der `hostnqn` String für das entsprechende Subsystem auf dem ONTAP-Array:
+. Überprüfen Sie im ONTAP System, ob `hostnqn` Die Zeichenkette stimmt mit der `hostnqn` Zeichenkette für das entsprechende Subsystem im ONTAP -Speichersystem:
 +
 [source, cli]
 ----
@@ -161,17 +138,16 @@ NOTE: Wenn die `hostnqn` Zeichenfolgen nicht übereinstimmen, können Sie den Be
 
 
 
-== Schritt 3: NVMe/FC konfigurieren
+== Schritt 3: Konfigurieren Sie NVMe/FC und NVMe/TCP
 
-Konfigurieren Sie NVMe/FC mit Broadcom/Emulex FC- oder Marvell/Qlogic FC-Adaptern.
+Konfigurieren Sie NVMe/FC mit Broadcom/Emulex- oder Marvell/QLogic-Adaptern oder konfigurieren Sie NVMe/TCP mithilfe manueller Erkennungs- und Verbindungsvorgänge.
 
 [role="tabbed-block"]
 ====
-.Broadcom/Emulex
+.FC – Broadcom/Emulex
 --
 Konfigurieren Sie NVMe/FC für einen Broadcom/Emulex-Adapter.
 
-.Schritte
 . Stellen Sie sicher, dass Sie das unterstützte Adaptermodell verwenden:
 +
 .. Zeigen Sie die Modellnamen an:
@@ -320,11 +296,10 @@ FCP CMPL: xb 000000c2 Err 0000023d
 
 
 --
-.Marvell/QLogic
+.FC – Marvell/QLogic
 --
 Konfigurieren Sie NVMe/FC für einen Marvell/QLogic-Adapter.
 
-.Schritte
 . Vergewissern Sie sich, dass der unterstützte Adaptertreiber und die unterstützten Firmware-Versionen ausgeführt werden:
 +
 [source, cli]
@@ -346,116 +321,15 @@ QLE2772 FW:v9.15.03 DVR:v10.02.09.300-k-debug
 cat /sys/module/qla2xxx/parameters/ql2xnvmeenable
 ----
 +
-Der Wert  `1` überprüft, dass  `ql2xnvmeenable` ist eingestellt.
+Die erwartete Ausgabe ist 1.
 
 
 
 --
-====
+.TCP
+--
+Das NVMe/TCP-Protokoll unterstützt den automatischen Verbindungsvorgang nicht.  Stattdessen können Sie die NVMe/TCP-Subsysteme und Namespaces ermitteln, indem Sie den NVMe/TCP `connect` oder `connect-all` Vorgänge manuell ausführen.
 
-
-== Schritt 4: Optional 1 MB I/O für NVMe/FC aktivieren
-
-ONTAP meldet in den Identify Controller-Daten eine maximale Datenübertragungsgröße (MDTS) von 8.  Dies bedeutet, dass die maximale E/A-Anforderungsgröße bis zu 1 MB betragen kann.  Um E/A-Anfragen der Größe 1 MB für einen Broadcom NVMe/FC-Host auszugeben, sollten Sie die `lpfc` Wert des `lpfc_sg_seg_cnt` Parameter vom Standardwert 64 auf 256.
-
-
-NOTE: Diese Schritte gelten nicht für Qlogic NVMe/FC-Hosts.
-
-.Schritte
-. Setzen Sie den `lpfc_sg_seg_cnt` Parameter auf 256:
-+
-[source, cli]
-----
-cat /etc/modprobe.d/lpfc.conf
-----
-+
-Sie sollten eine Ausgabe ähnlich dem folgenden Beispiel sehen:
-
-+
-[listing]
-----
-options lpfc lpfc_sg_seg_cnt=256
-----
-. Führen Sie den Befehl aus `dracut -f`, und starten Sie den Host neu.
-. Stellen Sie sicher, dass der Wert für `lpfc_sg_seg_cnt` 256 lautet:
-+
-[source, cli]
-----
-cat /sys/module/lpfc/parameters/lpfc_sg_seg_cnt
-----
-
-
-
-
-== Schritt 5: Überprüfen der NVMe-Bootdienste
-
-Mit Oracle Linux 9.5 ist die  `nvmefc-boot-connections.service` Und  `nvmf-autoconnect.service` In NVMe/FC enthaltene Boot-Dienste  `nvme-cli` Paket werden beim Systemstart automatisch aktiviert.
-
-Überprüfen Sie nach dem Booten, ob die  `nvmefc-boot-connections.service` Und  `nvmf-autoconnect.service` Boot-Dienste sind aktiviert.
-
-.Schritte
-. Vergewissern Sie sich, dass `nvmf-autoconnect.service` aktiviert ist:
-+
-[source, cli]
-----
-systemctl status nvmf-autoconnect.service
-----
-+
-.Beispielausgabe anzeigen
-[%collapsible]
-====
-[listing]
-----
-nvmf-autoconnect.service - Connect NVMe-oF subsystems automatically during boot
-Loaded: loaded (/usr/lib/systemd/system/nvmf-autoconnect.service; enabled; preset: disabled)
-Active: inactive (dead) since Wed 2025-07-02 16:46:37 IST; 1 day 3h ago
-Main PID: 2129 (code=exited, status=0/SUCCESS)
-CPU: 121ms
-
-Jul 02 16:46:37 interop-13-175 nvme[2129]: Failed to write to /dev/nvme-fabrics: Invalid argument
-Jul 02 16:46:37 interop-13-175 nvme[2129]: Failed to write to /dev/nvme-fabrics: Invalid argument
-Jul 02 16:46:37 interop-13-175 nvme[2129]: Failed to write to /dev/nvme-fabrics: Invalid argument
-Jul 02 16:46:37 interop-13-175 nvme[2129]: Failed to write to /dev/nvme-fabrics: Invalid argument
-Jul 02 16:46:37 interop-13-175 nvme[2129]: Failed to write to /dev/nvme-fabrics: Invalid argument
-Jul 02 16:46:37 interop-13-175 nvme[2129]: Failed to write to /dev/nvme-fabrics: Invalid argument
-Jul 02 16:46:37 interop-13-175 nvme[2129]: Failed to open ctrl nvme0, errno 2
-Jul 02 16:46:37 interop-13-175 nvme[2129]: failed to get discovery log: Bad file descriptor
-Jul 02 16:46:37 interop-13-175 systemd[1]: nvmf-autoconnect.service: Deactivated successfully.
-Jul 02 16:46:37 interop-13-175 systemd[1]: Finished Connect NVMe-oF subsystems automatically during boot.
-----
-====
-. Vergewissern Sie sich, dass `nvmefc-boot-connections.service` aktiviert ist:
-+
-[source, cli]
-----
-systemctl status nvmefc-boot-connections.service
-----
-+
-.Beispielausgabe anzeigen
-[%collapsible]
-====
-[listing]
-----
-nvmefc-boot-connections.service - Auto-connect to subsystems on FC-NVME devices found during boot
-Loaded: loaded (/usr/lib/systemd/system/nvmefc-boot-connections.service; enabled; preset: enabled)
-Active: inactive (dead) since Wed 2025-07-02 16:45:46 IST; 1 day 3h ago
-Main PID: 1604 (code=exited, status=0/SUCCESS)
-CPU: 32ms
-
-Jul 02 16:45:46 interop-13-175 systemd[1]: Starting Auto-connect to subsystems on FC-NVME devices found during boot...
-Jul 02 16:45:46 interop-13-175 systemd[1]: nvmefc-boot-connections.service: Deactivated successfully.
-Jul 02 16:45:46 interop-13-175 systemd[1]: Finished Auto-connect to subsystems on FC-NVME devices found during boot.
-----
-====
-
-
-
-
-== Schritt 6: NVMe/TCP konfigurieren
-
-Das NVMe/TCP-Protokoll unterstützt den Vorgang nicht `auto-connect`. Stattdessen können Sie die NVMe/TCP-Subsysteme und -Namespaces erkennen, indem Sie NVMe/TCP oder `connect-all` Vorgänge manuell ausführen `connect`.
-
-.Schritte
 . Vergewissern Sie sich, dass der Initiator-Port die Daten der Erkennungsprotokollseite über die unterstützten NVMe/TCP-LIFs abrufen kann:
 +
 [source, cli]
@@ -465,7 +339,7 @@ nvme discover -t tcp -w host-traddr -a traddr
 +
 .Beispiel anzeigen
 [%collapsible]
-====
+=====
 [listing, subs="+quotes"]
 ----
 nvme discover -t tcp -w 192.168.165.3 -a 192.168.165.8
@@ -559,7 +433,7 @@ traddr:  192.168.165.8
 eflags:  none
 sectype: none
 ----
-====
+=====
 . Vergewissern Sie sich, dass die anderen LIF-Kombinationen des NVMe/TCP-Initiators die Daten der Erkennungsprotokollseite erfolgreich abrufen können:
 +
 [source, cli]
@@ -567,16 +441,17 @@ sectype: none
 nvme discover -t tcp -w host-traddr -a traddr
 ----
 +
-Sie sollten eine Ausgabe ähnlich dem folgenden Beispiel sehen:
-
-+
-[listing]
+.Beispiel anzeigen
+[%collapsible]
+=====
+[listing, subs="+quotes"]
 ----
 nvme discover -t tcp -w 192.168.166.4 -a 192.168.166.8
 nvme discover -t tcp -w 192.168.165.3 -a 192.168.165.8
 nvme discover -t tcp -w 192.168.166.4 -a 192.168.166.9
 nvme discover -t tcp -w 192.168.165.3 -a 192.168.165.9
 ----
+=====
 . Führen Sie die aus `nvme connect-all` Befehl über alle unterstützten NVMe/TCP Initiator-Ziel-LIFs der Nodes hinweg:
 +
 [source, cli]
@@ -584,33 +459,131 @@ nvme discover -t tcp -w 192.168.165.3 -a 192.168.165.9
 nvme connect-all -t tcp -w host-traddr -a traddr
 ----
 +
-Sie sollten eine Ausgabe ähnlich dem folgenden Beispiel sehen:
-
-+
-[listing]
+.Beispiel anzeigen
+[%collapsible]
+=====
+[listing, subs="+quotes"]
 ----
 nvme connect-all -t	tcp -w 192.168.165.3 -a 192.168.165.8
 nvme connect-all -t	tcp -w 192.168.165.3 -a 192.168.165.9
 nvme connect-all -t	tcp -w 192.168.166.4 -a 192.168.166.8
 nvme connect-all -t	tcp -w 192.168.166.4 -a 192.168.166.9
-
 ----
-+
+=====
+
+
 [NOTE]
 ====
 Ab Oracle Linux 9.4 ist die Einstellung für NVMe/TCP  `ctrl_loss_tmo timeout` ist automatisch auf „Aus“ gestellt. Das Ergebnis:
 
-** Es gibt keine Begrenzung für die Anzahl der Wiederholungsversuche (unbegrenzte Wiederholung).
-** Sie müssen kein bestimmtes  `ctrl_loss_tmo timeout` Dauer bei Verwendung des  `nvme connect` oder  `nvme connect-all` Befehle (Option -l ).
-** Bei den NVMe/TCP-Controllern kommt es im Falle eines Pfadausfalls nicht zu Timeouts und die Verbindung bleibt unbegrenzt bestehen.
+* Es gibt keine Begrenzung für die Anzahl der Wiederholungsversuche (unbegrenzte Wiederholung).
+* Sie müssen kein bestimmtes  `ctrl_loss_tmo timeout` Dauer bei Verwendung des  `nvme connect` oder  `nvme connect-all` Befehle (Option -l ).
+* Bei den NVMe/TCP-Controllern kommt es im Falle eines Pfadausfalls nicht zu Timeouts und die Verbindung bleibt unbegrenzt bestehen.
 
 
+====
+--
+====
+
+
+== Schritt 4: Optional 1 MB I/O für NVMe/FC aktivieren
+
+ONTAP meldet in den Identify Controller-Daten eine maximale Datenübertragungsgröße (MDTS) von 8.  Dies bedeutet, dass die maximale E/A-Anforderungsgröße bis zu 1 MB betragen kann.  Um E/A-Anfragen der Größe 1 MB für einen Broadcom NVMe/FC-Host auszugeben, sollten Sie die `lpfc` Wert des `lpfc_sg_seg_cnt` Parameter vom Standardwert 64 auf 256.
+
+
+NOTE: Diese Schritte gelten nicht für Qlogic NVMe/FC-Hosts.
+
+.Schritte
+. Setzen Sie den `lpfc_sg_seg_cnt` Parameter auf 256:
++
+[source, cli]
+----
+cat /etc/modprobe.d/lpfc.conf
+----
++
+Sie sollten eine Ausgabe ähnlich dem folgenden Beispiel sehen:
+
++
+[listing]
+----
+options lpfc lpfc_sg_seg_cnt=256
+----
+. Führen Sie den Befehl aus `dracut -f`, und starten Sie den Host neu.
+. Stellen Sie sicher, dass der Wert für `lpfc_sg_seg_cnt` 256 lautet:
++
+[source, cli]
+----
+cat /sys/module/lpfc/parameters/lpfc_sg_seg_cnt
+----
+
+
+
+
+== Schritt 5: Überprüfen der NVMe-Bootdienste
+
+Ab Oracle Linux 9.5 `nvmefc-boot-connections.service` Und `nvmf-autoconnect.service` Die im NVMe/FC enthaltenen Boot-Dienste `nvme-cli` Die Pakete werden beim Systemstart automatisch aktiviert.
+
+Überprüfen Sie nach dem Booten, ob die  `nvmefc-boot-connections.service` Und  `nvmf-autoconnect.service` Boot-Dienste sind aktiviert.
+
+.Schritte
+. Vergewissern Sie sich, dass `nvmf-autoconnect.service` aktiviert ist:
++
+[source, cli]
+----
+systemctl status nvmf-autoconnect.service
+----
++
+.Beispielausgabe anzeigen
+[%collapsible]
+====
+[listing]
+----
+nvmf-autoconnect.service - Connect NVMe-oF subsystems automatically during boot
+Loaded: loaded (/usr/lib/systemd/system/nvmf-autoconnect.service; enabled; preset: disabled)
+Active: inactive (dead) since Wed 2025-07-02 16:46:37 IST; 1 day 3h ago
+Main PID: 2129 (code=exited, status=0/SUCCESS)
+CPU: 121ms
+
+Jul 02 16:46:37 interop-13-175 nvme[2129]: Failed to write to /dev/nvme-fabrics: Invalid argument
+Jul 02 16:46:37 interop-13-175 nvme[2129]: Failed to write to /dev/nvme-fabrics: Invalid argument
+Jul 02 16:46:37 interop-13-175 nvme[2129]: Failed to write to /dev/nvme-fabrics: Invalid argument
+Jul 02 16:46:37 interop-13-175 nvme[2129]: Failed to write to /dev/nvme-fabrics: Invalid argument
+Jul 02 16:46:37 interop-13-175 nvme[2129]: Failed to write to /dev/nvme-fabrics: Invalid argument
+Jul 02 16:46:37 interop-13-175 nvme[2129]: Failed to write to /dev/nvme-fabrics: Invalid argument
+Jul 02 16:46:37 interop-13-175 nvme[2129]: Failed to open ctrl nvme0, errno 2
+Jul 02 16:46:37 interop-13-175 nvme[2129]: failed to get discovery log: Bad file descriptor
+Jul 02 16:46:37 interop-13-175 systemd[1]: nvmf-autoconnect.service: Deactivated successfully.
+Jul 02 16:46:37 interop-13-175 systemd[1]: Finished Connect NVMe-oF subsystems automatically during boot.
+----
+====
+. Vergewissern Sie sich, dass `nvmefc-boot-connections.service` aktiviert ist:
++
+[source, cli]
+----
+systemctl status nvmefc-boot-connections.service
+----
++
+.Beispielausgabe anzeigen
+[%collapsible]
+====
+[listing]
+----
+nvmefc-boot-connections.service - Auto-connect to subsystems on FC-NVME devices found during boot
+Loaded: loaded (/usr/lib/systemd/system/nvmefc-boot-connections.service; enabled; preset: enabled)
+Active: inactive (dead) since Wed 2025-07-02 16:45:46 IST; 1 day 3h ago
+Main PID: 1604 (code=exited, status=0/SUCCESS)
+CPU: 32ms
+
+Jul 02 16:45:46 interop-13-175 systemd[1]: Starting Auto-connect to subsystems on FC-NVME devices found during boot...
+Jul 02 16:45:46 interop-13-175 systemd[1]: nvmefc-boot-connections.service: Deactivated successfully.
+Jul 02 16:45:46 interop-13-175 systemd[1]: Finished Auto-connect to subsystems on FC-NVME devices found during boot.
+----
 ====
 
 
 
 
-== Schritt 7: NVMe-oF validieren
+== Schritt 6: Überprüfen der Multipathing-Konfiguration
 
 Vergewissern Sie sich, dass der in-Kernel-Multipath-Status, der ANA-Status und die ONTAP-Namespaces für die NVMe-of-Konfiguration richtig sind.
 
@@ -699,10 +672,10 @@ nvme-subsys7 - NQN=nqn.1992-08.com.netapp:sn.7d37987be3cb11ef8948d039eab0dadd:su
                hostnqn=nqn.2014-08.org.nvmexpress:uuid:2831093d-fa7f-4714-a6bf-548796e82053
                iopolicy=round-robin
 \
- +- nvme103 fc traddr=nn-0x202cd039eab0dadc:pn-0x202fd039eab0dadc,host_traddr=nn-0x200034800d767bb0:pn-0x210034800d767bb0 live optimized
- +- nvme153 fc traddr=nn-0x202cd039eab0dadc:pn-0x202ed039eab0dadc,host_traddr=nn-0x200034800d767bb1:pn-0x210034800d767bb1 live non-optimized
- +- nvme55 fc traddr=nn-0x202cd039eab0dadc:pn-0x202dd039eab0dadc,host_traddr=nn-0x200034800d767bb0:pn-0x210034800d767bb0 live non-optimized
- +- nvme7 fc traddr=nn-0x202cd039eab0dadc:pn-0x2030d039eab0dadc,host_traddr=nn-0x200034800d767bb1:pn-0x210034800d767bb1 live optimized
+ +- nvme103 fc traddr=nn-0x202cd039eab0dadc:pn-0x202fd039eab0dadc,host_traddr=nn-0x200034800d767bb0:pn-0x210034800d767bb0 *live optimized*
+ +- nvme153 fc traddr=nn-0x202cd039eab0dadc:pn-0x202ed039eab0dadc,host_traddr=nn-0x200034800d767bb1:pn-0x210034800d767bb1 *live non-optimized*
+ +- nvme55 fc traddr=nn-0x202cd039eab0dadc:pn-0x202dd039eab0dadc,host_traddr=nn-0x200034800d767bb0:pn-0x210034800d767bb0 *live non-optimized*
+ +- nvme7 fc traddr=nn-0x202cd039eab0dadc:pn-0x2030d039eab0dadc,host_traddr=nn-0x200034800d767bb1:pn-0x210034800d767bb1 *live optimized*
 ----
 =====
 --
@@ -788,13 +761,13 @@ nvme netapp ontapdevices -o json
 
 
 
-== Schritt 8: Einrichten einer sicheren In-Band-Authentifizierung
+== Schritt 7: Einrichten einer sicheren In-Band-Authentifizierung
 
-Ab ONTAP 9.12.1 wird die sichere In-Band-Authentifizierung über NVMe/TCP zwischen einem Oracle Linux 9.5-Host und einem ONTAP-Controller unterstützt.
+Eine sichere In-Band-Authentifizierung wird über NVMe/TCP zwischen einem Oracle Linux 9x-Host und einem ONTAP Controller unterstützt.
 
-Um eine sichere Authentifizierung einzurichten, muss jeder Host oder Controller einem zugeordnet sein `DH-HMAC-CHAP` Schlüssel: Eine Kombination aus NQN des NVMe-Hosts oder -Controllers und einem vom Administrator konfigurierten Authentifizierungsschlüssel. Um seinen Peer zu authentifizieren, muss ein NVMe-Host oder -Controller den dem Peer zugeordneten Schlüssel erkennen.
+Jedem Host oder Controller muss ein DH-HMAC-CHAP-Schlüssel zugeordnet werden, um eine sichere Authentifizierung einzurichten.  Ein DH-HMAC-CHAP-Schlüssel ist eine Kombination aus dem NQN des NVMe-Hosts oder -Controllers und einem vom Administrator konfigurierten Authentifizierungsgeheimnis.  Zur Authentifizierung seines Gegenübers muss ein NVMe-Host oder -Controller den zum Gegenüber gehörenden Schlüssel erkennen.
 
-Sie können die sichere in-Band-Authentifizierung über die CLI oder eine JSON-Konfigurationsdatei einrichten. Wenn Sie unterschiedliche dhchap-Schlüssel für verschiedene Subsysteme angeben müssen, müssen Sie eine Konfigurations-JSON-Datei verwenden.
+Richten Sie eine sichere In-Band-Authentifizierung über die CLI oder eine Konfigurations-JSON-Datei ein.  Verwenden Sie eine Konfigurations-JSON-Datei, wenn Sie für verschiedene Subsysteme unterschiedliche DHCP-Schlüssel angeben müssen.
 
 [role="tabbed-block"]
 ====
@@ -802,7 +775,6 @@ Sie können die sichere in-Band-Authentifizierung über die CLI oder eine JSON-K
 --
 Richten Sie die sichere bandinterne Authentifizierung über die CLI ein.
 
-.Schritte
 . Rufen Sie die Host-NQN ab:
 +
 [source, cli]
@@ -889,13 +861,12 @@ DHHC-1:03:frpLlTrnOYtcWDxPzq4ccxU1UrH2FjV7hYw5s2XEDB+lo+TjMsOwHR\/NFtM0nBBidx+gd
 
 
 --
-.JSON-Datei
+.JSON
 --
 Wenn in der ONTAP-Controller-Konfiguration mehrere NVMe-Subsysteme verfügbar sind, kann die Datei mit dem `nvme connect-all` Befehl verwendet `/etc/nvme/config.json` werden.
 
 Verwenden Sie die  `-o` Option zum Generieren der JSON-Datei. Weitere Syntaxoptionen finden Sie auf den Handseiten für NVMe Connect-all.
 
-.Schritte
 . Konfigurieren Sie die JSON-Datei:
 +
 .Beispiel anzeigen
@@ -999,6 +970,6 @@ DHHC-1:03:frpLlTrnOYtcWDxPzq4ccxU1UrH2FjV7hYw5s2XEDB+lo+TjMsOwHR\/NFtM0nBBidx+gd
 ====
 
 
-== Schritt 9: Überprüfen Sie die bekannten Probleme
+== Schritt 8: Überprüfen Sie die bekannten Probleme
 
 Es sind keine Probleme bekannt.

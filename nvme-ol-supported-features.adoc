@@ -1,0 +1,90 @@
+---
+sidebar: sidebar 
+permalink: nvme-ol-supported-features.html 
+keywords: nvme, oracle linux, enterprise 
+summary: Erfahren Sie mehr über ONTAP Unterstützung und -Funktionen für Oracle Linux-Hosts. 
+---
+= Erfahren Sie mehr über ONTAP Unterstützung und -Funktionen für Oracle Linux-Hosts.
+:hardbreaks:
+:toclevels: 1
+:allow-uri-read: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Die für die Hostkonfiguration mit NVMe over Fabrics (NVMe-oF) unterstützten Funktionen variieren je nach Ihrer ONTAP und Oracle Linux-Version.
+
+[cols="50,25,25"]
+|===
+| Funktion | Oracle Linux Hostversion | ONTAP-Version 
+
+
+| Eine sichere In-Band-Authentifizierung wird über NVMe/TCP zwischen einem Oracle Linux-Host und einem ONTAP Controller unterstützt.  a| 
+9.4 oder später
+| 9.12.1 oder später 
+
+
+| NVMe/TCP stellt Namensräume unter Verwendung des nativen `nvme-cli` Paket  a| 
+8.2 oder später
+| 9.10.1 oder später 
+
+
+| NVMe- und SCSI-Datenverkehr werden auf demselben Host unterstützt, wobei NVMe Multipath für NVMe-oF-Namespaces und dm-Multipath für SCSI-LUNs verwendet werden.  a| 
+7.7 oder später
+| 9.4 oder später 
+|===
+
+NOTE: Die NetApp  `sanlun` Das Host-Dienstprogramm wird für NVMe-oF nicht unterstützt. Stattdessen können Sie das im nativen  `nvme-cli` für alle NVMe-oF-Transporte.
+
+ONTAP unterstützt die folgenden SAN-Hostfunktionen unabhängig von der auf Ihrem System ausgeführten ONTAP Version.
+
+[cols="75,25"]
+|===
+| Funktion | Oracle Linux Hostversion 
+
+
+| In-Kernel NVMe Multipathing für NVMe-Namespaces ist standardmäßig aktiviert.  a| 
+8.3 oder später
+
+
+
+| SAN-Booten wird durch die Verwendung des NVMe/FC-Protokolls aktiviert.  a| 
+9.5 oder später
+
+
+
+| Der `nvme-cli` Das Paket enthält Skripte zur automatischen Verbindung, sodass keine Skripte von Drittanbietern benötigt werden.  a| 
+8.3 oder später
+
+
+
+| Die native udev-Regel in `nvme-cli` Das Paket bietet Round-Robin-Lastverteilung für NVMe-Multipath  a| 
+8.3 oder später
+
+|===
+
+NOTE: Einzelheiten zu unterstützten Konfigurationen finden Sie imlink:https://mysupport.netapp.com/matrix/["Interoperabilitäts-Matrix-Tool"^] .
+
+
+
+== Was kommt als nächstes
+
+[cols="50,50"]
+|===
+| Wenn Ihre Oracle Linux-Version ... ist. | Erfahren Sie mehr über ... 
+
+
+| 9er-Serie | link:nvme-ol-9x.html["NVMe für Oracle Linux 9x konfigurieren"] 
+
+
+| 8er-Serie | link:nvme-ol-8x.html["NVMe für Oracle Linux 8x konfigurieren"] 
+
+
+| 7er-Serie | link:nvme-ol-7x.html["NVMe für Oracle Linux 7x konfigurieren"] 
+|===
+.Verwandte Informationen
+link:https://docs.netapp.com/us-en/ontap/san-admin/start-nvme-fc-service-svm-task.html["Erfahren Sie mehr über die Verwaltung von NVMe-Protokollen."^]
