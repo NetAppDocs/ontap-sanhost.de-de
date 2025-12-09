@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
-permalink: hu_veritas_6x.html 
-keywords: host utilities, veritas, infoscale, 6.x, netapp, ontap, san, lun, multipathing, iscsi 
-summary: Hier finden Sie Anleitungen zur Konfiguration der ONTAP-SAN-Hosts für die Version der Veritas Infoscale 6 Serie 
+permalink: hu-veritas-9x.html 
+keywords: host utilities, veritas, infoscale, 9, netapp, ontap, sanhost, iscsi, red, hat linux, oracle, linux 
+summary: Verwenden Sie Linux Host Utilities mit Veritas Infoscale 9 für RHEL- und Oracle Linux-Hosts, um FC-, FCoE- und iSCSI-Protokolloperationen mit ONTAP LUNs zu verwalten. 
 ---
-= Konfigurieren Sie Veritas Infoscale 6 für FC, FCoE und iSCSI mit ONTAP -Speicher
+= Konfigurieren Sie Veritas Infoscale 9 für FC, FCoE und iSCSI mit ONTAP -Speicher
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -16,7 +16,7 @@ summary: Hier finden Sie Anleitungen zur Konfiguration der ONTAP-SAN-Hosts für 
 
 
 [role="lead"]
-Die Linux Host Utilities-Software bietet Verwaltungs- und Diagnosetools für Linux-Hosts, die mit ONTAP Speicher verbunden sind. Verwenden Sie die Linux Host Utilities mit Veritas Infoscale 6 für Oracle Linux (Red Hat Compatible Kernel based), Red Hat Enterprise Linux (RHEL) und SUSE Linux Enterprise Server-Hosts, um die Verwaltung von FC-, FCoE- und iSCSI-Protokolloperationen mit ONTAP -LUNs zu unterstützen.
+Die Linux Host Utilities-Software bietet Verwaltungs- und Diagnosetools für Linux-Hosts, die mit ONTAP Speicher verbunden sind. Verwenden Sie die Linux Host Utilities mit Veritas Infoscale 9 für Oracle Linux (Red Hat Compatible Kernel based), Red Hat Enterprise Linux (RHEL) und SUSE Linux Enterprise Server-Hosts, um die Verwaltung von FC-, FCoE- und iSCSI-Protokolloperationen mit ONTAP -LUNs zu unterstützen.
 
 
 
@@ -51,7 +51,7 @@ NOTE: Durch die Installation der Linux Host Utilities werden keine Host-Timeout-
 
 == Schritt 3: Bestätigen Sie die Veritas Dynamic Multipathing-Konfiguration für Ihren Host.
 
-Verwenden Sie Veritas Dynamic Multipathing (VxDMP) mit Veritas Infoscale 6 zur Verwaltung von ONTAP LUNs.
+Verwenden Sie Veritas Dynamic Multipathing (VxDMP) mit Veritas Infoscale 9 zur Verwaltung von ONTAP LUNs.
 
 Um sicherzustellen, dass VxDMP für Ihren Host korrekt eingerichtet ist, müssen Sie die VxDMP-Konfiguration überprüfen und die Konfiguration der Array Support Library (ASL) und des Array Policy Module (APM) überprüfen. Die ASL- und APM-Pakete für NetApp -Speichersysteme werden während der Veritas-Softwareinstallation installiert.
 
@@ -74,14 +74,15 @@ vxdmpadm
 ====
 [listing]
 ----
-# vxdmpadm listenclosure
-ENCLR_NAME   ENCLR_TYPE  ENCLR_SNO     STATUS      ARRAY_TYPE    LUN_COUNT    FIRMWARE
-=====================================================================================
-sfrac0       SFRAC       804Xw$PqE52h  CONNECTED   ALUA          43           9800
+#vxdmpadm listenclosure
+ENCLR_NAME        ENCLR_TYPE     ENCLR_SNO      STATUS       ARRAY_TYPE     LUN_COUNT    FIRMWARE
+===================================================================================================
+info_asa0         Info_ASA       81KDT+YTg35P         CONNECTED    ALUA       20         9161
+infoscal1         Infoscal       81Ocq?Z7hPzC         CONNECTED    ALUA       23         9181
 # vxdmpadm getdmpnode
 NAME       STATE    ENCLR-TYPE  PATHS  ENBL  DSBL ENCLR-NAME
 ===================================================================
-sfrac0_47  ENABLED  SFRAC       4      4     0    sfrac0
+infoscal1_22         ENABLED      Infoscal     4      4     0     infoscal1
 ----
 ====
 . Überprüfen Sie die Konfiguration der ASL- und APM-Pakete. NetApp empfiehlt die Verwendung der neuesten unterstützten Pakete, die im Veritas-Supportportal aufgeführt sind.
@@ -91,14 +92,15 @@ sfrac0_47  ENABLED  SFRAC       4      4     0    sfrac0
 ====
 [listing]
 ----
-# vxdmpadm list dmpnode dmpnodename=sfrac0_47 | grep asl
-asl        = libvxnetapp.so
+#  vxdmpadm list dmpnode dmpnodename=infoscal1_22 | grep asl
+asl             = libvxnetapp.so
+
 # vxddladm listversion |grep libvxnetapp.so
 libvxnetapp.so                  vm-8.0.0-rev-1   8.0
 
 # rpm -qa |grep VRTSaslapm
-VRTSaslapm-x.x.x.0000-RHEL8.X86_64
-vxddladm listsupport libname=libvxnetapp.so
+VRTSaslapm-9.0.3-RHEL9.x86_64
+#vxddladm listsupport libname=libvxnetapp.so
 ATTR_NAME   ATTR_VALUE
 =========================================
 LIBNAME     libvxnetapp.so
@@ -196,20 +198,6 @@ node.session.timeo.replacement_timeout = 120
 ----
 --
 ====
-. Legen Sie die Host-"udev rport"-Werte für Hosts der RHEL 8- und 9-Serie fest, um die Veritas Infoscale-Umgebung in Speicherausfallszenarien zu unterstützen.
-+
-Konfigurieren Sie die Werte für "udev rport", indem Sie die Datei erstellen. `/etc/udev/rules.d/40-rport.rules` mit folgendem Dateiinhalt:
-
-+
-[listing]
-----
-# cat /etc/udev/rules.d/40-rport.rules
-KERNEL=="rport-*", SUBSYSTEM=="fc_remote_ports", ACTION=="add", RUN+=/bin/sh -c 'echo 20 > /sys/class/fc_remote_ports/%k/fast_io_fail_tmo;echo 864000 >/sys/class/fc_remote_ports/%k/dev_loss_tmo'"
-----
-+
-
-NOTE: Alle weiteren Veritas-spezifischen Einstellungen finden Sie in der Standard-Produktdokumentation von Veritas Infoscale.
-
 . Überprüfen Sie die Parametereinstellungen und den Pfadstatus für Ihre ONTAP LUNs:
 +
 In AFF, FAS oder ASA Konfigurationen sollte eine einzelne ONTAP LUN nicht mehr als vier Pfade benötigen. Bei einem Speicherausfall können mehr als vier Pfade Probleme verursachen.
@@ -229,13 +217,13 @@ Eine ASA Konfiguration optimiert alle Pfade zu einer bestimmten LUN und hält si
 =====
 [listing]
 ----
-# vxdmpadm getsubpaths dmpnodename-sfrac0_47
-NAME  STATE[A]   PATH-TYPE[M]   CTLR-NAME   ENCLR-TYPE  ENCLR-NAME  ATTRS  PRIORITY
+# vxdmpadm getsubpaths dmpnodename=infoscal1_21
+NAME   STATE[A]    PATH-TYPE[M] CTLR-NAME  ENCLR-TYPE  ENCLR-NAME   ATTRS  PRIORITY
 ===================================================================================
-sdas  ENABLED (A)    Active/Optimized c13   SFRAC       sfrac0     -      -
-sdb   ENABLED(A) Active/Optimized     c14   SFRAC       sfrac0     -      -
-sdcj  ENABLED(A)  Active/Optimized     c14   SFRAC       sfrac0     -      -
-sdea  ENABLED (A)    Active/Optimized c14   SFRAC       sfrac0     -
+sdby   ENABLED(A)  Active/Optimized  c1    Infoscal    infoscal1    -      -
+sddx   ENABLED(A)  Active/Optimized  c2    Infoscal    infoscal1    -      -
+sdfe   ENABLED(A)  Active/Optimized  c1    Infoscal    infoscal1    -      -
+sdfo   ENABLED(A)  Active/Optimized  c2    Infoscal    infoscal1    -      -
 ----
 =====
 --

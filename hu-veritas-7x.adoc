@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
-permalink: hu_veritas_6x.html 
-keywords: host utilities, veritas, infoscale, 6.x, netapp, ontap, san, lun, multipathing, iscsi 
-summary: Hier finden Sie Anleitungen zur Konfiguration der ONTAP-SAN-Hosts für die Version der Veritas Infoscale 6 Serie 
+permalink: hu-veritas-7x.html 
+keywords: host utilities, veritas, infoscale, 7, netapp, ontap, sanhost, iscsi, red, hat linux, oracle, linux 
+summary: Hier finden Sie Anleitungen zur Konfiguration der ONTAP-SAN-Hosts für die Version der Veritas Infoscale 7 Serie 
 ---
-= Konfigurieren Sie Veritas Infoscale 6 für FC, FCoE und iSCSI mit ONTAP -Speicher
+= Konfigurieren Sie Veritas Infoscale 7 für FC, FCoE und iSCSI mit ONTAP -Speicher
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -16,7 +16,7 @@ summary: Hier finden Sie Anleitungen zur Konfiguration der ONTAP-SAN-Hosts für 
 
 
 [role="lead"]
-Die Linux Host Utilities-Software bietet Verwaltungs- und Diagnosetools für Linux-Hosts, die mit ONTAP Speicher verbunden sind. Verwenden Sie die Linux Host Utilities mit Veritas Infoscale 6 für Oracle Linux (Red Hat Compatible Kernel based), Red Hat Enterprise Linux (RHEL) und SUSE Linux Enterprise Server-Hosts, um die Verwaltung von FC-, FCoE- und iSCSI-Protokolloperationen mit ONTAP -LUNs zu unterstützen.
+Die Linux Host Utilities-Software bietet Verwaltungs- und Diagnosetools für Linux-Hosts, die mit ONTAP Speicher verbunden sind. Verwenden Sie die Linux Host Utilities mit Veritas Infoscale 7 für Oracle Linux (Red Hat Compatible Kernel based), Red Hat Enterprise Linux (RHEL) und SUSE Linux Enterprise Server-Hosts, um die Verwaltung von FC-, FCoE- und iSCSI-Protokolloperationen mit ONTAP -LUNs zu unterstützen.
 
 
 
@@ -51,7 +51,7 @@ NOTE: Durch die Installation der Linux Host Utilities werden keine Host-Timeout-
 
 == Schritt 3: Bestätigen Sie die Veritas Dynamic Multipathing-Konfiguration für Ihren Host.
 
-Verwenden Sie Veritas Dynamic Multipathing (VxDMP) mit Veritas Infoscale 6 zur Verwaltung von ONTAP LUNs.
+Verwenden Sie Veritas Dynamic Multipathing (VxDMP) mit Veritas Infoscale 7 zur Verwaltung von ONTAP LUNs.
 
 Um sicherzustellen, dass VxDMP für Ihren Host korrekt eingerichtet ist, müssen Sie die VxDMP-Konfiguration überprüfen und die Konfiguration der Array Support Library (ASL) und des Array Policy Module (APM) überprüfen. Die ASL- und APM-Pakete für NetApp -Speichersysteme werden während der Veritas-Softwareinstallation installiert.
 

@@ -153,7 +153,7 @@ In der folgenden Tabelle sind die nativen kompilierten Multipath-Parametereinste
 multipath -ll
 ----
 +
-Die standardmäßigen Multipath-Parameter unterstützen AFF- und FAS-Konfigurationen. In diesen Konfigurationen sollte eine einzelne ONTAP-LUN nicht mehr als vier Pfade benötigen. Wenn mehr als vier Pfade vorhanden sind, kann dies bei einem Storage-Ausfall zu Problemen mit den Pfaden führen.
+Die Standard-Multipath-Parameter unterstützen AFF und FAS Konfigurationen. In diesen Konfigurationen sollte eine einzelne ONTAP LUN nicht mehr als vier Pfade benötigen. Mehr als vier Pfade können bei einem Speicherausfall Probleme verursachen.
 
 +
 Eine AFF- oder FAS-Konfiguration sollte zwei Pfadgruppen mit höheren und niedrigeren Prioritäten aufweisen. Aktiv/optimierte Pfade mit höherer Priorität werden vom Controller bedient, wo sich das Aggregat befindet. Pfade mit niedriger Priorität sind aktiv, jedoch nicht optimiert, da sie von einem anderen Controller bedient werden. Nicht optimierte Pfade werden nur verwendet, wenn keine optimierten Pfade verfügbar sind.

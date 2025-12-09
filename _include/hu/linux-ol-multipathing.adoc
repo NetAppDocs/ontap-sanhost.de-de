@@ -96,7 +96,7 @@ In der folgenden Tabelle sind die nativen kompilierten Multipath-Parametereinste
 multipath -ll
 ----
 +
-Die standardmäßigen Multipath-Parameter unterstützen ASA-, AFF- und FAS-Konfigurationen. In diesen Konfigurationen sollte eine einzelne ONTAP-LUN nicht mehr als vier Pfade benötigen. Wenn mehr als vier Pfade vorhanden sind, kann dies bei einem Storage-Ausfall zu Problemen mit den Pfaden führen.
+Die standardmäßigen Multipath-Parameter unterstützen ASA, AFF und FAS Konfigurationen. In diesen Konfigurationen sollte eine einzelne ONTAP LUN nicht mehr als vier Pfade benötigen. Mehr als vier Pfade können bei einem Speicherausfall Probleme verursachen.
 
 +
 Die Ausgaben im folgenden Beispiel zeigen die korrekten Parametereinstellungen und den Pfadstatus für ONTAP LUNs in einer ASA-, AFF- oder FAS-Konfiguration.
