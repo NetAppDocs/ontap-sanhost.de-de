@@ -156,7 +156,7 @@ Konfigurieren Sie NVMe/FC mit Broadcom/Emulex- oder Marvell/QLogic-Adaptern oder
 
 [role="tabbed-block"]
 ====
-.FC – Broadcom/Emulex
+.NVMe/FC - Broadcom/Emulex
 --
 Konfigurieren Sie NVMe/FC für einen Broadcom/Emulex-Adapter.
 
@@ -308,7 +308,7 @@ FCP CMPL: xb 00000368 Err 00000382
 
 
 --
-.FC – Marvell/QLogic
+.NVMe/FC - Marvell/QLogic
 --
 Konfigurieren Sie NVMe/FC für einen Marvell/QLogic-Adapter.
 
@@ -339,7 +339,7 @@ Die erwartete Ausgabe ist 1.
 
 
 --
-.TCP
+.NVMe/TCP
 --
 Das NVMe/TCP-Protokoll unterstützt den automatischen Verbindungsvorgang nicht.  Stattdessen können Sie die NVMe/TCP-Subsysteme und Namespaces ermitteln, indem Sie den NVMe/TCP `connect` oder `connect-all` Vorgänge manuell ausführen.
 
