@@ -29,7 +29,7 @@ NVMe-oF mit Proxmox VE 9.0 hat folgende bekannte Einschränkung:
 
 == Schritt 1: Überprüfen Sie die Softwareversion und die NVMe-Konfiguration.
 
-Um Ihren Host für NVMe-oF zu konfigurieren, sollten Sie die Host- und NVMe-Softwarepakete installieren, Multipathing aktivieren und Ihre Host-NQN-Konfiguration überprüfen.
+Um Ihren Host für NVMe-oF zu konfigurieren, müssen Sie die Host- und NVMe-Softwarepakete installieren, Multipathing aktivieren und Ihre Host-NQN-Konfiguration überprüfen.
 
 .Schritte
 . Installieren Sie Proxmox VE 9.0 auf dem Server.  Nach Abschluss der Installation überprüfen Sie, ob Sie den erforderlichen Proxmox VE 9.0-Kernel verwenden:

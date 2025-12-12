@@ -2,4 +2,4 @@
 :allow-uri-read: 
 
 
-Um Ihren Host für NVMe-oF zu konfigurieren, sollten Sie die Host- und NVMe-Softwarepakete installieren, Multipathing aktivieren und Ihre Host-NQN-Konfiguration überprüfen.
+Um Ihren Host für NVMe-oF zu konfigurieren, müssen Sie die Host- und NVMe-Softwarepakete installieren, Multipathing aktivieren und Ihre Host-NQN-Konfiguration überprüfen.
