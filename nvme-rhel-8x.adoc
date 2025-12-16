@@ -2,9 +2,9 @@
 sidebar: sidebar 
 permalink: nvme-rhel-8x.html 
 keywords: nvme, linux, rhel, red hat, enterprise 
-summary: Konfiguration eines NVMe-oF-Hosts für RHEL 8x mit ONTAP 
+summary: Konfiguration eines NVMe-oF-Hosts für RHEL 8.x mit ONTAP 
 ---
-= RHEL 8x für NVMe-oF mit ONTAP -Speicher konfigurieren
+= RHEL 8.x für NVMe-oF mit ONTAP -Speicher konfigurieren
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -18,12 +18,12 @@ summary: Konfiguration eines NVMe-oF-Hosts für RHEL 8x mit ONTAP
 [role="lead"]
 Red Hat Enterprise Linux (RHEL)-Hosts unterstützen die Protokolle NVMe over Fibre Channel (NVMe/FC) und NVMe over TCP (NVMe/TCP) mit Asymmetric Namespace Access (ANA).  ANA bietet Multipathing-Funktionalität, die dem asymmetrischen logischen Einheitenzugriff (ALUA) in iSCSI- und FCP-Umgebungen entspricht.
 
-Erfahren Sie, wie Sie NVMe over Fabrics (NVMe-oF)-Hosts für RHEL 8x konfigurieren. Weitere Informationen zu Support und Funktionen finden Sie unter link:nvme-rhel-supported-features.html["RHEL ONTAP Unterstützung und -Funktionen"]Die
+Erfahren Sie, wie Sie NVMe over Fabrics (NVMe-oF)-Hosts für RHEL 8.x konfigurieren. Weitere Informationen zu Support und Funktionen finden Sie unter link:nvme-rhel-supported-features.html["RHEL ONTAP Unterstützung und -Funktionen"]Die
 
-NVMe-oF unter RHEL 8x weist folgende bekannte Einschränkungen auf:
+NVMe-oF unter RHEL 8.x weist folgende bekannte Einschränkungen auf:
 
 * SAN-Booten mit dem NVMe-oF-Protokoll wird derzeit nicht unterstützt.
-* In-Kernel NVMe Multipath ist auf NVMe-oF-Hosts in RHEL 8x standardmäßig deaktiviert; Sie müssen es manuell aktivieren.
+* In-Kernel NVMe Multipath ist auf NVMe-oF-Hosts in RHEL 8.x standardmäßig deaktiviert; Sie müssen es manuell aktivieren.
 * NVMe/TCP ist aufgrund bekannter Probleme als Technologievorschau verfügbar.
 
 
@@ -49,7 +49,7 @@ Informationen zum Aktivieren des HBA-BIOS finden Sie in der anbieterspezifischen
 Um Ihren Host für NVMe-oF zu konfigurieren, müssen Sie die Host- und NVMe-Softwarepakete installieren, Multipathing aktivieren und Ihre Host-NQN-Konfiguration überprüfen.
 
 .Schritte
-. Installieren Sie RHEL 8x auf dem Server.  Nach Abschluss der Installation überprüfen Sie, ob Sie den erforderlichen RHEL 8x-Kernel ausführen:
+. Installieren Sie RHEL 8.x auf dem Server. Nach Abschluss der Installation überprüfen Sie, ob Sie den erforderlichen RHEL 8.x-Kernel ausführen:
 +
 [source, cli]
 ----
@@ -97,7 +97,7 @@ libnvme-1.4-3.el8.x86_64
 ----
 grubby --args=nvme_core.multipath=Y --update-kernel /boot/vmlinuz-4.18.0-553.el8_10.x86_64
 ----
-. Überprüfen Sie auf dem RHEL 8x-Host die `hostnqn` Zeichenkette bei `/etc/nvme/hostnqn` :
+. Überprüfen Sie auf dem RHEL 8.x-Host die `hostnqn` Zeichenkette bei `/etc/nvme/hostnqn` :
 +
 [source, cli]
 ----
@@ -655,5 +655,5 @@ Dies sind die bekannten Probleme:
 | NetApp Bug ID | Titel | Beschreibung 
 
 
-| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/BURT/1479047["1479047"^] | RHEL 8x NVMe-oF-Hosts erstellen doppelte persistente Discovery Controller (PDCs). | Auf NVMe-oF-Hosts können Sie mit dem Befehl "nvme discover -p" PDCs erstellen.  Bei Verwendung dieses Befehls sollte pro Initiator-Ziel-Kombination nur ein PDC erstellt werden.  Wenn Sie jedoch RHEL 8x auf einem NVMe-oF-Host ausführen, wird jedes Mal, wenn "nvme discover -p" ausgeführt wird, ein doppelter PDC erstellt.  Dies führt zu einer unnötigen Ressourcennutzung sowohl auf dem Host- als auch auf dem Zielsystem. 
+| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/BURT/1479047["1479047"^] | RHEL 8.x NVMe-oF-Hosts erstellen doppelte persistente Discovery Controller (PDCs). | Auf NVMe-oF-Hosts können Sie mit dem Befehl "nvme discover -p" PDCs erstellen. Bei Verwendung dieses Befehls sollte pro Initiator-Ziel-Kombination nur ein PDC erstellt werden. Wenn Sie jedoch RHEL 8.x auf einem NVMe-oF-Host ausführen, wird jedes Mal, wenn "nvme discover -p" ausgeführt wird, ein doppelter PDC erstellt. Dies führt zu einer unnötigen Ressourcennutzung sowohl auf dem Host- als auch auf dem Zielsystem. 
 |===

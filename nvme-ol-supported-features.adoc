@@ -78,13 +78,13 @@ NOTE: Einzelheiten zu unterstützten Konfigurationen finden Sie imlink:https://m
 | Wenn Ihre Oracle Linux-Version ... ist. | Erfahren Sie mehr über ... 
 
 
-| 9er-Serie | link:nvme-ol-9x.html["NVMe für Oracle Linux 9x konfigurieren"] 
+| 9er-Serie | link:nvme-ol-9x.html["NVMe für Oracle Linux 9.x konfigurieren"] 
 
 
-| 8er-Serie | link:nvme-ol-8x.html["NVMe für Oracle Linux 8x konfigurieren"] 
+| 8er-Serie | link:nvme-ol-8x.html["NVMe für Oracle Linux 8.x konfigurieren"] 
 
 
-| 7er-Serie | link:nvme-ol-7x.html["NVMe für Oracle Linux 7x konfigurieren"] 
+| 7er-Serie | link:nvme-ol-7x.html["NVMe für Oracle Linux 7.x konfigurieren"] 
 |===
 .Verwandte Informationen
 link:https://docs.netapp.com/us-en/ontap/san-admin/start-nvme-fc-service-svm-task.html["Erfahren Sie mehr über die Verwaltung von NVMe-Protokollen."^]

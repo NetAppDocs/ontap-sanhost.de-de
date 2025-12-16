@@ -24,7 +24,7 @@ Die für die Hostkonfiguration mit NVMe over Fabrics (NVMe-oF) unterstützten Fu
 
 
 | Bietet ONTAP Details für die Namespaces NVMe/FC und NVMe/TCP unter Verwendung der nativen Schnittstelle. `nvme-cli` Paket.  a| 
-9.0
+8.0
 | 9.10.1 oder später 
 
 
@@ -34,7 +34,7 @@ Die für die Hostkonfiguration mit NVMe over Fabrics (NVMe-oF) unterstützten Fu
 
 
 | NVMe- und SCSI-Datenverkehr werden auf demselben Host unterstützt, wobei NVMe Multipath für NVMe-oF-Namespaces und dm-Multipath für SCSI-LUNs verwendet werden.  a| 
-9.0
+8.0
 | 9.4 oder später 
 |===
 ONTAP unterstützt die folgenden SAN-Hostfunktionen unabhängig von der auf Ihrem System ausgeführten ONTAP Version.
@@ -45,7 +45,7 @@ ONTAP unterstützt die folgenden SAN-Hostfunktionen unabhängig von der auf Ihre
 
 
 | Native NVMe-Multipathing ist standardmäßig aktiviert.  a| 
-9.0
+8.0
 
 
 
@@ -65,7 +65,15 @@ NOTE: Einzelheiten zu unterstützten Konfigurationen finden Sie imlink:https://m
 
 == Was kommt als nächstes
 
-link:nvme-proxmox-ve-9x.html["Erfahren Sie mehr über die Konfiguration von Proxmox VE 9.0"]
+[cols="50,50"]
+|===
+| Wenn Ihre Proxmox VE-Version ... ist | Erfahren Sie mehr über ... 
 
+
+| 9er-Serie | link:nvme-proxmox-ve-9x.html["NVMe für Proxmox VE 9.x konfigurieren"] 
+
+
+| 8er-Serie | link:nvme-proxmox-ve-8x.html["NVMe für Proxmox VE 8.x konfigurieren"] 
+|===
 .Verwandte Informationen
 link:https://docs.netapp.com/us-en/ontap/san-admin/start-nvme-fc-service-svm-task.html["Erfahren Sie mehr über die Verwaltung von NVMe-Protokollen."^]

@@ -1,0 +1,194 @@
+= 
+:allow-uri-read: 
+
+
+Sie können NVMe/FC mit Broadcom/Emulex FC- oder Marvell/Qlogic FC-Adaptern konfigurieren.  Bei NVMe/FC-Konfigurationen mit Broadcom-Adapter können E/A-Anforderungen mit einer Größe von 1 MB aktiviert werden.
+
+[role="tabbed-block"]
+====
+.Broadcom/Emulex
+--
+Konfigurieren Sie NVMe/FC für einen Broadcom/Emulex-Adapter.
+
+.Schritte
+. Stellen Sie sicher, dass Sie das unterstützte Adaptermodell verwenden:
++
+.. Zeigen Sie die Modellnamen an:
++
+[source, cli]
+----
+cat /sys/class/scsi_host/host*/modelname
+----
++
+Die folgende Ausgabe sollte angezeigt werden:
+
++
+[listing]
+----
+LPe36002-M64
+LPe36002-M64
+----
+.. Zeigen Sie die Modellbeschreibungen an:
++
+[source, cli]
+----
+cat /sys/class/scsi_host/host*/modeldesc
+----
++
+Sie sollten eine Ausgabe ähnlich dem folgenden Beispiel sehen:
+
++
+[listing]
+----
+Emulex LightPulse LPe36002-M64 2-Port 64Gb Fibre Channel Adapter
+Emulex LightPulse LPe36002-M64 2-Port 64Gb Fibre Channel Adapter
+----
+
+
+. Vergewissern Sie sich, dass Sie das empfohlene Broadcom verwenden `lpfc` Firmware und Inbox-Treiber:
++
+.. Anzeige der Firmware-Version:
++
+[source, cli]
+----
+cat /sys/class/scsi_host/host*/fwrev
+----
++
+Das folgende Beispiel zeigt Firmware-Versionen:
+
++
+[listing]
+----
+14.0.539.16, sli-4:6:d
+14.0.539.16, sli-4:6:d
+----
+.. Zeigen Sie die Posteingangstreiberversion an:
++
+[source, cli]
+----
+cat /sys/module/lpfc/version
+----
++
+Das folgende Beispiel zeigt eine Treiberversion:
+
++
+[listing]
+----
+0:14.4.0.6
+----
+
+
++
+Die aktuelle Liste der unterstützten Adaptertreiber- und Firmware-Versionen finden Sie im link:https://mysupport.netapp.com/matrix/["Interoperabilitäts-Matrix-Tool"^].
+
+. Stellen Sie sicher, dass die erwartete Ausgabe von `lpfc_enable_fc4_type` auf eingestellt ist `3`:
++
+[source, cli]
+----
+cat /sys/module/lpfc/parameters/lpfc_enable_fc4_type
+----
+. Vergewissern Sie sich, dass Sie Ihre Initiator-Ports anzeigen können:
++
+[source, cli]
+----
+cat /sys/class/fc_host/host*/port_name
+----
++
+Das folgende Beispiel zeigt Portidentitäten:
+
++
+[listing]
+----
+0x2100f4c7aa0cd7c2
+0x2100f4c7aa0cd7c3
+----
+. Überprüfen Sie, ob Ihre Initiator-Ports online sind:
++
+[source, cli]
+----
+cat /sys/class/fc_host/host*/port_state
+----
++
+Die folgende Ausgabe sollte angezeigt werden:
+
++
+[listing]
+----
+Online
+Online
+----
+. Vergewissern Sie sich, dass die NVMe/FC-Initiator-Ports aktiviert sind und die Ziel-Ports sichtbar sind:
++
+[source, cli]
+----
+cat /sys/class/scsi_host/host*/nvme_info
+----
++
+.Beispiel anzeigen
+[%collapsible]
+=====
+[listing, subs="+quotes"]
+----
+NVME Initiator Enabled
+XRI Dist lpfc2 Total 6144 IO 5894 ELS 250
+NVME LPORT lpfc2 WWPN x100000109bf044b1 WWNN x200000109bf044b1 DID x022a00 *ONLINE*
+NVME RPORT       WWPN x202fd039eaa7dfc8 WWNN x202cd039eaa7dfc8 DID x021310 *TARGET DISCSRVC ONLINE*
+NVME RPORT       WWPN x202dd039eaa7dfc8 WWNN x202cd039eaa7dfc8 DID x020b10 *TARGET DISCSRVC ONLINE*
+
+NVME Statistics
+LS: Xmt 0000000810 Cmpl 0000000810 Abort 00000000
+LS XMIT: Err 00000000  CMPL: xb 00000000 Err 00000000
+Total FCP Cmpl 000000007b098f07 Issue 000000007aee27c4 OutIO ffffffffffe498bd
+        abort 000013b4 noxri 00000000 nondlp 00000058 qdepth 00000000 wqerr 00000000 err 00000000
+FCP CMPL: xb 000013b4 Err 00021443
+
+NVME Initiator Enabled
+XRI Dist lpfc3 Total 6144 IO 5894 ELS 250
+NVME LPORT lpfc3 WWPN x100000109bf044b2 WWNN x200000109bf044b2 DID x021b00 *ONLINE*
+NVME RPORT       WWPN x2033d039eaa7dfc8 WWNN x202cd039eaa7dfc8 DID x020110 *TARGET DISCSRVC ONLINE*
+NVME RPORT       WWPN x2032d039eaa7dfc8 WWNN x202cd039eaa7dfc8 DID x022910 *TARGET DISCSRVC ONLINE*
+
+NVME Statistics
+LS: Xmt 0000000840 Cmpl 0000000840 Abort 00000000
+LS XMIT: Err 00000000  CMPL: xb 00000000 Err 00000000
+Total FCP Cmpl 000000007afd4434 Issue 000000007ae31b83 OutIO ffffffffffe5d74f
+        abort 000014a5 noxri 00000000 nondlp 0000006a qdepth 00000000 wqerr 00000000 err 00000000
+FCP CMPL: xb 000014a5 Err 0002149a
+----
+=====
+
+
+--
+.Marvell/QLogic
+--
+Konfigurieren Sie NVMe/FC für einen Marvell/QLogic-Adapter.
+
+.Schritte
+. Vergewissern Sie sich, dass der unterstützte Adaptertreiber und die unterstützten Firmware-Versionen ausgeführt werden:
++
+[source, cli]
+----
+cat /sys/class/fc_host/host*/symbolic_name
+----
++
+Das folgende Beispiel zeigt Treiber- und Firmware-Versionen:
+
++
+[listing]
+----
+QLE2872 FW:v9.15.00 DVR:v10.02.09.300-k
+QLE2872 FW:v9.15.00 DVR:v10.02.09.300-k
+----
+. Verifizieren Sie das `ql2xnvmeenable` Ist festgelegt. Dadurch kann der Marvell Adapter als NVMe/FC-Initiator verwendet werden:
++
+[source, cli]
+----
+cat /sys/module/qla2xxx/parameters/ql2xnvmeenable
+----
++
+Das erwartete ouptut ist 1.
+
+
+
+--
+====

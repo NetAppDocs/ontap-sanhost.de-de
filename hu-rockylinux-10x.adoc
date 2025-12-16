@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
-permalink: hu-rhel-10.html 
-keywords: host utilities, red hat, rhel, linux, 10, netapp, ontap, rhel 
-summary: Installieren Sie Linux Host Utilities auf einem RHEL 10-Host, um FCP- und iSCSI-Protokolloperationen mit ONTAP LUNs zu verwalten. 
+permalink: hu-rockylinux-10x.html 
+keywords: host utilities, rocky, linux, 10.x, netapp, ontap 
+summary: Installieren Sie Linux Host Utilities auf einem Rocky Linux 10.x Host, um FCP- und iSCSI-Protokolloperationen mit ONTAP LUNs zu verwalten. 
 ---
-= Konfigurieren Sie RHEL 10 für FCP und iSCSI mit ONTAP -Speicher
+= Konfigurieren Sie Rocky Linux 10.x für FCP und iSCSI mit ONTAP -Speicher
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -16,7 +16,7 @@ summary: Installieren Sie Linux Host Utilities auf einem RHEL 10-Host, um FCP- u
 
 
 [role="lead"]
-Die Linux Host Utilities-Software bietet Verwaltungs- und Diagnosetools für Linux-Hosts, die mit ONTAP Speicher verbunden sind. Wenn Sie die Linux Host Utilities auf einem Red Hat Enterprise Linux (RHEL) 10-Host installieren, können Sie die Host Utilities verwenden, um FCP- und iSCSI-Protokolloperationen mit ONTAP LUNs zu verwalten.
+Die Linux Host Utilities-Software bietet Verwaltungs- und Diagnosetools für Linux-Hosts, die mit ONTAP Speicher verbunden sind. Wenn Sie Linux Host Utilities auf einem Rocky Linux 10.x-Host installieren, können Sie die Host Utilities verwenden, um FCP- und iSCSI-Protokolloperationen mit ONTAP -LUNs zu verwalten.
 
 
 NOTE: Sie müssen die Einstellungen der Kernel-basierten virtuellen Maschine (KVM) nicht manuell konfigurieren, da ONTAP LUNs automatisch dem Hypervisor zugeordnet werden.
@@ -54,7 +54,7 @@ NOTE: Durch die Installation der Linux Host Utilities werden keine Host-Timeout-
 
 == Schritt 3: Bestätigen Sie die Multipath-Konfiguration für Ihren Host
 
-Mit RHEL 10 können Sie Multipathing zur Verwaltung von ONTAP LUNs nutzen.
+Mit Rocky Linux 10.x können Sie Multipathing zur Verwaltung von ONTAP LUNs nutzen.
 
 Um sicherzustellen, dass Multipathing für Ihren Host korrekt konfiguriert ist, überprüfen Sie, ob die `/etc/multipath.conf` Datei definiert ist und ob die von NetApp empfohlenen Einstellungen für Ihre ONTAP LUNs konfiguriert sind.
 
