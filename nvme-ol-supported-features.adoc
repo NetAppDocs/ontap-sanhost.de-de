@@ -28,6 +28,11 @@ Die für die Hostkonfiguration mit NVMe over Fabrics (NVMe-oF) unterstützten Fu
 | 9.12.1 oder später 
 
 
+| NVMe/TCP ist eine vollständig unterstützte Unternehmensfunktion.  a| 
+9.0 oder höher
+| 9.10.1 oder später 
+
+
 | NVMe/TCP stellt Namensräume unter Verwendung des nativen `nvme-cli` Paket  a| 
 8.2 oder später
 | 9.10.1 oder später 
@@ -47,13 +52,18 @@ ONTAP unterstützt die folgenden SAN-Hostfunktionen unabhängig von der auf Ihre
 | Funktion | Oracle Linux Hostversion 
 
 
-| In-Kernel NVMe Multipathing für NVMe-Namespaces ist standardmäßig aktiviert.  a| 
-8.3 oder später
+| Die native udev-Regel in `nvme-cli` Das Paket bietet Lastverteilung basierend auf der Warteschlangentiefe für NVMe-Multipath  a| 
+9.6 oder später
 
 
 
 | SAN-Booten wird durch die Verwendung des NVMe/FC-Protokolls aktiviert.  a| 
 9.5 oder später
+
+
+
+| In-Kernel NVMe Multipathing für NVMe-Namespaces ist standardmäßig aktiviert.  a| 
+8.3 oder später
 
 
 
