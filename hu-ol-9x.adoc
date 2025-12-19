@@ -19,9 +19,6 @@ summary: Installieren Sie die Linux Host Utilities auf einem Oracle Linux 9.x Ho
 Die Linux Host Utilities-Software bietet Verwaltungs- und Diagnosetools für Linux-Hosts, die mit ONTAP Speicher verbunden sind. Wenn Sie die Linux Host Utilities auf einem Oracle Linux 9.x-Host installieren, können Sie die Host Utilities verwenden, um FCP- und iSCSI-Protokolloperationen mit ONTAP -LUNs zu verwalten.
 
 
-NOTE: Sie müssen keine Kernel-basierten KVM-Einstellungen (Virtual Machine) konfigurieren, da ONTAP-LUNs automatisch dem KVM-Hypervisor zugeordnet werden.
-
-
 
 == Schritt 1: Aktivieren Sie optional den SAN-Bootvorgang
 
@@ -287,8 +284,12 @@ Bei Oracle Linux 9.3, 9.2, 9.1 und 9.0 mit ONTAP -Speicher besteht folgendes bek
 == Was kommt als Nächstes?
 
 * link:hu-luhu-command-reference.html["Erfahren Sie mehr über die Verwendung des Linux Host Utilities-Tools"] .
-* Erfahren Sie mehr über ASM Mirroring.
+* Erfahren Sie mehr über ASM-Spiegelung.
 +
 Bei der ASM-Spiegelung (Automatic Storage Management) sind möglicherweise Änderungen an den Linux Multipath-Einstellungen erforderlich, damit ASM ein Problem erkennen und zu einer alternativen Fehlergruppe wechseln kann. Die meisten ASM-Konfigurationen auf ONTAP verwenden externe Redundanz, was bedeutet, dass Datenschutz vom externen Array bereitgestellt wird und ASM keine Daten spiegelt. Einige Standorte verwenden ASM mit normaler Redundanz, um normalerweise zwei-Wege-Spiegelung über verschiedene Standorte hinweg bereitzustellen. Weitere Informationen finden Sie unterlink:https://docs.netapp.com/us-en/ontap-apps-dbs/oracle/oracle-overview.html["Oracle-Datenbanken auf ONTAP"^].
+
+* Erfahren Sie mehr über Oracle Linux KVM und Virtualisierung.
++
+Oracle Linux kann als KVM-Host dienen. Dies ermöglicht es Ihnen, mehrere virtuelle Maschinen auf einem einzigen physischen Server mithilfe der Linux Kernel-based Virtual Machine (KVM)-Technologie auszuführen. Sie können mehrere Oracle Linux KVM-Hosts mit dem Oracle Linux Virtualization Manager verwalten und unterstützen, der auf dem Open-Source-Projekt oVirt basiert. Der KVM-Host benötigt keine expliziten Hostkonfigurationseinstellungen für ONTAP LUNs.
 
 
