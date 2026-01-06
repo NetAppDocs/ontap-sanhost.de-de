@@ -1,6 +1,6 @@
 ---
 sidebar: sidebar 
-permalink: nvme_windows_2016.html 
+permalink: nvme-windows-2016.html 
 keywords: nvme, windows, enterprise 
 summary: 'Sie können NVMe over Fibre Channel (NVMe/FC) auf Hosts konfigurieren, auf denen Windows Server 2016 für den Betrieb mit ONTAP-LUNs ausgeführt wird.' 
 ---

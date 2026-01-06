@@ -1,6 +1,6 @@
 ---
 sidebar: sidebar 
-permalink: nvme_ubuntu_2404.html 
+permalink: nvme-ubuntu-2404.html 
 keywords: nvme, linux, rhel, red hat, enterprise 
 summary: Konfigurieren des NVMe-of-Hosts für Ubuntu 24.04 mit ONTAP 
 ---
@@ -109,7 +109,6 @@ Sie können NVMe/FC für Broadcom/Emulex- oder Marvell/Qlogic-Adapter konfigurie
 --
 Konfigurieren Sie NVMe/FC für einen Broadcom/Emulex-Adapter.
 
-.Schritte
 . Stellen Sie sicher, dass Sie das unterstützte Adaptermodell verwenden:
 +
 .. `cat /sys/class/scsi_host/host*/modelname`
@@ -218,7 +217,6 @@ Der native Inbox qla2xxx Treiber im Ubuntu 24.04 GA Kernel enthält die neuesten
 
 Konfigurieren Sie NVMe/FC für einen Marvell/QLogic-Adapter.
 
-.Schritte
 . Vergewissern Sie sich, dass der unterstützte Adaptertreiber und die unterstützten Firmware-Versionen ausgeführt werden:
 +
 [listing]

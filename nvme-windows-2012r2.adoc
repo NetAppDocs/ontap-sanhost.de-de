@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
-permalink: nvme_windows_2022.html 
+permalink: nvme-windows-2012r2.html 
 keywords: nvme, windows, enterprise 
-summary: 'Sie können NVMe over Fibre Channel (NVMe/FC) auf Hosts konfigurieren, auf denen Windows Server 2022 für den Betrieb mit ONTAP-LUNs ausgeführt wird.' 
+summary: 'Sie können NVMe over Fibre Channel (NVMe/FC) auf Hosts konfigurieren, auf denen Windows Server 2012 R2 für den Betrieb mit ONTAP-LUNs ausgeführt wird.' 
 ---
-= Konfigurieren Sie Windows Server 2022 mit NVMe/FC für ONTAP
+= Konfigurieren Sie Windows Server 2012 R2 mit NVMe/FC für ONTAP
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -16,14 +16,17 @@ summary: 'Sie können NVMe over Fibre Channel (NVMe/FC) auf Hosts konfigurieren,
 
 
 [role="lead"]
-Sie können NVMe over Fibre Channel (NVMe/FC) auf Hosts konfigurieren, auf denen Windows Server 2022 für den Betrieb mit ONTAP-LUNs ausgeführt wird.
+Sie können NVMe over Fibre Channel (NVMe/FC) auf Hosts konfigurieren, auf denen Windows Server 2012 R2 für den Betrieb mit ONTAP-LUNs ausgeführt wird.
 
 .Über diese Aufgabe
-Sie können die folgende Unterstützung für die NVMe/FC-Hostkonfiguration für Windows 2022 verwenden. Sie sollten auch die bekannten Einschränkungen überprüfen, bevor Sie mit dem Konfigurationsprozess beginnen.
+Sie können die folgende Unterstützung für die NVMe/FC-Hostkonfiguration für Windows 2012 R2 verwenden. Sie sollten auch die bekannten Einschränkungen überprüfen, bevor Sie mit dem Konfigurationsprozess beginnen.
+
+
+NOTE: Mit den in diesem Verfahren angegebenen Konfigurationseinstellungen können Sie Cloud-Clients konfigurieren, die mit  und verbunden link:https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/index.html["Cloud Volumes ONTAP"^]link:https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/index.html["Amazon FSX für ONTAP"^]sind.
 
 * Support verfügbar:
 +
-Ab ONTAP 9.7 wird NVMe/FC für Windows Server 2022 unterstützt.
+Ab ONTAP 9.7 wird NVMe/FC für Windows Server 2012 R2 unterstützt.
 
 +
 Eine Liste der unterstützten FC-Adapter und Controller finden Sie im link:https://hwu.netapp.com/Home/Index["Hardware Universe"^]. Die aktuelle Liste der unterstützten Konfigurationen und Versionen finden Sie im link:https://mysupport.netapp.com/matrix/["Interoperabilitäts-Matrix-Tool"^].

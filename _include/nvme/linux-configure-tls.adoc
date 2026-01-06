@@ -2,7 +2,7 @@
 :allow-uri-read: 
 
 
-Transport Layer Security (TLS) bietet eine sichere End-to-End-Verschlüsselung für NVMe-Verbindungen zwischen NVMe-of Hosts und einem ONTAP-Array. Ab ONTAP 9.16.1 können Sie TLS 1.3 über die CLI und einen konfigurierten Pre-Shared Key (PSK) konfigurieren.
+Transport Layer Security (TLS) bietet eine sichere Ende-zu-Ende-Verschlüsselung für NVMe-Verbindungen zwischen NVMe-oF-Hosts und einem ONTAP Array. Sie können TLS 1.3 mithilfe der CLI und eines konfigurierten Pre-Shared Key (PSK) konfigurieren.
 
-.Über diese Aufgabe
-Sie führen die Schritte in diesem Verfahren auf dem SUSE Linux Enterprise Server-Host aus, außer wenn angegeben ist, dass Sie einen Schritt auf dem ONTAP-Controller ausführen.
+
+NOTE: Führen Sie die folgenden Schritte auf dem SUSE Linux Enterprise Server-Host durch, außer wenn angegeben ist, dass Sie einen Schritt auf dem ONTAP -Controller durchführen müssen.

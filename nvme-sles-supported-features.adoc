@@ -1,0 +1,86 @@
+---
+sidebar: sidebar 
+permalink: nvme-sles-supported-features.html 
+keywords: nvme, linux, sles, SUSE Linux Enterprise Server, enterprise 
+summary: Erfahren Sie mehr über ONTAP Unterstützung und -Funktionen für SUSE Linux Enterprise Server 
+---
+= Erfahren Sie mehr über ONTAP Unterstützung und -Funktionen für SUSE Linux Enterprise Server
+:hardbreaks:
+:toclevels: 1
+:allow-uri-read: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Die für die Hostkonfiguration mit NVMe over Fabrics (NVMe-oF) unterstützten Funktionen variieren je nach Ihrer Version von ONTAP und SUSE Linux Enterprise Server.
+
+[cols="50,25,25"]
+|===
+| Funktion | SUSE Linux Enterprise Server Hostversion | ONTAP-Version 
+
+
+| Die Transport Layer Security (TLS) 1.3-Verschlüsselung wird für NVMe/TCP unterstützt.  a| 
+15 SP6 oder später
+| 9.16.1 oder später 
+
+
+| Eine sichere In-Band-Authentifizierung wird über NVMe/TCP zwischen einem RHEL-Host und einem ONTAP Controller unterstützt.  a| 
+15 SP4 oder später
+| 9.12.1 oder später 
+
+
+| Persistent Discovery Controller (PDCs) werden mithilfe eines eindeutigen Discovery-NQN unterstützt.  a| 
+15 SP4 oder später
+| 9.11.1 oder später 
+
+
+| NVMe/TCP stellt Namensräume unter Verwendung des nativen `nvme-cli` Paket  a| 
+15 SP4 oder später
+| 9.10.1 oder später 
+
+
+| NVMe- und SCSI-Datenverkehr werden auf demselben Host unterstützt, wobei NVMe Multipath für NVMe-oF-Namespaces und dm-Multipath für SCSI-LUNs verwendet werden.  a| 
+15 SP1 oder später
+| 9.4 oder später 
+|===
+ONTAP unterstützt die folgenden SAN-Hostfunktionen unabhängig von der auf Ihrem System ausgeführten ONTAP Version.
+
+[cols="75,25"]
+|===
+| Funktion | SUSE Linux Enterprise Server Hostversion 
+
+
+| SAN-Booten wird durch die Verwendung des NVMe/FC-Protokolls aktiviert.  a| 
+15 SP7 oder später
+
+
+
+| Native NVMe-Multipathing ist standardmäßig aktiviert.  a| 
+15 SP1 oder später
+
+
+
+| Der `nvme-cli` Das Paket enthält Skripte zur automatischen Verbindung, sodass keine Skripte von Drittanbietern benötigt werden.  a| 
+15 SP1 oder später
+
+|===
+
+NOTE: Einzelheiten zu unterstützten Konfigurationen finden Sie imlink:https://mysupport.netapp.com/matrix/["Interoperabilitäts-Matrix-Tool"^] .
+
+
+
+== Was kommt als nächstes
+
+[cols="50,50"]
+|===
+| Wenn Ihre SUSE Linux Enterprise Server-Version .. | Erfahren Sie mehr über ... 
+
+
+| 15 SPx-Serie | link:nvme-sles15-spx.html["NVMe für SUSE Linux Enterprise Server 15 SPx konfigurieren"] 
+|===
+.Verwandte Informationen
+link:https://docs.netapp.com/us-en/ontap/san-admin/start-nvme-fc-service-svm-task.html["Erfahren Sie mehr über die Verwaltung von NVMe-Protokollen."^]
