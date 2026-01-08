@@ -5,17 +5,14 @@ keywords: host utilities, red hat, rhel, linux, 20.04, netapp, ontap, ubuntu
 summary: Installieren Sie Linux Host Utilities auf einem Ubuntu 24.04-Host, um FCP- und iSCSI-Protokollvorgänge mit ONTAP LUNs zu verwalten. 
 ---
 = Konfigurieren Sie Ubuntu 24.04 für FCP und iSCSI mit ONTAP -Speicher
-:toc: macro
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
-:toc: 
 :toclevels: 1
 :nofooter: 
 :icons: font
 :linkattrs: 
 :imagesdir: ./media/
-:toc-position: content
 
 
 [role="lead"]
