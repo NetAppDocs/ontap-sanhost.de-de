@@ -1,30 +1,35 @@
 ---
 sidebar: sidebar 
-permalink: hu_wuhu_hba_settings.html 
+permalink: hu-wuhu-configuration.html 
 keywords: windows, host, utilities, 7.1, hba, fibre, channel, SANtricity, netapp, san, host, e-series, platform 
 summary: Die Windows Host Utilities umfassen ein Installationsprogramm, das die erforderlichen Windows Registrierungs- und HBA-Parameter so festlegt, dass der Windows Host die Verhaltensweisen von ONTAP und E-Series Plattformen des Storage-Systems korrekt verarbeitet. 
 ---
-= Konfigurieren Sie die Registrierungseinstellungen für Windows Host Utilities mit ONTAP -Speicher
+= Überprüfen Sie die Konfiguration der Windows-Hostdienstprogramme für den ONTAP -Speicher.
+:toc: macro
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
+:toc: 
 :toclevels: 1
 :nofooter: 
 :icons: font
 :linkattrs: 
 :imagesdir: ./media/
+:toc-position: content
 
 
 [role="lead"]
-Die Windows-Host-Dienstprogramme erfordern bestimmte Registrierungs- und Parametereinstellungen, um zu überprüfen, ob der Windows-Host das Verhalten des Speichersystems richtig handhabt.
+Die Windows-Host-Dienstprogramme benötigen bestimmte Registrierungs- und Parametereinstellungen, damit ein Windows-Host das Verhalten des ONTAP -Speichersystems korrekt handhabt.
 
-Die Windows Host Utilities legen Parameterwerte fest, die beeinflussen, wie der Windows-Host auf eine Verzögerung oder einen Datenverlust reagiert.  Diese Werte stellen sicher, dass der Windows-Host Ereignisse wie das Failover eines Controllers im Speichersystem auf seinen Partner-Controller korrekt verarbeitet.
+Diese Registrierungs- und Parameterwerte beeinflussen, wie ein Windows-Host auf eine Verzögerung oder einen Datenverlust reagiert, beispielsweise durch die korrekte Behandlung von Ereignissen wie einem Speicherausfall.
 
-Einige Werte gelten nicht für das gerätespezifische Modul (DSM) für SANtricity Storage Manager.  Überschneidungen zwischen den von den Windows Host Utilities und dem DSM für SANtricity Storage Manager festgelegten Werten führen nicht zu Konflikten.
+Einige der Registrierungs- und Parameterwerte gelten nicht für das gerätespezifische Modul (DSM) für SANtricity Storage Manager. Überschneidungen zwischen den von den Windows Host Utilities und dem DSM für SANtricity Storage Manager festgelegten Werten verursachen keine Konflikte.
 
-Sie müssen außerdem FC-, NVMe/FC- und iSCSI-HBA-Parameter festlegen, um die Leistung zu optimieren und Speichersystemereignisse erfolgreich zu verarbeiten.
+Ein Windows-Host benötigt außerdem bestimmte FC-, NVMe/FC- und iSCSI-HBA-Parameter, um Speichersystemereignisse erfolgreich zu verarbeiten:
 
-Das Installationsprogramm von Windows Host Utilities setzt die Windows-, FC- und NVMe/FC-HBA-Parameter auf die unterstützten Werte.  Sie müssen die iSCSI-HBA-Parameter manuell einstellen.
+* Ab Windows Host Utilities 7.2 stellt das Installationsprogramm die Parameter Windows, iSCSI, FC und NVMe/FC auf die unterstützten Werte ein.
+* Ab Windows Host Utilities 7.1 stellt das Installationsprogramm die Windows-, FC- und NVMe/FC-HBA-Parameter auf die unterstützten Werte ein. Sie müssen die iSCSI HBA-Parameter manuell einstellen.
+
 
 Das Installationsprogramm legt andere Werte fest, wenn Sie während der Installation die Unterstützung von Microsoft Multipath I/O (MPIO) angeben.
 
@@ -37,22 +42,22 @@ Bei allen anderen Parametern und Registrierungsschlüsseln für Windows Host Uti
 ====
 
 
-== Von Windows Host Utilities 8.0 festgelegte Registrierungswerte
+== Überprüfen Sie die Konfigurationseinstellungen für Windows Host Utilities 8.0
 
-Das Installationsprogramm von Windows Host Utilities legt automatisch Registrierungswerte und NVMe-Parameter basierend auf den Auswahlen fest, die Sie während der Installation treffen.  Sie müssen diese Werte und die Betriebssystemversion überprüfen.
+Das Installationsprogramm für Windows Host Utilities legt die Windows-Registrierungswerte sowie die iSCSI- und NVMe-HBA-Parameter automatisch anhand der von Ihnen während der Installation getroffenen Auswahl fest. Überprüfen Sie diese Werte und die Version des Betriebssystems.
 
 [role="tabbed-block"]
 ====
-.HKLM-Werte
+.Windows-Registrierungswerte
 --
-Das Installationsprogramm von Windows Host Utilities legt die folgenden Registrierungswerte fest. Alle Werte sind Dezimalwerte, sofern nicht anders angegeben.
+Alle Windows-Registrierungswerte sind, sofern nicht anders angegeben, dezimal.
 
 
 NOTE: HKLM ist die Abkürzung für `HKEY_LOCAL_MACHINE`.
 
 [cols="20,20,30"]
 |===
-| Registrierungsschlüssel | Wert | Wenn eingestellt 
+| Registrierungsschlüssel | Wert | Registrierungsschlüssel festlegen... 
 
 
 | HKLM\SYSTEM\CurrentControlSet\Services \msdsm\Parameters \DsmMaximumRetryTimeDuringStateTransition | 120 | Wenn MPIO-Unterstützung angegeben ist und Ihr Server Windows Server 2025, 2022, 2019 oder 2016 ist 
@@ -64,16 +69,7 @@ NOTE: HKLM ist die Abkürzung für `HKEY_LOCAL_MACHINE`.
 | HKLM\SYSTEM\CurrentControlSet\Services \msdsm\Parameters\DsmSupportedDeviceList | „NETAPP LUN“, „NETAPP LUN C-Mode“ „NVMe NetApp ONTAP Con“ | Bei Angabe der MPIO-Unterstützung 
 
 
-| HKLM\SYSTEM\CurrentControlSet\Control \Class\ {iSCSI_driver_GUID}\ Instance_ID \Parameters \IPSecConfigTimeout | 60 | Immer 
-
-
-| HKLM\SYSTEM\CurrentControlSet\Control \Class\ {iSCSI_driver_GUID}\ Instance_ID \Parameters \LinkDownTime | 10 | Immer 
-
-
 | HKLM\SYSTEM\CurrentControlSet\Services \ClusDisk \Parameters\ManageDisksOnSystemBuses | 1 | Immer 
-
-
-| HKLM\SYSTEM\CurrentControlSet\Control \Class\ {iSCSI_driver_GUID}\ Instance_ID \Parameters \MaxRequestHoldTime | 120 | Wenn keine MPIO-Unterstützung ausgewählt ist 
 
 
 | HKLM\SYSTEM\CurrentControlSet\Control \Class\ {iSCSI_driver_GUID}\ Instance_ID \Parameters \MaxRequestHoldTime | 30 | Immer 
@@ -127,9 +123,30 @@ NOTE: HKLM ist die Abkürzung für `HKEY_LOCAL_MACHINE`.
 | HKLM\SYSTEM\CurrentControlSet\Services\mpio \Parameters\UseCustomRecoveryIntervall | 1 | Wenn MPIO-Unterstützung angegeben ist und Ihr Server Windows Server 2025, 2022, 2019 oder 2016 ist 
 |===
 --
+.iSCSI HBA-Werte
+--
+Alle iSCSI HBA-Werte sind Dezimalzahlen, sofern nicht anders angegeben.
+
+
+NOTE: HKLM ist die Abkürzung für `HKEY_LOCAL_MACHINE`.
+
+[cols="20,20,30"]
+|===
+| Registrierungsschlüssel | Wert | Registrierungsschlüssel festlegen... 
+
+
+| HKLM\SYSTEM\CurrentControlSet\Control \Class\ {iSCSI_driver_GUID}\ Instance_ID \Parameters \IPSecConfigTimeout | 60 | Immer 
+
+
+| HKLM\SYSTEM\CurrentControlSet\Control \Class\ {iSCSI_driver_GUID}\ Instance_ID \Parameters \LinkDownTime | 10 | Immer 
+
+
+| HKLM\SYSTEM\CurrentControlSet\Control \Class\ {iSCSI_driver_GUID}\ Instance_ID \Parameters \MaxRequestHoldTime | 120 | Wenn keine MPIO-Unterstützung ausgewählt ist 
+|===
+--
 .NVMe-Parameter
 --
-Windows Host Utilities 8.0 aktualisiert während der Installation die folgenden NVMe Emulex-Treiberparameter:
+Windows Host Utilities 8.0 aktualisiert während der Installation die folgenden NVMe-Emulex-Treiberparameter:
 
 * EnableNVMe = 1
 * NVMEMode = 0
@@ -139,22 +156,22 @@ Windows Host Utilities 8.0 aktualisiert während der Installation die folgenden 
 ====
 
 
-== Von Windows Host Utilities 7.2 festgelegte Registrierungswerte
+== Überprüfen Sie die Konfigurationseinstellungen für Windows Host Utilities 7.2
 
-Das Installationsprogramm von Windows Host Utilities legt automatisch Registrierungswerte und NVMe-Parameter basierend auf den Auswahlen fest, die Sie während der Installation treffen.  Sie müssen diese Werte und die Betriebssystemversion überprüfen.
+Das Installationsprogramm für Windows Host Utilities legt die Windows-Registrierungswerte sowie die iSCSI- und NVMe-HBA-Parameter automatisch anhand der von Ihnen während der Installation getroffenen Auswahl fest. Überprüfen Sie diese Werte und die Version des Betriebssystems.
 
 [#nvme_parameter,role="tabbed-block"]
 ====
-.HKLM-Werte
+.Windows-Registrierungswerte
 --
-Das Installationsprogramm von Windows Host Utilities legt die folgenden Registrierungswerte fest. Alle Werte sind Dezimalwerte, sofern nicht anders angegeben.
+Alle Windows-Registrierungswerte sind, sofern nicht anders angegeben, dezimal.
 
 
 NOTE: HKLM ist die Abkürzung für `HKEY_LOCAL_MACHINE`.
 
 [cols="20,20,30"]
 |===
-| Registrierungsschlüssel | Wert | Wenn eingestellt 
+| Registrierungsschlüssel | Wert | Registrierungsschlüssel festlegen... 
 
 
 | HKLM\SYSTEM\CurrentControlSet\Services \msdsm\Parameters \DsmMaximumRetryTimeDuringStateTransition | 120 | Wenn MPIO-Unterstützung angegeben ist und Ihr Server Windows Server 2025, 2022, 2019, 2016 oder 2012 R2 ist 
@@ -166,16 +183,7 @@ NOTE: HKLM ist die Abkürzung für `HKEY_LOCAL_MACHINE`.
 | HKLM\SYSTEM\CurrentControlSet\Services \msdsm\Parameters\DsmSupportedDeviceList | „NETAPP LUN“, „NETAPP LUN C-Mode“ „NVMe NetApp ONTAP Con“ | Bei Angabe der MPIO-Unterstützung 
 
 
-| HKLM\SYSTEM\CurrentControlSet\Control \Class\ {iSCSI_driver_GUID}\ Instance_ID \Parameters \IPSecConfigTimeout | 60 | Immer 
-
-
-| HKLM\SYSTEM\CurrentControlSet\Control \Class\ {iSCSI_driver_GUID}\ Instance_ID \Parameters \LinkDownTime | 10 | Immer 
-
-
 | HKLM\SYSTEM\CurrentControlSet\Services \ClusDisk \Parameters\ManageDisksOnSystemBuses | 1 | Immer 
-
-
-| HKLM\SYSTEM\CurrentControlSet\Control \Class\ {iSCSI_driver_GUID}\ Instance_ID \Parameters \MaxRequestHoldTime | 120 | Wenn keine MPIO-Unterstützung ausgewählt ist 
 
 
 | HKLM\SYSTEM\CurrentControlSet\Control \Class\ {iSCSI_driver_GUID}\ Instance_ID \Parameters \MaxRequestHoldTime | 30 | Immer 
@@ -229,15 +237,36 @@ NOTE: HKLM ist die Abkürzung für `HKEY_LOCAL_MACHINE`.
 | HKLM\SYSTEM\CurrentControlSet\Services\mpio \Parameters\UseCustomRecoveryIntervall | 1 | Wenn MPIO-Unterstützung angegeben ist und Ihr Server Windows Server 2025, 2022, 2019, 2016 oder 2012 R2 ist 
 |===
 --
+.iSCSI HBA-Werte
+--
+Alle iSCSI HBA-Werte sind Dezimalzahlen, sofern nicht anders angegeben.
+
+
+NOTE: HKLM ist die Abkürzung für `HKEY_LOCAL_MACHINE`.
+
+[cols="20,20,30"]
+|===
+| Registrierungsschlüssel | Wert | Registrierungsschlüssel festlegen... 
+
+
+| HKLM\SYSTEM\CurrentControlSet\Control \Class\ {iSCSI_driver_GUID}\ Instance_ID \Parameters \IPSecConfigTimeout | 60 | Immer 
+
+
+| HKLM\SYSTEM\CurrentControlSet\Control \Class\ {iSCSI_driver_GUID}\ Instance_ID \Parameters \LinkDownTime | 10 | Immer 
+
+
+| HKLM\SYSTEM\CurrentControlSet\Control \Class\ {iSCSI_driver_GUID}\ Instance_ID \Parameters \MaxRequestHoldTime | 120 | Wenn keine MPIO-Unterstützung ausgewählt ist 
+|===
+--
 .NVMe-Parameter
 --
-Die folgenden NVMe Emulex-Treiberparameter werden aktualisiert, wenn Sie Windows Host Utilities 7.2 installieren:
+Windows Host Utilities 7.2 aktualisiert während der Installation die folgenden NVMe-Emulex-Treiberparameter:
 
 * EnableNVMe = 1
 * NVMEMode = 0
 * LimTransferSize=1
 +
-Der LimTransferSize-Parameter wird automatisch auf „1“ gesetzt, wenn Sie Windows Host Utilities 7.2 installieren. Nach der Installation müssen Sie den LimTransferSize-Wert manuell auf „0“ ändern und den Server neu starten.
+Der Parameter LimTransferSize wird bei der Installation von Windows Host Utilities 7.2 automatisch auf „1“ gesetzt. Nach der Installation ändern Sie den Wert LimTransferSize auf "0" und starten den Server neu.
 
 
 
@@ -245,18 +274,16 @@ Der LimTransferSize-Parameter wird automatisch auf „1“ gesetzt, wenn Sie Win
 ====
 
 
-== Von Windows Host Utilities 7.1 festgelegte Registrierungswerte
+== Überprüfen Sie die Konfigurationseinstellungen für Windows Host Utilities 7.1
 
-Das Installationsprogramm von Windows Host Utilities legt Registrierungswerte automatisch basierend auf den Auswahlen fest, die Sie während der Installation treffen.  Sie müssen diese Registrierungswerte und die Betriebssystemversion überprüfen.
-
-Die folgenden Werte werden vom Windows Host Utilities-Installationsprogramm festgelegt. Sofern nicht anders angegeben, werden alle Werte in Dezimalform angegeben.
+Das Installationsprogramm für Windows Host Utilities legt automatisch Registrierungswerte basierend auf den während der Installation getroffenen Auswahlen fest. Überprüfen Sie diese Registrierungswerte und die Version des Betriebssystems. Alle Werte sind Dezimalzahlen, sofern nicht anders angegeben.
 
 
 NOTE: `HKLM` Ist die Abkürzung für `HKEY_LOCAL_MACHINE`.
 
 [cols="~, 10, ~"]
 |===
-| Registrierungsschlüssel | Wert | Wenn eingestellt 
+| Registrierungsschlüssel | Wert | Registrierungsschlüssel festlegen... 
 
 
 | HKLM\SYSTEM\CurrentControlSet\Services \msdsm\Parameters \DsmMaximumRetryTimeDuringStateTransition | 120 | Wenn die MPIO-Unterstützung angegeben ist und Ihr Server Windows Server 2016, 2012 R2, 2012, 2008 R2 oder 2008 ist, außer wenn Data ONTAP DSM erkannt wird 
@@ -355,7 +382,7 @@ Siehe https://docs.microsoft.com/en-us/troubleshoot/windows-server/performance/w
 
 
 
-== Die von Windows Host Utilities eingestellten FC HBA-Werte
+== Erfahren Sie mehr über die von Windows-Hostdienstprogrammen festgelegten FC-HBA-Werte.
 
 Das Installationsprogramm von Windows Host Utilities legt die erforderlichen Timeout-Werte für Emulex- und QLogic-FC-HBAs auf Systemen fest, die FC verwenden.
 
@@ -418,15 +445,13 @@ Das Installationsprogramm legt die folgenden Parameter für QLogic FC HBAs fest:
 --
 ====
 
-NOTE: Die Namen der Parameter können je nach Programm leicht variieren.
-Im QLogic QConvergeConsole-Programm wird beispielsweise der Parameter als angezeigt `Link Down Timeout`.
-Die Host Utilities `fcconfig.ini` Datei zeigt diesen Parameter als entweder an `LinkDownTimeOut` Oder `MpioLinkDownTimeOut`, Abhängig davon, ob MPIO spezifiziert wird. Alle diese Namen beziehen sich jedoch auf denselben HBA-Parameter. Siehe https://www.broadcom.com/support/download-search["Emulex"^] Oder https://driverdownloads.qlogic.com/QLogicDriverDownloads_UI/Netapp_search.aspx["QLogic"^] Um mehr über die Timeout-Parameter zu erfahren.
+NOTE: Die Bezeichnungen der Parameter können je nach Programm leicht variieren. Im QLogic-Programm QConvergeConsole wird der Parameter beispielsweise wie folgt angezeigt: `Link Down Timeout`Die Die Host-Dienstprogramme `fcconfig.ini` Die Datei zeigt diesen Parameter entweder als `LinkDownTimeOut` oder `MpioLinkDownTimeOut`abhängig davon, ob MPIO angegeben ist. Allerdings beziehen sich all diese Bezeichnungen auf denselben HBA-Parameter. Sehen https://www.broadcom.com/support/download-search["Emulex"^] oder https://driverdownloads.qlogic.com/QLogicDriverDownloads_UI/Netapp_search.aspx["QLogic"^] Um mehr über die Timeout-Parameter zu erfahren.
 
 
 
 == Erfahren Sie mehr über die Host Utilities-Änderungen an den FC HBA-Treibereinstellungen
 
-Während der Installation der erforderlichen Emulex- oder QLogic-HBA-Treiber auf einem FC-System werden verschiedene Parameter überprüft und in einigen Fällen von den Windows Host Utilities geändert.
+Während der Installation der benötigten Emulex- oder QLogic-HBA-Treiber auf einem FC-System überprüft Windows Host Utilities verschiedene Parameter und ändert diese in einigen Fällen.
 
 Die Windows Host Utilities legen Werte für die folgenden Parameter fest, wenn MS DSM für Windows MPIO erkannt wird:
 
@@ -434,7 +459,7 @@ Die Windows Host Utilities legen Werte für die folgenden Parameter fest, wenn M
 * *NodeTimeOut*: Definiert die Zeitspanne in Sekunden, bevor der Host-Port erkennt, dass eine Verbindung zum Zielgerät unterbrochen ist.
 
 
-Überprüfen Sie beim Beheben von HBA-Problemen, ob diese Einstellungen über die richtigen Werte verfügen. Die richtigen Werte hängen von zwei Faktoren ab:
+Bei der Fehlersuche in HBA-Problemen sollten Sie überprüfen, ob diese Einstellungen die richtigen Werte aufweisen. Die korrekten Werte hängen von zwei Faktoren ab:
 
 * Der HBA-Anbieter
 * Ob Sie MPIO-Software verwenden.

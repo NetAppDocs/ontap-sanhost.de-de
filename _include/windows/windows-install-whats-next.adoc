@@ -6,4 +6,4 @@
 
 == Was kommt als Nächstes?
 
-link:hu_wuhu_hba_settings.html["Konfigurieren der Registrierungseinstellungen für Windows Host Utilities"] .
+link:hu-wuhu-configuration.html["Erfahren Sie mehr über die Konfiguration der Windows-Hostdienstprogramme für ONTAP -Speicher."]
