@@ -4,7 +4,7 @@ permalink: troubleshoot.html
 keywords: host utilities, veritas, infoscale, 8.x, netapp, ontap, vmware, vspehere 
 summary: Sie können die ONTAP-SAN-Hosteinstellungen für die VMware vSphere 8.x-Version mit FC-, FCoE- und iSCSI-Protokollen konfigurieren. 
 ---
-= Fehlerbehebung
+= Fehlerbehebung bei NVMe-oF mit ONTAP -Speicher für Linux-Host-Dienstprogramme
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -16,10 +16,12 @@ summary: Sie können die ONTAP-SAN-Hosteinstellungen für die VMware vSphere 8.x
 
 
 [role="lead"]
-Überprüfen Sie vor der Behebung von NVMe-of-Fehlern für RHEL-, OL- und SUSE Linux Enterprise Server-Hosts, ob Sie eine Konfiguration ausführen, die den Spezifikationen des Interoperabilitäts-Matrix-Tools (IMT) entspricht, und fahren Sie dann mit den nächsten Schritten fort, um Probleme auf Hostseite zu beheben.
+Fehlerbehebung bei NVMe-oF-Fehlern auf Oracle Linux-, RHEL-, Rocky Linux- und SUSE Linux Enterprise Server-Hosts mit ONTAP Speicher.
+
+Bevor Sie mit der Fehlersuche beginnen, vergewissern Sie sich, dass Ihre Konfiguration den geltenden Richtlinien entspricht. https://mysupport.netapp.com/matrix/#welcome["Interoperabilitäts-Matrix-Tool"^] Spezifikationen und fahren Sie dann mit den nächsten Schritten fort, um etwaige Probleme auf der Host-Seite zu beheben.
 
 
-NOTE: Die Anweisungen zur Fehlerbehebung gelten nicht für AIX-, Windows- und ESXi-Hosts.
+NOTE: Die Anweisungen zur Fehlerbehebung gelten nicht für AIX-, ESXi-, Proxmox- und Windows-Hosts.
 
 
 
@@ -27,7 +29,8 @@ NOTE: Die Anweisungen zur Fehlerbehebung gelten nicht für AIX-, Windows- und ES
 
 Wenn Sie ein Problem mit Ihrer Konfiguration haben, kann die ausführliche Protokollierung wichtige Informationen für die Fehlerbehebung liefern.
 
-Das Verfahren zum Festlegen der ausführlichen Protokollierung für Qlogic (qla2xxx) unterscheidet sich von dem Verfahren zum Festlegen DER LPFC-ausführlichen Protokollierung.
+.Schritte
+Ausführliche Protokollierung für LPFC oder Qlogic (Qla2xxx) aktivieren.
 
 [role="tabbed-block"]
 ====
@@ -35,7 +38,6 @@ Das Verfahren zum Festlegen der ausführlichen Protokollierung für Qlogic (qla2
 --
 Legen Sie den lpfc-Treiber für NVMe/FC fest.
 
-.Schritte
 . Stellen Sie die ein `lpfc_log_verbose` Treibereinstellung auf einen der folgenden Werte, um NVMe/FC-Ereignisse zu protokollieren.
 +
 [listing]
@@ -46,9 +48,9 @@ Legen Sie den lpfc-Treiber für NVMe/FC fest.
 #define LOG_NVME_IOERR 0x00800000 /* NVME IO Error events. */
 ----
 . Führen Sie nach dem Festlegen der Werte den aus `dracut-f` Führen Sie einen Befehl aus und starten Sie den Host neu.
-. Überprüfen Sie die Einstellungen.
+. Überprüfen Sie die Einstellungen:
 +
-[listing]
+[source, cli]
 ----
 # cat /etc/modprobe.d/lpfc.conf options lpfc lpfc_log_verbose=0xf00083
 
@@ -61,17 +63,16 @@ Legen Sie den lpfc-Treiber für NVMe/FC fest.
 --
 Es gibt keine spezifische qla2xxx-Protokollierung für NVMe/FC, ähnlich wie bei `lpfc` Treiber. Stellen Sie stattdessen die allgemeine qla2xxx-Protokollierungsebene ein.
 
-.Schritte
 . Fügen Sie den hinzu `ql2xextended_error_logging=0x1e400000` Wert zum entsprechenden `modprobe qla2xxx conf` Datei:
 . Ausführen des `dracut -f` Befehl und starten Sie dann den Host neu.
 . Überprüfen Sie nach dem Neubooten, ob die ausführliche Protokollierung aktiviert wurde:
 +
-[listing]
+[source, cli]
 ----
 # cat /etc/modprobe.d/qla2xxx.conf
 ----
 +
-Beispielausgabe:
+Sie sollten eine Ausgabe ähnlich dem folgenden Beispiel sehen:
 
 +
 [listing]
@@ -86,7 +87,7 @@ options qla2xxx ql2xnvmeenable=1 ql2xextended_error_logging=0x1e400000
 ====
 
 
-=== Gängige nvme-cli-Fehler und Behelfslösungen
+== Häufige "nvme-cli"-Fehler und deren Umgehungsmöglichkeiten
 
 Die von angezeigten Fehler `nvme-cli` Während `nvme discover`, `nvme connect`, Oder `nvme connect-all` Die Vorgänge und die Problemumgehungen sind in der folgenden Tabelle aufgeführt:
 
@@ -143,9 +144,9 @@ Keine. Versuchen Sie, die auszuführen `nvme discover` Befehl nach einiger Zeit 
 
 == Wann wenden Sie sich an den technischen Support
 
-Wenn Sie immer noch Probleme haben, sammeln Sie die folgenden Dateien und Befehlsausgänge, und kontaktieren Sie link:mysupport.netapp.com["NetApp Support"^] Für weitere Triage:
+Falls weiterhin Probleme auftreten, sammeln Sie bitte die folgenden Dateien und Befehlsausgaben und kontaktieren Sie uns. link:mysupport.netapp.com["NetApp Support"^] zur weiteren Triage:
 
-[listing]
+[source, cli]
 ----
 cat /sys/class/scsi_host/host*/nvme_info
 /var/log/messages

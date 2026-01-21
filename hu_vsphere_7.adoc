@@ -123,14 +123,7 @@ fc.20000090fae0ec8f:10000090fae0ec8f-fc.201000a098dfe3d1:200c00a098dfe3d1-naa.60
    Storage Array Type Path Config: {TPG_id=1001,TPG_state=ANO,RTP_id=30,RTP_health=UP}
    Path Selection Policy Path Config: PSP VMW_PSP_RR does not support path configuration.
 ----
-
-
-=== Alle SAN-Array-Konfigurationen
-
-Alle SAN-Array-(ASA-)Konfigurationen optimieren alle Pfade zu einer bestimmten LUN und halten sie aktiv. Dies verbessert die Performance, da I/O-Operationen über alle Pfade gleichzeitig ausgeführt werden können.
-
-.Beispiel
-Im folgenden Beispiel wird die richtige Ausgabe für eine ONTAP-LUN angezeigt.
+Unaufgelöste Direktive in <stdin> - include::_include/hu/reuse_hu_asa_configuration.adoc[]
 
 *`esxcli storage nmp device list -d naa.600a098038304759563f4e7837574453`*
 

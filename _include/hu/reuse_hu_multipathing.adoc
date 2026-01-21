@@ -1,7 +1,0 @@
-= 
-:allow-uri-read: 
-
-
-Sie können das verwenden `multipath -ll` Überprüfen Sie mit dem Befehl die Einstellungen für Ihre ONTAP LUNs.
-
-Die folgenden Abschnitte bieten Beispiel-Multipath-Ausgaben für eine LUN, die ASA-Gruppen und nicht-ASA-Personas zugeordnet ist.

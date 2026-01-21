@@ -1,5 +1,0 @@
-= 
-:allow-uri-read: 
-
-
-Durch die Installation des NetApp Host Utilities-Pakets wird das Toolkit automatisch installiert. Dieses Kit enthält das `sanlun` Dienstprogramm, mit dem Sie LUNs und Host-Bus-Adapter (HBAs) verwalten können. Der `sanlun` Befehl gibt Informationen über die LUNs zurück, die Ihrem Host zugeordnet sind, Multipathing und die zum Erstellen von Initiatorgruppen erforderlichen Informationen.
