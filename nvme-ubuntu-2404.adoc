@@ -217,6 +217,7 @@ Der native Inbox qla2xxx Treiber im Ubuntu 24.04 GA Kernel enthält die neuesten
 
 Konfigurieren Sie NVMe/FC für einen Marvell/QLogic-Adapter.
 
+.Schritte
 . Vergewissern Sie sich, dass der unterstützte Adaptertreiber und die unterstützten Firmware-Versionen ausgeführt werden:
 +
 [listing]

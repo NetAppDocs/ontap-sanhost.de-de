@@ -143,6 +143,7 @@ Konfigurieren Sie NVMe/FC mit Broadcom/Emulex- oder Marvell/QLogic-Adaptern oder
 --
 Konfigurieren Sie NVMe/FC für einen Broadcom/Emulex-Adapter.
 
+.Schritte
 . Stellen Sie sicher, dass Sie das unterstützte Adaptermodell verwenden:
 +
 .. Zeigen Sie die Modellnamen an:
@@ -299,6 +300,7 @@ FCP CMPL: xb 000001c1 Err 000001c2
 --
 Konfigurieren Sie NVMe/FC für einen Marvell/QLogic-Adapter.
 
+.Schritte
 . Stellen Sie sicher, dass Sie die unterstützten Adaptertreiber- und Firmware-Versionen verwenden:
 +
 [source, cli]
@@ -330,6 +332,7 @@ Die erwartete Ausgabe ist 1.
 --
 Das NVMe/TCP-Protokoll unterstützt den automatischen Verbindungsvorgang nicht.  Stattdessen können Sie die NVMe/TCP-Subsysteme und Namespaces ermitteln, indem Sie den NVMe/TCP `connect` oder `connect-all` Vorgänge manuell ausführen.
 
+.Schritte
 . Überprüfen Sie, ob der Initiator-Port die Daten der Erkennungsprotokollseite über die unterstützten NVMe/TCP-LIFs abrufen kann:
 +
 [source, cli]
@@ -812,6 +815,7 @@ Eine sichere In-Band-Authentifizierung wird über NVMe/TCP zwischen einem RHEL 1
 
 Jeder Host oder Controller muss mit einem  `DH-HMAC-CHAP` Schlüssel zur Einrichtung einer sicheren Authentifizierung .  `DH-HMAC-CHAP` Der Schlüssel ist eine Kombination aus dem NQN des NVMe-Hosts oder -Controllers und einem vom Administrator konfigurierten Authentifizierungsgeheimnis. Um seinen Peer zu authentifizieren, muss ein NVMe-Host oder -Controller den dem Peer zugeordneten Schlüssel erkennen.
 
+.Schritte
 Richten Sie eine sichere In-Band-Authentifizierung mithilfe der CLI oder einer JSON-Konfigurationsdatei ein. Wenn Sie unterschiedliche dhchap-Schlüssel für verschiedene Subsysteme angeben müssen, müssen Sie eine Konfigurations-JSON-Datei verwenden.
 
 [role="tabbed-block"]
@@ -820,6 +824,7 @@ Richten Sie eine sichere In-Band-Authentifizierung mithilfe der CLI oder einer J
 --
 Richten Sie die sichere bandinterne Authentifizierung über die CLI ein.
 
+.Schritte
 . Rufen Sie die Host-NQN ab:
 +
 [source, cli]
@@ -912,6 +917,7 @@ Wenn mehrere NVMe-Subsysteme auf dem ONTAP Controller verfügbar sind, können S
 
 Verwenden Sie die `-o` Option zum Generieren der JSON-Datei.  Weitere Syntaxoptionen finden Sie in den Manpages zu NVMe connect-all.
 
+.Schritte
 . Konfigurieren Sie die JSON-Datei.
 +
 

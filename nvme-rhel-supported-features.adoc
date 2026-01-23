@@ -54,6 +54,11 @@ ONTAP unterstützt die folgenden SAN-Hostfunktionen unabhängig von der auf Ihre
 
 
 
+| Die native udev-Regel in `nvme-cli` Das Paket bietet Lastverteilung basierend auf der Warteschlangentiefe für NVMe-Multipath  a| 
+9.6 oder später
+
+
+
 | SAN-Booten wird durch die Verwendung des NVMe/FC-Protokolls aktiviert.  a| 
 9.4 oder später
 
@@ -67,11 +72,6 @@ ONTAP unterstützt die folgenden SAN-Hostfunktionen unabhängig von der auf Ihre
 | Die native udev-Regel in `nvme-cli` Das Paket bietet Round-Robin-Lastverteilung für NVMe-Multipath  a| 
 8.2 oder später
 
-
-
-| Die native udev-Regel in `nvme-cli` Das Paket bietet Lastverteilung basierend auf der Warteschlangentiefe für NVMe-Multipath  a| 
-9.6 oder später
-
 |===
 
 NOTE: Einzelheiten zu unterstützten Konfigurationen finden Sie imlink:https://mysupport.netapp.com/matrix/["Interoperabilitäts-Matrix-Tool"^] .
@@ -82,7 +82,7 @@ NOTE: Einzelheiten zu unterstützten Konfigurationen finden Sie imlink:https://m
 
 [cols="50,50"]
 |===
-| Wenn Ihre RHEL-Version ... ist. | Erfahren Sie mehr über ... 
+| Wenn Ihre RHEL-Version ... | Erfahren Sie mehr über ... 
 
 
 | 10er-Serie | link:nvme-rhel-10x.html["NVMe für RHEL 10.x konfigurieren"] 

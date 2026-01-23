@@ -23,13 +23,13 @@ Die für die Hostkonfiguration mit NVMe over Fabrics (NVMe-oF) unterstützten Fu
 | ONTAP Funktion | Proxmox-Hostversion | ONTAP-Version 
 
 
-| Bietet ONTAP Details für die Namespaces NVMe/FC und NVMe/TCP unter Verwendung der nativen Schnittstelle. `nvme-cli` Paket.  a| 
-8.0
+| NVMe/TCP ist eine vollständig unterstützte Unternehmensfunktion.  a| 
+9.0
 | 9.10.1 oder später 
 
 
-| NVMe/TCP ist eine vollständig unterstützte Unternehmensfunktion.  a| 
-9.0
+| Bietet ONTAP Details für die Namespaces NVMe/FC und NVMe/TCP unter Verwendung der nativen Schnittstelle. `nvme-cli` Paket.  a| 
+8.0
 | 9.10.1 oder später 
 
 
@@ -44,11 +44,6 @@ ONTAP unterstützt die folgenden SAN-Hostfunktionen unabhängig von der auf Ihre
 | Funktion | Proxmox-Hostversion 
 
 
-| Native NVMe-Multipathing ist standardmäßig aktiviert.  a| 
-8.0
-
-
-
 | Der `nvme-cli` Das Paket enthält Skripte zur automatischen Verbindung, sodass keine Skripte von Drittanbietern benötigt werden.  a| 
 9.0
 
@@ -56,6 +51,11 @@ ONTAP unterstützt die folgenden SAN-Hostfunktionen unabhängig von der auf Ihre
 
 | Die native udev-Regel in `nvme-cli` Das Paket bietet Round-Robin-Lastverteilung für NVMe-Multipath  a| 
 9.0
+
+
+
+| Native NVMe-Multipathing ist standardmäßig aktiviert.  a| 
+8.0
 
 |===
 

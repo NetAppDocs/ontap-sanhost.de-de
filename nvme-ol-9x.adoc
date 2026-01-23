@@ -143,6 +143,7 @@ Konfigurieren Sie NVMe/FC mit Broadcom/Emulex- oder Marvell/QLogic-Adaptern oder
 --
 Konfigurieren Sie NVMe/FC für einen Broadcom/Emulex-Adapter.
 
+.Schritte
 . Stellen Sie sicher, dass Sie das unterstützte Adaptermodell verwenden:
 +
 .. Zeigen Sie die Modellnamen an:
@@ -333,6 +334,7 @@ Die erwartete Ausgabe ist 1.
 --
 Das NVMe/TCP-Protokoll unterstützt den automatischen Verbindungsvorgang nicht.  Stattdessen können Sie die NVMe/TCP-Subsysteme und Namespaces ermitteln, indem Sie den NVMe/TCP `connect` oder `connect-all` Vorgänge manuell ausführen.
 
+.Schritte
 . Vergewissern Sie sich, dass der Initiator-Port die Daten der Erkennungsprotokollseite über die unterstützten NVMe/TCP-LIFs abrufen kann:
 +
 [source, cli]
@@ -828,6 +830,7 @@ Richten Sie eine sichere In-Band-Authentifizierung über die CLI oder eine Konfi
 --
 Richten Sie die sichere bandinterne Authentifizierung über die CLI ein.
 
+.Schritte
 . Rufen Sie die Host-NQN ab:
 +
 [source, cli]
@@ -920,6 +923,7 @@ Wenn in der ONTAP-Controller-Konfiguration mehrere NVMe-Subsysteme verfügbar si
 
 Verwenden Sie die  `-o` Option zum Generieren der JSON-Datei. Weitere Syntaxoptionen finden Sie auf den Handseiten für NVMe Connect-all.
 
+.Schritte
 . Konfigurieren Sie die JSON-Datei:
 +
 .Beispiel anzeigen
