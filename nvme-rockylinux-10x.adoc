@@ -774,7 +774,6 @@ Richten Sie eine sichere In-Band-Authentifizierung mithilfe der CLI oder einer J
 --
 Richten Sie die sichere bandinterne Authentifizierung über die CLI ein.
 
-.Schritte
 . Rufen Sie die Host-NQN ab:
 +
 [source, cli]

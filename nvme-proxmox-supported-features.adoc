@@ -49,7 +49,7 @@ ONTAP unterstützt die folgenden SAN-Hostfunktionen unabhängig von der auf Ihre
 
 
 
-| Die native udev-Regel in `nvme-cli` Das Paket bietet Round-Robin-Lastverteilung für NVMe-Multipath  a| 
+| Die native udev-Regel im  `nvme-cli` Paket bietet Round-Robin-Lastverteilung für NVMe-Multipathing  a| 
 9.0
 
 

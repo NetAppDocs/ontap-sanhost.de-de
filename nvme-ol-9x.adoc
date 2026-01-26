@@ -304,6 +304,7 @@ FCP CMPL: xb 00000008 Err 0000000c
 --
 Konfigurieren Sie NVMe/FC für einen Marvell/QLogic-Adapter.
 
+.Schritte
 . Vergewissern Sie sich, dass der unterstützte Adaptertreiber und die unterstützten Firmware-Versionen ausgeführt werden:
 +
 [source, cli]
@@ -822,6 +823,7 @@ Eine sichere In-Band-Authentifizierung wird über NVMe/TCP zwischen einem Oracle
 
 Jedem Host oder Controller muss ein DH-HMAC-CHAP-Schlüssel zugeordnet werden, um eine sichere Authentifizierung einzurichten.  Ein DH-HMAC-CHAP-Schlüssel ist eine Kombination aus dem NQN des NVMe-Hosts oder -Controllers und einem vom Administrator konfigurierten Authentifizierungsgeheimnis.  Zur Authentifizierung seines Gegenübers muss ein NVMe-Host oder -Controller den zum Gegenüber gehörenden Schlüssel erkennen.
 
+.Schritte
 Richten Sie eine sichere In-Band-Authentifizierung über die CLI oder eine Konfigurations-JSON-Datei ein.  Verwenden Sie eine Konfigurations-JSON-Datei, wenn Sie für verschiedene Subsysteme unterschiedliche DHCP-Schlüssel angeben müssen.
 
 [role="tabbed-block"]
@@ -830,7 +832,6 @@ Richten Sie eine sichere In-Band-Authentifizierung über die CLI oder eine Konfi
 --
 Richten Sie die sichere bandinterne Authentifizierung über die CLI ein.
 
-.Schritte
 . Rufen Sie die Host-NQN ab:
 +
 [source, cli]
@@ -923,7 +924,6 @@ Wenn in der ONTAP-Controller-Konfiguration mehrere NVMe-Subsysteme verfügbar si
 
 Verwenden Sie die  `-o` Option zum Generieren der JSON-Datei. Weitere Syntaxoptionen finden Sie auf den Handseiten für NVMe Connect-all.
 
-.Schritte
 . Konfigurieren Sie die JSON-Datei:
 +
 .Beispiel anzeigen
