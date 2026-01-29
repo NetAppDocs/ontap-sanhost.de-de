@@ -1,10 +1,6 @@
-= Schritt 5: Passen Sie Multipath-Parameter für ONTAP LUNs an
+= 
 :allow-uri-read: 
 
-
-
-
-== Schritt 5: Passen Sie Multipath-Parameter für ONTAP LUNs an
 
 Wenn Ihr Host mit LUNs anderer Hersteller verbunden ist und eine der Multipath-Parametereinstellungen überschrieben wird, müssen Sie diese korrigieren, indem Sie später Strophen in der Datei hinzufügen `multipath.conf`, die speziell für ONTAP-LUNs gelten. Wenn Sie dies nicht tun, funktionieren die ONTAP LUNs möglicherweise nicht wie erwartet.
 

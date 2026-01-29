@@ -4,7 +4,7 @@
 
 . Überprüfen Sie, ob 4 KB ausgerichtete E/A mit Zpools unter Verwendung von ONTAP LUNs unterstützt wird:
 +
-.. Stellen Sie sicher, dass auf Ihrem Solaris-Host das neueste Support Repository Update (SRU) installiert ist:
+.. Vergewissern Sie sich, dass auf Ihrem Solaris-Host das neueste Support Repository Update (SRU) installiert ist:
 +
 [source, cli]
 ----

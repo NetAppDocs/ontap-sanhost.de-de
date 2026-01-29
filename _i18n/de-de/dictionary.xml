@@ -1450,7 +1450,6 @@ Die Bindung des FC-Treibers wird von geändert<block ref="b9ca0a083600812be33f42
   <block id="4e7edc1b273739c4e0cf624559752cf7" category="list-text">Überprüfen Sie, ob der Override-Parameter erfolgreich angewendet wurde:</block>
   <block id="91d4ed290eac3ea33698717e6417a540" category="example-title">Beispiele anzeigen</block>
   <block id="284801613cd78ddeda293c26f3fd32a1" category="list-text">Überprüfen Sie, ob 4 KB ausgerichtete E/A mit Zpools unter Verwendung von ONTAP LUNs unterstützt wird:</block>
-  <block id="f395cf214153c772fe5507e459520762" category="list-text">Stellen Sie sicher, dass auf Ihrem Solaris-Host das neueste Support Repository Update (SRU) installiert ist:</block>
   <block id="edf9178dbbb459e80d1d207d18d48f2f" category="list-text">Überprüfen Sie, ob die ONTAP LUN<block ref="0d6ab6a77645c5e5eca594cd0178560d" prefix=" " category="inline-code"></block> als „Solaris“, unabhängig von der LUN-Größe:</block>
   <block id="cae4163ed010ee60715200c59515dc8a" category="list-text">Überprüfen Sie die Ausgabe für Ihre ONTAP LUNs:</block>
   <block id="7adfb96a556399d6e181729ca47b7ce2" category="paragraph">Sie sollten eine Ausgabe ähnlich dem folgenden Beispiel für eine ASA -, AFF - oder FAS -Konfiguration sehen:</block>
@@ -1597,7 +1596,6 @@ Die Bindung des FC-Treibers wird von geändert<block ref="b9ca0a083600812be33f42
   <block id="ee9cbd2f41fd41a7e2588a51ae1e1754" category="paragraph"><block ref="b257be9060a2c1f3e6322dd3d3fefe13" category="inline-link-macro-rx"></block> .</block>
   <block id="6d63013ee22aae73bdd25723fab1c18d" category="paragraph">Sie können Multipathing mit Solaris 11.4 verwenden, um ONTAP LUNs zu verwalten.</block>
   <block id="164773fb7eaf808b1c70f9b259f9f700" category="paragraph">Mit Multipathing können Sie mehrere Netzwerkpfade zwischen dem Host und den Speichersystemen konfigurieren.  Wenn ein Pfad ausfällt, wird der Verkehr auf den verbleibenden Pfaden fortgesetzt.  Oracle Solaris I/O Multipathing (MPxIO) ist für Solaris 11.4- und SPARC-Systeme standardmäßig aktiviert.</block>
-  <block id="55db8ab811ff4549089fb2e1b08b6772" category="paragraph">Um sicherzustellen, dass Multipathing und die empfohlenen Timeout-Parameter für Ihren Host richtig konfiguriert sind, überprüfen Sie, ob Sie die von NetApp empfohlenen Einstellungen für Ihre ONTAP -LUNs verwenden.</block>
   <block id="2f6a6946081c522c311ad3411e8140c6" category="list-text">Wenn Ihr Host für FC konfiguriert ist, überprüfen Sie, ob die Standardeinstellung in<block ref="ab59b9330e3576612c9d0cd036f54f6b" prefix=" " category="inline-code"></block> ist eingestellt auf<block ref="595ef2e626ebf085d7dc3c69011c027b" prefix=" " category="inline-code"></block> .</block>
   <block id="9f51b880a7e72dcf25ea35b72d41810b" category="list-text">Die Solaris Host Utilities laden die von NetApp empfohlenen Parametereinstellungen für SPARC- und x86_64-Prozessoren.</block>
   <block id="e3d6c5163a9e55ef95d36acb9813af8a" category="cell">Disksortierung</block>
@@ -1900,8 +1898,6 @@ Die Bindung des FC-Treibers wird von geändert<block ref="b9ca0a083600812be33f42
   <block id="7b38cd7357c50824c462a690ab2c7e64" category="paragraph">Beispiel für eine RHEL-Kernelversion:</block>
   <block id="7ca0b86a69f6feef87cf7c24a1422e47" category="admonition">Wenn die<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> Zeichenfolgen nicht übereinstimmen, verwenden Sie die<block ref="f7aa1d6bd51ada390168cd39c4c09b91" prefix=" " category="inline-code"></block> Befehl zum Aktualisieren der<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> Zeichenfolge auf Ihrem entsprechenden ONTAP -Speichersystem-Subsystem, um die Übereinstimmung mit<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> Zeichenfolge von<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block> auf dem Host.</block>
   <block id="0846f796a67ab827e48866ee9d867e7e" category="section-title">Schritt 3: Konfigurieren Sie NVMe/FC und NVMe/TCP</block>
-  <block id="3a3389ef589dfce02feb77c9c8bf0726" category="paragraph">Sie sollten eine Ausgabe ähnlich dem folgenden Beispiel sehen:</block>
-  <block id="97f9a8bc058f969713afc7e49ff602ef" category="paragraph">Sie sollten eine Ausgabe ähnlich der folgenden sehen:</block>
   <block id="b6af11b3c0a8b80fb9689c4535f30828" category="list-text">Stellen Sie sicher, dass Sie die unterstützten Adaptertreiber- und Firmware-Versionen verwenden:</block>
   <block id="ecf2f5d54ee701fadaed20b14f41130d" category="paragraph">Das folgende Beispiel zeigt Treiber- und Firmwareversionen:</block>
   <block id="d6d1236e99f0a7666fc4dd786441dfb0" category="list-text">Überprüfen Sie, ob die anderen NVMe/TCP-Initiator-Ziel-LIF-Kombinationen erfolgreich Daten der Erkennungsprotokollseite abrufen können:</block>
@@ -2124,7 +2120,6 @@ Die Bindung des FC-Treibers wird von geändert<block ref="b9ca0a083600812be33f42
   <block id="10a05c794bb693baf37296bc7742537e" category="example-title">Beispielkonfiguration für ASL und APM anzeigen</block>
   <block id="324dba7e543516b17ebc8c6ea5a0d680" category="list-text">Für eine optimale Systemkonfiguration im Falle eines Speicherausfalls stellen Sie bitte sicher, dass Sie über die folgenden Veritas VxDMP-Einstellungen verfügen:</block>
   <block id="f9881710eadb37ca910a4e0909ba6e35" category="list-text">Stellen Sie die DMP-Regler auf Online:</block>
-  <block id="38ddb6c41ccf214f71e9283fe7300f1b" category="list-text">Überprüfen Sie, ob die Parameter korrekt eingestellt sind:</block>
   <block id="5622e8954310cf14c8453091c6741ea4" category="paragraph">Das folgende Beispiel zeigt die effektiven VxDMP-Parameter auf einem SAN-Host.</block>
   <block id="1d2df76115fa1f235d9567ef1d6832fa" category="list-text">Konfigurieren Sie die Protokoll-Timeout-Werte:</block>
   <block id="c982f804d02e2d7e937f125d2cac1024" category="open-title">FC/FCoE</block>
@@ -2425,4 +2420,25 @@ Die Bindung des FC-Treibers wird von geändert<block ref="b9ca0a083600812be33f42
   <block id="2f2f70e91ff2172f6a78bf052b441f39" category="paragraph"><block ref="806369b10c4f480029bde19415f580b3" category="inline-link-macro-rx"></block>.</block>
   <block id="ae3361bffdcc882805368ae077d6fcaf" category="cell">Die native udev-Regel im <block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block> Paket bietet Lastverteilung basierend auf der Warteschlangentiefe für NVMe-Multipathing</block>
   <block id="a30e163e966b967193e35b02c3ab5b4b" category="cell">Die native udev-Regel im <block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block> Paket bietet Round-Robin-Lastverteilung für NVMe-Multipathing</block>
+  <block id="857fdbce46a79b2923f0c113869f92fd" category="paragraph">Um sicherzustellen, dass Multipathing für Ihren Host korrekt konfiguriert ist, setzen Sie den <block ref="90272dda245ae1fb3cf197e91a8689dc" prefix=" " category="inline-code"></block> Parameter auf Ihrem Host und bestätigen Sie, dass der iSCSI-Service läuft und eine Verbindung zu den iSCSI-Zielen herstellt.</block>
+  <block id="db69f2e21d32b6494100c9cdb558a83c" category="list-text">Überprüfen Sie, ob das iSCSI-Initiator-Paket (iscsi-initiator-utils) installiert ist:</block>
+  <block id="a954e7655cd30fb519546c3bddd798c0" category="list-text">Überprüfen Sie den iSCSI-Initiator-Node-Name, der sich in der <block ref="22565a44e8f73044eb2029acbb069639" prefix=" " category="inline-code"></block> Datei befindet:</block>
+  <block id="df97c673d70c90c6b63b61f2eaf4e2fe" category="list-text">Konfigurieren Sie den iSCSI-Session-Zeitüberschreitungsparameter in der <block ref="104f48adc29dc1e1d7c9bbe7b5dd3f8d" prefix=" " category="inline-code"></block> Datei:</block>
+  <block id="ff0698bf56c1c8f5b893561edc6c6a14" category="paragraph">Der iSCSI<block ref="12cec018fb6c5d12b22cf69774a8c847" prefix=" " category="inline-code"></block> Parameter steuert, wie lange die iSCSI-Schicht warten soll, bis sich ein Pfad oder eine Sitzung mit Zeitüberschreitung wieder selbst herstellt, bevor Befehle darauf fehlschlagen. Sie sollten den Wert von<block ref="12cec018fb6c5d12b22cf69774a8c847" prefix=" " category="inline-code"></block> in der iSCSI-Konfigurationsdatei auf 5 setzen.</block>
+  <block id="f1e20222799b2bd3cf76a542a2fe0ac3" category="list-text">Aktivieren Sie den iSCSI-Service:</block>
+  <block id="526d2f8b5bd4c2e1f94481a550f7f736" category="list-text">Starten Sie den iSCSI-Service:</block>
+  <block id="5ca5039f3f4884d2bcc8a02564fe6f74" category="list-text">Überprüfen Sie, ob der iSCSI-Service ausgeführt wird:</block>
+  <block id="2cfaa468af4e9de7ba9933d9e0081572" category="list-text">Ermitteln Sie die iSCSI-Ziele:</block>
+  <block id="40db24297aca48f0e246d3f2422d9592" category="example-title">Beispiel anzeigen</block>
+  <block id="2ff2f43d0dcaddf633e1da2869068dae" category="list-text">Melden Sie sich bei den Targets an:</block>
+  <block id="c735ea84bca1744486ccba502fb36b71" category="list-text">Stellen Sie iSCSI so ein, dass es sich beim Hochfahren des Hosts automatisch anmeldet:</block>
+  <block id="3569a099b651e0fb38aef5fe85a63c97" category="list-text">Überprüfen Sie die iSCSI-Sitzungen:</block>
+  <block id="1a8b056a6d0893efafd2cf81bf3e08ff" category="list-text">Vergewissern Sie sich, dass auf Ihrem Solaris-Host das neueste Support Repository Update (SRU) installiert ist:</block>
+  <block id="89db609d4e43d3c1d8586be7ef84f8df" category="section-title">Schritt 4: Bestätigen Sie die iSCSI-Konfiguration für Ihren Host</block>
+  <block id="d4a1d1d4994064894346d939622598a0" category="section-title">Schritt 5: Optional ein Gerät von der Multipathing-Funktion ausschließen</block>
+  <block id="388aa30cbe0482688d6d91a540c54d60" category="section-title">Schritt 6: Multipath-Parameter für ONTAP LUNs anpassen</block>
+  <block id="7aa8a009723869e0077d1b9c7c2f290b" category="section-title">Schritt 7: Überprüfen Sie die bekannten Probleme</block>
+  <block id="23c1ea572e54e8ef99ba3854342287ef" category="list-text">Überprüfen Sie, ob die Tunables-Einstellungen korrekt sind:</block>
+  <block id="d2d78408224a25c9a69b27120ff6ebf8" category="section-title">Schritt 3: Bestätigen Sie die iSCSI-Konfiguration für Ihren Host</block>
+  <block id="420d2bbbb8503cb3e78d6abcb08fb101" category="paragraph">Sie sollten eine ähnliche Ausgabe sehen:</block>
 </blocks>

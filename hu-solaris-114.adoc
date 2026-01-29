@@ -61,8 +61,6 @@ Sie können Multipathing mit Solaris 11.4 verwenden, um ONTAP LUNs zu verwalten.
 
 Mit Multipathing können Sie mehrere Netzwerkpfade zwischen dem Host und den Speichersystemen konfigurieren.  Wenn ein Pfad ausfällt, wird der Verkehr auf den verbleibenden Pfaden fortgesetzt.  Oracle Solaris I/O Multipathing (MPxIO) ist für Solaris 11.4- und SPARC-Systeme standardmäßig aktiviert.
 
-Um sicherzustellen, dass Multipathing und die empfohlenen Timeout-Parameter für Ihren Host richtig konfiguriert sind, überprüfen Sie, ob Sie die von NetApp empfohlenen Einstellungen für Ihre ONTAP -LUNs verwenden.
-
 .Schritte
 . Wenn Ihr Host für FC konfiguriert ist, überprüfen Sie, ob die Standardeinstellung in `/kernel/drv/fp.conf` ist eingestellt auf `mpxio-disable="no"` .
 . Die Solaris Host Utilities laden die von NetApp empfohlenen Parametereinstellungen für SPARC- und x86_64-Prozessoren.
@@ -199,7 +197,7 @@ NOTE: Nachher `scsi-vhci-failover-override` Wurde angewendet, `conf` Wird hinzug
 ====
 . Überprüfen Sie, ob 4 KB ausgerichtete E/A mit Zpools unter Verwendung von ONTAP LUNs unterstützt wird:
 +
-.. Stellen Sie sicher, dass auf Ihrem Solaris-Host das neueste Support Repository Update (SRU) installiert ist:
+.. Vergewissern Sie sich, dass auf Ihrem Solaris-Host das neueste Support Repository Update (SRU) installiert ist:
 +
 [source, cli]
 ----

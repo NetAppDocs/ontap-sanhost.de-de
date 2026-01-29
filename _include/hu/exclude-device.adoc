@@ -1,10 +1,6 @@
-= Schritt 4: Optional: Schließen Sie ein Gerät vom Multipathing aus
+= 
 :allow-uri-read: 
 
-
-
-
-== Schritt 4: Optional: Schließen Sie ein Gerät vom Multipathing aus
 
 Bei Bedarf können Sie ein Gerät vom Multipathing ausschließen, indem Sie die WWID für das unerwünschte Gerät der „Blacklist“-Strophe für die Datei hinzufügen `multipath.conf`.
 
