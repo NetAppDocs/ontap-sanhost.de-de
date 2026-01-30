@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
-permalink: hu-rhel-9x.html 
-keywords: host utilities, red hat, rhel, linux, 9.5, 9.4, 9.3, 9.2, 9.1, 9.0, netapp, ontap, rhel 
-summary: Installieren Sie Linux Host Utilities auf einem RHEL 9.x-Host, um FCP- und iSCSI-Protokolloperationen mit ONTAP LUNs zu verwalten. 
+permalink: hu-hpe-vme-80x.html 
+keywords: host utilities, red hat, rhel, linux, 20.04, netapp, ontap, ubuntu 
+summary: Installieren Sie Linux Host Utilities auf einem HPE VME 8.0.x Host, um FCP- und iSCSI-Protokolloperationen mit ONTAP LUNs zu verwalten. 
 ---
-= Konfigurieren Sie RHEL 9.x für FCP und iSCSI mit ONTAP -Speicher
+= HPE VME 8.0.x für FCP und iSCSI mit ONTAP-Speicher konfigurieren
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -16,29 +16,11 @@ summary: Installieren Sie Linux Host Utilities auf einem RHEL 9.x-Host, um FCP- 
 
 
 [role="lead"]
-Die Linux Host Utilities-Software bietet Verwaltungs- und Diagnosetools für Linux-Hosts, die mit ONTAP Speicher verbunden sind. Wenn Sie die Linux Host Utilities auf einem Red Hat Enterprise Linux (RHEL) 9.x-Host installieren, können Sie die Host Utilities verwenden, um FCP- und iSCSI-Protokolloperationen mit ONTAP LUNs zu verwalten.
+Die Linux Host Utilities-Software bietet Verwaltungs- und Diagnosewerkzeuge für Linux-Hosts, die mit ONTAP-Speicher verbunden sind. Wenn Sie die Linux Host Utilities auf einem HPE VME 8.0.x-Host installieren, können Sie die Host Utilities verwenden, um FCP- und iSCSI-Protokollvorgänge mit ONTAP LUNs zu verwalten.
 
 
 
-== Schritt 1: Aktivieren Sie optional den SAN-Bootvorgang
-
-Sie können Ihren Host so konfigurieren, dass er SAN-Booting verwendet, um die Bereitstellung zu vereinfachen und die Skalierbarkeit zu verbessern.
-
-.Bevor Sie beginnen
-Überprüfen Sie mithilfe deslink:https://mysupport.netapp.com/matrix/#welcome["Interoperabilitäts-Matrix-Tool"^], ob Ihr Linux-Betriebssystem, Ihr Host Bus Adapter (HBA), die HBA-Firmware, das HBA-Boot-BIOS und die ONTAP-Version das Booten über das SAN unterstützen.
-
-.Schritte
-. link:https://docs.netapp.com/us-en/ontap/san-admin/provision-storage.html["Erstellen Sie eine SAN-Boot-LUN und ordnen Sie sie dem Host zu"^].
-. Aktivieren Sie das SAN-Booten im Server-BIOS für die Ports, denen die SAN-Boot-LUN zugeordnet ist.
-+
-Informationen zum Aktivieren des HBA-BIOS finden Sie in der anbieterspezifischen Dokumentation.
-
-. Überprüfen Sie, ob die Konfiguration erfolgreich war, indem Sie den Host neu starten und überprüfen, ob das Betriebssystem ausgeführt wird.
-
-
-
-
-== Schritt 2: Installieren Sie die Linux Host Utilities
+== Schritt 1: Installieren Sie die Linux Host Utilities
 
 NetApp empfiehlt dringend die Installation der Linux Host Utilities, um die ONTAP LUN-Verwaltung zu unterstützen, und den technischen Support beim Sammeln von Konfigurationsdaten zu unterstützen.
 
@@ -49,9 +31,9 @@ NOTE: Durch die Installation der Linux Host Utilities werden keine Host-Timeout-
 
 
 
-== Schritt 3: Bestätigen Sie die Multipath-Konfiguration für Ihren Host
+== Schritt 2: Bestätigen Sie die Multipath-Konfiguration für Ihren Host
 
-Mit RHEL 9.x können Sie Multipathing zur Verwaltung von ONTAP LUNs nutzen.
+Sie können Multipathing mit HPE VME 8.0.x verwenden, um ONTAP LUNs zu verwalten.
 
 Um sicherzustellen, dass Multipathing für Ihren Host korrekt konfiguriert ist, überprüfen Sie, ob die `/etc/multipath.conf` Datei definiert ist und ob die von NetApp empfohlenen Einstellungen für Ihre ONTAP LUNs konfiguriert sind.
 
@@ -164,9 +146,8 @@ Eine ASA Konfiguration optimiert alle Pfade zu einer bestimmten LUN und hält si
 =====
 [listing]
 ----
-multipath -ll
-3600a098038314c4a433f577471797958 dm-2 NETAPP,LUN C-Mode
-size=180G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
+# multipath -ll
+3600a098038314c4a433f577471797958 dm-2 NETAPP,LUN C-Mode size=180G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
 `-+- policy='service-time 0' prio=50 status=active
   |- 14:0:0:0  sdc  8:32   active ready running
   |- 17:0:0:0  sdas 66:192 active ready running
@@ -186,9 +167,8 @@ Im folgenden Beispiel wird die Ausgabe für eine ONTAP-LUN mit zwei aktiv/optimi
 =====
 [listing]
 ----
-multipath -ll
-3600a0980383149764b5d567257516273 dm-0 NETAPP,LUN C-Mode
-size=150G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
+# multipath -ll
+3600a0980383149764b5d567257516273 dm-0 NETAPP,LUN C-Mode size=150G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
 |-+- policy='service-time 0' prio=50 status=active
 | |- 16:0:3:0  sdcg 69:64  active ready running
 | `- 10:0:0:0  sdb  8:16   active ready running
@@ -203,7 +183,7 @@ size=150G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp
 
 
 
-== Schritt 4: Bestätigen Sie die iSCSI-Konfiguration für Ihren Host
+== Schritt 3: Bestätigen Sie die iSCSI-Konfiguration für Ihren Host
 
 Stellen Sie sicher, dass iSCSI für Ihren Host korrekt konfiguriert ist.
 
@@ -211,11 +191,11 @@ Stellen Sie sicher, dass iSCSI für Ihren Host korrekt konfiguriert ist.
 Sie führen die folgenden Schritte auf dem iSCSI-Host durch.
 
 .Schritte
-. Überprüfen Sie, ob das iSCSI-Initiator-Paket (iscsi-initiator-utils) installiert ist:
+. Überprüfen Sie, ob das iSCSI-Initiator-Paket (open-iscsi) installiert ist:
 +
 [source, cli]
 ----
-rpm -qa | grep iscsi-initiator-utils
+$apt list |grep open-iscsi
 ----
 +
 Sie sollten eine Ausgabe ähnlich dem folgenden Beispiel sehen:
@@ -223,7 +203,7 @@ Sie sollten eine Ausgabe ähnlich dem folgenden Beispiel sehen:
 +
 [listing]
 ----
-iscsi-initiator-utils-6.2.1.11-0.git4b3e853.el9.x86_64
+open-iscsi/noble-updates,noble-updates,now 2.1.9-3ubuntu5.4 amd64
 ----
 . Überprüfen Sie den iSCSI-Initiator-Node-Name, der sich in der  `/etc/iscsi/initiatorname.iscsi` Datei befindet:
 +
@@ -264,20 +244,18 @@ $systemctl status iscsid
 ====
 [listing]
 ----
-● iscsid.service - Open-iSCSI
+●iscsid.service - iSCSI initiator daemon (iscsid)
      Loaded: loaded (/usr/lib/systemd/system/iscsid.service; enabled; preset: disabled)
-     Active: active (running) since Tue 2025-12-02 11:36:21 EST; 2 weeks 1 day ago
+     Active: active (running) since Mon 2026-01-12 12:53:18 IST; 2 days ago
 TriggeredBy: ● iscsid.socket
        Docs: man:iscsid(8)
-             man:iscsiuio(8)
-             man:iscsiadm(8)
-   Main PID: 2263 (iscsid)
-     Status: "Ready to process requests"
-      Tasks: 1 (limit: 816061)
-     Memory: 18.5M
-        CPU: 14.480s
+   Main PID: 1127419 (iscsid)
+      Tasks: 2 (limit: 76557)
+     Memory: 4.3M (peak: 8.8M)
+        CPU: 1.657s
      CGroup: /system.slice/iscsid.service
-             └─2263 /usr/sbin/iscsid -f -d2
+             ├─1127418 /usr/sbin/iscsid
+             └─1127419 /usr/sbin/iscsid
 ----
 ====
 . Ermitteln Sie die iSCSI-Ziele:
@@ -292,11 +270,11 @@ $iscsiadm --mode discovery --op update --type sendtargets --portal <target_IP>
 ====
 [listing]
 ----
-iscsiadm --mode discovery --op update --type sendtargets --portal  192.168.30.87
-192.168.30.87:3260,1139 iqn.1992-08.com.netapp:sn.064a9b19b3ee11f09dcad039eabac370:vs.23
-192.168.31.97:3260,1142 iqn.1992-08.com.netapp:sn.064a9b19b3ee11f09dcad039eabac370:vs.23
-192.168.31.87:3260,1141 iqn.1992-08.com.netapp:sn.064a9b19b3ee11f09dcad039eabac370:vs.23
-192.168.30.97:3260,1140 iqn.1992-08.com.netapp:sn.064a9b19b3ee11f09dcad039eabac370:vs.23
+iscsiadm --mode discovery --op update --type sendtargets --portal  192.168.100.197
+192.168.100.197:3260,1046 iqn.1992-08.com.netapp:sn.7cd154a7d35411f0a25ed039eaa95f59:vs.8
+192.168.200.199:3260,1049 iqn.1992-08.com.netapp:sn.7cd154a7d35411f0a25ed039eaa95f59:vs.8
+192.168.100.199:3260,1048 iqn.1992-08.com.netapp:sn.7cd154a7d35411f0a25ed039eaa95f59:vs.8
+192.168.200.197:3260,1047 iqn.1992-08.com.netapp:sn.7cd154a7d35411f0a25ed039eaa95f59:vs.8
 ----
 ====
 . Melden Sie sich bei den Targets an:
@@ -317,7 +295,7 @@ Sie sollten eine Ausgabe ähnlich dem folgenden Beispiel sehen:
 +
 [listing]
 ----
-iscsiadm --mode node -T iqn.1992-08.com.netapp:sn.064a9b19b3ee11f09dcad039eabac370:vs.23 -p 192.168.30.87:3260 -o update -n node.startup -v automatic
+iscsiadm --mode node -T iqn.1992-08.com.netapp:sn.7cd154a7d35411f0a25ed039eaa95f59:vs.8 -p 192.168.100.197:3260 -o update -n node.startup -v automatic
 ----
 . Überprüfen Sie die iSCSI-Sitzungen:
 +
@@ -332,17 +310,17 @@ $iscsiadm --mode session
 [listing]
 ----
 iscsiadm --mode session
-tcp: [1] 192.168.30.87:3260,1139 iqn.1992-08.com.netapp:sn.064a9b19b3ee11f09dcad039eabac370:vs.23 (non-flash)
-tcp: [2] 192.168.31.97:3260,1142 iqn.1992-08.com.netapp:sn.064a9b19b3ee11f09dcad039eabac370:vs.23 (non-flash)
-tcp: [3] 192.168.31.87:3260,1141 iqn.1992-08.com.netapp:sn.064a9b19b3ee11f09dcad039eabac370:vs.23 (non-flash)
-tcp: [4] 192.168.30.97:3260,1140 iqn.1992-08.com.netapp:sn.064a9b19b3ee11f09dcad039eabac370:vs.23 (non-flash)
+tcp: [1] 192.168.200.197:3260,1047 iqn.1992-08.com.netapp:sn.7cd154a7d35411f0a25ed039eaa95f59:vs.8 (non-flash)
+tcp: [2] 192.168.100.197:3260,1046 iqn.1992-08.com.netapp:sn.7cd154a7d35411f0a25ed039eaa95f59:vs.8 (non-flash)
+tcp: [3] 192.168.100.199:3260,1048 iqn.1992-08.com.netapp:sn.7cd154a7d35411f0a25ed039eaa95f59:vs.8 (non-flash)
+tcp: [4] 192.168.200.199:3260,1049 iqn.1992-08.com.netapp:sn.7cd154a7d35411f0a25ed039eaa95f59:vs.8 (non-flash)
 ----
 ====
 
 
 
 
-== Schritt 5: Optional ein Gerät von der Multipathing-Funktion ausschließen
+== Schritt 4: Optional: Schließen Sie ein Gerät vom Multipathing aus
 
 Bei Bedarf können Sie ein Gerät vom Multipathing ausschließen, indem Sie die WWID für das unerwünschte Gerät der „Blacklist“-Strophe für die Datei hinzufügen `multipath.conf`.
 
@@ -374,7 +352,7 @@ blacklist {
 
 
 
-== Schritt 6: Multipath-Parameter für ONTAP LUNs anpassen
+== Schritt 5: Passen Sie Multipath-Parameter für ONTAP LUNs an
 
 Wenn Ihr Host mit LUNs anderer Hersteller verbunden ist und eine der Multipath-Parametereinstellungen überschrieben wird, müssen Sie diese korrigieren, indem Sie später Strophen in der Datei hinzufügen `multipath.conf`, die speziell für ONTAP-LUNs gelten. Wenn Sie dies nicht tun, funktionieren die ONTAP LUNs möglicherweise nicht wie erwartet.
 
@@ -407,60 +385,14 @@ devices {
 ====
 
 
-== Schritt 7: Überprüfen Sie die bekannten Probleme
+== Schritt 6: Überprüfen Sie die bekannten Probleme
 
-Bei RHEL 9.x mit ONTAP -Speicher gibt es folgende bekannte Probleme.
+Es sind keine Probleme bekannt.
 
-[role="tabbed-block"]
-====
-.9.3
---
-[cols="20, 20, 50,20"]
-|===
-| NetApp Bug ID | Titel | Beschreibung | JIRA-ID 
-
-
-| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/1508554["1508554"^] | Zur Unterstützung der Erkennung des Emulex Host Bus Adapters (HBA) ist für die NetApp Linux Host Utilities CLI eine zusätzliche Abhängigkeit vom Bibliothekspaket erforderlich | In RHEL 9.x schlägt die NetApp Linux SAN Host Utilities CLI `sanlun fcp show adapter -v` fehl, da die Abhängigkeiten des Bibliothekspakets zur Unterstützung der Emulex Host Bus Adapter (HBA)-Erkennung nicht gefunden werden können. | Keine Angabe 
-
-
-| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/1593771["1593771"^] | Ein Red hat Enterprise Linux 9.3 QLogic SAN-Host kann bei Speichermobilitätsvorgängen den Verlust von teilweisen Multipfaden verzeichnen | Während der Übernahme des ONTAP Storage Controllers geht davon aus, dass die Hälfte der multipath-Pfade ausfällt oder zu einem Failover-Modus wechselt und dann während des Giveback-Workflows auf die volle Pfadanzahl zurückgestellt wird. Bei einem Red hat Enterprise Linux (RHEL) 9.3 QLogic Host werden jedoch nach einem Storage Failover-Giveback-Vorgang nur partielle Multipath-Pfade wiederhergestellt. | RHEL 17811 
-|===
---
-.9.2
---
-[cols="20,40,40"]
-|===
-| NetApp Bug ID | Titel | Beschreibung 
-
-
-| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/1508554["1508554"^] | Bei der NetApp Linux Host Utilities CLI sind zusätzliche Abhängigkeiten von Bibliothekspaketen erforderlich, um die Erkennung von Emulex HBA-Adaptern zu unterstützen | In RHEL 9.2 schlägt die NetApp Linux SAN Host Utilities-CLI `sanlun fcp show adapter -v` fehl, da die Abhängigkeiten des Bibliothekspakets zur Unterstützung der HBA-Erkennung nicht gefunden werden können. 
-
-
-| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/1537359["1537359"^] | Ein über Red hat Linux 9.2 SAN gestarteter Host mit Emulex HBA begegnet blockierten Aufgaben, die zu einer Kernelunterbrechung führen | Während eines Storage Failover-Giveback-Vorgangs kann ein über Red hat Linux 9.2 SAN gestarteter Host mit einem Emulex Host Bus Adapter (HBA) nicht mehr benötigte Aufgaben bewältigen, was zu einer Kernelunterbrechung führt. Die Kernelunterbrechung bewirkt, dass das Betriebssystem neu gestartet wird und wenn `kdump` Konfiguriert ist, wird der generiert `vmcore` Datei unter `/var/crash/` Verzeichnis. Das Problem wird mit dem in der Dreierstellung angezeigt `lpfc` Treiber, aber es kann nicht konsistent reproduziert werden. 
-|===
---
-.9.1
---
-[cols="20,40,40"]
-|===
-| NetApp Bug ID | Titel | Beschreibung 
-
-
-| link:https://mysupport.netapp.com/site/bugs-online/product/HOSTUTILITIES/1508554["1508554"^] | Bei der NetApp Linux Host Utilities CLI sind zusätzliche Abhängigkeiten von Bibliothekspaketen erforderlich, um die Erkennung von Emulex HBA-Adaptern zu unterstützen | In RHEL 9.1 schlägt die NetApp Linux SAN Host Utilities-CLI `sanlun fcp show adapter -v` fehl, da die Abhängigkeiten des Bibliothekspakets zur Unterstützung der HBA-Erkennung nicht gefunden werden können. 
-|===
---
-====
 
 
 == Was kommt als Nächstes?
 
 * link:hu-luhu-command-reference.html["Erfahren Sie mehr über die Verwendung des Linux Host Utilities-Tools"] .
-* Erfahren Sie mehr über ASM-Spiegelung.
-+
-Bei der ASM-Spiegelung (Automatic Storage Management) sind möglicherweise Änderungen an den Linux Multipath-Einstellungen erforderlich, damit ASM ein Problem erkennen und zu einer alternativen Fehlergruppe wechseln kann. Die meisten ASM-Konfigurationen auf ONTAP verwenden externe Redundanz, was bedeutet, dass Datenschutz vom externen Array bereitgestellt wird und ASM keine Daten spiegelt. Einige Standorte verwenden ASM mit normaler Redundanz, um normalerweise zwei-Wege-Spiegelung über verschiedene Standorte hinweg bereitzustellen. Weitere Informationen finden Sie unterlink:https://docs.netapp.com/us-en/ontap-apps-dbs/oracle/oracle-overview.html["Oracle-Datenbanken auf ONTAP"^].
-
-* Erfahren Sie mehr über Red Hat Linux Virtualisierung (KVM).
-+
-Red Hat Linux kann als KVM-Host dienen. Dies ermöglicht es Ihnen, mehrere virtuelle Maschinen auf einem einzigen physischen Server mithilfe der Linux Kernel-based Virtual Machine (KVM)-Technologie auszuführen. Der KVM-Host benötigt keine expliziten Hostkonfigurationseinstellungen für ONTAP LUNs.
-
+* Konfigurieren Sie die HPE VME-Datenspeicher auf den ONTAP-LUNs und konfigurieren Sie dann die virtuelle Maschine. Weitere Informationen finden Sie in der HPE-Dokumentation des Anbieters.
 

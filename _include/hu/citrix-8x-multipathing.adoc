@@ -108,6 +108,9 @@ Die Ausgaben im folgenden Beispiel zeigen die korrekten Parametereinstellungen u
 --
 Eine ASA Konfiguration optimiert alle Pfade zu einer bestimmten LUN und hält sie aktiv. Dies verbessert die Performance, da I/O-Operationen über alle Pfade gleichzeitig ausgeführt werden können.
 
+.Beispiel anzeigen
+[%collapsible]
+=====
 [listing]
 ----
 /usr/sbin/mpathutil status
@@ -120,6 +123,7 @@ size=9.0G features='4 queue_if_no_path pg_init_retries 50 retain_attached_hw_han
   |- 16:0:0:0  sdcf 69:48   active ready running
   `- 16:0:1:0  sdcg 69:64   active ready running
 ----
+=====
 --
 .AFF- oder FAS-Konfiguration
 --
@@ -127,6 +131,9 @@ Eine AFF- oder FAS-Konfiguration sollte zwei Pfadgruppen mit höheren und niedri
 
 Im folgenden Beispiel wird die Ausgabe für eine ONTAP-LUN mit zwei aktiv/optimiert-Pfaden und zwei aktiv/nicht-optimierten Pfaden angezeigt:
 
+.Beispiel anzeigen
+[%collapsible]
+=====
 [listing]
 ----
 /usr/sbin/mpathutil status
@@ -140,6 +147,7 @@ size=9.0G features='4 queue_if_no_path pg_init_retries 50 retain_attached_hw_han
      |- 16:0:0:0  sdcf 69:48   active ready running
      `- 16:0:1:0  sdcg 69:64   active ready running
 ----
+=====
 --
 ====
 

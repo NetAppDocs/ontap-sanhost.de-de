@@ -96,6 +96,9 @@ Die standardmäßigen Multipath-Parameter unterstützen ASA, AFF und FAS Konfigu
 --
 Eine ASA Konfiguration optimiert alle Pfade zu einer bestimmten LUN und hält sie aktiv. Dies verbessert die Performance, da I/O-Operationen über alle Pfade gleichzeitig ausgeführt werden können.
 
+.Beispiel anzeigen
+[%collapsible]
+=====
 [listing]
 ----
 # sanlun lun show -p vs39:/vol/hpux_vol_1_1/hpux_lun
@@ -116,6 +119,7 @@ up       primary    /dev/dsk/c6t0d2      fcd0    246_1c_hp
 up       primary    /dev/dsk/c10t0d2     fcd1    246_1d_hp
 up       primary    /dev/dsk/c8t0d2      fcd1    248_1d_hp
 ----
+=====
 --
 .AFF- oder FAS-Konfiguration
 --
@@ -123,6 +127,9 @@ Eine AFF- oder FAS-Konfiguration sollte zwei Pfadgruppen mit höheren und niedri
 
 Im folgenden Beispiel wird die Ausgabe für eine ONTAP-LUN mit zwei aktiv/optimiert-Pfaden und zwei aktiv/nicht-optimierten Pfaden angezeigt:
 
+.Beispiel anzeigen
+[%collapsible]
+=====
 [listing]
 ----
 # sanlun lun show -p vs39:/vol/vol24_3_0/lun24_0
@@ -143,6 +150,7 @@ up       primary    /dev/dsk/c41t4d5   fcd1    hpux_4     0
 up       secondary  /dev/dsk/c40t4d5   fcd0    hpux_3     1
 up       secondary  /dev/dsk/c42t4d5   fcd1    hpux_4     1
 ----
+=====
 --
 ====
 

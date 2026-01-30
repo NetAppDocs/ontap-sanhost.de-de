@@ -2041,8 +2041,6 @@ Die Bindung des FC-Treibers wird von geändert<block ref="b9ca0a083600812be33f42
   <block id="fc35bf5b5ac3f79b1fa6a280a58f05d4" category="summary">Erfahren Sie mehr über ONTAP Unterstützung und -Funktionen für Rocky Linux.</block>
   <block id="d4c250eac77deea13f8e9d9293a5aad2" category="paragraph">Die für die Hostkonfiguration mit NVMe over Fabrics (NVMe-oF) unterstützten Funktionen variieren je nach Ihrer Version von ONTAP und Rocky Linux.</block>
   <block id="3127b50785e82cd676744d9673a7bb86" category="cell">Rocky Linux Hostversion</block>
-  <block id="e01b830a5cda09eafed964519b00a13a" category="doc">Schritt 2: Optionales Ausschließen eines Geräts vom Multipathing</block>
-  <block id="904cc9711392ab11f24202a7482e210d" category="doc">Schritt 3: Multipath-Parameter für ONTAP LUNs anpassen</block>
   <block id="2589c63c17df176e198728a79c3e5212" category="cell">"stets"</block>
   <block id="2f7bb230c70819aeb10b45a709bcf48f" category="cell">"1"</block>
   <block id="e937998e5a3fcf2887fa0312475809ad" category="list-text">Optional kann der Standardwert für die<block ref="19b30dc119e514235b739e076be9b3cc" prefix=" " category="inline-code"></block> Parameter, um sicherzustellen, dass ONTAP LUNs von multipathd korrekt erkannt und verwaltet werden:</block>
@@ -2420,7 +2418,6 @@ Die Bindung des FC-Treibers wird von geändert<block ref="b9ca0a083600812be33f42
   <block id="2f2f70e91ff2172f6a78bf052b441f39" category="paragraph"><block ref="806369b10c4f480029bde19415f580b3" category="inline-link-macro-rx"></block>.</block>
   <block id="ae3361bffdcc882805368ae077d6fcaf" category="cell">Die native udev-Regel im <block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block> Paket bietet Lastverteilung basierend auf der Warteschlangentiefe für NVMe-Multipathing</block>
   <block id="a30e163e966b967193e35b02c3ab5b4b" category="cell">Die native udev-Regel im <block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block> Paket bietet Round-Robin-Lastverteilung für NVMe-Multipathing</block>
-  <block id="857fdbce46a79b2923f0c113869f92fd" category="paragraph">Um sicherzustellen, dass Multipathing für Ihren Host korrekt konfiguriert ist, setzen Sie den <block ref="90272dda245ae1fb3cf197e91a8689dc" prefix=" " category="inline-code"></block> Parameter auf Ihrem Host und bestätigen Sie, dass der iSCSI-Service läuft und eine Verbindung zu den iSCSI-Zielen herstellt.</block>
   <block id="db69f2e21d32b6494100c9cdb558a83c" category="list-text">Überprüfen Sie, ob das iSCSI-Initiator-Paket (iscsi-initiator-utils) installiert ist:</block>
   <block id="a954e7655cd30fb519546c3bddd798c0" category="list-text">Überprüfen Sie den iSCSI-Initiator-Node-Name, der sich in der <block ref="22565a44e8f73044eb2029acbb069639" prefix=" " category="inline-code"></block> Datei befindet:</block>
   <block id="df97c673d70c90c6b63b61f2eaf4e2fe" category="list-text">Konfigurieren Sie den iSCSI-Session-Zeitüberschreitungsparameter in der <block ref="104f48adc29dc1e1d7c9bbe7b5dd3f8d" prefix=" " category="inline-code"></block> Datei:</block>
@@ -2441,4 +2438,16 @@ Die Bindung des FC-Treibers wird von geändert<block ref="b9ca0a083600812be33f42
   <block id="23c1ea572e54e8ef99ba3854342287ef" category="list-text">Überprüfen Sie, ob die Tunables-Einstellungen korrekt sind:</block>
   <block id="d2d78408224a25c9a69b27120ff6ebf8" category="section-title">Schritt 3: Bestätigen Sie die iSCSI-Konfiguration für Ihren Host</block>
   <block id="420d2bbbb8503cb3e78d6abcb08fb101" category="paragraph">Sie sollten eine ähnliche Ausgabe sehen:</block>
+  <block id="1f2ff205b2373f4d3dc9e67a56302cb2" category="paragraph">Stellen Sie sicher, dass iSCSI für Ihren Host korrekt konfiguriert ist.</block>
+  <block id="c62246672e9db0a470a1737f3981fd84" category="paragraph">Sie führen die folgenden Schritte auf dem iSCSI-Host durch.</block>
+  <block id="a4e78cb06e95b1e477ba950ed0d21899" category="list-text">Überprüfen Sie, ob das iSCSI-Initiator-Paket (open-iscsi) installiert ist:</block>
+  <block id="e9d889d6733c29a8b543d1e4184ea561" category="summary">Installieren Sie Linux Host Utilities auf einem HPE VME 8.0.x Host, um FCP- und iSCSI-Protokolloperationen mit ONTAP LUNs zu verwalten.</block>
+  <block id="32675cf731ec4c101dccd8c9fe7afc05" category="doc">HPE VME 8.0.x für FCP und iSCSI mit ONTAP-Speicher konfigurieren</block>
+  <block id="f028e1c625f97738b44527c47b37e4c1" category="paragraph">Die Linux Host Utilities-Software bietet Verwaltungs- und Diagnosewerkzeuge für Linux-Hosts, die mit ONTAP-Speicher verbunden sind. Wenn Sie die Linux Host Utilities auf einem HPE VME 8.0.x-Host installieren, können Sie die Host Utilities verwenden, um FCP- und iSCSI-Protokollvorgänge mit ONTAP LUNs zu verwalten.</block>
+  <block id="97408cde90bab4eb19f4acc146087555" category="section-title">Schritt 1: Installieren Sie die Linux Host Utilities</block>
+  <block id="2705574efbf0f795ad465bd636d7a681" category="paragraph">Sie können Multipathing mit HPE VME 8.0.x verwenden, um ONTAP LUNs zu verwalten.</block>
+  <block id="958c6534e2a2911611cea8e9b8bd686b" category="list-text">Konfigurieren Sie die HPE VME-Datenspeicher auf den ONTAP-LUNs und konfigurieren Sie dann die virtuelle Maschine. Weitere Informationen finden Sie in der HPE-Dokumentation des Anbieters.</block>
+  <block id="32b0b2fb94c023fc633bfa7c0caf801f" category="section-title">Schritt 2: Bestätigen Sie die iSCSI-Konfiguration für Ihren Host</block>
+  <block id="961c1419cfe8060ce390b232d6e264c5" category="sidebar">HPE VME</block>
+  <block id="c956a158e93a32e225bfb772f4b64394" category="sidebar">HPE VME 8.0.x</block>
 </blocks>
