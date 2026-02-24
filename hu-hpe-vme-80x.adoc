@@ -38,7 +38,7 @@ Sie können Multipathing mit HPE VME 8.0.x verwenden, um ONTAP LUNs zu verwalten
 Um sicherzustellen, dass Multipathing für Ihren Host korrekt konfiguriert ist, überprüfen Sie, ob die `/etc/multipath.conf` Datei definiert ist und ob die von NetApp empfohlenen Einstellungen für Ihre ONTAP LUNs konfiguriert sind.
 
 .Schritte
-. Überprüfen Sie, ob die `/etc/multipath.conf` Datei beendet wird. Wenn die Datei nicht vorhanden ist, erstellen Sie eine leere, Null-Byte-Datei:
+. Überprüfen Sie, ob die  `/etc/multipath.conf` Datei existiert. Falls die Datei nicht existiert, erstellen Sie eine leere, null Byte große Datei:
 +
 [source, cli]
 ----

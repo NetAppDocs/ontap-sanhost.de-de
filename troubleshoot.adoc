@@ -144,7 +144,7 @@ Keine. Versuchen Sie, die auszuführen `nvme discover` Befehl nach einiger Zeit 
 
 == Wann wenden Sie sich an den technischen Support
 
-Falls weiterhin Probleme auftreten, sammeln Sie bitte die folgenden Dateien und Befehlsausgaben und kontaktieren Sie uns. link:mysupport.netapp.com["NetApp Support"^] zur weiteren Triage:
+Sollten weiterhin Probleme auftreten, sammeln Sie die folgenden Dateien und Befehlsausgaben und kontaktieren Sie link:https://mysupport.netapp.com["NetApp Support"^] für weitere Untersuchungen:
 
 [source, cli]
 ----
