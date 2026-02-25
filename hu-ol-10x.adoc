@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
 permalink: hu-ol-10x.html 
-keywords: host utilities, oracle, linux, 10, netapp, ontap 
-summary: Installieren Sie die Linux Host Utilities auf einem Oracle Linux 10 Host, um FCP- und iSCSI-Protokolloperationen mit ONTAP LUNs zu verwalten. 
+keywords: host utilities, oracle, linux, 10.x, netapp, ontap 
+summary: Installieren Sie die Linux Host Utilities auf einem Oracle Linux 10.x Host, um FCP- und iSCSI-Protokolloperationen mit ONTAP LUNs zu verwalten. 
 ---
-= Oracle Linux 10 für FCP und iSCSI mit ONTAP-Speicher konfigurieren
+= Konfigurieren Sie Oracle Linux 10.x für FCP und iSCSI mit ONTAP Storage
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -16,7 +16,7 @@ summary: Installieren Sie die Linux Host Utilities auf einem Oracle Linux 10 Hos
 
 
 [role="lead"]
-Die Linux Host Utilities-Software bietet Verwaltungs- und Diagnosewerkzeuge für Linux-Hosts, die mit ONTAP Storage verbunden sind. Wenn Sie die Linux Host Utilities auf einem Oracle Linux 10 Host installieren, können Sie die Host Utilities verwenden, um FCP- und iSCSI-Protokollvorgänge mit ONTAP LUNs zu verwalten.
+Die Linux Host Utilities-Software bietet Verwaltungs- und Diagnosewerkzeuge für Linux-Hosts, die mit ONTAP-Speicher verbunden sind. Wenn Sie die Linux Host Utilities auf einem Oracle Linux 10.x-Host installieren, können Sie die Host Utilities verwenden, um FCP- und iSCSI-Protokollvorgänge mit ONTAP-LUNs zu verwalten.
 
 
 
@@ -42,7 +42,7 @@ Informationen zum Aktivieren des HBA-BIOS finden Sie in der anbieterspezifischen
 
 NetApp empfiehlt dringend die Installation der Linux Host Utilities, um die ONTAP LUN-Verwaltung zu unterstützen, und den technischen Support beim Sammeln von Konfigurationsdaten zu unterstützen.
 
-link:hu-luhu-80.html["Installieren Sie Linux Host Utilities 8.0"] .
+link:hu_luhu_71.html["Installieren Sie Linux Host Utilities 7.1 für ONTAP -Speicher"].
 
 
 NOTE: Durch die Installation der Linux Host Utilities werden keine Host-Timeout-Einstellungen auf Ihrem Linux-Host geändert.
@@ -51,7 +51,7 @@ NOTE: Durch die Installation der Linux Host Utilities werden keine Host-Timeout-
 
 == Schritt 3: Bestätigen Sie die Multipath-Konfiguration für Ihren Host
 
-Sie können Multipathing mit Oracle Linux 10 verwenden, um ONTAP LUNs zu verwalten.
+Sie können Multipathing mit Oracle Linux 10.x verwenden, um ONTAP LUNs zu verwalten.
 
 Um sicherzustellen, dass Multipathing für Ihren Host korrekt konfiguriert ist, überprüfen Sie, ob die `/etc/multipath.conf` Datei definiert ist und ob die von NetApp empfohlenen Einstellungen für Ihre ONTAP LUNs konfiguriert sind.
 
@@ -312,10 +312,10 @@ $iscsiadm --mode node -l all
 $iscsiadm --mode node -T <target_name> -p <ip:port> -o update -n node.startup -v automatic
 ----
 +
-Sie sollten eine Ausgabe ähnlich dem folgenden Beispiel sehen:
+Ersetzen Sie  `<target_name>` durch den Zielnamen, bei dem Sie sich beim Hochfahren des Hosts automatisch anmelden möchten. Ersetzen Sie  `<ip:port>` durch die IP-Adresse und Portnummer des Ziels. Beispiel:
 
 +
-[listing]
+[source, cli]
 ----
 iscsiadm --mode node -T iqn.1992-08.com.netapp:sn.064a9b19b3ee11f09dcad039eabac370:vs.23 -p 192.168.30.87:3260 -o update -n node.startup -v automatic
 ----
