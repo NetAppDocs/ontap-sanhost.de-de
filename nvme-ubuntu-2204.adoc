@@ -26,6 +26,7 @@ Weitere Details zu den unterstützten Konfigurationen finden Sie im link:https:/
 
 Um Ihren Host für NVMe-oF zu konfigurieren, müssen Sie die Host- und NVMe-Softwarepakete installieren, Multipathing aktivieren und Ihre Host-NQN-Konfiguration überprüfen.
 
+.Schritte
 . Installieren Sie Ubuntu 22.04 auf dem Server. Überprüfen Sie nach Abschluss der Installation, ob Sie den angegebenen Ubuntu 22.04-Kernel ausführen:
 +
 [source, cli]
@@ -103,6 +104,7 @@ Konfigurieren Sie NVMe/FC für Broadcom/Emulex- oder Marvell/Qlogic-Adapter oder
 --
 Konfigurieren Sie NVMe/FC für einen Broadcom/Emulex-Adapter.
 
+.Schritte
 . Stellen Sie sicher, dass Sie das unterstützte Adaptermodell verwenden:
 +
 .. Zeigen Sie die Modellnamen an:
@@ -257,6 +259,7 @@ Der native Inbox qla2xxx Treiber im Ubuntu 22.04 GA Kernel enthält die neuesten
 
 Konfigurieren Sie NVMe/FC für einen Marvell/QLogic-Adapter.
 
+.Schritte
 . Vergewissern Sie sich, dass der unterstützte Adaptertreiber und die unterstützten Firmware-Versionen ausgeführt werden:
 +
 [source, cli]
@@ -290,6 +293,7 @@ NVMe/TCP verfügt nicht über eine Auto-Connect-Funktion. Stattdessen können Si
 
 Wenn ein Pfad ausfällt und nicht innerhalb der standardmäßigen Timeout-Periode von 10 Minuten wiederhergestellt wird, kann NVMe/TCP die Verbindung nicht automatisch wiederherstellen. Um ein Timeout zu vermeiden, legen Sie die Wiederholungsperiode für Failover-Ereignisse auf mindestens 30 Minuten fest.
 
+.Schritte
 . Prüfen Sie, ob der Initiator-Port die Discovery-Log-Seiten-Daten über die unterstützten NVMe/TCP LIFs abrufen kann:
 +
 [source, cli]

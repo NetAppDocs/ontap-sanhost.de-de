@@ -101,7 +101,7 @@ Das folgende Beispiel zeigt eine  `hostnqn` Version:
 +
 [listing]
 ----
-nqn.2014-08.org.nvmexpress:uuid:8397cecc-30f0-11e8-850f-7ed30aef0cc7
+nqn.2014-08.org.nvmexpress:uuid:8397XXXX-30f0-XXXX-850f-7edXXXXf0cc7
 ----
 . Überprüfen Sie im ONTAP System, ob `hostnqn` Die Zeichenkette stimmt mit der `hostnqn` Zeichenkette für das entsprechende Subsystem im ONTAP -Speichersystem:
 +
@@ -119,9 +119,9 @@ Vserver Subsystem Priority  Host NQN
 ------- --------- --------
 -------------------------------------------------------------------vs_coexistence_emulex
 nvme1
-regular   nqn.2014-08.org.nvmexpress:uuid:8397cecc-30f0-11e8-850f-7ed30aef0cc7
+regular   nqn.2014-08.org.nvmexpress:uuid:8397XXXX-30f0-XXXX-850f-7edXXXXf0cc7
 nvme2
-regular    nqn.2014-08.org.nvmexpress:uuid:8397cecc-30f0-11e8-850f-7ed30aef0cc7
+regular    nqn.2014-08.org.nvmexpress:uuid:8397XXXX-30f0-XXXX-850f-7edXXXXf0cc7
 
 ----
 ====
@@ -727,7 +727,7 @@ NOTE: Ab ONTAP 9.16.1 melden NVMe/FC und NVMe/TCP alle optimierten Pfade auf ASA
 --
 Die folgenden Beispielausgaben zeigen einen Namespace, der auf einem Zwei-Knoten ONTAP Controller für ein AFF, FAS, ASA oder ASA r2 System mit NVMe/FC gehostet wird.
 
-.Beispielausgabe für AFF, FAS und ASA anzeigen
+.Beispielausgabe für AFF, FAS oder ASA anzeigen
 [%collapsible]
 =====
 [listing, subs="+quotes"]
@@ -740,7 +740,7 @@ Die folgenden Beispielausgaben zeigen einen Namespace, der auf einem Zwei-Knoten
 +- nvme117 *fc* traddr=nn-0x234ed039ea359e4a:pn-0x2363d039ea359e4a,host_traddr=nn-0x20000090fae0ec89:pn-0x10000090fae0ec89 *live non-optimized*
 ----
 =====
-.ASA r2 Beispielausgabe anzeigen
+.Beispielausgabe für ASA r2 anzeigen
 [%collapsible]
 =====
 [listing, subs="+quotes"]
@@ -759,7 +759,7 @@ nvme-subsys96 - NQN=nqn.1992-08.om.netapp:sn.b351b2b6777b11f0b3c2d039ea5cfc91:su
 --
 Die folgenden Beispielausgaben zeigen einen Namespace, der auf einem Zwei-Knoten ONTAP Controller für ein AFF, FAS, ASA oder ASA r2 System mit NVMe/TCP gehostet wird.
 
-.Beispielausgabe für AFF, FAS und ASA anzeigen
+.Beispielausgabe für AFF, FAS oder ASA anzeigen
 [%collapsible]
 =====
 [listing, subs="+quotes"]
@@ -773,7 +773,7 @@ nvme-subsys9 - NQN=nqn.1992-08.com.netapp:sn.9927e165694211f0b4f4d039eab31e9d:su
  +- nvme9 *tcp* traddr=192.168.38.10,trsvcid=4420,host_traddr=192.168.38.20,src_addr=192.168.38.20 *live optimized*
 ----
 =====
-.ASA r2 Beispielausgabe anzeigen
+.Beispielausgabe für ASA r2 anzeigen
 [%collapsible]
 =====
 [listing, subs="+quotes"]
@@ -884,7 +884,7 @@ Im folgenden Beispiel wird ein zufälliger Dhchap-Schlüssel mit HMAC auf 3 (SHA
 +
 [listing]
 ----
-# nvme gen-dhchap-key -m 3 -n nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0056-5410-8048-c4c04f425633
+# nvme gen-dhchap-key -m 3 -n nqn.2014-08.org.nvmexpress:uuid:4c4cXXXX-0035-XXXX-804b-b7cXXXX44d33
 DHHC-1:03:xhAfbAD5IVLZDxiVbmFEOA5JZ3F/ERqTXhHzZQJKgkYkTbPI9dhRyVtr4dBD+SGiAJO3by4FbnVtov1Lmk+86+nNc6k=:
 ----
 . Fügen Sie auf dem ONTAP-Controller den Host hinzu und geben Sie beide dhchap-Schlüssel an:
@@ -959,8 +959,8 @@ Verwenden Sie die  `-o` Option zum Generieren der JSON-Datei. Weitere Syntaxopti
 ----
 [
   {
-    "hostnqn":"nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0056-5410-8048-c4c04f425633",
-    "hostid":"4c4c4544-0056-5410-8048-c4c04f425633",
+    "hostnqn":"nqn.2014-08.org.nvmexpress:uuid:4c4cXXXX-0035-XXXX-804b-b7cXXXX44d33",
+    "hostid":"4c4cXXXX-0035-XXXX-804b-b7cXXXX44d33",
     "dhchap_key":"DHHC-1:01:nFg06gV0FNpXqoiLOF0L+swULQpZU/PjU9v/McDeJHjTZFlF:",
     "subsystems":[
       {

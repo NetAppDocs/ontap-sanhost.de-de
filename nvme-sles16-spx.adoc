@@ -744,9 +744,9 @@ NOTE: Ab ONTAP 9.16.1 melden NVMe/FC und NVMe/TCP alle optimierten Pfade auf ASA
 ====
 .NVMe/FC
 --
-Die folgenden Beispielausgaben zeigen einen Namespace, der auf einem Zwei-Knoten ONTAP Controller für AFF, FAS und ASA Systeme sowie ASA r2 System mit NVMe/FC gehostet wird.
+Die folgenden Beispielausgaben zeigen einen Namespace, der auf einem Zwei-Knoten ONTAP Controller für AFF, FAS, ASA oder ASA r2 System mit NVMe/FC gehostet wird.
 
-.Beispielausgabe für AFF, FAS und ASA anzeigen
+.Beispielausgabe für AFF, FAS oder ASA anzeigen
 [%collapsible]
 =====
 [listing, subs="+quotes"]
@@ -759,7 +759,7 @@ Die folgenden Beispielausgaben zeigen einen Namespace, der auf einem Zwei-Knoten
 +- nvme117 *fc* traddr=nn-0x234ed039ea359e4a:pn-0x2363d039ea359e4a,host_traddr=nn-0x20000090fae0ec89:pn-0x10000090fae0ec89 *live non-optimized*
 ----
 =====
-.ASA r2 Beispielausgabe anzeigen
+.Beispielausgabe für ASA r2 anzeigen
 [%collapsible]
 =====
 [listing, subs="+quotes"]
@@ -776,9 +776,9 @@ nvme-subsys96 - NQN=nqn.1992-08.om.netapp:sn.b351b2b6777b11f0b3c2d039ea5cfc91:su
 --
 .NVMe/TCP
 --
-Die folgenden Beispielausgaben zeigen einen Namespace, der auf einem Zwei-Knoten ONTAP Controller für AFF, FAS und ASA Systeme sowie ASA r2 Systeme mit NVMe/TCP gehostet wird.
+Die folgenden Beispielausgaben zeigen einen Namespace, der auf einem Zwei-Knoten ONTAP Controller für AFF, FAS, ASA oder ASA r2 Systeme mit NVMe/TCP gehostet wird.
 
-.Beispielausgabe für AFF, FAS und ASA anzeigen
+.Beispielausgabe für AFF, FAS oder ASA anzeigen
 [%collapsible]
 =====
 [listing, subs="+quotes"]
@@ -792,7 +792,7 @@ nvme-subsys9 - NQN=nqn.1992-08.com.netapp:sn.9927e165694211f0b4f4d039eab31e9d:su
  +- nvme9 *tcp* traddr=192.168.38.10,trsvcid=4420,host_traddr=192.168.38.20,src_addr=192.168.38.20 *live optimized*
 ----
 =====
-.ASA r2 Beispielausgabe anzeigen
+.Beispielausgabe für ASA r2 anzeigen
 [%collapsible]
 =====
 [listing, subs="+quotes"]
@@ -1455,6 +1455,12 @@ nvme-subsys0 - NQN=nqn.1992-08.com.netapp:sn.9927e165694211f0b4f4d039eab31e9d:su
  +- nvme0 tcp traddr=192.168.38.10,trsvcid=4420,host_traddr=192.168.38.20,src_addr=192.168.38.20 live
 ----
 ====
+.. Exportieren Sie den TLS PSK aus dem Kernel-Keyring. Dies stellt sicher, dass der Schlüssel während eines Host-Neustarts erhalten bleibt:
++
+[source, cli]
+----
+# nvme tls --export --keyfile /etc/nvme/tls-keys
+----
 
 
 . Fügen Sie das Ziel hinzu, und überprüfen Sie die TLS-Verbindung zum angegebenen ONTAP-Subsystem:

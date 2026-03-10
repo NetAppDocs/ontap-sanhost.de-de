@@ -109,7 +109,7 @@ Das folgende Beispiel zeigt eine  `hostnqn` Version:
 +
 [listing]
 ----
-nqn.2014-08.org.nvmexpress:uuid:4c4c4544-0032-3410-8035-b8c04f4c5132
+nqn.2014-08.org.nvmexpress:uuid:4c4cXXXX-0032-XXXX-8035-b8cXXXXc5132
 ----
 . Überprüfen Sie im ONTAP System, ob `hostnqn` Die Zeichenkette stimmt mit der `hostnqn` Zeichenkette für das entsprechende Subsystem im ONTAP -Speichersystem:
 +
