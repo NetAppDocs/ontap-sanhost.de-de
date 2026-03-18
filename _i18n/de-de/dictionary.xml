@@ -2417,7 +2417,6 @@ Die Bindung des FC-Treibers wird von geändert<block ref="b9ca0a083600812be33f42
   <block id="026e7910f8597707ea78ced9009402b0" category="paragraph">Der Oracle Linux 10.x-Host setzt die Standard-iopolicy für NVMe-oF auf <block ref="f63d19812a9885e12a84d9c2748b701f" prefix=" " category="inline-code"></block>. Sie können die iopolicy auf <block ref="7b6d85eaafedeee6d733437bf856da7e" prefix=" " category="inline-code"></block> ändern, indem Sie die udev-Regeldatei anpassen.</block>
   <block id="93653ae68b7f62e4baef589277623491" category="paragraph">Die folgenden Beispielausgaben zeigen einen Namespace, der auf einem Zwei-Knoten ONTAP Controller für ein AFF, FAS, ASA oder ASA r2 System mit NVMe/FC gehostet wird.</block>
   <block id="6f412196079d9e58544081f4700ce25f" category="paragraph">Die folgenden Beispielausgaben zeigen einen Namespace, der auf einem Zwei-Knoten ONTAP Controller für ein AFF, FAS, ASA oder ASA r2 System mit NVMe/TCP gehostet wird.</block>
-  <block id="74ef0cdc12fc9f4e8b83d1a035e4f577" category="paragraph">Sichere In-Band-Authentifizierung wird über NVMe/TCP zwischen einem Oracle Linux 10.x Host und einem ONTAP Controller unterstützt.</block>
   <block id="8ae4d61c82b1c9b58e4acbd1373806b2" category="cell">Ab Oracle Linux 9.6 unterstützt nvme die "queue-depth"-I/O-Richtlinie und ist standardmäßig aktiviert.</block>
   <block id="d3c49c5822283d264df05a1fd8b0870e" category="inline-link-macro">Konfiguration von NVMe für Oracle Linux 10</block>
   <block id="7d3306fa564ca0cc7f3c887e0359e138" category="cell"><block ref="7d3306fa564ca0cc7f3c887e0359e138" category="inline-link-macro-rx"></block></block>
@@ -2477,4 +2476,5 @@ Die Bindung des FC-Treibers wird von geändert<block ref="b9ca0a083600812be33f42
   <block id="508e93b6f899f26c01374d86f06060a5" category="list-text">Exportieren Sie den TLS PSK aus dem Kernel-Keyring. Dies stellt sicher, dass der Schlüssel während eines Host-Neustarts erhalten bleibt:</block>
   <block id="1b569e78f049cfc0d5612ae09602f392" category="paragraph">Die folgenden Beispielausgaben zeigen einen Namespace, der auf einem Zwei-Knoten ONTAP Controller für AFF, FAS, ASA oder ASA r2 System mit NVMe/FC gehostet wird.</block>
   <block id="6d984a3ecdb3a900adb251dd0b78d708" category="paragraph">Die folgenden Beispielausgaben zeigen einen Namespace, der auf einem Zwei-Knoten ONTAP Controller für AFF, FAS, ASA oder ASA r2 Systeme mit NVMe/TCP gehostet wird.</block>
+  <block id="8e9aa976f7a8a387e926c6bbb8588831" category="paragraph">Sichere In-Band-Authentifizierung wird über NVMe/TCP zwischen einem Oracle Linux 10.x Host und einem ONTAP Controller unterstützt.</block>
 </blocks>

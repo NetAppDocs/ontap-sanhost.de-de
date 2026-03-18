@@ -223,7 +223,7 @@ Sie sollten eine Ausgabe ähnlich dem folgenden Beispiel sehen:
 +
 [listing]
 ----
-iscsi-initiator-utils-6.2.1.11-0.git4b3e853.el9.x86_64
+iscsi-initiator-utils-6.2.1.11-0.git4b3e853.0.1.el10.x86_64
 ----
 . Überprüfen Sie den iSCSI-Initiator-Node-Name, der sich in der  `/etc/iscsi/initiatorname.iscsi` Datei befindet:
 +
@@ -315,7 +315,7 @@ $iscsiadm --mode node -T <target_name> -p <ip:port> -o update -n node.startup -v
 Ersetzen Sie  `<target_name>` durch den Zielnamen, bei dem Sie sich beim Hochfahren des Hosts automatisch anmelden möchten. Ersetzen Sie  `<ip:port>` durch die IP-Adresse und Portnummer des Ziels. Beispiel:
 
 +
-[source, cli]
+[listing]
 ----
 iscsiadm --mode node -T iqn.1992-08.com.netapp:sn.064a9b19b3ee11f09dcad039eabac370:vs.23 -p 192.168.30.87:3260 -o update -n node.startup -v automatic
 ----
