@@ -2477,4 +2477,5 @@ Die Bindung des FC-Treibers wird von geändert<block ref="b9ca0a083600812be33f42
   <block id="1b569e78f049cfc0d5612ae09602f392" category="paragraph">Die folgenden Beispielausgaben zeigen einen Namespace, der auf einem Zwei-Knoten ONTAP Controller für AFF, FAS, ASA oder ASA r2 System mit NVMe/FC gehostet wird.</block>
   <block id="6d984a3ecdb3a900adb251dd0b78d708" category="paragraph">Die folgenden Beispielausgaben zeigen einen Namespace, der auf einem Zwei-Knoten ONTAP Controller für AFF, FAS, ASA oder ASA r2 Systeme mit NVMe/TCP gehostet wird.</block>
   <block id="8e9aa976f7a8a387e926c6bbb8588831" category="paragraph">Sichere In-Band-Authentifizierung wird über NVMe/TCP zwischen einem Oracle Linux 10.x Host und einem ONTAP Controller unterstützt.</block>
+  <block id="e7f67da4e95cce9c0568e2b8ad82a925" category="paragraph">Rocky Linux ist eine RHEL-kompatible Distribution und verfügt nicht über ein separates Linux Host Utilities-Paket. Verwenden Sie das Linux Host Utilities-Paket für die entsprechende RHEL-Version.</block>
 </blocks>
