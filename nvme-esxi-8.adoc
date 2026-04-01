@@ -311,11 +311,11 @@ Die NVMe-of Hostkonfiguration für ESXi 8.x mit ONTAP weist folgende bekannte Pr
 | NetApp Bug ID | Titel | Beschreibung 
 
 
-| link:https://mysupport.netapp.com/site/bugs-online/product/ONTAP/BURT/1420654["1420654"^] | ONTAP Node ist nicht betriebsbereit, wenn das NVMe/FC-Protokoll mit ONTAP Version 9.9.1 verwendet wird | ONTAP 9.9.1 unterstützt jetzt den NVMe Befehl „abort“. Wenn ONTAP den Befehl „Abbrechen“ erhält, um einen mit NVMe fusionierten Befehl abzubrechen, der auf seinen Partnerbefehl wartet, tritt eine ONTAP Node-Unterbrechung auf. Das Problem wird nur bei Hosts bemerkt, die abgesicherte NVMe Befehle (z. B. ESX) und Fibre Channel (FC) verwenden. 
+| link:https://mysupport.netapp.com/site/bugs-online/product/ONTAP/BURT/1420654["1420654"^] | ONTAP Knoten ist nicht betriebsbereit, wenn das NVMe/FC-Protokoll mit ONTAP Version 9.9.1 verwendet wird. | ONTAP 9.9.1 hat die Unterstützung für den NVMe-Befehl „abort“ eingeführt. Wenn ONTAP den Befehl „abort“ zum Abbruch eines NVMe-Fused-Commands erhält, der auf seinen Partnerbefehl wartet, kommt es zu einer Unterbrechung des ONTAP-Knotens. Das Problem tritt nur bei Hosts auf, die NVMe-Fused-Commands (zum Beispiel ESX) und Fibre Channel (FC) als Transport verwenden. 
 
 
-| 1543660 | I/O-Fehler tritt auf, wenn bei Linux VMs mit vNVMe Adaptern lange alle Pfade ausfallen (APD)  a| 
-Linux-VMs, die vSphere 8.x und höher ausführen und virtuelle NVMe-Adapter (vNVME) verwenden, stoßen auf einen I/O-Fehler, da der vNVMe-Wiederholungsvorgang standardmäßig deaktiviert ist. Um eine Unterbrechung bei Linux VMs zu vermeiden, auf denen ältere Kernel während einer Alle Pfade unten (APD) ausgeführt werden, oder eine hohe I/O-Last zu vermeiden, hat VMware eine abstimmbare „VSCSIDisableNvmeRetry“ eingeführt, um den vNVMe-Wiederholungsvorgang zu deaktivieren.
+| link:https://jira.ngage.netapp.com/browse/CONTAPEXT-1126["CONTAPEXT-1126"^] | I/O-Fehler tritt auf, wenn bei Linux VMs mit vNVMe Adaptern lange alle Pfade ausfallen (APD)  a| 
+Linux-VMs, auf denen vSphere 8.x und höher ausgeführt werden und die virtuelle NVMe-Adapter (vNVMe) verwenden, stoßen auf einen E/A-Fehler, da die vNVMe-Wiederholungsfunktion standardmäßig deaktiviert ist. Um Unterbrechungen auf Linux-VMs mit älteren Kerneln während eines All Paths Down (APD) oder bei hoher E/A-Last zu vermeiden, hat VMware eine einstellbare Option „VSCSIDisableNvmeRetry“ eingeführt, um die vNVMe-Wiederholungsfunktion zu deaktivieren.
 
 |===
 .Verwandte Informationen
