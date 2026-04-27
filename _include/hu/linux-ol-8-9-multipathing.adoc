@@ -1,0 +1,208 @@
+= 
+:allow-uri-read: 
+
+
+[role="tabbed-block"]
+====
+.Oracle Linux Host
+--
+Um sicherzustellen, dass Multipathing für Ihren Host korrekt konfiguriert ist, überprüfen Sie, ob  `/etc/multipath.conf` definiert ist und ob die von NetApp empfohlenen Einstellungen für Ihre ONTAP-LUNs konfiguriert sind.
+
+.Schritte
+. Überprüfen Sie, ob die  `/etc/multipath.conf` Datei existiert. Falls die Datei nicht existiert, erstellen Sie eine leere, null Byte große Datei:
++
+[source, cli]
+----
+touch /etc/multipath.conf
+----
+. Beim ersten Erstellen der `multipath.conf` Datei müssen Sie möglicherweise die Multipath-Services aktivieren und starten, um die empfohlenen Einstellungen zu laden:
++
+[source, cli]
+----
+systemctl enable multipathd
+----
++
+[source, cli]
+----
+systemctl start multipathd
+----
+. Jedes Mal, wenn Sie den Host starten, lädt die leere `/etc/multipath.conf` Zero-Byte-Datei automatisch die von NetApp empfohlenen Multipath-Parameter als Standardeinstellungen. Sie sollten keine Änderungen an der Datei für Ihren Host vornehmen `/etc/multipath.conf` müssen, da das Betriebssystem mit den Multipath-Parametern kompiliert wird, die ONTAP-LUNs korrekt erkennen und verwalten.
++
+In der folgenden Tabelle sind die nativen vom Linux OS kompilierten Multipath-Parametereinstellungen für ONTAP LUNs aufgeführt.
+
++
+.Parametereinstellungen anzeigen
+[#multipath-parameter-settings%collapsible]
+=====
+[cols="2"]
+|===
+| Parameter | Einstellung 
+
+
+| Erkennen_Prio | ja 
+
+
+| Dev_Loss_tmo | „Unendlich“ 
+
+
+| Failback | Sofort 
+
+
+| Fast_io_fail_tmo | 5 
+
+
+| Funktionen | „2 pg_init_retries 50“ 
+
+
+| Flush_on_Last_del | „ja“ 
+
+
+| Hardware_Handler | „0“ 
+
+
+| Kein_PATH_retry | Warteschlange 
+
+
+| PATH_Checker | „nur“ 
+
+
+| Path_Grouping_Policy | „Group_by_prio“ 
+
+
+| Pfad_Auswahl | „Servicezeit 0“ 
+
+
+| Polling_Interval | 5 
+
+
+| prio | ONTAP 
+
+
+| Produkt | LUN 
+
+
+| Beibehalten_Attached_hw_Handler | ja 
+
+
+| rr_weight | „Einheitlich“ 
+
+
+| User_friendly_names | Nein 
+
+
+| Anbieter | NETAPP 
+|===
+=====
+. Überprüfen Sie die Parametereinstellungen und den Pfadstatus für Ihre ONTAP LUNs:
++
+[source, cli]
+----
+multipath -ll
+----
++
+Die standardmäßigen Multipath-Parameter unterstützen ASA, AFF und FAS Konfigurationen. In diesen Konfigurationen sollte eine einzelne ONTAP LUN nicht mehr als vier Pfade benötigen. Mehr als vier Pfade können bei einem Speicherausfall Probleme verursachen.
+
++
+Die Ausgaben im folgenden Beispiel zeigen die korrekten Parametereinstellungen und den Pfadstatus für ONTAP LUNs in einer ASA-, AFF- oder FAS-Konfiguration.
+
++
+*ASA-Konfiguration*
+
++
+Eine ASA Konfiguration optimiert alle Pfade zu einer bestimmten LUN und hält sie aktiv. Dies verbessert die Performance, da I/O-Operationen über alle Pfade gleichzeitig ausgeführt werden können.
+
++
+.Beispiel anzeigen
+[%collapsible]
+=====
+[listing]
+----
+multipath -ll
+3600a098038303634722b4d59646c4436 dm-28 NETAPP,LUN C-Mode
+size=10G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
+|-+- policy='service-time 0' prio=50 status=active
+  |- 11:0:7:6   sdbz 68:208  active ready running
+  |- 11:0:11:6  sddn 71:80   active ready running
+  |- 11:0:15:6  sdfb 129:208 active ready running
+  |- 12:0:1:6   sdgp 132:80  active ready running
+----
+=====
++
+*AFF oder FAS-Konfiguration*
+
++
+Eine AFF- oder FAS-Konfiguration sollte zwei Pfadgruppen mit höheren und niedrigeren Prioritäten aufweisen. Aktiv/optimierte Pfade mit höherer Priorität werden vom Controller bedient, wo sich das Aggregat befindet. Pfade mit niedriger Priorität sind aktiv, jedoch nicht optimiert, da sie von einem anderen Controller bedient werden. Nicht optimierte Pfade werden nur verwendet, wenn keine optimierten Pfade verfügbar sind.
+
++
+Im folgenden Beispiel wird die Ausgabe für eine ONTAP-LUN mit zwei aktiv/optimiert-Pfaden und zwei aktiv/nicht-optimierten Pfaden angezeigt:
+
++
+.Beispiel anzeigen
+[%collapsible]
+=====
+[listing]
+----
+multipath -ll
+3600a0980383036347ffb4d59646c4436 dm-28 NETAPP,LUN C-Mode
+size=10G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
+|-+- policy='service-time 0' prio=50 status=active
+| |- 16:0:6:35 sdwb  69:624  active ready running
+| |- 16:0:5:35 sdun  66:752  active ready running
+`-+- policy='service-time 0' prio=10 status=enabled
+  |- 15:0:0:35 sdaj  66:48   active ready running
+  |- 15:0:1:35 sdbx  68:176  active ready running
+----
+=====
+
+
+--
+.OLVM - ONTAP HA
+--
+Im Oracle Linux Virtualization Manager (OLVM) steuert der VDSM-Daemon die Standard-Multipath-Parameter des Hypervisors. Bearbeiten Sie  `/etc/multipath.conf` nicht direkt. Überschreiben Sie stattdessen die Standardwerte mithilfe einer Multipath-Drop-in-Datei.
+
+Für ONTAP-Hochverfügbarkeitskonfigurationen (HA) empfiehlt NetApp die folgende Drop-in-Datei, um  `dev_loss_tmo` und  `no_path_retry` zu überschreiben. Alle anderen Multipath-Parameter sollten mit den Einstellungen in der Oracle Linux Host-Parametertabelle übereinstimmen.
+
+.Schritte
+. Erstellen Sie die Drop-in-Datei:
++
+[source, cli]
+----
+cat <<'EOF' > /etc/multipath/conf.d/ontap-ha-mpath-netapp.conf
+# Finite multipath retry window aligned with sanlock io_timeout
+# default sanlock:io_timeout=10s, polling_interval=5s => no_path_retry = (8*10)/5 = 16
+
+devices {
+  device {
+    vendor "NETAPP"
+    product "LUN"
+    no_path_retry 16
+    dev_loss_tmo "infinity"
+  }
+}
+EOF
+----
+. Laden Sie den Multipath-Daemon neu:
++
+[source, cli]
+----
+systemctl reload multipathd
+----
+. Überprüfen Sie die aktualisierte Multipath-Konfiguration:
++
+[source, cli]
+----
+multipathd -k"show config"
+----
+
+
+--
+.OLVM - ONTAP SnapMirror Active Sync
+--
+Im Oracle Linux Virtualization Manager (OLVM) steuert der VDSM-Daemon die Standard-Multipath-Parameter des Hypervisors. Bearbeiten Sie  `/etc/multipath.conf` nicht direkt. Überschreiben Sie stattdessen die Standardwerte mithilfe einer Multipath-Drop-in-Datei.
+
+Wenn OLVM-Hosts ONTAP SnapMirror active sync verwenden, sollten Sie die sanlock- und multipath-Zeitüberschreitungsparameter anpassen, um das korrekte Verhalten von Hosts und VMs bei Speicherausfallereignissen sicherzustellen. Die standardmäßigen OLVM-Zeitüberschreitungswerte können bei ungeplanten Standortausfällen zu unbeabsichtigten Hochverfügbarkeits-VM-Failovern führen, da das Lease-Erneuerungsfenster ablaufen kann, bevor die Multipath-Wiederherstellung abgeschlossen ist.
+
+Befolgen Sie die Konfigurationsschritte im NetApp Knowledge Base Artikel https://kb.netapp.com/on-prem/ontap/DP/SnapMirror/SnapMirror-KBs/Oracle_Linux_Virtualization_Manager_-_Sanlock_Settings_for_ONTAP_SnapMirror_Active_Sync["Oracle Linux Virtualization Manager – Sanlock-Einstellungen für ONTAP SnapMirror Active Sync"], um die sanlock- und multipath-Zeitüberschreitungswerte zu aktualisieren, damit das Lease-Erneuerungsfenster für die Durchführung der Multipath-Wiederherstellung während eines Storage-Failover-Ereignisses ausreichend bleibt.
+
+--
+====
