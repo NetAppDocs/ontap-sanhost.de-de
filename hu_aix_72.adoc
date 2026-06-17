@@ -30,6 +30,9 @@ Sie können Ihren Host für die Verwendung von SAN-Boot konfigurieren, um die Be
 --
 Beim SAN-Booten handelt es sich um den Vorgang, bei dem eine an ein SAN angeschlossene Festplatte (eine LUN) als Bootgerät für einen AIX/PowerVM-Host eingerichtet wird.  Sie können eine SAN-Boot-LUN für den Betrieb in einer AIX Multipath I/O (MPIO)-Umgebung einrichten, die das FC-Protokoll verwendet und AIX Host Utilities entweder mit dem FC- oder dem FCoE-Protokoll ausführt.  Die Methode, die Sie zum Erstellen einer SAN-Boot-LUN und zum Installieren eines neuen Betriebssystem-Images in einer AIX MPIO-Umgebung verwenden, hängt vom verwendeten Protokoll ab.
 
+
+NOTE: AIX erfordert, dass für eine SAN-Bootdisk nur ein Pfad sichtbar ist, bis MPIO aktiviert ist. Die Installation oder Migration einer AIX-Bootdisk erfordert in der Regel eine temporäre Beschränkung der FC-Zonierung des Hosts auf einen einzelnen FC-Initiator und ein einzelnes FC-Ziel. Nach der Installation der Host Utilities, einschließlich des PCM-Pakets, kann das Betriebssystem neu gestartet werden, um MPIO vollständig zu aktivieren. Zu diesem Zeitpunkt werden die zusätzlichen FC-Initiatoren und FC-Ziele zur Zone hinzugefügt. Anschließend  `cfgmgr -v` und  `bosboot -a` ausführen, um die Bootkonfiguration so zu aktualisieren, dass alle verfügbaren Pfade enthalten sind.
+
 .Schritte
 . Verwenden Sie dielink:https://mysupport.netapp.com/matrix/#welcome["Interoperabilitäts-Matrix-Tool"^] um zu überprüfen, ob Ihr AIX-Betriebssystem, Ihr Protokoll und ONTAP Version das SAN-Booten unterstützen.
 . Befolgen Sie die Best Practices zum Einrichten eines SAN-Boots in der Herstellerdokumentation.
