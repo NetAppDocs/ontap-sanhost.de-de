@@ -20,6 +20,7 @@ Sie können die Beispielbefehlsreferenz von Solaris Host Utilities für eine End
 
 
 
+[[list-all-host-initiators-mapped-to-host]]
 == Führen Sie alle Host-Initiatoren auf, die dem Host zugeordnet sind
 
 Sie können eine Liste aller Host-Initiatoren abrufen, die einem Host zugeordnet sind.
@@ -119,6 +120,7 @@ OS device name:    /dev/cfg/c6
 ====
 
 
+[[list-all-luns-mapped-to-host]]
 == Listen Sie alle LUNs auf, die dem Host zugeordnet sind
 
 Sie können eine Liste aller LUNs abrufen, die einem Host zugeordnet sind.
@@ -170,6 +172,7 @@ ONTAP Path: sanboot_unix:/vol/test1/lun1
 ====
 
 
+[[list-all-luns-mapped-to-host-from-a-given-svm-list-all-attributes-of-a-given-lun-mapped-to-host]]
 == Listen Sie alle LUNs auf, die dem Host von einer bestimmten SVM zugeordnet sind/Listen Sie alle Attribute einer bestimmten LUN auf, die dem Host zugeordnet sind
 
 Sie können eine Liste aller einem Host zugeordneten LUNs von einer bestimmten SVM abrufen.
@@ -214,6 +217,7 @@ ONTAP Path: sanboot_unix:/vol/sol_boot/sanboot_lun
 ====
 
 
+[[list-ontap-lun-attributes-by-host-device-filename]]
 == Liste der ONTAP-LUN-Attribute nach Dateiname des Hostgeräts
 
 Sie können eine Liste aller ONTAP-LUN-Attribute abrufen, indem Sie einen Dateinamen für das Hostgerät angeben.

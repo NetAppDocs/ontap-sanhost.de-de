@@ -31,6 +31,7 @@ NVMe-oF mit SUSE Linux Enterprise Server 16 weist die folgenden bekannten Einsch
 
 
 
+[[step-1-optionally-enable-san-booting]]
 == Schritt 1: Aktivieren Sie optional den SAN-Bootvorgang
 
 Sie können Ihren Host für die Verwendung von SAN-Boot konfigurieren, um die Bereitstellung zu vereinfachen und die Skalierbarkeit zu verbessern. Verwenden Sie dielink:https://mysupport.netapp.com/matrix/#welcome["Interoperabilitäts-Matrix-Tool"^] um zu überprüfen, ob Ihr Linux-Betriebssystem, Ihr Hostbusadapter (HBA), Ihre HBA-Firmware, Ihr HBA-Boot-BIOS und ONTAP -Version das SAN-Booten unterstützen.
@@ -46,6 +47,7 @@ Informationen zum Aktivieren des HBA-BIOS finden Sie in der anbieterspezifischen
 
 
 
+[[step-2-install-suse-linux-enterprise-server-and-nvme-software-and-verify-your-configuration]]
 == Schritt 2: Installieren Sie SUSE Linux Enterprise Server und NVMe-Software und überprüfen Sie Ihre Konfiguration
 
 Um Ihren Host für NVMe-oF zu konfigurieren, müssen Sie die Host- und NVMe-Softwarepakete installieren, Multipathing aktivieren und Ihre Host-NQN-Konfiguration überprüfen.
@@ -141,6 +143,7 @@ NOTE: Wenn der `hostnqn` Zeichenfolgen stimmen nicht überein. Verwenden Sie die
 
 
 
+[[step-3-configure-nvmefc-and-nvmetcp]]
 == Schritt 3: Konfigurieren Sie NVMe/FC und NVMe/TCP
 
 Konfigurieren Sie NVMe/FC mit Broadcom/Emulex- oder Marvell/QLogic-Adaptern oder konfigurieren Sie NVMe/TCP mithilfe manueller Erkennungs- und Verbindungsvorgänge.
@@ -506,6 +509,7 @@ Die Einstellung für NVMe/TCP `ctrl_loss_tmo timeout` ist automatisch auf „Aus
 ====
 
 
+[[step-4-optionally-modify-the-iopolicy-in-the-udev-rules]]
 == Schritt 4: Optional können Sie die iopolicy in den udev-Regeln ändern.
 
 Ab SUSE Linux Enterprise Server 16 ist die Standard-iopolicy für NVMe-oF auf `queue-depth` gesetzt. Wenn Sie die iopolicy auf `round-robin` ändern möchten, bearbeiten Sie die udev-Regeldatei wie folgt:
@@ -565,6 +569,7 @@ NOTE: Die neue iopolicy wird automatisch auf passende NetApp ONTAP Controller-Ge
 
 
 
+[[step-5-optionally-enable-1mb-io-for-nvmefc]]
 == Schritt 5: Optional: Aktivieren Sie 1 MB I/O für NVMe/FC.
 
 ONTAP meldet in den Identify Controller-Daten eine maximale Datenübertragungsgröße (MDTS) von 8.  Dies bedeutet, dass die maximale E/A-Anforderungsgröße bis zu 1 MB betragen kann.  Um E/A-Anfragen der Größe 1 MB für einen Broadcom NVMe/FC-Host auszugeben, sollten Sie die `lpfc` Wert des `lpfc_sg_seg_cnt` Parameter vom Standardwert 64 auf 256.
@@ -598,6 +603,7 @@ cat /sys/module/lpfc/parameters/lpfc_sg_seg_cnt
 
 
 
+[[step-6-verify-nvme-boot-services]]
 == Schritt 6: NVMe-Bootdienste überprüfen
 
 Der `nvmefc-boot-connections.service` Und `nvmf-autoconnect.service` In NVMe/FC enthaltene Boot-Dienste `nvme-cli` Paket werden beim Systemstart automatisch aktiviert.
@@ -656,6 +662,7 @@ systemd[1]: Finished Auto-connect to subsystems on FC-NVME devices found during 
 
 
 
+[[step-7-verify-the-multipathing-configuration]]
 == Schritt 7: Überprüfen Sie die Multipathing-Konfiguration
 
 Vergewissern Sie sich, dass der in-Kernel-Multipath-Status, der ANA-Status und die ONTAP-Namespaces für die NVMe-of-Konfiguration richtig sind.
@@ -859,6 +866,7 @@ nvme netapp ontapdevices -o json
 
 
 
+[[step-8-create-a-persistent-discovery-controller]]
 == Schritt 8: Erstellen eines persistenten Discovery-Controllers
 
 Sie können einen persistenten Discovery Controller (PDC) für einen SUSE Linux Enterprise Server 16 Host erstellen. Ein PDC ist erforderlich, um das Hinzufügen oder Entfernen eines NVMe-Subsystems sowie Änderungen an den Daten der Discovery Log Page automatisch zu erkennen.
@@ -1014,6 +1022,7 @@ Transport Service Identifier: 8009
 
 
 
+[[step-9-set-up-secure-in-band-authentication]]
 == Schritt 9: Einrichten einer sicheren In-Band-Authentifizierung
 
 Sichere In-Band-Authentifizierung wird über NVMe/TCP zwischen einem SUSE Linux Enterprise Server 16 Host und einem ONTAP Controller unterstützt.
@@ -1241,6 +1250,7 @@ DHHC-1:03:ohdxI1yIS8gBLwIOubcwl57rXcozYuRgBsoWaBvxEvpDlQHn/7dQ4JjFGwmhgwdJWmVori
 ====
 
 
+[[step-10-configure-transport-layer-security]]
 == Schritt 10: Transport Layer Security konfigurieren
 
 Transport Layer Security (TLS) bietet eine sichere Ende-zu-Ende-Verschlüsselung für NVMe-Verbindungen zwischen NVMe-oF-Hosts und einem ONTAP Array. Sie können TLS 1.3 mithilfe der CLI und eines konfigurierten Pre-Shared Key (PSK) konfigurieren.
@@ -1506,6 +1516,7 @@ Authentication Diffie-Hellman Group: 3072-bit
 
 
 
+[[step-11-review-the-known-issues]]
 == Schritt 11: Überprüfen Sie die bekannten Probleme
 
 Es sind keine Probleme bekannt.

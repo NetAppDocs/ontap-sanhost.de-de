@@ -38,6 +38,7 @@ In der folgenden Tabelle sind die nativen vom Linux OS kompilierten Multipath-Pa
 .Parametereinstellungen anzeigen
 [%collapsible]
 ====
+[[multipath-parameter-settings]]
 [cols="2"]
 |===
 | Parameter | Einstellung 

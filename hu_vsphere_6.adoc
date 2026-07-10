@@ -20,6 +20,7 @@ Sie können ONTAP SAN-Hostkonfigurationseinstellungen für die vSphere 6.5.x- un
 
 
 
+[[hypervisor-san-booting]]
 == Booten des Hypervisor-SAN
 
 .Bevor Sie beginnen
@@ -41,6 +42,7 @@ Informationen zum Aktivieren des HBA-BIOS finden Sie in der anbieterspezifischen
 
 
 
+[[multipathing]]
 == Multipathing
 
 ESXi bietet ein erweiterbares Multipathing-Modul namens Native Multipathing Plug-in (NMP), das die Sub-Plugins, Storage Array Type Plugins (SATPs) und Path Selection Plugins (PSPs) verwaltet. Diese SATP-Regeln sind standardmäßig in ESXi verfügbar.
@@ -108,6 +110,7 @@ In dem obigen Beispiel wurde die LUN aus NetApp Storage mit 4 Pfaden zugeordnet 
 
 
 
+[[non-asa-configurations]]
 === Konfigurationen ohne ASA
 
 Für Konfigurationen ohne ASA sollten zwei Gruppen von Pfaden mit unterschiedlichen Prioritäten vorhanden sein. Die Pfade mit höheren Prioritäten sind aktiv/optimiert. Das heißt, sie werden vom Controller gewartet, wo sich das Aggregat befindet. Die Pfade mit niedrigeren Prioritäten sind aktiv, aber nicht optimiert, da sie von einem anderen Controller bedient werden. Die nicht optimierten Pfade werden nur verwendet, wenn optimierte Pfade nicht verfügbar sind.
@@ -159,6 +162,7 @@ In dem obigen Beispiel wurde die LUN von NetApp Storage mit 4 Pfaden zugeordnet 
 
 
 
+[[vvol]]
 == VVol
 
 Virtual Volumes (VVols) sind ein VMware Objekttyp, der einer VM-Festplatte (Virtual Machine) entspricht, mit Snapshots und schnellen Klonen.
@@ -186,10 +190,12 @@ Ausführliche Informationen zum Bereitstellen und Managen von VVols finden Sie i
 
 
 
+[[recommended-settings]]
 == Empfohlene Einstellungen
 
 
 
+[[ats-locking]]
 === ATS-Verriegelung
 
 ATS-Sperrung ist *obligatorisch* für VAAI-kompatiblen Speicher und aktualisierte VMFS5 und ist erforderlich für ordnungsgemäße Interoperabilität und optimale VMFS Shared Storage I/O-Performance mit ONTAP LUNs. Weitere Informationen zum Aktivieren der ATS-Sperrung finden Sie in der VMware-Dokumentation.
@@ -212,6 +218,7 @@ NOTE: Aktivieren Sie die Space-Alloc-Einstellung für alle LUNs, die VMware vSph
 
 
 
+[[guest-os-timeouts]]
 === Timeouts für Gastbetriebssysteme
 
 Sie können die virtuellen Maschinen manuell mit den empfohlenen Einstellungen für das Gastbetriebssystem konfigurieren. Nach den Tuning-Updates müssen Sie den Gast neu starten, damit die Updates wirksam werden.
@@ -233,6 +240,7 @@ Sie können die virtuellen Maschinen manuell mit den empfohlenen Einstellungen f
 |===
 
 
+[[validate-the-vsphere-tunable]]
 === Validieren der abstimmbaren vSphere-Lösung
 
 Verwenden Sie den folgenden Befehl, um die zu überprüfen `HardwareAcceleratedLocking` Einstellung:
@@ -254,6 +262,7 @@ Verwenden Sie den folgenden Befehl, um die zu überprüfen `HardwareAcceleratedL
 ----
 
 
+[[validate-the-disk-iops-setting]]
 === Überprüfen Sie die Festplatten-IOPS-Einstellung
 
 Überprüfen Sie die IOPS-Einstellung mit dem folgenden Befehl:
@@ -274,6 +283,7 @@ naa.600a098038304731783f506670553355
 ----
 
 
+[[validate-the-qfullsamplesize]]
 === Überprüfen Sie die QFullSampleSize
 
 Überprüfen Sie mit dem folgenden Befehl die QFullSampleSize:
@@ -295,6 +305,7 @@ naa.600a098038304731783f506670553355
 ----
 
 
+[[known-issues]]
 == Bekannte Probleme
 
 VMware vSphere 6.5 und 6.7 mit ONTAP Version weist folgende bekannte Probleme auf:

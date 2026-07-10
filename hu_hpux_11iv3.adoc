@@ -20,6 +20,7 @@ Die HP-UX Host Utilities-Software bietet Verwaltungs- und Diagnosetools für HP-
 
 
 
+[[step-1-optionally-enable-san-booting]]
 == Schritt 1: Aktivieren Sie optional den SAN-Bootvorgang
 
 Konfigurieren Sie Ihren Host für die Verwendung von SAN-Boot, um die Bereitstellung zu vereinfachen und die Skalierbarkeit zu verbessern.  Beim SAN-Booten handelt es sich um den Vorgang, bei dem eine an ein SAN angeschlossene Festplatte (eine LUN) als Bootgerät für einen HP-UX-Host eingerichtet wird.  Die Host Utilities unterstützen das SAN-Booten mit FC- und FCoE-Protokollen in HP-UX-Umgebungen.
@@ -31,6 +32,7 @@ Konfigurieren Sie Ihren Host für die Verwendung von SAN-Boot, um die Bereitstel
 
 
 
+[[step-2-install-the-hp-ux-host-utilities]]
 == Schritt 2: Installieren Sie die HP-UX Host Utilities
 
 NetApp empfiehlt dringend die Installation der HP-UX Host Utilities, um die ONTAP LUN-Verwaltung zu unterstützen und den technischen Support beim Erfassen von Konfigurationsdaten zu unterstützen.
@@ -39,6 +41,7 @@ link:hu_hpux_60.html["Installieren Sie HP-UX Host Utilities 6.0"]
 
 
 
+[[step-3-confirm-the-multipath-configuration-for-your-host]]
 == Schritt 3: Bestätigen Sie die Multipath-Konfiguration für Ihren Host
 
 Verwenden Sie Multipathing mit HP-UX 11i v3, um ONTAP LUNs zu verwalten.  Mit Multipathing können Sie mehrere Netzwerkpfade zwischen dem Host und dem Speichersystem konfigurieren.  Wenn ein Pfad ausfällt, wird der Verkehr auf den verbleibenden Pfaden fortgesetzt.
@@ -157,6 +160,7 @@ up       secondary  /dev/dsk/c42t4d5   fcd1    hpux_4     1
 
 
 
+[[step-4-review-the-known-issues]]
 == Schritt 4: Überprüfen der bekannten Probleme
 
 Bei der Version HP-UX 11i v3 mit ONTAP Speicher treten die folgenden bekannten Probleme auf:
@@ -176,6 +180,7 @@ Bei der Version HP-UX 11i v3 mit ONTAP Speicher treten die folgenden bekannten P
 |===
 
 
+[[whats-next]]
 == Was kommt als nächstes
 
 link:hu_hpux_60_cmd.html["Erfahren Sie mehr über die Verwendung des HP-UX Host Utilities-Tools"] .

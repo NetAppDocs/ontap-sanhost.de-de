@@ -4,6 +4,7 @@
 
 
 
+[[step-1-optionally-enable-san-booting]]
 == Schritt 1: Aktivieren Sie optional den SAN-Bootvorgang
 
 Sie können Ihren Host so konfigurieren, dass er SAN-Booting verwendet, um die Bereitstellung zu vereinfachen und die Skalierbarkeit zu verbessern.

@@ -29,6 +29,7 @@ NVMe-oF unter RHEL 8.x weist folgende bekannte Einschränkungen auf:
 
 
 
+[[step-1-optionally-enable-san-booting]]
 == Schritt 1: Aktivieren Sie optional den SAN-Bootvorgang
 
 Sie können Ihren Host für die Verwendung von SAN-Boot konfigurieren, um die Bereitstellung zu vereinfachen und die Skalierbarkeit zu verbessern. Verwenden Sie dielink:https://mysupport.netapp.com/matrix/#welcome["Interoperabilitäts-Matrix-Tool"^] um zu überprüfen, ob Ihr Linux-Betriebssystem, Ihr Hostbusadapter (HBA), Ihre HBA-Firmware, Ihr HBA-Boot-BIOS und ONTAP -Version das SAN-Booten unterstützen.
@@ -44,6 +45,7 @@ Informationen zum Aktivieren des HBA-BIOS finden Sie in der anbieterspezifischen
 
 
 
+[[step-2-install-rhel-and-nvme-software-and-verify-your-configuration]]
 == Schritt 2: Installieren Sie die RHEL- und NVMe-Software und überprüfen Sie Ihre Konfiguration.
 
 Um Ihren Host für NVMe-oF zu konfigurieren, müssen Sie die Host- und NVMe-Softwarepakete installieren, Multipathing aktivieren und Ihre Host-NQN-Konfiguration überprüfen.
@@ -150,6 +152,7 @@ defaults {
 
 
 
+[[step-3-configure-nvmefc-and-nvmetcp]]
 == Schritt 3: Konfigurieren Sie NVMe/FC und NVMe/TCP
 
 Konfigurieren Sie NVMe/FC mit Broadcom/Emulex- oder Marvell/QLogic-Adaptern oder konfigurieren Sie NVMe/TCP mithilfe manueller Erkennungs- und Verbindungsvorgänge.
@@ -425,6 +428,7 @@ nvme connect-all -t tcp -w 192.168.1.31 -a 192.168.1.25 -l 1800
 ====
 
 
+[[step-4-optionally-enable-1mb-io-for-nvmefc]]
 == Schritt 4: Optional 1 MB I/O für NVMe/FC aktivieren
 
 ONTAP meldet in den Identify Controller-Daten eine maximale Datenübertragungsgröße (MDTS) von 8.  Dies bedeutet, dass die maximale E/A-Anforderungsgröße bis zu 1 MB betragen kann.  Um E/A-Anfragen der Größe 1 MB für einen Broadcom NVMe/FC-Host auszugeben, sollten Sie die `lpfc` Wert des `lpfc_sg_seg_cnt` Parameter vom Standardwert 64 auf 256.
@@ -458,6 +462,7 @@ cat /sys/module/lpfc/parameters/lpfc_sg_seg_cnt
 
 
 
+[[step-5-verify-the-multipathing-configuration]]
 == Schritt 5: Überprüfen der Multipathing-Konfiguration
 
 Vergewissern Sie sich, dass der in-Kernel-Multipath-Status, der ANA-Status und die ONTAP-Namespaces für die NVMe-of-Konfiguration richtig sind.
@@ -649,6 +654,7 @@ nvme netapp ontapdevices -o json
 
 
 
+[[step-6-review-the-known-issues]]
 == Schritt 6: Überprüfen Sie die bekannten Probleme
 
 Dies sind die bekannten Probleme:

@@ -25,6 +25,7 @@ NOTE: Die Anweisungen zur Fehlerbehebung gelten nicht für AIX-, ESXi-, Proxmox-
 
 
 
+[[enable-verbose-logging]]
 == Aktivieren Sie die ausführliche Protokollierung
 
 Wenn Sie ein Problem mit Ihrer Konfiguration haben, kann die ausführliche Protokollierung wichtige Informationen für die Fehlerbehebung liefern.
@@ -87,6 +88,7 @@ options qla2xxx ql2xnvmeenable=1 ql2xextended_error_logging=0x1e400000
 ====
 
 
+[[common-nvme-cli-errors-and-workarounds]]
 == Häufige "nvme-cli"-Fehler und deren Umgehungsmöglichkeiten
 
 Die von angezeigten Fehler `nvme-cli` Während `nvme discover`, `nvme connect`, Oder `nvme connect-all` Die Vorgänge und die Problemumgehungen sind in der folgenden Tabelle aufgeführt:
@@ -142,6 +144,7 @@ Keine. Versuchen Sie, die auszuführen `nvme discover` Befehl nach einiger Zeit 
 |===
 
 
+[[when-to-contact-technical-support]]
 == Wann wenden Sie sich an den technischen Support
 
 Sollten weiterhin Probleme auftreten, sammeln Sie die folgenden Dateien und Befehlsausgaben und kontaktieren Sie link:https://mysupport.netapp.com["NetApp Support"^] für weitere Untersuchungen:

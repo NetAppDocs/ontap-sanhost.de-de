@@ -20,6 +20,7 @@ Die Linux Host Utilities-Software bietet Verwaltungs- und Diagnosetools für Lin
 
 
 
+[[step-1-optionally-enable-san-booting]]
 == Schritt 1: Aktivieren Sie optional den SAN-Bootvorgang
 
 Sie können Ihren Host so konfigurieren, dass er SAN-Booting verwendet, um die Bereitstellung zu vereinfachen und die Skalierbarkeit zu verbessern.
@@ -38,6 +39,7 @@ Informationen zum Aktivieren des HBA-BIOS finden Sie in der anbieterspezifischen
 
 
 
+[[step-2-install-the-linux-host-utilities]]
 == Schritt 2: Installieren Sie die Linux Host Utilities
 
 NetApp empfiehlt dringend die Installation der Linux Host Utilities, um die ONTAP LUN-Verwaltung zu unterstützen, und den technischen Support beim Sammeln von Konfigurationsdaten zu unterstützen.
@@ -49,6 +51,7 @@ NOTE: Durch die Installation der Linux Host Utilities werden keine Host-Timeout-
 
 
 
+[[step-3-confirm-the-multipath-configuration-for-your-host]]
 == Schritt 3: Bestätigen Sie die Multipath-Konfiguration für Ihren Host
 
 Mit CentOS 8.x können Sie Multipathing zur Verwaltung von ONTAP LUNs nutzen.
@@ -81,6 +84,7 @@ In der folgenden Tabelle sind die nativen kompilierten Multipath-Parametereinste
 .Parametereinstellungen anzeigen
 [%collapsible]
 ====
+[[multipath-parameter-settings]]
 [cols="2"]
 |===
 | Parameter | Einstellung 
@@ -203,6 +207,7 @@ size=80G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=
 
 
 
+[[step-4-confirm-the-iscsi-configuration-for-your-host]]
 == Schritt 4: Bestätigen Sie die iSCSI-Konfiguration für Ihren Host
 
 Stellen Sie sicher, dass iSCSI für Ihren Host korrekt konfiguriert ist.
@@ -342,6 +347,7 @@ tcp: [4] 192.168.30.97:3260,1140 iqn.1992-08.com.netapp:sn.064a9b19b3ee11f09dcad
 
 
 
+[[step-5-optionally-exclude-a-device-from-multipathing]]
 == Schritt 5: Optional ein Gerät von der Multipathing-Funktion ausschließen
 
 Bei Bedarf können Sie ein Gerät vom Multipathing ausschließen, indem Sie die WWID für das unerwünschte Gerät der „Blacklist“-Strophe für die Datei hinzufügen `multipath.conf`.
@@ -374,6 +380,7 @@ blacklist {
 
 
 
+[[step-6-customize-multipath-parameters-for-ontap-luns]]
 == Schritt 6: Multipath-Parameter für ONTAP LUNs anpassen
 
 Wenn Ihr Host mit LUNs anderer Hersteller verbunden ist und eine der Multipath-Parametereinstellungen überschrieben wird, müssen Sie diese korrigieren, indem Sie später Strophen in der Datei hinzufügen `multipath.conf`, die speziell für ONTAP-LUNs gelten. Wenn Sie dies nicht tun, funktionieren die ONTAP LUNs möglicherweise nicht wie erwartet.
@@ -407,6 +414,7 @@ devices {
 ====
 
 
+[[step-7-review-the-known-issues]]
 == Schritt 7: Überprüfen Sie die bekannten Probleme
 
 Es sind keine Probleme bekannt.
@@ -415,6 +423,7 @@ Informationen zu bekannten Kernelproblemen von CentOS Red Hat finden Sie in der 
 
 
 
+[[whats-next]]
 == Was kommt als Nächstes?
 
 * link:hu-luhu-command-reference.html["Erfahren Sie mehr über die Verwendung des Linux Host Utilities-Tools"] .

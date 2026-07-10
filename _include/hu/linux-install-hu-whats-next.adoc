@@ -4,6 +4,7 @@
 
 
 
+[[whats-next]]
 == Was kommt als Nächstes?
 
 * Empfohlene Treibereinstellungen mit Linux-Kernel

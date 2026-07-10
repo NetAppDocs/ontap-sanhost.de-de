@@ -16,6 +16,7 @@ summary: Die Windows Host Utilities umfassen ein Installationsprogramm, das die 
 [role="lead"]
 Mithilfe der Windows Host Utilities können Sie einen Windows Host-Computer mit NetApp Storage-Systemen verbinden.
 
+[[supported-windows-versions-72]]
 Die Windows Host Utilities unterstützen die folgenden Versionen von Windows:
 
 * Windows 2025
@@ -54,6 +55,7 @@ Die Host Utilities unterstützen verschiedene Windows Host-Konfigurationen, Prot
 
 
 
+[[step-1-verify-your-host-and-storage-system-configuration]]
 == Schritt 1: Überprüfen Sie die Konfiguration Ihres Hosts und Speichersystems
 
 Vergewissern Sie sich, dass die Host- und Speichersystem-Konfiguration unterstützt wird, bevor Sie Windows Host Utilities für die installieren<<supported-windows-versions-72,Unterstützte Windows-Version>>.
@@ -78,6 +80,7 @@ Weitere Informationen finden Sie im https://docs.netapp.com/us-en/ontap/san-conf
 
 
 
+[[step-2-configure-fc-hbas-and-switches]]
 == Schritt 2: FC-HBAs und Switches konfigurieren
 
 Installieren und konfigurieren Sie einen oder mehrere unterstützte FC-Hostbusadapter (HBAs) für FC-Verbindungen zum Speichersystem.
@@ -97,6 +100,7 @@ CAUTION: Sie sollten nur zulassen, dass das Installationsprogramm von Windows Ho
 
 
 
+[[step-3-install-the-windows-host-utilities]]
 == Schritt 3: Installieren Sie die Windows-Host-Dienstprogramme
 
 Das Installationsprogramm installiert das Windows Host Utilities-Paket und legt die Windows-Registrierung und die HBA-Einstellungen fest.
@@ -159,6 +163,7 @@ NOTE: Um die standardmäßigen Microsoft Installer-Optionen (MSI) für die Proto
 ====
 
 
+[[whats-next]]
 == Was kommt als Nächstes?
 
 link:hu-wuhu-configuration.html["Erfahren Sie mehr über die Konfiguration der Windows-Hostdienstprogramme für ONTAP -Speicher."]

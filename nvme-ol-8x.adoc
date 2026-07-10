@@ -30,6 +30,7 @@ NVMe-oF unter Oracle Linux 8.x weist folgende bekannte Einschränkungen auf:
 
 
 
+[[step-1-install-oracle-linux-and-nvme-software-and-verify-your-configuration]]
 == Schritt 1: Installieren Sie die Oracle Linux- und NVMe-Software und überprüfen Sie Ihre Konfiguration.
 
 Gehen Sie wie folgt vor, um die minimal unterstützten Oracle Linux 8.x Softwareversionen zu überprüfen.
@@ -138,6 +139,7 @@ systemctl restart multipathd
 
 
 
+[[step-2-configure-nvmefc-and-nvmetcp]]
 == Schritt 2: NVMe/FC und NVMe/TCP konfigurieren
 
 Konfigurieren Sie NVMe/FC mit Broadcom/Emulex- oder Marvell/QLogic-Adaptern oder konfigurieren Sie NVMe/TCP mithilfe manueller Erkennungs- und Verbindungsvorgänge.
@@ -451,6 +453,7 @@ NetApp empfiehlt die Einstellung der `ctrl-loss-tmo option` Zu `-1` sodass der N
 ====
 
 
+[[step-3-optionally-enable-1mb-io-for-nvmefc]]
 == Schritt 3: Optional: Aktivieren Sie 1 MB I/O für NVMe/FC.
 
 ONTAP meldet in den Identify Controller-Daten eine maximale Datenübertragungsgröße (MDTS) von 8.  Dies bedeutet, dass die maximale E/A-Anforderungsgröße bis zu 1 MB betragen kann.  Um E/A-Anfragen der Größe 1 MB für einen Broadcom NVMe/FC-Host auszugeben, sollten Sie die `lpfc` Wert des `lpfc_sg_seg_cnt` Parameter vom Standardwert 64 auf 256.
@@ -484,6 +487,7 @@ cat /sys/module/lpfc/parameters/lpfc_sg_seg_cnt
 
 
 
+[[step-4-verify-the-multipathing-configuration]]
 == Schritt 4: Überprüfen Sie die Multipathing-Konfiguration
 
 Vergewissern Sie sich, dass der in-Kernel-Multipath-Status, der ANA-Status und die ONTAP-Namespaces für die NVMe-of-Konfiguration richtig sind.
@@ -670,6 +674,7 @@ nvme netapp ontapdevices -o json
 
 
 
+[[step-5-optionally-enable-1mb-io-size]]
 == Schritt 5: Optional: Aktivieren Sie die 1-MB-E/A-Größe.
 
 ONTAP meldet in den Identify Controller-Daten eine maximale Datenübertragungsgröße (MDTS) von 8.  Dies bedeutet, dass die maximale E/A-Anforderungsgröße bis zu 1 MB betragen kann.  Um E/A-Anfragen der Größe 1 MB für einen Broadcom NVMe/FC-Host auszugeben, sollten Sie die `lpfc` Wert des `lpfc_sg_seg_cnt` Parameter vom Standardwert 64 auf 256.
@@ -703,6 +708,7 @@ cat /sys/module/lpfc/parameters/lpfc_sg_seg_cnt
 
 
 
+[[step-6-review-the-known-issues]]
 == Schritt 6: Überprüfen Sie die bekannten Probleme
 
 Dies sind die bekannten Probleme:

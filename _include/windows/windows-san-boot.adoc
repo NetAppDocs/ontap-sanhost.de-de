@@ -4,6 +4,7 @@
 
 
 
+[[step-1-optionally-enable-san-booting]]
 == Schritt 1: Aktivieren Sie optional den SAN-Bootvorgang
 
 Sie können das Windows-Betriebssystem entweder lokal oder über ein SAN starten.  NetApp empfiehlt die Verwendung eines SAN-Bootvorgangs, um die Bereitstellung zu vereinfachen und die Skalierbarkeit zu verbessern.

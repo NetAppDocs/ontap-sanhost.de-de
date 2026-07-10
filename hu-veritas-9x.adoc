@@ -20,6 +20,7 @@ Die Linux Host Utilities-Software bietet Verwaltungs- und Diagnosetools für Lin
 
 
 
+[[step-1-optionally-enable-san-booting]]
 == Schritt 1: Aktivieren Sie optional den SAN-Bootvorgang
 
 Sie können Ihren Host so konfigurieren, dass er SAN-Booting verwendet, um die Bereitstellung zu vereinfachen und die Skalierbarkeit zu verbessern.
@@ -40,6 +41,7 @@ Informationen zum Aktivieren des HBA-BIOS finden Sie in der anbieterspezifischen
 
 
 
+[[step-2-install-the-linux-host-utilities]]
 == Schritt 2: Installieren Sie die Linux Host Utilities
 
 NetApp empfiehlt dringend link:hu-luhu-release-notes.html["Installation der Linux-Host-Dienstprogramme"] zur Unterstützung des ONTAP LUN-Managements und zur Unterstützung des technischen Supports bei der Erfassung von Konfigurationsdaten.
@@ -49,6 +51,7 @@ NOTE: Durch die Installation der Linux Host Utilities werden keine Host-Timeout-
 
 
 
+[[step-3-confirm-the-veritas-dynamic-multipathing-configuration-for-your-host]]
 == Schritt 3: Bestätigen Sie die Veritas Dynamic Multipathing-Konfiguration für Ihren Host.
 
 Verwenden Sie Veritas Dynamic Multipathing (VxDMP) mit Veritas Infoscale 9 zur Verwaltung von ONTAP LUNs.
@@ -252,12 +255,14 @@ sdea  ENABLED     Active/Non-Optimized c14   SFRAC       sfrac0     -      -
 
 
 
+[[step-4-known-issues]]
 == Schritt 4: Bekannte Probleme
 
 Es sind keine Probleme bekannt.
 
 
 
+[[whats-next]]
 == Was kommt als Nächstes?
 
 * link:hu-luhu-command-reference.html["Erfahren Sie mehr über die Verwendung des Linux Host Utilities-Tools"] .

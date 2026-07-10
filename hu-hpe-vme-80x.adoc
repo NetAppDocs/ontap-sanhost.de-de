@@ -20,6 +20,7 @@ Die Linux Host Utilities-Software bietet Verwaltungs- und Diagnosewerkzeuge für
 
 
 
+[[step-1-install-the-linux-host-utilities]]
 == Schritt 1: Installieren Sie die Linux Host Utilities
 
 NetApp empfiehlt dringend die Installation der Linux Host Utilities, um die ONTAP LUN-Verwaltung zu unterstützen, und den technischen Support beim Sammeln von Konfigurationsdaten zu unterstützen.
@@ -31,6 +32,7 @@ NOTE: Durch die Installation der Linux Host Utilities werden keine Host-Timeout-
 
 
 
+[[step-2-confirm-the-multipath-configuration-for-your-host]]
 == Schritt 2: Bestätigen Sie die Multipath-Konfiguration für Ihren Host
 
 Sie können Multipathing mit HPE VME 8.0.x verwenden, um ONTAP LUNs zu verwalten.
@@ -63,6 +65,7 @@ In der folgenden Tabelle sind die nativen kompilierten Multipath-Parametereinste
 .Parametereinstellungen anzeigen
 [%collapsible]
 ====
+[[multipath-parameter-settings]]
 [cols="2"]
 |===
 | Parameter | Einstellung 
@@ -183,6 +186,7 @@ Im folgenden Beispiel wird die Ausgabe für eine ONTAP-LUN mit zwei aktiv/optimi
 
 
 
+[[step-3-confirm-the-iscsi-configuration-for-your-host]]
 == Schritt 3: Bestätigen Sie die iSCSI-Konfiguration für Ihren Host
 
 Stellen Sie sicher, dass iSCSI für Ihren Host korrekt konfiguriert ist.
@@ -320,6 +324,7 @@ tcp: [4] 192.168.166.70:3260,1042 iqn.1992-08.com.netapp:sn.c770be5d934811f0b624
 
 
 
+[[step-4-optionally-exclude-a-device-from-multipathing]]
 == Schritt 4: Optional: Schließen Sie ein Gerät vom Multipathing aus
 
 Bei Bedarf können Sie ein Gerät vom Multipathing ausschließen, indem Sie die WWID für das unerwünschte Gerät der „Blacklist“-Strophe für die Datei hinzufügen `multipath.conf`.
@@ -352,6 +357,7 @@ blacklist {
 
 
 
+[[step-5-customize-multipath-parameters-for-ontap-luns]]
 == Schritt 5: Passen Sie Multipath-Parameter für ONTAP LUNs an
 
 Wenn Ihr Host mit LUNs anderer Hersteller verbunden ist und eine der Multipath-Parametereinstellungen überschrieben wird, müssen Sie diese korrigieren, indem Sie später Strophen in der Datei hinzufügen `multipath.conf`, die speziell für ONTAP-LUNs gelten. Wenn Sie dies nicht tun, funktionieren die ONTAP LUNs möglicherweise nicht wie erwartet.
@@ -385,12 +391,14 @@ devices {
 ====
 
 
+[[step-6-review-the-known-issues]]
 == Schritt 6: Überprüfen Sie die bekannten Probleme
 
 Es sind keine Probleme bekannt.
 
 
 
+[[whats-next]]
 == Was kommt als Nächstes?
 
 * link:hu-luhu-command-reference.html["Erfahren Sie mehr über die Verwendung des Linux Host Utilities-Tools"] .

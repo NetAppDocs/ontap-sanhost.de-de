@@ -27,6 +27,7 @@ NVMe-oF unter RHEL 9.x weist folgende bekannte Einschränkungen auf:
 
 
 
+[[step-1-optionally-enable-san-booting]]
 == Schritt 1: Aktivieren Sie optional den SAN-Bootvorgang
 
 Sie können Ihren Host für die Verwendung von SAN-Boot konfigurieren, um die Bereitstellung zu vereinfachen und die Skalierbarkeit zu verbessern. Verwenden Sie dielink:https://mysupport.netapp.com/matrix/#welcome["Interoperabilitäts-Matrix-Tool"^] um zu überprüfen, ob Ihr Linux-Betriebssystem, Ihr Hostbusadapter (HBA), Ihre HBA-Firmware, Ihr HBA-Boot-BIOS und ONTAP -Version das SAN-Booten unterstützen.
@@ -42,6 +43,7 @@ Informationen zum Aktivieren des HBA-BIOS finden Sie in der anbieterspezifischen
 
 
 
+[[step-2-install-rhel-and-nvme-software-and-verify-your-configuration]]
 == Schritt 2: Installieren Sie die RHEL- und NVMe-Software und überprüfen Sie Ihre Konfiguration.
 
 Um Ihren Host für NVMe-oF zu konfigurieren, müssen Sie die Host- und NVMe-Softwarepakete installieren, Multipathing aktivieren und Ihre Host-NQN-Konfiguration überprüfen.
@@ -135,6 +137,7 @@ NOTE: Wenn die `hostnqn` Zeichenfolgen nicht übereinstimmen, verwenden Sie die 
 
 
 
+[[step-3-configure-nvmefc-and-nvmetcp]]
 == Schritt 3: Konfigurieren Sie NVMe/FC und NVMe/TCP
 
 Konfigurieren Sie NVMe/FC mit Broadcom/Emulex- oder Marvell/QLogic-Adaptern oder konfigurieren Sie NVMe/TCP mithilfe manueller Erkennungs- und Verbindungsvorgänge.
@@ -515,6 +518,7 @@ Ab RHEL 9.4 ist die Einstellung für NVMe/TCP  `ctrl_loss_tmo timeout` ist autom
 ====
 
 
+[[step-4-optionally-modify-the-iopolicy-in-the-udev-rules]]
 == Schritt 4: Optional können Sie die iopolicy in den udev-Regeln ändern.
 
 .Änderungen an iopolicy für RHEL 9.x Releases
@@ -580,6 +584,7 @@ NOTE: Die neue iopolicy wird automatisch auf passende NetApp ONTAP Controller-Ge
 
 
 
+[[step-5-optionally-enable-1mb-io-for-nvmefc]]
 == Schritt 5: Optional: Aktivieren Sie 1 MB I/O für NVMe/FC.
 
 ONTAP meldet in den Identify Controller-Daten eine maximale Datenübertragungsgröße (MDTS) von 8.  Dies bedeutet, dass die maximale E/A-Anforderungsgröße bis zu 1 MB betragen kann.  Um E/A-Anfragen der Größe 1 MB für einen Broadcom NVMe/FC-Host auszugeben, sollten Sie die `lpfc` Wert des `lpfc_sg_seg_cnt` Parameter vom Standardwert 64 auf 256.
@@ -613,6 +618,7 @@ cat /sys/module/lpfc/parameters/lpfc_sg_seg_cnt
 
 
 
+[[step-6-verify-nvme-boot-services]]
 == Schritt 6: NVMe-Bootdienste überprüfen
 
 Der `nvmefc-boot-connections.service` Und `nvmf-autoconnect.service` In NVMe/FC enthaltene Boot-Dienste `nvme-cli` Paket werden beim Systemstart automatisch aktiviert.
@@ -672,6 +678,7 @@ May 21 10:20:04 SR650-N-13-89 systemd[1]: Finished Auto-connect to subsystems on
 
 
 
+[[step-7-verify-the-multipathing-configuration]]
 == Schritt 7: Überprüfen Sie die Multipathing-Konfiguration
 
 Vergewissern Sie sich, dass der in-Kernel-Multipath-Status, der ANA-Status und die ONTAP-Namespaces für die NVMe-of-Konfiguration richtig sind.
@@ -884,6 +891,7 @@ nvme netapp ontapdevices -o json
 
 
 
+[[step-8-set-up-secure-in-band-authentication]]
 == Schritt 8: Einrichten einer sicheren In-Band-Authentifizierung
 
 Eine sichere In-Band-Authentifizierung wird über NVMe/TCP zwischen einem RHEL 9.x-Host und einem ONTAP Controller unterstützt.
@@ -1110,6 +1118,7 @@ DHHC-1:03:ZCRrP9MQOeXhFitT7Fvvf/3P6K/qY1HfSmSfM8nLjESJdOjbjK/J6m00ygJgjm0VrRlrgr
 ====
 
 
+[[step-9-review-the-known-issues]]
 == Schritt 9: Überprüfen Sie die bekannten Probleme
 
 Es sind keine Probleme bekannt.

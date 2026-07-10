@@ -20,6 +20,7 @@ Die Windows Host Utilities sind eine Reihe von Softwareprogrammen mit zugehörig
 
 
 
+[[step-1-optionally-enable-san-booting]]
 == Schritt 1: Aktivieren Sie optional den SAN-Bootvorgang
 
 Sie können das Windows-Betriebssystem entweder lokal oder über ein SAN starten.  NetApp empfiehlt die Verwendung eines SAN-Bootvorgangs, um die Bereitstellung zu vereinfachen und die Skalierbarkeit zu verbessern.
@@ -51,6 +52,7 @@ Führen Sie einen lokalen Bootvorgang durch, indem Sie das Windows-Betriebssyste
 ====
 
 
+[[step-2-install-windows-hotfixes]]
 == Schritt 2: Windows-Hotfixes installieren
 
 NetApp empfiehlt die Installation des *neuesten kumulativen Updates* aus dem Microsoft Update-Katalog auf dem Hostserver.
@@ -70,6 +72,7 @@ TIP: Viele Hotfixes erfordern einen Neustart des Windows-Hosts.  Sie können mit
 
 
 
+[[step-3-install-the-windows-host-utilities]]
 == Schritt 3: Installieren Sie die Windows-Host-Dienstprogramme
 
 Die Windows Host Utilities sind eine Reihe von Softwareprogrammen mit zugehöriger Dokumentation, die es Ihnen ermöglichen, Host-Computer mit virtuellen Datenträgern (LUNs) auf einem NetApp SAN zu verbinden.  NetApp empfiehlt, die neuesten Windows Host Utilities herunterzuladen und zu installieren, um die ONTAP LUN-Verwaltung zu unterstützen und dem technischen Support die Erfassung von Konfigurationsdaten zu erleichtern.
@@ -78,6 +81,7 @@ Informationen zur Konfiguration und Installation der Windows-Hostdienstprogramme
 
 
 
+[[step-4-confirm-the-multipath-configuration-for-your-host]]
 == Schritt 4: Bestätigen Sie die Multipath-Konfiguration für Ihren Host
 
 Installieren Sie die Microsoft Multipath I/O (MPIO)-Software und aktivieren Sie Multipathing, wenn Ihr Windows-Host über mehr als einen Pfad zum Speichersystem verfügt.
@@ -156,12 +160,14 @@ image::nonasa.png[Screenshot einer ONTAP-LUN mit zwei aktiven/optimierten Pfaden
 
 
 
+[[step-5-review-the-known-issues]]
 == Schritt 5: Bekannte Probleme überprüfen
 
 Es sind keine Probleme bekannt.
 
 
 
+[[whats-next]]
 == Was kommt als Nächstes?
 
 link:hu-wuhu-configuration.html["Erfahren Sie mehr über die Konfiguration der Windows-Hostdienstprogramme für ONTAP -Speicher."]

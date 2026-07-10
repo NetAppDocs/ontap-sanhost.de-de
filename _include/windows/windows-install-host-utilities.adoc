@@ -4,6 +4,7 @@
 
 
 
+[[step-3-install-the-windows-host-utilities]]
 == Schritt 3: Installieren Sie die Windows-Host-Dienstprogramme
 
 Das Installationsprogramm installiert das Windows Host Utilities-Paket und legt die Windows-Registrierung und die HBA-Einstellungen fest.

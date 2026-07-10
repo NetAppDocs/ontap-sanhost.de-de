@@ -43,6 +43,7 @@ NOTE: Broadcom liefert einen externen Treiber für Windows NVMe/FC, der ein tran
 
 
 
+[[enable-nvmefc]]
 == NVMe/FC aktivieren
 
 Aktivieren Sie FC/NVMe auf dem Windows Initiator-Host.
@@ -60,6 +61,7 @@ Aktivieren Sie FC/NVMe auf dem Windows Initiator-Host.
 
 
 
+[[configure-the-broadcom-fc-adapter]]
 == Konfigurieren Sie den Broadcom FC-Adapter
 
 Der Broadcom Initiator kann sowohl NVMe/FC- als auch FCP-Datenverkehr über dieselben 32-Gbit-FC-Adapter-Ports bedienen. Für FCP und FC/NVMe sollten Sie das Microsft Device-Specific Module (DSM) als Microsoft Multipath I/O (MPIO)-Option verwenden.
@@ -72,6 +74,7 @@ nqn.2017-01.com.broadcom:ecd:nvmf:fc:100000109b1b9766
 ....
 
 
+[[enable-mpio-for-nvme-devices]]
 === MPIO für NVMe-Geräte aktivieren
 
 Sie müssen MPIO für NVMe-Geräte aktivieren, um die NVMe-Konfiguration auf dem Windows-Host abzuschließen.
@@ -108,6 +111,7 @@ HKLM\SYSTEM\CurrentControlSet\Services\mpio \Parameters\ UseCustomPathRecoveryIn
 
 
 
+[[validate-nvmefc]]
 == NVMe/FC validieren
 
 Vergewissern Sie sich, dass die NVMe-Subsysteme erkannt wurden und die ONTAP-Namespaces für die NVMe-of Konfiguration richtig sind.

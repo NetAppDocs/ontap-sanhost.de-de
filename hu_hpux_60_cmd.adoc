@@ -20,6 +20,7 @@ Verwenden Sie die Beispielbefehlsreferenz von HP-UX Host Utilities 6.0 für eine
 
 
 
+[[list-all-host-initiators-mapped-to-host]]
 == Führen Sie alle Host-Initiatoren auf, die dem Host zugeordnet sind
 
 Rufen Sie eine Liste aller Host-Initiatoren ab, die einem Host zugeordnet sind.
@@ -70,6 +71,7 @@ OS device name:    /dev/fclp3
 ====
 
 
+[[list-all-luns-mapped-to-host]]
 == Listen Sie alle LUNs auf, die dem Host zugeordnet sind
 
 Rufen Sie eine Liste aller einem Host zugeordneten LUNs ab.
@@ -105,6 +107,7 @@ up       secondary  /dev/dsk/c44t6d7     fclp1   hpux_6                         
 ====
 
 
+[[list-all-luns-mapped-to-host-from-a-given-svm]]
 == Listen Sie alle LUNs auf, die einem Host von einer bestimmten SVM zugeordnet sind
 
 Rufen Sie eine Liste aller LUNs ab, die einem Host von einer bestimmten SVM zugeordnet sind.
@@ -139,6 +142,7 @@ up       secondary  /dev/dsk/c44t6d7     fclp1   hpux_6                         
 ====
 
 
+[[list-all-attributes-of-a-given-lun-mapped-to-host]]
 == Listen Sie alle Attribute einer bestimmten LUN auf, die dem Host zugeordnet sind
 
 Rufen Sie eine Liste aller Attribute einer angegebenen LUN ab, die einem Host zugeordnet ist.
@@ -174,6 +178,7 @@ up       secondary  /dev/dsk/c44t6d1     fclp1   hpux_6                         
 ====
 
 
+[[list-ontap-lun-attributes-by-host-device-filename]]
 == Liste der ONTAP-LUN-Attribute nach Dateiname des Hostgeräts
 
 Rufen Sie eine Liste der ONTAP LUN-Attribute anhand eines angegebenen Hostgerätedateinamens ab.
@@ -207,6 +212,7 @@ vs_hp_cluster        /vol/chathpux_217_vol_en_1_14/hp_en_217_lun /dev/rdisk/disk
 ====
 
 
+[[list-all-svm-target-lif-wwpns-attached-to-host]]
 == Führen Sie alle dem Host angeschlossenen SVM-Ziel-LIF-WWPNs auf
 
 Rufen Sie eine Liste aller an einen Host angeschlossenen SVM-Ziel-LIF-WWPNs ab.

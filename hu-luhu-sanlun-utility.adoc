@@ -53,6 +53,7 @@ Für Linux Host Utilities 7.1 wird das Dienstprogramm „sanlun“ für Citrix X
 ====
 
 
+[[whats-next]]
 == Was kommt als Nächstes?
 
 link:hu-luhu-command-reference.html["Erfahren Sie mehr über die Verwendung des Linux Host Utilities-Tools"] .

@@ -4,6 +4,7 @@
 
 
 
+[[step-2-install-the-aix-host-utilities]]
 == Schritt 2: Installieren Sie die AIX-Host-Dienstprogramme
 
 NetApp empfiehlt dringend die Installation der AIX Host Utilities, um die ONTAP LUN-Verwaltung zu unterstützen und den technischen Support beim Erfassen von Konfigurationsdaten zu unterstützen.  Das MPIO-Paket der Host Utilities bietet MPIO-Unterstützung für AIX und VIOS.

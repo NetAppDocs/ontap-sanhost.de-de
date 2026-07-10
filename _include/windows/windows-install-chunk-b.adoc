@@ -11,6 +11,7 @@ Weitere Informationen finden Sie im https://docs.netapp.com/us-en/ontap/san-conf
 
 
 
+[[step-2-configure-fc-hbas-and-switches]]
 == Schritt 2: FC-HBAs und Switches konfigurieren
 
 Installieren und konfigurieren Sie einen oder mehrere unterstützte FC-Hostbusadapter (HBAs) für FC-Verbindungen zum Speichersystem.

@@ -24,6 +24,7 @@ Die Versionen der AIX Host Utilities enthalten die folgenden neuen Funktionen un
 
 
 
+[[whats-new-in-aix-host-utilities-8-0]]
 == Was ist neu in AIX Host Utilities 8.0
 
 Für AIX Host Utilities 8.0 ist ein IBM Interim Fix (ifix) verfügbar, der sicherstellt, dass `sanlun fcp show adapter –v` Der Befehl zeigt die richtigen HBA-Geschwindigkeitsinformationen an, z. B. unterstützte und ausgehandelte Geschwindigkeiten für die Adapter.  Sie können das ifix auf den folgenden AIX- und VIOS-Versionen installieren:
@@ -34,18 +35,21 @@ Für AIX Host Utilities 8.0 ist ein IBM Interim Fix (ifix) verfügbar, der siche
 
 
 
+[[whats-new-in-aix-host-utilities-7-0]]
 == Was ist neu in AIX Host Utilities 7.0
 
 AIX Host Utilities 7.0 unterstützt SCSI UNMAP auf dem AIX-Host-Betriebssystem. Mit AIX Host Utilities 7.0 funktioniert SCSI Thin Provisioning nahtlos mit AIX und NetApp LUNs für FC-Geräte.
 
 
 
+[[whats-new-in-aix-host-utilities-6-1]]
 == Was ist neu in AIX Host Utilities 6.1
 
 AIX Host Utilities 6.1 unterstützt das Speicherfehlerproblem, das in früheren Versionen des AIX-Host-Betriebssystems aufgetreten ist. Mit AIX Host Utilities 6.1 hat sich nur die sanlun-Binärdatei geändert. Microsoft Multipath I/O (MPIO) und zugehörige ODM bleiben unverändert.
 
 
 
+[[known-problems-and-limitations]]
 == Bekannte Probleme und Einschränkungen
 
 Sie sollten sich der folgenden bekannten Probleme und Einschränkungen bewusst sein, die die Leistung auf Ihrem spezifischen Host beeinträchtigen können:
@@ -68,6 +72,7 @@ link:https://mysupport.netapp.com/site/["NetApp Bugs Online"^] Bietet vollständ
 
 
 
+[[whats-next]]
 == Was kommt als Nächstes?
 
 link:hu-aix-80.html["Informationen zur Installation von AIX Host Utilities"]

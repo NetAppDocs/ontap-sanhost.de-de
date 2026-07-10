@@ -86,6 +86,7 @@ NOTE: Einzelheiten zu unterstützten Konfigurationen finden Sie imlink:https://m
 
 
 
+[[whats-next]]
 == Was kommt als nächstes
 
 [cols="50,50"]

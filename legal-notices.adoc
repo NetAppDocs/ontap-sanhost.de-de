@@ -13,12 +13,14 @@ Rechtliche Hinweise ermöglichen den Zugriff auf Copyright-Erklärungen, Marken,
 
 
 
+[[copyright]]
 == Urheberrecht
 
 link:https://www.netapp.com/company/legal/copyright/["https://www.netapp.com/company/legal/copyright/"^]
 
 
 
+[[trademarks]]
 == Marken
 
 NetApp, das NETAPP Logo und die auf der NetApp Markenseite aufgeführten Marken sind Marken von NetApp Inc. Andere Firmen- und Produktnamen können Marken der jeweiligen Eigentümer sein.
@@ -27,6 +29,7 @@ link:https://www.netapp.com/company/legal/trademarks/["https://www.netapp.com/co
 
 
 
+[[patents]]
 == Patente
 
 Eine aktuelle Liste der NetApp Patente finden Sie unter:
@@ -35,6 +38,7 @@ link:https://www.netapp.com/pdf.html?item=/media/11887-patentspage.pdf["https://
 
 
 
+[[privacy-policy]]
 == Datenschutzrichtlinie
 
 link:https://www.netapp.com/company/legal/privacy-policy/["https://www.netapp.com/company/legal/privacy-policy/"^]

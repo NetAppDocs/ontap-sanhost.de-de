@@ -22,6 +22,7 @@ Spezifische Informationen zu den von den Host Utilities unterstützten Betriebss
 
 
 
+[[whats-new-in-solaris-host-utilities-8-0]]
 == Neuerungen in Solaris Host Utilities 8.0
 
 * Solaris Host Utilities 8.0 führt die `disksort:false` Und `cache-nonvolatile:true` Parametereinstellungen.  Diese Parameter unterdrücken ständige Synchronisierungsaufrufe vom Host.  Die Synchronisierungsaufrufe wirken sich auf die Leistung aus und sind nicht erforderlich, da ONTAP keinen flüchtigen Cache hat. Weitere Informationen finden Sie unter link:https://docs.oracle.com/en/operating-systems/solaris/oracle-solaris/11.4/tuning/ensuring-proper-cache-flush-behavior-flash-and-nvram-storage-devices.html["Cache-Flush-Verhalten für Flash- und NVRAM Speichergeräte"^] .
@@ -30,6 +31,7 @@ Spezifische Informationen zu den von den Host Utilities unterstützten Betriebss
 
 
 
+[[known-issues-and-limitations]]
 == Bekannte Probleme und Einschränkungen
 
 Sie sollten sich der folgenden bekannten Probleme und Einschränkungen bewusst sein, die die Leistung auf Ihrem spezifischen Host beeinträchtigen können.
@@ -53,6 +55,7 @@ Die Bindung des FC-Treibers wird von geändert `ssd(4D)` Bis `sd(4D)`. Verschieb
 
 
 
+[[whats-next]]
 == Was kommt als nächstes
 
 link:hu-solaris-80.html["Informationen zur Installation von Solaris Host Utilities"]

@@ -97,6 +97,7 @@ sanlun version
 
 
 
+[[whats-next]]
 == Was kommt als Nächstes?
 
 link:hu-aix-san-toolkit.html["Erfahren Sie mehr über das AIX SAN Toolkit"] .

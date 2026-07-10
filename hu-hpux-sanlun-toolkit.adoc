@@ -42,6 +42,7 @@ Das SAN Toolkit wird auf den Betriebssystemversionen AIX und PowerVM/VIOS unters
 ====
 
 
+[[whats-next]]
 == Was kommt als Nächstes?
 
 link:hu_hpux_60_cmd.html["Erfahren Sie mehr über die Verwendung des HP-UX Host Utilities-Tools"] .
