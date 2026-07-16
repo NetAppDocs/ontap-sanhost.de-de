@@ -16,7 +16,7 @@ summary: Beschreibt die Verwendung der Linux Host Utilities 8.0 mit ONTAP
 
 
 [role="lead"]
-Die Linux Host Utilities unterstützen Sie bei der Verwaltung des an einen Linux-Host angeschlossenen ONTAP Speichers.  NetApp empfiehlt dringend die Installation der Linux Host Utilities, dies ist jedoch nicht zwingend erforderlich.  Die Dienstprogramme verbessern die Verwaltung und unterstützen den NetApp Kundensupport beim Sammeln von Informationen zu Ihrer Konfiguration.
+Die Linux Host Utilities unterstützen Sie bei der Verwaltung von ONTAP Storage, der an einen Linux Host angeschlossen ist. NetApp empfiehlt die Installation der Linux Host Utilities ausdrücklich, sie ist jedoch nicht zwingend erforderlich. Die Linux Host Utilities verbessern die Verwaltung und unterstützen den NetApp Kundensupport beim Sammeln von Informationen zu Ihrer Konfiguration.
 
 Linux Host Utilities 8.0 unterstützt die folgenden Distributionstypen:
 
@@ -30,7 +30,7 @@ Linux Host Utilities 8.0 unterstützt die folgenden Distributionstypen:
 NOTE: Die Linux Host Utilities Software unterstützt keine NVMe over Fibre Channel (NVMe/FC)- und NVMe over TCP (NVMe/TCP)-Host-Protokolle.
 
 .Über diese Aufgabe
-Wenn Sie die Linux Host Utilities installieren, werden keine Einstellungen auf Ihrem Linux-Host geändert.
+Bei der Installation der Linux Host Utilities ändert sich keine Einstellung und kein Verhalten auf Ihrem Host.
 
 .Bevor Sie beginnen
 * Für einen zuverlässigen Betrieb verwenden Sie dielink:https://imt.netapp.com/matrix/#welcome["Interoperabilitäts-Matrix-Tool"^] um zu überprüfen, ob Ihre iSCSI-, FC- oder FCoE-Konfiguration unterstützt wird.
@@ -41,6 +41,10 @@ Wenn Sie die Linux Host Utilities installieren, werden keine Einstellungen auf I
 +
 ** Marvell QLogic HBA – QConvergeConsole CLI
 ** Broadcom Emulex HBA – OneCommand Manager-CLI für die Kernanwendung
++
+
+NOTE: Die Linux Host Utilities haben eine Installationsabhängigkeit von der Bibliothek libHBAAPI.so. Eines der oben aufgeführten Pakete muss installiert werden, selbst wenn ein Host ausschließlich für eine iSCSI-only-Konfiguration vorgesehen ist. Alternativ können OS-Tools für die LUN- und Pfadverwaltung verwendet werden.
+
 
 
 

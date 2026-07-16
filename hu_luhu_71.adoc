@@ -16,7 +16,7 @@ summary: Hier wird die Verwendung der Linux Host Utilities 7.1 mit ONTAP beschri
 
 
 [role="lead"]
-Die Linux Host Utilities unterstützen Sie bei der Verwaltung des an einen Linux-Host angeschlossenen ONTAP Speichers.  NetApp empfiehlt dringend die Installation der Linux Host Utilities, dies ist jedoch nicht zwingend erforderlich.  Die Dienstprogramme verbessern die Verwaltung und unterstützen den NetApp Kundensupport beim Sammeln von Informationen zu Ihrer Konfiguration.
+Die Linux Host Utilities unterstützen Sie bei der Verwaltung von ONTAP Storage, der an einen Linux Host angeschlossen ist. NetApp empfiehlt die Installation der Linux Host Utilities ausdrücklich, sie ist jedoch nicht zwingend erforderlich. Die Linux Host Utilities verbessern die Verwaltung und unterstützen den NetApp Kundensupport beim Sammeln von Informationen zu Ihrer Konfiguration.
 
 Linux Host Utilities 7.1 unterstützt die folgenden Distributionstypen:
 
@@ -31,7 +31,7 @@ Linux Host Utilities 7.1 unterstützt die folgenden Distributionstypen:
 NOTE: Die Linux Host Utilities Software unterstützt keine NVMe over Fibre Channel (NVMe/FC)- und NVMe over TCP (NVMe/TCP)-Host-Protokolle.
 
 .Über diese Aufgabe
-Wenn Sie die Linux Host Utilities installieren, werden keine Einstellungen auf Ihrem Linux-Host geändert.
+Bei der Installation der Linux Host Utilities ändert sich keine Einstellung und kein Verhalten auf Ihrem Host.
 
 .Bevor Sie beginnen
 * Für einen zuverlässigen Betrieb verwenden Sie dielink:https://imt.netapp.com/matrix/#welcome["Interoperabilitäts-Matrix-Tool"^] um zu überprüfen, ob Ihre iSCSI-, FC- oder FCoE-Konfiguration unterstützt wird.
