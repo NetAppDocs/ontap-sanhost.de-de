@@ -2,7 +2,7 @@
 :allow-uri-read: 
 
 
-Bei Bedarf können Sie ein Gerät vom Multipathing ausschließen, indem Sie die WWID für das unerwünschte Gerät der „Blacklist“-Strophe für die Datei hinzufügen `multipath.conf`.
+Bei Bedarf kann ein Gerät vom Multipathing ausgeschlossen werden, indem die WWID des unerwünschten Geräts in den Abschnitt "blacklist" der  `/etc/multipath/conf.d/custom.conf` Datei aufgenommen wird.
 
 .Schritte
 . Bestimmen Sie die WWID:

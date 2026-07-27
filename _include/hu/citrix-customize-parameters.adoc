@@ -1,0 +1,31 @@
+= 
+:allow-uri-read: 
+
+
+Wenn Ihr Host mit LUNs anderer Anbieter verbunden ist und eine der Multipath-Parameter-Einstellungen überschrieben wurde, müssen diese korrigiert werden, indem Sie die Abschnitte in der  `/etc/multipath/conf.d/custom.conf` Datei anpassen, die speziell für ONTAP LUNs gelten. Im unteren Bereich der Datei werden diese Abschnitte hinzugefügt. Werden die Parameter nicht korrigiert, funktionieren die ONTAP LUNs möglicherweise nicht wie erwartet.
+
+
+CAUTION: Die empfohlenen Parametereinstellungen für ONTAP LUNs sollten Sie nicht außer Kraft setzen. Diese Einstellungen sind für eine optimale Performance Ihrer Hostkonfiguration erforderlich. Weitere Informationen erhalten Sie vom NetApp-Support, vom Hersteller Ihres Betriebssystems oder von beiden.
+
+Das folgende Beispiel zeigt, wie ein überschriebener Standardwert korrigiert werden kann. In diesem Beispiel definiert die  `custom.conf drop-in` Datei Werte für  `path_checker` und  `no_path_retry`, die nicht mit ONTAP LUNs kompatibel sind, und diese Parameter können nicht entfernt werden, da ONTAP Storage Arrays weiterhin an den Host angebunden sind. Stattdessen werden die Werte für  `path_checker` und  `no_path_retry` korrigiert, indem der  `custom.conf drop-in` Datei ein Geräteabschnitt hinzugefügt wird, der speziell für die ONTAP LUNs gilt.
+
+.Beispiel anzeigen
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+defaults {
+   path_checker      *readsector0*
+   no_path_retry     *fail*
+}
+
+devices {
+   device {
+      vendor          "NETAPP"
+      product         "LUN"
+      no_path_retry   *queue*
+      path_checker    *tur*
+   }
+}
+----
+====

@@ -5,13 +5,59 @@
 Um sicherzustellen, dass Multipathing für Ihren Host korrekt konfiguriert ist, überprüfen Sie, ob die `/etc/multipath.conf` Datei definiert ist und ob die von NetApp empfohlenen Einstellungen für Ihre ONTAP LUNs konfiguriert sind.
 
 .Schritte
-. Überprüfen Sie, ob die  `/etc/multipath.conf` Datei existiert. Wenn die Datei nicht vorhanden ist, erstellen Sie eine leere, Null-Byte-Datei:
+. Die  `/etc/multipath.conf`Datei finden.
 +
+Falls die  `/etc/multipath.conf`Referenzdatei die NetApp-gerätesspezifischen Konfigurationsparameter nicht enthält, können diese Parameter mithilfe der folgenden benutzerdefinierten  `.conf drop-in`Datei hinzugefügt werden. Diese Datei befindet sich unter  `/etc/multipath/conf.d/`:
+
++
+
+NOTE: Nehmen Sie keine Änderungen an der  `/etc/multipath.conf` Datei vor, da deren Inhalt bei einem Systemupdate überschrieben werden könnte.
+
++
+.Dateiinhalt anzeigen
+[%collapsible]
+====
 [source, cli]
 ----
-touch /etc/multipath.conf
+$sudo tee -a /etc/multipath/conf.d/custom.conf >/dev/null <<'EOF'
+
+defaults {
+    polling_interval 5
+}
+
+blacklist {
+    wwid <Insert_LUN_wwid_string>
+    devnode "^(ram|raw|loop|fd|md|dm-|sr|scd|st)[0-9]*"
+    devnode "^hd[a-z]"
+    devnode "^cciss.*"
+}
+
+devices {
+    device {
+    vendor "NETAPP"
+    product "LUN.*"
+    user_friendly_names no
+    path_checker "tur"
+    prio "ontap"
+    detect_prio yes
+    path_grouping_policy "group_by_prio"
+    path_selector "service-time 0"
+    failback immediate
+    fast_io_fail_tmo 5
+    dev_loss_tmo infinity
+    no_path_retry queue
+    features "3 queue_if_no_path pg_init_retries 50"
+    flush_on_last_del yes
+    hardware_handler "0"
+    retain_attached_hw_handler yes
+    rr_weight uniform
+  }
+}
+
+EOF
 ----
-. Beim ersten Erstellen der `multipath.conf` Datei müssen Sie möglicherweise die Multipath-Services aktivieren und starten, um die empfohlenen Einstellungen zu laden:
+====
+. Beim erstmaligen Konfigurieren von Multipath kann es erforderlich sein, die Multipath-Dienste zu aktivieren und zu starten, damit die empfohlenen Einstellungen geladen werden:
 +
 [source, cli]
 ----
@@ -22,7 +68,7 @@ systemctl enable multipathd
 ----
 systemctl start multipathd
 ----
-. Jedes Mal, wenn Sie den Host starten, lädt die leere `/etc/multipath.conf` Zero-Byte-Datei automatisch die von NetApp empfohlenen Multipath-Parameter als Standardeinstellungen. Sie sollten keine Änderungen an der Datei für Ihren Host vornehmen `/etc/multipath.conf` müssen, da das Host-Betriebssystem mit den Multipath-Parametern kompiliert ist, die ONTAP LUNs korrekt erkennen und verwalten.
+. Bei jedem Neustart des Hosts lädt die  `/etc/multipath/conf.d/custom.conf` Datei automatisch die von NetApp empfohlenen Host-Multipath-Parameter als Standardeinstellungen.
 +
 In der folgenden Tabelle sind die nativen vom Linux OS kompilierten Multipath-Parametereinstellungen für ONTAP LUNs aufgeführt.
 
@@ -94,7 +140,7 @@ In der folgenden Tabelle sind die nativen vom Linux OS kompilierten Multipath-Pa
 +
 [source, cli]
 ----
-/sbin/mpathutil list
+/sbin/mpathutil status
 ----
 +
 Die standardmäßigen Multipath-Parameter unterstützen ASA, AFF und FAS Konfigurationen. In diesen Konfigurationen sollte eine einzelne ONTAP LUN nicht mehr als vier Pfade benötigen. Mehr als vier Pfade können bei einem Speicherausfall Probleme verursachen.
