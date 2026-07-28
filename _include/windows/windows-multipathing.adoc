@@ -62,21 +62,82 @@ Je nach SAN-Konfiguration verwendet der Host ASA, AFF oder FAS -Konfigurationen 
 Die folgenden Beispielausgaben zeigen die korrekten Einstellungen für ONTAP -LUNs für eine ASA, AFF oder FAS Konfiguration.
 
 +
+
+NOTE: Die empfohlene MPIO-Richtlinie ist Round Robin mit Subset.
+
++
 [role="tabbed-block"]
 ====
 .ASA-Konfiguration
 --
 Eine ASA -Konfiguration sollte eine Gruppe von aktiven/optimierten Pfaden mit jeweils einer Priorität aufweisen.  Der Controller verwaltet die Pfade und sendet E/A-Operationen auf allen aktiven Pfaden.
 
+.CLI Beispiel anzeigen
+[%collapsible]
+=====
+[listing]
+----
+MPIO Disk13: 04 Paths, Round Robin with Subset, Symmetric Access
+    Controlling DSM: Microsoft DSM
+    SN: 600A09803831397A545D586E362D2F54
+    Supported Load Balance Policies: FOO RR RRWS LQD WP LB
+
+    Path ID          State              SCSI Address      Weight
+    -------------------------------------------------------------
+    0000000077060001 Active/Optimized   006|000|001|013   0
+      TPG_State : Active/Optimized  , TPG_Id: 1001, : 4
+
+    0000000077060000 Active/Optimized   006|000|000|013   0
+      TPG_State : Active/Optimized  , TPG_Id: 1000, : 2
+
+    0000000077050001 Active/Optimized   005|000|001|013   0
+      TPG_State : Active/Optimized  , TPG_Id: 1001, : 3
+
+    0000000077050000 Active/Optimized   005|000|000|013   0
+      TPG_State : Active/Optimized  , TPG_Id: 1000, : 1
+----
+=====
+.UI Beispiel anzeigen
+[%collapsible]
+=====
 image::asa.png[Screenshot der ONTAP-LUN mit aktiven/optimierten Pfaden]
 
+=====
 --
 .AFF- oder FAS-Konfiguration
 --
 Eine AFF oder FAS Konfiguration sollte zwei Pfadgruppen mit unterschiedlichen Prioritäten aufweisen.  Die Pfade mit höherer Priorität sind aktiv/optimiert und werden von dem Controller bedient, auf dem sich das Aggregat befindet.  Die Pfade mit niedrigerer Priorität werden von einem anderen Controller bedient.  Sie sind aktiv, aber nicht optimiert und werden nur dann verwendet, wenn optimierte Pfade nicht verfügbar sind.
 
+.CLI Beispiel anzeigen
+[%collapsible]
+=====
+[listing]
+----
+MPIO Disk0: 04 Paths, Round Robin with Subset, Implicit Only
+    Controlling DSM: Microsoft DSM
+    SN: 600A0980383136724D5D546931437933
+    Supported Load Balance Policies: FOO RRWS LQD WP LB
+    Path ID          State              SCSI Address      Weight
+    -------------------------------------------------------------
+    0000000077010001 Active/Optimized   001|000|001|000   0
+      TPG_State : Active/Optimized  , TPG_Id: 1000, : 2
+
+    0000000077010000 Active/Unoptimized 001|000|000|000   0
+      TPG_State : Active/Unoptimized, TPG_Id: 1001, : 4
+
+    0000000077000001 Active/Unoptimized 000|000|001|000   0
+      TPG_State : Active/Unoptimized, TPG_Id: 1001, : 3
+
+    0000000077000000 Active/Optimized   000|000|000|000   0
+      TPG_State : Active/Optimized  , TPG_Id: 1000, : 1
+----
+=====
+.UI Beispiel anzeigen
+[%collapsible]
+=====
 image::nonasa.png[Screenshot einer ONTAP-LUN mit zwei aktiven/optimierten Pfaden und zwei aktiven/nicht optimierten Pfaden]
 
+=====
 --
 ====
 

@@ -57,7 +57,7 @@ devices {
 EOF
 ----
 ====
-. Beim erstmaligen Konfigurieren von Multipath kann es erforderlich sein, die Multipath-Dienste zu aktivieren und zu starten, damit die empfohlenen Einstellungen geladen werden:
+. Beim erstmaligen Konfigurieren von Multipathing kann es erforderlich sein, die Multipath-Dienste zu aktivieren und zu starten, damit die empfohlenen Einstellungen geladen werden:
 +
 [source, cli]
 ----
