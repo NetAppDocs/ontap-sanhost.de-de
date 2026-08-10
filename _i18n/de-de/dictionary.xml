@@ -745,9 +745,6 @@
   <block id="30d85838b9488ee908d075559c8978cd" category="doc">Verwenden Sie VMware vSphere 8.x mit ONTAP</block>
   <block id="8d19958f3e338523c5e956fbddc3c9af" category="doc">Verwenden Sie VMware vSphere 6.5 und 6.7 mit ONTAP</block>
   <block id="40db5019ed68654f4eb2cf21ec5021db" category="doc">Verwenden Sie VMware vSphere 7.x mit ONTAP</block>
-  <block id="8a4e695bd23e65bc1993b3356eeb2277" category="sidebar">VERSIONSHINWEISE ZU AIX Host Utilities</block>
-  <block id="360baa7584a9f61d637775beeeeab041" category="sidebar">Versionshinweise zu HP-UX Host Utilities</block>
-  <block id="e8496e75812b6bc1fac8161323e4bf5f" category="sidebar">Versionshinweise zu Linux Host Utilities</block>
   <block id="83610226a06939c868c973094aaa036c" category="sidebar">Installieren und Konfigurieren von SAN-Hosts</block>
   <block id="984f04c55cb7e3836103c5de001d1b73" category="sidebar">Installieren Sie SAN Host Utilities</block>
   <block id="75fe51013726f2bbc2f27fa11e729441" category="sidebar">Konfigurieren Sie Hosts mit FCP und iSCSI</block>
@@ -1252,7 +1249,6 @@ Die Bindung des FC-Treibers wird von geändert<block ref="b9ca0a083600812be33f42
   <block id="fb47e45e6131ce8573db817dc34e3ba6" category="paragraph">Das folgende Beispiel zeigt eine <block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block> Paketversion:</block>
   <block id="d14319cd9fe8bb3c15b66611ee50ab63" category="paragraph">Das folgende Beispiel zeigt eine <block ref="d7deb22e6166f8cce87002f8f100fbe6" prefix=" " category="inline-code"></block> Paketversion:</block>
   <block id="353615218a31d80048bde6c36a52f6d6" category="list-text">Überprüfen Sie auf dem Host die Hostnqn-Zeichenfolge unter <block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block> :</block>
-  <block id="49254d029fbf5a05d560c49c65e3682d" category="paragraph">Das folgende Beispiel zeigt eine <block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> Version:</block>
   <block id="3c4d68a984cfab18b058f7614517f26b" category="list-text">Zeigen Sie die Modellnamen an:</block>
   <block id="61e9eafd114033b79115785b3c135abb" category="paragraph">Die folgende Ausgabe sollte angezeigt werden:</block>
   <block id="d474b8d44546ee3743d50d33e3e43016" category="list-text">Zeigen Sie die Modellbeschreibungen an:</block>
@@ -1939,12 +1935,10 @@ Die Bindung des FC-Treibers wird von geändert<block ref="b9ca0a083600812be33f42
   <block id="7b25b7a93bbe178f0d420e334d6ad6f8" category="example-title">NVMe/TCP-Beispiel anzeigen</block>
   <block id="9b477ce27ea88f4f85280e9cdee7c154" category="section-title">Schritt 4: Optional können Sie die iopolicy in den udev-Regeln ändern.</block>
   <block id="ac81318c5111726b893fa8dcdc177d9f" category="list-text">Laden Sie die udev-Regeln neu und wenden Sie die Änderungen an:</block>
-  <block id="44d5823b8f69c86c4a41c13b72067d2e" category="list-text">Überprüfen Sie die aktuelle E/A-Richtlinie für Ihr Subsystem.  Ersetzen Sie beispielsweise &lt;subsystem&gt;,<block ref="621b1b464ec30e8b168fcad04cefe44c" prefix=" " category="inline-code"></block> Die</block>
   <block id="02e6f562a82adc38b8762b8d4fc3c8c2" category="section-title">Schritt 5: Optional: Aktivieren Sie 1 MB I/O für NVMe/FC.</block>
   <block id="e6b3c2c8d823bf042f0e8e9e02dabf14" category="section-title">Schritt 6: NVMe-Bootdienste überprüfen</block>
   <block id="378f49529e98279285d9a2eb0d2b3e5e" category="section-title">Schritt 7: Überprüfen Sie die Multipathing-Konfiguration</block>
   <block id="f12463db66bb26df5aae5e1aa393205f" category="summary">Erfahren Sie mehr über ONTAP Unterstützung und -Funktionen für RHEL-Hosts.</block>
-  <block id="d4063c82026eda59b5c15cca38aa9b92" category="paragraph">Die für die Hostkonfiguration mit NVMe over Fabrics (NVMe-oF) unterstützten Funktionen variieren je nach Ihrer ONTAP und RHEL-Version.</block>
   <block id="21021ea0e52be8e9c599f4dff41e5be0" category="cell">Funktion</block>
   <block id="6f22b33e80795a1f6ae056be55236d14" category="cell">RHEL-Hostversion</block>
   <block id="a7a75f073b67f15aafda088b8cefbc56" category="cell">Eine sichere In-Band-Authentifizierung wird über NVMe/TCP zwischen einem RHEL-Host und einem ONTAP Controller unterstützt.</block>
@@ -1970,7 +1964,6 @@ Die Bindung des FC-Treibers wird von geändert<block ref="b9ca0a083600812be33f42
   <block id="ea103ce11fa3acd9ff613573f07e83a8" category="paragraph"><block ref="ea103ce11fa3acd9ff613573f07e83a8" category="inline-link-macro-rx"></block></block>
   <block id="46df6d1dcf1bfe1d293e698a53cb025f" category="inline-link-macro">Rocky Linux ONTAP Unterstützung und Funktionen</block>
   <block id="fc35bf5b5ac3f79b1fa6a280a58f05d4" category="summary">Erfahren Sie mehr über ONTAP Unterstützung und -Funktionen für Rocky Linux.</block>
-  <block id="d4c250eac77deea13f8e9d9293a5aad2" category="paragraph">Die für die Hostkonfiguration mit NVMe over Fabrics (NVMe-oF) unterstützten Funktionen variieren je nach Ihrer Version von ONTAP und Rocky Linux.</block>
   <block id="3127b50785e82cd676744d9673a7bb86" category="cell">Rocky Linux Hostversion</block>
   <block id="2589c63c17df176e198728a79c3e5212" category="cell">"stets"</block>
   <block id="2f7bb230c70819aeb10b45a709bcf48f" category="cell">"1"</block>
@@ -1980,7 +1973,6 @@ Die Bindung des FC-Treibers wird von geändert<block ref="b9ca0a083600812be33f42
   <block id="e357b4342a0f3c9f0335b0a8236f0f56" category="admonition">Standardmäßig setzt die Proxmox OS-native Multipath-Konfiguration<block ref="19b30dc119e514235b739e076be9b3cc" prefix=" " category="inline-code"></block> zu "*strict*" mit dem leeren Nullbyte<block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> Die Konfigurationsdatei wird bei jedem Neustart des Hosts neu erstellt.  Dies kann verhindern, dass der Host neu präsentierte ONTAP LUNs als Multipath-Geräte erkennt, was bedeutet, dass sie nicht automatisch unter Multipath-Steuerung erscheinen.  Vorhandene ONTAP -LUNs bleiben nach jedem Neustart erkannt und unter Multipath-Steuerung.</block>
   <block id="d916cdb52453f1297e01a7f2fb93f68b" category="paragraph">Das folgende Beispiel zeigt die Ausgabe für eine ONTAP LUN mit zwei aktiven/optimierten Pfaden und zwei aktiven/nicht optimierten Pfaden:</block>
   <block id="62f90d2b36f26e75648f8fbc863d2103" category="summary">Erfahren Sie mehr über ONTAP Unterstützung und -Funktionen für Proxmox-Hosts.</block>
-  <block id="2b32731d6a5ce83c7ab86fa39ec46a48" category="paragraph">Die für die Hostkonfiguration mit NVMe over Fabrics (NVMe-oF) unterstützten Funktionen variieren je nach Ihrer ONTAP und Proxmox-Version.</block>
   <block id="0a0891df749e36f8a1da70eeb7191ff8" category="cell">ONTAP Funktion</block>
   <block id="458078e18e047c43a6e6db3e150f66f5" category="cell">Proxmox-Hostversion</block>
   <block id="56884779bcdf2531adce3644feb5d5ad" category="cell">Bietet ONTAP Details für die Namespaces NVMe/FC und NVMe/TCP unter Verwendung der nativen Schnittstelle.<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block> Paket.</block>
@@ -2021,7 +2013,6 @@ Die Bindung des FC-Treibers wird von geändert<block ref="b9ca0a083600812be33f42
   <block id="cbce5c9568a686f91b2dfcf39622b287" category="paragraph">Jedem Host oder Controller muss ein DH-HMAC-CHAP-Schlüssel zugeordnet werden, um eine sichere Authentifizierung einzurichten.  Ein DH-HMAC-CHAP-Schlüssel ist eine Kombination aus dem NQN des NVMe-Hosts oder -Controllers und einem vom Administrator konfigurierten Authentifizierungsgeheimnis.  Zur Authentifizierung seines Gegenübers muss ein NVMe-Host oder -Controller den zum Gegenüber gehörenden Schlüssel erkennen.</block>
   <block id="e908710b4eae6cf350cddad694d8c508" category="paragraph">Richten Sie eine sichere In-Band-Authentifizierung über die CLI oder eine Konfigurations-JSON-Datei ein.  Verwenden Sie eine Konfigurations-JSON-Datei, wenn Sie für verschiedene Subsysteme unterschiedliche DHCP-Schlüssel angeben müssen.</block>
   <block id="aadd5dd4ef730bc8b1907b50349be5cb" category="summary">Erfahren Sie mehr über ONTAP Unterstützung und -Funktionen für Oracle Linux-Hosts.</block>
-  <block id="5e793bc1edf7896fc852345e5935bc81" category="paragraph">Die für die Hostkonfiguration mit NVMe over Fabrics (NVMe-oF) unterstützten Funktionen variieren je nach Ihrer ONTAP und Oracle Linux-Version.</block>
   <block id="ca76f3f0a3ed2332a646952650c1cf27" category="cell">Oracle Linux Hostversion</block>
   <block id="fb4c2f51a68601e973070c8a2d8e5711" category="cell">Eine sichere In-Band-Authentifizierung wird über NVMe/TCP zwischen einem Oracle Linux-Host und einem ONTAP Controller unterstützt.</block>
   <block id="5af23e17fcc3aa14068c40f0b48ba010" category="paragraph">7.7 oder später</block>
@@ -2244,7 +2235,6 @@ Die Bindung des FC-Treibers wird von geändert<block ref="b9ca0a083600812be33f42
   <block id="1da01cb3100d9bb388efb9e186262255" category="admonition">Führen Sie die folgenden Schritte auf dem SUSE Linux Enterprise Server-Host durch, außer wenn angegeben ist, dass Sie einen Schritt auf dem ONTAP -Controller durchführen müssen.</block>
   <block id="a057c529e976cb9f30353b3692c8e99b" category="list-text">Überprüfen Sie, ob die entsprechenden NVMe-oF-Einstellungen (z. B. Modell auf NetApp ONTAP Controller und Load-Balancing-IOPolicy auf Warteschlangentiefe eingestellt) für die jeweiligen ONTAP Namespaces auf dem Host korrekt angezeigt werden:</block>
   <block id="64ccbcb7ba85078e4aa581abf43277d6" category="summary">Erfahren Sie mehr über ONTAP Unterstützung und -Funktionen für SUSE Linux Enterprise Server</block>
-  <block id="cf476c720a8f9dc9299ad07fa1d69acb" category="paragraph">Die für die Hostkonfiguration mit NVMe over Fabrics (NVMe-oF) unterstützten Funktionen variieren je nach Ihrer Version von ONTAP und SUSE Linux Enterprise Server.</block>
   <block id="3479c5cdc0aaf6372342ed77cae0fc6b" category="cell">SUSE Linux Enterprise Server Hostversion</block>
   <block id="4b5813f3f046cb084dc505581155b3c7" category="cell">Die Transport Layer Security (TLS) 1.3-Verschlüsselung wird für NVMe/TCP unterstützt.</block>
   <block id="55a1f114e0c7d755d2afcf382d5dee5f" category="paragraph">15 SP6 oder später</block>
@@ -2318,7 +2308,6 @@ Die Bindung des FC-Treibers wird von geändert<block ref="b9ca0a083600812be33f42
   <block id="be0724c20eae9509bfecb55613ead45c" category="paragraph">Sie können Multipathing mit SUSE Linux Enterprise Server 16 verwenden, um ONTAP LUNs zu verwalten.</block>
   <block id="40b573003d21aeb3dbe3d1c46c3c87af" category="cell">Wenn Ihre RHEL-Version ...</block>
   <block id="8637f659452959aafbb4798db09998d6" category="cell">Erfahren Sie mehr über ...</block>
-  <block id="06314aebedd665e513cf3a7e6c66f84b" category="cell">NVMe/TCP meldet alle optimierten Pfade für ASA r2 Systeme</block>
   <block id="c74d97b01eae257e44aa9d5bade97baf" category="paragraph">16</block>
   <block id="7ffe1b34523b105b2ec68027b4d78799" category="cell">Wenn Ihre SUSE Linux Enterprise Server Version ...</block>
   <block id="4563b4da24891c746834232492d8a6e9" category="inline-link-macro">NVMe für SUSE Linux Enterprise Server 16 konfigurieren</block>
@@ -2434,7 +2423,6 @@ Die Bindung des FC-Treibers wird von geändert<block ref="b9ca0a083600812be33f42
   <block id="de99ebfc9b67fc827d4b885ffe66df51" category="section-title">Schritt 3: Optional können Sie die iopolicy in den udev rules ändern</block>
   <block id="6c3cb6f0244406645b054fde3485555c" category="paragraph">Ab Proxmox VE 9.0 ist die Standard-iopolicy für NVMe-oF auf <block ref="f63d19812a9885e12a84d9c2748b701f" prefix=" " category="inline-code"></block> gesetzt. Wenn Sie die iopolicy auf <block ref="7b6d85eaafedeee6d733437bf856da7e" prefix=" " category="inline-code"></block> ändern möchten, was ebenfalls als konfigurierbare Option verfügbar ist, ändern Sie die udev-Regeldatei wie folgt:</block>
   <block id="3261e25ecb6c10cb23753dafcc11d3f3" category="list-text">Ändern Sie die Regel so, dass <block ref="f63d19812a9885e12a84d9c2748b701f" prefix=" " category="inline-code"></block> in <block ref="7b6d85eaafedeee6d733437bf856da7e" prefix=" " category="inline-code"></block> geändert wird, wie im folgenden Beispiel gezeigt:</block>
-  <block id="306924ca750fad388254a44133cf90dd" category="list-text">Überprüfen Sie die aktuelle iopolicy für Ihr Subsystem. Ersetzen Sie &lt;subsystem&gt; durch den Namen Ihres Subsystems, zum Beispiel nvme-subsys0.</block>
   <block id="98f6aa52f5f7e63bbceb451a95606fbb" category="paragraph">Die folgenden Beispielausgaben zeigen einen Namespace, der auf einem Zwei-Knoten ONTAP Controller für ein AFF, FAS, ASA oder ASA r2 System mit NVMe/FC gehostet wird.</block>
   <block id="838016fd6dff5a15cdfcd8e43e228f64" category="example-title">Beispielausgabe für AFF, FAS oder ASA anzeigen</block>
   <block id="bf9b5fcabbc1d24364d06d41207e081e" category="example-title">Beispielausgabe für ASA r2 anzeigen</block>
@@ -2450,10 +2438,7 @@ Die Bindung des FC-Treibers wird von geändert<block ref="b9ca0a083600812be33f42
   <block id="63c3f0dce3adfd21858e4906af8b540e" category="cell">ONTAP Knoten ist nicht betriebsbereit, wenn das NVMe/FC-Protokoll mit ONTAP Version 9.9.1 verwendet wird.</block>
   <block id="75fe6ffd14185a732fe5c93e3655894f" category="cell">ONTAP 9.9.1 hat die Unterstützung für den NVMe-Befehl „abort“ eingeführt. Wenn ONTAP den Befehl „abort“ zum Abbruch eines NVMe-Fused-Commands erhält, der auf seinen Partnerbefehl wartet, kommt es zu einer Unterbrechung des ONTAP-Knotens. Das Problem tritt nur bei Hosts auf, die NVMe-Fused-Commands (zum Beispiel ESX) und Fibre Channel (FC) als Transport verwenden.</block>
   <block id="8f0a705220613d95434cdb5a4fcab23b" category="paragraph">Linux-VMs, auf denen vSphere 8.x und höher ausgeführt werden und die virtuelle NVMe-Adapter (vNVMe) verwenden, stoßen auf einen E/A-Fehler, da die vNVMe-Wiederholungsfunktion standardmäßig deaktiviert ist. Um Unterbrechungen auf Linux-VMs mit älteren Kerneln während eines All Paths Down (APD) oder bei hoher E/A-Last zu vermeiden, hat VMware eine einstellbare Option „VSCSIDisableNvmeRetry“ eingeführt, um die vNVMe-Wiederholungsfunktion zu deaktivieren.</block>
-  <block id="f4e65c6a7acad92f689e43c9eec48742" category="list-title">Änderungen an iopolicy für RHEL 10.x-Releases</block>
   <block id="439f9f6575b13433a06a0706d7693a1a" category="list-text">Ab RHEL 10.1 ist die Standard-iopolicy queue-depth.</block>
-  <block id="fd7719d49078cb118a29c8a86504fdf9" category="list-text">In RHEL 10.0 ist round-robin die Standard-iopolicy, aber queue-depth ist als konfigurierbare Option verfügbar.</block>
-  <block id="f28c692e063dee2ca7081bc028b1d7c5" category="paragraph">Wenn Sie RHEL 10.0 verwenden und die iopolicy auf queue-depth ändern möchten, ändern Sie die udev-Regeldatei wie folgt:</block>
   <block id="729803330c2c3ddc5602fa6a32ed6680" category="paragraph">Die folgenden Beispielausgaben zeigen einen Namespace, der auf einem Zwei-Knoten ONTAP Controller für AFF, FAS und ASA Systeme sowie ASA r2 System mit NVMe/FC gehostet wird.</block>
   <block id="457f54f6cefd10b25a3bedd3ee0e4fa3" category="example-title">Beispielausgabe für AFF, FAS und ASA anzeigen</block>
   <block id="4cbc3c8523dd8f70db284b7defb44454" category="paragraph">Die folgenden Beispielausgaben zeigen einen Namespace, der auf einem Zwei-Knoten ONTAP Controller für AFF, FAS und ASA Systeme sowie ASA r2 Systeme mit NVMe/TCP gehostet wird.</block>
@@ -2521,4 +2506,31 @@ Die Bindung des FC-Treibers wird von geändert<block ref="b9ca0a083600812be33f42
   <block id="488a9fd122ccd8a3550ceee0ebaee2d4" category="paragraph">Die Linux Host Utilities Software bietet Verwaltungs- und Diagnosewerkzeuge für Linux-Hosts, die mit ONTAP Storage verbunden sind. Bei Installation der Linux Host Utilities auf einem Ubuntu 26.04 Host stehen Werkzeuge zur Verfügung, um FCP- und iSCSI-Protokollvorgänge mit ONTAP LUNs zu verwalten.</block>
   <block id="418d880dfd6db1f0486f40a57a8c26ed" category="paragraph">Multipathing kann unter Ubuntu 26.04 zur Verwaltung von ONTAP LUNs verwendet werden.</block>
   <block id="7f61a1ef5c19b945998122fe336af401" category="sidebar">26,04</block>
+  <block id="e7aa4fd55ab7603b35f7969a6fcab20b" category="list-text">Die aktuelle E/A-Richtlinie für Ihr Subsystem kann überprüft werden:</block>
+  <block id="7fdeebee493b9a3e417668ecac67c728" category="paragraph">Die für die Hostkonfiguration mit NVMe over Fabrics (NVMe-oF) unterstützten Funktionen variieren je nach Version von ONTAP und Oracle Linux.</block>
+  <block id="b4979b8a9257fbc55c7cf680ad6bbf80" category="cell">NVMe/FC und NVMe/TCP melden alle optimierten Pfade auf ASA r2 Systemen</block>
+  <block id="11b1dc19c767a0b45a9e30a60b2b5afc" category="paragraph">Die für die Hostkonfiguration mit NVMe over Fabrics (NVMe-oF) unterstützten Funktionen variieren je nach Version von ONTAP und Proxmox.</block>
+  <block id="25aca67f3cb7f286630b231a00c56019" category="paragraph">In RHEL 10.0 ist die Standard-iopolicy round-robin, aber queue-depth ist als konfigurierbare Option verfügbar. Wenn RHEL 10.0 verwendet wird, kann die iopolicy durch Ändern der udev-Regeldatei auf queue-depth geändert werden.</block>
+  <block id="60b443dae63268022d6d8cb29a7515ea" category="paragraph">Die für die Hostkonfiguration mit NVMe over Fabrics (NVMe-oF) unterstützten Funktionen variieren je nach ONTAP- und RHEL-Version.</block>
+  <block id="c5b4acb51d8f8e0f3d63059f404108e9" category="paragraph">Die für die Hostkonfiguration mit NVMe over Fabrics (NVMe-oF) unterstützten Funktionen variieren je nach Version von ONTAP und Rocky Linux.</block>
+  <block id="f5d5b6b76188147e08fc97838c63aedb" category="paragraph">Die für die Hostkonfiguration mit NVMe over Fabrics (NVMe-oF) unterstützten Funktionen variieren je nach Version von ONTAP und SUSE Linux Enterprise Server.</block>
+  <block id="a51fa2ba34acedf17303d054b76e428a" category="summary">Konfiguration eines NVMe-oF Hosts für Ubuntu 26.04 mit ONTAP</block>
+  <block id="8fa0482546afb346040f4dbb39661276" category="doc">Ubuntu 26.04 für NVMe-oF mit ONTAP-Speicher konfigurieren</block>
+  <block id="9caf2fb1bf5982cc741a5c2f794f853b" category="paragraph">NVMe over Fabrics (NVMe-oF), einschließlich NVMe over Fibre Channel (NVMe/FC) und anderer Transportprotokolle, wird mit Ubuntu 26.04 und Asymmetric Namespace Access (ANA) unterstützt. In NVMe-oF-Umgebungen ist ANA das Äquivalent zum ALUA-Multipathing in iSCSI- und FC-Umgebungen und wird mit dem In-Kernel-NVMe-Multipath implementiert.</block>
+  <block id="e8d64590f6be9f2c9ff88387a4abf120" category="paragraph">Erfahren Sie, wie Sie NVMe over Fabrics (NVMe-oF)-Hosts für Ubuntu 26.04 konfigurieren. Weitere Informationen zu Support und Funktionen finden Sie unter <block ref="2596c465ddd6c92fd8b161574a0cd8ba" category="inline-link-macro-rx"></block>.</block>
+  <block id="97ffae754cf814e6985756c1168c9a10" category="paragraph">NVMe-oF unter Ubuntu 26.04 weist die folgende bekannte Einschränkung auf:</block>
+  <block id="a46f34eff3c172bc38532f4cf3c4811f" category="list-text">Das Booten von SAN über das NVMe-oF-Protokoll wird derzeit für Ubuntu 26.04 mit ONTAP nicht unterstützt.</block>
+  <block id="bf8b1fce81489d764be3d568743fdf83" category="list-text">Ubuntu 26.04 auf dem Server installieren. Nach Abschluss der Installation prüfen, ob der angegebene Ubuntu 26.04 Kernel verwendet wird:</block>
+  <block id="ffadfa505e58f1ebeb4334eca156a444" category="list-text">Auf dem Ubuntu 26.04 Host ist die hostnqn-Zeichenkette unter <block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block> zu prüfen:</block>
+  <block id="8593527c6876ffc101e2719a307460da" category="open-title">NVMeFC - Broadcom/Emulex</block>
+  <block id="6fc67125255813aefa86f32cf03690d7" category="admonition">Die Standard-Zeitüberschreitungseinstellung für das ctrl_loss_tmo Timeout bei NVMe/TCP ist deaktiviert. Das bedeutet, dass es keine Begrenzung für die Anzahl der Wiederholungsversuche gibt (unbegrenzte Wiederholung) und Sie beim Verwenden der <block ref="9058603c510faa501774cf55475bb088" prefix=" " category="inline-code"></block> oder <block ref="90eeda0f5788d7d78c0f198b124712a3" prefix=" " category="inline-code"></block> Befehle (Option -l) keine spezifische ctrl_loss_tmo Timeout-Dauer manuell konfigurieren müssen. Mit diesem Standardverhalten treten bei den NVMe/TCP-Controllern im Falle eines Pfadausfalls keine Zeitüberschreitungen auf und die Verbindung bleibt unbegrenzt bestehen.</block>
+  <block id="4cfdf8b595448e666801f57090310d89" category="paragraph">Ab Ubuntu 26.04 ist die Standard-iopolicy für NVMe-oF auf queue-depth eingestellt. Die iopolicy kann durch Anpassen der udev-Regeln auf round-robin geändert werden.</block>
+  <block id="a5d96de75a58472d649446a14603e93c" category="list-text">Die Regel so anpassen, dass die Warteschlangenlänge im Round-Robin-Verfahren bestimmt wird:</block>
+  <block id="411bc5073b166037282a0e3f0baec62e" category="section-title">Schritt 6: Multipathing-Konfiguration überprüfen</block>
+  <block id="2ea88a411245c2900b718e27f1abb86d" category="paragraph">Für die NVMe-oF Hostkonfiguration unter Ubuntu 26.04 mit ONTAP Release sind keine Probleme bekannt.</block>
+  <block id="670b11ff0cf7a92ff726ef7719f50975" category="paragraph">Die für die Hostkonfiguration mit NVMe over Fabrics (NVMe-oF) unterstützten Funktionen variieren je nach Version von ONTAP und Ubuntu.</block>
+  <block id="b6f1ce68e66757960f053cc99fd4aef6" category="paragraph">26.04 oder höher</block>
+  <block id="b74c1a6422fd773c6a4cf77ef14675ae" category="cell">Die Standard-iopolicy für NVMe-oF ist auf queue-depth eingestellt.</block>
+  <block id="86c05a1fbdedf558f48b1ce3a99d9fe8" category="inline-link-macro">Konfiguration von NVMe für Ubuntu 26.04</block>
+  <block id="20f16eb182c0a9b085c8193d16ef0fb3" category="cell"><block ref="20f16eb182c0a9b085c8193d16ef0fb3" category="inline-link-macro-rx"></block></block>
 </blocks>

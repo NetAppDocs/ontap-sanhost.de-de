@@ -16,11 +16,16 @@ summary: Erfahren Sie mehr über ONTAP Unterstützung und -Funktionen für RHEL-
 
 
 [role="lead"]
-Die für die Hostkonfiguration mit NVMe over Fabrics (NVMe-oF) unterstützten Funktionen variieren je nach Ihrer ONTAP und RHEL-Version.
+Die für die Hostkonfiguration mit NVMe over Fabrics (NVMe-oF) unterstützten Funktionen variieren je nach ONTAP- und RHEL-Version.
 
 [cols="50,25,25"]
 |===
 | Funktion | RHEL-Hostversion | ONTAP-Version 
+
+
+| NVMe/FC und NVMe/TCP melden alle optimierten Pfade auf ASA r2 Systemen  a| 
+9.0 oder höher
+| 9.16.1 oder später 
 
 
 | Eine sichere In-Band-Authentifizierung wird über NVMe/TCP zwischen einem RHEL-Host und einem ONTAP Controller unterstützt.  a| 

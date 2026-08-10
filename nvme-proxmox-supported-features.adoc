@@ -16,11 +16,16 @@ summary: Erfahren Sie mehr über ONTAP Unterstützung und -Funktionen für Proxm
 
 
 [role="lead"]
-Die für die Hostkonfiguration mit NVMe over Fabrics (NVMe-oF) unterstützten Funktionen variieren je nach Ihrer ONTAP und Proxmox-Version.
+Die für die Hostkonfiguration mit NVMe over Fabrics (NVMe-oF) unterstützten Funktionen variieren je nach Version von ONTAP und Proxmox.
 
 [cols="30,20,20"]
 |===
 | ONTAP Funktion | Proxmox-Hostversion | ONTAP-Version 
+
+
+| NVMe/FC und NVMe/TCP melden alle optimierten Pfade auf ASA r2 Systemen  a| 
+9.0 oder höher
+| 9.16.1 oder später 
 
 
 | NVMe/TCP ist eine vollständig unterstützte Unternehmensfunktion.  a| 

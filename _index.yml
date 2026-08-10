@@ -15,7 +15,7 @@ indexpage:
     links:
     - title: Informieren Sie sich über SAN-Host-Konfigurationen
       url: "/overview.html"
-    - title: VERSIONSHINWEISE ZU AIX Host Utilities
+    - title: VERSIONSHINWEISE zu AIX Host Utilities
       url: "/hu-aix-release-notes.html"
     - title: Versionshinweise zu HP-UX Host Utilities
       url: "/hu-hpux-release-notes.html"

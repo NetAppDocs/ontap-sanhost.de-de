@@ -79,7 +79,7 @@ ACTION=="add", SUBSYSTEMS=="nvme-subsystem", ATTRS{model}=="NetApp ONTAP Control
 cat /etc/nvme/hostnqn
 ----
 +
-Das folgende Beispiel zeigt eine  `hostnqn` Version:
+Das folgende Beispiel zeigt eine `hostnqn` Wert:
 
 +
 [listing]

@@ -16,14 +16,14 @@ summary: Erfahren Sie mehr über ONTAP Unterstützung und -Funktionen für SUSE 
 
 
 [role="lead"]
-Die für die Hostkonfiguration mit NVMe over Fabrics (NVMe-oF) unterstützten Funktionen variieren je nach Ihrer Version von ONTAP und SUSE Linux Enterprise Server.
+Die für die Hostkonfiguration mit NVMe over Fabrics (NVMe-oF) unterstützten Funktionen variieren je nach Version von ONTAP und SUSE Linux Enterprise Server.
 
 [cols="50,25,25"]
 |===
 | Funktion | SUSE Linux Enterprise Server Hostversion | ONTAP-Version 
 
 
-| NVMe/TCP meldet alle optimierten Pfade für ASA r2 Systeme  a| 
+| NVMe/FC und NVMe/TCP melden alle optimierten Pfade auf ASA r2 Systemen  a| 
 16
 | 9.16.1 oder später 
 
