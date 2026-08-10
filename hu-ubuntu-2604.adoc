@@ -1,0 +1,434 @@
+---
+sidebar: sidebar 
+permalink: hu-ubuntu-2604.html 
+keywords: host utilities, linux, ubuntu, 26.04, netapp, ontap, fcp, iscsi 
+summary: Linux Host Utilities auf einem Ubuntu 26.04 Host installieren, um FCP und iSCSI Protokolloperationen mit ONTAP LUNs zu verwalten. 
+---
+= Ubuntu 26.04 für FCP und iSCSI mit ONTAP Speicher konfigurieren
+:hardbreaks:
+:toclevels: 1
+:allow-uri-read: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Die Linux Host Utilities Software bietet Verwaltungs- und Diagnosewerkzeuge für Linux-Hosts, die mit ONTAP Storage verbunden sind. Bei Installation der Linux Host Utilities auf einem Ubuntu 26.04 Host stehen Werkzeuge zur Verfügung, um FCP- und iSCSI-Protokollvorgänge mit ONTAP LUNs zu verwalten.
+
+
+
+[[step-1-optionally-enable-san-booting]]
+== Schritt 1: Aktivieren Sie optional den SAN-Bootvorgang
+
+Sie können Ihren Host so konfigurieren, dass er SAN-Booting verwendet, um die Bereitstellung zu vereinfachen und die Skalierbarkeit zu verbessern.
+
+.Bevor Sie beginnen
+Überprüfen Sie mithilfe deslink:https://mysupport.netapp.com/matrix/#welcome["Interoperabilitäts-Matrix-Tool"^], ob Ihr Linux-Betriebssystem, Ihr Host Bus Adapter (HBA), die HBA-Firmware, das HBA-Boot-BIOS und die ONTAP-Version das Booten über das SAN unterstützen.
+
+.Schritte
+. link:https://docs.netapp.com/us-en/ontap/san-admin/provision-storage.html["Erstellen Sie eine SAN-Boot-LUN und ordnen Sie sie dem Host zu"^].
+. Aktivieren Sie das SAN-Booten im Server-BIOS für die Ports, denen die SAN-Boot-LUN zugeordnet ist.
++
+Informationen zum Aktivieren des HBA-BIOS finden Sie in der anbieterspezifischen Dokumentation.
+
+. Überprüfen Sie, ob die Konfiguration erfolgreich war, indem Sie den Host neu starten und überprüfen, ob das Betriebssystem ausgeführt wird.
+
+
+
+
+[[step-2-install-the-linux-host-utilities]]
+== Schritt 2: Installieren Sie die Linux Host Utilities
+
+NetApp empfiehlt dringend die Installation der Linux Host Utilities, um die ONTAP LUN-Verwaltung zu unterstützen, und den technischen Support beim Sammeln von Konfigurationsdaten zu unterstützen.
+
+link:hu-luhu-80.html["Installieren Sie Linux Host Utilities 8.0"] .
+
+
+NOTE: Durch die Installation der Linux Host Utilities werden keine Host-Timeout-Einstellungen auf Ihrem Linux-Host geändert.
+
+
+
+[[step-3-confirm-the-multipath-configuration-for-your-host]]
+== Schritt 3: Bestätigen Sie die Multipath-Konfiguration für Ihren Host
+
+Multipathing kann unter Ubuntu 26.04 zur Verwaltung von ONTAP LUNs verwendet werden.
+
+Um sicherzustellen, dass Multipathing für Ihren Host korrekt konfiguriert ist, überprüfen Sie, ob die `/etc/multipath.conf` Datei definiert ist und ob die von NetApp empfohlenen Einstellungen für Ihre ONTAP LUNs konfiguriert sind.
+
+.Schritte
+. Überprüfen Sie, ob die `/etc/multipath.conf` Datei beendet wird. Wenn die Datei nicht vorhanden ist, erstellen Sie eine leere, Null-Byte-Datei:
++
+[source, cli]
+----
+touch /etc/multipath.conf
+----
+. Beim ersten Erstellen der `multipath.conf` Datei müssen Sie möglicherweise die Multipath-Services aktivieren und starten, um die empfohlenen Einstellungen zu laden:
++
+[source, cli]
+----
+systemctl enable multipathd
+----
++
+[source, cli]
+----
+systemctl start multipathd
+----
+. Jedes Mal, wenn Sie den Host starten, lädt die leere `/etc/multipath.conf` Zero-Byte-Datei automatisch die von NetApp empfohlenen Multipath-Parameter als Standardeinstellungen. Sie sollten keine Änderungen an der Datei für Ihren Host vornehmen `/etc/multipath.conf` müssen, da das Betriebssystem mit den Multipath-Parametern kompiliert wird, die ONTAP-LUNs korrekt erkennen und verwalten.
++
+In der folgenden Tabelle sind die nativen kompilierten Multipath-Parametereinstellungen für ONTAP LUNs unter Linux aufgeführt.
+
++
+.Parametereinstellungen anzeigen
+[%collapsible]
+====
+[[multipath-parameter-settings]]
+[cols="2"]
+|===
+| Parameter | Einstellung 
+
+
+| Erkennen_Prio | ja 
+
+
+| Dev_Loss_tmo | „Unendlich“ 
+
+
+| Failback | Sofort 
+
+
+| Fast_io_fail_tmo | 5 
+
+
+| Funktionen | „2 pg_init_retries 50“ 
+
+
+| Flush_on_Last_del | „ja“ 
+
+
+| Hardware_Handler | „0“ 
+
+
+| Kein_PATH_retry | Warteschlange 
+
+
+| PATH_Checker | „nur“ 
+
+
+| Path_Grouping_Policy | „Group_by_prio“ 
+
+
+| Pfad_Auswahl | „Servicezeit 0“ 
+
+
+| Polling_Interval | 5 
+
+
+| prio | ONTAP 
+
+
+| Produkt | LUN 
+
+
+| Beibehalten_Attached_hw_Handler | ja 
+
+
+| rr_weight | „Einheitlich“ 
+
+
+| User_friendly_names | Nein 
+
+
+| Anbieter | NETAPP 
+|===
+====
+. Überprüfen Sie die Parametereinstellungen und den Pfadstatus für Ihre ONTAP LUNs:
++
+[source, cli]
+----
+multipath -ll
+----
++
+Die standardmäßigen Multipath-Parameter unterstützen ASA, AFF und FAS Konfigurationen. In diesen Konfigurationen sollte eine einzelne ONTAP LUN nicht mehr als vier Pfade benötigen. Mehr als vier Pfade können bei einem Speicherausfall Probleme verursachen.
+
++
+Die Ausgaben im folgenden Beispiel zeigen die korrekten Parametereinstellungen und den Pfadstatus für ONTAP LUNs in einer ASA-, AFF- oder FAS-Konfiguration.
+
++
+[role="tabbed-block"]
+====
+.ASA-Konfiguration
+--
+Eine ASA Konfiguration optimiert alle Pfade zu einer bestimmten LUN und hält sie aktiv. Dies verbessert die Performance, da I/O-Operationen über alle Pfade gleichzeitig ausgeführt werden können.
+
+.Beispiel anzeigen
+[%collapsible]
+=====
+[listing]
+----
+# multipath -ll
+3600a098038314559533f524d6c652f62 dm-24 NETAPP,LUN C-Mode
+size=10G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
+`-+- policy='service-time 0' prio=50 status=active
+  |- 11:0:1:13 sdm  8:192  active ready running
+  |- 11:0:3:13 sdah 66:16  active ready running
+  |- 12:0:1:13 sdbc 67:96  active ready running
+  `- 12:0:3:13 sdbx 68:176 active ready running
+----
+=====
+--
+.AFF- oder FAS-Konfiguration
+--
+Eine AFF- oder FAS-Konfiguration sollte zwei Pfadgruppen mit höheren und niedrigeren Prioritäten aufweisen. Aktiv/optimierte Pfade mit höherer Priorität werden vom Controller bedient, wo sich das Aggregat befindet. Pfade mit niedriger Priorität sind aktiv, jedoch nicht optimiert, da sie von einem anderen Controller bedient werden. Nicht optimierte Pfade werden nur verwendet, wenn keine optimierten Pfade verfügbar sind.
+
+Im folgenden Beispiel wird die Ausgabe für eine ONTAP-LUN mit zwei aktiv/optimiert-Pfaden und zwei aktiv/nicht-optimierten Pfaden angezeigt:
+
+.Beispiel anzeigen
+[%collapsible]
+=====
+[listing]
+----
+# multipath -ll
+3600a098038314837352453694b542f4a dm-0 NETAPP,LUN C-Mode
+size=160G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
+|-+- policy='service-time 0' prio=50 status=active
+| |- 14:0:3:0 sdbk 67:224 active ready running
+| `- 15:0:2:0 sdbl 67:240 active ready running
+`-+- policy='service-time 0' prio=10 status=enabled
+  |- 14:0:0:0 sda  8:0    active ready running
+  `- 15:0:1:0 sdv  65:80  active ready running
+----
+=====
+--
+====
+
+
+
+
+[[step-4-confirm-the-iscsi-configuration-for-your-host]]
+== Schritt 4: Bestätigen Sie die iSCSI-Konfiguration für Ihren Host
+
+Stellen Sie sicher, dass iSCSI für Ihren Host korrekt konfiguriert ist.
+
+.Über diese Aufgabe
+Sie führen die folgenden Schritte auf dem iSCSI-Host durch.
+
+.Schritte
+. Überprüfen Sie, ob das iSCSI-Initiator-Paket (open-iscsi) installiert ist:
++
+[source, cli]
+----
+$apt list |grep open-iscsi
+----
++
+Sie sollten eine Ausgabe ähnlich dem folgenden Beispiel sehen:
+
++
+[listing]
+----
+open-iscsi/noble-updates,noble-updates,now 2.1.9-3ubuntu5.4 amd64
+----
+. Überprüfen Sie den iSCSI-Initiator-Node-Name, der sich in der  `/etc/iscsi/initiatorname.iscsi` Datei befindet:
++
+[source, cli]
+----
+InitiatorName=iqn.YYYY-MM.com.<vendor>:<host_name>
+----
+. Konfigurieren Sie den iSCSI-Session-Zeitüberschreitungsparameter in der  `/etc/iscsi/iscsid.conf` Datei:
++
+[source, cli]
+----
+node.session.timeo.replacement_timeout = 5
+----
++
+Der iSCSI `replacement_timeout` Parameter steuert, wie lange die iSCSI-Schicht warten soll, bis sich ein Pfad oder eine Sitzung mit Zeitüberschreitung wieder selbst herstellt, bevor Befehle darauf fehlschlagen. Sie sollten den Wert von `replacement_timeout` in der iSCSI-Konfigurationsdatei auf 5 setzen.
+
+. Aktivieren Sie den iSCSI-Service:
++
+[source, cli]
+----
+$systemctl enable iscsid
+----
+. Starten Sie den iSCSI-Service:
++
+[source, cli]
+----
+$systemctl start iscsid
+----
+. Überprüfen Sie, ob der iSCSI-Service ausgeführt wird:
++
+[source, cli]
+----
+$systemctl status iscsid
+----
++
+.Beispiel anzeigen
+[%collapsible]
+====
+[listing]
+----
+●iscsid.service - iSCSI initiator daemon (iscsid)
+     Loaded: loaded (/usr/lib/systemd/system/iscsid.service; enabled; preset: disabled)
+     Active: active (running) since Mon 2026-01-12 12:53:18 IST; 2 days ago
+TriggeredBy: ● iscsid.socket
+       Docs: man:iscsid(8)
+   Main PID: 1127419 (iscsid)
+      Tasks: 2 (limit: 76557)
+     Memory: 4.3M (peak: 8.8M)
+        CPU: 1.657s
+     CGroup: /system.slice/iscsid.service
+             ├─1127418 /usr/sbin/iscsid
+             └─1127419 /usr/sbin/iscsid
+----
+====
+. Ermitteln Sie die iSCSI-Ziele:
++
+[source, cli]
+----
+$iscsiadm --mode discovery --op update --type sendtargets --portal <target_IP>
+----
++
+.Beispiel anzeigen
+[%collapsible]
+====
+[listing]
+----
+iscsiadm --mode discovery --op update --type sendtargets --portal 192.168.166.70
+192.168.166.70:3260,1042 iqn.1992-08.com.netapp:sn.c770be5d934811f0b624d039eac809ba:vs.5
+192.168.165.71:3260,1045 iqn.1992-08.com.netapp:sn.c770be5d934811f0b624d039eac809ba:vs.5
+192.168.165.70:3260,1044 iqn.1992-08.com.netapp:sn.c770be5d934811f0b624d039eac809ba:vs.5
+192.168.166.71:3260,1043 iqn.1992-08.com.netapp:sn.c770be5d934811f0b624d039eac809ba:vs.5
+----
+====
+. Melden Sie sich bei den Targets an:
++
+[source, cli]
+----
+$iscsiadm --mode node -l all
+----
+. Stellen Sie iSCSI so ein, dass es sich beim Hochfahren des Hosts automatisch anmeldet:
++
+[source, cli]
+----
+$iscsiadm --mode node -T <target_name> -p <ip:port> -o update -n node.startup -v automatic
+----
++
+Ersetzen Sie  `<target_name>` durch den Zielnamen, bei dem Sie sich beim Hochfahren des Hosts automatisch anmelden möchten. Ersetzen Sie  `<ip:port>` durch die IP-Adresse und Portnummer des Ziels. Beispiel:
+
++
+[source, cli]
+----
+iscsiadm --mode node -T iqn.1992-08.com.netapp:sn.c770be5d934811f0b624d039eac809ba:vs.5 -p 192.168.166.70:3260 -o update -n node.startup -v automatic
+----
+. Überprüfen Sie die iSCSI-Sitzungen:
++
+[source, cli]
+----
+$iscsiadm --mode session
+----
++
+.Beispiel anzeigen
+[%collapsible]
+====
+[listing]
+----
+iscsiadm --mode session
+tcp: [1] 192.168.166.71:3260,1043 iqn.1992-08.com.netapp:sn.c770be5d934811f0b624d039eac809ba:vs.5 (non-flash)
+tcp: [2] 192.168.165.71:3260,1045 iqn.1992-08.com.netapp:sn.c770be5d934811f0b624d039eac809ba:vs.5 (non-flash)
+tcp: [3] 192.168.165.70:3260,1044 iqn.1992-08.com.netapp:sn.c770be5d934811f0b624d039eac809ba:vs.5 (non-flash)
+tcp: [4] 192.168.166.70:3260,1042 iqn.1992-08.com.netapp:sn.c770be5d934811f0b624d039eac809ba:vs.5 (non-flash)
+----
+====
+
+
+
+
+[[step-5-optionally-exclude-a-device-from-multipathing]]
+== Schritt 5: Optional ein Gerät von der Multipathing-Funktion ausschließen
+
+Bei Bedarf können Sie ein Gerät vom Multipathing ausschließen, indem Sie die WWID für das unerwünschte Gerät der „Blacklist“-Strophe für die Datei hinzufügen `multipath.conf`.
+
+.Schritte
+. Bestimmen Sie die WWID:
++
+[source, cli]
+----
+/lib/udev/scsi_id -gud /dev/sda
+----
++
+„sda“ ist die lokale SCSI-Festplatte, die Sie der Blacklist hinzufügen möchten.
+
++
+Ein Beispiel WWID ist `360030057024d0730239134810c0cb833`.
+
+. Fügen Sie die WWID der schwarzen Liste hinzu:
++
+[source, cli]
+----
+blacklist {
+        wwid   360030057024d0730239134810c0cb833
+        devnode "^(ram|raw|loop|fd|md|dm-|sr|scd|st)[0-9]*"
+        devnode "^hd[a-z]"
+        devnode "^cciss.*"
+}
+----
+
+
+
+
+[[step-6-customize-multipath-parameters-for-ontap-luns]]
+== Schritt 6: Multipath-Parameter für ONTAP LUNs anpassen
+
+Wenn Ihr Host mit LUNs anderer Anbieter verbunden ist und einer der Multipath-Parameter überschrieben wurde, müssen diese korrigiert werden, indem entweder ein vorhandener Abschnitt geändert oder ein neuer Abschnitt in der  `multipath.conf` Datei hinzugefügt wird, der speziell für ONTAP LUNs gilt. Im unteren Bereich der Datei finden sich die Änderungen, die für Ihren Host relevant sind. Werden die Parameter nicht korrigiert, funktionieren die ONTAP LUNs möglicherweise nicht wie erwartet.
+
+Überprüfen Sie Ihre `/etc/multipath.conf` Datei, insbesondere im Abschnitt Standardeinstellungen, auf Einstellungen, die die überschreiben könnten<<multipath-parameter-settings,Standardeinstellungen für Multipath-Parameter>>.
+
+
+CAUTION: Die empfohlenen Parametereinstellungen für ONTAP LUNs sollten Sie nicht außer Kraft setzen. Diese Einstellungen sind für eine optimale Performance Ihrer Hostkonfiguration erforderlich. Weitere Informationen erhalten Sie vom NetApp-Support, vom Hersteller Ihres Betriebssystems oder von beiden.
+
+Das folgende Beispiel zeigt, wie eine überhielte Standardeinstellung korrigiert wird. In diesem Beispiel definiert die `multipath.conf` Datei Werte für `path_checker` und `no_path_retry`, die nicht mit ONTAP-LUNs kompatibel sind. Sie können diese Parameter nicht entfernen, da ONTAP-Speicher-Arrays noch mit dem Host verbunden sind. Stattdessen korrigieren Sie die Werte für `path_checker` und `no_path_retry`, indem Sie der Datei, die speziell auf die ONTAP-LUNs zutrifft, eine Gerätestanze hinzufügen `multipath.conf`.
+
+.Beispiel anzeigen
+[%collapsible]
+====
+[listing, subs="+quotes"]
+----
+defaults {
+   path_checker      *readsector0*
+   no_path_retry     *fail*
+}
+
+devices {
+   device {
+      vendor          "NETAPP"
+      product         "LUN"
+      no_path_retry   *queue*
+      path_checker    *tur*
+   }
+}
+----
+====
+
+
+[[step-7-review-the-known-issues]]
+== Schritt 7: Überprüfen Sie die bekannten Probleme
+
+Es sind keine Probleme bekannt.
+
+
+
+[[whats-next]]
+== Was kommt als Nächstes?
+
+* link:hu-luhu-command-reference.html["Erfahren Sie mehr über die Verwendung des Linux Host Utilities-Tools"] .
+* Erfahren Sie mehr über ASM-Spiegelung.
++
+Bei der ASM-Spiegelung (Automatic Storage Management) sind möglicherweise Änderungen an den Linux Multipath-Einstellungen erforderlich, damit ASM ein Problem erkennen und zu einer alternativen Fehlergruppe wechseln kann. Die meisten ASM-Konfigurationen auf ONTAP verwenden externe Redundanz, was bedeutet, dass Datenschutz vom externen Array bereitgestellt wird und ASM keine Daten spiegelt. Einige Standorte verwenden ASM mit normaler Redundanz, um normalerweise zwei-Wege-Spiegelung über verschiedene Standorte hinweg bereitzustellen. Weitere Informationen finden Sie unterlink:https://docs.netapp.com/us-en/ontap-apps-dbs/oracle/oracle-overview.html["Oracle-Datenbanken auf ONTAP"^].
+
+* Erfahren Sie mehr über Ubuntu Linux Virtualisierung (KVM).
++
+Ubuntu Linux kann als KVM-Host dienen. Dies ermöglicht es Ihnen, mehrere virtuelle Maschinen auf einem einzigen physischen Server mithilfe der Linux Kernel-based Virtual Machine (KVM)-Technologie auszuführen. Der KVM-Host benötigt keine expliziten Hostkonfigurationseinstellungen für ONTAP LUNs.
+
+
