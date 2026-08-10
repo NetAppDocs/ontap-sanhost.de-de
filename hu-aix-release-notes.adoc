@@ -70,9 +70,5 @@ link:https://mysupport.netapp.com/site/["NetApp Bugs Online"^] Bietet vollständ
 * FCP – AIX
 
 
-
-
-[[whats-next]]
-== Was kommt als Nächstes?
-
+.Was kommt als nächstes
 link:hu-aix-80.html["Informationen zur Installation von AIX Host Utilities"]

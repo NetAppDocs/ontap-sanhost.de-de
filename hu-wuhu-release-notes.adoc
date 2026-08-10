@@ -57,9 +57,5 @@ Sie sollten sich der folgenden bekannten Probleme und Einschränkungen bewusst s
 |===
 link:https://mysupport.netapp.com/site/bugs-online/product["NetApp Bugs Online"^] Bietet vollständige Informationen für die meisten bekannten Probleme, einschließlich Lösungsvorschläge, falls möglich.
 
-
-
-[[whats-next]]
-== Was kommt als nächstes
-
+.Was kommt als nächstes
 link:hu-wuhu-80.html["Erfahren Sie mehr über die Installation von Windows Host Utilities"]

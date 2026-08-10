@@ -419,11 +419,7 @@ devices {
 
 Es sind keine Probleme bekannt.
 
-
-
-[[whats-next]]
-== Was kommt als Nächstes?
-
+.Was kommt als nächstes
 * link:hu-luhu-command-reference.html["Erfahren Sie mehr über die Verwendung des Linux Host Utilities-Tools"] .
 * Erfahren Sie mehr über ASM-Spiegelung.
 +

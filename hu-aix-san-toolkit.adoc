@@ -34,9 +34,5 @@ data_vserver   /vol/vol4/lun4 hdisk14 fcs0   FCP      20g C
 
 NOTE: Das SAN Toolkit ist für alle AIX-Hostkonfigurationen und Transportprotokolle gleich.  Daher sind nicht alle Komponenten für jede Konfiguration gültig.  Nicht verwendete Komponenten beeinträchtigen die Leistung Ihres Systems nicht.  Das SAN Toolkit wird auf den Betriebssystemversionen AIX und PowerVM/VIOS unterstützt.
 
-
-
-[[whats-next]]
-== Was kommt als Nächstes?
-
+.Was kommt als nächstes
 link:hu-aix-command-reference.html["Erfahren Sie mehr über die Verwendung des AIX Host Utilities-Tools"] .

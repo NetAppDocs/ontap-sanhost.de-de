@@ -421,11 +421,7 @@ Es sind keine Probleme bekannt.
 
 Informationen zu bekannten Kernelproblemen von CentOS Red Hat finden Sie in der link:hu-rhel-8x.html#step-7-review-the-known-issues["Bekannte Probleme"] für die Red Hat Enterprise Linux (RHEL) 8.x-Serie.
 
-
-
-[[whats-next]]
-== Was kommt als Nächstes?
-
+.Was kommt als nächstes
 * link:hu-luhu-command-reference.html["Erfahren Sie mehr über die Verwendung des Linux Host Utilities-Tools"] .
 * Erfahren Sie mehr über ASM-Spiegelung.
 +

@@ -1,10 +1,6 @@
-= Wie geht es weiter?
+= 
 :allow-uri-read: 
 
 
-
-
-[[whats-next]]
-== Was kommt als Nächstes?
-
+.Was kommt als nächstes
 link:hu-solaris-command-reference.html["Erfahren Sie mehr über die Verwendung des Solaris Host Utilities-Tools"] .

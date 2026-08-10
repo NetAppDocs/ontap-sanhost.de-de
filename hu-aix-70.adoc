@@ -149,9 +149,5 @@ PdAt:
 ----
 
 
-
-
-[[whats-next]]
-== Was kommt als Nächstes?
-
+.Was kommt als nächstes
 link:hu-aix-san-toolkit.html["Erfahren Sie mehr über das AIX SAN Toolkit"] .

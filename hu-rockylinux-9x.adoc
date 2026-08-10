@@ -460,11 +460,7 @@ Rocky Linux 9.x mit ONTAP -Speicher weist folgende bekannte Probleme auf.
 |===
 --
 ====
-
-
-[[whats-next]]
-== Was kommt als Nächstes?
-
+.Was kommt als nächstes
 * link:hu-luhu-command-reference.html["Erfahren Sie mehr über die Verwendung des Linux Host Utilities-Tools"] .
 * Erfahren Sie mehr über ASM-Spiegelung.
 +

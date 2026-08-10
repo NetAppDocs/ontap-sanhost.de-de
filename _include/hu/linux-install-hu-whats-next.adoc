@@ -1,12 +1,8 @@
-= Wie geht es weiter?
+= 
 :allow-uri-read: 
 
 
-
-
-[[whats-next]]
-== Was kommt als Nächstes?
-
+.Was kommt als nächstes
 * Empfohlene Treibereinstellungen mit Linux-Kernel
 +
 Wenn Sie eine FC-Umgebung konfigurieren, die native Inbox-Treiber verwendet, die mit dem Linux-Kernel gebündelt sind, können Sie die Standardwerte für die Treiber verwenden.

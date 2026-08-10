@@ -39,9 +39,5 @@ data_vserver                     /vol/vol3/lun4     /dev/rdsk/c0t600A09803830443
 
 NOTE: Dieses Toolkit ist für alle Host Utilities-Konfigurationen und -Protokolle gleich.  Daher sind nicht alle Komponenten für jede Konfiguration gültig.  Nicht verwendete Komponenten beeinträchtigen die Leistung Ihres Systems nicht.
 
-
-
-[[whats-next]]
-== Was kommt als Nächstes?
-
+.Was kommt als nächstes
 link:hu-solaris-command-reference.html["Erfahren Sie mehr über die Verwendung des Solaris Host Utilities-Tools"] .

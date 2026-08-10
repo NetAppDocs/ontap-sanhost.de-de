@@ -178,9 +178,5 @@ Bei der Version HP-UX 11i v3 mit ONTAP Speicher treten die folgenden bekannten P
 
 | 1306354 | Bei der LVM-Erstellung von HP-UX wird I/O von Blockgrößen über 1 MB gesendet | Die maximale SCSI-Übertragungslänge von 1 MB wird in ONTAP All SAN Array durchgesetzt. Um die maximale Übertragungslänge von HP-UX-Hosts einzuschränken, wenn eine Verbindung zu ONTAP All SAN Array besteht, müssen Sie die maximale E/A-Größe festlegen, die vom HP-UX SCSI-Subsystem zulässig ist, auf 1 MB. Weitere Informationen finden Sie in der Dokumentation des HP-UX-Anbieters. | NA 
 |===
-
-
-[[whats-next]]
-== Was kommt als nächstes
-
+.Was kommt als nächstes
 link:hu_hpux_60_cmd.html["Erfahren Sie mehr über die Verwendung des HP-UX Host Utilities-Tools"] .

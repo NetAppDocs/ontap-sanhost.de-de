@@ -412,11 +412,7 @@ devices {
 
 Es sind keine Probleme bekannt.
 
-
-
-[[whats-next]]
-== Was kommt als Nächstes?
-
+.Was kommt als nächstes
 * Erfahren Sie mehr über Ubuntu Linux Virtualisierung (KVM).
 +
 Ubuntu Linux kann als KVM-Host dienen. Dies ermöglicht es Ihnen, mehrere virtuelle Maschinen auf einem einzigen physischen Server mithilfe der Linux Kernel-based Virtual Machine (KVM)-Technologie auszuführen. Der KVM-Host benötigt keine expliziten Hostkonfigurationseinstellungen für ONTAP LUNs.

@@ -162,9 +162,5 @@ NOTE: Um die standardmäßigen Microsoft Installer-Optionen (MSI) für die Proto
 
 --
 ====
-
-
-[[whats-next]]
-== Was kommt als Nächstes?
-
+.Was kommt als nächstes
 link:hu-wuhu-configuration.html["Erfahren Sie mehr über die Konfiguration der Windows-Hostdienstprogramme für ONTAP -Speicher."]

@@ -23,9 +23,9 @@ Sie können NVMe over Fabrics (NVMe-of) auf Initiator-Hosts, die ESXi 8.x ausfü
 [[supportability]]
 == Instandhaltung
 
-* Ab ONTAP 9.16.1 ist die Speicherplatzzuweisung standardmäßig für alle neu erstellten NVMe-Namespaces aktiviert.
-* Ab ONTAP 9.9.1 P3 wird das NVMe/FC-Protokoll für ESXi 8 und höher unterstützt.
-* Ab ONTAP 9.10.1 wird das NVMe-/TCP-Protokoll für ONTAP unterstützt.
+* Ab ONTAP 9.16.1 ist die Speicherplatzzuweisung für alle neu erstellten NVMe Namespaces standardmäßig aktiviert.
+* Ab ONTAP 9.9.1 P3 ist das NVMe/FC-Protokoll für ESXi 8 unterstützt.
+* Ab ONTAP 9.10.1 wird das NVMe/TCP-Protokoll von ONTAP unterstützt.
 
 
 
