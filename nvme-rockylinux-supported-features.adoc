@@ -4,7 +4,7 @@ permalink: nvme-rockylinux-supported-features.html
 keywords: nvme, linux, rocky linux, red hat, enterprise 
 summary: Erfahren Sie mehr über ONTAP Unterstützung und -Funktionen für Rocky Linux. 
 ---
-= Erfahren Sie mehr über ONTAP Unterstützung und -Funktionen für Rocky Linux.
+= ONTAP Support und Funktionen für Rocky Linux
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 

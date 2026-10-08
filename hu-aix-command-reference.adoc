@@ -4,7 +4,7 @@ permalink: hu-aix-command-reference.html
 keywords: host utilities, aix, powervm, vios, 3.1, 7.2, 7.0, netapp, ontap 
 summary: Sie können die Beispielbefehlsreferenz des AIX Host Utilities-Beispiels für eine vollständige Validierung der NetApp Storage-Konfiguration mit dem Host Utilities Tool verwenden. 
 ---
-= Verwenden Sie AIX Host Utilities-Befehle, um die ONTAP Speicherkonfiguration zu überprüfen
+= AIX Host Utilities Befehle für die ONTAP Storage Konfiguration
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 

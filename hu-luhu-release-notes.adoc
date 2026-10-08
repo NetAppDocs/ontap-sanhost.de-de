@@ -4,7 +4,7 @@ permalink: hu-luhu-release-notes.html
 keywords: host utilities, linux, 7.1, netapp, ontap, release, notes, linux 
 summary: Versionshinweise für Linux-Host-Dienstprogramme 
 ---
-= Versionshinweise zu Linux Host Utilities
+= Versionshinweise zu Linux Host Utilities für ONTAP Storage
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 

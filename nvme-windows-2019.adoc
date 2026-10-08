@@ -4,7 +4,7 @@ permalink: nvme-windows-2019.html
 keywords: nvme, windows, enterprise 
 summary: 'Sie können NVMe over Fibre Channel (NVMe/FC) auf Hosts konfigurieren, auf denen Windows Server 2019 für den Betrieb mit ONTAP-LUNs ausgeführt wird.' 
 ---
-= NVMe/FC-Host-Konfiguration für Windows Server 2019 mit ONTAP
+= Konfiguration von Windows Server 2019 mit NVMe/FC für ONTAP Storage
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 

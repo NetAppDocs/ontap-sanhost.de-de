@@ -4,7 +4,7 @@ permalink: nvme-sles-supported-features.html
 keywords: nvme, linux, sles, SUSE Linux Enterprise Server, enterprise 
 summary: Erfahren Sie mehr über ONTAP Unterstützung und -Funktionen für SUSE Linux Enterprise Server 
 ---
-= Erfahren Sie mehr über ONTAP Unterstützung und -Funktionen für SUSE Linux Enterprise Server
+= Support und Funktionen von ONTAP für SUSE Linux Enterprise Server
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 

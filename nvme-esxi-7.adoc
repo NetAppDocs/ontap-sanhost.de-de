@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
 permalink: nvme-esxi-7.html 
-keywords: nvme, esxi, ontap, nvme/fc, hypervisor 
-summary: Beschreibt die Konfiguration von NVMe-of für ESXi 7.x mit ONTAP 
+keywords: nvme, esxi, ontap, nvme fc, hypervisor 
+summary: Konfiguration von NVMe-oF für ESXi 7.x Hosts mit ONTAP Storage. 
 ---
-= NVMe-of Host-Konfiguration für ESXi 7.x mit ONTAP
+= Konfiguration von ESXi 7.x für NVMe-oF mit ONTAP Storage
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -291,4 +291,4 @@ Die NVMe-of Hostkonfiguration für ESXi 7.x mit ONTAP weist folgende bekannte Pr
 | link:https://mysupport.netapp.com/site/bugs-online/product/ONTAP/BURT/1420654["1420654"^] | ONTAP Node ist nicht betriebsbereit, wenn das NVMe/FC-Protokoll mit ONTAP Version 9.9.1 verwendet wird | Prüfen und beheben Sie Netzwerkprobleme in der Host-Fabric. Wenn dies nicht hilft, aktualisieren Sie auf einen Patch, der dieses Problem behebt. 
 |===
 .Verwandte Informationen
-link:https://docs.netapp.com/us-en/ontap-apps-dbs/vmware/vmware-vsphere-overview.html["VMware vSphere mit ONTAP –"^] link:https://kb.vmware.com/s/article/2031038["Unterstützung von VMware vSphere 5.x, 6.x und 7.x mit NetApp MetroCluster (2031038)"^] link:https://kb.vmware.com/s/article/83370["Unterstützung von VMware vSphere 6.x und 7.x mit NetApp® SnapMirror Active Sync"^]
+link:https://docs.netapp.com/us-en/ontap-apps-dbs/vmware/vmware-vsphere-overview.html["VMware vSphere mit ONTAP –"^]

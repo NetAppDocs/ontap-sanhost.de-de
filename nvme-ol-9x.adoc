@@ -4,7 +4,7 @@ permalink: nvme-ol-9x.html
 keywords: nvme, oracle linux, 9.x, host configuration 
 summary: NVMe-oF-Hostkonfiguration für Oracle Linux 9.x mit ONTAP 
 ---
-= Konfigurieren Sie Oracle Linux 9.x mit NVMe-oF für ONTAP -Speicher
+= Oracle Linux 9.x für NVMe-oF mit ONTAP Storage konfigurieren
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 

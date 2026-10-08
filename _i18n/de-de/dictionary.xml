@@ -116,8 +116,6 @@
   <block id="128e6e11e880ba8678f174b92f4abec5" category="cell"><block ref="8cec4913fe5b07185f0c16a8a3e0f3c5" category="inline-link-macro-rx"></block></block>
   <block id="bf5a222f8e3d9f399a1266b069eb4993" category="cell">Remote-Ports werden während des Storage Failover-Betriebs auf RHEL8 mit Emulex LPe32002 32 GB FC in blockierten Status versetzt</block>
   <block id="d68e531e9b1b70b7033496b5b71eda91" category="cell">Remote-Ports werden beim Storage Failover in einen blockierten Status auf RHEL8 mit Emulex LPe32002 32 GBFibre Channel (FC) überführt. Wenn der Storage Node wieder in einen optimalen Zustand versetzt wird, kommen die LIFs ebenfalls hinzu und der Remote-Port-Status sollte „online“ lesen. Gelegentlich wird der Status des Remote-Ports möglicherweise weiterhin als „gesperrt“ oder „nicht vorhanden“ gelesen. Dieser Status kann zu einem „fehlerhaften“ Pfad zu LUNs in der Multipath-Schicht führen.</block>
-  <block id="1da730d18c28f088385f1eaca3cb2f71" category="summary">Beschreibt die Konfiguration von NVMe-of für ESXi 7.x mit ONTAP</block>
-  <block id="38a445b35a68bb2b838316376b083c19" category="doc">NVMe-of Host-Konfiguration für ESXi 7.x mit ONTAP</block>
   <block id="98f770b0af18ca763421bac22b4b6805" category="section-title">Funktionen</block>
   <block id="1149b7a7ae9be623a3a7a3f347ff721f" category="list-text">Ab ONTAP 9.9.1 P3 wird die NVMe/FC-Funktion für ESXi 7.0 Update 3 unterstützt.</block>
   <block id="087c6f6069a3f1c08cb62e3d53029f80" category="list-text">Für ESXi 7.0 und neuere Versionen ist HPP (High Performance Plugin) das Standard-Plug-in für NVMe-Geräte.</block>
@@ -150,7 +148,6 @@
   <block id="d4babb87959d757516a4f480642224cf" category="list-text">Verwenden Sie den folgenden Befehl, um die NVMe/TCP-Verbindungen aufzulisten:</block>
   <block id="75d2257ae841105f67aa7e6940b3fccb" category="list-text">Verwenden Sie den folgenden Befehl, um die Anzahl der Pfade zu einem NVMe-Namespace aufzulisten:</block>
   <block id="d41d8cd98f00b204e9800998ecf8427e" category="inline-link"></block>
-  <block id="471e82326ed5017bfdb518b5d33377cc" category="inline-link-macro">Unterstützung von VMware vSphere 5.x, 6.x und 7.x mit NetApp MetroCluster (2031038)</block>
   <block id="f8f27557fe3d0fcb534e0bcda02971bf" category="summary">Beschreibt die Verwendung von Veritas Infoscale 7.3 für Linux mit ONTAP</block>
   <block id="e1059765ab19f25f118520b9942cefe8" category="section-title">Booten des Hypervisor-SAN</block>
   <block id="b8c81b1034d96bceee150be6c06739b8" category="paragraph"><block ref="bffafdbeb65175b415cdfc3e99a5f592" prefix="*" category="inline-code"></block>*</block>
@@ -202,8 +199,6 @@
   <block id="32014634f5e91fea92881a76289729e4" category="paragraph">Verwenden Sie den folgenden Befehl, um die QFullSampleSize zu überprüfen</block>
   <block id="bcf5b4c5647c7c3861431c638d411876" category="paragraph"><block ref="d6c304a8136df005fd734e2f1889954c" prefix="*" category="inline-code"></block>*</block>
   <block id="784c795c066fdf3c4713aae58af639ff" category="paragraph">Es sind keine Probleme bekannt.</block>
-  <block id="52f50d0f0ab285059648c7da67b4b07f" category="inline-link-macro">Unterstützung von VMware vSphere 5.x, 6.x und 7.x mit NetApp MetroCluster (2031038)</block>
-  <block id="8a515fe16331b7269862c5871e55c7e4" category="list-text"><block ref="8a515fe16331b7269862c5871e55c7e4" category="inline-link-macro-rx"></block></block>
   <block id="eea65c7c864efb688d55381c5b21a910" category="summary">Beschreibt die Verwendung von Veritas Infoscale 6.5 und 6.7 für Linux mit ONTAP</block>
   <block id="97702a0c8ad7bf7deb907e6a931a9c14" category="paragraph">In dem obigen Beispiel wurde die LUN aus NetApp Storage mit 4 Pfaden zugeordnet (4 aktiv-optimiert).</block>
   <block id="285dc13017989020e1a1eb0ca9eb9125" category="paragraph">In dem obigen Beispiel wurde die LUN von NetApp Storage mit 4 Pfaden zugeordnet (2 aktiv-optimiert und 2 aktiv-nicht optimiert).</block>
@@ -332,7 +327,6 @@
   <block id="64ede1e6f2ef30c339f9a3e100f40cfc" category="cell"><block ref="5f4b53c23fbe11fd74a5d542494c2106" prefix="" category="inline-code"></block></block>
   <block id="abbdb018748bb6cd12284ad6c1685b67" category="cell"><block ref="8a79f8d12083f6c1f5d24ebab44084c7" prefix="" category="inline-code"></block></block>
   <block id="51a4a26e6b1bdae133374d340c097526" category="paragraph">Das folgende Beispiel zeigt die richtige Ausgabe für eine ONTAP-LUN mit zwei aktiv/optimierten Pfaden und zwei aktiv/nicht optimierten Pfaden.</block>
-  <block id="6b41fb8eea99b0d8d062e30f5b71d616" category="summary">NVMe/FC-Host-Konfiguration für Windows Server 2019 mit ONTAP</block>
   <block id="51da3f0f90428027f2a496d366e696eb" category="inline-link-macro">Microsoft Update Catalog 2019</block>
   <block id="f5cba97c30a47867e3649fd136cca68c" category="inline-link-macro">Microsoft Update Catalog 2016</block>
   <block id="0960de670071121018c377f3ca40c5e7" category="summary">Beschreibt die Verwendung von IBM AIX 7.1 mit ONTAP</block>
@@ -641,7 +635,6 @@
   <block id="e0ace13bee28a678ec04ad1b076b4b00" category="admonition">Um den VASA Provider zu aktivieren, müssen Sie ONTAP Tools für VMware vSphere implementieren. Vasa Provider verwaltet alle igroup-Einstellungen für Sie, sodass das Erstellen und Managen von iGroups in einer VVols-Umgebung nicht erforderlich ist.</block>
   <block id="4ace21de4701510a7868bf0b96619e05" category="cell">Wird Ausgeführt<block ref="cb4b12dfd645e3fcd47ea6dec988643f" prefix=" " category="inline-code"></block> Bei Emulex End-to-End-Konfigurationen führt dies zu I/O-Fehler. Dies ist in ONTAP 9.5P17, 9.6P14, 9.7P13 und 9.8P2 behoben</block>
   <block id="7ff276d19a76a720d17e3dcf4d050ee3" category="summary">Sie können NVMe over Fabrics (NVMe-of) auf Initiator-Hosts, die ESXi 8.x ausführen, und ONTAP als Ziel konfigurieren.</block>
-  <block id="c719ab5e5b2a188adebd62c0829a9f96" category="doc">NVMe-of Host-Konfiguration für ESXi 8.x mit ONTAP</block>
   <block id="7c1c1c55c2c606a3cf3259643b78a017" category="list-text">ESXi Initiator-Hosts können sowohl NVMe/FC- als auch FCP-Datenverkehr über dieselben Adapter-Ports ausführen. Siehe <block ref="d46722d88b0f3e3641b7ffb0d0a65333" category="inline-link-macro-rx"></block> Für eine Liste der unterstützten FC-Adapter und Controller. Siehe <block ref="aaa18d9ccb38f09094f0c241a8585efd" category="inline-link-macro-rx"></block> Erhalten Sie auf der aktuellen Liste der unterstützten Konfigurationen und Versionen.</block>
   <block id="d202ecba0de538b2ab3f4e53f0191f53" category="list-text">Für ESXi 8.0 und höhere Versionen ist HPP (High Performance Plug-in) das Standard-Plug-in für NVMe Geräte.</block>
   <block id="b1d7de4d8d51704fba7a0c0f12c2c299" category="list-text">RDM-Zuordnung wird nicht unterstützt.</block>
@@ -888,10 +881,6 @@ Die Bindung des FC-Treibers wird von geändert<block ref="b9ca0a083600812be33f42
   <block id="0d2b4c4b2840eab7bfae167b812970ef" category="cell"><block ref="0d2b4c4b2840eab7bfae167b812970ef" category="inline-link-macro-rx"></block></block>
   <block id="af3b3cf0d6ceafbe31919aa407157743" category="cell"><block ref="af3b3cf0d6ceafbe31919aa407157743" category="inline-link-macro-rx"></block></block>
   <block id="bc2c3049c0f4d679fb14b74cd64723c8" category="cell"><block ref="bc2c3049c0f4d679fb14b74cd64723c8" category="inline-link-macro-rx"></block></block>
-  <block id="c96b4702a07478185cc851585d0055b6" category="inline-link-macro">NetApp ONTAP mit NetApp SnapMirror Active Sync mit VMware vSphere Metro Storage Cluster (vMSC)</block>
-  <block id="8b3f58063486fce853bcbb473e73c56f" category="list-text"><block ref="8b3f58063486fce853bcbb473e73c56f" category="inline-link-macro-rx"></block></block>
-  <block id="e59f05c9149caf590d63da27c24797cb" category="inline-link-macro">Unterstützung von VMware vSphere 6.x und 7.x mit NetApp® SnapMirror Active Sync</block>
-  <block id="2a41c03d949869222b758867aff845ff" category="inline-link-macro">Unterstützung von VMware vSphere 6.x und 7.x mit NetApp SnapMirror Active Sync</block>
   <block id="33bd005b46fadc3ac5ff4dc797b52e07" category="list-text">Wenn Sie über eine MetroCluster-Konfiguration verfügen, empfiehlt NetApp, die AIX NVMe/FC-Standard-APD-Zeit (All Path Down) für die Unterstützung ungeplanter MetroCluster-Switchover-Ereignisse zu ändern, um zu vermeiden, dass das AIX-Betriebssystem eine kürzere I/O-Zeitüberschreitung erzwingt. Weitere Informationen und die empfohlenen Änderungen an den Standardeinstellungen finden Sie unter NetApp Bugs Online - <block ref="31191f9686b6d08dd8653718c76edbf6" category="inline-link-macro-rx"></block>.</block>
   <block id="4d580b4b5071142b4be038164aad8343" category="cell"><block ref="4d580b4b5071142b4be038164aad8343" category="inline-link-macro-rx"></block></block>
   <block id="0122bdec62d25017bba3ae0743d2526e" category="cell"><block ref="0122bdec62d25017bba3ae0743d2526e" category="inline-link-macro-rx"></block></block>
@@ -1003,7 +992,6 @@ Die Bindung des FC-Treibers wird von geändert<block ref="b9ca0a083600812be33f42
   <block id="f649e10e42e29ffba2e2835946ada018" category="paragraph">Wenn Sie sich für das Booten über SAN entscheiden, muss es von Ihrer Konfiguration unterstützt werden. Sie können mit dem <block ref="d663e2c355c00396895dd4c79ec8b92b" category="inline-link-macro-rx"></block>überprüfen, ob Ihr Betriebssystem, HBA, die HBA-Firmware und das HBA-StartBIOS sowie die ONTAP-Version unterstützt werden.</block>
   <block id="0c67f6a4c7f1b6e00bc41e20176e3e4c" category="cell">I/O-Probleme treten auf VIOS 3.1.1.10 bei SFO-Fehlern und geraden I/O-Vorgängen auf</block>
   <block id="f7a5f353c104253016bca910e58de784" category="cell">Auf VIOS 3.1 können I/O-Fehler auf NPIV-Client-Festplatten auftreten, die durch 16-GB- oder 32-GB-FC-Adapter unterstützt werden. Darüber hinaus kann der<block ref="f882ef508f1d971bf42e00837f4d22a8" prefix=" " category="inline-code"></block> Treiber die Verarbeitung von I/O-Anfragen vom Client stoppen. Die Anwendung von IBM APAR IJ22290 IBM APAR IJ23222 behebt das Problem.</block>
-  <block id="79c864ac5e64428609df0299cdc74738" category="doc">(AIX MPIO ohne PowerVM) ermitteln und konfigurieren Sie LUNs mit AIX</block>
   <block id="cbd11fff7903ad7c3c25ff7d4c0a28a4" category="paragraph">Wenn Sie AIX ohne PowerVM verwenden, können Sie den Befehl ausführen<block ref="fe54d1c30028417038a4ffe0fc5eb503" prefix=" " category="inline-code"></block>, damit der Host die LUNs erkennen kann. Sie müssen den Host nicht neu starten, um die LUNs zu ermitteln. Um zu bestätigen, dass der Host die LUNS erkannt hat, können Sie das Dienstprogramm sanlun verwenden.</block>
   <block id="98e87ad1da2237f2b632525794232c82" category="list-text">Alle AIX-Laufwerke anzeigen, einschließlich der NetApp-LUNs:</block>
   <block id="cc0280ad1883ba73200ef923c35deec8" category="paragraph">Im folgenden Beispiel wird die Befehlsausgabe in einer FC-Umgebung angezeigt<block ref="5d5b41f106bc7c056c6a90ee2e311798" prefix=" " category="inline-code"></block>.</block>
@@ -1173,8 +1161,6 @@ Die Bindung des FC-Treibers wird von geändert<block ref="b9ca0a083600812be33f42
   <block id="a6389705a0010980a83767268763aa53" category="inline-link-macro">Virtual Volumes (VVols) mit ONTAP Tools 10</block>
   <block id="09b616c445ab7efa8240062532e526e4" category="inline-link">VMware vSphere mit ONTAP –</block>
   <block id="11b7981a4bc487d4291cc9a0614db625" category="list-text"><block ref="11b7981a4bc487d4291cc9a0614db625" category="inline-link-macro-rx"></block></block>
-  <block id="18833e14b5b5c7c59e24b7d84a7675c8" category="paragraph"><block ref="11b7981a4bc487d4291cc9a0614db625" category="inline-link-macro-rx"></block> <block ref="3940cdefc46aa67d16ed6a8e41f9c401" category="inline-link-macro-rx"></block> <block ref="d28f7a65afd9b0a0129dadbafa84555d" category="inline-link-macro-rx"></block></block>
-  <block id="75bf2e375bd6a6c261100e60951c4331" category="paragraph"><block ref="11b7981a4bc487d4291cc9a0614db625" category="inline-link-macro-rx"></block> <block ref="3940cdefc46aa67d16ed6a8e41f9c401" category="inline-link-macro-rx"></block> <block ref="5f61a87054f37a4d758972ec77cfdf5e" category="inline-link-macro-rx"></block></block>
   <block id="2042f6b0f24c7e66a0696f995c26649f" category="doc">Schritt 4: Optional: Schließen Sie ein Gerät vom Multipathing aus</block>
   <block id="613ab33f622153c715120fe35873e05e" category="paragraph">Bei Bedarf können Sie ein Gerät vom Multipathing ausschließen, indem Sie die WWID für das unerwünschte Gerät der „Blacklist“-Strophe für die Datei hinzufügen<block ref="9ac80d53ede05256c28cf9e043eb423c" prefix=" " category="inline-code"></block>.</block>
   <block id="445d6b5f796f2b279f00ab2c9c5e6254" category="paragraph">„sda“ ist die lokale SCSI-Festplatte, die Sie der Blacklist hinzufügen möchten.</block>
@@ -1447,7 +1433,6 @@ Die Bindung des FC-Treibers wird von geändert<block ref="b9ca0a083600812be33f42
   <block id="9f6770d142cc85850fcf3cb67b3d266f" category="list-text">Bestätigen Sie, dass die Softwareversion 8.0.1f0fc74c ist:</block>
   <block id="88119cd3cc25df648a7f33d113bc56ab" category="list-text">Überprüfen Sie, ob die SCSI UNMAP<block ref="ce7e54a230e7d7f6125c862b6201f954" prefix=" " category="inline-code"></block> Parameter wurde zum ODM hinzugefügt:</block>
   <block id="45b1bf92080c40662a70a1ac26aeedf3" category="listing-title">Beispielausgabe</block>
-  <block id="594c5f590ab1fe2dac609f4a36fb7273" category="doc">Verwenden Sie AIX Host Utilities-Befehle, um die ONTAP Speicherkonfiguration zu überprüfen</block>
   <block id="06f85e9e47f5b096622f76333fa1edbb" category="example-title">Beispiel für AIX Host Utilities 8.0 anzeigen</block>
   <block id="1e4935dd6493c79127a5c9f6121bdfbc" category="open-title">7.0 und 6.1</block>
   <block id="6654350ba6f70f82811d19d9de567655" category="example-title">Beispiel für AIX Host Utilities 7.0 und 6.1 anzeigen</block>
@@ -1473,7 +1458,6 @@ Die Bindung des FC-Treibers wird von geändert<block ref="b9ca0a083600812be33f42
   <block id="83e3a5703b1628b857c08d688ab643b9" category="paragraph">HP-UX Host Utilities 6.0 unterstützt die folgenden HP-UX-Betriebssystemversionen:</block>
   <block id="3a3b7ac2e39541ea05707ccd6eb054d4" category="section-title">Bekannte Probleme und Einschränkungen</block>
   <block id="24900e660af76d8e5775799512404385" category="paragraph">Es sind keine Probleme oder Einschränkungen bekannt.</block>
-  <block id="059c78294312cf045138bbfcf66eb126" category="doc">Erfahren Sie mehr über das SAN Toolkit für ONTAP -Speicher</block>
   <block id="ec14ad28eef0a7bf687defebd1a0dc85" category="paragraph">HP-UX Host Utilities ist eine NetApp Hostsoftware, die ein Befehlszeilen-Toolkit auf Ihrem HP-UX-Host bereitstellt.  Das Toolkit wird installiert, wenn Sie das NetApp Host Utilities-Paket installieren.  Dieses Kit bietet die<block ref="3a8e4afa851609127d534b04e7d29c08" prefix=" " category="inline-code"></block> Dienstprogramm, das Sie bei der Verwaltung von ONTAP LUNs und Hostbusadaptern unterstützt.  Der<block ref="3a8e4afa851609127d534b04e7d29c08" prefix=" " category="inline-code"></block> Der Befehl gibt Informationen zu den Ihrem Host zugeordneten LUNs, Multipathing und die zum Erstellen von Initiatorgruppen erforderlichen Informationen zurück.</block>
   <block id="26a6d0a6edac8d1c0e3d94e10df15650" category="paragraph">Im folgenden Beispiel wird die<block ref="5927da9399de65ab7428ce807e88771e" prefix=" " category="inline-code"></block> Der Befehl gibt ONTAP LUN-Informationen zurück.</block>
   <block id="905371a83eb0f0229042516d3c7f97b1" category="paragraph">Dieses SAN-Toolkit ist für alle Host Utilities-Konfigurationen und -Protokolle gleich.  Daher sind nicht alle Komponenten für jede Konfiguration gültig.  Nicht verwendete Komponenten beeinträchtigen die Leistung Ihres Systems nicht.</block>
@@ -1488,7 +1472,6 @@ Die Bindung des FC-Treibers wird von geändert<block ref="b9ca0a083600812be33f42
   <block id="0ea3e528a268f7a469a48d5d8aae4f82" category="paragraph">Überprüfen Sie anhand der Herstellerdokumentation, ob die folgenden Pakete korrekt installiert sind.  Diese Pakete sind erforderlich zur Unterstützung der<block ref="09a10ae06f964cc0f5c0201377e37384" prefix=" " category="inline-code"></block> Befehl:</block>
   <block id="291498f8ec1453e277a2e2b46e71ae68" category="list-text">Wenn Sie derzeit eine Version von Linux Host Utilities installiert haben, entfernen Sie diese:</block>
   <block id="a47e489edc31ec3082b9f72fed5a5375" category="list-text">Gehen Sie in das Verzeichnis, in das Sie das Softwarepaket heruntergeladen haben, und installieren Sie es:</block>
-  <block id="bf2fa1be3b14254d86cd9857c8495543" category="doc">Verwenden Sie Linux Host Utilities-Befehle, um die ONTAP Speicherkonfiguration zu überprüfen</block>
   <block id="3a61827896464412c2e42d33f758f4f1" category="paragraph">Sie können die Beispielbefehlsreferenz von Linux Host Utilities für eine End-to-End-Validierung der NetApp Speicherkonfiguration mithilfe des Host Utilities-Tools verwenden.</block>
   <block id="509349566982f99a656299d84be158b8" category="summary">Versionshinweise für Linux-Host-Dienstprogramme</block>
   <block id="cfdc7e76ebdc6ad4a2ed2fe7838b63ff" category="doc">Versionshinweise zu Linux Host Utilities</block>
@@ -1510,7 +1493,6 @@ Die Bindung des FC-Treibers wird von geändert<block ref="b9ca0a083600812be33f42
   <block id="04f7390daef23ea8f8ba426ae782426d" category="cell">Das zeitweise auftretende Problem mit dem Host-Betriebssystemfehler, das beim Ausführen des<block ref="41dc2c94e82e1c56ba876085acf5a974" prefix=" " category="inline-code"></block> Befehl in SUSE Linux Enterprise Server 12 SP1, Oracle Linux 7.2, RHEL 7.2 und RHEL 6.8.</block>
   <block id="047616cf46cf98f773cfbd0edf18de97" category="paragraph">Sie sollten sich der folgenden bekannten Probleme und Einschränkungen bewusst sein, die die Leistung auf Ihrem spezifischen Host beeinträchtigen können:</block>
   <block id="e76aeaaa9fbfeb4cdf98a140a0a10918" category="cell">Wenn Sie den CLI-Befehl „sanlun fcp show adapter -v“ von Linux Host Utilities auf einem SAN-Host ausführen, schlägt der Befehl mit einer Fehlermeldung fehl, die anzeigt, dass die für die Erkennung eines Hostbusadapter-HBA erforderlichen Bibliotheksabhängigkeiten nicht gefunden werden können:<block ref="41f02e5b1284b1c0d32b0bac02fd615f" prefix=" " category="inline-code"></block> Siehe NetApp Bugs Online -<block ref="af3b3cf0d6ceafbe31919aa407157743" category="inline-link-macro-rx"></block> .</block>
-  <block id="55ae6b8aefe00f4e41d5b2de159634cc" category="doc">Erfahren Sie mehr über das Dienstprogramm „sanlun“ für ONTAP -Speicher</block>
   <block id="417c4f9e58c0a853841b3ed0c271837c" category="paragraph">Linux Host Utilities ist eine NetApp Host-Software, die<block ref="3a8e4afa851609127d534b04e7d29c08" prefix=" " category="inline-code"></block> Befehle auf Ihrem Linux-Host.  Der<block ref="3a8e4afa851609127d534b04e7d29c08" prefix=" " category="inline-code"></block> Das Dienstprogramm wird automatisch installiert, wenn Sie das NetApp Host Utilities-Paket installieren.  Dieses Dienstprogramm bietet die<block ref="3a8e4afa851609127d534b04e7d29c08" prefix=" " category="inline-code"></block> Befehle, die Sie zum Verwalten von ONTAP LUNs und Host Bus Adaptern (HBAs) verwenden können.  Der<block ref="3a8e4afa851609127d534b04e7d29c08" prefix=" " category="inline-code"></block> Befehle geben Informationen zu den Ihrem Host zugeordneten ONTAP -LUNs, Multipathing und Informationen zurück, die zum Erstellen von Initiatorgruppen erforderlich sind.</block>
   <block id="bd678fd25f473f5645990f1c9283c34b" category="paragraph">Im folgenden Beispiel wird die<block ref="0576b77e024dfde74ab10f4d14c4138a" prefix=" " category="inline-code"></block> Befehl gibt ONTAP LUN-Informationen zurück:</block>
   <block id="9b1f2a19fe68c5002ddcac15a60e5a23" category="list-text">Für Linux Host Utilities 7.1 ist das Dienstprogramm „sanlun“ für alle Konfigurationen und Protokolle der Host Utilities gleich.  Dies hat zur Folge, dass einige Inhalte auf eine Konfiguration zutreffen, auf eine andere jedoch nicht.  Nicht verwendete Komponenten beeinträchtigen die Leistung Ihres Systems nicht.</block>
@@ -1556,7 +1538,6 @@ Die Bindung des FC-Treibers wird von geändert<block ref="b9ca0a083600812be33f42
   <block id="4e7c844ed51a666f84ad8bcf2e71d65a" category="cell">FCP auf MetroCluster mit Multipath als MPxIO, und der Wert „Alle Pfade deaktiviert“ ist auf 120 s eingestellt.  (Dies ist die empfohlene Einstellung für MetroCluster -Konfigurationen).</block>
   <block id="3b73fde0526aa5735452da53c395dc38" category="paragraph">Die Host-Dienstprogramme laden die folgenden von NetApp empfohlenen Timeout-Parametereinstellungen für ONTAP -LUNs.</block>
   <block id="64349882c1f787c3b5516b9e9f8ad791" category="list-text">Überprüfen Sie die Installation der Host Utilities:</block>
-  <block id="19b0b1ffb2094b2504c5f1a5a6ed4383" category="doc">Verwenden Sie die Befehle von Solaris Host Utilities, um die ONTAP Speicherkonfiguration zu überprüfen</block>
   <block id="36bb22d5ac1d72800fd0f8fabaf19b1b" category="paragraph">Sie können die Beispielbefehlsreferenz von Solaris Host Utilities für eine End-to-End-Validierung der NetApp Speicherkonfiguration mithilfe des Host Utilities-Tools verwenden.</block>
   <block id="9983965c9aac023693fd65819c24cdbe" category="example-title">Beispiel für Solaris Host Utilities 8.0 anzeigen</block>
   <block id="7a22247de8db3271f3bf8573be10e986" category="open-title">6,2</block>
@@ -1631,7 +1612,6 @@ Die Bindung des FC-Treibers wird von geändert<block ref="b9ca0a083600812be33f42
   <block id="bd7a994d68d51e665a861add9d2d4218" category="paragraph">Für einen zuverlässigen Betrieb verwenden Sie die<block ref="d4eba3849609aea965d9c09098fd43df" category="inline-link-rx"></block> um zu überprüfen, ob Ihre iSCSI-, FC- oder FCoE-Konfiguration unterstützt wird.</block>
   <block id="ff82a2970f098ead3486d4e955d48fcc" category="list-text">Melden Sie sich bei Ihrem HP-UX-Host an.</block>
   <block id="5d6d0d9147b8bad63c5c15b5073d3324" category="paragraph"><block ref="fcefba3c5929e53740c971ae2a1d3486" category="inline-link-macro-rx"></block> .</block>
-  <block id="440632d6491f106209d4da2ad7a8c2e2" category="doc">Verwenden Sie HP-UX Host Utilities-Befehle, um die ONTAP Speicherkonfiguration zu überprüfen</block>
   <block id="e2dea19fc48c3653105e7975e254f204" category="paragraph">Verwenden Sie die Beispielbefehlsreferenz von HP-UX Host Utilities 6.0 für eine End-to-End-Validierung der ONTAP Speicherkonfiguration mit dem Host Utilities-Tool.</block>
   <block id="b5db6a53088556a1ef28d016537cd198" category="paragraph">Rufen Sie eine Liste aller Host-Initiatoren ab, die einem Host zugeordnet sind.</block>
   <block id="1f28ee767ddbfe19ffa46d6af311c50c" category="paragraph">Rufen Sie eine Liste aller einem Host zugeordneten LUNs ab.</block>
@@ -1685,7 +1665,6 @@ Die Bindung des FC-Treibers wird von geändert<block ref="b9ca0a083600812be33f42
   <block id="4986650d14b24086d20a38215ecb279e" category="doc">Reparieren und entfernen Sie die Windows Host Utilities für ONTAP -Speicher</block>
   <block id="f1d60f4583e01fe231e5b6017aa48e9f" category="paragraph">Verwenden Sie die Option *Reparieren* im Installationsprogramm von Host Utilities, um den Hostbusadapter (HBA) und die Windows-Registrierungseinstellungen zu aktualisieren.  Sie können die Host-Dienstprogramme auch vollständig entfernen, entweder interaktiv oder über die Windows-Befehlszeile.</block>
   <block id="b9ad3634df3fcc698c7d897d3a74b246" category="open-title">Nicht interaktiv reparieren oder entfernen</block>
-  <block id="a99e2a95022affd548e64e4b6fe43e4f" category="doc">Beheben Sie Probleme mit Windows Host Utilities mit der ONTAP -Speicherkonfiguration</block>
   <block id="892be7d8ad8a6b622faf0375618ec841" category="paragraph">Verwenden Sie die allgemeinen Techniken zur Fehlerbehebung, um Probleme zu untersuchen, die bei einer Windows Host Utilities-Konfiguration mit ONTAP -Speicher auftreten können.  Überprüfen Sie auch die<block ref="96ebd60b95d1f8953ad930d316212d7f" category="inline-link-macro-rx"></block> für bekannte Probleme und Lösungen.</block>
   <block id="dc9a78f14a47c8510c8c8bf854739995" category="list-text">Überprüfen Sie die<block ref="66038308975089065210b5a933f7b55a" category="inline-link-macro-rx"></block> für Windows Host Utilities, um nach bekannten Problemen zu suchen.  Die Versionshinweise enthalten eine Liste bekannter Probleme und Einschränkungen.</block>
   <block id="a948aae8d1e11d139aa5a9124fdac5a0" category="doc">Aktualisieren Sie die Windows Host Utilities für ONTAP -Speicher</block>
@@ -1693,7 +1672,6 @@ Die Bindung des FC-Treibers wird von geändert<block ref="b9ca0a083600812be33f42
   <block id="9f5ed06a234ddc571adaa3e7e593ce07" category="paragraph">Aktualisieren Sie die Windows Host Utilities-Software interaktiv, indem Sie das Host Utilities-Installationsprogramm ausführen und den Anweisungen folgen.</block>
   <block id="02ea0cca7d8c5b151586f602e54f3e37" category="open-title">Nicht-interaktives Upgrade</block>
   <block id="1224f0358b15e01f589451ca15638bfe" category="paragraph">Führen Sie mithilfe der Windows-Befehlszeile ein nicht interaktives Software-Upgrade der Windows Host Utilities durch.</block>
-  <block id="bd5ee4dbd60e78049386916d55c5866a" category="doc">Konfigurieren Sie AIX mit NVMe-oF für ONTAP -Speicher</block>
   <block id="e5e8a280fc0e9cee09e364b5fb9b3638" category="paragraph">Die IBM AIX- und Virtual I/O Server (VIOS)/PowerVM-Hosts unterstützen das NVMe/FC-Protokoll mit Asymmetric Namespace Access (ANA).  ANA entspricht dem asymmetrischen Logical Unit Access (ALUA)-Multipathing in iSCSI- und FCP-Umgebungen.</block>
   <block id="4025744bbed72acc81304951fc5e8b56" category="paragraph">Weitere Einzelheiten zu unterstützten Konfigurationen finden Sie im<block ref="5a16fc70d031dee6bd6712d64bea2027" category="inline-link-macro-rx"></block> .</block>
   <block id="441e91babee10e808255eacd7ac96c66" category="paragraph">Sie können die folgende Unterstützung und Funktionen mit der NVMe-oF-Hostkonfiguration für AIX-Hosts verwenden.  Sie sollten sich auch die bekannten Einschränkungen ansehen, bevor Sie mit dem Konfigurationsprozess beginnen.</block>
@@ -1733,7 +1711,6 @@ Die Bindung des FC-Treibers wird von geändert<block ref="b9ca0a083600812be33f42
   <block id="40a0df8c01187300dac19f675907c510" category="section-title">Schritt 5: Fehlerbehebung</block>
   <block id="3db908c249fffc60d2574232331bdcf3" category="paragraph">Bevor Sie NVMe/FC-Fehler beheben, überprüfen Sie, ob Sie eine Konfiguration ausführen, die mit dem<block ref="277e95e57632f1d20d4cd8ea672c1493" category="inline-link-macro-rx"></block> Spezifikationen.  Wenn weiterhin Probleme auftreten, wenden Sie sich an<block ref="ea2f4052f3eaf8e0d09bdf7668185025" category="inline-link-macro-rx"></block> .</block>
   <block id="3377da1c4bfbeb041c695fd90b5b51f8" category="sidebar">Installieren der AIX-Host-Dienstprogramme</block>
-  <block id="ba40410017594d237bded82b08cfed3a" category="sidebar">Erfahren Sie mehr über das AIX SAN Tollkit</block>
   <block id="259ad13a22ced337b90660e2a1ec20c1" category="sidebar">AIX Host Utilities-Befehlsreferenz</block>
   <block id="59f0ceab26c568fa6ab53aee601cb03c" category="sidebar">Erfahren Sie mehr über die HP-UX-Befehlsreferenz</block>
   <block id="c0a7954064ad4f8a8468c33037740aea" category="sidebar">Installieren Sie Linux-Host-Dienstprogramme</block>
@@ -2113,7 +2090,6 @@ Die Bindung des FC-Treibers wird von geändert<block ref="b9ca0a083600812be33f42
   <block id="76166c5048e178a877e3788c1a7aabf9" category="paragraph">Die Linux Host Utilities-Software bietet Verwaltungs- und Diagnosetools für Linux-Hosts, die mit ONTAP Speicher verbunden sind. Wenn Sie Linux Host Utilities auf einem Rocky Linux 10.x-Host installieren, können Sie die Host Utilities verwenden, um FCP- und iSCSI-Protokolloperationen mit ONTAP -LUNs zu verwalten.</block>
   <block id="b2b81ced4888f42ec73135895cc7f15b" category="paragraph">Mit Rocky Linux 10.x können Sie Multipathing zur Verwaltung von ONTAP LUNs nutzen.</block>
   <block id="f9e6c87693abb48ae965e3807754b248" category="summary">Einrichten der VMe/FC-Hostkonfiguration für Oracle Linux 7.x mit ONTAP, mit Beispielen</block>
-  <block id="af311e9ff855d263d96464518292c93e" category="doc">Konfigurieren Sie Oracle Linux 7.x mit NVMe-oF für ONTAP -Speicher</block>
   <block id="36db06af3bc2cf5ac77cfe7f8dbfd5ae" category="paragraph">Erfahren Sie, wie Sie NVMe over Fabrics (NVMe-oF)-Hosts für Oracle Linux 7.x konfigurieren. Weitere Informationen zu Support und Funktionen finden Sie unter <block ref="340e41b773bf3515fe22a98049376f83" category="inline-link-macro-rx"></block>Die</block>
   <block id="147a8393de4d6f7d913f5241312531ae" category="paragraph">NVMe-oF unter Oracle Linux 7.x weist folgende bekannte Einschränkungen auf:</block>
   <block id="ffdbe39dc6849e6b1776cc1d58f1b6fb" category="list-text">Die Unterstützung für das NetApp sanlun Host-Dienstprogramm ist für NVMe-oF auf einem Oracle Linux 7.x-Host nicht verfügbar. Stattdessen können Sie sich auf das NetApp Plug-in verlassen, das im nativen<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block> Paket für alle NVMe-oF-Transporte.</block>
@@ -2121,7 +2097,6 @@ Die Bindung des FC-Treibers wird von geändert<block ref="b9ca0a083600812be33f42
   <block id="f6f44f7f933362f8012482cfdc64bcf9" category="list-text">Installieren Sie Oracle Linux 7.x auf dem Server. Nach Abschluss der Installation überprüfen Sie, ob Sie den angegebenen Oracle Linux 7.x-Kernel verwenden.</block>
   <block id="b47c41a9513bf1b5dc8f2d2ac73753bc" category="list-text">Überprüfen Sie auf dem Oracle Linux 7.x-Host die<block ref="24039a6c469b55da1dae1ff1197f8079" prefix=" " category="inline-code"></block> Zeichenkette bei<block ref="7c33f184451a7567af5a5fb5f2bc7ae1" prefix=" " category="inline-code"></block> :</block>
   <block id="0baf404d29c6cb60ec2691b4beabc3b6" category="summary">NVMe-oF-Hostkonfiguration für Oracle Linux 8.x mit ONTAP</block>
-  <block id="58b9f430366e23a2202edc5490300c1c" category="doc">Konfigurieren Sie Oracle Linux 8.x mit NVMe-oF für ONTAP -Speicher</block>
   <block id="d1a0b73092f65279936d400914dd8cc0" category="paragraph">Erfahren Sie, wie Sie NVMe over Fabrics (NVMe-oF)-Hosts für Oracle Linux 8.x konfigurieren. Weitere Informationen zu Support und Funktionen finden Sie unter <block ref="340e41b773bf3515fe22a98049376f83" category="inline-link-macro-rx"></block>Die</block>
   <block id="014514e3306f74ab14ad1e8da46be859" category="paragraph">NVMe-oF unter Oracle Linux 8.x weist folgende bekannte Einschränkungen auf:</block>
   <block id="ab2a6bd5a1677646c38e9b97ea434d6e" category="list-text">Die Unterstützung für das NetApp sanlun Host-Dienstprogramm ist für NVMe-oF auf einem Oracle Linux 8.x-Host nicht verfügbar. Stattdessen können Sie sich auf das NetApp Plug-in verlassen, das im nativen<block ref="e1667929105bf030b9f367fc21f8d216" prefix=" " category="inline-code"></block> Paket für alle NVMe-oF-Transporte.</block>
@@ -2131,7 +2106,6 @@ Die Bindung des FC-Treibers wird von geändert<block ref="b9ca0a083600812be33f42
   <block id="cafb20e24ff7ffd7051421fe29ffff3a" category="cell">Oracle Linux 8.x NVMe-oF-Hosts erstellen doppelte Persistent Discovery Controller (PDCs).</block>
   <block id="17763301a1650193f096e85b7931409e" category="cell">Auf NVMe-oF-Hosts können Sie Folgendes verwenden:<block ref="70c9b2fe3469aa88746a29ccc6fe9d7a" prefix=" " category="inline-code"></block> Befehl zum Erstellen von PDCs. Bei Verwendung dieses Befehls sollte pro Initiator-Ziel-Kombination nur ein PDC erstellt werden. Wenn Sie jedoch Oracle Linux 8.x mit einem NVMe-oF-Host ausführen, wird bei jeder Ausführung von <block ref="70c9b2fe3469aa88746a29ccc6fe9d7a" prefix=" " category="inline-code"></block>ein doppelter PDC erstellt. Dies führt zu einer unnötigen Ressourcennutzung sowohl auf dem Host- als auch auf dem Zielsystem.</block>
   <block id="63eb478005d7986c9bac6b45cbcc9449" category="summary">NVMe-oF-Hostkonfiguration für Oracle Linux 9.x mit ONTAP</block>
-  <block id="7879597f78ceca93363e3a27f21ebe00" category="doc">Konfigurieren Sie Oracle Linux 9.x mit NVMe-oF für ONTAP -Speicher</block>
   <block id="095844b56178a284b78a75795108d8af" category="paragraph">Erfahren Sie, wie Sie NVMe over Fabrics (NVMe-oF)-Hosts für Oracle Linux 9.x konfigurieren. Weitere Informationen zu Support und Funktionen finden Sie unter <block ref="340e41b773bf3515fe22a98049376f83" category="inline-link-macro-rx"></block>Die</block>
   <block id="4c344c877a57df13c19fd1fd8b66490b" category="paragraph">Gehen Sie wie folgt vor, um die minimal unterstützten Oracle Linux 9.x Softwareversionen zu überprüfen.</block>
   <block id="9c912bfe11518dfe915fe7e20a0c6fd8" category="list-text">Installieren Sie Oracle Linux 9.x auf dem Server. Nach Abschluss der Installation überprüfen Sie, ob Sie den angegebenen Oracle Linux 9.x-Kernel verwenden.</block>
@@ -2250,7 +2224,6 @@ Die Bindung des FC-Treibers wird von geändert<block ref="b9ca0a083600812be33f42
   <block id="5b0baa1d297171d8a0eb3e7b4eab041d" category="sidebar">15 SPx</block>
   <block id="f6cc17830d6056ab4b78496fa45d86c0" category="inline-link-macro">Erfahren Sie mehr über die Konfiguration der Windows-Hostdienstprogramme für ONTAP -Speicher.</block>
   <block id="a270bf4f8c4b691ce8d28f78e05ad3ce" category="paragraph"><block ref="a270bf4f8c4b691ce8d28f78e05ad3ce" category="inline-link-macro-rx"></block></block>
-  <block id="3ef0124e3a4c499c8d81cf51736e34cf" category="doc">Überprüfen Sie die Konfiguration der Windows-Hostdienstprogramme für den ONTAP -Speicher.</block>
   <block id="d163580e6b36094493c3486aa4bd713d" category="paragraph">Die Windows-Host-Dienstprogramme benötigen bestimmte Registrierungs- und Parametereinstellungen, damit ein Windows-Host das Verhalten des ONTAP -Speichersystems korrekt handhabt.</block>
   <block id="a7f9e2f7eae7b45e39495e27e2aa0591" category="paragraph">Diese Registrierungs- und Parameterwerte beeinflussen, wie ein Windows-Host auf eine Verzögerung oder einen Datenverlust reagiert, beispielsweise durch die korrekte Behandlung von Ereignissen wie einem Speicherausfall.</block>
   <block id="4fd88a48c587c319fee5293adbb82370" category="paragraph">Einige der Registrierungs- und Parameterwerte gelten nicht für das gerätespezifische Modul (DSM) für SANtricity Storage Manager. Überschneidungen zwischen den von den Windows Host Utilities und dem DSM für SANtricity Storage Manager festgelegten Werten verursachen keine Konflikte.</block>
@@ -2278,7 +2251,6 @@ Die Bindung des FC-Treibers wird von geändert<block ref="b9ca0a083600812be33f42
   <block id="888a570bb866284d7849755568a6be53" category="summary">Beschreibt die Verwendung der Linux-Host-Dienstprogramme mit ONTAP -Speicher</block>
   <block id="8cd31d3850bee4ee09238066a1eadf45" category="summary">Beschreibt die Verwendung der HP-UX Host Utilities 6.0 mit ONTAP</block>
   <block id="9f62e018dbee2e883e6b28abdebb8492" category="paragraph">Unaufgelöste Direktive in &lt;stdin&gt; - include::_include/hu/reuse_hu_asa_configuration.adoc[]</block>
-  <block id="72c83d503b24e8f097c9e8181032f70a" category="doc">Fehlerbehebung bei NVMe-oF mit ONTAP -Speicher für Linux-Host-Dienstprogramme</block>
   <block id="af2b8056ad5664aa4340ade3fea943c6" category="paragraph">Fehlerbehebung bei NVMe-oF-Fehlern auf Oracle Linux-, RHEL-, Rocky Linux- und SUSE Linux Enterprise Server-Hosts mit ONTAP Speicher.</block>
   <block id="457989a854da9cc379131be91a40a138" category="paragraph">Bevor Sie mit der Fehlersuche beginnen, vergewissern Sie sich, dass Ihre Konfiguration den geltenden Richtlinien entspricht.<block ref="b77f230f2effb14751e6164ceee6da3f" category="inline-link-rx"></block> Spezifikationen und fahren Sie dann mit den nächsten Schritten fort, um etwaige Probleme auf der Host-Seite zu beheben.</block>
   <block id="f8331da05f5bdb83bd91e68dbda73f8d" category="admonition">Die Anweisungen zur Fehlerbehebung gelten nicht für AIX-, ESXi-, Proxmox- und Windows-Hosts.</block>
@@ -2286,7 +2258,6 @@ Die Bindung des FC-Treibers wird von geändert<block ref="b9ca0a083600812be33f42
   <block id="fe040552b4fc83efe2ba593498969954" category="list-text">Überprüfen Sie die Einstellungen:</block>
   <block id="79c482cb23c057c0d600ecd3434dbb27" category="section-title">Häufige "nvme-cli"-Fehler und deren Umgehungsmöglichkeiten</block>
   <block id="0669c03dc492faf8d7b9fc2bd8512b73" category="sidebar">Frühere Host Utilities-Versionen</block>
-  <block id="2444d67396b745a440cfa96bf55da9c6" category="doc">Erfahren Sie mehr über die Konfiguration von ONTAP SAN-Hosts mit NVMe-oF</block>
   <block id="55b4f27e868d94d08cb7b820fb7dcaf4" category="summary">Installieren Sie die Linux Host Utilities auf einem SUSE Linux Enterprise Server 16, um FCP- und iSCSI-Protokolloperationen mit ONTAP LUNs zu verwalten.</block>
   <block id="651119b7fad3ebe0625718e781b85dbd" category="doc">Konfigurieren Sie SUSE Linux Enterprise Server 16 für FCP und iSCSI mit ONTAP Storage</block>
   <block id="536673265ab4b1de9fd943164c12494a" category="paragraph">Die Linux Host Utilities-Software bietet Verwaltungs- und Diagnosewerkzeuge für Linux-Hosts, die mit ONTAP-Speicher verbunden sind. Wenn Sie die Linux Host Utilities auf einem SUSE Linux Enterprise Server 16-Host installieren, können Sie die Host Utilities verwenden, um FCP- und iSCSI-Protokollvorgänge mit ONTAP LUNs zu verwalten.</block>
@@ -2350,7 +2321,6 @@ Die Bindung des FC-Treibers wird von geändert<block ref="b9ca0a083600812be33f42
   <block id="1cb98d24e975e6c21662789b34e2d3c2" category="paragraph">Informationen zu bekannten Kernelproblemen von CentOS Red Hat finden Sie in der <block ref="b64a4fb065ec8eadbc881ece1cbf7ba0" category="inline-link-macro-rx"></block> für die Red Hat Enterprise Linux (RHEL) 8.x-Serie.</block>
   <block id="fef8ee7b94533bb078469a27722a8bba" category="list-text">Überprüfen Sie, ob die <block ref="dd5ff67ba72768d33f75e645aa2b8e56" prefix=" " category="inline-code"></block> Datei existiert. Falls die Datei nicht existiert, erstellen Sie eine leere, null Byte große Datei:</block>
   <block id="53b840df2d08c073f2534327f111dbf9" category="summary">NVMe-oF-Hostkonfiguration für Oracle Linux 10 mit ONTAP</block>
-  <block id="7230db89ca6861865150be7831e09274" category="doc">Konfigurieren Sie Oracle Linux 10.x mit NVMe-oF für ONTAP Storage</block>
   <block id="d510a8ad0c1bbc5c8d97b199a8f0a853" category="paragraph">Erfahren Sie, wie Sie NVMe over Fabrics (NVMe-oF)-Hosts für Oracle Linux 10.x konfigurieren. Weitere Informationen zu Support und Funktionen finden Sie unter <block ref="340e41b773bf3515fe22a98049376f83" category="inline-link-macro-rx"></block>.</block>
   <block id="9f53c366466752fe327c961a6ac8050d" category="paragraph">NVMe-oF mit Oracle Linux 10.x weist folgende bekannte Einschränkung auf:</block>
   <block id="434a4c1992d6e87fcab47a93c7ad1e82" category="paragraph">Verwenden Sie das folgende Verfahren, um die minimal unterstützten Oracle Linux 10.x Softwareversionen zu validieren.</block>
@@ -2460,7 +2430,6 @@ Die Bindung des FC-Treibers wird von geändert<block ref="b9ca0a083600812be33f42
   <block id="e3dfc2e9bc6b78cf280e7b9a8c0a2c82" category="list-text"><block ref="e3dfc2e9bc6b78cf280e7b9a8c0a2c82" category="inline-link-rx"></block></block>
   <block id="67427880ab2eb83e274fe8038d19444b" category="inline-link-macro">TR-4684: Implementierung und Konfiguration moderner SANs mit NVMe-oF</block>
   <block id="d719beeb5ec2736d269213fab9543e6d" category="list-text"><block ref="d719beeb5ec2736d269213fab9543e6d" category="inline-link-macro-rx"></block></block>
-  <block id="62346842706e07b5f8a495f9d5a29786" category="doc">Informationen zur Konfiguration von ONTAP SAN Hosts mit FCP und iSCSI</block>
   <block id="652d4e06f41967c8271b197844a17b43" category="paragraph">Bestimmte SAN-Host-Betriebssysteme (OS) lassen sich für FCP und iSCSI mit ONTAP als Ziel konfigurieren. Wenn Ihr Host-Betriebssystem von der SAN Host Utilities Software unterstützt wird, wird zunächst das entsprechende Host Utility-Paket installiert, das das SAN Tool Kit enthält. Für alle Host-Betriebssystemtypen werden anschließend die Multipath-Einstellungen für ONTAP LUNs konfiguriert.</block>
   <block id="e5c3ef473ca597687810ac04980dbc09" category="inline-link-macro">Informationen zur Verwaltung von FC-Protokollen</block>
   <block id="adccc3872d204f20472ffd2b8d48d724" category="list-text"><block ref="adccc3872d204f20472ffd2b8d48d724" category="inline-link-macro-rx"></block></block>
@@ -2468,8 +2437,6 @@ Die Bindung des FC-Treibers wird von geändert<block ref="b9ca0a083600812be33f42
   <block id="04e625d95c878abcd1f2dbf6d04098c7" category="list-text"><block ref="04e625d95c878abcd1f2dbf6d04098c7" category="inline-link-macro-rx"></block></block>
   <block id="0c9b400a67ecf2fde04784839ca8b593" category="inline-link">Informationen zur Bereitstellung von SAN-Speicher</block>
   <block id="6b9dd1af850387c3bbb1a8645b455f48" category="list-text"><block ref="6b9dd1af850387c3bbb1a8645b455f48" category="inline-link-rx"></block></block>
-  <block id="5ea4a4d083b9b7faa4d73ebd6193eec3" category="sidebar">Informationen zur Konfiguration von Hosts mit FCP und iSCSI</block>
-  <block id="46fa0acef0abce2c8d85781039d9ca0e" category="sidebar">Informationen zur Konfiguration des Hosts mit NVMe-oF</block>
   <block id="9d32a296d3ce5f696e1fdfdc2b0f8b87" category="paragraph">Die Linux Host Utilities unterstützen Sie bei der Verwaltung von ONTAP Storage, der an einen Linux Host angeschlossen ist. NetApp empfiehlt die Installation der Linux Host Utilities ausdrücklich, sie ist jedoch nicht zwingend erforderlich. Die Linux Host Utilities verbessern die Verwaltung und unterstützen den NetApp Kundensupport beim Sammeln von Informationen zu Ihrer Konfiguration.</block>
   <block id="83e24aa706fccba3ff4d736e0e31bf85" category="paragraph">Bei der Installation der Linux Host Utilities ändert sich keine Einstellung und kein Verhalten auf Ihrem Host.</block>
   <block id="80fd4adc269a85ce0df8e3b446ebf481" category="admonition">Die Linux Host Utilities haben eine Installationsabhängigkeit von der Bibliothek libHBAAPI.so. Eines der oben aufgeführten Pakete muss installiert werden, selbst wenn ein Host ausschließlich für eine iSCSI-only-Konfiguration vorgesehen ist. Alternativ können OS-Tools für die LUN- und Pfadverwaltung verwendet werden.</block>
@@ -2528,4 +2495,44 @@ Die Bindung des FC-Treibers wird von geändert<block ref="b9ca0a083600812be33f42
   <block id="f6615e8535f35dd305084ea2894bfa16" category="list-text">Ab ONTAP 9.10.1 wird das NVMe/TCP-Protokoll von ONTAP unterstützt.</block>
   <block id="06980ca83225c81b8134c0b467016286" category="paragraph">Nach der Installation von Windows Host Utilities 7.2 muss der Wert des Parameters LimTransferSize geändert werden. Siehe <block ref="62303d561309e8cf89d2be92987f3150" category="inline-xref-macro-rx"></block>.</block>
   <block id="6a79af20a523a4fc84d19fee8187b203" category="paragraph">[[parameter-72]]Das Installationsprogramm der Windows Host Utilities legt die Windows-Registrierungswerte sowie die iSCSI- und NVMe-HBA-Parameter automatisch entsprechend der während der Installation getroffenen Auswahl fest. Diese Werte und die Version des Betriebssystems sollten überprüft werden.</block>
+  <block id="0e9921acd171b70dc5d1ac95c8c50399" category="doc">AIX Host Utilities Befehle für die ONTAP Storage Konfiguration</block>
+  <block id="9fb343982b97a8dc12d3122c420c5ea7" category="doc">Versionshinweise für AIX Host Utilities für ONTAP Storage</block>
+  <block id="2ea08eaaae7c6119cc48921f3796b5c3" category="doc">HP-UX Host Utilities Versionshinweise für ONTAP Storage</block>
+  <block id="81127402f95ead330df48d387b5a6b8f" category="doc">Informationen zum HP-UX SAN Toolkit für ONTAP Storage</block>
+  <block id="915e7b086350655a133b439c14e17ffd" category="doc">Linux Host Utilities Befehle für die ONTAP Storage Konfiguration</block>
+  <block id="cfe99a6bdad5da964c9a46fb03d6eaf9" category="doc">Versionshinweise zu Linux Host Utilities für ONTAP Storage</block>
+  <block id="0ced5d65080d7814d860d3f16910a834" category="doc">Informationen zum sanlun Dienstprogramm für ONTAP Storage</block>
+  <block id="c2627bbb6da940de88adecf662e3ae2d" category="doc">Informationen zur NVMe-oF Konfiguration für ONTAP SAN Hosts</block>
+  <block id="d3df7d646d640a0a9fb08d1bf421fe43" category="doc">Solaris Host Utilities Befehle zur Überprüfung der ONTAP Storage Konfiguration</block>
+  <block id="edf3f5a378100b81312fd2cd70bf01ef" category="doc">Solaris Host Utilities Versionshinweise für ONTAP Storage</block>
+  <block id="48bf8159ec53e42fb6fdf758b64da1c7" category="doc">Informationen zum Solaris SAN Toolkit für ONTAP Storage</block>
+  <block id="f2cd92cac2712e5517c7843d8bc92c8b" category="doc">Windows Host Utilities Konfiguration für ONTAP Storage</block>
+  <block id="8cb3c98dd76153473fa33ed648bd00e1" category="doc">Versionshinweise für Windows Host Utilities für ONTAP Storage</block>
+  <block id="4dbc9bb091bb949dd9db1f6063eec8a2" category="doc">ONTAP LUNs mit AIX MPIO ohne PowerVM erkennen und konfigurieren</block>
+  <block id="fb9001732ff79972443ed877f48a175e" category="doc">Informationen zur FCP- und iSCSI-Konfiguration für ONTAP SAN Hosts</block>
+  <block id="b92a970f8ffb71dc4e477b16a35df216" category="doc">HP-UX Host Utilities Befehle für die ONTAP Storage Konfiguration</block>
+  <block id="f232957bf4a3b3d50b4dd8620fdbdfdf" category="doc">Informationen zu SAN Host Utilities für ONTAP Storage</block>
+  <block id="78cfd8a217e25cb50535917f78cb98a3" category="doc">Fehlerbehebung bei Problemen mit Windows Host Utilities und ONTAP Storage</block>
+  <block id="45c6b5bdf3c9051e97bc1e9fc67c8ff8" category="doc">Rechtliche Hinweise zu SAN Host Utilities für ONTAP Storage</block>
+  <block id="2bbff1b418f8cc5d0e29f1e35a3f494b" category="doc">Konfiguration von AIX für NVMe-oF mit ONTAP Storage</block>
+  <block id="5edbc2a2cacdf951a97e53e0565b69eb" category="summary">Konfiguration von NVMe-oF für ESXi 7.x Hosts mit ONTAP Storage.</block>
+  <block id="5487be6552fec586ef3153479d244467" category="doc">Konfiguration von ESXi 7.x für NVMe-oF mit ONTAP Storage</block>
+  <block id="02c964ba8c36156c24a6e926b8889476" category="summary">Konfiguration von NVMe over Fabrics auf Initiator Hosts mit ESXi 8.x und ONTAP als Ziel.</block>
+  <block id="cb73b3e1d278b268dd6b7560dd170760" category="doc">Konfiguration von ESXi 8.x für NVMe-oF mit ONTAP Storage</block>
+  <block id="95d90264e09076cc7579e064e2882818" category="doc">Konfiguration von Oracle Linux 10.x für NVMe-oF mit ONTAP Storage</block>
+  <block id="68835701d6f4822132c7278ca1953af2" category="doc">Oracle Linux 7.x für NVMe-oF mit ONTAP Storage konfigurieren</block>
+  <block id="41a6630e2abccf3512b112e8c84066d3" category="doc">Konfiguration von Oracle Linux 8.x für NVMe-oF mit ONTAP Storage</block>
+  <block id="d252e7a0f4977216ff9b6d891807f845" category="doc">Oracle Linux 9.x für NVMe-oF mit ONTAP Storage konfigurieren</block>
+  <block id="84886b1e0638e86db95bf8959a4ec7c9" category="doc">ONTAP Support und Funktionen für Oracle Linux Hosts</block>
+  <block id="46f1a8d660b6e70df579c05b8dea507c" category="doc">ONTAP Support und Funktionen für Proxmox Hosts</block>
+  <block id="d02f983ba169932bb4fb75fc60ed92ca" category="doc">ONTAP Unterstützung und Funktionen für RHEL Hosts</block>
+  <block id="eaf137573ad07c00c919bf94b65cf0f4" category="doc">ONTAP Support und Funktionen für Rocky Linux</block>
+  <block id="d1102c542cc6506cf817db87221b59ae" category="doc">Support und Funktionen von ONTAP für SUSE Linux Enterprise Server</block>
+  <block id="a56a1732edf699559757e8842918d9fa" category="doc">ONTAP Unterstützung und Funktionen für Ubuntu Hosts</block>
+  <block id="e6b48bcfb6f38c19b1d9f9b46825750b" category="doc">Konfiguration von Windows Server 2019 mit NVMe/FC für ONTAP Storage</block>
+  <block id="054bbd1c65edaf2cf2b1789f41c702f0" category="doc">Informationen zu SAN Hostkonfigurationen für ONTAP Storage</block>
+  <block id="2b965faf8670edf168c87cc3e4cd7f22" category="doc">Fehlerbehebung bei NVMe-oF mit ONTAP Storage auf Linux Hosts</block>
+  <block id="108d95e5dc2ef949553c9a0fafc69b42" category="sidebar">Informationen zum SAN Tollkit</block>
+  <block id="99d9fff5cb102bc1af76475056d30628" category="sidebar">Informationen zur FCP- und iSCSI-Konfiguration</block>
+  <block id="2577436e0a1529b400f7af13bf054dd3" category="sidebar">Informationen zur NVMe-oF Konfiguration</block>
 </blocks>

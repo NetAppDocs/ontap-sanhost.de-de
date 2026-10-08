@@ -4,7 +4,7 @@ permalink: hu_sanhost_index.html
 keywords: san, host, utility, software, netapp 
 summary: Erfahren Sie mehr über die neuesten Informationen zu SAN Host Utility-Versionen und greifen Sie auf das Installationsverfahren für Ihre Hostkonfiguration zu. 
 ---
-= Weitere Informationen zu SAN Host Utilities
+= Informationen zu SAN Host Utilities für ONTAP Storage
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 

@@ -4,7 +4,7 @@ permalink: nvme-ol-10x.html
 keywords: nvme, oracle linux, 10.x, host configuration 
 summary: NVMe-oF-Hostkonfiguration für Oracle Linux 10 mit ONTAP 
 ---
-= Konfigurieren Sie Oracle Linux 10.x mit NVMe-oF für ONTAP Storage
+= Konfiguration von Oracle Linux 10.x für NVMe-oF mit ONTAP Storage
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 

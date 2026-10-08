@@ -4,7 +4,7 @@ permalink: nvme-ol-8x.html
 keywords: nvme, oracle linux, 8.x, host configuration 
 summary: NVMe-oF-Hostkonfiguration für Oracle Linux 8.x mit ONTAP 
 ---
-= Konfigurieren Sie Oracle Linux 8.x mit NVMe-oF für ONTAP -Speicher
+= Konfiguration von Oracle Linux 8.x für NVMe-oF mit ONTAP Storage
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
