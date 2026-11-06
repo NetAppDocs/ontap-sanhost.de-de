@@ -2537,4 +2537,9 @@ Die Bindung des FC-Treibers wird von geändert<block ref="b9ca0a083600812be33f42
   <block id="2577436e0a1529b400f7af13bf054dd3" category="sidebar">Informationen zur NVMe-oF Konfiguration</block>
   <block id="e00f09f4cda9392c891c49988b80edc8" category="sidebar">SLES-FCP</block>
   <block id="8becbe3ee64db6f436bf244fb25c7f57" category="sidebar">SLES-NVMe</block>
+  <block id="b69bffb1a1f55594751fbc58f7abb114" category="summary">Konfiguration von Citrix Xenserver 9.0 für Multipathing mit spezifischen Parametern und Einstellungen für FCP- und iSCSI-Protokollvorgänge mit ONTAP Storage.</block>
+  <block id="f52d84b92b78c6dad322e059e6943904" category="doc">Konfiguration von Citrix Xenserver 9.0 für FCP und iSCSI mit ONTAP Storage</block>
+  <block id="aa6f72aa4dad8dc14f65a49c7b60982a" category="paragraph">Mit Citrix Xenserver 9.0 können Sie Multipathing zum Managen von ONTAP LUNs verwenden.</block>
+  <block id="3f6d8773170dd1c73493c97ee36bb40a" category="paragraph">Eine AFF oder FAS Konfiguration sollte zwei Pfadgruppen mit höherer und niedrigerer Priorität aufweisen. Aktive/optimierte Pfade mit höherer Priorität werden von dem Controller bedient, auf dem sich das Aggregat befindet. Pfade mit niedrigerer Priorität sind aktiv, aber nicht optimiert, da sie von einem anderen Controller bedient werden. Nicht optimierte Pfade werden nur verwendet, wenn keine optimierten Pfade verfügbar sind.</block>
+  <block id="1d5076606adf1177c26a3f206e21498e" category="sidebar">Xenserver 9.0</block>
 </blocks>
