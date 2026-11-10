@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
 permalink: hu_citrix_84.html 
-keywords: host utilities, citrix, Xenserver, 8 series, netapp, ontap, san, boot 
-summary: Konfigurieren Sie Citrix Xenserver 8.4 für Multipathing und mit spezifischen Parametern und Einstellungen für FCP- und iSCSI-Protokollvorgänge mit ONTAP Speicher. 
+keywords: host utilities, citrix, XenServer, 8 series, netapp, ontap, san, boot 
+summary: Citrix XenServer 8.4 für Multipathing sowie mit spezifischen Parametern und Einstellungen für FCP- und iSCSI-Protokollvorgänge mit ONTAP Storage konfigurieren. 
 ---
-= Konfigurieren Sie Citrix Xenserver 8.4 für FCP und iSCSI mit ONTAP-Speicher
+= Konfiguration von Citrix XenServer 8.4 für FCP und iSCSI mit ONTAP Storage
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -16,11 +16,11 @@ summary: Konfigurieren Sie Citrix Xenserver 8.4 für Multipathing und mit spezif
 
 
 [role="lead"]
-Konfigurieren Sie Citrix Xenserver 8.4 für Multipathing und mit spezifischen Parametern und Einstellungen für FCP- und iSCSI-Protokollvorgänge mit ONTAP Speicher.
+Citrix XenServer 8.4 für Multipathing sowie mit spezifischen Parametern und Einstellungen für FCP- und iSCSI-Protokollvorgänge mit ONTAP Storage konfigurieren.
 
 [NOTE]
 ====
-Das Softwarepaket „Linux Host Utilities“ unterstützt keine Citrix Xenserver-Betriebssysteme.
+Das Softwarepaket Linux Host Utilities unterstützt keine Citrix XenServer Betriebssysteme.
 
 ====
 
@@ -47,7 +47,7 @@ Informationen zum Aktivieren des HBA-BIOS finden Sie in der anbieterspezifischen
 [[step-2-confirm-the-multipath-configuration-for-your-host]]
 == Schritt 2: Bestätigen Sie die Multipath-Konfiguration für Ihren Host
 
-Sie können Multipathing mit Citrix Xenserver 8.4 verwenden, um ONTAP -LUNs zu verwalten.
+Mit Citrix XenServer 8.4 lässt sich Multipathing zum Managen von ONTAP LUNs verwenden.
 
 Um sicherzustellen, dass Multipathing für Ihren Host korrekt konfiguriert ist, überprüfen Sie, ob die `/etc/multipath.conf` Datei definiert ist und ob die von NetApp empfohlenen Einstellungen für Ihre ONTAP LUNs konfiguriert sind.
 

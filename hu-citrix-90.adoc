@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
 permalink: hu-citrix-90.html 
-keywords: host utilities, citrix, Xenserver, 9 series, netapp, ontap, san, boot 
-summary: Konfiguration von Citrix Xenserver 9.0 für Multipathing mit spezifischen Parametern und Einstellungen für FCP- und iSCSI-Protokollvorgänge mit ONTAP Storage. 
+keywords: host utilities, citrix, XenServer, 9 series, netapp, ontap, san, boot 
+summary: Konfiguration von Citrix XenServer 9.0 für Multipathing mit spezifischen Parametern und Einstellungen für FCP- und iSCSI-Protokollvorgänge mit ONTAP Storage. 
 ---
-= Konfiguration von Citrix Xenserver 9.0 für FCP und iSCSI mit ONTAP Storage
+= Konfiguration von Citrix XenServer 9.0 für FCP und iSCSI mit ONTAP Storage
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
@@ -16,11 +16,11 @@ summary: Konfiguration von Citrix Xenserver 9.0 für Multipathing mit spezifisch
 
 
 [role="lead"]
-Konfiguration von Citrix Xenserver 9.0 für Multipathing mit spezifischen Parametern und Einstellungen für FCP- und iSCSI-Protokollvorgänge mit ONTAP Storage.
+Konfiguration von Citrix XenServer 9.0 für Multipathing mit spezifischen Parametern und Einstellungen für FCP- und iSCSI-Protokollvorgänge mit ONTAP Storage.
 
 [NOTE]
 ====
-Das Softwarepaket „Linux Host Utilities“ unterstützt keine Citrix Xenserver-Betriebssysteme.
+Das Softwarepaket Linux Host Utilities unterstützt keine Citrix XenServer Betriebssysteme.
 
 ====
 
@@ -47,7 +47,7 @@ Informationen zum Aktivieren des HBA-BIOS finden Sie in der anbieterspezifischen
 [[step-2-confirm-the-multipath-configuration-for-your-host]]
 == Schritt 2: Bestätigen Sie die Multipath-Konfiguration für Ihren Host
 
-Mit Citrix Xenserver 9.0 können Sie Multipathing zum Managen von ONTAP LUNs verwenden.
+Mit Citrix XenServer 9.0 lassen sich ONTAP LUNs mit Multipathing managen.
 
 Um sicherzustellen, dass Multipathing für Ihren Host korrekt konfiguriert ist, überprüfen Sie, ob die `/etc/multipath.conf` Datei definiert ist und ob die von NetApp empfohlenen Einstellungen für Ihre ONTAP LUNs konfiguriert sind.
 

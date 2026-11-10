@@ -44,7 +44,7 @@ Für Linux Host Utilities 8.0 wird das Dienstprogramm „sanlun“ für Citrix X
 --
 .7.1
 --
-Für Linux Host Utilities 7.1 wird das Dienstprogramm „sanlun“ für Citrix Xenserver, Red Hat Enterprise Virtualization und Proxmox nicht unterstützt.
+Für Linux Host Utilities 7.1 wird das Dienstprogramm "sanlun" für Citrix XenServer, Red hat Enterprise Virtualization und Proxmox nicht unterstützt.
 
 --
 ====
