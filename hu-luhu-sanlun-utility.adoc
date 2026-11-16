@@ -4,7 +4,7 @@ permalink: hu-luhu-sanlun-utility.html
 keywords: host utilities, unified, oracle, linux, 8.0, netapp, ontap 
 summary: Beschreibt die Verwendung der Linux Host Utilities 8.0 mit ONTAP 
 ---
-= Informationen zum sanlun Dienstprogramm für ONTAP Storage
+= Informationen zum Dienstprogramm „sanlun“ von Linux Host Utilities für ONTAP Storage
 :hardbreaks:
 :toclevels: 1
 :allow-uri-read: 
