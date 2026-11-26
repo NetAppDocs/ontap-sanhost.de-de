@@ -94,7 +94,7 @@ devices {
     dev_loss_tmo infinity
     no_path_retry queue
     features "3 queue_if_no_path pg_init_retries 50"
-    flush_on_last_del yes
+    flush_on_last_del always
     hardware_handler "0"
     retain_attached_hw_handler yes
     rr_weight uniform
@@ -144,7 +144,7 @@ In der folgenden Tabelle sind die nativen vom Linux OS kompilierten Multipath-Pa
 | Funktionen | „3 queue_if_no_Pg_init_retries 50“ 
 
 
-| Flush_on_Last_del | „ja“ 
+| Flush_on_Last_del | "stets" 
 
 
 | Hardware_Handler | „0“ 
@@ -207,9 +207,8 @@ Eine ASA Konfiguration optimiert alle Pfade zu einer bestimmten LUN und hält si
 =====
 [listing]
 ----
-/usr/sbin/mpathutil status
-show topology
-create: 3600a098038315045572b5930646f4b63 dm-1 NETAPP  ,LUN C-Mode
+multipath -ll
+3600a098038315045572b5930646f4b63 dm-1 NETAPP  ,LUN C-Mode
 size=9.0G features='4 queue_if_no_path pg_init_retries 50 retain_attached_hw_handle' hwhandler='1 alua' wp=rw
 `-+- policy='service-time 0' prio=50 status=active
   |- 15:0:0:0  sdb  8:16    active ready running
@@ -230,9 +229,8 @@ Im folgenden Beispiel wird die Ausgabe für eine ONTAP-LUN mit zwei aktiv/optimi
 =====
 [listing]
 ----
-/usr/sbin/mpathutil status
-show topology
-create: 3600a098038315045572b5930646f4b63 dm-1 NETAPP  ,LUN C-Mode
+multipath -ll
+3600a098038315045572b5930646f4b63 dm-1 NETAPP  ,LUN C-Mode
 size=9.0G features='4 queue_if_no_path pg_init_retries 50 retain_attached_hw_handle' hwhandler='1 alua' wp=rw
 |-+- policy='service-time 0' prio=50 status=active
   |- 15:0:0:0  sdb  8:16    active ready running
@@ -294,21 +292,25 @@ Das folgende Beispiel zeigt, wie ein überschriebener Standardwert korrigiert we
 .Beispiel anzeigen
 [%collapsible]
 ====
-[listing, subs="+quotes"]
+[source, cli]
 ----
+$sudo tee -a /etc/multipath/conf.d/custom.conf >/dev/null <<'EOF'
+
 defaults {
-   path_checker      *readsector0*
-   no_path_retry     *fail*
+   path_checker      readsector0
+   no_path_retry     fail
 }
 
 devices {
    device {
       vendor          "NETAPP"
       product         "LUN"
-      no_path_retry   *queue*
-      path_checker    *tur*
+      no_path_retry   queue
+      path_checker    tur
    }
 }
+
+EOF
 ----
 ====
 
